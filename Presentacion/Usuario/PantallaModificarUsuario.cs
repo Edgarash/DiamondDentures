@@ -27,20 +27,20 @@ namespace Presentacion.Usuario
             tbNEmpleado.Enabled = false;
             tbUsuario.Text = Usuario.Login;
             tbUsuario.Enabled = false;
-            cbTipoUsuario.Text = Usuario.TipoUsuario;
+            cbDepartamento.Text = Usuario.Departamento;
             cbPaíses.Text = Usuario.Pais;
             cbEstado.Text = Usuario.Estado;
             cbMunicipio.Text = Usuario.Municipio;
             cbCiudad.Text = Usuario.Ciudad;
             tbColonia.Text = Usuario.Colonia;
-            tbCalle.Text = Usuario.Calle;
+            tbCalle.Text = Usuario.Direccion;
             tbNFrente.Text = Usuario.NumCasa;
-            tbCP.Text = Usuario.CodigoPostal.ToString();
+            tbCP.Text = Usuario.CodPos.ToString();
             tbEmail.Text = Usuario.Email.Split('@')[0];
             cbEmail.Text = Usuario.Email.Contains("@") ? Usuario.Email.Split('@')[1].ToUpper() : "";
-            tbTel.Text = Usuario.TelefonoCasa;
-            tbCel.Text = Usuario.TelefonoMovil;
-            tbTrabajo.Text = Usuario.TelefonoOficina;
+            tbTel.Text = Usuario.TelCasa;
+            tbCel.Text = Usuario.TelCel;
+            tbTrabajo.Text = Usuario.TelOficina;
             cbPregunta.Text = Usuario.Pregunta;
             tbRespuesta.Text = Usuario.Respuesta;
             UsuarioAnterior = Usuario.Login;
@@ -78,7 +78,7 @@ namespace Presentacion.Usuario
             // 
             // cbTipoUsuario
             // 
-            this.cbTipoUsuario.Size = new System.Drawing.Size(153, 24);
+            this.cbDepartamento.Size = new System.Drawing.Size(153, 24);
             // 
             // cbEmail
             // 
@@ -134,10 +134,9 @@ namespace Presentacion.Usuario
                 Interface = new InterfaceUsuario(this);
                 bool Permiso = true;
                 DialogResult temporal = MessageBox.Show("Esta operación sobreescribirá algunos de sus datos\n\n¿Desea continuar?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
-                if (User.TipoUsuario != "Administrador" && cbTipoUsuario.Text == "Administrador")
+                if (User.Departamento != "Administrador" && cbDepartamento.Text == "Administrador")
                 {
-                    int Conteo = 0;
-                    bool PrimerAdmin = !Interface.HayAdministradores(out Conteo);
+                    bool PrimerAdmin = !Interface.HayAdministradores();
                     if (temporal == DialogResult.Yes && !PrimerAdmin)
                     {
                         Permiso = Interface.PermisoDeAdministrador();
@@ -171,7 +170,7 @@ namespace Presentacion.Usuario
             get
             {
                 bool temp = Validaciones.ValidarTextBox(tbNombre, tbApellidos, tbUsuario, tbCalle, tbColonia, tbEmail, tbNEmpleado, tbRespuesta);
-                temp = Validaciones.ValidarComboBox(cbEmail, cbTipoUsuario, cbPregunta) || temp;
+                temp = Validaciones.ValidarComboBox(cbEmail, cbDepartamento, cbPregunta) || temp;
                 temp = Validaciones.ValidarMaskedTextBox(tbTel, tbCel) || temp;
                 temp = Validaciones.ValidarPassword(false, tbPassword) || temp;
                 return temp;
@@ -183,9 +182,11 @@ namespace Presentacion.Usuario
             get
             {
                 string Kagi = tbPassword.Text == "" ? User.Password : tbPassword.Text;
-                return new RegistroUsuario(Convert.ToInt32(tbNEmpleado.Text), tbNombre.Text, tbApellidos.Text, tbUsuario.Text, Kagi,
-                    cbTipoUsuario.Text, cbPaíses.Text, cbEstado.Text, cbMunicipio.Text, cbCiudad.Text, tbColonia.Text, tbCalle.Text, tbNFrente.Text,
-                    tbCP.Text, tbTel.Text, tbCel.Text, tbTrabajo.Text, tbEmail.Text + "@" + cbEmail.Text, cbPregunta.Text, tbRespuesta.Text, 1);
+                return new RegistroUsuario(int.Parse(tbNEmpleado.Text), tbUsuario.Text, tbPassword.Text, tbNombre.Text,
+                    tbApellidos.Text, Convert.ToDateTime(tbFechaNac.Text), tbNFrente.Text, tbCalle.Text, tbColonia.Text,
+                    cbCiudad.Text, cbMunicipio.Text, cbEstado.Text, cbPaíses.Text, tbCP.Text, tbTel.Text, tbTrabajo.Text,
+                    tbCel.Text, tbEmail.Text + cbEmail.Text, cbPregunta.Text, tbRespuesta.Text, "1", cbDepartamento.Text,
+                    cbPuesto.Text, DateTime.Today, 200);
             }
         }
 

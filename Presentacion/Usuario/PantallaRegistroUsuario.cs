@@ -17,7 +17,7 @@ namespace Presentacion.Usuario
             : base()
         {
             InitializeComponent();
-            cbTipoUsuario.SelectedIndex = 0;
+            cbDepartamento.SelectedIndex = 0;
             cbPaíses.SelectedIndex = cbPaíses.Items.IndexOf("México");
             cbEmail.SelectedIndex = 0;
         }
@@ -31,7 +31,7 @@ namespace Presentacion.Usuario
             }
             else
             {
-                cbTipoUsuario.Enabled = false;
+                cbDepartamento.Enabled = false;
             }
         }
 
@@ -61,9 +61,9 @@ namespace Presentacion.Usuario
             // 
             this.cbMunicipio.Size = new System.Drawing.Size(153, 24);
             // 
-            // cbTipoUsuario
+            // cbDepartamento
             // 
-            this.cbTipoUsuario.Size = new System.Drawing.Size(153, 24);
+            this.cbDepartamento.Size = new System.Drawing.Size(153, 24);
             // 
             // cbEmail
             // 
@@ -81,7 +81,6 @@ namespace Presentacion.Usuario
             this.btnRegistrar.FlatAppearance.BorderSize = 0;
             this.btnRegistrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnRegistrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnRegistrar.Location = new System.Drawing.Point(414, 563);
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // cbCiudad
@@ -100,6 +99,10 @@ namespace Presentacion.Usuario
             // 
             this.tbRespuesta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRespuesta_KeyPress);
             // 
+            // cbPuesto
+            // 
+            this.cbPuesto.Size = new System.Drawing.Size(153, 24);
+            // 
             // btnRegistrarShido
             // 
             this.btnRegistrarShido.BackgroundImage = global::Presentacion.Properties.Resources.IconoAceptar;
@@ -108,7 +111,7 @@ namespace Presentacion.Usuario
             this.btnRegistrarShido.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnRegistrarShido.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnRegistrarShido.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrarShido.Location = new System.Drawing.Point(414, 563);
+            this.btnRegistrarShido.Location = new System.Drawing.Point(587, 439);
             this.btnRegistrarShido.Name = "btnRegistrarShido";
             this.btnRegistrarShido.Size = new System.Drawing.Size(62, 58);
             this.btnRegistrarShido.TabIndex = 153;
@@ -120,10 +123,12 @@ namespace Presentacion.Usuario
             // PantallaRegistroUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(599, 661);
+            this.ClientSize = new System.Drawing.Size(785, 534);
             this.Controls.Add(this.btnRegistrarShido);
             this.Name = "PantallaRegistroUsuario";
             this.Text = "Registro de usuario";
+            this.Controls.SetChildIndex(this.cbPuesto, 0);
+            this.Controls.SetChildIndex(this.tbFechaNac, 0);
             this.Controls.SetChildIndex(this.btnRegistrarShido, 0);
             this.Controls.SetChildIndex(this.tbRespuesta, 0);
             this.Controls.SetChildIndex(this.cbPregunta, 0);
@@ -141,7 +146,7 @@ namespace Presentacion.Usuario
             this.Controls.SetChildIndex(this.tbNFrente, 0);
             this.Controls.SetChildIndex(this.tbColonia, 0);
             this.Controls.SetChildIndex(this.tbCalle, 0);
-            this.Controls.SetChildIndex(this.cbTipoUsuario, 0);
+            this.Controls.SetChildIndex(this.cbDepartamento, 0);
             this.Controls.SetChildIndex(this.tbEmail, 0);
             this.Controls.SetChildIndex(this.tbTel, 0);
             this.Controls.SetChildIndex(this.cbEmail, 0);
@@ -165,9 +170,8 @@ namespace Presentacion.Usuario
             {
                 Interface = new InterfaceUsuario(this);
                 RegistroUsuario Usuario = ObtenerRegistro;
-                int Conteo = 0;
-                bool PrimerAdmin = !Interface.HayAdministradores(out Conteo);
-                if (cbTipoUsuario.Text == "Administrador" && !PrimerAdmin)
+                bool PrimerAdmin = !Interface.HayAdministradores();
+                if (cbDepartamento.Text == "Administrador" && !PrimerAdmin)
                 {
                     if (Interface.PermisoDeAdministrador())
                     {

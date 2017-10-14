@@ -37,15 +37,14 @@ namespace Presentacion.Recepcion
             tbRFC.Text = Dentista?.RFC;
             tbNombreDentista.Text = Dentista?.Nombre;
             tbApellidos.Text = Dentista?.Apellidos;
-            tbTelefono.Text = Dentista?.Telefono;
+            tbTelefono.Text = Dentista?.TelOficina;
             cbPaíses.Text = Dentista?.Pais;
             cbEstado.Text = Dentista?.Estado;
             cbMunicipio.Text = Dentista?.Municipio;
             cbCiudad.Text = Dentista?.Ciudad;
             tbColonia.Text = Dentista?.Colonia;
-            tbCalle.Text = Dentista?.Calle;
-            tbNumFrente.Text = Dentista?.NumFrente;
-            tbCP.Text = Dentista?.CP;
+            tbCalle.Text = Dentista?.Direccion;
+            tbCP.Text = Dentista?.CodPos;
             tbEmail.Text = Dentista?.Email?.Split('@')[0];
             cbEmail.Text = Dentista?.Email?.Split('@')[1];
         }

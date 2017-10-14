@@ -15,6 +15,7 @@ namespace Presentacion
         [STAThread]
         static void Main(string[] Args)
         {
+            ConexionBaseDeDatos.InterfaceMySQL.ActualizarBaseDeDatos();
             string Admin = "MICHEL";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

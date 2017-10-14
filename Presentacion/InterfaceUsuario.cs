@@ -222,10 +222,10 @@ namespace Presentacion
             return Permiso.PermisoAdmin();
         }
 
-        public bool HayAdministradores(out int Conteo)
+        public bool HayAdministradores()
         {
             Manejador = new ManejadorUsuario();
-            return ((ManejadorUsuario)Manejador).HayAdministradores(out Conteo);
+            return ((ManejadorUsuario)Manejador).HayAdministradores();
         }
 
         public bool EliminarMaterial(int Clave)
@@ -355,7 +355,7 @@ namespace Presentacion
             RecuperarUsuario(Usuario, out temp);
             if (temp != null)
             {
-                return temp.TipoUsuario == "Administrador" && temp.UsuarioActivo;
+                return temp.Departamento == "ADMINISTRACION" && temp.Activo== "1";
             }
             return false;
         }

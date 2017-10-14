@@ -11,7 +11,7 @@ namespace Control
         }
         public bool RegistrarUsuario(RegistroUsuario Usuario)
         {
-            return Interface.RegistroUsuario(Usuario);
+            return InterfaceMySQL.RegistroUsuario(Usuario);
         }
         public bool ActualizarUsuario(string User, RegistroUsuario Usuario)
         {
@@ -28,11 +28,11 @@ namespace Control
         public bool ValidarUsuario(string Usuario)
         {
             RegistroUsuario Registro;
-            return Interface.RecuperarUsuario(Usuario, out Registro);
+            return InterfaceMySQL.RecuperarUsuario(Usuario, out Registro);
         }
         public bool ValidarEmpleado(int NumeroTrabajador)
         {
-            return Interface.ValidarEmpleado(NumeroTrabajador);
+            return InterfaceMySQL.ValidarEmpleado(NumeroTrabajador);
         }
 
         public bool ValidarEmpleadoRegistrado(int Numero)

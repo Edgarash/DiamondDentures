@@ -45,7 +45,7 @@ namespace Presentacion.Usuario
         private Label lblEstado;
         private Label lblMunicipio;
         private Label lblCiudad;
-        protected ComboBox cbTipoUsuario;
+        protected ComboBox cbDepartamento;
         private Label lblTipoUsuario;
         protected MaskedTextBox tbTrabajo;
         private Label lblTelefonoTrabajo;
@@ -72,6 +72,10 @@ namespace Presentacion.Usuario
         private Label label1;
         protected TextBox tbRespuesta;
         private Label label2;
+        private Label label3;
+        protected ComboBox cbPuesto;
+        private Label label4;
+        protected MaskedTextBox tbFechaNac;
         private string[] Capitales = ("Kabul,Tirana,Berlín,Andorra la Vieja,Luanda,Saint John,Riad,Argel,Buenos Aires,Ereván,Canberra,Viena,Bakú,Nasáu,Daca,Bridgetown," +
                                 "Manama,Bruselas,Belmopán,Porto - Novo,Minsk,Naipyidó,Sucre,Sarajevo,Gaborone,Brasilia,Bandar Seri Begawan," +
                                 "Sofía,Uagadugú,Buyumbura,Thimphu,Praia,Nom Pen,Yaundé,Ottawa,Doha,Yamena,Santiago,Pekín,Nicosia,Bogotá,Moroni,Brazzaville," +
@@ -137,7 +141,7 @@ namespace Presentacion.Usuario
             this.lblEstado = new System.Windows.Forms.Label();
             this.lblMunicipio = new System.Windows.Forms.Label();
             this.lblCiudad = new System.Windows.Forms.Label();
-            this.cbTipoUsuario = new System.Windows.Forms.ComboBox();
+            this.cbDepartamento = new System.Windows.Forms.ComboBox();
             this.lblTipoUsuario = new System.Windows.Forms.Label();
             this.tbTrabajo = new System.Windows.Forms.MaskedTextBox();
             this.lblTelefonoTrabajo = new System.Windows.Forms.Label();
@@ -160,6 +164,10 @@ namespace Presentacion.Usuario
             this.label1 = new System.Windows.Forms.Label();
             this.tbRespuesta = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbPuesto = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbFechaNac = new System.Windows.Forms.MaskedTextBox();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSeparador1)).BeginInit();
@@ -171,13 +179,13 @@ namespace Presentacion.Usuario
             // 
             this.Encabezado.Controls.Add(this.lblPantallaUsuario);
             this.Encabezado.Controls.Add(this.pbIcono);
-            this.Encabezado.Size = new System.Drawing.Size(599, 73);
+            this.Encabezado.Size = new System.Drawing.Size(785, 73);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(506, 624);
+            this.label14.Location = new System.Drawing.Point(678, 503);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(81, 18);
             this.label14.TabIndex = 151;
@@ -187,7 +195,7 @@ namespace Presentacion.Usuario
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(409, 624);
+            this.label13.Location = new System.Drawing.Point(581, 503);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(73, 18);
             this.label13.TabIndex = 152;
@@ -230,17 +238,17 @@ namespace Presentacion.Usuario
             // tbPassword
             // 
             this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbPassword.Location = new System.Drawing.Point(224, 176);
+            this.tbPassword.Location = new System.Drawing.Point(408, 130);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(154, 23);
-            this.tbPassword.TabIndex = 5;
+            this.tbPassword.TabIndex = 2;
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(36, 112);
+            this.lblNombre.Location = new System.Drawing.Point(36, 159);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(85, 17);
             this.lblNombre.TabIndex = 54;
@@ -250,7 +258,7 @@ namespace Presentacion.Usuario
             // 
             this.lblApellido.AutoSize = true;
             this.lblApellido.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellido.Location = new System.Drawing.Point(221, 112);
+            this.lblApellido.Location = new System.Drawing.Point(221, 159);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(85, 17);
             this.lblApellido.TabIndex = 56;
@@ -259,28 +267,28 @@ namespace Presentacion.Usuario
             // tbNombre
             // 
             this.tbNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbNombre.Location = new System.Drawing.Point(39, 132);
+            this.tbNombre.Location = new System.Drawing.Point(39, 179);
             this.tbNombre.MaxLength = 50;
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.ShortcutsEnabled = false;
             this.tbNombre.Size = new System.Drawing.Size(153, 21);
-            this.tbNombre.TabIndex = 1;
+            this.tbNombre.TabIndex = 4;
             // 
             // tbApellidos
             // 
             this.tbApellidos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbApellidos.Location = new System.Drawing.Point(224, 132);
+            this.tbApellidos.Location = new System.Drawing.Point(224, 179);
             this.tbApellidos.MaxLength = 50;
             this.tbApellidos.Name = "tbApellidos";
             this.tbApellidos.ShortcutsEnabled = false;
             this.tbApellidos.Size = new System.Drawing.Size(153, 21);
-            this.tbApellidos.TabIndex = 2;
+            this.tbApellidos.TabIndex = 5;
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(36, 159);
+            this.lblUsuario.Location = new System.Drawing.Point(220, 113);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(146, 17);
             this.lblUsuario.TabIndex = 60;
@@ -289,18 +297,18 @@ namespace Presentacion.Usuario
             // tbUsuario
             // 
             this.tbUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbUsuario.Location = new System.Drawing.Point(39, 177);
+            this.tbUsuario.Location = new System.Drawing.Point(223, 131);
             this.tbUsuario.MaxLength = 30;
             this.tbUsuario.Name = "tbUsuario";
             this.tbUsuario.ShortcutsEnabled = false;
             this.tbUsuario.Size = new System.Drawing.Size(153, 21);
-            this.tbUsuario.TabIndex = 4;
+            this.tbUsuario.TabIndex = 1;
             // 
             // lblContraseña
             // 
             this.lblContraseña.AutoSize = true;
             this.lblContraseña.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContraseña.Location = new System.Drawing.Point(228, 159);
+            this.lblContraseña.Location = new System.Drawing.Point(412, 113);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.Size = new System.Drawing.Size(98, 17);
             this.lblContraseña.TabIndex = 60;
@@ -310,7 +318,7 @@ namespace Presentacion.Usuario
             // 
             this.lblEmpleado.AutoSize = true;
             this.lblEmpleado.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmpleado.Location = new System.Drawing.Point(405, 112);
+            this.lblEmpleado.Location = new System.Drawing.Point(39, 110);
             this.lblEmpleado.Name = "lblEmpleado";
             this.lblEmpleado.Size = new System.Drawing.Size(108, 17);
             this.lblEmpleado.TabIndex = 60;
@@ -319,21 +327,21 @@ namespace Presentacion.Usuario
             // tbNEmpleado
             // 
             this.tbNEmpleado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbNEmpleado.Location = new System.Drawing.Point(408, 132);
+            this.tbNEmpleado.Location = new System.Drawing.Point(39, 130);
             this.tbNEmpleado.MaxLength = 20;
             this.tbNEmpleado.Name = "tbNEmpleado";
             this.tbNEmpleado.ShortcutsEnabled = false;
             this.tbNEmpleado.Size = new System.Drawing.Size(153, 21);
-            this.tbNEmpleado.TabIndex = 3;
+            this.tbNEmpleado.TabIndex = 0;
             this.tbNEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidarNumeros_KeyPress);
             // 
             // pbSeparador1
             // 
             this.pbSeparador1.BackgroundImage = global::Presentacion.Properties.Resources.ImagenSeparador;
             this.pbSeparador1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbSeparador1.Location = new System.Drawing.Point(40, 205);
+            this.pbSeparador1.Location = new System.Drawing.Point(35, 205);
             this.pbSeparador1.Name = "pbSeparador1";
-            this.pbSeparador1.Size = new System.Drawing.Size(521, 13);
+            this.pbSeparador1.Size = new System.Drawing.Size(715, 14);
             this.pbSeparador1.TabIndex = 61;
             this.pbSeparador1.TabStop = false;
             // 
@@ -341,7 +349,7 @@ namespace Presentacion.Usuario
             // 
             this.lblPais.AutoSize = true;
             this.lblPais.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPais.Location = new System.Drawing.Point(43, 222);
+            this.lblPais.Location = new System.Drawing.Point(36, 222);
             this.lblPais.Name = "lblPais";
             this.lblPais.Size = new System.Drawing.Size(37, 17);
             this.lblPais.TabIndex = 62;
@@ -548,19 +556,19 @@ namespace Presentacion.Usuario
             "Yibuti",
             "Zambia",
             "Zimbabue"});
-            this.cbPaíses.Location = new System.Drawing.Point(43, 239);
+            this.cbPaíses.Location = new System.Drawing.Point(36, 239);
             this.cbPaíses.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.cbPaíses.MaxLength = 30;
             this.cbPaíses.Name = "cbPaíses";
             this.cbPaíses.Size = new System.Drawing.Size(149, 24);
-            this.cbPaíses.TabIndex = 7;
+            this.cbPaíses.TabIndex = 8;
             this.cbPaíses.SelectedIndexChanged += new System.EventHandler(this.cbPaises_SelectedChanged);
             // 
             // lblCodigoPostal
             // 
             this.lblCodigoPostal.AutoSize = true;
             this.lblCodigoPostal.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoPostal.Location = new System.Drawing.Point(201, 315);
+            this.lblCodigoPostal.Location = new System.Drawing.Point(561, 269);
             this.lblCodigoPostal.Name = "lblCodigoPostal";
             this.lblCodigoPostal.Size = new System.Drawing.Size(53, 17);
             this.lblCodigoPostal.TabIndex = 84;
@@ -569,29 +577,29 @@ namespace Presentacion.Usuario
             // tbCalle
             // 
             this.tbCalle.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbCalle.Location = new System.Drawing.Point(408, 288);
+            this.tbCalle.Location = new System.Drawing.Point(224, 288);
             this.tbCalle.Margin = new System.Windows.Forms.Padding(3, 3, 10, 6);
             this.tbCalle.MaxLength = 80;
             this.tbCalle.Name = "tbCalle";
             this.tbCalle.ShortcutsEnabled = false;
             this.tbCalle.Size = new System.Drawing.Size(153, 21);
-            this.tbCalle.TabIndex = 12;
+            this.tbCalle.TabIndex = 13;
             // 
             // tbNFrente
             // 
-            this.tbNFrente.Location = new System.Drawing.Point(45, 336);
+            this.tbNFrente.Location = new System.Drawing.Point(408, 288);
             this.tbNFrente.MaxLength = 6;
             this.tbNFrente.Name = "tbNFrente";
             this.tbNFrente.ShortcutsEnabled = false;
             this.tbNFrente.Size = new System.Drawing.Size(117, 21);
-            this.tbNFrente.TabIndex = 13;
+            this.tbNFrente.TabIndex = 14;
             this.tbNFrente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidarNumeros_KeyPress);
             // 
             // lblNumeroCasa
             // 
             this.lblNumeroCasa.AutoSize = true;
             this.lblNumeroCasa.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumeroCasa.Location = new System.Drawing.Point(45, 315);
+            this.lblNumeroCasa.Location = new System.Drawing.Point(405, 269);
             this.lblNumeroCasa.Name = "lblNumeroCasa";
             this.lblNumeroCasa.Size = new System.Drawing.Size(115, 17);
             this.lblNumeroCasa.TabIndex = 78;
@@ -601,7 +609,7 @@ namespace Presentacion.Usuario
             // 
             this.lblCalle.AutoSize = true;
             this.lblCalle.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCalle.Location = new System.Drawing.Point(405, 269);
+            this.lblCalle.Location = new System.Drawing.Point(221, 269);
             this.lblCalle.Name = "lblCalle";
             this.lblCalle.Size = new System.Drawing.Size(56, 17);
             this.lblCalle.TabIndex = 79;
@@ -611,7 +619,7 @@ namespace Presentacion.Usuario
             // 
             this.lblColonia.AutoSize = true;
             this.lblColonia.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColonia.Location = new System.Drawing.Point(221, 268);
+            this.lblColonia.Location = new System.Drawing.Point(36, 269);
             this.lblColonia.Name = "lblColonia";
             this.lblColonia.Size = new System.Drawing.Size(74, 17);
             this.lblColonia.TabIndex = 80;
@@ -626,7 +634,7 @@ namespace Presentacion.Usuario
             this.cbEstado.MaxLength = 30;
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(154, 24);
-            this.cbEstado.TabIndex = 8;
+            this.cbEstado.TabIndex = 9;
             this.cbEstado.SelectedIndexChanged += new System.EventHandler(this.cbEstado_SelectedIndexChanged);
             // 
             // cbMunicipio
@@ -638,7 +646,7 @@ namespace Presentacion.Usuario
             this.cbMunicipio.MaxLength = 50;
             this.cbMunicipio.Name = "cbMunicipio";
             this.cbMunicipio.Size = new System.Drawing.Size(153, 24);
-            this.cbMunicipio.TabIndex = 9;
+            this.cbMunicipio.TabIndex = 10;
             this.cbMunicipio.SelectedIndexChanged += new System.EventHandler(this.cbMunicipio_SelectedIndexChanged);
             // 
             // lblEstado
@@ -665,42 +673,43 @@ namespace Presentacion.Usuario
             // 
             this.lblCiudad.AutoSize = true;
             this.lblCiudad.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCiudad.Location = new System.Drawing.Point(45, 268);
+            this.lblCiudad.Location = new System.Drawing.Point(588, 222);
             this.lblCiudad.Name = "lblCiudad";
             this.lblCiudad.Size = new System.Drawing.Size(61, 17);
             this.lblCiudad.TabIndex = 74;
             this.lblCiudad.Text = "Ciudad:";
             // 
-            // cbTipoUsuario
+            // cbDepartamento
             // 
-            this.cbTipoUsuario.ContextMenu = this.cbPaíses.ContextMenu;
-            this.cbTipoUsuario.FormattingEnabled = true;
-            this.cbTipoUsuario.Items.AddRange(new object[] {
-            "Administrador",
-            "Empleado",
-            "Laboratorista",
-            "Jefe Laboratorio",
-            "Contador"});
-            this.cbTipoUsuario.Location = new System.Drawing.Point(408, 174);
-            this.cbTipoUsuario.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.cbTipoUsuario.MaxLength = 30;
-            this.cbTipoUsuario.Name = "cbTipoUsuario";
-            this.cbTipoUsuario.Size = new System.Drawing.Size(153, 24);
-            this.cbTipoUsuario.TabIndex = 6;
+            this.cbDepartamento.ContextMenu = this.cbPaíses.ContextMenu;
+            this.cbDepartamento.FormattingEnabled = true;
+            this.cbDepartamento.Items.AddRange(new object[] {
+            "ADMINISTRACION",
+            "RECEPCION",
+            "LABORATORIO",
+            "FINANZAS",
+            "ALMACEN"});
+            this.cbDepartamento.Location = new System.Drawing.Point(591, 130);
+            this.cbDepartamento.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.cbDepartamento.MaxLength = 30;
+            this.cbDepartamento.Name = "cbDepartamento";
+            this.cbDepartamento.Size = new System.Drawing.Size(153, 24);
+            this.cbDepartamento.TabIndex = 3;
+            this.cbDepartamento.Text = "RECEPCION";
             // 
             // lblTipoUsuario
             // 
             this.lblTipoUsuario.AutoSize = true;
             this.lblTipoUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoUsuario.Location = new System.Drawing.Point(405, 156);
+            this.lblTipoUsuario.Location = new System.Drawing.Point(588, 112);
             this.lblTipoUsuario.Name = "lblTipoUsuario";
             this.lblTipoUsuario.Size = new System.Drawing.Size(119, 17);
             this.lblTipoUsuario.TabIndex = 86;
-            this.lblTipoUsuario.Text = "* Tipo de Usuario:";
+            this.lblTipoUsuario.Text = "* Departamento:";
             // 
             // tbTrabajo
             // 
-            this.tbTrabajo.Location = new System.Drawing.Point(274, 400);
+            this.tbTrabajo.Location = new System.Drawing.Point(265, 354);
             this.tbTrabajo.Mask = "(999)000-0000";
             this.tbTrabajo.Name = "tbTrabajo";
             this.tbTrabajo.ShortcutsEnabled = false;
@@ -712,7 +721,7 @@ namespace Presentacion.Usuario
             // 
             this.lblTelefonoTrabajo.AutoSize = true;
             this.lblTelefonoTrabajo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefonoTrabajo.Location = new System.Drawing.Point(274, 380);
+            this.lblTelefonoTrabajo.Location = new System.Drawing.Point(265, 334);
             this.lblTelefonoTrabajo.Name = "lblTelefonoTrabajo";
             this.lblTelefonoTrabajo.Size = new System.Drawing.Size(60, 17);
             this.lblTelefonoTrabajo.TabIndex = 141;
@@ -720,7 +729,7 @@ namespace Presentacion.Usuario
             // 
             // tbCel
             // 
-            this.tbCel.Location = new System.Drawing.Point(154, 400);
+            this.tbCel.Location = new System.Drawing.Point(145, 354);
             this.tbCel.Mask = "000-000-0000";
             this.tbCel.Name = "tbCel";
             this.tbCel.ShortcutsEnabled = false;
@@ -732,7 +741,7 @@ namespace Presentacion.Usuario
             // 
             this.lblTelefonoCelular.AutoSize = true;
             this.lblTelefonoCelular.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefonoCelular.Location = new System.Drawing.Point(154, 380);
+            this.lblTelefonoCelular.Location = new System.Drawing.Point(145, 334);
             this.lblTelefonoCelular.Name = "lblTelefonoCelular";
             this.lblTelefonoCelular.Size = new System.Drawing.Size(68, 17);
             this.lblTelefonoCelular.TabIndex = 139;
@@ -749,7 +758,7 @@ namespace Presentacion.Usuario
             "outlook.com",
             "live.com",
             "prodigy.com"});
-            this.cbEmail.Location = new System.Drawing.Point(235, 445);
+            this.cbEmail.Location = new System.Drawing.Point(595, 352);
             this.cbEmail.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.cbEmail.MaxLength = 20;
             this.cbEmail.Name = "cbEmail";
@@ -758,7 +767,7 @@ namespace Presentacion.Usuario
             // 
             // tbTel
             // 
-            this.tbTel.Location = new System.Drawing.Point(45, 400);
+            this.tbTel.Location = new System.Drawing.Point(36, 354);
             this.tbTel.Mask = "(999)000-0000";
             this.tbTel.Name = "tbTel";
             this.tbTel.ResetOnSpace = false;
@@ -771,7 +780,7 @@ namespace Presentacion.Usuario
             // tbEmail
             // 
             this.tbEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbEmail.Location = new System.Drawing.Point(45, 445);
+            this.tbEmail.Location = new System.Drawing.Point(405, 352);
             this.tbEmail.Margin = new System.Windows.Forms.Padding(3, 3, 10, 6);
             this.tbEmail.MaxLength = 49;
             this.tbEmail.Name = "tbEmail";
@@ -783,7 +792,7 @@ namespace Presentacion.Usuario
             // 
             this.lblTelefonoCasa.AutoSize = true;
             this.lblTelefonoCasa.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefonoCasa.Location = new System.Drawing.Point(45, 380);
+            this.lblTelefonoCasa.Location = new System.Drawing.Point(36, 334);
             this.lblTelefonoCasa.Name = "lblTelefonoCasa";
             this.lblTelefonoCasa.Size = new System.Drawing.Size(76, 17);
             this.lblTelefonoCasa.TabIndex = 134;
@@ -793,7 +802,7 @@ namespace Presentacion.Usuario
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(45, 427);
+            this.lblEmail.Location = new System.Drawing.Point(405, 334);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(57, 17);
             this.lblEmail.TabIndex = 135;
@@ -803,9 +812,9 @@ namespace Presentacion.Usuario
             // 
             this.pbSeparador2.BackgroundImage = this.pbSeparador1.BackgroundImage;
             this.pbSeparador2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbSeparador2.Location = new System.Drawing.Point(39, 364);
+            this.pbSeparador2.Location = new System.Drawing.Point(35, 318);
             this.pbSeparador2.Name = "pbSeparador2";
-            this.pbSeparador2.Size = new System.Drawing.Size(521, 13);
+            this.pbSeparador2.Size = new System.Drawing.Size(715, 13);
             this.pbSeparador2.TabIndex = 146;
             this.pbSeparador2.TabStop = false;
             // 
@@ -817,7 +826,7 @@ namespace Presentacion.Usuario
             this.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Location = new System.Drawing.Point(515, 560);
+            this.btnCerrar.Location = new System.Drawing.Point(687, 439);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(62, 58);
             this.btnCerrar.TabIndex = 24;
@@ -829,12 +838,12 @@ namespace Presentacion.Usuario
             // tbColonia
             // 
             this.tbColonia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbColonia.Location = new System.Drawing.Point(224, 287);
+            this.tbColonia.Location = new System.Drawing.Point(36, 288);
             this.tbColonia.MaxLength = 30;
             this.tbColonia.Name = "tbColonia";
             this.tbColonia.ShortcutsEnabled = false;
             this.tbColonia.Size = new System.Drawing.Size(154, 21);
-            this.tbColonia.TabIndex = 11;
+            this.tbColonia.TabIndex = 12;
             // 
             // btnRegistrar
             // 
@@ -844,7 +853,7 @@ namespace Presentacion.Usuario
             this.btnRegistrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnRegistrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrar.Location = new System.Drawing.Point(415, 560);
+            this.btnRegistrar.Location = new System.Drawing.Point(587, 439);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(62, 58);
             this.btnRegistrar.TabIndex = 23;
@@ -1054,30 +1063,30 @@ namespace Presentacion.Usuario
             "Yibuti",
             "Zambia",
             "Zimbabue"});
-            this.cbCiudad.Location = new System.Drawing.Point(43, 285);
+            this.cbCiudad.Location = new System.Drawing.Point(586, 239);
             this.cbCiudad.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.cbCiudad.MaxLength = 30;
             this.cbCiudad.Name = "cbCiudad";
             this.cbCiudad.Size = new System.Drawing.Size(149, 24);
-            this.cbCiudad.TabIndex = 10;
+            this.cbCiudad.TabIndex = 11;
             // 
             // tbCP
             // 
-            this.tbCP.Location = new System.Drawing.Point(201, 336);
+            this.tbCP.Location = new System.Drawing.Point(564, 288);
             this.tbCP.Mask = "00000";
             this.tbCP.Name = "tbCP";
             this.tbCP.ShortcutsEnabled = false;
             this.tbCP.Size = new System.Drawing.Size(88, 21);
-            this.tbCP.TabIndex = 14;
+            this.tbCP.TabIndex = 15;
             this.tbCP.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // pbSeparador3
             // 
             this.pbSeparador3.BackgroundImage = this.pbSeparador1.BackgroundImage;
             this.pbSeparador3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbSeparador3.Location = new System.Drawing.Point(39, 475);
+            this.pbSeparador3.Location = new System.Drawing.Point(35, 382);
             this.pbSeparador3.Name = "pbSeparador3";
-            this.pbSeparador3.Size = new System.Drawing.Size(521, 13);
+            this.pbSeparador3.Size = new System.Drawing.Size(715, 13);
             this.pbSeparador3.TabIndex = 146;
             this.pbSeparador3.TabStop = false;
             // 
@@ -1091,7 +1100,7 @@ namespace Presentacion.Usuario
             "Canción favorita.",
             "Equipo deportivo preferido.",
             "Nombre del abuelo paterno."});
-            this.cbPregunta.Location = new System.Drawing.Point(40, 520);
+            this.cbPregunta.Location = new System.Drawing.Point(36, 421);
             this.cbPregunta.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.cbPregunta.MaxLength = 100;
             this.cbPregunta.Name = "cbPregunta";
@@ -1102,7 +1111,7 @@ namespace Presentacion.Usuario
             // 
             this.lblPregunta.AutoSize = true;
             this.lblPregunta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPregunta.Location = new System.Drawing.Point(40, 497);
+            this.lblPregunta.Location = new System.Drawing.Point(36, 398);
             this.lblPregunta.Name = "lblPregunta";
             this.lblPregunta.Size = new System.Drawing.Size(170, 17);
             this.lblPregunta.TabIndex = 134;
@@ -1112,7 +1121,7 @@ namespace Presentacion.Usuario
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(36, 599);
+            this.label1.Location = new System.Drawing.Point(36, 487);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(327, 34);
             this.label1.TabIndex = 134;
@@ -1122,7 +1131,7 @@ namespace Presentacion.Usuario
             // tbRespuesta
             // 
             this.tbRespuesta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbRespuesta.Location = new System.Drawing.Point(40, 559);
+            this.tbRespuesta.Location = new System.Drawing.Point(36, 460);
             this.tbRespuesta.Margin = new System.Windows.Forms.Padding(3, 3, 10, 6);
             this.tbRespuesta.MaxLength = 100;
             this.tbRespuesta.Name = "tbRespuesta";
@@ -1134,22 +1143,75 @@ namespace Presentacion.Usuario
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(215, 448);
+            this.label2.Location = new System.Drawing.Point(575, 355);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 17);
             this.label2.TabIndex = 139;
             this.label2.Text = "@";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(588, 159);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 17);
+            this.label3.TabIndex = 86;
+            this.label3.Text = "* Puesto:";
+            // 
+            // cbPuesto
+            // 
+            this.cbPuesto.FormattingEnabled = true;
+            this.cbPuesto.Items.AddRange(new object[] {
+            "ADMINISTRADOR",
+            "EMPLEADO",
+            "ENCARGADO"});
+            this.cbPuesto.Location = new System.Drawing.Point(591, 177);
+            this.cbPuesto.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.cbPuesto.MaxLength = 30;
+            this.cbPuesto.Name = "cbPuesto";
+            this.cbPuesto.Size = new System.Drawing.Size(153, 24);
+            this.cbPuesto.TabIndex = 7;
+            this.cbPuesto.Text = "EMPLEADO";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(405, 159);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(162, 17);
+            this.label4.TabIndex = 60;
+            this.label4.Text = "* Fecha de Nacimiento:";
+            // 
+            // tbFechaNac
+            // 
+            this.tbFechaNac.Location = new System.Drawing.Point(408, 177);
+            this.tbFechaNac.Mask = "00/00/0000";
+            this.tbFechaNac.Name = "tbFechaNac";
+            this.tbFechaNac.ShortcutsEnabled = false;
+            this.tbFechaNac.Size = new System.Drawing.Size(153, 21);
+            this.tbFechaNac.TabIndex = 6;
+            this.tbFechaNac.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.tbFechaNac.ValidatingType = typeof(System.DateTime);
+            // 
             // PantallaUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(599, 609);
+            this.ClientSize = new System.Drawing.Size(785, 534);
             this.Controls.Add(this.label14);
+            this.Controls.Add(this.lblEmpleado);
             this.Controls.Add(this.label13);
+            this.Controls.Add(this.tbNEmpleado);
             this.Controls.Add(this.btnRegistrar);
+            this.Controls.Add(this.lblContraseña);
             this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.pbSeparador3);
+            this.Controls.Add(this.tbUsuario);
             this.Controls.Add(this.pbSeparador2);
+            this.Controls.Add(this.lblUsuario);
+            this.Controls.Add(this.tbFechaNac);
             this.Controls.Add(this.tbTrabajo);
             this.Controls.Add(this.lblTelefonoTrabajo);
             this.Controls.Add(this.tbCel);
@@ -1164,7 +1226,9 @@ namespace Presentacion.Usuario
             this.Controls.Add(this.lblPregunta);
             this.Controls.Add(this.lblTelefonoCasa);
             this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.cbTipoUsuario);
+            this.Controls.Add(this.cbPuesto);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cbDepartamento);
             this.Controls.Add(this.lblTipoUsuario);
             this.Controls.Add(this.lblCodigoPostal);
             this.Controls.Add(this.tbCalle);
@@ -1181,16 +1245,11 @@ namespace Presentacion.Usuario
             this.Controls.Add(this.cbPaíses);
             this.Controls.Add(this.lblPais);
             this.Controls.Add(this.pbSeparador1);
-            this.Controls.Add(this.lblEmpleado);
-            this.Controls.Add(this.lblContraseña);
-            this.Controls.Add(this.lblUsuario);
-            this.Controls.Add(this.tbNEmpleado);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.tbApellidos);
-            this.Controls.Add(this.tbUsuario);
             this.Controls.Add(this.tbNombre);
             this.Controls.Add(this.lblApellido);
             this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.cbCiudad);
             this.Controls.Add(this.tbCP);
@@ -1200,16 +1259,11 @@ namespace Presentacion.Usuario
             this.Controls.SetChildIndex(this.tbCP, 0);
             this.Controls.SetChildIndex(this.cbCiudad, 0);
             this.Controls.SetChildIndex(this.lblInfo, 0);
-            this.Controls.SetChildIndex(this.tbPassword, 0);
             this.Controls.SetChildIndex(this.lblNombre, 0);
             this.Controls.SetChildIndex(this.lblApellido, 0);
             this.Controls.SetChildIndex(this.tbNombre, 0);
-            this.Controls.SetChildIndex(this.tbUsuario, 0);
             this.Controls.SetChildIndex(this.tbApellidos, 0);
-            this.Controls.SetChildIndex(this.tbNEmpleado, 0);
-            this.Controls.SetChildIndex(this.lblUsuario, 0);
-            this.Controls.SetChildIndex(this.lblContraseña, 0);
-            this.Controls.SetChildIndex(this.lblEmpleado, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.pbSeparador1, 0);
             this.Controls.SetChildIndex(this.lblPais, 0);
             this.Controls.SetChildIndex(this.cbPaíses, 0);
@@ -1226,7 +1280,9 @@ namespace Presentacion.Usuario
             this.Controls.SetChildIndex(this.tbCalle, 0);
             this.Controls.SetChildIndex(this.lblCodigoPostal, 0);
             this.Controls.SetChildIndex(this.lblTipoUsuario, 0);
-            this.Controls.SetChildIndex(this.cbTipoUsuario, 0);
+            this.Controls.SetChildIndex(this.cbDepartamento, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.cbPuesto, 0);
             this.Controls.SetChildIndex(this.lblEmail, 0);
             this.Controls.SetChildIndex(this.lblTelefonoCasa, 0);
             this.Controls.SetChildIndex(this.lblPregunta, 0);
@@ -1241,11 +1297,18 @@ namespace Presentacion.Usuario
             this.Controls.SetChildIndex(this.tbCel, 0);
             this.Controls.SetChildIndex(this.lblTelefonoTrabajo, 0);
             this.Controls.SetChildIndex(this.tbTrabajo, 0);
+            this.Controls.SetChildIndex(this.tbFechaNac, 0);
+            this.Controls.SetChildIndex(this.lblUsuario, 0);
             this.Controls.SetChildIndex(this.pbSeparador2, 0);
+            this.Controls.SetChildIndex(this.tbUsuario, 0);
             this.Controls.SetChildIndex(this.pbSeparador3, 0);
+            this.Controls.SetChildIndex(this.tbPassword, 0);
             this.Controls.SetChildIndex(this.btnCerrar, 0);
+            this.Controls.SetChildIndex(this.lblContraseña, 0);
             this.Controls.SetChildIndex(this.btnRegistrar, 0);
+            this.Controls.SetChildIndex(this.tbNEmpleado, 0);
             this.Controls.SetChildIndex(this.label13, 0);
+            this.Controls.SetChildIndex(this.lblEmpleado, 0);
             this.Controls.SetChildIndex(this.label14, 0);
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Encabezado.ResumeLayout(false);
@@ -1268,9 +1331,9 @@ namespace Presentacion.Usuario
             tbApellidos.KeyPress += SeleccionarSiguiente;
             tbNEmpleado.KeyPress += SeleccionarSiguiente;
             tbUsuario.KeyPress += SeleccionarSiguiente;
-            tbPassword.Enfocar += new Password.InFocus(delegate (object sender, KeyPressEventArgs e) { if (e.KeyChar == 13) cbTipoUsuario.Focus(); });
-            cbTipoUsuario.KeyPress += SeleccionarSiguiente;
-            cbTipoUsuario.LostFocus += FocoPerdido;
+            tbPassword.Enfocar += new Password.InFocus(delegate (object sender, KeyPressEventArgs e) { if (e.KeyChar == 13) cbDepartamento.Focus(); });
+            cbDepartamento.KeyPress += SeleccionarSiguiente;
+            cbDepartamento.LostFocus += FocoPerdido;
             cbPaíses.KeyPress += SeleccionarSiguiente;
             cbPaíses.LostFocus += FocoPerdido;
             cbEstado.KeyPress += SeleccionarSiguiente;
@@ -1333,11 +1396,11 @@ namespace Presentacion.Usuario
                         }
                         else
                         {
-                            if ((ComboBox)sender == cbTipoUsuario)
+                            if ((ComboBox)sender == cbDepartamento)
                             {
                                 if (t == -1)
                                 {
-                                    cbTipoUsuario.SelectedIndex = 1;
+                                    cbDepartamento.SelectedIndex = 1;
                                 }
                             }
                         }
@@ -1471,10 +1534,11 @@ namespace Presentacion.Usuario
         {
             get
             {
-                return new RegistroUsuario(Convert.ToInt32(tbNEmpleado.Text), tbNombre.Text, tbApellidos.Text, tbUsuario.Text,
-              tbPassword.Text, cbTipoUsuario.Text, cbPaíses.Text, cbEstado.Text, cbMunicipio.Text, cbCiudad.Text,
-              tbColonia.Text, tbCalle.Text, Convert.ToInt32(tbNFrente.Text == "" ? 0.ToString() : tbNFrente.Text).ToString(), tbCP.Text, tbTel.Text, tbCel.Text, tbTrabajo.Text,
-              tbEmail.Text + "@" + cbEmail.Text, cbPregunta.Text, tbRespuesta.Text, 1);
+                return new RegistroUsuario(int.Parse(tbNEmpleado.Text), tbUsuario.Text, tbPassword.Text, tbNombre.Text,
+                    tbApellidos.Text, Convert.ToDateTime(tbFechaNac.Text), tbNFrente.Text, tbCalle.Text, tbColonia.Text,
+                    cbCiudad.Text, cbMunicipio.Text, cbEstado.Text, cbPaíses.Text, tbCP.Text, tbTel.Text, tbTrabajo.Text,
+                    tbCel.Text, tbEmail.Text + "@" + cbEmail.Text, cbPregunta.Text, tbRespuesta.Text, "1", cbDepartamento.Text,
+                    cbPuesto.Text, DateTime.Today, 200);
             }
         }
 
@@ -1491,7 +1555,7 @@ namespace Presentacion.Usuario
             get
             {
                 bool temp = Validaciones.ValidarTextBox(tbNombre, tbApellidos, tbUsuario, tbCalle, tbColonia, tbEmail, tbNEmpleado, tbRespuesta);
-                temp = Validaciones.ValidarComboBox(cbEmail, cbTipoUsuario, cbPregunta) || temp;
+                temp = Validaciones.ValidarComboBox(cbEmail, cbDepartamento, cbPregunta) || temp;
                 temp = Validaciones.ValidarMaskedTextBox(tbTel, tbCel, tbCP) || temp;
                 temp = Validaciones.ValidarPassword(true, tbPassword) || temp;
                 return temp;

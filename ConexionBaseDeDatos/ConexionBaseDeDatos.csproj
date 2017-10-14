@@ -46,12 +46,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InterfaceBaseDeDatos.cs" />
+    <Compile Include="InterfaceMySQL %28Michell%29.cs" />
+    <Compile Include="InterfaceMySQL %28Yazahel%29.cs" />
+    <Compile Include="InterfaceMySQL %28Olachea%29.cs" />
+    <Compile Include="InterfaceMySQL %28Rolland%29.cs" />
+    <Compile Include="InterfaceMySQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidad\Entidad.csproj">
@@ -70,10 +81,32 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Resources\Script Diamond_dentures.SQL" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Script Procedimientos.SQL" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevos Scripts\Script TablasDD.SQL" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevos Scripts\Script Procedimientos Base.SQL" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevos Scripts\Script Michell.SQL" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevos Scripts\Script Olachea.SQL" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevos Scripts\Script Rolland.SQL" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevos Scripts\Script Yazahel.SQL" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

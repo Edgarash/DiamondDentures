@@ -76,12 +76,29 @@ namespace ConexionBaseDeDatos.Properties {
         ///  `Municipio` char(50) NOT NULL,
         ///  `Ciudad` char(50) NOT NULL,
         ///  `Colonia` char(30) NOT NULL,
-        ///  `Calle` char(80) NOT NULL,
-        ///  `NumFrent [resto de la cadena truncado]&quot;;.
+        ///  `Calle` char(80) NOT NULL,        /// [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string Script_Diamond_dentures {
             get {
                 return ResourceManager.GetString("Script_Diamond_dentures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a #En este archivo de texto sólo Michell deberá meter sus procedimientos almacenados.
+        /// </summary>
+        internal static string Script_Michell {
+            get {
+                return ResourceManager.GetString("Script_Michell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a #En este archivo de texto sólo Olachea deberá meter sus procedimientos almacenados.
+        /// </summary>
+        internal static string Script_Olachea {
+            get {
+                return ResourceManager.GetString("Script_Olachea", resourceCulture);
             }
         }
         
@@ -109,11 +126,87 @@ namespace ConexionBaseDeDatos.Properties {
         ///CREATE PROCEDURE `ActivarUsuario`(logi varchar(30))
         ///BEGIN
         ///declare maxi int;
-        ///select max(`ultima`) into maxi from `tarjetas [resto de la cadena truncado]&quot;;.
+        ///select max(`ultima`) into maxi fro [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string Script_Procedimientos {
             get {
                 return ResourceManager.GetString("Script_Procedimientos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a 
+        ///DROP PROCEDURE IF EXISTS `ConteoAdministradores`;
+        ///CREATE DEFINER=`root`@`%` PROCEDURE `ConteoAdministradores`()
+        ///BEGIN
+        ///  SELECT COUNT(`Activo`) AS &apos;resultado&apos; FROM `usuario` WHERE `Departamento` = &apos;Administracion&apos; AND `Puesto` = &apos;Administrador&apos; AND `Activo` = 1;
+        ///END;
+        ///
+        ///
+        ///DROP PROCEDURE IF EXISTS `RegistrarEmpleado`;
+        ///CREATE DEFINER=`root`@`%` PROCEDURE `RegistrarEmpleado`(emp int)
+        ///BEGIN
+        ///  INSERT INTO `empleados` VALUES (emp);
+        ///END;
+        ///
+        ///
+        ///DROP PROCEDURE IF EXISTS `RecuperarTarjeta`;
+        ///CREATE PROCEDURE  [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string Script_Procedimientos_Base {
+            get {
+                return ResourceManager.GetString("Script_Procedimientos_Base", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a #En este archivo de texto sólo Rolland deberá meter sus procedimientos almacenados.
+        /// </summary>
+        internal static string Script_Rolland {
+            get {
+                return ResourceManager.GetString("Script_Rolland", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a CREATE DATABASE IF NOT EXISTS DiamondDentures;
+        ///USE DiamondDentures;
+        ///
+        ///CREATE TABLE IF NOT EXISTS Empleados
+        ///(
+        ///N_Empleado	int(11) primary key
+        ///);
+        ///
+        ///CREATE TABLE IF NOT EXISTS Usuario
+        ///(
+        ///N_Empleado		int(11) not null,
+        ///Login			char(30) primary key,
+        ///Password		char(30),
+        ///Nombre 			char(50),
+        ///Apellidos 		char(50),
+        ///FechaNacimiento	date,
+        ///NumCasa			char(10),
+        ///Direccion		char(80),
+        ///Colonia			char(30),
+        ///Ciudad			char(30),
+        ///Municipio		char(50),
+        ///Estado			char(30),
+        ///Pais			char(30),
+        ///CodPos			char(11),
+        ///TelCasa	 [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string Script_TablasDD {
+            get {
+                return ResourceManager.GetString("Script_TablasDD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a #En este archivo de texto sólo Yazahel deberá meter sus procedimientos almacenados.
+        /// </summary>
+        internal static string Script_Yazahel {
+            get {
+                return ResourceManager.GetString("Script_Yazahel", resourceCulture);
             }
         }
     }

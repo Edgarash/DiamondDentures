@@ -26,31 +26,31 @@ namespace ConexionBaseDeDatos
         /// <param name="database">Base de datos.</param>
         public InterfaceBaseDeDatos(uint port, string server, string userid, string password, string database)
         {
-            builder = new MySqlConnectionStringBuilder();
-            builder.Port = port;
-            builder.Server = server;
-            builder.UserID = userid;
-            builder.Password = password;
-            builder.Database = database;
-            conexion = new MySqlConnection(builder.ConnectionString);
-            FileStream temp = new FileStream(@"creado.txt", FileMode.OpenOrCreate);
-            StreamWriter w = new StreamWriter(temp);
-            StreamReader r = new StreamReader(temp);
-            int e = r.ReadToEnd().Length;
-            if (r.ReadToEnd().Length == 0)
-            {
-                var comando = new MySqlCommand(ConexionBaseDeDatos.Properties.Resources.Script_Diamond_dentures, conexion);
-                Open();
-                comando.ExecuteNonQuery();
-                w.Write("Database Created");
-                w.Flush();
-                Close();
-            }
-            var comando2 = new MySqlCommand(Properties.Resources.Script_Procedimientos, conexion);
-            Open();
-            comando2.ExecuteNonQuery();
-            Close();
-            temp.Close();
+            //builder = new MySqlConnectionStringBuilder();
+            //builder.Port = port;
+            //builder.Server = server;
+            //builder.UserID = userid;
+            //builder.Password = password;
+            //builder.Database = database;
+            //conexion = new MySqlConnection(builder.ConnectionString);
+            //FileStream temp = new FileStream(@"creado.txt", FileMode.OpenOrCreate);
+            //StreamWriter w = new StreamWriter(temp);
+            //StreamReader r = new StreamReader(temp);
+            //int e = r.ReadToEnd().Length;
+            //if (r.ReadToEnd().Length == 0)
+            //{
+            //    var comando = new MySqlCommand(ConexionBaseDeDatos.Properties.Resources.Script_Diamond_dentures, conexion);
+            //    Open();
+            //    comando.ExecuteNonQuery();
+            //    w.Write("Database Created");
+            //    w.Flush();
+            //    Close();
+            //}
+            //var comando2 = new MySqlCommand(Properties.Resources.Script_Procedimientos, conexion);
+            //Open();
+            //comando2.ExecuteNonQuery();
+            //Close();
+            //temp.Close();
         }
 
         /// <summary>
@@ -69,38 +69,38 @@ namespace ConexionBaseDeDatos
         /// Método encargado de verificar la existencia de Administradores
         /// </summary>
         /// <returns>Verdadero en caso de encontrar Administradores</returns>
-        public bool HayAdministradores(out int Conteo)
-        {
-            bool regresar = true;
-            var command = new MySqlCommand("ConteoAdministradores", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-            Open();
-            var reader = command.ExecuteReader();
-            Conteo = 0;
-            if (reader.HasRows)
-            {
-                reader.Read();
-                if (Convert.ToInt32(reader["resultado"].ToString()) == 0)
-                {
-                    Conteo = Convert.ToInt32(reader["resultado"].ToString());
-                    regresar = false;
-                }
-            }
-            Close();
-            return regresar;
-        }
+        //public bool HayAdministradores(out int Conteo)
+        //{
+        //    bool regresar = true;
+        //    var command = new MySqlCommand("ConteoAdministradores", conexion);
+        //    command.CommandType = CommandType.StoredProcedure;
+        //    Open();
+        //    var reader = command.ExecuteReader();
+        //    Conteo = 0;
+        //    if (reader.HasRows)
+        //    {
+        //        reader.Read();
+        //        if (Convert.ToInt32(reader["resultado"].ToString()) == 0)
+        //        {
+        //            Conteo = Convert.ToInt32(reader["resultado"].ToString());
+        //            regresar = false;
+        //        }
+        //    }
+        //    Close();
+        //    return regresar;
+        //}
 
-        public bool RegistrarEmpleado(int NumeroEmpleado)
-        {
-            var command = new MySqlCommand("RegistrarEmpleado", conexion);
-            command.CommandType = CommandType.StoredProcedure;
+        //public bool RegistrarEmpleado(int NumeroEmpleado)
+        //{
+        //    var command = new MySqlCommand("RegistrarEmpleado", conexion);
+        //    command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@emp", NumeroEmpleado);
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
+        //    command.Parameters.AddWithValue("@emp", NumeroEmpleado);
+        //    Open();
+        //    var nc = command.ExecuteNonQuery();
+        //    Close();
+        //    return EnviarConfirmacion(nc);
+        //}
 
         public void Datos(DataGridView temp)
         {
@@ -160,39 +160,39 @@ namespace ConexionBaseDeDatos
         /// </summary>
         /// <param name="Usuario">Objeto que contiene la información del usuario.</param>
         /// <returns>Confirmacion de la creacion del regitro de usuario con exito</returns>
-        public bool RegistroUsuario(RegistroUsuario Usuario)
-        {
-            var command = new MySqlCommand("RegistrarUsuario", conexion);
-            command.CommandType = CommandType.StoredProcedure;
+        //public bool RegistroUsuario(RegistroUsuario Usuario)
+        //{
+        //    var command = new MySqlCommand("RegistrarUsuario", conexion);
+        //    command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@nmtrb", Usuario.NumeroTrabajador);
-            command.Parameters.AddWithValue("@nmb", Usuario.Nombre);
-            command.Parameters.AddWithValue("@appe", Usuario.Apellidos);
-            command.Parameters.AddWithValue("@dr", Usuario.Calle);
-            command.Parameters.AddWithValue("@ncasa", Usuario.NumCasa);
-            command.Parameters.AddWithValue("@cl", Usuario.Colonia);
-            command.Parameters.AddWithValue("@cdd", Usuario.Ciudad);
-            command.Parameters.AddWithValue("@ps", Usuario.Pais);
-            command.Parameters.AddWithValue("@cp", Usuario.CodigoPostal);
-            command.Parameters.AddWithValue("@eml", Usuario.Email);
-            command.Parameters.AddWithValue("@logi", Usuario.Login);
-            command.Parameters.AddWithValue("@pwd", Usuario.Password);
-            command.Parameters.AddWithValue("@edo", Usuario.Estado);
-            command.Parameters.AddWithValue("@muni", Usuario.Municipio);
-            command.Parameters.AddWithValue("@est", Usuario.Estatus);
-            command.Parameters.AddWithValue("@t_us", Usuario.TipoUsuario);
-            command.Parameters.AddWithValue("@tl_c", Usuario.TelefonoCasa);
-            command.Parameters.AddWithValue("@tl_o", Usuario.TelefonoOficina);
-            command.Parameters.AddWithValue("@tl_m", Usuario.TelefonoMovil);
-            command.Parameters.AddWithValue("@preg", Usuario.Pregunta);
-            command.Parameters.AddWithValue("@respues", Usuario.Respuesta);
+        //    command.Parameters.AddWithValue("@nmtrb", Usuario.NumeroTrabajador);
+        //    command.Parameters.AddWithValue("@nmb", Usuario.Nombre);
+        //    command.Parameters.AddWithValue("@appe", Usuario.Apellidos);
+        //    command.Parameters.AddWithValue("@dr", Usuario.Direccion);
+        //    command.Parameters.AddWithValue("@ncasa", Usuario.NumCasa);
+        //    command.Parameters.AddWithValue("@cl", Usuario.Colonia);
+        //    command.Parameters.AddWithValue("@cdd", Usuario.Ciudad);
+        //    command.Parameters.AddWithValue("@ps", Usuario.Pais);
+        //    command.Parameters.AddWithValue("@cp", Usuario.CodPos);
+        //    command.Parameters.AddWithValue("@eml", Usuario.Email);
+        //    command.Parameters.AddWithValue("@logi", Usuario.Login);
+        //    command.Parameters.AddWithValue("@pwd", Usuario.Password);
+        //    command.Parameters.AddWithValue("@edo", Usuario.Estado);
+        //    command.Parameters.AddWithValue("@muni", Usuario.Municipio);
+        //    command.Parameters.AddWithValue("@est", Usuario.Activo);
+        //    command.Parameters.AddWithValue("@t_us", Usuario.Departamento);
+        //    command.Parameters.AddWithValue("@tl_c", Usuario.TelCasa);
+        //    command.Parameters.AddWithValue("@tl_o", Usuario.TelOficina);
+        //    command.Parameters.AddWithValue("@tl_m", Usuario.TelCel);
+        //    command.Parameters.AddWithValue("@preg", Usuario.Pregunta);
+        //    command.Parameters.AddWithValue("@respues", Usuario.Respuesta);
 
-            Open();
+        //    Open();
 
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
+        //    var nc = command.ExecuteNonQuery();
+        //    Close();
+        //    return EnviarConfirmacion(nc);
+        //}
 
         /// <summary>
         /// Método encargado de solicitar a la base de datos la actualización de un registro de Usuario
@@ -207,22 +207,22 @@ namespace ConexionBaseDeDatos
             command.Parameters.AddWithValue("@nmtrb", Usuario.NumeroTrabajador);
             command.Parameters.AddWithValue("@nomb", Usuario.Nombre);
             command.Parameters.AddWithValue("@appe", Usuario.Apellidos);
-            command.Parameters.AddWithValue("@str", Usuario.Calle);
+            command.Parameters.AddWithValue("@str", Usuario.Direccion);
             command.Parameters.AddWithValue("@ncasa", Usuario.NumCasa);
             command.Parameters.AddWithValue("@cl", Usuario.Colonia);
             command.Parameters.AddWithValue("@cdd", Usuario.Ciudad);
             command.Parameters.AddWithValue("@ps", Usuario.Pais);
-            command.Parameters.AddWithValue("@cp", Usuario.CodigoPostal);
+            command.Parameters.AddWithValue("@cp", Usuario.CodPos);
             command.Parameters.AddWithValue("@eml", Usuario.Email);
             command.Parameters.AddWithValue("@logi", User);
             command.Parameters.AddWithValue("@pwd", Usuario.Password);
             command.Parameters.AddWithValue("@edo", Usuario.Estado);
             command.Parameters.AddWithValue("@muni", Usuario.Municipio);
-            command.Parameters.AddWithValue("@est", Usuario.Estatus);
-            command.Parameters.AddWithValue("@t_us", Usuario.TipoUsuario);
-            command.Parameters.AddWithValue("@tl_c", Usuario.TelefonoCasa);
-            command.Parameters.AddWithValue("@tl_o", Usuario.TelefonoOficina);
-            command.Parameters.AddWithValue("@tl_m", Usuario.TelefonoMovil);
+            command.Parameters.AddWithValue("@est", Usuario.Activo);
+            command.Parameters.AddWithValue("@t_us", Usuario.Departamento);
+            command.Parameters.AddWithValue("@tl_c", Usuario.TelCasa);
+            command.Parameters.AddWithValue("@tl_o", Usuario.TelOficina);
+            command.Parameters.AddWithValue("@tl_m", Usuario.TelCel);
             command.Parameters.AddWithValue("@preg", Usuario.Pregunta);
             command.Parameters.AddWithValue("@resp", Usuario.Respuesta);
             command.Parameters.AddWithValue("@newlogin", Usuario.Login);
@@ -329,23 +329,23 @@ namespace ConexionBaseDeDatos
             return Permiso;
         }
 
-        public bool ValidarEmpleado(int NumeroTrabajador)
-        {
-            var command = new MySqlCommand("ValidarEmpleado", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@emp", NumeroTrabajador);
-            Open();
-            var reader = command.ExecuteReader();
-            bool Validado = false;
-            if (reader.HasRows)
-            {
-                reader.Read();
-                if (NumeroTrabajador.ToString() == reader["N_Empleado"].ToString())
-                    Validado = true;
-            }
-            Close();
-            return Validado;
-        }
+        //public bool ValidarEmpleado(int NumeroTrabajador)
+        //{
+        //    var command = new MySqlCommand("ValidarEmpleado", conexion);
+        //    command.CommandType = CommandType.StoredProcedure;
+        //    command.Parameters.AddWithValue("@emp", NumeroTrabajador);
+        //    Open();
+        //    var reader = command.ExecuteReader();
+        //    bool Validado = false;
+        //    if (reader.HasRows)
+        //    {
+        //        reader.Read();
+        //        if (NumeroTrabajador.ToString() == reader["N_Empleado"].ToString())
+        //            Validado = true;
+        //    }
+        //    Close();
+        //    return Validado;
+        //}
 
         public bool ValidarEmpleadoRegistrado(int NumeroTrabajador)
         {
@@ -442,15 +442,14 @@ namespace ConexionBaseDeDatos
             command.Parameters.AddWithValue("@rf", Dentista.RFC);
             command.Parameters.AddWithValue("@nmb", Dentista.Nombre);
             command.Parameters.AddWithValue("@ape", Dentista.Apellidos);
-            command.Parameters.AddWithValue("@tel", Dentista.Telefono);
+            command.Parameters.AddWithValue("@tel", Dentista.TelOficina);
             command.Parameters.AddWithValue("@pa", Dentista.Pais);
             command.Parameters.AddWithValue("@es", Dentista.Estado);
             command.Parameters.AddWithValue("@mu", Dentista.Municipio);
             command.Parameters.AddWithValue("@ciu", Dentista.Ciudad);
             command.Parameters.AddWithValue("@col", Dentista.Colonia);
-            command.Parameters.AddWithValue("@cal", Dentista.Calle);
-            command.Parameters.AddWithValue("@num", Dentista.NumFrente);
-            command.Parameters.AddWithValue("@codp", Dentista.CP);
+            command.Parameters.AddWithValue("@cal", Dentista.Direccion);
+            command.Parameters.AddWithValue("@codp", Dentista.CodPos);
             command.Parameters.AddWithValue("@ema", Dentista.Email);
 
             Open();
@@ -468,15 +467,14 @@ namespace ConexionBaseDeDatos
             command.Parameters.AddWithValue("@rf", Dentista.RFC);
             command.Parameters.AddWithValue("@nmb", Dentista.Nombre);
             command.Parameters.AddWithValue("@ape", Dentista.Apellidos);
-            command.Parameters.AddWithValue("@tel", Dentista.Telefono);
+            command.Parameters.AddWithValue("@tel", Dentista.TelOficina);
             command.Parameters.AddWithValue("@pa", Dentista.Pais);
             command.Parameters.AddWithValue("@es", Dentista.Estado);
             command.Parameters.AddWithValue("@mu", Dentista.Municipio);
             command.Parameters.AddWithValue("@ciu", Dentista.Ciudad);
             command.Parameters.AddWithValue("@col", Dentista.Colonia);
-            command.Parameters.AddWithValue("@cal", Dentista.Calle);
-            command.Parameters.AddWithValue("@num", Dentista.NumFrente);
-            command.Parameters.AddWithValue("@codp", Dentista.CP);
+            command.Parameters.AddWithValue("@cal", Dentista.Direccion);
+            command.Parameters.AddWithValue("@codp", Dentista.CodPos);
             command.Parameters.AddWithValue("@ema", Dentista.Email);
 
             Open();
@@ -1857,49 +1855,49 @@ WHERE
         /// <param name="login">Cadena que contiene el Login del usuario a recuperar</param>
         /// <param name="Usuario">Objeto que regresa el registro de usuario</param>
         /// <returns>Confirmación de la existencia de un registro de Usuario con el Login especificado</returns>
-        public bool RecuperarUsuario(string login, out RegistroUsuario Usuario)
-        {
-            var command = new MySqlCommand("RecuperarUsuario", conexion);
-            command.CommandType = CommandType.StoredProcedure;
+        //public bool RecuperarUsuario(string login, out RegistroUsuario Usuario)
+        //{
+        //    var command = new MySqlCommand("RecuperarUsuario", conexion);
+        //    command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@log", login);
+        //    command.Parameters.AddWithValue("@log", login);
 
-            Open();
+        //    Open();
 
-            var reader = command.ExecuteReader();
+        //    var reader = command.ExecuteReader();
 
-            Usuario = null;
+        //    Usuario = null;
 
-            if (reader.HasRows)
-            {
-                reader.Read();
-                Usuario = new RegistroUsuario
-                (
-                    Convert.ToInt32(reader["nmtrabajador"]),
-                    reader["nombre"].ToString(),
-                    reader["apellidos"].ToString(),
-                    reader["login"].ToString(),
-                    reader["contrasena"].ToString(),
-                    reader["t_usuario"].ToString(),
-                    reader["pais"].ToString(),
-                    reader["estado"].ToString(),
-                    reader["municipio"].ToString(),
-                    reader["ciudad"].ToString(),
-                    reader["colonia"].ToString(),
-                    reader["calle"].ToString(),
-                    reader["numcasa"].ToString(),
-                    reader["cp"].ToString(),
-                    reader["tel_casa"].ToString(),
-                    reader["tel_movil"].ToString(),
-                    reader["tel_oficina"].ToString(),
-                    reader["email"].ToString(),
-                    reader["Pregunta"].ToString(),
-                    reader["Respuesta"].ToString(),
-                    Convert.ToByte(reader["estatus"]));
-            }
-            Close();
-            return EnviarConfirmacion(Usuario);
-        }
+        //    if (reader.HasRows)
+        //    {
+        //        reader.Read();
+        //        Usuario = new RegistroUsuario
+        //        (
+        //            /*Convert.ToInt32(reader["nmtrabajador"]),
+        //            reader["nombre"].ToString(),
+        //            reader["apellidos"].ToString(),
+        //            reader["login"].ToString(),
+        //            reader["contrasena"].ToString(),
+        //            reader["t_usuario"].ToString(),
+        //            reader["pais"].ToString(),
+        //            reader["estado"].ToString(),
+        //            reader["municipio"].ToString(),
+        //            reader["ciudad"].ToString(),
+        //            reader["colonia"].ToString(),
+        //            reader["calle"].ToString(),
+        //            reader["numcasa"].ToString(),
+        //            reader["cp"].ToString(),
+        //            reader["tel_casa"].ToString(),
+        //            reader["tel_movil"].ToString(),
+        //            reader["tel_oficina"].ToString(),
+        //            reader["email"].ToString(),
+        //            reader["Pregunta"].ToString(),
+        //            reader["Respuesta"].ToString(),
+        //            Convert.ToByte(reader["estatus"])*/);
+        //    }
+        //    Close();
+        //    return EnviarConfirmacion(Usuario);
+        //}
 
         /// <summary>
         /// Método encargado de solicitar a la base de datos un RegistroTarjeta

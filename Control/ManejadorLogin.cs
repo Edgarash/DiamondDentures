@@ -33,10 +33,10 @@ namespace Control
             if (PantallaADesplegar != null)
             {
                 RegistroUsuario temp;
-                Interface.RecuperarUsuario(Login, out temp);
+                InterfaceMySQL.RecuperarUsuario(Login, out temp);
                 if (temp != null)
                 {
-                    if (temp.UsuarioActivo)
+                    if (temp.Activo == "1")
                     {
                         if (temp.ValidarContraseña(Password))
                         {

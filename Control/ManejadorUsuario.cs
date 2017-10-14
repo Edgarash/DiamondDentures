@@ -13,14 +13,12 @@ namespace Control
     {
         public bool RecuperarUsuario(string Usuario, out RegistroUsuario RegistroUsuario)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.RecuperarUsuario(Usuario, out RegistroUsuario);
+            return InterfaceMySQL.RecuperarUsuario(Usuario, out RegistroUsuario);
         }
 
         public bool RegistrarEmpleado(int NumeroEmpleado)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.RegistrarEmpleado(NumeroEmpleado);
+            return InterfaceMySQL.RegistrarEmpleado(NumeroEmpleado);
         }
 
         public bool EliminarTarjeta(string Usuario)
@@ -29,10 +27,11 @@ namespace Control
             return Temporal.EliminarTarjeta(Usuario);
         }
 
-        public bool HayAdministradores(out int Conteo)
+        public bool HayAdministradores()
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.HayAdministradores(out Conteo);
+            //Interface = new InterfaceBaseDeDatos();
+            //return Interface.HayAdministradores(out Conteo);
+            return InterfaceMySQL.HayAdministradores();
         }
 
         public bool BorrarUsuario(string Usuario)

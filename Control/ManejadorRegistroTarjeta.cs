@@ -26,9 +26,8 @@ namespace Control
         public bool ValidarDatosTarjeta(string Usuario)
         {
             bool Result = false;
-            Interface = new InterfaceBaseDeDatos();
             RegistroTarjeta Registro;
-            Interface.RecuperarTarjeta(Usuario, out Registro);
+            InterfaceMySQL.RecuperarTarjeta(Usuario, out Registro);
             if (Registro != null)
             {
                 Result = Registro.Activo == (1).ToString();

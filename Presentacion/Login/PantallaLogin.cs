@@ -112,6 +112,7 @@ namespace Presentacion.Login
             // 
             // tbUsuario
             // 
+            this.tbUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbUsuario.Location = new System.Drawing.Point(161, 133);
             this.tbUsuario.MaxLength = 30;
             this.tbUsuario.Name = "tbUsuario";
@@ -295,8 +296,7 @@ namespace Presentacion.Login
         {
             Interface = new InterfaceUsuario(this);
             int temp = -1;
-            int Conteo = 0;
-            bool PrimerAdmin = !Interface.HayAdministradores(out Conteo);
+            bool PrimerAdmin = !Interface.HayAdministradores();
             DialogResult Resultado;
             if (!PrimerAdmin)
             {

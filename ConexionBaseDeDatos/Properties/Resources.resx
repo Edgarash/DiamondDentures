@@ -121,7 +121,25 @@
   <data name="Script_Diamond_dentures" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Script Diamond_dentures.SQL;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="Script_Michell" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Nuevos Scripts\Script Michell.SQL;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Script_Olachea" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Nuevos Scripts\Script Olachea.SQL;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="Script_Procedimientos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Script Procedimientos.SQL;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Script_Procedimientos_Base" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Nuevos Scripts\Script Procedimientos Base.SQL;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Script_Rolland" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Nuevos Scripts\Script Rolland.SQL;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Script_TablasDD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Nuevos Scripts\Script TablasDD.SQL;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Script_Yazahel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Nuevos Scripts\Script Yazahel.SQL;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

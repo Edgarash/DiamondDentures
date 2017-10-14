@@ -28,9 +28,9 @@ namespace Presentacion
             InitializeComponent2();
             InitializeComponent3();
             Usuario = Login;
-            TipoUsuario = temp?.TipoUsuario;
+            TipoUsuario = temp?.Departamento;
             this.Pantalla = Pantalla;
-            lblSesión.Text = "Usuario: " + Usuario + " (" + temp?.TipoUsuario + ")";
+            lblSesión.Text = "Usuario: " + Usuario + " (" + temp?.Departamento + ")";
             MouseEnter += PantallaMenuPrincipal_GotFocus;
         }
 
@@ -38,7 +38,7 @@ namespace Presentacion
         {
             bool Cambió = false;
             lblSesión.Text = "Usuario: " + Usuario + " (" + TipoUsuario + ")";
-            Cambió = TipoUsuario != PantallaLogin.Sesión?.TipoUsuario;
+            Cambió = TipoUsuario != PantallaLogin.Sesión?.Departamento;
             if (Cambió)
                 InitializeComponent3();
         }
@@ -46,7 +46,7 @@ namespace Presentacion
         private void InitializeComponent3()
         {
             InitializeComponent4();
-            switch (PantallaLogin.Sesión?.TipoUsuario)
+            switch (PantallaLogin.Sesión?.Departamento)
             {
                 case "Empleado":
                     btnControlPedidos.Location = new System.Drawing.Point(253, 142);
@@ -87,7 +87,7 @@ namespace Presentacion
                     lblSesión.Location = new System.Drawing.Point(12, 324);
                     break;
             }
-            TipoUsuario = PantallaLogin.Sesión?.TipoUsuario;
+            TipoUsuario = PantallaLogin.Sesión?.Departamento;
         }
 
         private void InitializeComponent4()
