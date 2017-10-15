@@ -1,4 +1,5 @@
 ﻿using Control;
+using Entidad;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Presentacion.Login
         bool Fuera = false;
         bool MostrarPregunta = false;
         static int Intentos = 0;
+        RegistroUsuario User = new RegistroUsuario();
         private System.Windows.Forms.PictureBox pbImg;
         private System.Windows.Forms.TextBox tbNumEmpleado;
         private System.Windows.Forms.Label lblInfo;
@@ -52,6 +54,7 @@ namespace Presentacion.Login
                     }
                 }
             });
+
         }
 
         private void InitializeComponent()
@@ -141,7 +144,7 @@ namespace Presentacion.Login
             this.btnCancelar.Location = new System.Drawing.Point(391, 229);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(62, 58);
-            this.btnCancelar.TabIndex = 12;
+            this.btnCancelar.TabIndex = 16;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             this.btnCancelar.MouseEnter += new System.EventHandler(this.btnMouseOver);
@@ -197,6 +200,7 @@ namespace Presentacion.Login
             // 
             // tbRespuesta
             // 
+            this.tbRespuesta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbRespuesta.Location = new System.Drawing.Point(15, 247);
             this.tbRespuesta.Name = "tbRespuesta";
             this.tbRespuesta.ShortcutsEnabled = false;
@@ -258,7 +262,7 @@ namespace Presentacion.Login
                     if (tbNumEmpleado.Text != "")
                     {
                         int Empleado = Convert.ToInt32(tbNumEmpleado.Text);
-                        if (Interface.ValidarEmpleadoRegistrado(Empleado))
+                        if (Interface.RecuperarUsuarioN(Empleado, out User))
                         {
                             tbNumEmpleado.Enabled = false;
                             lblPregunta.Visible = true;
@@ -268,8 +272,7 @@ namespace Presentacion.Login
                             lblRecuperar.Location = new System.Drawing.Point(lblRecuperar.Location.X, lblRecuperar.Location.Y + 60);
                             lblCancelar.Location = new System.Drawing.Point(lblCancelar.Location.X, lblCancelar.Location.Y + 60);
                             Size = new System.Drawing.Size(Size.Width, Size.Height + 60);
-                            bool temp = Interface.ValidarEmpleadoRegistrado(Empleado);
-                            string pregunta = Interface.RecuperarPregunta(Empleado);
+                            string pregunta = User.Pregunta;
                             if (pregunta != string.Empty)
                             {
                                 lblPregunta.Text = pregunta;
@@ -288,10 +291,10 @@ namespace Presentacion.Login
                 {
                     string contra = "";
                     int Empleado = Convert.ToInt32(tbNumEmpleado.Text);
-                    bool correcto = Interface.ValidarRespuesta(Empleado, tbRespuesta.Text);
+                    bool correcto = tbRespuesta.Text == User.Respuesta;
                     if (correcto)
                     {
-                        contra = Interface.RecuperarContraseña(Empleado);
+                        contra = User.Password;
                         MessageBox.Show("Su contraseña es: " + contra, "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                         Intentos = 0;
                         this.Close();

@@ -527,6 +527,65 @@ namespace Validaciones
                 }
             }
         }
+
+        public static void TextBox_KeyPress_ValidarSoloRealesConNegativos(object sender, KeyPressEventArgs e)
+        {
+            TextBox t = sender as TextBox;
+            string temp = t.Text;
+            if (e.KeyChar == '-')
+            {
+                if (t.SelectionStart != 0 || temp.Contains(e.KeyChar))
+                    if (t.SelectedText.Length != temp.Length)
+                        e.Handled = true;
+            }
+            else
+            {
+                if (e.KeyChar == '.')
+                {
+                    if (t.SelectionStart > 0)
+                    {
+                        if (!char.IsDigit(temp[t.SelectionStart - 1]))
+                            e.Handled = true;
+                        else
+                            if (temp.Contains(e.KeyChar))
+                            if (!t.SelectedText.Contains(e.KeyChar))
+                                e.Handled = true;
+                    }
+                    else
+                        e.Handled = true;
+                }
+                else
+                {
+                    if (e.KeyChar != '\b' && !char.IsDigit(e.KeyChar))
+                        e.Handled = true;
+                }
+            }
+        }
+
+        public static void TextBox_KeyPress_ValidarSoloReales(object sender, KeyPressEventArgs e)
+        {
+            TextBox t = sender as TextBox;
+            string temp = t.Text;
+            if (e.KeyChar == '.')
+            {
+                if (t.SelectionStart > 0)
+                {
+                    if (!char.IsDigit(temp[t.SelectionStart - 1]))
+                        e.Handled = true;
+                    else
+                        if (temp.Contains(e.KeyChar))
+                        if (!t.SelectedText.Contains(e.KeyChar))
+                            e.Handled = true;
+                }
+                else
+                    e.Handled = true;
+            }
+            else
+            {
+                if (e.KeyChar != '\b' && !char.IsDigit(e.KeyChar))
+                    e.Handled = true;
+            }
+        }
     }
 }
 

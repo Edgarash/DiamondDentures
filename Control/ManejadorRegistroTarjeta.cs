@@ -7,20 +7,17 @@ namespace Control
     {
         public bool AgregarRegistroTarjeta(RegistroTarjeta Tarjeta)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.RegistroTarjeta(Tarjeta);
+            return InterfaceMySQL.RegistroTarjeta(Tarjeta);
         }
 
         public bool ActualizarRegistroTarjeta(RegistroTarjeta Tarjeta)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ActualizarTarjeta(Tarjeta);
+            return InterfaceMySQL.ActualizarTarjeta(Tarjeta);
         }
 
         public bool EliminarTarjeta(string Usuario)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.BorrarTarjeta(Usuario);
+            return InterfaceMySQL.BorrarTarjeta(Usuario);
         }
 
         public bool ValidarDatosTarjeta(string Usuario)

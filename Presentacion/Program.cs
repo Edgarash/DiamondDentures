@@ -16,7 +16,6 @@ namespace Presentacion
         static void Main(string[] Args)
         {
             ConexionBaseDeDatos.InterfaceMySQL.ActualizarBaseDeDatos();
-            string Admin = "MICHEL";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new PantallaMenuPrincipal(Admin, new PantallaLogin()));

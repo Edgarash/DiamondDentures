@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConexionBaseDeDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,8 +17,7 @@ namespace Control
 
         public void ObtenerUsuarios(DataGridView temp)
         {
-            Interface = new ConexionBaseDeDatos.InterfaceBaseDeDatos();
-            Interface.Datos(temp);
+            InterfaceMySQL.Datos(temp);
         }
 
         public void ObtenerProductos(DataGridView temp)

@@ -54,22 +54,12 @@ namespace Control
 
         public bool RecuperarTarjeta(string Usuario, out RegistroTarjeta RegistroTarjeta)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.RecuperarTarjeta(Usuario, out RegistroTarjeta);
-        }
-
-        public string RecuperarContraseña(int NumEmpleado)
-        {
-            string temp = "";
-            Interface = new InterfaceBaseDeDatos();
-            Interface.RecuperarContraseña(NumEmpleado, out temp);
-            return temp;
+            return InterfaceMySQL.RecuperarTarjeta(Usuario, out RegistroTarjeta);
         }
 
         public void ObtenerUsuarios(DataGridView temp)
         {
-            Interface = new InterfaceBaseDeDatos();
-            Interface.Datos(temp);
+            InterfaceMySQL.Datos(temp);
         }
     }
 }

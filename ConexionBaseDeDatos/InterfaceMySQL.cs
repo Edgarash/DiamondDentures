@@ -69,9 +69,14 @@ namespace ConexionBaseDeDatos
         static int RegistrosAfectados { get; set; }
 
         /// <summary>
-        /// Regresa si una operacion fue realizada con éxito
+        /// Regresa si una operacion fue realizada con éxito en base a los registros afectados por un procedimiento almacenado
         /// </summary>
         static bool OperacionRealizada { get { return RegistrosAfectados > 0; } }
+
+        /// <summary>
+        /// Regresa si una operación fue realizada con éxito en base al número de registros en la tabla de resultados
+        /// </summary>
+        static bool OperacionRealizada2 { get { return TablaDeResultados.Rows.Count > 0; } }
 
         /// <summary>
         /// Variable conexion para establecer una conexion entre el programa y el servidor
@@ -88,14 +93,19 @@ namespace ConexionBaseDeDatos
         /// </summary>
         static MySqlDataReader Lector { get; set; }
 
-        static DataTable ResultadoTabla { get; set; }
+        /// <summary>
+        /// Tabla de resultados
+        /// </summary>
+        static DataTable TablaDeResultados { get; set; }
 
         /// <summary>
         /// Crea o Actualiza la base de datos en la nube
         /// </summary>
         public static void ActualizarBaseDeDatos()
         {
+            InicializarConexion("mysql");
             EjecutarConsulta(Properties.Resources.Script_TablasDD);
+            InicializarConexion();
             EjecutarConsulta(Properties.Resources.Script_Procedimientos_Base);
             EjecutarConsulta(Properties.Resources.Script_Rolland);
             EjecutarConsulta(Properties.Resources.Script_Olachea);
@@ -119,10 +129,12 @@ namespace ConexionBaseDeDatos
         {
             MySqlConnectionStringBuilder Cadena = new MySqlConnectionStringBuilder();
             Cadena.Port = Puerto;
-            Cadena.Server = Servidor;
             Cadena.UserID = Administrador;
-            Cadena.Password = Contraseña;
             Cadena.Database = BD;
+            Cadena.Server = Servidor;
+            Cadena.Password = Contraseña;
+            //Cadena.Password = "PASSROOT";
+            //Cadena.Server = "localhost";
             Conexion = new MySqlConnection(Cadena.ConnectionString);
         }
 
@@ -132,12 +144,10 @@ namespace ConexionBaseDeDatos
         /// <param name="Consulta">Consulta a ejecutar en el gestor de base de datos</param>
         static void EjecutarConsulta(string Consulta)
         {
-            InicializarConexion("mysql");
             AbrirConexion();
             Comando = new MySqlCommand(Consulta, Conexion);
             Comando.ExecuteNonQuery();
             CerrarConexion();
-            InicializarConexion();
         }
 
         /// <summary>
@@ -150,7 +160,9 @@ namespace ConexionBaseDeDatos
             Comando = new MySqlCommand(NombreProcedimiento, Conexion);
             Comando.CommandType = CommandType.StoredProcedure;
             AbrirConexion();
-            MySqlDataReader Lector = Comando.ExecuteReader();
+            Lector = Comando.ExecuteReader();
+            TablaDeResultados = new DataTable();
+            TablaDeResultados.Load(Lector);
             CerrarConexion();
             return Lector;
         }
@@ -175,8 +187,8 @@ namespace ConexionBaseDeDatos
             else
             {
                 Lector = Comando.ExecuteReader();
-                ResultadoTabla = new DataTable();
-                ResultadoTabla.Load(Lector);
+                TablaDeResultados = new DataTable();
+                TablaDeResultados.Load(Lector);
             }
             CerrarConexion();
         }
@@ -234,12 +246,7 @@ namespace ConexionBaseDeDatos
         {
             bool HayAdmin = false;
             MySqlDataReader Lector = EjecutarProcedimientoAlmacenado("ConteoAdministradores");
-            if (Lector.HasRows)
-            {
-                Lector.Read();
-                if (Convert.ToInt32(Lector["resultado"].ToString()) == 0)
-                    HayAdmin = true;
-            }
+            HayAdmin = OperacionRealizada2;
             return HayAdmin;
         }
 
@@ -264,11 +271,7 @@ namespace ConexionBaseDeDatos
         {
             EjecutarProcedimientoAlmacenado("ValidarEmpleado", TipoConsulta.DevuelveReader,
                 Parametro("@emp", NumeroTrabajador));
-            if (ResultadoTabla.Rows.Count > 0)
-            {
-                RegistrosAfectados = 1;
-            }
-            return OperacionRealizada;
+            return OperacionRealizada2;
         }
 
         /// <summary>
@@ -319,7 +322,7 @@ namespace ConexionBaseDeDatos
             EjecutarProcedimientoAlmacenado("RecuperarUsuario", TipoConsulta.DevuelveReader,
                 Parametro("log", login));
             Usuario = ObtenerUsuario();
-            return OperacionRealizada;
+            return OperacionRealizada2;
         }
 
         /// <summary>
@@ -333,7 +336,125 @@ namespace ConexionBaseDeDatos
             EjecutarProcedimientoAlmacenado("RecuperarTarjeta", TipoConsulta.DevuelveReader,
                 Parametro("log", login));
             Tarjeta = ObtenerTarjeta();
+            return OperacionRealizada2;
+        }
+
+        /// <summary>
+        /// Método que actualiza la infomración de un usuario en la base de datos
+        /// </summary>
+        /// <param name="User">Usuario a actualizar</param>
+        /// <param name="Usuario">RegistroUsuario que contiene la información a Actualizar</param>
+        /// <returns>true en caso de ser actualizado con éxito</returns>
+        public static bool ActualizarUsuario(string User, RegistroUsuario Usuario)
+        {
+            EjecutarProcedimientoAlmacenado("ActualizarUsuario", TipoConsulta.DevuelveInt,
+                Parametro("emplead", Usuario.NumeroTrabajador),
+                Parametro("logi", Usuario.Login),
+                Parametro("passwor", Usuario.Password),
+                Parametro("apellido", Usuario.Apellidos),
+                Parametro("nombr", Usuario.Nombre),
+                Parametro("FechaNacimient", Usuario.FechaNacimiento_),
+                Parametro("NumCas", Usuario.NumCasa),
+                Parametro("Direccio", Usuario.Direccion),
+                Parametro("Coloni", Usuario.Colonia),
+                Parametro("Ciuda", Usuario.Ciudad),
+                Parametro("Municipi", Usuario.Municipio),
+                Parametro("Estad", Usuario.Estado),
+                Parametro("Pai", Usuario.Pais),
+                Parametro("CodPo", Usuario.CodPos),
+                Parametro("TelCas", Usuario.TelCasa),
+                Parametro("TelOficin", Usuario.TelOficina),
+                Parametro("TelCe", Usuario.TelCel),
+                Parametro("Emai", Usuario.Email),
+                Parametro("Pregunt", Usuario.Pregunta),
+                Parametro("Respuest", Usuario.Respuesta),
+                Parametro("Activ", Usuario.Activo),
+                Parametro("Departament", Usuario.Departamento),
+                Parametro("FechaIngres", Usuario.FechaIngreso_),
+                Parametro("Puest", Usuario.Puesto),
+                Parametro("Sueld", Usuario.SueldoDiario)
+                );
             return OperacionRealizada;
+        }
+
+        /// <summary>
+        /// Método que registra una tarjeta bancaria en la base de datos
+        /// </summary>
+        /// <param name="Tarjeta">Registro que contiene los datos de la tarjeta</param>
+        /// <returns>true si se insertó correctamente el registro</returns>
+        public static bool RegistroTarjeta(RegistroTarjeta Tarjeta)
+        {
+            EjecutarProcedimientoAlmacenado("RegistrarTarjeta", TipoConsulta.DevuelveInt,
+                Parametro("numer", Tarjeta.NumeroTarjeta),
+                Parametro("titula", Tarjeta.NombreTitular),
+                Parametro("apellido", Tarjeta.ApellidosTitular),
+                Parametro("banc", Tarjeta.Banco),
+                Parametro("fve", Tarjeta.FechaVencimiento),
+                Parametro("logi", Tarjeta.Login));
+            return OperacionRealizada;
+        }
+
+        /// <summary>
+        /// Método encargado de solicitar a la base de datos un borrado lógico de una tarjeta
+        /// </summary>
+        /// <param name="Usuario">Cadena que contiene el usuario al cual pertenece la tarjeta</param>
+        /// <returns>Confirmación del borrado lógico de la tarjeta en la base de datos con éxito</returns>
+        public static bool BorrarTarjeta(string Usuario)
+        {
+            EjecutarProcedimientoAlmacenado("EliminarTarjeta", TipoConsulta.DevuelveInt,
+                Parametro("logi", Usuario));
+            return OperacionRealizada;
+        }
+
+        /// <summary>
+        /// Método encargado de solicitar a la base de datos la actualización de un registro de tarjeta
+        /// </summary>
+        /// <param name="Tarjeta">Objeto que contiene la información a actualizar de la tarjeta</param>
+        /// <returns>Confirmación de la actualización del registro de tarjeta con éxito</returns>
+        public static bool ActualizarTarjeta(RegistroTarjeta Tarjeta)
+        {
+            EjecutarProcedimientoAlmacenado("ActualizarTarjeta", TipoConsulta.DevuelveInt,
+                Parametro("numer", Tarjeta.NumeroTarjeta),
+                Parametro("titula", Tarjeta.NombreTitular),
+                Parametro("apellido", Tarjeta.ApellidosTitular),
+                Parametro("banc", Tarjeta.Banco),
+                Parametro("fve", Tarjeta.FechaVencimiento),
+                Parametro("logi", Tarjeta.Login));
+            return OperacionRealizada;
+        }
+
+        public static void Datos(DataGridView temp)
+        {
+            EjecutarProcedimientoAlmacenado("AdministrarUsuarios", TipoConsulta.DevuelveReader,
+                Parametro("", null));
+            temp.DataSource = TablaDeResultados;
+  //          MySqlDataAdapter p = new MySqlDataAdapter(new MySqlCommand(@"select N_Empleado,
+		//login as 'Login',
+  //      t_usuario as 'Tipo Usuario',
+  //      nombre as 'Nombre',
+  //      apellidos as 'Apellidos',
+  //      pais as 'País',
+  //      estado as 'Estado',
+  //      municipio as 'Municipio',
+  //      ciudad as 'Ciudad',
+  //      colonia as 'Colonia',
+  //      calle as 'Calle',
+  //      numcasa as '# Casa',
+  //      cp as 'C. Postal',
+  //      email as 'Email',
+  //      tel_casa as 'Tel. Casa',
+  //      tel_movil as 'Tel. Cel',
+  //      tel_oficina as 'Tel. Oficina',
+  //      estatus as 'Activo',
+  //      Pregunta,
+  //      Respuesta
+  //      from empleados, usuarios where N_Empleado = nmtrabajador union all select N_Empleado, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '' from empleados where N_Empleado not in (select nmtrabajador from usuarios) order by N_Empleado"));
+  //          DataTable x = new DataTable();
+  //          p.SelectCommand.Connection = conexion;
+  //          p.SelectCommand.Connection.Open();
+  //          p.Fill(x);
+  //          temp.DataSource = x;
+  //          p.SelectCommand.Connection.Close();
         }
         #endregion
 
@@ -369,10 +490,10 @@ namespace ConexionBaseDeDatos
         /// <returns>Colección de tarjetas</returns>
         static RegistroTarjeta[] RellenarTarjetas()
         {
-            RegistroTarjeta[] Cards = new RegistroTarjeta[ResultadoTabla.Rows.Count];
+            RegistroTarjeta[] Cards = new RegistroTarjeta[TablaDeResultados.Rows.Count];
             for (int i = 0; i < Cards.Length; i++)
             {
-                DataRow temp = ResultadoTabla.Rows[i];
+                DataRow temp = TablaDeResultados.Rows[i];
                 Cards[i] = new RegistroTarjeta(
                     temp["login"].ToString(),
                     temp["numero"].ToString(),
@@ -392,10 +513,10 @@ namespace ConexionBaseDeDatos
         /// <returns>Arreglo de usuarios</returns>
         static RegistroUsuario[] RellenarUsuarios()
         {
-            RegistroUsuario[] Users = new RegistroUsuario[ResultadoTabla.Rows.Count];
+            RegistroUsuario[] Users = new RegistroUsuario[TablaDeResultados.Rows.Count];
             for (int i = 0; i < Users.Length; i++)
             {
-                DataRow temp = ResultadoTabla.Rows[i];
+                DataRow temp = TablaDeResultados.Rows[i];
                 Users[i] = new RegistroUsuario(
                     Convert.ToInt32(temp["N_Empleado"]),
                     temp["Login"].ToString(),
@@ -425,6 +546,40 @@ namespace ConexionBaseDeDatos
                     );
             }
             return Users;
+        }
+
+        /// <summary>
+        /// Método que valida si hay un empleado registrado en la base de datos
+        /// </summary>
+        /// <param name="NumeroTrabajador">Número de empleado a validar</param>
+        /// <returns>empleado existente y activo</returns>
+        public static bool ValidarEmpleadoRegistrado(int NumeroTrabajador)
+        {
+            EjecutarProcedimientoAlmacenado("ValidarEmpleadoRegistrado", TipoConsulta.DevuelveReader,
+                Parametro("emp", NumeroTrabajador));
+            if (TablaDeResultados.Rows.Count > 0)
+                RegistrosAfectados = 1;
+            return OperacionRealizada;
+        }
+
+        /// <summary>
+        /// Método que solicita una pregunta de seguridad a la base de datos
+        /// </summary>
+        /// <param name="NumeroEmpleado">Número de empleado del cuál se obtendrá la pregunta</param>
+        /// <returns></returns>
+        public static string RecuperarPregunta(int NumeroEmpleado)
+        {
+            EjecutarProcedimientoAlmacenado("RecuperarPregunta", TipoConsulta.DevuelveReader,
+                Parametro("emp", NumeroEmpleado));
+            return ObtenerUsuario().Pregunta;
+        }
+
+        public static bool RecuperarUsuarioN(int Empleado, out RegistroUsuario User)
+        {
+            EjecutarProcedimientoAlmacenado("RecuperarUsuarioN", TipoConsulta.DevuelveReader,
+                Parametro("N", Empleado));
+            User = ObtenerUsuario();
+            return OperacionRealizada;
         }
 
         #endregion

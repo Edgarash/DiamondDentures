@@ -259,21 +259,6 @@ namespace Presentacion.Login
             }
         }
 
-        //private void btnEntrar_Click(object sender, EventArgs e)
-        //{
-        //    Validacion.ChecarUsuario(tbUsuario, tbPassword);
-        //    if (tbUsuario.Text != "")
-        //    {
-        //        Interface = new InterfaceUsuario(this);
-        //        if (DialogResult.Yes == Interface.DesplegarPantallaPrincipal(tbUsuario.Text, tbPassword.Text, ref IntentosFallidos))
-        //        {
-        //            RegistrarNombre = true;
-        //            RegistrarUsuario(tbUsuario.Text);
-        //            tbUsuario.Text = tbPassword.Text = "";
-        //        }
-        //    }
-        //}
-
         private void tbUsuarioPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)

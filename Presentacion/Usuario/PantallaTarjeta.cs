@@ -117,6 +117,7 @@ namespace Presentacion.Usuario
             // 
             // tbApellido
             // 
+            this.tbApellido.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbApellido.Location = new System.Drawing.Point(274, 156);
             this.tbApellido.MaxLength = 50;
             this.tbApellido.Name = "tbApellido";
@@ -163,6 +164,7 @@ namespace Presentacion.Usuario
             this.tbBanco.Size = new System.Drawing.Size(191, 24);
             this.tbBanco.TabIndex = 4;
             this.tbBanco.SelectedIndexChanged += new System.EventHandler(this.tbBanco_SelectedIndexChanged);
+            this.tbBanco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBanco_KeyPress);
             // 
             // label13
             // 
@@ -188,6 +190,7 @@ namespace Presentacion.Usuario
             // 
             // tbNombre
             // 
+            this.tbNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbNombre.Location = new System.Drawing.Point(52, 156);
             this.tbNombre.MaxLength = 50;
             this.tbNombre.Name = "tbNombre";
@@ -421,6 +424,11 @@ namespace Presentacion.Usuario
             {
                 tbTarjeta.Mask = "0000 - 0000 - 0000 - 0000";
             }
+        }
+
+        private void tbBanco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = char.ToUpper(e.KeyChar);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ConexionBaseDeDatos;
+﻿using System;
+using ConexionBaseDeDatos;
 using Entidad;
 
 namespace Control
@@ -7,7 +8,6 @@ namespace Control
     {
         public ManejadorRegistroUsuario()
         {
-            Interface = new InterfaceBaseDeDatos();
         }
         public bool RegistrarUsuario(RegistroUsuario Usuario)
         {
@@ -15,7 +15,7 @@ namespace Control
         }
         public bool ActualizarUsuario(string User, RegistroUsuario Usuario)
         {
-            return Interface.ActualizarUsuario(User, Usuario);
+            return InterfaceMySQL.ActualizarUsuario(User, Usuario);
         }
         public bool BorrarUsuario(string Usuario)
         {
@@ -37,18 +37,23 @@ namespace Control
 
         public bool ValidarEmpleadoRegistrado(int Numero)
         {
-            return Interface.ValidarEmpleadoRegistrado(Numero);
+            return InterfaceMySQL.ValidarEmpleadoRegistrado(Numero);
         }
 
         public string RecuperarPregunta(int NumeroEmpleado)
         {
-            return Interface.RecuperarPregunta(NumeroEmpleado);
+            return InterfaceMySQL.RecuperarPregunta(NumeroEmpleado);
         }
 
         public bool ValidarRespuesta(int Empleado, string Resp)
         {
             Interface = new InterfaceBaseDeDatos();
             return Interface.ValidarRespuesta(Empleado, Resp);
+        }
+
+        public bool RecuperarUsuarioN(int Empleado, out RegistroUsuario User)
+        {
+            return InterfaceMySQL.RecuperarUsuarioN(Empleado, out User);
         }
     }
 }

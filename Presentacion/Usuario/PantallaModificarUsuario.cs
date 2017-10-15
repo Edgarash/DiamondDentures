@@ -28,6 +28,10 @@ namespace Presentacion.Usuario
             tbUsuario.Text = Usuario.Login;
             tbUsuario.Enabled = false;
             cbDepartamento.Text = Usuario.Departamento;
+            cbDepartamento.Enabled = false;
+            cbPuesto.Text = Usuario.Puesto;
+            cbPuesto.Enabled = false;
+            tbFechaNac.Text = Usuario.FechaNacimiento.ToShortDateString();
             cbPaíses.Text = Usuario.Pais;
             cbEstado.Text = Usuario.Estado;
             cbMunicipio.Text = Usuario.Municipio;
@@ -44,11 +48,13 @@ namespace Presentacion.Usuario
             cbPregunta.Text = Usuario.Pregunta;
             tbRespuesta.Text = Usuario.Respuesta;
             UsuarioAnterior = Usuario.Login;
+            tbSueldo.Text = Usuario.SueldoDiario.ToString();
         }
 
         public PantallaModificarUsuario(RegistroUsuario Usuario, bool Administrador):this (Usuario)
         {
             tbUsuario.Enabled = tbNombre.Enabled = tbApellidos.Enabled = true;
+            tbSueldo.Visible = lblSueldoDiario.Visible = true;
         }
 
         private void InitializeComponent()
@@ -108,8 +114,6 @@ namespace Presentacion.Usuario
             // 
             // PantallaModificarUsuario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(599, 661);
             this.Name = "PantallaModificarUsuario";
             this.Text = "Modificar Usuario";
             ((System.ComponentModel.ISupportInitialize)(this.Error)).EndInit();
@@ -182,11 +186,11 @@ namespace Presentacion.Usuario
             get
             {
                 string Kagi = tbPassword.Text == "" ? User.Password : tbPassword.Text;
-                return new RegistroUsuario(int.Parse(tbNEmpleado.Text), tbUsuario.Text, tbPassword.Text, tbNombre.Text,
+                return new RegistroUsuario(int.Parse(tbNEmpleado.Text), tbUsuario.Text, Kagi, tbNombre.Text,
                     tbApellidos.Text, Convert.ToDateTime(tbFechaNac.Text), tbNFrente.Text, tbCalle.Text, tbColonia.Text,
                     cbCiudad.Text, cbMunicipio.Text, cbEstado.Text, cbPaíses.Text, tbCP.Text, tbTel.Text, tbTrabajo.Text,
-                    tbCel.Text, tbEmail.Text + cbEmail.Text, cbPregunta.Text, tbRespuesta.Text, "1", cbDepartamento.Text,
-                    cbPuesto.Text, DateTime.Today, 200);
+                    tbCel.Text, tbEmail.Text + "@" + cbEmail.Text, cbPregunta.Text, tbRespuesta.Text, "1", cbDepartamento.Text,
+                    cbPuesto.Text, DateTime.Today, Single.Parse(tbSueldo.Text));
             }
         }
 

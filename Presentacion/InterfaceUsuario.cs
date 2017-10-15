@@ -337,6 +337,12 @@ namespace Presentacion
             }
         }
 
+        public bool RecuperarUsuarioN(int Empleado, out RegistroUsuario User)
+        {
+            Manejador = new ManejadorRegistroUsuario();
+            return ((ManejadorRegistroUsuario)Manejador).RecuperarUsuarioN(Empleado, out User);
+        }
+
         public bool RegistrarTarjeta(RegistroTarjeta Tarjeta)
         {
             Manejador = new ManejadorRegistroTarjeta();
@@ -535,12 +541,6 @@ namespace Presentacion
             Manejador = new ManejadorLogin((PantallaLogin)Pantalla);
             PantallaRecuperarContraseña temp = new PantallaRecuperarContraseña();
             ((ManejadorLogin)Manejador).DesplegarPantallaRecuerarContraseña(temp);
-        }
-
-        public string RecuperarContraseña(int NumEmpleado)
-        {
-            Manejador = new ManejadorUsuario();
-            return ((ManejadorUsuario)Manejador).RecuperarContraseña(NumEmpleado);
         }
 
         public string RecuperarPregunta(int NumeroEmpleado)
