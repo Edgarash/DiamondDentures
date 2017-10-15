@@ -219,16 +219,10 @@
     <Compile Include="Reportes\PantallaMenuReportes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes\PantallaMenuReportesN.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Reportes\PantallaNotaTerminacion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\PantallaOficioConfirmacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes\PantallaVistaPrevia.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Usuario\PantallaAdministrarUsuarios.cs">
@@ -415,17 +409,11 @@
     <EmbeddedResource Include="Reportes\PantallaMenuReportes.resx">
       <DependentUpon>PantallaMenuReportes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\PantallaMenuReportesN.resx">
-      <DependentUpon>PantallaMenuReportesN.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaNotaTerminacion.resx">
       <DependentUpon>PantallaNotaTerminacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaOficioConfirmacion.resx">
       <DependentUpon>PantallaOficioConfirmacion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\PantallaVistaPrevia.resx">
-      <DependentUpon>PantallaVistaPrevia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuario\PantallaAdministrarUsuarios.resx">
       <DependentUpon>PantallaAdministrarUsuarios.cs</DependentUpon>
