@@ -15,7 +15,6 @@ BEGIN
     VALUES(id, nom, tel, email, dir, descripcion);
 END;
 
-
 #Procedimiento que permite actualizar los proveedores
 DROP PROCEDURE IF EXISTS `ActualizarProveedor`;
 CREATE DEFINER=`root`@`%` PROCEDURE `ActualizarProveedor`(
