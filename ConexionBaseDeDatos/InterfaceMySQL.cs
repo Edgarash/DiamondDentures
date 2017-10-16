@@ -428,6 +428,33 @@ namespace ConexionBaseDeDatos
             EjecutarProcedimientoAlmacenado("AdministrarUsuarios", TipoConsulta.DevuelveReader,
                 Parametro("", null));
             temp.DataSource = TablaDeResultados;
+  //          MySqlDataAdapter p = new MySqlDataAdapter(new MySqlCommand(@"select N_Empleado,
+		//login as 'Login',
+  //      t_usuario as 'Tipo Usuario',
+  //      nombre as 'Nombre',
+  //      apellidos as 'Apellidos',
+  //      pais as 'País',
+  //      estado as 'Estado',
+  //      municipio as 'Municipio',
+  //      ciudad as 'Ciudad',
+  //      colonia as 'Colonia',
+  //      calle as 'Calle',
+  //      numcasa as '# Casa',
+  //      cp as 'C. Postal',
+  //      email as 'Email',
+  //      tel_casa as 'Tel. Casa',
+  //      tel_movil as 'Tel. Cel',
+  //      tel_oficina as 'Tel. Oficina',
+  //      estatus as 'Activo',
+  //      Pregunta,
+  //      Respuesta
+  //      from empleados, usuarios where N_Empleado = nmtrabajador union all select N_Empleado, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '' from empleados where N_Empleado not in (select nmtrabajador from usuarios) order by N_Empleado"));
+  //          DataTable x = new DataTable();
+  //          p.SelectCommand.Connection = conexion;
+  //          p.SelectCommand.Connection.Open();
+  //          p.Fill(x);
+  //          temp.DataSource = x;
+  //          p.SelectCommand.Connection.Close();
         }
         #endregion
 
