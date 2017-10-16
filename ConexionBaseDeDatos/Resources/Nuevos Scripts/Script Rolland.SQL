@@ -1,5 +1,14 @@
 #En este archivo de texto sólo Rolland deberá meter sus procedimientos almacenados
 
+#Trigger para actualizar la cantidad en materiales
+DROP TRIGGER IF EXISTS `AñadirMateriales`;
+CREATE TRIGGER `AñadirMateriales`
+  AFTER INSERT ON `detalle_compra_material`
+  FOR EACH ROW
+BEGIN
+  UPDATE `Material` SET `Material`.`cantidad` = `Material`.`cantidad` + NEW.`Cantidad` WHERE `Material`.`IDMaterial` = NEW.`IDMaterial`;
+END;
+
 #Procedimiento que permite agregar un proveedor
 DROP PROCEDURE IF EXISTS `AgregarProveedor`;
 CREATE DEFINER=`root`@`%` PROCEDURE `AgregarProveedor`(
