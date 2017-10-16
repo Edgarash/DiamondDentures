@@ -25,18 +25,18 @@ namespace Presentacion.Configuracion
             tbClave.Enabled = true;
             Interface = new InterfaceUsuario(this);
             RegistroProducto[] Productos = Interface.ObtenerProductos();
-            RegistroMaterial[] Materiales = Interface.BuscarUnMaterial(new RegistroMaterial(-1, "", -1, -1));
-            tbClave.Text = (Materiales?[Materiales.Length - 1].Clave + 1).ToString();
+            //RegistroMaterial[] Materiales = Interface.BuscarUnMaterial(new RegistroMaterial(-1, "", -1, -1));
+            //tbClave.Text = (Materiales?[Materiales.Length - 1].IDMaterial + 1).ToString();
             tbClave.Select(tbClave.Text.Length, tbClave.Text.Length);
             for (int i = 0; i < Productos?.Length; i++)
             {
-                if (Productos[i].Activo == 1)
+                if (Productos[i].Activo[0] == 1)
                 {
                     int j = dgvProductos.RowCount;
                     dgvProductos.RowCount += 1;
-                    dgvProductos[0, j].Value = Productos[i].Clave;
+                    dgvProductos[0, j].Value = Productos[i].IDProducto;
                     dgvProductos[2, j].Value = Productos[i].Nombre;
-                    dgvProductos[3, j].Value = Productos[i].Precio;
+                    dgvProductos[3, j].Value = Productos[i].PrecioBase;
                 }
             }
         }
@@ -57,21 +57,21 @@ namespace Presentacion.Configuracion
                 }
                 else
                 {
-                    RegistroMaterial[] temp = Interface.BuscarUnMaterial(new RegistroMaterial(ObtenerRegistro.Clave ,"", -1, -1));
-                    if (temp?[0]?.Clave == ObtenerRegistro.Clave)
-                        Validar.MensajeErrorOK("El número clave ya ha sido usado anteriormente y no puede repetirse");
-                    else
-                    {
-                        temp = Interface.BuscarUnMaterial(new RegistroMaterial(-1, tbNombre.Text, -1, -1));
-                        bool Existe = false;
-                        for (int i = 0; i < temp?.Length && !Existe; i++)
-                            if (temp?[i]?.Nombre == tbNombre.Text)
-                                Existe = true;
-                        if (temp?[0]?.Nombre == ObtenerRegistro.Nombre)
-                            Validar.MensajeErrorOK("El nombre ya ha sido usado anteriormente y no puede repetirse");
-                        else
-                            Validar.MensajeErrorBaseDeDatos();
-                    }
+                    ////RegistroMaterial[] temp = Interface.BuscarUnMaterial(new RegistroMaterial(ObtenerRegistro.IDMaterial ,"", -1, -1));
+                    //if (temp?[0]?.IDMaterial == ObtenerRegistro.IDMaterial)
+                    //    Validar.MensajeErrorOK("El número clave ya ha sido usado anteriormente y no puede repetirse");
+                    //else
+                    //{
+                    //    temp = Interface.BuscarUnMaterial(new RegistroMaterial(-1, tbNombre.Text, -1, -1));
+                    //    bool Existe = false;
+                    //    for (int i = 0; i < temp?.Length && !Existe; i++)
+                    //        if (temp?[i]?.Nombre == tbNombre.Text)
+                    //            Existe = true;
+                    //    if (temp?[0]?.Nombre == ObtenerRegistro.Nombre)
+                    //        Validar.MensajeErrorOK("El nombre ya ha sido usado anteriormente y no puede repetirse");
+                    //    else
+                    //        Validar.MensajeErrorBaseDeDatos();
+                    //}
                 }
             }
         }

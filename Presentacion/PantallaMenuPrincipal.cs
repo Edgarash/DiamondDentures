@@ -5,6 +5,7 @@ using Presentacion.Control_Pedidos;
 using Presentacion.Laboratorio;
 using Presentacion.Login;
 using Presentacion.Recepcion;
+using Presentacion.Ventas;
 using System;
 using System.Windows.Forms;
 using Validaciones;
@@ -14,9 +15,8 @@ namespace Presentacion
     public partial class PantallaMenuPrincipal : Pantalla
     {
         PantallaLogin Pantalla;
-        string Usuario;
+        public static RegistroUsuario Sesion;
         InterfaceUsuario Interface;
-        string TipoUsuario { get; set; }
 
         public PantallaMenuPrincipal(string Login, PantallaLogin Pantalla)
         {
@@ -27,18 +27,17 @@ namespace Presentacion
             InitializeComponent();
             InitializeComponent2();
             InitializeComponent3();
-            Usuario = Login;
-            TipoUsuario = temp?.Departamento;
+            Interface.RecuperarUsuario(Login, out Sesion);
             this.Pantalla = Pantalla;
-            lblSesión.Text = "Usuario: " + Usuario + " (" + temp?.Departamento + ")";
+            lblSesión.Text = "Usuario: " + Sesion?.Nombre + " (" + Sesion?.Departamento + ")";
             MouseEnter += PantallaMenuPrincipal_GotFocus;
         }
 
         private void PantallaMenuPrincipal_GotFocus(object sender, EventArgs e)
         {
             bool Cambió = false;
-            lblSesión.Text = "Usuario: " + Usuario + " (" + TipoUsuario + ")";
-            Cambió = TipoUsuario != PantallaLogin.Sesión?.Departamento;
+            lblSesión.Text = "Usuario: " + Sesion?.Login + " (" + Sesion?.Departamento + ")";
+            Cambió = Sesion?.Departamento != PantallaLogin.Sesión?.Departamento;
             if (Cambió)
                 InitializeComponent3();
         }
@@ -87,7 +86,6 @@ namespace Presentacion
                     lblSesión.Location = new System.Drawing.Point(12, 324);
                     break;
             }
-            TipoUsuario = PantallaLogin.Sesión?.Departamento;
         }
 
         private void InitializeComponent4()
@@ -117,19 +115,19 @@ namespace Presentacion
 
         private void btnRecepcion_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaRecepcion("").GetType()))
+            if (!Validar.ValidarUnaPantalla(new PantallaRecepcion().GetType()))
             {
                 Interface = new InterfaceUsuario(this);
-                Interface.DesplegarPantallaRecepcion(Usuario);
+                Interface.DesplegarPantallaRecepcion();
             }
         }
 
         private void btnUsuario_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new Presentacion.Usuario.PantallaMenuUsuario("").GetType()))
+            if (!Validar.ValidarUnaPantalla(new Presentacion.Usuario.PantallaMenuUsuario().GetType()))
             {
                 Interface = new InterfaceUsuario(this);
-                Interface.DesplegarPantallaMenuUsuario(Usuario);
+                Interface.DesplegarPantallaMenuUsuario();
             }
         }
 
@@ -140,19 +138,19 @@ namespace Presentacion
 
         private void btnConfiguracion_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaConfiguracion("").GetType()))
+            if (!Validar.ValidarUnaPantalla(new PantallaConfiguracion().GetType()))
             {
                 Interface = new InterfaceUsuario(this);
-                Interface.DesplegarPantallaConfiguracion(Usuario);
+                Interface.DesplegarPantallaConfiguracion();
             }
         }
 
         private void btnLaboratorio_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaMenuLaboratorio(null).GetType()))
+            if (!Validar.ValidarUnaPantalla(new PantallaMenuLaboratorio().GetType()))
             {
                 Interface = new InterfaceUsuario(this);
-                Interface.DesplegarPantallaLaboratorio(Usuario);
+                Interface.DesplegarPantallaLaboratorio(PantallaMenuPrincipal.Sesion.Login);
             }
         }
 
@@ -161,17 +159,22 @@ namespace Presentacion
             if (!Validar.ValidarUnaPantalla(new PantallaMenuControlPedidos(null).GetType()))
             {
                 Interface = new InterfaceUsuario(this);
-                Interface.DesplegarPantallaControlPedidos(Usuario);
+                Interface.DesplegarPantallaControlPedidos(PantallaMenuPrincipal.Sesion.Login);
             }
         }
 
         private void btnSemáforo_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaEstadoPedido(Usuario).GetType()))
+            if (!Validar.ValidarUnaPantalla(new PantallaEstadoPedido(PantallaMenuPrincipal.Sesion.Login).GetType()))
             {
                 Interface = new InterfaceUsuario(this);
-                Interface.DesplegarPantallaEstadoPedido(Usuario);
+                Interface.DesplegarPantallaEstadoPedido(PantallaMenuPrincipal.Sesion.Login);
             }
+        }
+
+        private void kuroButton1_Click(object sender, EventArgs e)
+        {
+            new PantallaVentas().ShowDialog(this);
         }
     }
 }

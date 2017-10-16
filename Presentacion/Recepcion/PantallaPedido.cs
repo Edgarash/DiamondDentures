@@ -126,15 +126,15 @@ namespace Presentacion.Recepcion
         {
             Celda.Items.Clear();
             Interface = new InterfaceUsuario(this);
-            RegistroProMat[] ProMat = Interface.ObtenerProMat(-1, Interface.BuscarUnProducto(new RegistroProducto(-1, dgvProductos[0, (dgvProductos.CurrentCell ?? dgvProductos[0,0]).RowIndex].FormattedValue.ToString(), -1, -1, -1))?[0].Clave ?? -1);
-            for (int i = 0; i < Productos?.Length; i++)
-                if (Productos[i].Activo == 1)
-                    for (int j = 0; j < ProMat.Length; j++)
-                        if (ProMat[j].Activo == 1)
-                        {
-                            (dgvProductos[Celda.ColumnIndex, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Add(Productos[i].Nombre + " $" + Productos[i].Precio);
-                            j = ProMat.Length;
-                        }
+            //RegistroProMat[] ProMat = Interface.ObtenerProMat(-1, Interface.BuscarUnProducto(new RegistroProducto(-1, dgvProductos[0, (dgvProductos.CurrentCell ?? dgvProductos[0,0]).RowIndex].FormattedValue.ToString(), -1, -1, -1))?[0].IDProducto ?? -1);
+            //for (int i = 0; i < Productos?.Length; i++)
+            //    if (Productos[i].Activo == 1)
+            //        for (int j = 0; j < ProMat.Length; j++)
+            //            if (ProMat[j].Activo == 1)
+            //            {
+            //                (dgvProductos[Celda.ColumnIndex, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Add(Productos[i].Nombre + " $" + Productos[i].PrecioBase);
+            //                j = ProMat.Length;
+            //            }
         }
 
         private void LlenarMateriales(DataGridViewComboBoxCell Celda, RegistroMaterial Material1)
@@ -148,14 +148,14 @@ namespace Presentacion.Recepcion
                 (dgvProductos[dgvProductos.Columns["Material2"].Index, Celda.RowIndex] as DataGridViewComboBoxCell).Value = null;
                 dgvProductos[4, Celda.RowIndex].Value = null;
             }
-            RegistroProMat[] temp = Interface.ObtenerProMat(-1, ObtenerProducto(Celda.RowIndex)?.Clave ?? -1 );
+            RegistroProMat[] temp = Interface.ObtenerProMat(-1, ObtenerProducto(Celda.RowIndex)?.IDProducto ?? -1 );
             for (int i = 0; i < temp?.Length; i++)
                 if (temp[i]?.Activo == 1)
                     for (int k = 0; k < Materiales?.Length; k++)
-                        if (temp[i]?.ClaveMat != Material1?.Clave && Materiales[k].Activo == 1 && Materiales[k].Nombre == temp[i].Material)
+                        //if (temp[i]?.ClaveMat != Material1?.IDMaterial && Materiales[k].Activo == 1 && Materiales[k].Nombre == temp[i].Material)
                         {
-                            (dgvProductos?[Celda.ColumnIndex, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Add(temp[i].Material + " $" + temp[i].Precio);
-                            k = Materiales.Length;
+                            //(dgvProductos?[Celda.ColumnIndex, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Add(temp[i].Material + " $" + temp[i].Precio);
+                            //k = Materiales.Length;
                         }
             if (Celda.Items.Count == 0)
                 Celda.Items.Add("");
@@ -196,11 +196,11 @@ namespace Presentacion.Recepcion
         {
             get
             {
-                RegistroPedido temp = new RegistroPedido(tbClave.Text, lblUsuario.Text, tbFecha.Text, tbCedula.Text, tbRFC.Text, tbNombreDentista.Text,
-                    tbApellidos.Text, ObtenerTelefono, cbPaíses.Text, cbEstado.Text, cbMunicipio.Text, cbCiudad.Text, tbColonia.Text,
-                    tbCalle.Text, tbNumFrente.Text, tbCP.Text, tbEmail.Text + "@" + cbEmail.Text, tbFechaEntrega.Text, tbUrgente.Checked ? 1 : 0, "");
-                temp.setTrabajos(ObtenerTrabajo);
-                return temp;
+                //RegistroPedido temp = new RegistroPedido(tbClave.Text, lblUsuario.Text, tbFecha.Text, tbCedula.Text, tbRFC.Text, tbNombreDentista.Text,
+                //    tbApellidos.Text, ObtenerTelefono, cbPaíses.Text, cbEstado.Text, cbMunicipio.Text, cbCiudad.Text, tbColonia.Text,
+                //    tbCalle.Text, tbNumFrente.Text, tbCP.Text, tbEmail.Text + "@" + cbEmail.Text, tbFechaEntrega.Text, tbUrgente.Checked ? 1 : 0, "");
+                //temp.setTrabajos(ObtenerTrabajo);
+                return null;
             }
         }
 
@@ -233,7 +233,7 @@ namespace Presentacion.Recepcion
                             RegistroProMat Mat1 = ObtenerProMat(Producto, ObtenerMaterial(1, i)), Mat2 = null;
                             if (!string.IsNullOrWhiteSpace(dgvProductos[2, i].FormattedValue?.ToString()))
                                 Mat2 = ObtenerProMat(Producto, ObtenerMaterial(2, i));
-                            temp.Add(new RegistroTrabajo(Producto?.Nombre, Producto?.Precio ?? 0, Mat1?.Material, Mat1?.Precio ?? 0, Mat2?.Material?? "", Mat2?.Precio ?? 0, dgvProductos[3,i].Value.ToString()));
+                            //temp.Add(new RegistroTrabajo(Producto?.Nombre, Producto?.PrecioBase ?? 0, Mat1?.Material, Mat1?.Precio ?? 0, Mat2?.Material?? "", Mat2?.Precio ?? 0, dgvProductos[3,i].Value.ToString()));
                         }
                     }
                 }
@@ -276,7 +276,7 @@ namespace Presentacion.Recepcion
         protected virtual RegistroProMat ObtenerProMat(RegistroProducto Producto, RegistroMaterial Material)
         {
             RegistroProMat temp = null;
-            RegistroProMat[] x = Interface.ObtenerProMat((Material?.Clave ?? -1), (Producto?.Clave ?? -1));
+            RegistroProMat[] x = Interface.ObtenerProMat((Material?.IDMaterial ?? -1), (Producto?.IDProducto ?? -1));
             temp = x.Length > 0 ? x[0] : null;
             return temp;
         }
@@ -328,7 +328,7 @@ namespace Presentacion.Recepcion
                         i = Productos.Length;
                     }
                 }
-                dgvProductos[dgvProductos.Columns["Fecha"].Index, e.RowIndex].Value = !string.IsNullOrWhiteSpace(dgvProductos[e.ColumnIndex, e.RowIndex].FormattedValue?.ToString()) ? DateTime.Today.AddDays(Productos[j].Dias).ToShortDateString() : "";
+                dgvProductos[dgvProductos.Columns["Fecha"].Index, e.RowIndex].Value = !string.IsNullOrWhiteSpace(dgvProductos[e.ColumnIndex, e.RowIndex].FormattedValue?.ToString()) ? DateTime.Today.AddDays(Productos[j].TiempoBase).ToShortDateString() : "";
                 FechaPedido();
             }
             else
@@ -364,9 +364,9 @@ namespace Presentacion.Recepcion
                 for (int i = 0; i < Productos.Length; i++)
                 {
                     RegistroProducto Producto = ObtenerProducto(Row);
-                        Precio += Producto.Precio;
-                        PrecioProducto = Producto.Precio;
-                        ClvProducto = Producto.Clave;
+                        Precio += Producto.PrecioBase;
+                        PrecioProducto = Producto.PrecioBase;
+                        ClvProducto = Producto.IDProducto;
                         i = Productos.Length;
                 }
                 RegistroProMat[] ProMat = Interface.ObtenerProMat(-1, ClvProducto);
@@ -378,7 +378,7 @@ namespace Presentacion.Recepcion
                         RegistroMaterial Mat1 = ObtenerMaterial(1, Row), Mat2 = ObtenerMaterial(2, Row);
                         if (Materiales[i].Nombre == (Mat1?.Nombre ?? "") || Materiales[i].Nombre == (Mat2?.Nombre ?? ""))
                             for (int j = 0; j < ProMat.Length && !Segundo; j++)
-                                if (ClvProducto == ProMat[j].ClavePro && Materiales[i].Clave == ProMat[j].ClaveMat)
+                                if (ClvProducto == ProMat[j].ClavePro && Materiales[i].IDMaterial == ProMat[j].ClaveMat)
                                 {
                                     if (!Segundo && Primero)
                                         Segundo = true;
@@ -474,9 +474,10 @@ namespace Presentacion.Recepcion
         {
             get
             {
-                return new RegistroDentista(tbCedula.Text, tbRFC.Text, tbNombreDentista.Text, tbApellidos.Text, ObtenerTelefono, cbPaíses.Text,
-                    cbEstado.Text, cbMunicipio.Text, cbCiudad.Text, tbColonia.Text, tbCalle.Text, tbNumFrente.Text, tbCP.Text,
-                    tbEmail.Text + "@" + cbEmail.Text);
+                return null;
+                    //new RegistroDentista(tbCedula.Text, tbRFC.Text, tbNombreDentista.Text, tbApellidos.Text, ObtenerTelefono, cbPaíses.Text,
+                    //cbEstado.Text, cbMunicipio.Text, cbCiudad.Text, tbColonia.Text, tbCalle.Text, tbNumFrente.Text, tbCP.Text,
+                    //tbEmail.Text + "@" + cbEmail.Text);
             }
         }
     }

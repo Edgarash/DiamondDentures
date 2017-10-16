@@ -64,6 +64,9 @@
     <ApplicationIcon>La trijuerza de diamante barbuda.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlesM">
+      <HintPath>..\..\ControlesM\ControlesM\bin\Debug\ControlesM.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -326,6 +329,24 @@
     <Compile Include="Recepcion\PantallaPedirInformación.Designer.cs">
       <DependentUpon>PantallaPedirInformación.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventas\PantallaInformacionGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\PantallaInformacionGeneral.designer.cs">
+      <DependentUpon>PantallaInformacionGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\PantallaRealizarPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\PantallaRealizarPago.Designer.cs">
+      <DependentUpon>PantallaRealizarPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\PantallaVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\PantallaVentas.designer.cs">
+      <DependentUpon>PantallaVentas.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Configuracion\PantallaAdministrarMateriales.resx">
@@ -479,6 +500,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Recepcion\PantallaPedirInformación.resx">
       <DependentUpon>PantallaPedirInformación.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\PantallaInformacionGeneral.resx">
+      <DependentUpon>PantallaInformacionGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\PantallaRealizarPago.resx">
+      <DependentUpon>PantallaRealizarPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\PantallaVentas.resx">
+      <DependentUpon>PantallaVentas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

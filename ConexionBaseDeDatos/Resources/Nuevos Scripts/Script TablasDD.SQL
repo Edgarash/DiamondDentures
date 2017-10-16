@@ -69,7 +69,8 @@ CostoTotal		decimal(10,2),
 Laboratorista	char(20),
 Pagado			char(50),
 RestantePagar	decimal(10,2),
-IVA				decimal(10,2)
+KEY `ValidarDentista` (`Cedula`),
+CONSTRAINT `ValidarDentista` FOREIGN KEY (`Cedula`) REFERENCES `dentista` (`Cedula`)
 );
 
 CREATE TABLE IF NOT EXISTS Ventas
@@ -77,7 +78,7 @@ CREATE TABLE IF NOT EXISTS Ventas
 IDPedido		char(10),
 Importe			decimal(10,2),
 FechaPago		date,
-Login			char(10),
+Login			char(30),
 PersonaPaga		char(20),
 FormaPago		char(10)
 );
@@ -208,7 +209,7 @@ Descripcion		char(50)
 CREATE TABLE IF NOT EXISTS ASISTENCIA
 (
 IDAsistencia	int primary key AUTO_INCREMENT,
-Login			char(10),
+Login			char(30),
 Fecha			date
 );
 
@@ -216,7 +217,7 @@ CREATE TABLE IF NOT EXISTS PAGOEMPLEADOS
 (
 IDPago			int primary key AUTO_INCREMENT,
 FechaPago		date,
-Empleado		char(10),
+Empleado		char(30),
 Cantidad		decimal(10,2),
 SemanaPago		char(3),
 AñoPago			char(5)
@@ -226,7 +227,7 @@ CREATE TABLE IF NOT EXISTS CORTECAJA
 (
 FolioCorte		int primary key AUTO_INCREMENT,
 Fecha			date,
-Empleado		char(10),
+Empleado		char(30),
 FondoCaja		decimal(10,2),
 EntradaEfectivo	decimal(10,2),
 SalidasEfectivo decimal(10,2),
@@ -247,7 +248,7 @@ Medidas			char(50)
 CREATE TABLE IF NOT EXISTS COMPRAS
 (
 IDCompra		int primary key AUTO_INCREMENT,
-Empleado		char(10),
+Empleado		char(30),
 IDProveedor		int,
 Total			decimal(10,2),
 Fecha			date,

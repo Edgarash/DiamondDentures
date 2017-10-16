@@ -18,8 +18,9 @@ namespace Control
 
         public RegistroPedido ObtenerUnPedido(string clavePedido)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ObtenerUnPedido(clavePedido);
+            RegistroPedido Pedido;
+            InterfaceMySQL.RecuperarPedido(clavePedido, out Pedido);
+            return Pedido;
         }
 
         public bool ActualizarPedido(RegistroPedido Pedido)

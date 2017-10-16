@@ -172,7 +172,7 @@ namespace Presentacion.Laboratorio
         private void btnRegresar_Click(object sender, EventArgs e)
         {
             this.Close();
-            PantallaMenuLaboratorio pml = new PantallaMenuLaboratorio(Usuario);
+            PantallaMenuLaboratorio pml = new PantallaMenuLaboratorio();
             pml.Show();
         }
 

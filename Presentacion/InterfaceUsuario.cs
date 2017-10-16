@@ -24,10 +24,10 @@ namespace Presentacion
 
         #region Módulo Usuario
 
-        public void DesplegarPantallaMenuUsuario(string Login)
+        public void DesplegarPantallaMenuUsuario()
         {
             Manejador = new ManejadorLogin(Pantalla);
-            PantallaMenuUsuario Nueva = new PantallaMenuUsuario(Login);
+            PantallaMenuUsuario Nueva = new PantallaMenuUsuario();
             Nueva.Cerrar += delegate { Nueva.Close(); };
             Nueva.Show();
         }
@@ -44,10 +44,10 @@ namespace Presentacion
             return (Manejador as ManejadorRegistroDentista).RegistrarDentista(Dentista);
         }
 
-        public void DesplegarPantallaRegistrarPedido(string usuario)
+        public void DesplegarPantallaRegistrarPedido()
         {
             Manejador = new ManejadorRecepcion();
-            Manejador.DesplegarPantalla(new PantallaRegistrarPedido(usuario));
+            Manejador.DesplegarPantalla(new PantallaRegistrarPedido());
         }
 
         public RegistroPedido ObtenerUnPedido(string ClavePedido)
@@ -71,7 +71,7 @@ namespace Presentacion
         public void DesplegarPantallaLaboratorio(string Usuario)
         {
             Manejador = new ManejadorPrincipal();
-            Manejador.DesplegarPantalla(new PantallaMenuLaboratorio(Usuario));
+            Manejador.DesplegarPantalla(new PantallaMenuLaboratorio());
         }
 
         public void DesplegarPantallaModificarPedido(RegistroPedido Pedido)
@@ -423,10 +423,10 @@ namespace Presentacion
 
         #region Módulo Recepcion
 
-        public void DesplegarPantallaRecepcion(string Usuario)
+        public void DesplegarPantallaRecepcion()
         {
             Manejador = new ManejadorPrincipal();
-            ((ManejadorPrincipal)Manejador).DesplegarPantalla(new PantallaRecepcion(Usuario));
+            ((ManejadorPrincipal)Manejador).DesplegarPantalla(new PantallaRecepcion());
         }
 
 
@@ -435,10 +435,10 @@ namespace Presentacion
 
         #region Módulo Configuración
 
-        public void DesplegarPantallaConfiguracion(string Usuario)
+        public void DesplegarPantallaConfiguracion()
         {
             Manejador = new ManejadorPrincipal();
-            Manejador.DesplegarPantalla(new PantallaConfiguracion(Usuario));
+            Manejador.DesplegarPantalla(new PantallaConfiguracion());
         }
 
         public void DesplegarPantallaAgregarProducto(Regresar Accion)

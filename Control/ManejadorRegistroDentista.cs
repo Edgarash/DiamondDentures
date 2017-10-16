@@ -18,8 +18,9 @@ namespace Control
 
         public RegistroDentista ObtenerUnDentista(string Cedula)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ObtenerUnDentista(Cedula);
+            RegistroDentista Dentista;
+            InterfaceMySQL.RecuperarDentista(Cedula, out Dentista);
+            return Dentista;
         }
 
         public bool ActualizarDentista(RegistroDentista Dentista)

@@ -8,33 +8,22 @@ namespace Entidad
 {
     public class RegistroTrabajo : Datos
     {
-        public string Producto { get; set; }
-        public float PrecioProducto { get; set; }
-        public string Material1 { get; set; }
-        public float PrecioMaterial1 { get; set; }
-        public string Material2 { get; set; }
-        public float PrecioMaterial2 { get; set; }
-        public string Fecha { get; set; }
-        public float Total { get { return PrecioProducto + PrecioMaterial1 + PrecioMaterial2; } }
+        public string IDPedido { get; set; }
+        public int IDProducto { get { return Producto.IDProducto; } }
+        public RegistroProducto Producto { get; set; }
+        public int IDMaterial1 { get { return Material1.IDMaterial; } }
+        public RegistroMaterial Material1 { get; set; }
+        public int IDMaterial2 { get { return Material2.IDMaterial; } }
+        public RegistroMaterial Material2 { get; set; }
+        public float Total { get { return Producto.PrecioBase + Material1.PrecioBase + (Material2?.PrecioBase??0); } }
 
-        /// <summary>
-        /// Constructor por defecto de RegistroTrabajo
-        /// </summary>
-        /// <param name="Producto">Producto a elaborar</param>
-        /// <param name="PrecioProducto">Precio del producto</param>
-        /// <param name="Material1">Primer o único material del cuál se fabricará el producto</param>
-        /// <param name="PrecioMaterial1">Precio del primer material</param>
-        /// <param name="Material2">Segundo material del cúal se fabricará el producto</param>
-        /// <param name="PrecioMaterial2">Precio del segundo material</param>
-        public RegistroTrabajo(string Producto, float PrecioProducto, string Material1, float PrecioMaterial1, string Material2, float PrecioMaterial2, string Fecha)
+
+        public RegistroTrabajo(string IDPedido, RegistroProducto Producto, RegistroMaterial Material1, RegistroMaterial Material2)
         {
+            this.IDPedido = IDPedido;
             this.Producto = Producto;
-            this.PrecioProducto = PrecioProducto;
             this.Material1 = Material1;
-            this.PrecioMaterial1 = PrecioMaterial1;
             this.Material2 = Material2;
-            this.PrecioMaterial2 = PrecioMaterial2;
-            this.Fecha = Fecha;
         }
     }
 }

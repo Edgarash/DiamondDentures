@@ -32,11 +32,11 @@ namespace Presentacion.Usuario
         protected PictureBox pbIcono;
         private string Usuario;
 
-        public PantallaMenuUsuario(string Usuario) : base()
+        public PantallaMenuUsuario() : base()
         {
             InitializeComponent();
             InitializeComponent2();
-            this.Usuario = Usuario;
+            this.Usuario = PantallaMenuPrincipal.Sesion.Login;
             if (!string.IsNullOrWhiteSpace(Usuario))
             {
                 ActualizarPantalla();

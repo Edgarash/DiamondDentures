@@ -18,8 +18,9 @@ namespace Control
 
         public RegistroProducto[] ObtenerProductos()
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ObtenerProductos();
+            RegistroProducto[] temp = null;
+            InterfaceMySQL.ObtenerProductos(out temp);
+            return temp;
         }
 
         public RegistroProducto ObtenerUnProducto(string Producto)

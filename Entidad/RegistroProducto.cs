@@ -8,23 +8,36 @@ namespace Entidad
 {
     public class RegistroProducto : Datos
     {
-        public int Clave { get; set; }
+        public int IDProducto { get; set; }
 
         public string Nombre { get; set; }
 
-        public int Dias { get; set; }
+        public string Descripcion { get; set; }
 
-        public float Precio { get; set; }
+        public int TiempoBase { get; set; }
 
-        public int Activo { get; set; }
+        public float PrecioBase { get; set; }
 
-        public RegistroProducto(int Clave, string Nombre, int Dias, float Precio, int Activo)
+        public float PrecioCompra { get; set; }
+
+        public string Activo { get; set; }
+
+        public string UnidadMedida { get; set; }
+
+        public int Cantidad { get; set; }
+
+        public RegistroProducto(int IDProducto, string Nombre, string Descripcion, int TiempoBase,
+            float PrecioBase, float PrecioCompra, string Activo, string UnidadMedida, int Cantidad)
         {
-            this.Clave = Clave;
+            this.IDProducto = IDProducto;
             this.Nombre = Nombre;
-            this.Dias = Dias;
-            this.Precio = Precio;
+            this.Descripcion = Descripcion;
+            this.TiempoBase = TiempoBase;
+            this.PrecioBase = PrecioBase;
+            this.PrecioCompra = PrecioCompra;
             this.Activo = Activo;
+            this.UnidadMedida = UnidadMedida;
+            this.Cantidad = Cantidad;
         }
     }
 }

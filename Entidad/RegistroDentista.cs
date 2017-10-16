@@ -16,21 +16,24 @@ namespace Entidad
         public DateTime FechaAlta { get; set; }
 
         public RegistroDentista(string Cedula, string RFC, string Nombre, string Apellidos, string Telefono, string Pais, string Estado,
-            string Municipio, string Ciudad, string Colonia, string Calle, string NumFrente, string CP, string Email)
+            string Municipio, string Ciudad, string Colonia, string Calle, string CP, string Email, string Activo, string Consultorio, DateTime FechaAlta)
         {
             this.Cedula = Cedula;
             this.RFC = RFC;
             this.Nombre = Nombre;
             this.Apellidos = Apellidos;
-            this.TelOficina = Telefono;
-            this.Pais = Pais;
-            this.Estado = Estado;
-            this.Municipio = Municipio;
-            this.Ciudad = Ciudad;
+            Direccion = Calle;
             this.Colonia = Colonia;
-            this.Direccion = Calle;
-            this.CodPos = CP;
+            this.Ciudad = Ciudad;
+            this.Municipio = Municipio;
+            this.Estado = Estado;
+            this.Pais = Pais;
+            CodPos = CP;
+            this.TelOficina = Telefono;
             this.Email = Email;
+            this.Activo = Activo;
+            this.Consultorio = Consultorio;
+            this.FechaAlta = FechaAlta;
         }
     }
 }

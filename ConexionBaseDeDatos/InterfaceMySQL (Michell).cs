@@ -13,5 +13,321 @@ namespace ConexionBaseDeDatos
     public static partial class InterfaceMySQL
     {
         //En esta clase sólo Michell deberá meter sólo los métodos y atributos que ocupe
+        
+        public static bool RecuperarPedido(string IDPedido, out RegistroPedido Pedido)
+        {
+            EjecutarProcedimientoAlmacenado("RecuperarPedido", TipoConsulta.DevuelveReader,
+                Parametro("IDPedid", IDPedido));
+            bool Exito = OperacionRealizada2;
+            Pedido = ObtenerPedido();
+            return Exito;
+        }
+
+        private static RegistroPedido ObtenerPedido()
+        {
+            RegistroPedido[] x = RellenarPedidos();
+            RegistroPedido temp = x.Length > 0 ? x[0] : null;
+            RegistrosAfectados = temp != null ? 1 : 0;
+            return temp;
+        }
+
+        public static bool ObtenerPedidos(out RegistroPedido[] Pedidos)
+        {
+            Pedidos = null;
+            EjecutarProcedimientoAlmacenado("ObtenerPedidos", TipoConsulta.DevuelveReader,
+                Parametro("", null));
+            bool Exito = OperacionRealizada2;
+            Pedidos = RellenarPedidos();
+            return Exito;
+        }
+
+        private static RegistroPedido[] RellenarPedidos()
+        {
+            RegistroPedido[] Pedidos = new RegistroPedido[TablaDeResultados.Rows.Count];
+            DataTable PedidosTemp = TablaDeResultados;
+            Pedidos = new RegistroPedido[PedidosTemp.Rows.Count];
+            for (int i = 0; i < Pedidos.Length; i++)
+            {
+                DataRow x = PedidosTemp.Rows[i];
+                RegistroUsuario RegistroPedido;
+                RegistroDentista Dentista;
+                RegistroUsuario Laboratorista;
+                RegistroTrabajo[] Trabajos;
+                RecuperarUsuario(x["IDEmpleado"].ToString(), out RegistroPedido);
+                RecuperarDentista(x["Cedula"].ToString(), out Dentista);
+                RecuperarUsuario(x["Laboratorista"].ToString(), out Laboratorista);
+                RecuperarProducto_Pedido(x["IDPedido"].ToString(), out Trabajos);
+                DateTime FI = ObtenerFecha(x["FechaIngreso"].ToString());
+                DateTime FC = ObtenerFecha(x["FechaCalculada"].ToString());
+                DateTime FE = ObtenerFecha(x["FechaEntrega"].ToString());
+                Pedidos[i] = new RegistroPedido
+                    (
+                    x["IDPedido"].ToString(),
+                    RegistroPedido,
+                    Dentista,
+                    Convert.ToInt32(x["EstadoPedido"].ToString()),
+                    FI,
+                    FC,
+                    FE,
+                    x["Urgencia"].ToString(),
+                    Convert.ToSingle(x["CostoTotal"].ToString()),
+                    Laboratorista,
+                    x["Pagado"].ToString(),
+                    Convert.ToSingle(x["RestantePagar"].ToString()),
+                    Trabajos
+                    );
+            }
+            return Pedidos;
+        }
+
+        #region Configuracion
+
+        public static bool RecuperarProducto(int IDProducto, out RegistroProducto Producto)
+        {
+            EjecutarProcedimientoAlmacenado("RecuperarProducto", TipoConsulta.DevuelveReader,
+                Parametro("IDProduct", IDProducto));
+            Producto = ObtenerProducto();
+            return OperacionRealizada2;
+        }
+
+        public static bool ObtenerProductos(out RegistroProducto[] Productos)
+        {
+            EjecutarProcedimientoAlmacenado("ObtenerProductos", TipoConsulta.DevuelveReader,
+                Parametro("", null));
+            Productos = RellenarProductos();
+            return OperacionRealizada2;
+        }
+
+        private static RegistroProducto ObtenerProducto()
+        {
+            RegistroProducto[] x = RellenarProductos();
+            RegistroProducto temp = x.Length > 0 ? x[0] : null;
+            RegistrosAfectados = temp != null ? 1 : 0;
+            return temp;
+        }
+
+        private static RegistroProducto[] RellenarProductos()
+        {
+            RegistroProducto[] Productos = new RegistroProducto[TablaDeResultados.Rows.Count];
+            for (int i = 0; i < Productos.Length; i++)
+            {
+                DataRow Registro = TablaDeResultados.Rows[i];
+                Productos[i] = new RegistroProducto
+                    (
+                    Convert.ToInt32(Registro["IDProducto"].ToString()),
+                    Registro["Nombre"].ToString(),
+                    Registro["Descripcion"].ToString(),
+                    Convert.ToInt32(Registro["TiempoBase"].ToString()),
+                    Convert.ToSingle(Registro["PrecioBase"].ToString()),
+                    Convert.ToSingle(Registro["PrecioCompra"].ToString()),
+                    Registro["Activo"].ToString(),
+                    Registro["UnidadMedida"].ToString(),
+                    Convert.ToInt32(Registro["Cantidad"].ToString())
+                    );
+            }
+            return Productos;
+        }
+
+        public static bool ObtenerMateriales(out RegistroMaterial[] Materiales)
+        {
+            EjecutarProcedimientoAlmacenado("ObtenerMateriales", TipoConsulta.DevuelveReader,
+                Parametro("", null));
+            bool Exito = OperacionRealizada2;
+            Materiales = RellenarMateriales();
+            return Exito;
+        }
+
+        public static bool RecuperarMaterial(int IDMaterial, out RegistroMaterial Material)
+        {
+            EjecutarProcedimientoAlmacenado("RecuperarMaterial", TipoConsulta.DevuelveReader,
+                Parametro("IDMateria", IDMaterial));
+            bool Exito = OperacionRealizada2;
+            Material = ObtenerMaterial();
+            return Exito;
+        }
+
+        private static RegistroMaterial ObtenerMaterial()
+        {
+            RegistroMaterial[] x = RellenarMateriales();
+            RegistroMaterial temp = x.Length > 0 ? x[0] : null;
+            RegistrosAfectados = temp != null ? 1 : 0;
+            return temp;
+        }
+
+        private static RegistroMaterial[] RellenarMateriales()
+        {
+            RegistroMaterial[] Materiales = new RegistroMaterial[TablaDeResultados.Rows.Count];
+            DataTable Mats = TablaDeResultados;
+            for (int i = 0; i < Materiales.Length; i++)
+            {
+                DataRow x = Mats.Rows[i];
+                RegistroProveedor Proveedor;
+                RecuperarProveedor(Convert.ToInt32(x["Proveedor"].ToString()), out Proveedor);
+                Materiales[i] = new RegistroMaterial
+                    (
+                    Convert.ToInt32(x["IDMaterial"].ToString()),
+                    x["Nombre"].ToString(),
+                    x["Descripcion"].ToString(),
+                    Convert.ToSingle(x["PrecioBase"].ToString()),
+                    Convert.ToSingle(x["PrecioCompra"].ToString()),
+                    Convert.ToInt32(x["TiempoBase"].ToString()),
+                    Proveedor,
+                    x["UnidadMedida"].ToString(),
+                    Convert.ToInt32(x["Cantidad"].ToString())
+                    );
+            }
+            return Materiales;
+        }
+
+        public static bool RecuperarProveedor(int IDProveedor, out RegistroProveedor Proveedor)
+        {
+            EjecutarProcedimientoAlmacenado("RecuperarProveedor", TipoConsulta.DevuelveReader,
+                Parametro("Proveedo", IDProveedor));
+            Proveedor = ObtenerProveedor();
+            return OperacionRealizada2;
+        }
+
+        private static RegistroProveedor ObtenerProveedor()
+        {
+            RegistroProveedor[] x = RellenarProveedores();
+            RegistroProveedor temp = x.Length > 0 ? x[0] : null;
+            RegistrosAfectados = temp != null ? 1 : 0;
+            return temp;
+        }
+
+        private static RegistroProveedor[] RellenarProveedores()
+        {
+            RegistroProveedor[] Proveedores = new RegistroProveedor[TablaDeResultados.Rows.Count];
+            for (int i = 0; i < Proveedores.Length; i++)
+            {
+                DataRow x = TablaDeResultados.Rows[i];
+                Proveedores[i] = new RegistroProveedor
+                    (
+                    Convert.ToInt32(x["IDProveedor"].ToString()),
+                    x["Nombre"].ToString(),
+                    x["Telefono"].ToString(),
+                    x["Correo"].ToString(),
+                    x["Direccion"].ToString(),
+                    x["Descripcion"].ToString()
+                    );
+            }
+            return Proveedores;
+        }
+
+        #endregion
+
+        #region Recepcion
+
+        public static bool RecuperarDentista(string Cedula, out RegistroDentista Dentista)
+        {
+            EjecutarProcedimientoAlmacenado("RecuperarDentista", TipoConsulta.DevuelveReader,
+                Parametro("Cedul", Cedula));
+            Dentista = ObtenerDentista();
+            return OperacionRealizada2;
+        }
+
+        private static RegistroDentista ObtenerDentista()
+        {
+            RegistroDentista[] x = RellenarDentistas();
+            RegistroDentista temp = x.Length > 0 ? x[0] : null;
+            RegistrosAfectados = temp != null ? 1 : 0;
+            return temp;
+        }
+
+        private static RegistroDentista[] RellenarDentistas()
+        {
+            RegistroDentista[] Dentistas = new RegistroDentista[TablaDeResultados.Rows.Count];
+            for (int i = 0; i < Dentistas.Length; i++)
+            {
+                DataRow x = TablaDeResultados.Rows[i];
+                Dentistas[i] = new RegistroDentista
+                    (
+                    x["Cedula"].ToString(),
+                    x["RFC"].ToString(),
+                    x["Nombre"].ToString(),
+                    x["Apellidos"].ToString(),
+                    x["Direccion"].ToString(),
+                    x["Colonia"].ToString(),
+                    x["Ciudad"].ToString(),
+                    x["Municipio"].ToString(),
+                    x["Estado"].ToString(),
+                    x["Pais"].ToString(),
+                    x["CodPos"].ToString(),
+                    x["TelOficina"].ToString(),
+                    x["Email"].ToString(),
+                    x["Activo"].ToString(),
+                    x["Consultorio"].ToString(),
+                    Convert.ToDateTime(x["FechaAlta"].ToString())
+                    );
+            }
+            return Dentistas;
+        }
+
+        public static bool RecuperarProducto_Pedido(string IDPedido, out RegistroTrabajo[] Trabajos)
+        {
+            EjecutarProcedimientoAlmacenado("RecuperarTrabajos", TipoConsulta.DevuelveReader,
+                Parametro("IDPedid", IDPedido));
+            bool Exito = OperacionRealizada2;
+            Trabajos = RellenarTrabajos();
+            return Exito;
+        }
+
+        private static RegistroTrabajo[] RellenarTrabajos()
+        {
+            RegistroTrabajo[] Trabajos = new RegistroTrabajo[TablaDeResultados.Rows.Count];
+            DataTable Trabs = TablaDeResultados;
+            for (int i = 0; i < Trabajos.Length; i++)
+            {
+                DataRow x = Trabs.Rows[i];
+                RegistroProducto Producto;
+                RegistroMaterial Material1;
+                RegistroMaterial Material2;
+                RecuperarProducto(Convert.ToInt32(x["IDProducto"].ToString()), out Producto);
+                RecuperarMaterial(Convert.ToInt32(x["IDMaterial1"].ToString()), out Material1);
+                string temp = string.IsNullOrWhiteSpace(x["IDMaterial2"].ToString()) ? "0" : x["IDMaterial2"].ToString();
+                RecuperarMaterial(Convert.ToInt32(temp), out Material2);
+
+                Trabajos[i] = new RegistroTrabajo
+                    (
+                    x["IDPedido"].ToString(),
+                    Producto,
+                    Material1,
+                    Material2
+                    );
+            }
+            return Trabajos;
+        }
+
+        #endregion
+
+        #region Ventas
+
+        public static bool InsertarVenta(RegistroVenta Venta)
+        {
+            EjecutarProcedimientoAlmacenado("InsertarVenta", TipoConsulta.DevuelveInt,
+                Parametro("IDPedid", Venta.Pedido.IDPedido),
+                Parametro("Importee", Venta.Importe),
+                Parametro("FechaPag", Venta.FechaPago),
+                Parametro("Logi", Venta.Registra.Login),
+                Parametro("PersonaPag", Venta.PersonaPaga),
+                Parametro("FormaPag", Venta.FormaPago));
+            return OperacionRealizada;
+        }
+
+        #endregion
+
+        #region Auxiliares
+
+        private static DateTime ObtenerFecha(string Fecha)
+        {
+            DateTime FechaAgRegresar = new DateTime();
+            if (!string.IsNullOrWhiteSpace(Fecha))
+            {
+                FechaAgRegresar = Convert.ToDateTime(Fecha);
+            }
+            return FechaAgRegresar;
+        }
+
+        #endregion
     }
 }

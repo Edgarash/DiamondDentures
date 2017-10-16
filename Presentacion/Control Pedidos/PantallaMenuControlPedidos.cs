@@ -32,10 +32,10 @@ namespace Presentacion.Control_Pedidos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaRegistrarPedido(null).GetType()))
+            if (!Validar.ValidarUnaPantalla(new PantallaRegistrarPedido().GetType()))
             {
                 Interface = new InterfaceUsuario(this);
-                Interface.DesplegarPantallaRegistrarPedido(Usuario);
+                Interface.DesplegarPantallaRegistrarPedido();
             }
         }
 
@@ -80,7 +80,7 @@ namespace Presentacion.Control_Pedidos
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Laboratorio.PantallaMenuLaboratorio lab = new Laboratorio.PantallaMenuLaboratorio(Usuario);
+            Laboratorio.PantallaMenuLaboratorio lab = new Laboratorio.PantallaMenuLaboratorio();
             lab.ShowDialog();
         }
 

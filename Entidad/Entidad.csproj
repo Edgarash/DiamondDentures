@@ -60,6 +60,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RegistroProveedor.cs" />
+    <Compile Include="RegistroVenta.cs" />
     <Compile Include="Resultados.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="FacturaReporte.cs">

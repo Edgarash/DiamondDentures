@@ -71,6 +71,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ManejadorRegistroProducto.cs" />
+    <Compile Include="Ventas\ManejadorVentas.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pantalla.resx">

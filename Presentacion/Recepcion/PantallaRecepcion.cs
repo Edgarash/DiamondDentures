@@ -9,22 +9,20 @@ namespace Presentacion.Recepcion
 {
     public partial class PantallaRecepcion : Pantalla
     {
-        string Usuario;
         public InterfaceUsuario Interface { get; private set; }
 
-        public PantallaRecepcion(string User)
+        public PantallaRecepcion()
         {
-            Usuario = User;
             InitializeComponent();
             InitializeComponent2();
         }
 
         private void btnAgregarPedido_Click(object sender, System.EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaRegistrarPedido("").GetType()))
+            if (!Validar.ValidarUnaPantalla(new PantallaRegistrarPedido().GetType()))
             {
                 Interface = new InterfaceUsuario(this);
-                Interface.DesplegarPantallaRegistrarPedido(Usuario);
+                Interface.DesplegarPantallaRegistrarPedido();
             }
         }
 
@@ -44,9 +42,9 @@ namespace Presentacion.Recepcion
                     {
                         if (DialogResult.Yes == MessageBox.Show("El número de pedido ingresado no existe\n\n¿Desea ver una lista de pedidos existentes?", "AVISO", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1))
                         {
-                            if (!Validar.ValidarUnaPantalla(new PantallaMenuControlPedidos(Usuario).GetType()))
+                            if (!Validar.ValidarUnaPantalla(new PantallaMenuControlPedidos(PantallaMenuPrincipal.Sesion.Login).GetType()))
                             {
-                                Interface.DesplegarPantallaControlPedidos(Usuario);
+                                Interface.DesplegarPantallaControlPedidos(PantallaMenuPrincipal.Sesion.Login);
                             }
                         }
                     }

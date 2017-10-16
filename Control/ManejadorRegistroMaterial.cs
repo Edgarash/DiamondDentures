@@ -20,8 +20,9 @@ namespace Control
 
         public RegistroMaterial[] ObtenerMateriales()
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ObtenerMateriales();
+            RegistroMaterial[] temp = null;
+            InterfaceMySQL.ObtenerMateriales(out temp);
+            return temp;
         }
 
         public RegistroMaterial ObtenerUnMaterial(int clave)

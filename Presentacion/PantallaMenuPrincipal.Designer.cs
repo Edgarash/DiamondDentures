@@ -42,11 +42,13 @@
             this.lblControlPedidos = new System.Windows.Forms.Label();
             this.lblLaboratorio = new System.Windows.Forms.Label();
             this.lblSemáforo = new System.Windows.Forms.Label();
+            this.kuroButton1 = new ControlesM.KuroButton();
             this.Encabezado.SuspendLayout();
             this.SuspendLayout();
             // 
             // Encabezado
             // 
+            this.Encabezado.Controls.Add(this.kuroButton1);
             this.Encabezado.Controls.Add(this.lblTituloMenu);
             this.Encabezado.Size = new System.Drawing.Size(626, 93);
             // 
@@ -245,6 +247,22 @@
             this.lblSemáforo.Text = "Semáforo";
             this.lblSemáforo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // kuroButton1
+            // 
+            this.kuroButton1.BackColor = System.Drawing.Color.White;
+            this.kuroButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.kuroButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.kuroButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.kuroButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.kuroButton1.ForeColor = System.Drawing.Color.Black;
+            this.kuroButton1.Location = new System.Drawing.Point(15, 21);
+            this.kuroButton1.Name = "kuroButton1";
+            this.kuroButton1.Size = new System.Drawing.Size(120, 50);
+            this.kuroButton1.TabIndex = 1;
+            this.kuroButton1.Text = "Ventas";
+            this.kuroButton1.UseVisualStyleBackColor = false;
+            this.kuroButton1.Click += new System.EventHandler(this.kuroButton1_Click);
+            // 
             // PantallaMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -302,5 +320,6 @@
         private System.Windows.Forms.Label lblControlPedidos;
         private System.Windows.Forms.Label lblLaboratorio;
         private System.Windows.Forms.Label lblSemáforo;
+        private ControlesM.KuroButton kuroButton1;
     }
 }

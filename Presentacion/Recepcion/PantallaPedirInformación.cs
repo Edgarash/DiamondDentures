@@ -53,9 +53,15 @@ namespace Presentacion.Recepcion
             ShowDialog();
             Cancelado = Cerrado;
             RegistroProducto[] temp = null;
-            if (!Cerrado)
-                temp = Interface.BuscarUnProducto(new RegistroProducto(Convert.ToInt32(tbNumEmpleado.Text== "" ? "-2" : tbNumEmpleado.Text), "", -1, -1, 1));
+            //if (!Cerrado)
+            //    temp = Interface.BuscarUnProducto(new RegistroProducto(Convert.ToInt32(tbNumEmpleado.Text== "" ? "-2" : tbNumEmpleado.Text), "", -1, -1, 1));
             return temp?[0] ?? null;
+        }
+
+        public static RegistroPedido PedirUnPedido(out bool Cancelado)
+        {
+            PantallaPedirInformación x = new PantallaPedirInformación();
+            return x.PedirPedido(out Cancelado);
         }
 
         public RegistroMaterial PedirMaterial(out bool Cancelado)
@@ -92,8 +98,8 @@ namespace Presentacion.Recepcion
             ShowDialog();
             Cancelado = Cerrado;
             RegistroMaterial [] temp = null;
-            if (!Cerrado)
-                temp = Interface.BuscarUnMaterial(new RegistroMaterial(Convert.ToInt32(tbNumEmpleado.Text == "" ? "-2" : tbNumEmpleado.Text), "", -1, -1));
+            //if (!Cerrado)
+            //    temp = Interface.BuscarUnMaterial(new RegistroMaterial(Convert.ToInt32(tbNumEmpleado.Text == "" ? "-2" : tbNumEmpleado.Text), "", -1, -1));
             return temp?[0] ?? null;
         }
 

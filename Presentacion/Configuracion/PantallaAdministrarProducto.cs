@@ -15,13 +15,14 @@ namespace Presentacion.Configuracion
     {
         InterfaceUsuario Interface;
         enum Búsqueda { Total, Clave, Personalizada };
+        RegistroProducto[] Productos;
 
         public PantallaAdministrarProducto()
         {
             InitializeComponent();
             InitializeComponent2();
             LlenarData(Búsqueda.Total);
-            
+            Productos = Interface.ObtenerProductos();
         }
 
         private void LlenarData(Búsqueda Tipo)
@@ -37,25 +38,51 @@ namespace Presentacion.Configuracion
             Interface = new InterfaceUsuario(this);
             RegistroProducto[] temp = null;
             if (Tipo == Búsqueda.Total)
-                temp = Interface.BuscarUnProducto(new RegistroProducto(-1, "", -1, -1, 1));
+                temp = Productos;
             else
             {
                 if (Tipo == Búsqueda.Clave)
-                    temp = Interface.BuscarUnProducto(new RegistroProducto(Convert.ToInt32(tbClave.Text), "", -1, -1, 1));
+                {
+                    List<RegistroProducto> x = new List<RegistroProducto>();
+                    for (int i = 0; i < temp.Length; i++)
+                    {
+                        bool Agregar = true;
+                        string Clave = temp[i].IDProducto.ToString();
+                        for (int j = 0; j < Clave.Length && Agregar; j++)
+                            if (tbClave.Text[j] != Clave[j])
+                                Agregar = false;
+                        if (Agregar)
+                            x.Add(temp[i]);
+                    }
+                }
                 else
+                {
                     if (Tipo == Búsqueda.Personalizada)
-                        temp = Interface.BuscarUnProducto(new RegistroProducto(-1, tbNombre.Text, Convert.ToInt32(tbDias.Text =="" ? "-1" : tbDias.Text), Convert.ToSingle(tbPrecio.Text == "" ? "-1" : tbPrecio.Text), 1));
+                    {
+                        List<RegistroProducto> x = new List<RegistroProducto>();
+                        for (int i = 0; i < temp.Length; i++)
+                        {
+                            bool Agregar = true;
+                            string Nombre = temp[i].Nombre.ToString();
+                            for (int j = 0; j < Nombre.Length && Agregar; j++)
+                                if (tbNombre.Text[j] != Nombre[j])
+                                    Agregar = false;
+                            if (Agregar)
+                                x.Add(temp[i]);
+                        }
+                    }
+                }
             }
             if (temp != null)
             {
                 dgvProductos.RowCount = temp.Length;
                 for (int i = 0; i < temp.Length; i++)
                 {
-                    dgvProductos[0, i].Value = temp[i].Clave;
+                    dgvProductos[0, i].Value = temp[i].IDProducto;
                     dgvProductos[1, i].Value = temp[i].Nombre;
-                    dgvProductos[2, i].Value = temp[i].Dias + " Dias";
-                    dgvProductos[3, i].Value = "$" + temp[i].Precio.ToString();
-                    dgvProductos.Rows[i].DefaultCellStyle.BackColor = temp[i].Activo == 0 ? Color.LightSalmon : Color.LightGreen;
+                    dgvProductos[2, i].Value = temp[i].TiempoBase + " Dias";
+                    dgvProductos[3, i].Value = "$" + temp[i].PrecioBase.ToString();
+                    //dgvProductos.Rows[i].DefaultCellStyle.BackColor = temp[i].Activo == 0 ? Color.LightSalmon : Color.LightGreen;
                 }
             }
             if (dgvProductos.SelectedCells.Count > 0)
