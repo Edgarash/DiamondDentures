@@ -161,8 +161,8 @@ namespace ConexionBaseDeDatos
             for (int i = 0; i < Materiales.Length; i++)
             {
                 DataRow x = Mats.Rows[i];
-                RegistroProveedor Proveedor;
-                RecuperarProveedor(Convert.ToInt32(x["Proveedor"].ToString()), out Proveedor);
+                //RegistroProveedor Proveedor;
+                //RecuperarProveedor(Convert.ToInt32(x["Proveedor"].ToString()), out Proveedor);
                 Materiales[i] = new RegistroMaterial
                     (
                     Convert.ToInt32(x["IDMaterial"].ToString()),
@@ -171,9 +171,10 @@ namespace ConexionBaseDeDatos
                     Convert.ToSingle(x["PrecioBase"].ToString()),
                     Convert.ToSingle(x["PrecioCompra"].ToString()),
                     Convert.ToInt32(x["TiempoBase"].ToString()),
-                    Proveedor,
+                    Convert.ToInt32(x["Proveedor"].ToString()),
                     x["UnidadMedida"].ToString(),
-                    Convert.ToInt32(x["Cantidad"].ToString())
+                    Convert.ToInt32(x["Cantidad"].ToString()),
+                    Convert.ToInt32(x["CantidadReal"].ToString())
                     );
             }
             return Materiales;

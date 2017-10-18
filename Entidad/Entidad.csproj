@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompraMaterial.cs" />
     <Compile Include="Correo.cs" />
     <Compile Include="Datos.cs" />
     <Compile Include="DatosBusqueda.cs" />

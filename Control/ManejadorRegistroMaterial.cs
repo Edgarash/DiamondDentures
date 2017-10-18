@@ -25,6 +25,13 @@ namespace Control
             return temp;
         }
 
+        public RegistroMaterial[] MostrarFaltantes()
+        {
+            RegistroMaterial[] temp = null;
+            InterfaceMySQL.MostrarFaltantes(out temp);
+            return temp;
+        }
+
         public RegistroMaterial ObtenerUnMaterial(int clave)
         {
             Interface = new InterfaceBaseDeDatos();

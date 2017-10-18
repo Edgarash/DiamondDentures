@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManejadorAlmacen.cs" />
     <Compile Include="Manejador.cs" />
     <Compile Include="ManejadorBorrarFactura.cs" />
     <Compile Include="ManejadorConfiguracion.cs" />

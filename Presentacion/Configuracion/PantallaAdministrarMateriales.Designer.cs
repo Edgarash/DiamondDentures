@@ -38,15 +38,15 @@
             this.lblClave = new System.Windows.Forms.Label();
             this.btnBuscarClave = new System.Windows.Forms.Button();
             this.dgvMateriales = new System.Windows.Forms.DataGridView();
+            this.Clave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblRegistrarDentista = new System.Windows.Forms.Label();
             this.btnEliminarMaterial = new System.Windows.Forms.Button();
             this.btnAgregarMaterial = new System.Windows.Forms.Button();
             this.btnModificarMaterial = new System.Windows.Forms.Button();
-            this.Clave = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMateriales)).BeginInit();
@@ -180,6 +180,27 @@
             this.dgvMateriales.TabIndex = 19;
             this.dgvMateriales.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMateriales_CellMouseDown);
             // 
+            // Clave
+            // 
+            this.Clave.FillWeight = 30F;
+            this.Clave.HeaderText = "Clave";
+            this.Clave.Name = "Clave";
+            this.Clave.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.FillWeight = 67.62117F;
+            this.Nombre.HeaderText = "Nombre Material";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            this.Precio.FillWeight = 40F;
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -267,27 +288,6 @@
             this.btnModificarMaterial.UseVisualStyleBackColor = true;
             this.btnModificarMaterial.Click += new System.EventHandler(this.btnModificarMaterial_Click);
             // 
-            // Clave
-            // 
-            this.Clave.FillWeight = 30F;
-            this.Clave.HeaderText = "Clave";
-            this.Clave.Name = "Clave";
-            this.Clave.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.FillWeight = 67.62117F;
-            this.Nombre.HeaderText = "Nombre Material";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Precio
-            // 
-            this.Precio.FillWeight = 40F;
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            // 
             // PantallaAdministrarMateriales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -307,6 +307,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblClave);
             this.Name = "PantallaAdministrarMateriales";
+            this.Load += new System.EventHandler(this.PantallaAdministrarMateriales_Load);
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.lblClave, 0);
             this.Controls.SetChildIndex(this.label2, 0);

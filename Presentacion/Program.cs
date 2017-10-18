@@ -20,7 +20,8 @@ namespace Presentacion
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new PantallaMenuPrincipal(Admin, new PantallaLogin()));
             //Application.Run(new Ventas.PantallaVentas());
-            Application.Run(new PantallaLogin());
+            //Application.Run(new PantallaLogin());
+            Application.Run(new Presentacion.Almacen_y_Proveedores.Menu());
         }
     }
 }

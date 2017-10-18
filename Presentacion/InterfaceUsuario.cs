@@ -98,6 +98,12 @@ namespace Presentacion
             return (Manejador as ManejadorRegistroMaterial).ObtenerMateriales();
         }
 
+        internal RegistroMaterial[] MostrarFaltantes()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).MostrarFaltantes();
+        }
+
         public void DesplegarPantallaRegistrarUsuario(string User, int NumeroEmpleado)
         {
             Manejador = new ManejadorLogin(Pantalla);

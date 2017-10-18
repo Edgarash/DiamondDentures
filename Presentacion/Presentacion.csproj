@@ -65,7 +65,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlesM">
-      <HintPath>..\..\ControlesM\ControlesM\bin\Debug\ControlesM.dll</HintPath>
+      <HintPath>.\ControlesM.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -87,6 +87,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Almacen y Proveedores\AgregarProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen y Proveedores\AgregarProveedor.Designer.cs">
+      <DependentUpon>AgregarProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen y Proveedores\Inventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen y Proveedores\Inventario.Designer.cs">
+      <DependentUpon>Inventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen y Proveedores\Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen y Proveedores\Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen y Proveedores\MostrarFaltantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen y Proveedores\MostrarFaltantes.Designer.cs">
+      <DependentUpon>MostrarFaltantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen y Proveedores\SolicitarMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen y Proveedores\SolicitarMaterial.Designer.cs">
+      <DependentUpon>SolicitarMaterial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configuracion\PantallaAdministrarMateriales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -349,6 +379,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Almacen y Proveedores\AgregarProveedor.resx">
+      <DependentUpon>AgregarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen y Proveedores\Inventario.resx">
+      <DependentUpon>Inventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen y Proveedores\Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen y Proveedores\MostrarFaltantes.resx">
+      <DependentUpon>MostrarFaltantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen y Proveedores\SolicitarMaterial.resx">
+      <DependentUpon>SolicitarMaterial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Configuracion\PantallaAdministrarMateriales.resx">
       <DependentUpon>PantallaAdministrarMateriales.cs</DependentUpon>
     </EmbeddedResource>
