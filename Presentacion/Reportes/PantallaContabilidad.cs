@@ -318,7 +318,7 @@ namespace Presentacion.Reportes
             // 
             // btnGenerarFactura
             // 
-            this.btnGenerarFactura.BackgroundImage = global::Presentacion.Properties.Resources.invoice_account_bank_check_bill_finance_paper_financial_item_flat_icon_symbol_512;
+            this.btnGenerarFactura.BackgroundImage = global::Presentacion.Properties.Resources.invoice_account_bank_check;
             this.btnGenerarFactura.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGenerarFactura.FlatAppearance.BorderSize = 0;
             this.btnGenerarFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

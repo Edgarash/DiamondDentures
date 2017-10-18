@@ -108,7 +108,7 @@ namespace Presentacion.Reportes
             // 
             // btnBuscarPedido
             // 
-            this.btnBuscarPedido.BackgroundImage = global::Presentacion.Properties.Resources.Multimedia_communication_flat_mobile_Technology_08_38_512;
+            this.btnBuscarPedido.BackgroundImage = global::Presentacion.Properties.Resources.Multimedia_communication_flat_mobile;
             this.btnBuscarPedido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscarPedido.FlatAppearance.BorderSize = 0;
             this.btnBuscarPedido.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

@@ -206,7 +206,7 @@ namespace Presentacion.Reportes
             // 
             // btnBuscar
             // 
-            this.btnBuscar.BackgroundImage = global::Presentacion.Properties.Resources.Multimedia_communication_flat_mobile_Technology_08_38_512;
+            this.btnBuscar.BackgroundImage = global::Presentacion.Properties.Resources.Multimedia_communication_flat_mobile;
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

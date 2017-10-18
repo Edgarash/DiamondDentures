@@ -282,7 +282,7 @@ namespace Presentacion.Reportes
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::Presentacion.Properties.Resources.invoice_account_bank_check_bill_finance_paper_financial_item_flat_icon_symbol_512;
+            this.pictureBox1.BackgroundImage = global::Presentacion.Properties.Resources.invoice_account_bank_check;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(23, 15);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
