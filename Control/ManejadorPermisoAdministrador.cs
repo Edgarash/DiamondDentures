@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConexionBaseDeDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +15,7 @@ namespace Control
         }
         public bool PermisoObtenido(string Password)
         {
-            Interface = new ConexionBaseDeDatos.InterfaceBaseDeDatos();
-            return Interface.ObtenerPermiso(Password);
+            return InterfaceMySQL.ObtenerPermisoAdministrador(Password);
         }
     }
 }

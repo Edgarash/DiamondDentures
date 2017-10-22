@@ -2,7 +2,6 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
-using System.IO;
 using System.Windows.Forms;
 
 namespace ConexionBaseDeDatos
@@ -37,6 +36,11 @@ namespace ConexionBaseDeDatos
         /// Define los tipos que puede devolver un procedimiento almacenado.
         /// </summary>
         enum TipoConsulta { DevuelveInt, DevuelveReader };
+
+        /// <summary>
+        /// Determina si se debe usar la base de datos en la nube o no
+        /// </summary>
+        public static bool Nube { get; set; }
 
         /// <summary>
         /// Nombre del Administrador de la base de datos
@@ -101,16 +105,20 @@ namespace ConexionBaseDeDatos
         /// <summary>
         /// Crea o Actualiza la base de datos en la nube
         /// </summary>
-        public static void ActualizarBaseDeDatos()
+        public static bool ActualizarBaseDeDatos()
         {
             InicializarConexion("mysql");
-            EjecutarConsulta(Properties.Resources.Script_TablasDD);
-            InicializarConexion();
-            EjecutarConsulta(Properties.Resources.Script_Procedimientos_Base);
-            EjecutarConsulta(Properties.Resources.Script_Rolland);
-            EjecutarConsulta(Properties.Resources.Script_Olachea);
-            EjecutarConsulta(Properties.Resources.Script_Yazahel);
-            EjecutarConsulta(Properties.Resources.Script_Michell);
+            bool Abierto = EjecutarConsulta(Properties.Resources.Script_TablasDD);
+            if (Abierto)
+            {
+                InicializarConexion();
+                EjecutarConsulta(Properties.Resources.Script_Procedimientos_Base);
+                EjecutarConsulta(Properties.Resources.Script_Rolland);
+                EjecutarConsulta(Properties.Resources.Script_Olachea);
+                EjecutarConsulta(Properties.Resources.Script_Yazahel);
+                EjecutarConsulta(Properties.Resources.Script_Michell);
+            }
+            return Abierto;
         }
 
         /// <summary>
@@ -133,21 +141,29 @@ namespace ConexionBaseDeDatos
             Cadena.Database = BD;
             Cadena.Server = Servidor;
             Cadena.Password = Contraseña;
-            //Cadena.Password = "PASSROOT";
-            //Cadena.Server = "localhost";
-            Conexion = new MySqlConnection(Cadena.ConnectionString);
+            MySqlConnectionStringBuilder Local = new MySqlConnectionStringBuilder();
+            Local.Port = Puerto;
+            Local.UserID = Administrador;
+            Local.Database = BD;
+            Local.Server = "localhost";
+            Local.Password = "PASSROOT";
+            Conexion = new MySqlConnection(Nube ? Cadena.ConnectionString : Local.ConnectionString);
         }
 
         /// <summary>
         /// Manda a ejecutar la consulta establecida en el parámetro.
         /// </summary>
         /// <param name="Consulta">Consulta a ejecutar en el gestor de base de datos</param>
-        static void EjecutarConsulta(string Consulta)
+        static bool EjecutarConsulta(string Consulta)
         {
-            AbrirConexion();
-            Comando = new MySqlCommand(Consulta, Conexion);
-            Comando.ExecuteNonQuery();
-            CerrarConexion();
+            bool Abierto = AbrirConexion();
+            if (Abierto)
+            {
+                Comando = new MySqlCommand(Consulta, Conexion);
+                Comando.ExecuteNonQuery();
+                CerrarConexion();
+            }
+            return Abierto;
         }
 
         /// <summary>
@@ -159,7 +175,7 @@ namespace ConexionBaseDeDatos
         {
             Comando = new MySqlCommand(NombreProcedimiento, Conexion);
             Comando.CommandType = CommandType.StoredProcedure;
-            AbrirConexion();
+            bool Abierto = AbrirConexion();
             Lector = Comando.ExecuteReader();
             TablaDeResultados = new DataTable();
             TablaDeResultados.Load(Lector);
@@ -174,23 +190,27 @@ namespace ConexionBaseDeDatos
         /// <param name="Datos">Datos a insertar como parametros en el procedimiento</param>
         /// <returns>Número de registros afectador por la operación</returns>
 
-        static void EjecutarProcedimientoAlmacenado
+        static bool EjecutarProcedimientoAlmacenado
             (string NombreProcedimiento, TipoConsulta Tipo, params MySqlParameter[] Datos)
         {
             Comando = new MySqlCommand(NombreProcedimiento, Conexion);
             for (int i = 0; i < Datos.Length; i++)
                 Comando.Parameters.Add(Datos[i]);
             Comando.CommandType = CommandType.StoredProcedure;
-            AbrirConexion();
-            if (Tipo == TipoConsulta.DevuelveInt)
-                RegistrosAfectados = Comando.ExecuteNonQuery();
-            else
+            bool Abierto = AbrirConexion();
+            if (Abierto)
             {
-                Lector = Comando.ExecuteReader();
-                TablaDeResultados = new DataTable();
-                TablaDeResultados.Load(Lector);
+                if (Tipo == TipoConsulta.DevuelveInt)
+                    RegistrosAfectados = Comando.ExecuteNonQuery();
+                else
+                {
+                    Lector = Comando.ExecuteReader();
+                    TablaDeResultados = new DataTable();
+                    TablaDeResultados.Load(Lector);
+                }
+                CerrarConexion();
             }
-            CerrarConexion();
+            return Abierto;
         }
 
         /// <summary>
@@ -207,8 +227,9 @@ namespace ConexionBaseDeDatos
         /// <summary>
         /// Abre la conexión
         /// </summary>
-        static void AbrirConexion()
+        static bool AbrirConexion()
         {
+            bool Abierto = true;
             try
             {
                 if (Conexion.State != ConnectionState.Open)
@@ -223,8 +244,10 @@ namespace ConexionBaseDeDatos
             }
             catch (Exception ms)
             {
-                MessageBox.Show("No se pudo establecer la conexión, por favor revisa tu conexión a internet", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("No se pudo establecer la conexión, por favor revisa tu conexión a internet\n\nSe cerrará el sistema", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Abierto = false;
             }
+            return Abierto;
         }
 
         /// <summary>

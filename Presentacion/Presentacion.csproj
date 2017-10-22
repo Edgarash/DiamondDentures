@@ -335,6 +335,12 @@
     <Compile Include="Ventas\PantallaInformacionGeneral.designer.cs">
       <DependentUpon>PantallaInformacionGeneral.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventas\PantallaPedidosNoPagados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\PantallaPedidosNoPagados.Designer.cs">
+      <DependentUpon>PantallaPedidosNoPagados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventas\PantallaRealizarPago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -346,6 +352,18 @@
     </Compile>
     <Compile Include="Ventas\PantallaVentas.designer.cs">
       <DependentUpon>PantallaVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\PantallaVerVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\PantallaVerVentas.Designer.cs">
+      <DependentUpon>PantallaVerVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\RealizarCorte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\RealizarCorte.Designer.cs">
+      <DependentUpon>RealizarCorte.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -504,11 +522,20 @@
     <EmbeddedResource Include="Ventas\PantallaInformacionGeneral.resx">
       <DependentUpon>PantallaInformacionGeneral.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\PantallaPedidosNoPagados.resx">
+      <DependentUpon>PantallaPedidosNoPagados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventas\PantallaRealizarPago.resx">
       <DependentUpon>PantallaRealizarPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas\PantallaVentas.resx">
       <DependentUpon>PantallaVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\PantallaVerVentas.resx">
+      <DependentUpon>PantallaVerVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\RealizarCorte.resx">
+      <DependentUpon>RealizarCorte.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

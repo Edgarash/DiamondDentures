@@ -64,6 +64,13 @@ namespace Presentacion.Recepcion
             return x.PedirPedido(out Cancelado);
         }
 
+        public static RegistroPedido PedirUnPedidoNoPagado(out bool Cancelado)
+        {
+            PantallaPedirInformación x = new PantallaPedirInformación();
+            x.kuroButton1.Visible = true;
+            return x.PedirPedido(out Cancelado);
+        }
+
         public RegistroMaterial PedirMaterial(out bool Cancelado)
         {
             InterfaceUsuario Interface = new InterfaceUsuario(this);
@@ -165,6 +172,14 @@ namespace Presentacion.Recepcion
             if (!Cerrado)
                 temp = Interface.ObtenerUnDentista(tbNumEmpleado.Text);
             return temp;
+        }
+
+        private void kuroButton1_Click(object sender, EventArgs e)
+        {
+            Ventas.PantallaPedidosNoPagados temp = new Ventas.PantallaPedidosNoPagados();
+            Hide();
+            temp.ShowDialog(this);
+            Close();
         }
     }
 }

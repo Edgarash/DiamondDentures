@@ -307,11 +307,89 @@ namespace ConexionBaseDeDatos
             EjecutarProcedimientoAlmacenado("InsertarVenta", TipoConsulta.DevuelveInt,
                 Parametro("IDPedid", Venta.Pedido.IDPedido),
                 Parametro("Importee", Venta.Importe),
-                Parametro("FechaPag", Venta.FechaPago),
+                Parametro("Recibid", Venta.Recibido),
+                Parametro("FechaPag", ObtenerFechaHora(Venta.FechaPago)),
                 Parametro("Logi", Venta.Registra.Login),
                 Parametro("PersonaPag", Venta.PersonaPaga),
                 Parametro("FormaPag", Venta.FormaPago));
             return OperacionRealizada;
+        }
+
+        public static bool VerVentas(int IDVenta, DateTime FechaMin, DateTime FechaMax,
+            string IDPedido, string Nombre, string Referencia, bool Efectivo, bool Tarjeta,
+            bool Cheque, out DataTable Datos, out RegistroVenta[] Ventas)
+        {
+            EjecutarProcedimientoAlmacenado("VerVentas", TipoConsulta.DevuelveReader,
+                Parametro("IDVent", IDVenta),
+                Parametro("FechaPagoMin", ObtenerFecha(FechaMin)),
+                Parametro("FechaPagoMax", ObtenerFecha(FechaMax)),
+                Parametro("IDPedid", IDPedido),
+                Parametro("Nombre", Nombre),
+                Parametro("Referenci", Referencia),
+                Parametro("Efectivo", Efectivo),
+                Parametro("Tarjeta", Tarjeta),
+                Parametro("Cheque", Cheque));
+            Datos = TablaDeResultados;
+            Ventas = RellenarVentas();
+            return OperacionRealizada2;
+        }
+
+        public static bool BuscarPedidosNoPagados(string IDPedido, DateTime FechaMin, DateTime FechaMax,
+            string Empleado, string Dentista, bool Urgente, bool NoPagado, out RegistroPedido[] Pedidos)
+        {
+            EjecutarProcedimientoAlmacenado("BuscarPedidosNoPagados", TipoConsulta.DevuelveReader,
+                Parametro("IDPedid", IDPedido),
+                Parametro("Empleado", Empleado),
+                Parametro("Dentista", Dentista),
+                Parametro("FechaMin", ObtenerFechaHora(FechaMin)),
+                Parametro("FechaMax", ObtenerFechaHora(FechaMax)),
+                Parametro("Urgente", Urgente),
+                Parametro("NoPagado", NoPagado));
+            Pedidos = RellenarPedidos();
+            return OperacionRealizada2;
+        }
+
+        public static bool RealizarDevolucionTicket(int IDVenta)
+        {
+            EjecutarProcedimientoAlmacenado("DevolucionPago", TipoConsulta.DevuelveInt,
+                Parametro("IDVent", IDVenta));
+            return OperacionRealizada;
+        }
+
+        public static bool ObtenerPermisoAdministrador(string Password)
+        {
+            EjecutarProcedimientoAlmacenado("ObtenerPermisoAdministrador", TipoConsulta.DevuelveReader,
+                Parametro("pass", Password));
+            return OperacionRealizada2;
+        }
+
+        public static DataTable UltimoCorteCaja()
+        {
+            EjecutarProcedimientoAlmacenado("UltimoCorteCaja", TipoConsulta.DevuelveReader);
+            return TablaDeResultados;
+        }
+
+        private static RegistroVenta[] RellenarVentas()
+        {
+            DataTable Ventas = TablaDeResultados;
+            RegistroVenta[] Ventitas = new RegistroVenta[Ventas.Rows.Count];
+            for (int i = 0; i < Ventitas.Length; i++)
+            {
+                DataRow x = Ventas.Rows[i];
+                RegistroUsuario Empleado;
+                RegistroPedido Pedido;
+                RecuperarUsuario(x["Login"].ToString(), out Empleado);
+                RecuperarPedido(x["IDPedido"].ToString(), out Pedido);
+                Ventitas[i] = new RegistroVenta(Pedido,
+                    Convert.ToSingle(x["Importe"].ToString()),
+                    Convert.ToSingle(x["Recibido"].ToString()),
+                    Convert.ToDateTime(x["FechaPago"].ToString()),
+                    Empleado,
+                    x["Referencia"].ToString(),
+                    x["FormaPago"].ToString()
+                    );
+            }
+            return Ventitas;
         }
 
         #endregion
@@ -326,6 +404,21 @@ namespace ConexionBaseDeDatos
                 FechaAgRegresar = Convert.ToDateTime(Fecha);
             }
             return FechaAgRegresar;
+        }
+
+        private static string ObtenerFecha(DateTime Fecha)
+        {
+            return Fecha.Year + "-" + Fecha.Month + "-" + Fecha.Day;
+        }
+
+        private static string ObtenerHora(DateTime Fecha)
+        {
+            return Fecha.Hour.ToString("D2") + ":" + Fecha.Minute.ToString("D2") + ":" + Fecha.Second.ToString("D2");
+        }
+
+        private static string ObtenerFechaHora(DateTime Fecha)
+        {
+            return ObtenerFecha(Fecha) + " " + ObtenerHora(Fecha);
         }
 
         #endregion

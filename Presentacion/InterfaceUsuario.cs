@@ -218,8 +218,8 @@ namespace Presentacion
 
         public bool PermisoDeAdministrador()
         {
-            PantallaPermisoAdministrador Permiso = new PantallaPermisoAdministrador();
-            return Permiso.PermisoAdmin();
+            bool Cancelado;
+            return PantallaPermisoAdministrador.PedirPermisoAdministrador(out Cancelado);
         }
 
         public bool HayAdministradores()

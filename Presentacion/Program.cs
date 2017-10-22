@@ -15,12 +15,13 @@ namespace Presentacion
         [STAThread]
         static void Main(string[] Args)
         {
-            ConexionBaseDeDatos.InterfaceMySQL.ActualizarBaseDeDatos();
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new PantallaMenuPrincipal(Admin, new PantallaLogin()));
-            //Application.Run(new Ventas.PantallaVentas());
-            Application.Run(new PantallaLogin());
+            ConexionBaseDeDatos.InterfaceMySQL.Nube = false;
+            if (ConexionBaseDeDatos.InterfaceMySQL.ActualizarBaseDeDatos())
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new PantallaLogin());
+            }
         }
     }
 }

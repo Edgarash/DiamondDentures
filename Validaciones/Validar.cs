@@ -586,6 +586,17 @@ namespace Validaciones
                     e.Handled = true;
             }
         }
+
+        public static void NoApostrofes(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\'')
+                e.Handled = true;
+        }
+
+        public static DialogResult MensajeInfo(string Mensaje)
+        {
+            return MessageBox.Show(Mensaje, "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
 

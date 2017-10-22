@@ -97,6 +97,38 @@
             label5.TabIndex = 0;
             label5.Text = "$";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(218, 177);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(228, 20);
+            label3.TabIndex = 0;
+            label3.Text = "Se Recibe Pago A Nombre De:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            label6.Location = new System.Drawing.Point(13, 82);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(120, 31);
+            label6.TabIndex = 0;
+            label6.Text = "ABONO:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = System.Drawing.Color.White;
+            label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
+            label7.ForeColor = System.Drawing.Color.Black;
+            label7.Location = new System.Drawing.Point(132, 79);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(34, 37);
+            label7.TabIndex = 0;
+            label7.Text = "$";
+            // 
             // lblCambio
             // 
             this.lblCambio.AutoSize = true;
@@ -134,7 +166,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 167);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 122);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Formas De Pago";
             // 
@@ -144,7 +176,7 @@
             this.rbCheque.Location = new System.Drawing.Point(17, 85);
             this.rbCheque.Name = "rbCheque";
             this.rbCheque.Size = new System.Drawing.Size(96, 24);
-            this.rbCheque.TabIndex = 0;
+            this.rbCheque.TabIndex = 4;
             this.rbCheque.Text = "CHEQUE";
             this.rbCheque.UseVisualStyleBackColor = true;
             // 
@@ -154,7 +186,7 @@
             this.rbTarjeta.Location = new System.Drawing.Point(17, 55);
             this.rbTarjeta.Name = "rbTarjeta";
             this.rbTarjeta.Size = new System.Drawing.Size(98, 24);
-            this.rbTarjeta.TabIndex = 0;
+            this.rbTarjeta.TabIndex = 3;
             this.rbTarjeta.Text = "TARJETA";
             this.rbTarjeta.UseVisualStyleBackColor = true;
             // 
@@ -165,7 +197,7 @@
             this.rbEfectivo.Location = new System.Drawing.Point(17, 25);
             this.rbEfectivo.Name = "rbEfectivo";
             this.rbEfectivo.Size = new System.Drawing.Size(107, 24);
-            this.rbEfectivo.TabIndex = 0;
+            this.rbEfectivo.TabIndex = 2;
             this.rbEfectivo.TabStop = true;
             this.rbEfectivo.Text = "EFECTIVO";
             this.rbEfectivo.UseVisualStyleBackColor = true;
@@ -177,7 +209,7 @@
             this.tbRecibe.MaxLength = 7;
             this.tbRecibe.Name = "tbRecibe";
             this.tbRecibe.Size = new System.Drawing.Size(151, 38);
-            this.tbRecibe.TabIndex = 2;
+            this.tbRecibe.TabIndex = 1;
             this.tbRecibe.TextChanged += new System.EventHandler(this.CalcularCambio);
             // 
             // kuroButton1
@@ -191,38 +223,21 @@
             this.kuroButton1.Location = new System.Drawing.Point(12, 295);
             this.kuroButton1.Name = "kuroButton1";
             this.kuroButton1.Size = new System.Drawing.Size(560, 50);
-            this.kuroButton1.TabIndex = 3;
+            this.kuroButton1.TabIndex = 6;
             this.kuroButton1.Text = "Aceptar";
             this.kuroButton1.UseVisualStyleBackColor = false;
             this.kuroButton1.Click += new System.EventHandler(this.kuroButton1_Click);
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(218, 177);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(228, 20);
-            label3.TabIndex = 0;
-            label3.Text = "Se Recibe Pago A Nombre De:";
-            // 
             // tbPersonaPaga
             // 
+            this.tbPersonaPaga.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbPersonaPaga.Location = new System.Drawing.Point(222, 201);
+            this.tbPersonaPaga.MaxLength = 50;
             this.tbPersonaPaga.Multiline = true;
             this.tbPersonaPaga.Name = "tbPersonaPaga";
             this.tbPersonaPaga.Size = new System.Drawing.Size(345, 88);
-            this.tbPersonaPaga.TabIndex = 4;
-            this.tbPersonaPaga.Text = "Cliente";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            label6.Location = new System.Drawing.Point(13, 82);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(120, 31);
-            label6.TabIndex = 0;
-            label6.Text = "ABONO:";
+            this.tbPersonaPaga.TabIndex = 5;
+            this.tbPersonaPaga.Text = "CLIENTE";
             // 
             // tbAbono
             // 
@@ -231,21 +246,8 @@
             this.tbAbono.MaxLength = 7;
             this.tbAbono.Name = "tbAbono";
             this.tbAbono.Size = new System.Drawing.Size(151, 38);
-            this.tbAbono.TabIndex = 2;
+            this.tbAbono.TabIndex = 0;
             this.tbAbono.TextChanged += new System.EventHandler(this.CalcularCambio);
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.BackColor = System.Drawing.Color.White;
-            label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
-            label7.ForeColor = System.Drawing.Color.Black;
-            label7.Location = new System.Drawing.Point(132, 79);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(34, 37);
-            label7.TabIndex = 0;
-            label7.Text = "$";
             // 
             // PantallaRealizarPago
             // 

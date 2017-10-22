@@ -111,31 +111,6 @@ namespace ConexionBaseDeDatos
             return EnviarConfirmacion(nc);
         }
 
-        /// <summary>
-        /// Método encargado de solicitar a la base de datos la confirmación de la existencia de esa contraseña como contraseña de administrador
-        /// </summary>
-        /// <param name="Pass">Contrasñea a ser verificada</param>
-        /// <returns>Confirmación de la contraseña como de un usuario de administrador</returns>
-        public bool ObtenerPermiso(string Pass)
-        {
-            var command = new MySqlCommand("ObtenerPermiso", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@pass", Pass);
-            Open();
-            var reader = command.ExecuteReader();
-            bool Permiso = false;
-            if (reader.HasRows)
-            {
-                reader.Read();
-                if (Pass == (reader["result"].ToString()))
-                {
-                    Permiso = true;
-                }
-            }
-            Close();
-            return Permiso;
-        }
-
         #endregion
 
         #region Módulo Configuración

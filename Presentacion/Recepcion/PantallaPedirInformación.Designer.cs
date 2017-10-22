@@ -33,12 +33,14 @@
             this.lblInfo = new System.Windows.Forms.Label();
             this.lblPedir = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.kuroButton1 = new ControlesM.KuroButton();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).BeginInit();
             this.SuspendLayout();
             // 
             // Encabezado
             // 
+            this.Encabezado.Controls.Add(this.kuroButton1);
             this.Encabezado.Controls.Add(this.lblTitulo);
             this.Encabezado.Controls.Add(this.pbIcono);
             this.Encabezado.Size = new System.Drawing.Size(503, 93);
@@ -96,6 +98,23 @@
             this.lblTitulo.TabIndex = 12;
             this.lblTitulo.Text = "#Pedido";
             // 
+            // kuroButton1
+            // 
+            this.kuroButton1.BackColor = System.Drawing.Color.White;
+            this.kuroButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.kuroButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.kuroButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.kuroButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.kuroButton1.ForeColor = System.Drawing.Color.Black;
+            this.kuroButton1.Location = new System.Drawing.Point(371, 23);
+            this.kuroButton1.Name = "kuroButton1";
+            this.kuroButton1.Size = new System.Drawing.Size(120, 50);
+            this.kuroButton1.TabIndex = 15;
+            this.kuroButton1.Text = "Ver Pedidos";
+            this.kuroButton1.UseVisualStyleBackColor = false;
+            this.kuroButton1.Visible = false;
+            this.kuroButton1.Click += new System.EventHandler(this.kuroButton1_Click);
+            // 
             // PantallaPedirInformación
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -122,5 +141,6 @@
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Label lblPedir;
         protected System.Windows.Forms.Label lblTitulo;
+        private ControlesM.KuroButton kuroButton1;
     }
 }

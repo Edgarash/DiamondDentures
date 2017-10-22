@@ -28,6 +28,7 @@ namespace Presentacion.Ventas
             tbAbono.KeyPress += Escape;
             tbRecibe.KeyPress += Validar.TextBox_KeyPress_ValidarSoloReales;
             tbAbono.KeyPress += Validar.TextBox_KeyPress_ValidarSoloReales;
+            tbRecibe.KeyPress += Validar.NoApostrofes;
             lblPedido.Text = Pedido.IDPedido;
             lblRestante.Text = Pedido.RestanteAPagar.ToString("C2");
         }
@@ -58,8 +59,9 @@ namespace Presentacion.Ventas
             else
             {
                 FormaPago = rbCheque.Checked ? "CHEQUE" : (rbEfectivo.Checked ? "EFECTIVO" : "TARJETA");
-                RegistroVenta Venta = new RegistroVenta(Pedido, Importe, DateTime.Today, PantallaLogin.Sesión, tbPersonaPaga.Text, FormaPago);
+                RegistroVenta Venta = new RegistroVenta(Pedido, Importe, Recibido, DateTime.Now, PantallaLogin.Sesión, tbPersonaPaga.Text, FormaPago);
                 ManejadorVentas.InsertarVenta(Venta);
+                Pedido.Pagado = Pedido.RestanteAPagar == Importe ? "SI" : "NO";
                 Pedido.RestanteAPagar -= Importe;
                 Close();
             }

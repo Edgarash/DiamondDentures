@@ -67,5 +67,10 @@ namespace Entidad
         /// Indica si el registro está activo o no
         /// </summary>
         public string Activo { get; set; }
+
+        /// <summary>
+        /// Regresa el nombre completo de la persona
+        /// </summary>
+        public string NombreCompleto { get { return Nombre + " " + Apellidos; } }
     }
 }

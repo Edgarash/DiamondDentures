@@ -16,6 +16,7 @@ namespace Presentacion.Ventas
             lblPedido.Text = Pedido.IDPedido;
             lblDentista.Text = Pedido.Dentista.Nombre + " " + Pedido.Dentista.Apellidos;
             lblRestanteAPagar.Text = Pedido.RestanteAPagar.ToString("C2");
+            kuroButton1.Visible = Pedido.RestanteAPagar > 0;
             kuroDGV1.RowCount = Pedido.Productos.Length;
             for (int i = 0; i < Pedido.Productos.Length; i++)
             {
@@ -31,6 +32,7 @@ namespace Presentacion.Ventas
             bool Cancelado = false;
             PantallaRealizarPago.RecibirPago(Pedido, out Cancelado);
             lblRestanteAPagar.Text = Pedido.RestanteAPagar.ToString("C2");
+            kuroButton1.Visible = Pedido.RestanteAPagar > 0;
         }
     }
 }

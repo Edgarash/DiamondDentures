@@ -67,21 +67,25 @@ FechaEntrega	date,
 Urgencia		char(1),
 CostoTotal		decimal(10,2),
 Laboratorista	char(20),
-Pagado			char(50),
+`Pagado` 		char(5) DEFAULT 'NO',
 RestantePagar	decimal(10,2),
 KEY `ValidarDentista` (`Cedula`),
 CONSTRAINT `ValidarDentista` FOREIGN KEY (`Cedula`) REFERENCES `dentista` (`Cedula`)
 );
 
-CREATE TABLE IF NOT EXISTS Ventas
-(
-IDPedido		char(10),
-Importe			decimal(10,2),
-FechaPago		date,
-Login			char(30),
-PersonaPaga		char(20),
-FormaPago		char(10)
-);
+
+CREATE TABLE IF NOT EXISTS `ventas` (
+  `IDVenta` int(11) NOT NULL AUTO_INCREMENT,
+  `IDPedido` char(10) DEFAULT NULL,
+  `Importe` decimal(10,2) DEFAULT NULL,
+  `Recibido` decimal(10,2) DEFAULT NULL,
+  `FechaPago` datetime DEFAULT NULL,
+  `Login` char(10) DEFAULT NULL,
+  `PersonaPaga` char(50) DEFAULT NULL,
+  `FormaPago` char(10) DEFAULT NULL,
+  PRIMARY KEY (`IDVenta`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
 
 CREATE TABLE IF NOT EXISTS NotaTerminacion
 (

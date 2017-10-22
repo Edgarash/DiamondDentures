@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btnRealizarPago = new ControlesM.KuroButton();
+            this.btnVerVentas = new ControlesM.KuroButton();
             this.SuspendLayout();
             // 
             // btnRealizarPago
@@ -47,14 +48,32 @@
             this.btnRealizarPago.UseVisualStyleBackColor = false;
             this.btnRealizarPago.Click += new System.EventHandler(this.RealizarPago_Click);
             // 
+            // btnVerVentas
+            // 
+            this.btnVerVentas.BackColor = System.Drawing.Color.White;
+            this.btnVerVentas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnVerVentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnVerVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnVerVentas.ForeColor = System.Drawing.Color.Black;
+            this.btnVerVentas.Location = new System.Drawing.Point(162, 12);
+            this.btnVerVentas.Name = "btnVerVentas";
+            this.btnVerVentas.Size = new System.Drawing.Size(120, 50);
+            this.btnVerVentas.TabIndex = 1;
+            this.btnVerVentas.Text = "Ver Ventas";
+            this.btnVerVentas.UseVisualStyleBackColor = false;
+            this.btnVerVentas.Click += new System.EventHandler(this.VerVentas_Click);
+            // 
             // PantallaVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 256);
+            this.ClientSize = new System.Drawing.Size(299, 77);
+            this.Controls.Add(this.btnVerVentas);
             this.Controls.Add(this.btnRealizarPago);
             this.Name = "PantallaVentas";
             this.Text = "PantallaVentas";
+            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.PantallaVentas_MouseDoubleClick);
             this.ResumeLayout(false);
 
         }
@@ -62,5 +81,6 @@
         #endregion
 
         private ControlesM.KuroButton btnRealizarPago;
+        private ControlesM.KuroButton btnVerVentas;
     }
 }
