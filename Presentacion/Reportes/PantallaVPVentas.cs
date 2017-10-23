@@ -192,7 +192,7 @@ namespace Presentacion.Reportes
         private void CargarReporte()
         {
                      
-            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteVentasN());
+            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteVentasDetallado());
         }
 
         private void btnRegresar_Click(object sender, EventArgs e) => Close();
@@ -200,7 +200,7 @@ namespace Presentacion.Reportes
         private void sfdExportar_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
             string ruta = sfdExportar.FileName;
-            ManejadorReportes.ExportarReporte(ruta, (ReporteVentasN) crvVisor.ReportSource);
+            ManejadorReportes.ExportarReporte(ruta, (ReporteVentasDetallado) crvVisor.ReportSource);
         }
     }
 }

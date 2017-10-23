@@ -1,288 +1,247 @@
-﻿using System.ComponentModel;
+using System;
+using System.Windows.Forms;
 using Control;
 
 namespace Presentacion.Reportes
 {
+    using CrystalDecisions.CrystalReports.Engine;
+    using Control = System.Windows.Forms.Control;
+
     class PantallaMenuReportes : Pantalla
     {
-
-
-
-
         public PantallaMenuReportes()
         {
             InitializeComponent();
         }
 
-        #region UI
+        #region GUI
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnFacturacion;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnReportesVentas;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnNotaTerminacion;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnOficioConfirmacion;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnFormaPedido;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Label label2;
+        private Label label5;
+        private PictureBox pictureBox2;
+        private Label label3;
+        private Label label4;
+        private Label label6;
+        private Button btnRegresar;
+        private System.Windows.Forms.TreeView treeView1;
 
         private void InitializeComponent()
         {
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Nomina");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Comprobante de nomina");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Insumos Comprados");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Materiales Comprados");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Proveedores");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Gastos");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Materiales");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Producto-Materiales");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Ventas");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Insumos Comprados (E)");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Materiales Comprados (E)");
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnFacturacion = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnReportesVentas = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.btnNotaTerminacion = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnOficioConfirmacion = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnFormaPedido = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnRegresar = new System.Windows.Forms.Button();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // Encabezado
             // 
-            this.Encabezado.Controls.Add(this.label1);
-            this.Encabezado.Controls.Add(this.pictureBox1);
-            this.Encabezado.Size = new System.Drawing.Size(643, 93);
+            this.Encabezado.Controls.Add(this.label5);
+            this.Encabezado.Size = new System.Drawing.Size(735, 93);
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(12, 147);
+            this.treeView1.Name = "treeView1";
+            treeNode1.Name = "rnomina";
+            treeNode1.Text = "Nomina";
+            treeNode2.Name = "rcomnom";
+            treeNode2.Text = "Comprobante de nomina";
+            treeNode3.Name = "rincomp";
+            treeNode3.Text = "Insumos Comprados";
+            treeNode4.Name = "rmatcomp";
+            treeNode4.Text = "Materiales Comprados";
+            treeNode5.Name = "rprov";
+            treeNode5.Text = "Proveedores";
+            treeNode6.Name = "rgastos";
+            treeNode6.Text = "Gastos";
+            treeNode7.Name = "rmateriales";
+            treeNode7.Text = "Materiales";
+            treeNode8.Name = "rprodmat";
+            treeNode8.Text = "Producto-Materiales";
+            treeNode9.Name = "rventas";
+            treeNode9.Text = "Ventas";
+            treeNode10.Name = "rgastiesp";
+            treeNode10.Text = "Insumos Comprados (E)";
+            treeNode11.Name = "rgastmesp";
+            treeNode11.Text = "Materiales Comprados (E)";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode6,
+            treeNode7,
+            treeNode8,
+            treeNode9,
+            treeNode10,
+            treeNode11});
+            this.treeView1.Size = new System.Drawing.Size(175, 344);
+            this.treeView1.TabIndex = 9;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::Presentacion.Properties.Resources.IconoMenuReportes;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Image = global::Presentacion.Properties.Resources.ImagenSeparador;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 136);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 75);
-            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.Size = new System.Drawing.Size(175, 11);
+            this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label1.Location = new System.Drawing.Point(93, 37);
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 115);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 24);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Menu de reportes";
+            this.label1.Size = new System.Drawing.Size(144, 18);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Lista de reportes";
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.BackColor = System.Drawing.Color.Transparent;
+            this.btnAceptar.BackgroundImage = global::Presentacion.Properties.Resources.IconoAceptar;
+            this.btnAceptar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAceptar.FlatAppearance.BorderSize = 0;
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptar.Location = new System.Drawing.Point(234, 381);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(80, 80);
+            this.btnAceptar.TabIndex = 12;
+            this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(22, 120);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(236, 464);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(194, 18);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Seleccione una opción:";
+            this.label2.Size = new System.Drawing.Size(77, 21);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Aceptar";
             // 
-            // btnFacturacion
+            // pictureBox2
             // 
-            this.btnFacturacion.BackgroundImage = global::Presentacion.Properties.Resources.IconoFacturacion1;
-            this.btnFacturacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnFacturacion.FlatAppearance.BorderSize = 0;
-            this.btnFacturacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFacturacion.Location = new System.Drawing.Point(63, 163);
-            this.btnFacturacion.Name = "btnFacturacion";
-            this.btnFacturacion.Size = new System.Drawing.Size(85, 85);
-            this.btnFacturacion.TabIndex = 24;
-            this.btnFacturacion.TabStop = false;
-            this.btnFacturacion.UseVisualStyleBackColor = true;
-            this.btnFacturacion.Click += new System.EventHandler(this.btnFacturacion_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(57, 251);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(97, 20);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Facturación";
-            // 
-            // btnReportesVentas
-            // 
-            this.btnReportesVentas.BackColor = System.Drawing.Color.White;
-            this.btnReportesVentas.BackgroundImage = global::Presentacion.Properties.Resources.IconoRVentas;
-            this.btnReportesVentas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnReportesVentas.FlatAppearance.BorderSize = 0;
-            this.btnReportesVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportesVentas.Location = new System.Drawing.Point(276, 163);
-            this.btnReportesVentas.Name = "btnReportesVentas";
-            this.btnReportesVentas.Size = new System.Drawing.Size(85, 85);
-            this.btnReportesVentas.TabIndex = 26;
-            this.btnReportesVentas.TabStop = false;
-            this.btnReportesVentas.UseVisualStyleBackColor = false;
-            this.btnReportesVentas.Click += new System.EventHandler(this.btnReportesVentas_Click);
+            this.pictureBox2.Image = global::Presentacion.Properties.Resources.ImagenSeparador;
+            this.pictureBox2.Location = new System.Drawing.Point(227, 176);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(461, 10);
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(242, 251);
+            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(223, 154);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(152, 20);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "Reportes de ventas";
-            // 
-            // button6
-            // 
-            this.button6.BackgroundImage = global::Presentacion.Properties.Resources.IconoRegresarReportes;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(489, 295);
-            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(85, 85);
-            this.button6.TabIndex = 30;
-            this.button6.TabStop = false;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(463, 395);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(136, 20);
-            this.label11.TabIndex = 29;
-            this.label11.Text = "Regresar al menu";
-            // 
-            // btnNotaTerminacion
-            // 
-            this.btnNotaTerminacion.BackgroundImage = global::Presentacion.Properties.Resources.IconoOficioTerminacion;
-            this.btnNotaTerminacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnNotaTerminacion.FlatAppearance.BorderSize = 0;
-            this.btnNotaTerminacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNotaTerminacion.Location = new System.Drawing.Point(489, 163);
-            this.btnNotaTerminacion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnNotaTerminacion.Name = "btnNotaTerminacion";
-            this.btnNotaTerminacion.Size = new System.Drawing.Size(85, 85);
-            this.btnNotaTerminacion.TabIndex = 36;
-            this.btnNotaTerminacion.TabStop = false;
-            this.btnNotaTerminacion.UseVisualStyleBackColor = true;
-            this.btnNotaTerminacion.Click += new System.EventHandler(this.btnNotaTerminacion_Click);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(451, 251);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(160, 20);
-            this.label13.TabIndex = 35;
-            this.label13.Text = "Nota de terminación";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(16, 395);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(178, 20);
-            this.label5.TabIndex = 35;
-            this.label5.Text = "Oficio de confirmación";
-            // 
-            // btnOficioConfirmacion
-            // 
-            this.btnOficioConfirmacion.BackgroundImage = global::Presentacion.Properties.Resources.IconoOTerminacion;
-            this.btnOficioConfirmacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnOficioConfirmacion.FlatAppearance.BorderSize = 0;
-            this.btnOficioConfirmacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOficioConfirmacion.Location = new System.Drawing.Point(63, 295);
-            this.btnOficioConfirmacion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnOficioConfirmacion.Name = "btnOficioConfirmacion";
-            this.btnOficioConfirmacion.Size = new System.Drawing.Size(85, 85);
-            this.btnOficioConfirmacion.TabIndex = 36;
-            this.btnOficioConfirmacion.TabStop = false;
-            this.btnOficioConfirmacion.UseVisualStyleBackColor = true;
-            this.btnOficioConfirmacion.Click += new System.EventHandler(this.btnOficioConfirmacion_Click);
+            this.label3.Size = new System.Drawing.Size(82, 18);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Reporte: ";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(251, 395);
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(223, 189);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(135, 20);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Forma de pedido";
+            this.label4.Size = new System.Drawing.Size(91, 17);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Descripcion: ";
             // 
-            // btnFormaPedido
+            // label5
             // 
-            this.btnFormaPedido.BackgroundImage = global::Presentacion.Properties.Resources.IconoFormaPedido;
-            this.btnFormaPedido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnFormaPedido.FlatAppearance.BorderSize = 0;
-            this.btnFormaPedido.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFormaPedido.Location = new System.Drawing.Point(276, 295);
-            this.btnFormaPedido.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnFormaPedido.Name = "btnFormaPedido";
-            this.btnFormaPedido.Size = new System.Drawing.Size(85, 85);
-            this.btnFormaPedido.TabIndex = 36;
-            this.btnFormaPedido.TabStop = false;
-            this.btnFormaPedido.UseVisualStyleBackColor = true;
-            this.btnFormaPedido.Click += new System.EventHandler(this.btnFormaPedido_Click);
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label5.Location = new System.Drawing.Point(12, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(289, 37);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Menu de reportes";
             // 
-            // PantallaMenuReportes
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(610, 464);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 21);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Regresar";
+            // 
+            // btnRegresar
+            // 
+            this.btnRegresar.BackColor = System.Drawing.Color.Transparent;
+            this.btnRegresar.BackgroundImage = global::Presentacion.Properties.Resources.IconoRegresarReportes;
+            this.btnRegresar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRegresar.FlatAppearance.BorderSize = 0;
+            this.btnRegresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegresar.Location = new System.Drawing.Point(608, 381);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(80, 80);
+            this.btnRegresar.TabIndex = 12;
+            this.btnRegresar.UseVisualStyleBackColor = false;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            // 
+            // PantallaMenuReportesN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(643, 507);
-            this.Controls.Add(this.btnFormaPedido);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnOficioConfirmacion);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnNotaTerminacion);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.btnReportesVentas);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnFacturacion);
-            this.Controls.Add(this.label7);
+            this.ClientSize = new System.Drawing.Size(735, 503);
+            this.Controls.Add(this.btnRegresar);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.label2);
-            this.Name = "PantallaMenuReportes";
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.treeView1);
+            this.Name = "PantallaMenuReportesN";
             this.Text = "Menu de reportes";
-            this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.label7, 0);
-            this.Controls.SetChildIndex(this.btnFacturacion, 0);
-            this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.btnReportesVentas, 0);
-            this.Controls.SetChildIndex(this.label11, 0);
-            this.Controls.SetChildIndex(this.button6, 0);
-            this.Controls.SetChildIndex(this.label13, 0);
-            this.Controls.SetChildIndex(this.btnNotaTerminacion, 0);
-            this.Controls.SetChildIndex(this.label5, 0);
-            this.Controls.SetChildIndex(this.btnOficioConfirmacion, 0);
-            this.Controls.SetChildIndex(this.label4, 0);
-            this.Controls.SetChildIndex(this.btnFormaPedido, 0);
             this.Controls.SetChildIndex(this.Encabezado, 0);
+            this.Controls.SetChildIndex(this.treeView1, 0);
+            this.Controls.SetChildIndex(this.pictureBox1, 0);
+            this.Controls.SetChildIndex(this.pictureBox2, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.btnAceptar, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
+            this.Controls.SetChildIndex(this.btnRegresar, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,59 +249,62 @@ namespace Presentacion.Reportes
 
         #endregion
 
-        #region Eventos
+        private void btnAceptar_Click(object sender, EventArgs e) 
+            => SeleccionarOpcion(treeView1.SelectedNode.Name);
 
-        private void btnReportesVentas_Click(object sender, System.EventArgs e)
+        private void SeleccionarOpcion(string tipo)
         {
-            PantallaGenerarRVentas pgrv = new PantallaGenerarRVentas();
+            switch (tipo)
+            {
+                case "rcomnom":
+                    MostrarPantalla(new PantallaVPNominaEmpleado());
+                    break;
+                case "rnomina":
+                    MostrarPantalla(new PantallaVPNominaGeneral());
+                    break;
+                case "rincomp":
+                    MostrarPantalla(new PantallaVPInsCom());
+                    break;
+                case "rmatcomp":
+                    MostrarPantalla(new PantallaVPMatCom());
+                    break;
+                case "rprov":
+                    MostrarPantalla(new PantallaVPProveedores());
+                    break;
+                case "rgastos":
+                    MostrarPantalla(new PantallaVPGastos());
+                    break;
+                case "rmateriales":
+                    MostrarPantalla(new PantallaVPMateriales());
+                    break;
+                case "rprodmat":
+                    MostrarPantalla(new PantallaVPMatProd());
+                    break;
+                case "rventas":
+                    MostrarPantalla(new PantallaVPVentas());
+                    break;
+                case "rgastiesp":
+                    MostrarPantalla(new PantallaGasInEs());
+                    break;
+                case "rgastmesp":
+                    MostrarPantalla(new PantallaGasMatEs());
+                    break;
+            }
+        }
+
+        private void MostrarPantalla<T>(T Pantalla) where T : Form
+        {
             Hide();
-            pgrv.ShowDialog();
-            pgrv.Close();
+            Pantalla.ShowDialog();
+            Pantalla.Close();
             Show();
-        }
-
-        private void btnFacturacion_Click(object sender, System.EventArgs e)
-        {
-            PantallaContabilidad pc = new PantallaContabilidad();
-            Hide();
-            pc.ShowDialog();
-            pc.Close();
-            Show();
-        }
-
-        private void btnNotaTerminacion_Click(object sender, System.EventArgs e)
-        {
-            PantallaNotaTerminacion pnt = new PantallaNotaTerminacion();
-            Hide();
-            pnt.ShowDialog();
-            pnt.Close();
-            Show();
-        }
-
-        private void btnOficioConfirmacion_Click(object sender, System.EventArgs e)
-        {
-            PantallaOficioConfirmacion pof = new PantallaOficioConfirmacion();
-            Hide();
-            pof.ShowDialog();
-            pof.Close();
-            Show();
+            BringToFront();
         }
 
 
-        #endregion
+        private void RegresarPantallaAnterior() => Close();
 
-        private void button6_Click(object sender, System.EventArgs e)
-        {
-            Close();
-        }
+        private void btnRegresar_Click(object sender, EventArgs e) => RegresarPantallaAnterior();
 
-        private void btnFormaPedido_Click(object sender, System.EventArgs e)
-        {
-            PantallaFormaPedido pfp = new PantallaFormaPedido();
-            Hide();
-            pfp.ShowDialog();
-            pfp.Close();
-            Show();
-        }
     }
 }

@@ -49,7 +49,7 @@ namespace Control
 
         public static ReporteInsumosComprados CargarReporte(ReporteInsumosComprados reporteInsumosComprados) => reporteInsumosComprados;
 
-        public static ReporteVentasN CargarReporte(ReporteVentasN reporteVentasN) => reporteVentasN;
+        public static ReporteVentasDetallado CargarReporte(ReporteVentasDetallado reporteVentasN) => reporteVentasN;
 
         public static ReporteGastos CargarReporte(ReporteGastos reporteGastos) => reporteGastos;
 

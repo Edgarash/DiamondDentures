@@ -222,9 +222,6 @@
     <Compile Include="Reportes\PantallaMenuReportes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes\PantallaMenuReportesN.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Reportes\PantallaNotaTerminacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -450,9 +447,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaMenuReportes.resx">
       <DependentUpon>PantallaMenuReportes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\PantallaMenuReportesN.resx">
-      <DependentUpon>PantallaMenuReportesN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaNotaTerminacion.resx">
       <DependentUpon>PantallaNotaTerminacion.cs</DependentUpon>

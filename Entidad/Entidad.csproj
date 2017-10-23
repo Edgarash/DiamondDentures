@@ -52,7 +52,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FormaPedido.rpt</DependentUpon>
       <SubType>Component</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Persona.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -120,10 +119,10 @@
       <DependentUpon>ReporteProveedores.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ReporteVentasN.cs">
+    <Compile Include="ReporteVentasDetallado.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteVentasN.rpt</DependentUpon>
+      <DependentUpon>ReporteVentasDetallado.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Resultados.cs" />
@@ -133,7 +132,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FacturaReporte.rpt</DependentUpon>
       <SubType>Component</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Fecha.cs" />
     <Compile Include="Historial.cs" />
@@ -143,14 +141,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NotaConfirmacion.rpt</DependentUpon>
       <SubType>Component</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="NotaTerminacion.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NotaTerminacion.rpt</DependentUpon>
       <SubType>Component</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -174,22 +170,18 @@
     <EmbeddedResource Include="FacturaReporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>FacturaReporte.cs</LastGenOutput>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="FormaPedido.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>FormaPedido.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="NotaConfirmacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>NotaConfirmacion.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="NotaTerminacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>NotaTerminacion.cs</LastGenOutput>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -240,9 +232,9 @@
       <LastGenOutput>ReporteVentas.cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReporteVentasN.rpt">
+    <EmbeddedResource Include="ReporteVentasDetallado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteVentasN.cs</LastGenOutput>
+      <LastGenOutput>ReporteVentasDetallado.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
