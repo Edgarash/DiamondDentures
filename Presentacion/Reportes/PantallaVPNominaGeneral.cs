@@ -52,6 +52,9 @@ namespace Presentacion.Reportes
             // crvVisor
             // 
             this.crvVisor.ActiveViewIndex = -1;
+            this.crvVisor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.crvVisor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvVisor.Cursor = System.Windows.Forms.Cursors.Default;
             this.crvVisor.DisplayStatusBar = false;
@@ -179,6 +182,7 @@ namespace Presentacion.Reportes
             this.ClientSize = new System.Drawing.Size(1210, 599);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.crvVisor);
+            this.MaximizeBox = true;
             this.Name = "PantallaVPNominaGeneral";
             this.Text = "Crear reporte";
             this.Controls.SetChildIndex(this.Encabezado, 0);
