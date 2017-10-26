@@ -1,3 +1,16 @@
+CREATE TABLE diamonddentures.empresa (
+	Nombre varchar(100) NULL,
+	Telefono varchar(100) NULL,
+	Correo varchar(100) NULL,
+	Direccion varchar(100) NULL,
+	Colonia varchar(100) NULL,
+	RFC varchar(100) NULL,
+	Ciudad varchar(100) NULL,
+	Pais varchar(100) NULL
+);
+
+
+
 DROP PROCEDURE IF EXISTS R_DatosProveedores;
 CREATE PROCEDURE R_DatosProveedores(
   dummy BOOL
