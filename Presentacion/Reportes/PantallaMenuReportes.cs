@@ -30,17 +30,30 @@ namespace Presentacion.Reportes
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Nomina");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Comprobante de nomina");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Insumos Comprados");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Materiales Comprados");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Proveedores");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Gastos");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Materiales");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Producto-Materiales");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Ventas");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Insumos Comprados (E)");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Materiales Comprados (E)");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Proveedores");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Insumos Comprados");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Materiales Comprados");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Insumos Comprados (E)");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Materiales Comprados (E)");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Producto-Materiales");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Almacen", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode6});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Nomina");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Comprobante de nomina");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Gastos");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Materiales");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Ventas");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Finanzas", new System.Windows.Forms.TreeNode[] {
+            treeNode8,
+            treeNode9,
+            treeNode10,
+            treeNode11,
+            treeNode12});
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -66,40 +79,37 @@ namespace Presentacion.Reportes
             // 
             this.treeView1.Location = new System.Drawing.Point(12, 147);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "rnomina";
-            treeNode1.Text = "Nomina";
-            treeNode2.Name = "rcomnom";
-            treeNode2.Text = "Comprobante de nomina";
-            treeNode3.Name = "rincomp";
-            treeNode3.Text = "Insumos Comprados";
-            treeNode4.Name = "rmatcomp";
-            treeNode4.Text = "Materiales Comprados";
-            treeNode5.Name = "rprov";
-            treeNode5.Text = "Proveedores";
-            treeNode6.Name = "rgastos";
-            treeNode6.Text = "Gastos";
-            treeNode7.Name = "rmateriales";
-            treeNode7.Text = "Materiales";
-            treeNode8.Name = "rprodmat";
-            treeNode8.Text = "Producto-Materiales";
-            treeNode9.Name = "rventas";
-            treeNode9.Text = "Ventas";
-            treeNode10.Name = "rgastiesp";
-            treeNode10.Text = "Insumos Comprados (E)";
-            treeNode11.Name = "rgastmesp";
-            treeNode11.Text = "Materiales Comprados (E)";
+            treeNode1.Name = "rprov";
+            treeNode1.Text = "Proveedores";
+            treeNode2.Name = "rincomp";
+            treeNode2.Text = "Insumos Comprados";
+            treeNode3.Name = "rmatcomp";
+            treeNode3.Text = "Materiales Comprados";
+            treeNode4.Name = "rgastiesp";
+            treeNode4.Text = "Insumos Comprados (E)";
+            treeNode5.Name = "rgastmesp";
+            treeNode5.Text = "Materiales Comprados (E)";
+            treeNode6.Name = "rprodmat";
+            treeNode6.Text = "Producto-Materiales";
+            treeNode7.Checked = true;
+            treeNode7.Name = "nalmacen";
+            treeNode7.Text = "Almacen";
+            treeNode8.Name = "rnomina";
+            treeNode8.Text = "Nomina";
+            treeNode9.Name = "rcomnom";
+            treeNode9.Text = "Comprobante de nomina";
+            treeNode10.Name = "rgastos";
+            treeNode10.Text = "Gastos";
+            treeNode11.Name = "rmateriales";
+            treeNode11.Text = "Materiales";
+            treeNode12.Name = "rventas";
+            treeNode12.Text = "Ventas";
+            treeNode13.Checked = true;
+            treeNode13.Name = "nfinanzas";
+            treeNode13.Text = "Finanzas";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6,
             treeNode7,
-            treeNode8,
-            treeNode9,
-            treeNode10,
-            treeNode11});
+            treeNode13});
             this.treeView1.Size = new System.Drawing.Size(175, 344);
             this.treeView1.TabIndex = 9;
             // 
@@ -211,7 +221,7 @@ namespace Presentacion.Reportes
             this.btnRegresar.UseVisualStyleBackColor = false;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
-            // PantallaMenuReportesN
+            // PantallaMenuReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.ClientSize = new System.Drawing.Size(735, 503);
@@ -225,7 +235,7 @@ namespace Presentacion.Reportes
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.treeView1);
-            this.Name = "PantallaMenuReportesN";
+            this.Name = "PantallaMenuReportes";
             this.Text = "Menu de reportes";
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.treeView1, 0);
