@@ -98,9 +98,17 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Resp {
+        public CrystalDecisions.Shared.IParameterField Parameter_Recibe {
             get {
                 return this.DataDefinition.ParameterFields[1];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_Emite {
+            get {
+                return this.DataDefinition.ParameterFields[2];
             }
         }
     }

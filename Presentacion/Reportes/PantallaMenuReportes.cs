@@ -34,26 +34,28 @@ namespace Presentacion.Reportes
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Insumos Comprados (E)");
             System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Materiales Comprados (E)");
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Producto-Materiales");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Almacen", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Requisicion de materiales");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Almacen", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3,
             treeNode4,
             treeNode5,
-            treeNode6});
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Nomina");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Comprobante de nomina");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Gastos");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Materiales");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Ventas Detalladas");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Ventas General");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Finanzas", new System.Windows.Forms.TreeNode[] {
-            treeNode8,
+            treeNode6,
+            treeNode7});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Nomina");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Comprobante de nomina");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Gastos");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Materiales");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Ventas Detalladas");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Ventas General");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Finanzas", new System.Windows.Forms.TreeNode[] {
             treeNode9,
             treeNode10,
             treeNode11,
             treeNode12,
-            treeNode13});
+            treeNode13,
+            treeNode14});
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -91,27 +93,29 @@ namespace Presentacion.Reportes
             treeNode5.Text = "Materiales Comprados (E)";
             treeNode6.Name = "rprodmat";
             treeNode6.Text = "Producto-Materiales";
-            treeNode7.Checked = true;
-            treeNode7.Name = "nalmacen";
-            treeNode7.Text = "Almacen";
-            treeNode8.Name = "rnomina";
-            treeNode8.Text = "Nomina";
-            treeNode9.Name = "rcomnom";
-            treeNode9.Text = "Comprobante de nomina";
-            treeNode10.Name = "rgastos";
-            treeNode10.Text = "Gastos";
-            treeNode11.Name = "rmateriales";
-            treeNode11.Text = "Materiales";
-            treeNode12.Name = "rventas";
-            treeNode12.Text = "Ventas Detalladas";
-            treeNode13.Name = "rventasgen";
-            treeNode13.Text = "Ventas General";
-            treeNode14.Checked = true;
-            treeNode14.Name = "nfinanzas";
-            treeNode14.Text = "Finanzas";
+            treeNode7.Name = "rreqmat";
+            treeNode7.Text = "Requisicion de materiales";
+            treeNode8.Checked = true;
+            treeNode8.Name = "nalmacen";
+            treeNode8.Text = "Almacen";
+            treeNode9.Name = "rnomina";
+            treeNode9.Text = "Nomina";
+            treeNode10.Name = "rcomnom";
+            treeNode10.Text = "Comprobante de nomina";
+            treeNode11.Name = "rgastos";
+            treeNode11.Text = "Gastos";
+            treeNode12.Name = "rmateriales";
+            treeNode12.Text = "Materiales";
+            treeNode13.Name = "rventas";
+            treeNode13.Text = "Ventas Detalladas";
+            treeNode14.Name = "rventasgen";
+            treeNode14.Text = "Ventas General";
+            treeNode15.Checked = true;
+            treeNode15.Name = "nfinanzas";
+            treeNode15.Text = "Finanzas";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode14});
+            treeNode8,
+            treeNode15});
             this.treeView1.Size = new System.Drawing.Size(175, 344);
             this.treeView1.TabIndex = 9;
             // 
@@ -303,6 +307,9 @@ namespace Presentacion.Reportes
                     break;
                 case "rventasgen":
                     MostrarPantalla(new PantallaVPVentasGeneral());
+                    break;
+                case "rreqmat":
+                    MostrarPantalla(new PantallaVPReqMat());
                     break;
             }
         }

@@ -234,6 +234,9 @@
     <Compile Include="Reportes\PantallaVPGastos.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reportes\PantallaVPReqMat.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes\PantallaVPVentasGeneral.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -462,6 +465,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaVPGastos.resx">
       <DependentUpon>PantallaVPGastos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPReqMat.resx">
+      <DependentUpon>PantallaVPReqMat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaVPVentasGeneral.resx">
       <DependentUpon>PantallaVPVentasGeneral.cs</DependentUpon>
