@@ -235,8 +235,8 @@ namespace Presentacion.Reportes
         {
             int id;
             int.TryParse(textBox1.Text, out id);
-           
-            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteComprobanteNomina(), id);
+            ParametroReporte Id = new ParametroReporte("idPag",id);
+            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteComprobanteNomina(), Id);
         }
 
         private void btnRegresar_Click(object sender, EventArgs e) => Close();

@@ -4,9 +4,7 @@ using Control;
 
 namespace Presentacion.Reportes
 {
-    using CrystalDecisions.CrystalReports.Engine;
-    using Control = System.Windows.Forms.Control;
-
+  
     class PantallaMenuReportes : Pantalla
     {
         public PantallaMenuReportes()
@@ -47,13 +45,15 @@ namespace Presentacion.Reportes
             System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Comprobante de nomina");
             System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Gastos");
             System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Materiales");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Ventas");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Finanzas", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Ventas Detalladas");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Ventas General");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Finanzas", new System.Windows.Forms.TreeNode[] {
             treeNode8,
             treeNode9,
             treeNode10,
             treeNode11,
-            treeNode12});
+            treeNode12,
+            treeNode13});
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -103,13 +103,15 @@ namespace Presentacion.Reportes
             treeNode11.Name = "rmateriales";
             treeNode11.Text = "Materiales";
             treeNode12.Name = "rventas";
-            treeNode12.Text = "Ventas";
-            treeNode13.Checked = true;
-            treeNode13.Name = "nfinanzas";
-            treeNode13.Text = "Finanzas";
+            treeNode12.Text = "Ventas Detalladas";
+            treeNode13.Name = "rventasgen";
+            treeNode13.Text = "Ventas General";
+            treeNode14.Checked = true;
+            treeNode14.Name = "nfinanzas";
+            treeNode14.Text = "Finanzas";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode7,
-            treeNode13});
+            treeNode14});
             this.treeView1.Size = new System.Drawing.Size(175, 344);
             this.treeView1.TabIndex = 9;
             // 
@@ -298,6 +300,9 @@ namespace Presentacion.Reportes
                     break;
                 case "rgastmesp":
                     MostrarPantalla(new PantallaGasMatEs());
+                    break;
+                case "rventasgen":
+                    MostrarPantalla(new PantallaVPVentasGeneral());
                     break;
             }
         }

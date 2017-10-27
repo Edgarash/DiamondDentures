@@ -104,13 +104,13 @@ namespace ConexionBaseDeDatos
         public static void ActualizarBaseDeDatos()
         {
             InicializarConexion("mysql");
-            EjecutarConsulta(Properties.Resources.Script_TablasDD);
+            //EjecutarConsulta(Properties.Resources.Script_TablasDD);
             InicializarConexion();
-            EjecutarConsulta(Properties.Resources.Script_Procedimientos_Base);
-            EjecutarConsulta(Properties.Resources.Script_Rolland);
-            EjecutarConsulta(Properties.Resources.Script_Olachea);
-            EjecutarConsulta(Properties.Resources.Script_Yazahel);
-            EjecutarConsulta(Properties.Resources.Script_Michell);
+            //EjecutarConsulta(Properties.Resources.Script_Procedimientos_Base);
+            //EjecutarConsulta(Properties.Resources.Script_Rolland);
+            //EjecutarConsulta(Properties.Resources.Script_Olachea);
+            //EjecutarConsulta(Properties.Resources.Script_Yazahel);
+            //EjecutarConsulta(Properties.Resources.Script_Michell);
         }
 
         /// <summary>

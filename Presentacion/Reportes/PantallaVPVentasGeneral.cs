@@ -6,10 +6,9 @@ using static System.Environment;
 
 namespace Presentacion.Reportes
 {
-
-    class PantallaGasInEs : Pantalla
+    class PantallaVPVentasGeneral : Pantalla
     {
-        public PantallaGasInEs()
+        public PantallaVPVentasGeneral()
         {
             InitializeComponent();
         }
@@ -24,20 +23,19 @@ namespace Presentacion.Reportes
         private SaveFileDialog sfdExportar;
         private Button btnGenerar;
         private Label label6;
-        private TextBox txtIdIns;
-        private TextBox txtNomIns;
         private Label label3;
         private Label label2;
+        private DateTimePicker dtpFechaInicial;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvVisor;
+        private DateTimePicker dtpFechaFinal;
 
         private void InitializeComponent()
         {
-            this.crvVisor = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtIdIns = new System.Windows.Forms.TextBox();
-            this.txtNomIns = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.dtpFechaInicial = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btnRegresar = new System.Windows.Forms.Button();
@@ -45,6 +43,7 @@ namespace Presentacion.Reportes
             this.btnExportar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.sfdExportar = new System.Windows.Forms.SaveFileDialog();
+            this.crvVisor = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,25 +51,12 @@ namespace Presentacion.Reportes
             // 
             this.Encabezado.Size = new System.Drawing.Size(1210, 93);
             // 
-            // crvVisor
-            // 
-            this.crvVisor.ActiveViewIndex = -1;
-            this.crvVisor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crvVisor.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crvVisor.DisplayStatusBar = false;
-            this.crvVisor.DisplayToolbar = false;
-            this.crvVisor.Location = new System.Drawing.Point(295, 96);
-            this.crvVisor.Name = "crvVisor";
-            this.crvVisor.Size = new System.Drawing.Size(915, 501);
-            this.crvVisor.TabIndex = 9;
-            this.crvVisor.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtIdIns);
-            this.groupBox2.Controls.Add(this.txtNomIns);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.dtpFechaInicial);
+            this.groupBox2.Controls.Add(this.dtpFechaFinal);
             this.groupBox2.Controls.Add(this.btnGenerar);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.btnRegresar);
@@ -85,37 +71,39 @@ namespace Presentacion.Reportes
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parametros del reporte";
             // 
-            // txtIdIns
-            // 
-            this.txtIdIns.Location = new System.Drawing.Point(12, 99);
-            this.txtIdIns.Name = "txtIdIns";
-            this.txtIdIns.Size = new System.Drawing.Size(176, 21);
-            this.txtIdIns.TabIndex = 28;
-            // 
-            // txtNomIns
-            // 
-            this.txtNomIns.Location = new System.Drawing.Point(12, 47);
-            this.txtNomIns.Name = "txtNomIns";
-            this.txtNomIns.Size = new System.Drawing.Size(176, 21);
-            this.txtNomIns.TabIndex = 28;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 80);
+            this.label3.Location = new System.Drawing.Point(27, 40);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 16);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "Id Insumo:";
+            this.label3.Size = new System.Drawing.Size(104, 16);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "Rango de fechas:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 28);
+            this.label2.Location = new System.Drawing.Point(114, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 16);
-            this.label2.TabIndex = 27;
-            this.label2.Text = "Nombre Insumo:";
+            this.label2.Size = new System.Drawing.Size(12, 16);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "-";
+            // 
+            // dtpFechaInicial
+            // 
+            this.dtpFechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaInicial.Location = new System.Drawing.Point(30, 59);
+            this.dtpFechaInicial.Name = "dtpFechaInicial";
+            this.dtpFechaInicial.Size = new System.Drawing.Size(78, 21);
+            this.dtpFechaInicial.TabIndex = 27;
+            // 
+            // dtpFechaFinal
+            // 
+            this.dtpFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFinal.Location = new System.Drawing.Point(132, 59);
+            this.dtpFechaFinal.Name = "dtpFechaFinal";
+            this.dtpFechaFinal.Size = new System.Drawing.Size(78, 21);
+            this.dtpFechaFinal.TabIndex = 27;
             // 
             // btnGenerar
             // 
@@ -200,16 +188,30 @@ namespace Presentacion.Reportes
             this.sfdExportar.Filter = "Adobe PDF|*.pdf";
             this.sfdExportar.FileOk += new System.ComponentModel.CancelEventHandler(this.sfdExportar_FileOk);
             // 
-            // PantallaGasInEs
+            // crvVisor
+            // 
+            this.crvVisor.ActiveViewIndex = -1;
+            this.crvVisor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crvVisor.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crvVisor.DisplayStatusBar = false;
+            this.crvVisor.DisplayToolbar = false;
+            this.crvVisor.Location = new System.Drawing.Point(295, 96);
+            this.crvVisor.Name = "crvVisor";
+            this.crvVisor.Size = new System.Drawing.Size(915, 501);
+            this.crvVisor.TabIndex = 9;
+            this.crvVisor.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            // 
+            // PantallaVPVentasGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.ClientSize = new System.Drawing.Size(1210, 599);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.crvVisor);
-            this.Name = "PantallaGasInEs";
-            this.Controls.SetChildIndex(this.Encabezado, 0);
+            this.Name = "PantallaVPVentasGeneral";
+            this.Text = "Ventas";
             this.Controls.SetChildIndex(this.crvVisor, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.Encabezado, 0);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -222,8 +224,7 @@ namespace Presentacion.Reportes
         {
             if (crvVisor.ReportSource == null)
             {
-                MessageBox.Show("No se ha generado ningun reporte", "Advertencia", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
+                MessageBox.Show("No se ha generado ningun reporte", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             sfdExportar.InitialDirectory = GetFolderPath(SpecialFolder.MyDocuments);
@@ -235,17 +236,19 @@ namespace Presentacion.Reportes
 
         private void CargarReporte()
         {
-            var nomins = txtNomIns.Text;
-            if (string.IsNullOrWhiteSpace(nomins))
+            var fchIni = dtpFechaInicial.Value.Date;
+            var fchFin = dtpFechaFinal.Value.Date;
+
+            if (fchFin < fchIni)
             {
-                nomins = "☺";
+                MessageBox.Show("La fecha inicial es mayor a la fecha final");
+                return;
             }
-            int idins;
-            var idins_str = txtNomIns.Text;
-            int.TryParse(idins_str, out idins);
-            ParametroReporte NomIns = new ParametroReporte("NomIs", nomins);
-            ParametroReporte IdIns = new ParametroReporte("idComp", idins);
-            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteGastoIEsp(),NomIns,IdIns);
+
+            ParametroReporte FchIni = new ParametroReporte("FchIni", fchIni);
+            ParametroReporte FchFin = new ParametroReporte("FchFin", fchFin);
+
+            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteVentas(), FchIni, FchFin);
         }
 
         private void btnRegresar_Click(object sender, EventArgs e) => Close();
@@ -253,7 +256,7 @@ namespace Presentacion.Reportes
         private void sfdExportar_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
             string ruta = sfdExportar.FileName;
-            ManejadorReportes.ExportarReporte(ruta, (ReporteGastoIEsp) crvVisor.ReportSource);
+            ManejadorReportes.ExportarReporte(ruta, (ReporteVentas) crvVisor.ReportSource);
         }
     }
 }

@@ -242,9 +242,11 @@ namespace Presentacion.Reportes
                 nommat = "☺";
             }
             int idmat;
-            var idins_str = txtNomMat.Text;
+            string idins_str = txtIdIns.Text;
             int.TryParse(idins_str, out idmat);
-            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteGastoMEsp(),nommat,idmat);
+            ParametroReporte NomMat = new ParametroReporte("NomMat", nommat);
+            ParametroReporte IdComp = new ParametroReporte("idComp", idmat);
+            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteGastoMEsp(),NomMat,IdComp);
         }
 
         private void btnRegresar_Click(object sender, EventArgs e) => Close();
