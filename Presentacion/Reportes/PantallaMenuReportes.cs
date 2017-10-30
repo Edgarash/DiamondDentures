@@ -20,53 +20,53 @@ namespace Presentacion.Reportes
         private System.Windows.Forms.Label label2;
         private Label label5;
         private PictureBox pictureBox2;
-        private Label label3;
-        private Label label4;
+        private Label lblTitulo;
         private Label label6;
         private Button btnRegresar;
+        private RichTextBox rtbDescripcion;
         private System.Windows.Forms.TreeView treeView1;
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Proveedores");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Insumos Comprados");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Materiales Comprados");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Insumos Comprados (E)");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Materiales Comprados (E)");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Producto-Materiales");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Requisicion de materiales");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Almacen", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6,
-            treeNode7});
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Nomina");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Comprobante de nomina");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Gastos");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Materiales");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Ventas Detalladas");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Ventas General");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Finanzas", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10,
-            treeNode11,
-            treeNode12,
-            treeNode13,
-            treeNode14});
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Proveedores");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Insumos Comprados");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Materiales Comprados");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Insumos Comprados (E)");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Materiales Comprados (E)");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Producto-Materiales");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Requisicion de materiales");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Almacen", new System.Windows.Forms.TreeNode[] {
+            treeNode16,
+            treeNode17,
+            treeNode18,
+            treeNode19,
+            treeNode20,
+            treeNode21,
+            treeNode22});
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Nomina");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Comprobante de nomina");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Gastos");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Materiales");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Ventas Detalladas");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Ventas General");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Finanzas", new System.Windows.Forms.TreeNode[] {
+            treeNode24,
+            treeNode25,
+            treeNode26,
+            treeNode27,
+            treeNode28,
+            treeNode29});
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnRegresar = new System.Windows.Forms.Button();
+            this.rtbDescripcion = new System.Windows.Forms.RichTextBox();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -81,43 +81,44 @@ namespace Presentacion.Reportes
             // 
             this.treeView1.Location = new System.Drawing.Point(12, 147);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "rprov";
-            treeNode1.Text = "Proveedores";
-            treeNode2.Name = "rincomp";
-            treeNode2.Text = "Insumos Comprados";
-            treeNode3.Name = "rmatcomp";
-            treeNode3.Text = "Materiales Comprados";
-            treeNode4.Name = "rgastiesp";
-            treeNode4.Text = "Insumos Comprados (E)";
-            treeNode5.Name = "rgastmesp";
-            treeNode5.Text = "Materiales Comprados (E)";
-            treeNode6.Name = "rprodmat";
-            treeNode6.Text = "Producto-Materiales";
-            treeNode7.Name = "rreqmat";
-            treeNode7.Text = "Requisicion de materiales";
-            treeNode8.Checked = true;
-            treeNode8.Name = "nalmacen";
-            treeNode8.Text = "Almacen";
-            treeNode9.Name = "rnomina";
-            treeNode9.Text = "Nomina";
-            treeNode10.Name = "rcomnom";
-            treeNode10.Text = "Comprobante de nomina";
-            treeNode11.Name = "rgastos";
-            treeNode11.Text = "Gastos";
-            treeNode12.Name = "rmateriales";
-            treeNode12.Text = "Materiales";
-            treeNode13.Name = "rventas";
-            treeNode13.Text = "Ventas Detalladas";
-            treeNode14.Name = "rventasgen";
-            treeNode14.Text = "Ventas General";
-            treeNode15.Checked = true;
-            treeNode15.Name = "nfinanzas";
-            treeNode15.Text = "Finanzas";
+            treeNode16.Name = "rprov";
+            treeNode16.Text = "Proveedores";
+            treeNode17.Name = "rincomp";
+            treeNode17.Text = "Insumos Comprados";
+            treeNode18.Name = "rmatcomp";
+            treeNode18.Text = "Materiales Comprados";
+            treeNode19.Name = "rgastiesp";
+            treeNode19.Text = "Insumos Comprados (E)";
+            treeNode20.Name = "rgastmesp";
+            treeNode20.Text = "Materiales Comprados (E)";
+            treeNode21.Name = "rprodmat";
+            treeNode21.Text = "Producto-Materiales";
+            treeNode22.Name = "rreqmat";
+            treeNode22.Text = "Requisicion de materiales";
+            treeNode23.Checked = true;
+            treeNode23.Name = "nalmacen";
+            treeNode23.Text = "Almacen";
+            treeNode24.Name = "rnomina";
+            treeNode24.Text = "Nomina";
+            treeNode25.Name = "rcomnom";
+            treeNode25.Text = "Comprobante de nomina";
+            treeNode26.Name = "rgastos";
+            treeNode26.Text = "Gastos";
+            treeNode27.Name = "rmateriales";
+            treeNode27.Text = "Materiales";
+            treeNode28.Name = "rventas";
+            treeNode28.Text = "Ventas Detalladas";
+            treeNode29.Name = "rventasgen";
+            treeNode29.Text = "Ventas General";
+            treeNode30.Checked = true;
+            treeNode30.Name = "nfinanzas";
+            treeNode30.Text = "Finanzas";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode8,
-            treeNode15});
+            treeNode23,
+            treeNode30});
             this.treeView1.Size = new System.Drawing.Size(175, 344);
             this.treeView1.TabIndex = 9;
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
             // pictureBox1
             // 
@@ -171,25 +172,15 @@ namespace Presentacion.Reportes
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
             // 
-            // label3
+            // lblTitulo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(223, 154);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 18);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Reporte: ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(223, 189);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 17);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Descripcion: ";
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(223, 154);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(82, 18);
+            this.lblTitulo.TabIndex = 11;
+            this.lblTitulo.Text = "Reporte: ";
             // 
             // label5
             // 
@@ -227,16 +218,25 @@ namespace Presentacion.Reportes
             this.btnRegresar.UseVisualStyleBackColor = false;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
+            // rtbDescripcion
+            // 
+            this.rtbDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtbDescripcion.Location = new System.Drawing.Point(227, 192);
+            this.rtbDescripcion.Name = "rtbDescripcion";
+            this.rtbDescripcion.Size = new System.Drawing.Size(461, 183);
+            this.rtbDescripcion.TabIndex = 14;
+            this.rtbDescripcion.Text = "";
+            // 
             // PantallaMenuReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.ClientSize = new System.Drawing.Size(735, 503);
+            this.Controls.Add(this.rtbDescripcion);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -248,12 +248,12 @@ namespace Presentacion.Reportes
             this.Controls.SetChildIndex(this.pictureBox1, 0);
             this.Controls.SetChildIndex(this.pictureBox2, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.lblTitulo, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.btnAceptar, 0);
             this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.btnRegresar, 0);
+            this.Controls.SetChildIndex(this.rtbDescripcion, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -314,6 +314,55 @@ namespace Presentacion.Reportes
             }
         }
 
+        private void SeleccionarTexto(string nodo)
+        {
+            switch (nodo)
+            {
+                case "rcomnom":
+                    
+                    break;
+                case "rnomina":
+                    
+                    break;
+                case "rincomp":
+                    
+                    break;
+                case "rmatcomp":
+                    
+                    break;
+                case "rprov":
+                    
+                    break;
+                case "rgastos":
+                    
+                    break;
+                case "rmateriales":
+                    
+                    break;
+                case "rprodmat":
+                    
+                    break;
+                case "rventas":
+                    
+                    break;
+                case "rgastiesp":
+                    
+                    break;
+                case "rgastmesp":
+                    
+                    break;
+                case "rventasgen":
+                    lblTitulo.Text = $"Reporte: Ventas";
+                    rtbDescripcion.Text = "Se muestran las ventas que se realizaron en el periodo detallado anteriormente. Para mayor claridad las ventas estan divida por categorias por tipo de producto vendido, donde en cada una de estas se detallan el precio base, los materialies utilizados en la fabricación y el precion de cada uno de estos. En la ultima columna se detallan los importes totales obtenidos por tipo de prodcuto y en general dentro del periodo solicitado";
+
+            
+                    break;
+                case "rreqmat":
+                    
+                    break;
+            }
+        }
+
         private void MostrarPantalla<T>(T Pantalla) where T : Form
         {
             Hide();
@@ -328,5 +377,9 @@ namespace Presentacion.Reportes
 
         private void btnRegresar_Click(object sender, EventArgs e) => RegresarPantallaAnterior();
 
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            SeleccionarTexto(e.Node.Name);
+        }
     }
 }
