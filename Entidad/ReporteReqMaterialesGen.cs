@@ -16,14 +16,14 @@ namespace Entidad {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReporteReqMateriales : ReportClass {
+    public class ReporteReqMaterialesGen : ReportClass {
         
-        public ReporteReqMateriales() {
+        public ReporteReqMaterialesGen() {
         }
         
         public override string ResourceName {
             get {
-                return "ReporteReqMateriales.rpt";
+                return "ReporteReqMaterialesGen.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Entidad {
         
         public override string FullResourceName {
             get {
-                return "Entidad.ReporteReqMateriales.rpt";
+                return "Entidad.ReporteReqMaterialesGen.rpt";
             }
             set {
                 // Do nothing
@@ -111,20 +111,12 @@ namespace Entidad {
                 return this.DataDefinition.ParameterFields[2];
             }
         }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_idprov {
-            get {
-                return this.DataDefinition.ParameterFields[3];
-            }
-        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReporteReqMateriales : Component, ICachedReport {
+    public class CachedReporteReqMaterialesGen : Component, ICachedReport {
         
-        public CachedReporteReqMateriales() {
+        public CachedReporteReqMaterialesGen() {
         }
         
         [Browsable(false)]
@@ -161,7 +153,7 @@ namespace Entidad {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReporteReqMateriales rpt = new ReporteReqMateriales();
+            ReporteReqMaterialesGen rpt = new ReporteReqMaterialesGen();
             rpt.Site = this.Site;
             return rpt;
         }

@@ -7,9 +7,9 @@ using static System.Environment;
 namespace Presentacion.Reportes
 {
 
-    class PantallaVPReqMat : Pantalla
+    class PantallaVPMateriales_P : Pantalla
     {
-        public PantallaVPReqMat()
+        public PantallaVPMateriales_P()
         {
             InitializeComponent();
         }
@@ -24,26 +24,12 @@ namespace Presentacion.Reportes
         private SaveFileDialog sfdExportar;
         private Button btnGenerar;
         private Label label6;
-        private Label label2;
-        private TextBox txtIDText;
-        private Label label4;
-        private Label label3;
-        private TextBox txtEmisor;
-        private TextBox txtReceptor;
-        private Label label5;
-        private TextBox txtIDProv;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvVisor;
 
         private void InitializeComponent()
         {
             this.crvVisor = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtEmisor = new System.Windows.Forms.TextBox();
-            this.txtReceptor = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtIDText = new System.Windows.Forms.TextBox();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btnRegresar = new System.Windows.Forms.Button();
@@ -51,8 +37,6 @@ namespace Presentacion.Reportes
             this.btnExportar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.sfdExportar = new System.Windows.Forms.SaveFileDialog();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtIDProv = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,14 +59,6 @@ namespace Presentacion.Reportes
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.txtIDProv);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.txtEmisor);
-            this.groupBox2.Controls.Add(this.txtReceptor);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.txtIDText);
             this.groupBox2.Controls.Add(this.btnGenerar);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.btnRegresar);
@@ -97,62 +73,13 @@ namespace Presentacion.Reportes
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parametros del reporte";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 213);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 16);
-            this.label4.TabIndex = 31;
-            this.label4.Text = "Nombre de quien recibio:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 149);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(139, 16);
-            this.label3.TabIndex = 31;
-            this.label3.Text = "Nombre de quien emite:";
-            // 
-            // txtEmisor
-            // 
-            this.txtEmisor.Location = new System.Drawing.Point(9, 168);
-            this.txtEmisor.Name = "txtEmisor";
-            this.txtEmisor.Size = new System.Drawing.Size(225, 21);
-            this.txtEmisor.TabIndex = 30;
-            // 
-            // txtReceptor
-            // 
-            this.txtReceptor.Location = new System.Drawing.Point(9, 232);
-            this.txtReceptor.Name = "txtReceptor";
-            this.txtReceptor.Size = new System.Drawing.Size(225, 21);
-            this.txtReceptor.TabIndex = 29;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 16);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Id de compra:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // txtIDText
-            // 
-            this.txtIDText.Location = new System.Drawing.Point(9, 51);
-            this.txtIDText.Name = "txtIDText";
-            this.txtIDText.Size = new System.Drawing.Size(225, 21);
-            this.txtIDText.TabIndex = 27;
-            // 
             // btnGenerar
             // 
             this.btnGenerar.BackgroundImage = global::Presentacion.Properties.Resources.IconoGenerar;
             this.btnGenerar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGenerar.FlatAppearance.BorderSize = 0;
             this.btnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGenerar.Location = new System.Drawing.Point(107, 303);
+            this.btnGenerar.Location = new System.Drawing.Point(108, 232);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(60, 60);
             this.btnGenerar.TabIndex = 24;
@@ -166,7 +93,7 @@ namespace Presentacion.Reportes
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(102, 366);
+            this.label6.Location = new System.Drawing.Point(103, 295);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 20);
             this.label6.TabIndex = 23;
@@ -178,7 +105,7 @@ namespace Presentacion.Reportes
             this.btnRegresar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRegresar.FlatAppearance.BorderSize = 0;
             this.btnRegresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegresar.Location = new System.Drawing.Point(183, 396);
+            this.btnRegresar.Location = new System.Drawing.Point(183, 368);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(60, 60);
             this.btnRegresar.TabIndex = 26;
@@ -192,7 +119,7 @@ namespace Presentacion.Reportes
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(179, 459);
+            this.label1.Location = new System.Drawing.Point(179, 431);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 20);
             this.label1.TabIndex = 25;
@@ -204,7 +131,7 @@ namespace Presentacion.Reportes
             this.btnExportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExportar.FlatAppearance.BorderSize = 0;
             this.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportar.Location = new System.Drawing.Point(30, 396);
+            this.btnExportar.Location = new System.Drawing.Point(30, 368);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(60, 60);
             this.btnExportar.TabIndex = 24;
@@ -218,7 +145,7 @@ namespace Presentacion.Reportes
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(26, 459);
+            this.label10.Location = new System.Drawing.Point(26, 431);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(69, 20);
             this.label10.TabIndex = 23;
@@ -229,29 +156,13 @@ namespace Presentacion.Reportes
             this.sfdExportar.Filter = "Adobe PDF|*.pdf";
             this.sfdExportar.FileOk += new System.ComponentModel.CancelEventHandler(this.sfdExportar_FileOk);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 92);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 16);
-            this.label5.TabIndex = 33;
-            this.label5.Text = "Id proveedor:";
-            // 
-            // txtIDProv
-            // 
-            this.txtIDProv.Location = new System.Drawing.Point(9, 111);
-            this.txtIDProv.Name = "txtIDProv";
-            this.txtIDProv.Size = new System.Drawing.Size(225, 21);
-            this.txtIDProv.TabIndex = 32;
-            // 
-            // PantallaVPReqMat
+            // PantallaVPMateriales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.ClientSize = new System.Drawing.Size(1210, 599);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.crvVisor);
-            this.Name = "PantallaVPReqMat";
+            this.Name = "PantallaVPMateriales";
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.crvVisor, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
@@ -280,52 +191,8 @@ namespace Presentacion.Reportes
 
         private void CargarReporte()
         {
-            var id_str = txtIDText.Text;
-            int id;
-
-            int.TryParse(id_str, out id);
-            if(id == 0)
-            {
-                MessageBox.Show("El id no es valido");
-                return;
-            }
-
-            var emisor = txtEmisor.Text;
-            if (string.IsNullOrWhiteSpace(emisor))
-            {
-                MessageBox.Show("El emisor no es valido");
-                return;
-            }
-
-            var receptor = txtReceptor.Text;
-            if (string.IsNullOrWhiteSpace(receptor))
-            {
-                MessageBox.Show("El receptor no es valido");
-                return;
-            }
-
-            var str_idprov = txtIDProv.Text;
-            int idprov;
-
-            int.TryParse(str_idprov, out idprov);
-
-            if (idprov == 0)
-            {
-                ParametroReporte Id = new ParametroReporte("id", id);
-                ParametroReporte Receptor = new ParametroReporte("Recibe", receptor);
-                ParametroReporte Emisor = new ParametroReporte("Emite", emisor);
-
-                crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteReqMaterialesGen(), Id, Emisor, Receptor);
-            }
-            else
-            {
-                ParametroReporte Id = new ParametroReporte("id", id);
-                ParametroReporte IdProb = new ParametroReporte("idprov",idprov);
-                ParametroReporte Receptor = new ParametroReporte("Recibe", receptor);
-                ParametroReporte Emisor = new ParametroReporte("Emite", emisor);
-                
-                crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteReqMateriales(), Id, IdProb, Emisor, Receptor);
-            }
+                     
+            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteMateriales());
         }
 
         private void btnRegresar_Click(object sender, EventArgs e) => Close();
@@ -333,12 +200,7 @@ namespace Presentacion.Reportes
         private void sfdExportar_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
             string ruta = sfdExportar.FileName;
-            ManejadorReportes.ExportarReporte(ruta, (ReporteReqMateriales) crvVisor.ReportSource);
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
+            ManejadorReportes.ExportarReporte(ruta, (ReporteMateriales) crvVisor.ReportSource);
         }
     }
 }

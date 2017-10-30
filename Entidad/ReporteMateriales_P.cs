@@ -16,14 +16,14 @@ namespace Entidad {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReporteReqMateriales : ReportClass {
+    public class ReporteMateriales_P : ReportClass {
         
-        public ReporteReqMateriales() {
+        public ReporteMateriales_P() {
         }
         
         public override string ResourceName {
             get {
-                return "ReporteReqMateriales.rpt";
+                return "ReporteMateriales_P.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Entidad {
         
         public override string FullResourceName {
             get {
-                return "Entidad.ReporteReqMateriales.rpt";
+                return "Entidad.ReporteMateriales_P.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_id {
+        public CrystalDecisions.Shared.IParameterField Parameter_dummy {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,7 +98,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Recibe {
+        public CrystalDecisions.Shared.IParameterField Parameter_des {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -106,7 +106,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Emite {
+        public CrystalDecisions.Shared.IParameterField Parameter_nomprov {
             get {
                 return this.DataDefinition.ParameterFields[2];
             }
@@ -114,17 +114,41 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_idprov {
+        public CrystalDecisions.Shared.IParameterField Parameter_prbase {
             get {
                 return this.DataDefinition.ParameterFields[3];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_prcomp {
+            get {
+                return this.DataDefinition.ParameterFields[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_umedi {
+            get {
+                return this.DataDefinition.ParameterFields[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_cant {
+            get {
+                return this.DataDefinition.ParameterFields[6];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReporteReqMateriales : Component, ICachedReport {
+    public class CachedReporteMateriales_P : Component, ICachedReport {
         
-        public CachedReporteReqMateriales() {
+        public CachedReporteMateriales_P() {
         }
         
         [Browsable(false)]
@@ -161,7 +185,7 @@ namespace Entidad {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReporteReqMateriales rpt = new ReporteReqMateriales();
+            ReporteMateriales_P rpt = new ReporteMateriales_P();
             rpt.Site = this.Site;
             return rpt;
         }

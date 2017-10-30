@@ -102,6 +102,12 @@
       <DependentUpon>ReporteMaterialesComprados.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ReporteMateriales_P.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteMateriales_P.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ReporteNomina.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,6 +130,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReporteReqMateriales.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReporteReqMaterialesGen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteReqMaterialesGen.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReporteVentasDetallado.cs">
@@ -222,6 +234,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteMaterialesComprados.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReporteMateriales_P.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteMateriales_P.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReporteNomina.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteNomina.cs</LastGenOutput>
@@ -237,6 +253,10 @@
     <EmbeddedResource Include="ReporteReqMateriales.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteReqMateriales.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteReqMaterialesGen.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteReqMaterialesGen.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteVentas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
