@@ -1,6 +1,7 @@
 ﻿using Control;
 using System.Windows.Forms;
 using System;
+using System.Collections.Generic;
 using Entidad;
 using static System.Environment;
 
@@ -8,7 +9,14 @@ namespace Presentacion.Reportes
 {
 
     class PantallaVPMateriales_P : Pantalla
-    {
+    {        
+        bool descrip;
+        bool nomprov;
+        bool prbase;
+        bool prcompra;
+        bool unmedi;
+        bool cant;
+
         public PantallaVPMateriales_P()
         {
             InitializeComponent();
@@ -24,12 +32,16 @@ namespace Presentacion.Reportes
         private SaveFileDialog sfdExportar;
         private Button btnGenerar;
         private Label label6;
+        private Label label2;
+        private CheckedListBox clbOpciones;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvVisor;
 
         private void InitializeComponent()
         {
             this.crvVisor = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.clbOpciones = new System.Windows.Forms.CheckedListBox();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btnRegresar = new System.Windows.Forms.Button();
@@ -59,6 +71,8 @@ namespace Presentacion.Reportes
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.clbOpciones);
             this.groupBox2.Controls.Add(this.btnGenerar);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.btnRegresar);
@@ -72,6 +86,31 @@ namespace Presentacion.Reportes
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parametros del reporte";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(126, 16);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Campos para mostra:";
+            // 
+            // clbOpciones
+            // 
+            this.clbOpciones.FormattingEnabled = true;
+            this.clbOpciones.Items.AddRange(new object[] {
+            "Descripcion",
+            "Nombre Prov.",
+            "Precio Base",
+            "Precio Compra",
+            "Unidad Medida",
+            "Cantidad"});
+            this.clbOpciones.Location = new System.Drawing.Point(9, 42);
+            this.clbOpciones.Name = "clbOpciones";
+            this.clbOpciones.Size = new System.Drawing.Size(120, 100);
+            this.clbOpciones.TabIndex = 27;
+            this.clbOpciones.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbOpciones_ItemCheck);
             // 
             // btnGenerar
             // 
@@ -156,13 +195,13 @@ namespace Presentacion.Reportes
             this.sfdExportar.Filter = "Adobe PDF|*.pdf";
             this.sfdExportar.FileOk += new System.ComponentModel.CancelEventHandler(this.sfdExportar_FileOk);
             // 
-            // PantallaVPMateriales
+            // PantallaVPMateriales_P
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.ClientSize = new System.Drawing.Size(1210, 599);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.crvVisor);
-            this.Name = "PantallaVPMateriales";
+            this.Name = "PantallaVPMateriales_P";
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.crvVisor, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
@@ -186,12 +225,57 @@ namespace Presentacion.Reportes
             sfdExportar.FileName = $"reporte-{DateTime.Now.Day}-{DateTime.Now.Month}-{DateTime.Now.Year}.pdf";
             sfdExportar.ShowDialog();
         }
-
+        
         private void btnGenerar_Click(object sender, EventArgs e) => CargarReporte();
+
+        private void CambiarEstado(string item, CheckState estadoItem)
+        {
+            bool temp;
+
+            if (CheckState.Checked == estadoItem)
+            {
+                temp = true;
+            }
+            else
+            {
+                temp = false;
+            }
+
+            switch (item)
+            {
+                case "Descripcion":
+                    descrip = temp;
+                    break;
+                case "Nombre Prov.":
+                    nomprov = temp;
+                    break;
+                case "Precio Base":
+                    prbase = temp;
+                    break;
+                case "Precio Compra":
+                    prcompra = temp;
+                    break;
+                case "Unidad Medida":
+                    unmedi = temp;
+                    break;
+                case "Cantidad":
+                    cant = temp;
+                    break;             
+                default:
+                    break;
+            }
+        }
 
         private void CargarReporte()
         {
-                     
+            ParametroReporte Descrip = new ParametroReporte("des", descrip);
+            ParametroReporte  NombreProv= new ParametroReporte("nomprov", nomprov);
+            ParametroReporte Prbase = new ParametroReporte("prbase", prbase);
+            ParametroReporte Prcompra= new ParametroReporte("prcompra", prcompra);
+            ParametroReporte Unmedi = new ParametroReporte("unmedi", unmedi);
+            ParametroReporte Cant = new ParametroReporte("cant", cant);
+
+
             crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteMateriales());
         }
 
@@ -201,6 +285,12 @@ namespace Presentacion.Reportes
         {
             string ruta = sfdExportar.FileName;
             ManejadorReportes.ExportarReporte(ruta, (ReporteMateriales) crvVisor.ReportSource);
+        }
+
+        private void clbOpciones_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            var a = (CheckedListBox)sender;
+            CambiarEstado(a.SelectedItem.ToString(), e.NewValue);
         }
     }
 }
