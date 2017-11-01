@@ -6,12 +6,14 @@ namespace Control
 {
     public static class ManejadorReportes
     {
-
         public static void ExportarReporte<T>(string ruta, T reporte) where T : ReportClass
         {
             reporte.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
             reporte.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-            reporte.ExportOptions.DestinationOptions = new DiskFileDestinationOptions {DiskFileName = ruta};
+            reporte.ExportOptions.DestinationOptions = new DiskFileDestinationOptions
+            {
+                DiskFileName = ruta
+            };
             reporte.ExportOptions.FormatOptions = new PdfRtfWordFormatOptions();
             reporte.Export();
         }
@@ -22,7 +24,7 @@ namespace Control
         {
             foreach (ParametroReporte parametro in parametros)
             {
-                reporte.SetParameterValue(parametro.Nombre,parametro.Valor );
+                reporte.SetParameterValue(parametro.Nombre, parametro.Valor);
             }
             return reporte;
         }

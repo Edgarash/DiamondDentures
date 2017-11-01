@@ -35,15 +35,29 @@ namespace Presentacion.Reportes
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Producto-Materiales");
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Requisicion de materiales");
             System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Materiales");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Almacen",
-                new System.Windows.Forms.TreeNode[] {treeNode1, treeNode2, treeNode3, treeNode4, treeNode5, treeNode6, treeNode7, treeNode8});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Almacen", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode6,
+            treeNode7,
+            treeNode8});
             System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Nomina");
             System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Comprobante de nomina");
             System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Gastos");
             System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Ventas Detalladas");
             System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Ventas General");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Finanzas",
-                new System.Windows.Forms.TreeNode[] {treeNode10, treeNode11, treeNode12, treeNode13, treeNode14});
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Finanzas", new System.Windows.Forms.TreeNode[] {
+            treeNode10,
+            treeNode11,
+            treeNode12,
+            treeNode13,
+            treeNode14});
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Trabajadores");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Otros", new System.Windows.Forms.TreeNode[] {
+            treeNode16});
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,8 +70,8 @@ namespace Presentacion.Reportes
             this.btnRegresar = new System.Windows.Forms.Button();
             this.rtbDescripcion = new System.Windows.Forms.RichTextBox();
             this.Encabezado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // Encabezado
@@ -101,7 +115,14 @@ namespace Presentacion.Reportes
             treeNode15.Checked = true;
             treeNode15.Name = "nfinanzas";
             treeNode15.Text = "Finanzas";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {treeNode9, treeNode15});
+            treeNode16.Name = "rtrabajadores";
+            treeNode16.Text = "Trabajadores";
+            treeNode17.Name = "notros";
+            treeNode17.Text = "Otros";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode9,
+            treeNode15,
+            treeNode17});
             this.treeView1.Size = new System.Drawing.Size(175, 344);
             this.treeView1.TabIndex = 9;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
@@ -118,8 +139,7 @@ namespace Presentacion.Reportes
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 115);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(144, 18);
@@ -143,8 +163,7 @@ namespace Presentacion.Reportes
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(236, 464);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 21);
@@ -163,8 +182,7 @@ namespace Presentacion.Reportes
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.lblTitulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Location = new System.Drawing.Point(223, 154);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(82, 18);
@@ -175,8 +193,7 @@ namespace Presentacion.Reportes
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label5.Location = new System.Drawing.Point(12, 24);
             this.label5.Name = "label5";
@@ -187,8 +204,7 @@ namespace Presentacion.Reportes
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(610, 464);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 21);
@@ -247,10 +263,11 @@ namespace Presentacion.Reportes
             this.Controls.SetChildIndex(this.rtbDescripcion, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -299,6 +316,9 @@ namespace Presentacion.Reportes
                     break;
                 case "rreqmat":
                     MostrarPantalla(new PantallaVPReqMat());
+                    break;
+                case "rtrabajadores":
+                    MostrarPantalla(new PantallaVPTrabajadores());
                     break;
             }
         }
@@ -360,6 +380,10 @@ namespace Presentacion.Reportes
                     lblTitulo.Text = "Requisicion de Materiales";
                     rtbDescripcion.Text =
                         "Se muestra un comprobante para el ingreso de materiales al almacen donde se detalla que materiales y sus cantidades fueron recibidas.";
+                    break;
+                case "rtrabajadores":
+                    lblTitulo.Text = "Trabajadores";
+                    rtbDescripcion.Text = "Se muestra una lista con los trabajadores registrados en el sistema.";
                     break;
             }
         }

@@ -1,17 +1,31 @@
 ﻿using Control;
 using System.Windows.Forms;
 using System;
+using System.Collections.Generic;
 using Entidad;
 using static System.Environment;
 
 namespace Presentacion.Reportes
 {
-
     class PantallaVPMateriales : Pantalla
     {
+        private readonly Dictionary<string, bool> _estadoColumnas = new Dictionary<string, bool>
+        {
+            {"Descripcion", true},
+            {"Nombre Prov.", true},
+            {"Precio Base", true},
+            {"Precio Compra", true},
+            {"Unidad Medida", true},
+            {"Cantidad", true}
+        };
+
         public PantallaVPMateriales()
         {
             InitializeComponent();
+            for (int i = 0; i < clbOpciones.Items.Count; i++)
+            {
+                clbOpciones.SetItemCheckState(i, CheckState.Checked);
+            }
         }
 
         #region UI
@@ -24,12 +38,16 @@ namespace Presentacion.Reportes
         private SaveFileDialog sfdExportar;
         private Button btnGenerar;
         private Label label6;
+        private Label label2;
+        private CheckedListBox clbOpciones;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvVisor;
 
         private void InitializeComponent()
         {
             this.crvVisor = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.clbOpciones = new System.Windows.Forms.CheckedListBox();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btnRegresar = new System.Windows.Forms.Button();
@@ -47,6 +65,10 @@ namespace Presentacion.Reportes
             // crvVisor
             // 
             this.crvVisor.ActiveViewIndex = -1;
+            this.crvVisor.Anchor =
+                ((System.Windows.Forms.AnchorStyles)
+                    ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) |
+                       System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.crvVisor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvVisor.Cursor = System.Windows.Forms.Cursors.Default;
             this.crvVisor.DisplayStatusBar = false;
@@ -59,6 +81,8 @@ namespace Presentacion.Reportes
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.clbOpciones);
             this.groupBox2.Controls.Add(this.btnGenerar);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.btnRegresar);
@@ -72,6 +96,33 @@ namespace Presentacion.Reportes
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parametros del reporte";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(129, 16);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Campos para mostrar:";
+            // 
+            // clbOpciones
+            // 
+            this.clbOpciones.FormattingEnabled = true;
+            this.clbOpciones.Items.AddRange(new object[]
+            {
+                "Descripcion",
+                "Nombre Prov.",
+                "Precio Base",
+                "Precio Compra",
+                "Unidad Medida",
+                "Cantidad"
+            });
+            this.clbOpciones.Location = new System.Drawing.Point(9, 42);
+            this.clbOpciones.Name = "clbOpciones";
+            this.clbOpciones.Size = new System.Drawing.Size(120, 100);
+            this.clbOpciones.TabIndex = 27;
+            this.clbOpciones.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbOpciones_ItemCheck);
             // 
             // btnGenerar
             // 
@@ -91,7 +142,8 @@ namespace Presentacion.Reportes
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label6.Location = new System.Drawing.Point(103, 295);
             this.label6.Name = "label6";
@@ -117,7 +169,8 @@ namespace Presentacion.Reportes
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(179, 431);
             this.label1.Name = "label1";
@@ -143,7 +196,8 @@ namespace Presentacion.Reportes
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label10.Location = new System.Drawing.Point(26, 431);
             this.label10.Name = "label10";
@@ -162,14 +216,15 @@ namespace Presentacion.Reportes
             this.ClientSize = new System.Drawing.Size(1210, 599);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.crvVisor);
+            this.MaximizeBox = true;
             this.Name = "PantallaVPMateriales";
+            this.Text = "Materiales";
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.crvVisor, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -178,8 +233,7 @@ namespace Presentacion.Reportes
         {
             if (crvVisor.ReportSource == null)
             {
-                MessageBox.Show("No se ha generado ningun reporte", "Advertencia", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
+                MessageBox.Show("No se ha generado ningun reporte", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             sfdExportar.InitialDirectory = GetFolderPath(SpecialFolder.MyDocuments);
@@ -189,10 +243,22 @@ namespace Presentacion.Reportes
 
         private void btnGenerar_Click(object sender, EventArgs e) => CargarReporte();
 
+        private void CambiarEstado(string item, CheckState estadoItem)
+        {
+            bool temp = CheckState.Checked == estadoItem;
+            _estadoColumnas[item] = temp;
+        }
+
         private void CargarReporte()
         {
-                     
-            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteMateriales());
+            ParametroReporte Descrip = new ParametroReporte("des", _estadoColumnas["Descripcion"]);
+            ParametroReporte NombreProv = new ParametroReporte("nomprov", _estadoColumnas["Nombre Prov."]);
+            ParametroReporte Prbase = new ParametroReporte("prbase", _estadoColumnas["Precio Base"]);
+            ParametroReporte Prcompra = new ParametroReporte("prcomp", _estadoColumnas["Precio Compra"]);
+            ParametroReporte Unmedi = new ParametroReporte("umedi", _estadoColumnas["Unidad Medida"]);
+            ParametroReporte Cant = new ParametroReporte("cant", _estadoColumnas["Cantidad"]);
+
+            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteMateriales(), Descrip, NombreProv, Prbase, Prcompra, Unmedi, Cant);
         }
 
         private void btnRegresar_Click(object sender, EventArgs e) => Close();
@@ -201,6 +267,15 @@ namespace Presentacion.Reportes
         {
             string ruta = sfdExportar.FileName;
             ManejadorReportes.ExportarReporte(ruta, (ReporteMateriales) crvVisor.ReportSource);
+        }
+
+        private void clbOpciones_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            CheckedListBox a = (CheckedListBox) sender;
+            if (a.SelectedItem != null)
+            {
+                CambiarEstado(a.SelectedItem.ToString(), e.NewValue);
+            }
         }
     }
 }

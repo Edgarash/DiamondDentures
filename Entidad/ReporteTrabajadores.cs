@@ -16,14 +16,14 @@ namespace Entidad {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReporteMateriales_P : ReportClass {
+    public class ReporteTrabajadores : ReportClass {
         
-        public ReporteMateriales_P() {
+        public ReporteTrabajadores() {
         }
         
         public override string ResourceName {
             get {
-                return "ReporteMateriales_P.rpt";
+                return "ReporteTrabajadores.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Entidad {
         
         public override string FullResourceName {
             get {
-                return "Entidad.ReporteMateriales_P.rpt";
+                return "Entidad.ReporteTrabajadores.rpt";
             }
             set {
                 // Do nothing
@@ -98,7 +98,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_des {
+        public CrystalDecisions.Shared.IParameterField Parameter_nempl {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -106,7 +106,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_nomprov {
+        public CrystalDecisions.Shared.IParameterField Parameter_log {
             get {
                 return this.DataDefinition.ParameterFields[2];
             }
@@ -114,7 +114,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_prbase {
+        public CrystalDecisions.Shared.IParameterField Parameter_nom {
             get {
                 return this.DataDefinition.ParameterFields[3];
             }
@@ -122,7 +122,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_prcomp {
+        public CrystalDecisions.Shared.IParameterField Parameter_ape {
             get {
                 return this.DataDefinition.ParameterFields[4];
             }
@@ -130,7 +130,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_umedi {
+        public CrystalDecisions.Shared.IParameterField Parameter_dep {
             get {
                 return this.DataDefinition.ParameterFields[5];
             }
@@ -138,17 +138,25 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_cant {
+        public CrystalDecisions.Shared.IParameterField Parameter_pue {
             get {
                 return this.DataDefinition.ParameterFields[6];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_ema {
+            get {
+                return this.DataDefinition.ParameterFields[7];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReporteMateriales_P : Component, ICachedReport {
+    public class CachedReporteTrabajadores : Component, ICachedReport {
         
-        public CachedReporteMateriales_P() {
+        public CachedReporteTrabajadores() {
         }
         
         [Browsable(false)]
@@ -185,7 +193,7 @@ namespace Entidad {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReporteMateriales_P rpt = new ReporteMateriales_P();
+            ReporteTrabajadores rpt = new ReporteTrabajadores();
             rpt.Site = this.Site;
             return rpt;
         }

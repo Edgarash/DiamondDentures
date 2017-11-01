@@ -90,22 +90,16 @@
       <DependentUpon>ReporteInsumosComprados.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ReporteMateriales.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteMateriales.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ReporteMaterialesComprados.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReporteMaterialesComprados.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ReporteMateriales_P.cs">
+    <Compile Include="ReporteMateriales.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteMateriales_P.rpt</DependentUpon>
+      <DependentUpon>ReporteMateriales.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReporteNomina.cs">
@@ -136,6 +130,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReporteReqMaterialesGen.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReporteTrabajadores.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteTrabajadores.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReporteVentasDetallado.cs">
@@ -226,17 +226,13 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteInsumosComprados.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReporteMateriales.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteMateriales.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="ReporteMaterialesComprados.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteMaterialesComprados.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReporteMateriales_P.rpt">
+    <EmbeddedResource Include="ReporteMateriales.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteMateriales_P.cs</LastGenOutput>
+      <LastGenOutput>ReporteMateriales.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteNomina.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -257,6 +253,10 @@
     <EmbeddedResource Include="ReporteReqMaterialesGen.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteReqMaterialesGen.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteTrabajadores.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteTrabajadores.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteVentas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -234,7 +234,10 @@
     <Compile Include="Reportes\PantallaVPGastos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes\PantallaVPMateriales_P.cs">
+    <Compile Include="Reportes\PantallaVPTrabajadores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPMateriales.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\PantallaVPReqMat.cs">
@@ -253,9 +256,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\PantallaVPMatProd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes\PantallaVPMateriales.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\PantallaVPProveedores.cs">
@@ -469,8 +469,11 @@
     <EmbeddedResource Include="Reportes\PantallaVPGastos.resx">
       <DependentUpon>PantallaVPGastos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\PantallaVPMateriales_P.resx">
-      <DependentUpon>PantallaVPMateriales_P.cs</DependentUpon>
+    <EmbeddedResource Include="Reportes\PantallaVPTrabajadores.resx">
+      <DependentUpon>PantallaVPTrabajadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPMateriales.resx">
+      <DependentUpon>PantallaVPMateriales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaVPReqMat.resx">
       <DependentUpon>PantallaVPReqMat.cs</DependentUpon>
@@ -489,9 +492,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaVPMatProd.resx">
       <DependentUpon>PantallaVPMatProd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\PantallaVPMateriales.resx">
-      <DependentUpon>PantallaVPMateriales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaVPProveedores.resx">
       <DependentUpon>PantallaVPProveedores.cs</DependentUpon>
