@@ -9,19 +9,20 @@ namespace Presentacion.Reportes
 {
     class PantallaVPMateriales : Pantalla
     {
-        private readonly Dictionary<string, bool> _estadoColumnas = new Dictionary<string, bool>
-        {
-            {"Descripcion", true},
-            {"Nombre Prov.", true},
-            {"Precio Base", true},
-            {"Precio Compra", true},
-            {"Unidad Medida", true},
-            {"Cantidad", true}
-        };
+        private readonly Dictionary<string, bool> _estadoColumnas;
 
         public PantallaVPMateriales()
         {
             InitializeComponent();
+            _estadoColumnas = new Dictionary<string, bool>
+            {
+                {"Descripcion", true},
+                {"Nombre Prov.", true},
+                {"Precio Base", true},
+                {"Precio Compra", true},
+                {"Unidad Medida", true},
+                {"Cantidad", true}
+            };
             for (int i = 0; i < clbOpciones.Items.Count; i++)
             {
                 clbOpciones.SetItemCheckState(i, CheckState.Checked);
@@ -67,8 +68,8 @@ namespace Presentacion.Reportes
             this.crvVisor.ActiveViewIndex = -1;
             this.crvVisor.Anchor =
                 ((System.Windows.Forms.AnchorStyles)
-                    ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) |
-                       System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+                    ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) |
+                      System.Windows.Forms.AnchorStyles.Right)));
             this.crvVisor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvVisor.Cursor = System.Windows.Forms.Cursors.Default;
             this.crvVisor.DisplayStatusBar = false;
@@ -109,15 +110,7 @@ namespace Presentacion.Reportes
             // clbOpciones
             // 
             this.clbOpciones.FormattingEnabled = true;
-            this.clbOpciones.Items.AddRange(new object[]
-            {
-                "Descripcion",
-                "Nombre Prov.",
-                "Precio Base",
-                "Precio Compra",
-                "Unidad Medida",
-                "Cantidad"
-            });
+            this.clbOpciones.Items.AddRange(new object[] {"Descripcion", "Nombre Prov.", "Precio Base", "Precio Compra", "Unidad Medida", "Cantidad"});
             this.clbOpciones.Location = new System.Drawing.Point(9, 42);
             this.clbOpciones.Name = "clbOpciones";
             this.clbOpciones.Size = new System.Drawing.Size(120, 100);
@@ -142,8 +135,8 @@ namespace Presentacion.Reportes
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label6.Location = new System.Drawing.Point(103, 295);
             this.label6.Name = "label6";
@@ -169,8 +162,8 @@ namespace Presentacion.Reportes
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(179, 431);
             this.label1.Name = "label1";
@@ -196,8 +189,8 @@ namespace Presentacion.Reportes
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label10.Location = new System.Drawing.Point(26, 431);
             this.label10.Name = "label10";
@@ -243,11 +236,7 @@ namespace Presentacion.Reportes
 
         private void btnGenerar_Click(object sender, EventArgs e) => CargarReporte();
 
-        private void CambiarEstado(string item, CheckState estadoItem)
-        {
-            bool temp = CheckState.Checked == estadoItem;
-            _estadoColumnas[item] = temp;
-        }
+        private void CambiarEstado(string item, CheckState estadoItem) => _estadoColumnas[item] = CheckState.Checked == estadoItem;
 
         private void CargarReporte()
         {
@@ -271,10 +260,9 @@ namespace Presentacion.Reportes
 
         private void clbOpciones_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            CheckedListBox a = (CheckedListBox) sender;
-            if (a.SelectedItem != null)
+            if (((CheckedListBox) sender).SelectedItem != null)
             {
-                CambiarEstado(a.SelectedItem.ToString(), e.NewValue);
+                CambiarEstado(((CheckedListBox) sender).SelectedItem.ToString(), e.NewValue);
             }
         }
     }

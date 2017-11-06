@@ -1,19 +1,34 @@
 ﻿using Control;
 using System.Windows.Forms;
 using System;
+using System.Collections.Generic;
 using Entidad;
 using static System.Environment;
 
 namespace Presentacion.Reportes
 {
- 
-
     class PantallaVPProveedores : Pantalla
     {
+        private Dictionary<string, bool> _estadoColumnas;
+
         public PantallaVPProveedores()
         {
             InitializeComponent();
+            _estadoColumnas = new Dictionary<string, bool>()
+            {
+                {"Descripcion", true},
+                {"Direccion", true},
+                {"Telefono", true},
+                {"Correo", true}
+            };
+            for (int i = 0; i < clbOpciones.Items.Count; i++)
+            {
+                clbOpciones.SetItemCheckState(i, CheckState.Checked);
+            }
         }
+
+
+        private void CambiarEstado(string item, CheckState estadoItem) => _estadoColumnas[item] = CheckState.Checked == estadoItem;
 
         #region UI
 
@@ -26,12 +41,16 @@ namespace Presentacion.Reportes
         private Button btnGenerar;
         private Label label6;
         private Label label5;
+        private Label label2;
+        private CheckedListBox clbOpciones;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvVisor;
 
         private void InitializeComponent()
         {
             this.crvVisor = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.clbOpciones = new System.Windows.Forms.CheckedListBox();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btnRegresar = new System.Windows.Forms.Button();
@@ -64,6 +83,8 @@ namespace Presentacion.Reportes
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.clbOpciones);
             this.groupBox2.Controls.Add(this.btnGenerar);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.btnRegresar);
@@ -77,6 +98,29 @@ namespace Presentacion.Reportes
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parametros del reporte";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(27, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(129, 16);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Campos para mostrar:";
+            // 
+            // clbOpciones
+            // 
+            this.clbOpciones.FormattingEnabled = true;
+            this.clbOpciones.Items.AddRange(new object[] {
+            "Descripcion",
+            "Direccion",
+            "Telefono",
+            "Correo"});
+            this.clbOpciones.Location = new System.Drawing.Point(27, 60);
+            this.clbOpciones.Name = "clbOpciones";
+            this.clbOpciones.Size = new System.Drawing.Size(120, 68);
+            this.clbOpciones.TabIndex = 29;
+            this.clbOpciones.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbOpciones_ItemCheck);
             // 
             // btnGenerar
             // 
@@ -198,8 +242,7 @@ namespace Presentacion.Reportes
         {
             if (crvVisor.ReportSource == null)
             {
-                MessageBox.Show("No se ha generado ningun reporte", "Advertencia", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
+                MessageBox.Show("No se ha generado ningun reporte", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             sfdExportar.InitialDirectory = GetFolderPath(SpecialFolder.MyDocuments);
@@ -211,8 +254,12 @@ namespace Presentacion.Reportes
 
         private void CargarReporte()
         {
-                     
-            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteProveedores());
+            ParametroReporte Desc = new ParametroReporte("desc", _estadoColumnas["Descripcion"]);
+            ParametroReporte Dire = new ParametroReporte("dire", _estadoColumnas["Direccion"]);
+            ParametroReporte Tele = new ParametroReporte("tele", _estadoColumnas["Telefono"]);
+            ParametroReporte Corr = new ParametroReporte("corr", _estadoColumnas["Correo"]);
+
+            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteProveedores(), Desc, Dire, Tele, Corr);
         }
 
         private void btnRegresar_Click(object sender, EventArgs e) => Close();
@@ -221,6 +268,14 @@ namespace Presentacion.Reportes
         {
             string ruta = sfdExportar.FileName;
             ManejadorReportes.ExportarReporte(ruta, (ReporteProveedores) crvVisor.ReportSource);
+        }
+
+        private void clbOpciones_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (((CheckedListBox)sender).SelectedItem != null)
+            {
+                CambiarEstado(((CheckedListBox)sender).SelectedItem.ToString(), e.NewValue);
+            }
         }
     }
 }
