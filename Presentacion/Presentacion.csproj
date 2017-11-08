@@ -231,10 +231,13 @@
     <Compile Include="Reportes\PantallaGasInEs.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reportes\PantallaVPListadoGen.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes\PantallaVPGastos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes\PantallaVPTrabajadores.cs">
+    <Compile Include="Reportes\PantallaVPListadoPer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\PantallaVPMateriales.cs">
@@ -466,11 +469,14 @@
     <EmbeddedResource Include="Reportes\PantallaGasInEs.resx">
       <DependentUpon>PantallaGasInEs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPListadoGen.resx">
+      <DependentUpon>PantallaVPListadoGen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaVPGastos.resx">
       <DependentUpon>PantallaVPGastos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\PantallaVPTrabajadores.resx">
-      <DependentUpon>PantallaVPTrabajadores.cs</DependentUpon>
+    <EmbeddedResource Include="Reportes\PantallaVPListadoPer.resx">
+      <DependentUpon>PantallaVPListadoPer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaVPMateriales.resx">
       <DependentUpon>PantallaVPMateriales.cs</DependentUpon>

@@ -44,9 +44,137 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CAN10_MetUltPed.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN10_MetUltPed.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN11_EmplDes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN11_EmplDes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN12_EmplPedTerm.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN12_EmplPedTerm.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN13_ConsLibre.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN13_ConsLibre.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN14_ProductoCaro.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN14_ProductoCaro.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN15_ProdLab.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN15_ProdLab.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN16_DentMasGastan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN16_DentMasGastan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN17_ProdMasElab.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN17_ProdMasElab.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN18_ProdMenosElab.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN18_ProdMenosElab.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN19_DentMasCompran.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN19_DentMasCompran.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN1_Trabajadores.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN1_Trabajadores.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN2_Catalogo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN2_Catalogo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN2_Combinaciones.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN2_Combinaciones.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN3_CorteCaja.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN3_CorteCaja.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN4_NotPed.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN4_NotPed.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN5_EmpLab.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN5_EmpLab.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN7_Balance.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN7_Balance.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN6_Metrica.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN6_Metrica.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN8_ReporteFaltantes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN8_ReporteFaltantes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CAN9_ReporteFaltantesDiferenteCero.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN9_ReporteFaltantesDiferenteCero.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Correo.cs" />
     <Compile Include="Datos.cs" />
     <Compile Include="DatosBusqueda.cs" />
+    <Compile Include="DatosPer.cs">
+      <DependentUpon>DatosPer.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatosPer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatosPer.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FormaPedido.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -132,12 +260,6 @@
       <DependentUpon>ReporteReqMaterialesGen.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ReporteTrabajadores.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteTrabajadores.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ReporteVentasDetallado.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -186,6 +308,82 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CAN10_MetUltPed.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN10_MetUltPed.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN11_EmplDes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN11_EmplDes.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN12_EmplPedTerm.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN12_EmplPedTerm.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN13_ConsLibre.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN13_ConsLibre.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN14_ProductoCaro.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN14_ProductoCaro.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN15_ProdLab.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN15_ProdLab.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN16_DentMasGastan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN16_DentMasGastan.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN17_ProdMasElab.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN17_ProdMasElab.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN18_ProdMenosElab.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN18_ProdMenosElab.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN19_DentMasCompran.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN19_DentMasCompran.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN2_Catalogo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN2_Catalogo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN2_Combinaciones.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN2_Combinaciones.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN3_CorteCaja.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN3_CorteCaja.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN4_NotPed.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN4_NotPed.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN5_EmpLab.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN5_EmpLab.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN7_Balance.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN7_Balance.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN6_Metrica.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN6_Metrica.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN8_ReporteFaltantes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN8_ReporteFaltantes.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN9_ReporteFaltantesDiferenteCero.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN9_ReporteFaltantesDiferenteCero.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="FacturaReporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>FacturaReporte.cs</LastGenOutput>
@@ -254,9 +452,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteReqMaterialesGen.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReporteTrabajadores.rpt">
+    <EmbeddedResource Include="CAN1_Trabajadores.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteTrabajadores.cs</LastGenOutput>
+      <LastGenOutput>CAN1_Trabajadores.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteVentas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -270,6 +468,19 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DatosPer.xsc">
+      <DependentUpon>DatosPer.xsd</DependentUpon>
+    </None>
+    <None Include="DatosPer.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatosPer.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DatosPer.xss">
+      <DependentUpon>DatosPer.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

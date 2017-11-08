@@ -16,14 +16,14 @@ namespace Entidad {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReporteMateriales : ReportClass {
+    public class CAN3_CorteCaja : ReportClass {
         
-        public ReporteMateriales() {
+        public CAN3_CorteCaja() {
         }
         
         public override string ResourceName {
             get {
-                return "ReporteMateriales.rpt";
+                return "CAN3_CorteCaja.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Entidad {
         
         public override string FullResourceName {
             get {
-                return "Entidad.ReporteMateriales.rpt";
+                return "Entidad.CAN3_CorteCaja.rpt";
             }
             set {
                 // Do nothing
@@ -154,9 +154,9 @@ namespace Entidad {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReporteMateriales : Component, ICachedReport {
+    public class CachedCAN3_CorteCaja : Component, ICachedReport {
         
-        public CachedReporteMateriales() {
+        public CachedCAN3_CorteCaja() {
         }
         
         [Browsable(false)]
@@ -193,7 +193,7 @@ namespace Entidad {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReporteMateriales rpt = new ReporteMateriales();
+            CAN3_CorteCaja rpt = new CAN3_CorteCaja();
             rpt.Site = this.Site;
             return rpt;
         }

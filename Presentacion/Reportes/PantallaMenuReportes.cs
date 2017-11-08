@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using Control;
+using Entidad;
 
 namespace Presentacion.Reportes
 {
@@ -35,29 +38,36 @@ namespace Presentacion.Reportes
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Producto-Materiales");
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Requisicion de materiales");
             System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Materiales");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Almacen", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6,
-            treeNode7,
-            treeNode8});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Almacen",
+                new System.Windows.Forms.TreeNode[] {treeNode1, treeNode2, treeNode3, treeNode4, treeNode5, treeNode6, treeNode7, treeNode8});
             System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Nomina");
             System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Comprobante de nomina");
             System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Gastos");
             System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Ventas Detalladas");
             System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Ventas General");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Finanzas", new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode11,
-            treeNode12,
-            treeNode13,
-            treeNode14});
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Finanzas",
+                new System.Windows.Forms.TreeNode[] {treeNode10, treeNode11, treeNode12, treeNode13, treeNode14});
             System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Trabajadores");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Otros", new System.Windows.Forms.TreeNode[] {
-            treeNode16});
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Otros", new System.Windows.Forms.TreeNode[] {treeNode16});
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Catalogo de Productos");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Catalogo de Productos (Comb.)");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Cortes de Caja");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Detalles del Pedido");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Rendimiento de Empleado");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Metrica del Pedido");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Balance");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Materiales Faltantes");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Materiales Faltantes (n)");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Metrica del Ultimo Pedido");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Laboratoristas Ocupados");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Laboratoristas Desocupados");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Sueldos Promedio");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Productos mayo valor");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Productos en laboratorio");
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Clientes mas valiosos");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Producto más elaborado");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Producto menos elaborado");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Clientes frencuentes");
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,8 +80,8 @@ namespace Presentacion.Reportes
             this.btnRegresar = new System.Windows.Forms.Button();
             this.rtbDescripcion = new System.Windows.Forms.RichTextBox();
             this.Encabezado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // Encabezado
@@ -115,14 +125,73 @@ namespace Presentacion.Reportes
             treeNode15.Checked = true;
             treeNode15.Name = "nfinanzas";
             treeNode15.Text = "Finanzas";
-            treeNode16.Name = "rtrabajadores";
+            treeNode16.Name = "can1";
             treeNode16.Text = "Trabajadores";
             treeNode17.Name = "notros";
             treeNode17.Text = "Otros";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode15,
-            treeNode17});
+            treeNode18.Name = "can2_1";
+            treeNode18.Text = "Catalogo de Productos";
+            treeNode19.Name = "can2_1";
+            treeNode19.Text = "Catalogo de Productos (Comb.)";
+            treeNode20.Name = "can3";
+            treeNode20.Text = "Cortes de Caja";
+            treeNode21.Name = "can4";
+            treeNode21.Text = "Detalles del Pedido";
+            treeNode22.Name = "can5";
+            treeNode22.Text = "Rendimiento de Empleado";
+            treeNode23.Name = "can6";
+            treeNode23.Text = "Metrica del Pedido";
+            treeNode24.Name = "can7";
+            treeNode24.Text = "Balance";
+            treeNode25.Name = "can8";
+            treeNode25.Text = "Materiales Faltantes";
+            treeNode26.Name = "can9";
+            treeNode26.Text = "Materiales Faltantes (n)";
+            treeNode27.Name = "can10";
+            treeNode27.Text = "Metrica del Ultimo Pedido";
+            treeNode28.Name = "can11";
+            treeNode28.Text = "Laboratoristas Ocupados";
+            treeNode29.Name = "can12";
+            treeNode29.Text = "Laboratoristas Desocupados";
+            treeNode30.Name = "can13";
+            treeNode30.Text = "Sueldos Promedio";
+            treeNode31.Name = "can14";
+            treeNode31.Text = "Productos mayo valor";
+            treeNode32.Name = "can15";
+            treeNode32.Text = "Productos en laboratorio";
+            treeNode33.Name = "can16";
+            treeNode33.Text = "Clientes mas valiosos";
+            treeNode34.Name = "can17";
+            treeNode34.Text = "Producto más elaborado";
+            treeNode35.Name = "can18";
+            treeNode35.Text = "Producto menos elaborado";
+            treeNode36.Name = "can19";
+            treeNode36.Text = "Clientes frencuentes";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[]
+            {
+                treeNode9,
+                treeNode15,
+                treeNode17,
+                treeNode18,
+                treeNode19,
+                treeNode20,
+                treeNode21,
+                treeNode22,
+                treeNode23,
+                treeNode24,
+                treeNode25,
+                treeNode26,
+                treeNode27,
+                treeNode28,
+                treeNode29,
+                treeNode30,
+                treeNode31,
+                treeNode32,
+                treeNode33,
+                treeNode34,
+                treeNode35,
+                treeNode36
+            });
             this.treeView1.Size = new System.Drawing.Size(175, 344);
             this.treeView1.TabIndex = 9;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
@@ -139,7 +208,8 @@ namespace Presentacion.Reportes
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label1.Location = new System.Drawing.Point(12, 115);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(144, 18);
@@ -163,7 +233,8 @@ namespace Presentacion.Reportes
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label2.Location = new System.Drawing.Point(236, 464);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 21);
@@ -182,7 +253,8 @@ namespace Presentacion.Reportes
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblTitulo.Location = new System.Drawing.Point(223, 154);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(82, 18);
@@ -193,7 +265,8 @@ namespace Presentacion.Reportes
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label5.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label5.Location = new System.Drawing.Point(12, 24);
             this.label5.Name = "label5";
@@ -204,7 +277,8 @@ namespace Presentacion.Reportes
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label6.Location = new System.Drawing.Point(610, 464);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 21);
@@ -263,20 +337,21 @@ namespace Presentacion.Reportes
             this.Controls.SetChildIndex(this.rtbDescripcion, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
 
-        private void btnAceptar_Click(object sender, EventArgs e) => SeleccionarOpcion(treeView1.SelectedNode.Name);
+        private void btnAceptar_Click(object sender, EventArgs e) => SeleccionarOpcion(treeView1.SelectedNode);
 
-        private void SeleccionarOpcion(string tipo)
+        private void SeleccionarOpcion(TreeNode tipo)
         {
-            switch (tipo)
+            string sql;
+            Dictionary<string, ParametroReporte> _estadoColumnas;
+            switch (tipo.Name)
             {
                 case "rcomnom":
                     MostrarPantalla(new PantallaVPNominaEmpleado());
@@ -297,7 +372,18 @@ namespace Presentacion.Reportes
                     MostrarPantalla(new PantallaVPGastos());
                     break;
                 case "rmateriales":
-                    MostrarPantalla(new PantallaVPMateriales());
+                    _estadoColumnas = new Dictionary<string, ParametroReporte>
+                    {
+                        {"ID Mat", new ParametroReporte("", "ID Mat", "material.IDMaterial")},
+                        {"Nombre", new ParametroReporte("", "Nombre", "material.Nombre")},
+                        {"Descripcion", new ParametroReporte("", "Descripcion", "material.Descripcion")},
+                        {"Precio Compra", new ParametroReporte("", "Precio Compra", "material.PrecioCompra")},
+                        {"Unidad Medida", new ParametroReporte("", "Unidad Medida", "material.UnidadMedida")},
+                        {"Cantidad", new ParametroReporte("", "Cantidad", "material.Cantidad")},
+                        {"Proveedor", new ParametroReporte("", "Proveedor", "proveedores.Nombre")}
+                    };
+                    sql = "FROM material,proveedores WHERE proveedores.IDProveedor=material.Proveedor;";
+                    MostrarPantalla(new PantallaVPListadoPer<ReporteMateriales>(tipo.Text, _estadoColumnas, sql, 7));
                     break;
                 case "rprodmat":
                     MostrarPantalla(new PantallaVPMatProd());
@@ -317,8 +403,112 @@ namespace Presentacion.Reportes
                 case "rreqmat":
                     MostrarPantalla(new PantallaVPReqMat());
                     break;
-                case "rtrabajadores":
-                    MostrarPantalla(new PantallaVPTrabajadores());
+                case "can1":
+                    _estadoColumnas = new Dictionary<string, ParametroReporte>
+                    {
+                        {"Numero Empleado", new ParametroReporte("", "Numero Empleado", "usuario.N_Empleado")},
+                        {"Login", new ParametroReporte("", "Login", "usuario.Login")},
+                        {"Nombre", new ParametroReporte("", "Nombre", "usuario.Nombre")},
+                        {"Apellido", new ParametroReporte("", "Apellido", "usuario.Apellidos")},
+                        {"Departamento", new ParametroReporte("", "Departamento", "usuario.Departamento")},
+                        {"Puesto", new ParametroReporte("", "Puesto", "usuario.Puesto")},
+                        {"Email", new ParametroReporte("", "Email", "usuario.Email")}
+                    };
+                    sql = "FROM usuario WHERE usuario.Activo=1 ORDER BY usuario.Departamento ASC";
+                    MostrarPantalla(new PantallaVPListadoPer<CAN1_Trabajadores>(tipo.Text, _estadoColumnas, sql, 7));
+                    break;
+                case "can2_1":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN2_Catalogo>(tipo.Text));
+                    break;
+                case "can2_2":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN2_Combinaciones>(tipo.Text));
+                    break;
+                case "can3":
+                    _estadoColumnas = new Dictionary<string, ParametroReporte>
+                    {
+                        {"Folio", new ParametroReporte("", "Folio", "cortecaja.FolioCorte")},
+                        {"Fecha", new ParametroReporte("", "Fecha", "cortecaja.Fecha")},
+                        {"Empleado", new ParametroReporte("", "Empleado", "cortecaja.Empleado")},
+                        {"Fondo Caja", new ParametroReporte("", "Fondo Caja", "cortecaja.FondoCaja")},
+                        {"Entrada Efectivo", new ParametroReporte("", "Entrada Efectivo", "cortecaja.EntradaEfectivo")},
+                        {"Salida Efectivo", new ParametroReporte("", "Salida Efectivo", "cortecaja.SalidasEfectivo")},
+                        {"Ganancia", new ParametroReporte("", "Ganancia", "cortecaja.Ganancia")},
+                        {"Num. Ventas", new ParametroReporte("", "Num. Ventas", "cortecaja.NumVentas")}
+                    };
+                    sql = "FROM cortecaja;";
+                    MostrarPantalla(new PantallaVPListadoPer<ReporteMateriales>(tipo.Text, _estadoColumnas, sql, 8));
+                    break;
+                case "can4":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN4_NotPed>(tipo.Text));
+                    break;
+                case "can5":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN5_EmpLab>(tipo.Text));
+                    break;
+                case "can6":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN6_Metrica>(tipo.Text));
+                    break;
+                case "can7":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN7_Balance>(tipo.Text));
+                    break;
+                case "can8":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN8_ReporteFaltantes>(tipo.Text));
+                    break;
+                case "can9":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN9_ReporteFaltantesDiferenteCero>(tipo.Text));
+                    break;
+                case "can10":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN10_MetUltPed>(tipo.Text));
+                    break;
+                case "can11":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN11_EmplDes>(tipo.Text));
+                    break;
+                case "can12":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN12_EmplPedTerm>(tipo.Text));
+                    break;
+                case "can13":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN13_ConsLibre>(tipo.Text));
+                    break;
+                case "can14":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN14_ProductoCaro>(tipo.Text));
+                    break;
+                case "can15":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN15_ProdLab>(tipo.Text));
+                    break;
+                case "can16":
+                    _estadoColumnas = new Dictionary<string, ParametroReporte>
+                    {
+                        {"Nombre", new ParametroReporte("", "Nombre", "dentista.Nombre")},
+                        {"Apellidos", new ParametroReporte("", "Apellidos", "dentista.Apellidos")},
+                        {"Cedula", new ParametroReporte("", "Cedula", "dentista.Cedula")},
+                        {"Tel. Of.", new ParametroReporte("", "Tel. Of.", "dentista.TelOficina")},
+                        {"Email", new ParametroReporte("", "Email", "dentista.Email")},
+                        {"F. Alta", new ParametroReporte("", "F. Alta", "dentista.FechaAlta")},
+                        {"Total", new ParametroReporte("", "Total", "Sum(ventas.Importe)")}
+                    };
+                    sql =
+                        "FROM ventas LEFT JOIN dentista ON dentista.Cedula=ventas.Cedula GROUP BY dentista.Nombre,dentista.Apellidos,dentista.Cedula LIMIT 20;";
+                    MostrarPantalla(new PantallaVPListadoPer<CAN16_DentMasGastan>(tipo.Text, _estadoColumnas, sql, 7));
+                    break;
+                case "can17":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN17_ProdMasElab>(tipo.Text));
+                    break;
+                case "can18":
+                    MostrarPantalla(new PantallaVPListadoGen<CAN18_ProdMenosElab>(tipo.Text));
+                    break;
+                case "can19":
+                    _estadoColumnas = new Dictionary<string, ParametroReporte>
+                    {
+                        {"Nombre", new ParametroReporte("", "Nombre", "dentista.Nombre")},
+                        {"Apellidos", new ParametroReporte("", "Apellidos", "dentista.Apellidos")},
+                        {"Cedula", new ParametroReporte("", "Cedula", "dentista.Cedula")},
+                        {"Tel. Of.", new ParametroReporte("", "Tel. Of.", "dentista.TelOficina")},
+                        {"Email", new ParametroReporte("", "Email", "dentista.Email")},
+                        {"F. Alta", new ParametroReporte("", "F. Alta", "dentista.FechaAlta")},
+                        {"Total", new ParametroReporte("", "Total", "Count(ventas.IDVenta)")}
+                    };
+                    sql =
+                        "FROM ventas LEFT JOIN dentista ON dentista.Cedula=ventas.Cedula GROUP BY dentista.Nombre,dentista.Apellidos,dentista.Cedula LIMIT 20;";
+                    MostrarPantalla(new PantallaVPListadoPer<CAN19_DentMasCompran>(tipo.Text, _estadoColumnas, sql, 7));
                     break;
             }
         }
@@ -340,7 +530,7 @@ namespace Presentacion.Reportes
                     rtbDescripcion.Text = "Se muestra una lista de los insumos comprados";
                     break;
                 case "rmatcomp":
-                     lblTitulo.Text = "Nomina";
+                    lblTitulo.Text = "Nomina";
                     rtbDescripcion.Text = "Se muestra una lista de los materiales comprados";
                     break;
                 case "rprov":

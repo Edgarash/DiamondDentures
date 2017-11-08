@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Entidad;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
@@ -25,6 +26,15 @@ namespace Control
             foreach (ParametroReporte parametro in parametros)
             {
                 reporte.SetParameterValue(parametro.Nombre, parametro.Valor);
+            }
+            return reporte;
+        }
+
+        public static T CargarReporte<T>(T reporte, Dictionary<string, ParametroReporte> estadoColumnas) where T : ReportClass
+        {
+            foreach (KeyValuePair<string, ParametroReporte> parametroReporte in estadoColumnas)
+            {
+                reporte.SetParameterValue(parametroReporte.Value.Nombre,parametroReporte.Value.Valor);
             }
             return reporte;
         }

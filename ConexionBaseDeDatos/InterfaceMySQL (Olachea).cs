@@ -13,5 +13,24 @@ namespace ConexionBaseDeDatos
     public static partial class InterfaceMySQL
     {
         //En esta clase sólo Olachea deberá meter sólo los métodos y atributos que ocupe
+
+        public static DataSet ConsultaSelect(string select)
+        {
+            var  adapter = new MySqlDataAdapter(select, Conexion);
+            DatosPer dataSet = new DatosPer();
+            adapter.Fill(dataSet,"DTDP");
+            return dataSet;
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 }

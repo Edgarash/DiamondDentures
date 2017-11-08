@@ -16,14 +16,14 @@ namespace Entidad {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReporteMateriales : ReportClass {
+    public class CAN1_Trabajadores : ReportClass {
         
-        public ReporteMateriales() {
+        public CAN1_Trabajadores() {
         }
         
         public override string ResourceName {
             get {
-                return "ReporteMateriales.rpt";
+                return "CAN1_Trabajadores.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Entidad {
         
         public override string FullResourceName {
             get {
-                return "Entidad.ReporteMateriales.rpt";
+                return "Entidad.CAN1_Trabajadores.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ct1 {
+        public CrystalDecisions.Shared.IParameterField Parameter_ct2 {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,7 +98,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ct2 {
+        public CrystalDecisions.Shared.IParameterField Parameter_ct3 {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -106,7 +106,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ct3 {
+        public CrystalDecisions.Shared.IParameterField Parameter_ct4 {
             get {
                 return this.DataDefinition.ParameterFields[2];
             }
@@ -114,7 +114,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ct4 {
+        public CrystalDecisions.Shared.IParameterField Parameter_ct5 {
             get {
                 return this.DataDefinition.ParameterFields[3];
             }
@@ -122,7 +122,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ct5 {
+        public CrystalDecisions.Shared.IParameterField Parameter_ct6 {
             get {
                 return this.DataDefinition.ParameterFields[4];
             }
@@ -130,7 +130,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ct6 {
+        public CrystalDecisions.Shared.IParameterField Parameter_ct7 {
             get {
                 return this.DataDefinition.ParameterFields[5];
             }
@@ -138,25 +138,17 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ct7 {
+        public CrystalDecisions.Shared.IParameterField Parameter_ct1 {
             get {
                 return this.DataDefinition.ParameterFields[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ct8 {
-            get {
-                return this.DataDefinition.ParameterFields[7];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReporteMateriales : Component, ICachedReport {
+    public class CachedCAN1_Trabajadores : Component, ICachedReport {
         
-        public CachedReporteMateriales() {
+        public CachedCAN1_Trabajadores() {
         }
         
         [Browsable(false)]
@@ -193,7 +185,7 @@ namespace Entidad {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReporteMateriales rpt = new ReporteMateriales();
+            CAN1_Trabajadores rpt = new CAN1_Trabajadores();
             rpt.Site = this.Site;
             return rpt;
         }

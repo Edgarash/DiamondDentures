@@ -16,14 +16,14 @@ namespace Entidad {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReporteMateriales : ReportClass {
+    public class CAN19_DentMasCompran : ReportClass {
         
-        public ReporteMateriales() {
+        public CAN19_DentMasCompran() {
         }
         
         public override string ResourceName {
             get {
-                return "ReporteMateriales.rpt";
+                return "CAN19_DentMasCompran.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Entidad {
         
         public override string FullResourceName {
             get {
-                return "Entidad.ReporteMateriales.rpt";
+                return "Entidad.CAN19_DentMasCompran.rpt";
             }
             set {
                 // Do nothing
@@ -143,20 +143,12 @@ namespace Entidad {
                 return this.DataDefinition.ParameterFields[6];
             }
         }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ct8 {
-            get {
-                return this.DataDefinition.ParameterFields[7];
-            }
-        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReporteMateriales : Component, ICachedReport {
+    public class CachedCAN19_DentMasCompran : Component, ICachedReport {
         
-        public CachedReporteMateriales() {
+        public CachedCAN19_DentMasCompran() {
         }
         
         [Browsable(false)]
@@ -193,7 +185,7 @@ namespace Entidad {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReporteMateriales rpt = new ReporteMateriales();
+            CAN19_DentMasCompran rpt = new CAN19_DentMasCompran();
             rpt.Site = this.Site;
             return rpt;
         }
