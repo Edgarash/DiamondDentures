@@ -16,14 +16,14 @@ namespace Entidad {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CAN7_Balance : ReportClass {
+    public class SubVentas : ReportClass {
         
-        public CAN7_Balance() {
+        public SubVentas() {
         }
         
         public override string ResourceName {
             get {
-                return "CAN7_Balance.rpt";
+                return "SubVentas.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Entidad {
         
         public override string FullResourceName {
             get {
-                return "Entidad.CAN7_Balance.rpt";
+                return "Entidad.SubVentas.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_dummy {
+        public CrystalDecisions.Shared.IParameterField Parameter_fchi {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,25 +98,17 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_SubVentasrpt_fchi {
+        public CrystalDecisions.Shared.IParameterField Parameter_fchf {
             get {
                 return this.DataDefinition.ParameterFields[1];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_SubVentasrpt_fchf {
-            get {
-                return this.DataDefinition.ParameterFields[2];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCAN7_Balance : Component, ICachedReport {
+    public class CachedSubVentas : Component, ICachedReport {
         
-        public CachedCAN7_Balance() {
+        public CachedSubVentas() {
         }
         
         [Browsable(false)]
@@ -153,7 +145,7 @@ namespace Entidad {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CAN7_Balance rpt = new CAN7_Balance();
+            SubVentas rpt = new SubVentas();
             rpt.Site = this.Site;
             return rpt;
         }

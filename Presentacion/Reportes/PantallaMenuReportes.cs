@@ -366,7 +366,17 @@ namespace Presentacion.Reportes
                     MostrarPantalla(new PantallaVPMatCom());
                     break;
                 case "rprov":
-                    MostrarPantalla(new PantallaVPProveedores());
+                    _estadoColumnas = new Dictionary<string, ParametroReporte>
+                    {
+                        {"ID Prov.", new ParametroReporte("", "ID Prov.", "proveedores.IDProveedor")},
+                        {"Nombre", new ParametroReporte("", "Nombre", "proveedores.Nombre")},
+                        {"Descripcion", new ParametroReporte("", "Descripcion", "proveedores.Descripcion")},
+                        {"Direcion", new ParametroReporte("", "Direcion", "proveedores.Direccion")},
+                        {"Telefono", new ParametroReporte("", "Telefono", "proveedores.Telefono")},
+                        {"Correo", new ParametroReporte("", "Correo", "proveedores.Correo")}
+                    };
+                    sql = "FROM proveedores;";
+                    MostrarPantalla(new PantallaVPListadoPer<ReporteProveedores>(tipo.Text, _estadoColumnas, sql, 6));
                     break;
                 case "rgastos":
                     MostrarPantalla(new PantallaVPGastos());

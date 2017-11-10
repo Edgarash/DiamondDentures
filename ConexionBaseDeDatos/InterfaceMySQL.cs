@@ -15,7 +15,7 @@ namespace ConexionBaseDeDatos
         // Para poder trabajar juntos no podemos hacerlo como
         // lo hemos estado haciendo anteriormente, ya que si todos
         // modificamos el mismo archivo al mismo tiempo podemos
-        // interferir inconsientemente en el trabajo de otros, 
+        // interferir inconsientemente en el trabajo de otros, C:\Users\Antonio\Source\Repos\DiamondDentures\ConexionBaseDeDatos\InterfaceMySQL.cs
         // para evitar esto introduciremos el trabajo en clases parciales
         // ¿cómo funciona esto? Podemos consultar el siguiente link
         // https://docs.microsoft.com/es-es/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods
