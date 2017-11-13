@@ -38,36 +38,50 @@ namespace Presentacion.Reportes
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Producto-Materiales");
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Requisicion de materiales");
             System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Materiales");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Almacen",
-                new System.Windows.Forms.TreeNode[] {treeNode1, treeNode2, treeNode3, treeNode4, treeNode5, treeNode6, treeNode7, treeNode8});
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Nomina");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Comprobante de nomina");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Gastos");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Ventas Detalladas");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Ventas General");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Finanzas",
-                new System.Windows.Forms.TreeNode[] {treeNode10, treeNode11, treeNode12, treeNode13, treeNode14});
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Trabajadores");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Otros", new System.Windows.Forms.TreeNode[] {treeNode16});
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Catalogo de Productos");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Catalogo de Productos (Comb.)");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Cortes de Caja");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Detalles del Pedido");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Rendimiento de Empleado");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Metrica del Pedido");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Balance");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Materiales Faltantes");
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Materiales Faltantes (n)");
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Metrica del Ultimo Pedido");
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Laboratoristas Ocupados");
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Laboratoristas Desocupados");
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Sueldos Promedio");
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Productos mayo valor");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Productos en laboratorio");
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Clientes mas valiosos");
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Producto más elaborado");
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Producto menos elaborado");
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Clientes frencuentes");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Inventarios");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Almacen", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode6,
+            treeNode7,
+            treeNode8,
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Nomina");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Comprobante de nomina");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Gastos");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Ventas Detalladas");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Ventas General");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Finanzas", new System.Windows.Forms.TreeNode[] {
+            treeNode11,
+            treeNode12,
+            treeNode13,
+            treeNode14,
+            treeNode15});
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Trabajadores");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Otros", new System.Windows.Forms.TreeNode[] {
+            treeNode17});
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Catalogo de Productos");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Catalogo de Productos (Comb.)");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Cortes de Caja");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Detalles del Pedido");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Rendimiento de Empleado");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Metrica del Pedido");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Balance");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Materiales Faltantes");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Materiales Faltantes (n)");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Metrica del Ultimo Pedido");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Laboratoristas Ocupados");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Laboratoristas Desocupados");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Sueldos Promedio");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Productos mayo valor");
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Productos en laboratorio");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Clientes mas valiosos");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Producto más elaborado");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Producto menos elaborado");
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Clientes frencuentes");
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -80,8 +94,8 @@ namespace Presentacion.Reportes
             this.btnRegresar = new System.Windows.Forms.Button();
             this.rtbDescripcion = new System.Windows.Forms.RichTextBox();
             this.Encabezado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // Encabezado
@@ -109,89 +123,89 @@ namespace Presentacion.Reportes
             treeNode7.Text = "Requisicion de materiales";
             treeNode8.Name = "rmateriales";
             treeNode8.Text = "Materiales";
-            treeNode9.Checked = true;
-            treeNode9.Name = "nalmacen";
-            treeNode9.Text = "Almacen";
-            treeNode10.Name = "rnomina";
-            treeNode10.Text = "Nomina";
-            treeNode11.Name = "rcomnom";
-            treeNode11.Text = "Comprobante de nomina";
-            treeNode12.Name = "rgastos";
-            treeNode12.Text = "Gastos";
-            treeNode13.Name = "rventas";
-            treeNode13.Text = "Ventas Detalladas";
-            treeNode14.Name = "rventasgen";
-            treeNode14.Text = "Ventas General";
-            treeNode15.Checked = true;
-            treeNode15.Name = "nfinanzas";
-            treeNode15.Text = "Finanzas";
-            treeNode16.Name = "can1";
-            treeNode16.Text = "Trabajadores";
-            treeNode17.Name = "notros";
-            treeNode17.Text = "Otros";
-            treeNode18.Name = "can2_1";
-            treeNode18.Text = "Catalogo de Productos";
+            treeNode9.Name = "rinventarios";
+            treeNode9.Text = "Inventarios";
+            treeNode10.Checked = true;
+            treeNode10.Name = "nalmacen";
+            treeNode10.Text = "Almacen";
+            treeNode11.Name = "rnomina";
+            treeNode11.Text = "Nomina";
+            treeNode12.Name = "rcomnom";
+            treeNode12.Text = "Comprobante de nomina";
+            treeNode13.Name = "rgastos";
+            treeNode13.Text = "Gastos";
+            treeNode14.Name = "rventas";
+            treeNode14.Text = "Ventas Detalladas";
+            treeNode15.Name = "rventasgen";
+            treeNode15.Text = "Ventas General";
+            treeNode16.Checked = true;
+            treeNode16.Name = "nfinanzas";
+            treeNode16.Text = "Finanzas";
+            treeNode17.Name = "can1";
+            treeNode17.Text = "Trabajadores";
+            treeNode18.Name = "notros";
+            treeNode18.Text = "Otros";
             treeNode19.Name = "can2_1";
-            treeNode19.Text = "Catalogo de Productos (Comb.)";
-            treeNode20.Name = "can3";
-            treeNode20.Text = "Cortes de Caja";
-            treeNode21.Name = "can4";
-            treeNode21.Text = "Detalles del Pedido";
-            treeNode22.Name = "can5";
-            treeNode22.Text = "Rendimiento de Empleado";
-            treeNode23.Name = "can6";
-            treeNode23.Text = "Metrica del Pedido";
-            treeNode24.Name = "can7";
-            treeNode24.Text = "Balance";
-            treeNode25.Name = "can8";
-            treeNode25.Text = "Materiales Faltantes";
-            treeNode26.Name = "can9";
-            treeNode26.Text = "Materiales Faltantes (n)";
-            treeNode27.Name = "can10";
-            treeNode27.Text = "Metrica del Ultimo Pedido";
-            treeNode28.Name = "can11";
-            treeNode28.Text = "Laboratoristas Ocupados";
-            treeNode29.Name = "can12";
-            treeNode29.Text = "Laboratoristas Desocupados";
-            treeNode30.Name = "can13";
-            treeNode30.Text = "Sueldos Promedio";
-            treeNode31.Name = "can14";
-            treeNode31.Text = "Productos mayo valor";
-            treeNode32.Name = "can15";
-            treeNode32.Text = "Productos en laboratorio";
-            treeNode33.Name = "can16";
-            treeNode33.Text = "Clientes mas valiosos";
-            treeNode34.Name = "can17";
-            treeNode34.Text = "Producto más elaborado";
-            treeNode35.Name = "can18";
-            treeNode35.Text = "Producto menos elaborado";
-            treeNode36.Name = "can19";
-            treeNode36.Text = "Clientes frencuentes";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[]
-            {
-                treeNode9,
-                treeNode15,
-                treeNode17,
-                treeNode18,
-                treeNode19,
-                treeNode20,
-                treeNode21,
-                treeNode22,
-                treeNode23,
-                treeNode24,
-                treeNode25,
-                treeNode26,
-                treeNode27,
-                treeNode28,
-                treeNode29,
-                treeNode30,
-                treeNode31,
-                treeNode32,
-                treeNode33,
-                treeNode34,
-                treeNode35,
-                treeNode36
-            });
+            treeNode19.Text = "Catalogo de Productos";
+            treeNode20.Name = "can2_1";
+            treeNode20.Text = "Catalogo de Productos (Comb.)";
+            treeNode21.Name = "can3";
+            treeNode21.Text = "Cortes de Caja";
+            treeNode22.Name = "can4";
+            treeNode22.Text = "Detalles del Pedido";
+            treeNode23.Name = "can5";
+            treeNode23.Text = "Rendimiento de Empleado";
+            treeNode24.Name = "can6";
+            treeNode24.Text = "Metrica del Pedido";
+            treeNode25.Name = "can7";
+            treeNode25.Text = "Balance";
+            treeNode26.Name = "can8";
+            treeNode26.Text = "Materiales Faltantes";
+            treeNode27.Name = "can9";
+            treeNode27.Text = "Materiales Faltantes (n)";
+            treeNode28.Name = "can10";
+            treeNode28.Text = "Metrica del Ultimo Pedido";
+            treeNode29.Name = "can11";
+            treeNode29.Text = "Laboratoristas Ocupados";
+            treeNode30.Name = "can12";
+            treeNode30.Text = "Laboratoristas Desocupados";
+            treeNode31.Name = "can13";
+            treeNode31.Text = "Sueldos Promedio";
+            treeNode32.Name = "can14";
+            treeNode32.Text = "Productos mayo valor";
+            treeNode33.Name = "can15";
+            treeNode33.Text = "Productos en laboratorio";
+            treeNode34.Name = "can16";
+            treeNode34.Text = "Clientes mas valiosos";
+            treeNode35.Name = "can17";
+            treeNode35.Text = "Producto más elaborado";
+            treeNode36.Name = "can18";
+            treeNode36.Text = "Producto menos elaborado";
+            treeNode37.Name = "can19";
+            treeNode37.Text = "Clientes frencuentes";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode10,
+            treeNode16,
+            treeNode18,
+            treeNode19,
+            treeNode20,
+            treeNode21,
+            treeNode22,
+            treeNode23,
+            treeNode24,
+            treeNode25,
+            treeNode26,
+            treeNode27,
+            treeNode28,
+            treeNode29,
+            treeNode30,
+            treeNode31,
+            treeNode32,
+            treeNode33,
+            treeNode34,
+            treeNode35,
+            treeNode36,
+            treeNode37});
             this.treeView1.Size = new System.Drawing.Size(175, 344);
             this.treeView1.TabIndex = 9;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
@@ -208,8 +222,7 @@ namespace Presentacion.Reportes
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 115);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(144, 18);
@@ -233,8 +246,7 @@ namespace Presentacion.Reportes
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(236, 464);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 21);
@@ -253,8 +265,7 @@ namespace Presentacion.Reportes
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.lblTitulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Location = new System.Drawing.Point(223, 154);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(82, 18);
@@ -265,8 +276,7 @@ namespace Presentacion.Reportes
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label5.Location = new System.Drawing.Point(12, 24);
             this.label5.Name = "label5";
@@ -277,8 +287,7 @@ namespace Presentacion.Reportes
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(610, 464);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 21);
@@ -337,10 +346,11 @@ namespace Presentacion.Reportes
             this.Controls.SetChildIndex(this.rtbDescripcion, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -397,6 +407,9 @@ namespace Presentacion.Reportes
                     break;
                 case "rprodmat":
                     MostrarPantalla(new PantallaVPMatProd());
+                    break;
+                case "rinventarios":
+                    MostrarPantalla(new PantallaVPListadoGen<ReporteInventarios>(tipo.Text));
                     break;
                 case "rventas":
                     MostrarPantalla(new PantallaVPVentas());

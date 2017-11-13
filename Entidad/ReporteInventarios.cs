@@ -16,14 +16,14 @@ namespace Entidad {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CAN7_Balance : ReportClass {
+    public class ReporteInventarios : ReportClass {
         
-        public CAN7_Balance() {
+        public ReporteInventarios() {
         }
         
         public override string ResourceName {
             get {
-                return "CAN7_Balance.rpt";
+                return "ReporteInventarios.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Entidad {
         
         public override string FullResourceName {
             get {
-                return "Entidad.CAN7_Balance.rpt";
+                return "Entidad.ReporteInventarios.rpt";
             }
             set {
                 // Do nothing
@@ -82,7 +82,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,7 +90,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
                 return this.ReportDefinition.Sections[5];
             }
@@ -98,15 +98,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
-            get {
-                return this.ReportDefinition.Sections[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_dummy {
+        public CrystalDecisions.Shared.IParameterField Parameter_TotalIng {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -114,49 +106,17 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_TotalIng {
+        public CrystalDecisions.Shared.IParameterField Parameter_dummy {
             get {
                 return this.DataDefinition.ParameterFields[1];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_SubGastosrpt_fchi {
-            get {
-                return this.DataDefinition.ParameterFields[2];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_SubGastosrpt_fchf {
-            get {
-                return this.DataDefinition.ParameterFields[3];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_SubVentasrpt_fchi {
-            get {
-                return this.DataDefinition.ParameterFields[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_SubVentasrpt_fchf {
-            get {
-                return this.DataDefinition.ParameterFields[5];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCAN7_Balance : Component, ICachedReport {
+    public class CachedReporteInventarios : Component, ICachedReport {
         
-        public CachedCAN7_Balance() {
+        public CachedReporteInventarios() {
         }
         
         [Browsable(false)]
@@ -193,7 +153,7 @@ namespace Entidad {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CAN7_Balance rpt = new CAN7_Balance();
+            ReporteInventarios rpt = new ReporteInventarios();
             rpt.Site = this.Site;
             return rpt;
         }

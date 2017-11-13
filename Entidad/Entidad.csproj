@@ -218,6 +218,12 @@
       <DependentUpon>ReporteInsumosComprados.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ReporteInventarios.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteInventarios.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ReporteMaterialesComprados.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -435,6 +441,10 @@
     <EmbeddedResource Include="ReporteInsumosComprados.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteInsumosComprados.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteInventarios.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteInventarios.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteMaterialesComprados.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
