@@ -9,22 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Control;
-
+ 
 namespace Presentacion.Almacen_y_Proveedores
 {
-    public partial class Inventario : Control.Pantalla
+    public partial class RequisicionMateriales : Control.Pantalla
     {
         InterfaceUsuario Interface;
         enum Búsqueda { Total, Clave, Personalizada };
-        public Inventario()
+        public RequisicionMateriales()
         {
             InitializeComponent();
         }
 
-        private void Inventario_Load(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             Interface = new InterfaceUsuario(this);
-            LlenarData(Búsqueda.Total);
+            LlenarData3(Búsqueda.Total);
         }
 
         private void LlenarData(Búsqueda Tipo)
@@ -39,7 +39,7 @@ namespace Presentacion.Almacen_y_Proveedores
             dataGridView1.Rows.Clear();
             RegistroMaterial[] temp = null;
             if (Tipo == Búsqueda.Total)
-                temp = Interface.ObtenerMateriales2();
+                temp = Interface.ObtenerMateriales3();
             dataGridView1.RowCount = temp?.Length ?? 0;
             if (temp != null)
             {
@@ -47,13 +47,11 @@ namespace Presentacion.Almacen_y_Proveedores
                 {
                     dataGridView1[0, i].Value = temp[i].IDMaterial;
                     dataGridView1[1, i].Value = temp[i].Nombre;
-                    dataGridView1[2, i].Value = temp[i].Descripcion;
-                    dataGridView1[3, i].Value = "$" + temp[i].PrecioBase.ToString("N2");
-                    dataGridView1[4, i].Value = "$" + temp[i].PrecioCompra.ToString("N2");
-                    dataGridView1[5, i].Value = temp[i].TiempoBase.ToString();
-                    dataGridView1[6, i].Value = temp[i].IDProveedor.ToString();
-                    dataGridView1[7, i].Value = temp[i].UnidadMedida.ToString();
-                    dataGridView1[8, i].Value = temp[i].Cantidad.ToString();
+                    dataGridView1[2, i].Value = "$" + temp[i].PrecioBase.ToString("N2");
+                    dataGridView1[3, i].Value = "$" + temp[i].PrecioCompra.ToString("N2");
+                    dataGridView1[4, i].Value = temp[i].IDProveedor.ToString();
+                    dataGridView1[5, i].Value = temp[i].UnidadMedida.ToString();
+                    dataGridView1[6, i].Value = temp[i].Cantidad.ToString();
                 }
             }
             if (dataGridView1.SelectedCells.Count > 0)
@@ -63,30 +61,8 @@ namespace Presentacion.Almacen_y_Proveedores
             }
         }
 
-        private void LlenarData()
-        {
-            LlenarData(Búsqueda.Total);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < dataGridView1.RowCount; i++)
-            {
-                if (dataGridView1[9, i].Value != null)
-                {
-                    HistorialMod historial = new HistorialMod(Convert.ToInt32(dataGridView1[0, i].Value), Convert.ToInt32(dataGridView1[8, i].Value), Convert.ToInt32(dataGridView1[9, i].Value));
-                    ManejadorAlmacen.AgregarHistorial(historial);
-                    dataGridView1[8, i].Value = dataGridView1[9, i].Value;
-                    RegistroMaterial material = new RegistroMaterial(Convert.ToInt32(dataGridView1[0, i].Value), Convert.ToInt32(dataGridView1[8, i].Value));
-                    ManejadorAlmacen.Actualizar_Cantidad(material);
-                }
-            }
-            LlenarData(Búsqueda.Total);
-            MessageBox.Show("Registro actualizado con exito");
-        }
-
         private void LlenarData2(Búsqueda Tipo)
-        {
+        { 
             int Col = 0, Ren = 0;
             if (dataGridView2.SelectedCells.Count > 0)
             {
@@ -95,19 +71,21 @@ namespace Presentacion.Almacen_y_Proveedores
                 Ren = Cell.RowIndex;
             }
             dataGridView2.Rows.Clear();
-            HistorialMod[] temp = null;
+            Compras[] temp = null;
             if (Tipo == Búsqueda.Total)
-                temp = Interface.SeleccHistorial();
+                temp = Interface.RecuperarCompras();
             dataGridView2.RowCount = temp?.Length ?? 0;
             if (temp != null)
             {
                 for (int i = 0; i < temp.Length; i++)
                 {
-                    dataGridView2[0, i].Value = temp[i].Id;
-                    dataGridView2[1, i].Value = temp[i].Cantidad;
-                    dataGridView2[2, i].Value = temp[i].CantidadReal;
-                    dataGridView2[3, i].Value = temp[i].Faltantes;
-                    dataGridView2[4, i].Value = temp[i].Fecha;
+                    dataGridView2[0, i].Value = temp[i].IDCompra;
+                    dataGridView2[1, i].Value = temp[i].Empleado;
+                    dataGridView2[2, i].Value = temp[i].Total;
+                    dataGridView2[3, i].Value = temp[i].Fecha;
+                    dataGridView2[4, i].Value = temp[i].Tipo;
+                    dataGridView2[5, i].Value = temp[i].FechaSurtido;
+                    dataGridView2[6, i].Value = temp[i].Estado;
                 }
             }
             if (dataGridView2.SelectedCells.Count > 0)
@@ -129,7 +107,7 @@ namespace Presentacion.Almacen_y_Proveedores
             dataGridView1.Rows.Clear();
             RegistroMaterial[] temp = null;
             if (Tipo == Búsqueda.Total)
-                temp = Interface.ObtenerUnMaterial2(textBox1.Text);
+                temp = Interface.ObtenerUnMaterial(textBox1.Text);
             dataGridView1.RowCount = temp?.Length ?? 0;
             if (temp != null)
             {
@@ -137,13 +115,11 @@ namespace Presentacion.Almacen_y_Proveedores
                 {
                     dataGridView1[0, i].Value = temp[i].IDMaterial;
                     dataGridView1[1, i].Value = temp[i].Nombre;
-                    dataGridView1[2, i].Value = temp[i].Descripcion;
-                    dataGridView1[3, i].Value = "$" + temp[i].PrecioBase.ToString("N2");
-                    dataGridView1[4, i].Value = "$" + temp[i].PrecioCompra.ToString("N2");
-                    dataGridView1[5, i].Value = temp[i].TiempoBase.ToString();
-                    dataGridView1[6, i].Value = temp[i].IDProveedor.ToString();
-                    dataGridView1[7, i].Value = temp[i].UnidadMedida.ToString();
-                    dataGridView1[8, i].Value = temp[i].Cantidad.ToString();
+                    dataGridView1[2, i].Value = "$" + temp[i].PrecioBase.ToString("N2");
+                    dataGridView1[3, i].Value = "$" + temp[i].PrecioCompra.ToString("N2");
+                    dataGridView1[4, i].Value = temp[i].IDProveedor.ToString();
+                    dataGridView1[5, i].Value = temp[i].UnidadMedida.ToString();
+                    dataGridView1[6, i].Value = temp[i].Cantidad.ToString();
                 }
             }
             if (dataGridView1.SelectedCells.Count > 0)
@@ -153,21 +129,60 @@ namespace Presentacion.Almacen_y_Proveedores
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void RequisicionMateriales_Load(object sender, EventArgs e)
         {
             Interface = new InterfaceUsuario(this);
+            LlenarData(Búsqueda.Total);
             LlenarData2(Búsqueda.Total);
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Compras temp = null;
+            temp = Interface.ObtenerID();
+            var id = temp.IDCompra + 1;
+            var compra = new Compras(id);
+            ManejadorAlmacen.AgregarCompra(compra);
+
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                if (dataGridView1[7, i].Value != null)
+                {
+                    CompraMaterial cmaterial = new CompraMaterial(id, Convert.ToInt32(dataGridView1[0, i].Value), Convert.ToString(dataGridView1[1, i].Value), Convert.ToInt32(dataGridView1[4, i].Value), Convert.ToInt32(dataGridView1[7, i].Value));
+                    ManejadorAlmacen.AgregarAlaCompra(cmaterial);
+                }
+            }
+            MessageBox.Show("Registro agregado con exito");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void tabPage2_Click(object sender, EventArgs e)
         {
-            Interface = new InterfaceUsuario(this);
-            LlenarData3(Búsqueda.Total);
+
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView2.CurrentCell.ColumnIndex == 7)
+            {
+                DetalleCompras p6 = new DetalleCompras();
+                p6.label2.Text = dataGridView2[0, dataGridView2.CurrentCell.RowIndex].Value.ToString();
+                p6.Show();
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -175,6 +190,18 @@ namespace Presentacion.Almacen_y_Proveedores
             Interface = new InterfaceUsuario(this);
             LlenarData3(Búsqueda.Total);
             textBox1.Focus();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            float Total = Convert.ToSingle(label4.Text);
+            DateTime Fecha = Convert.ToDateTime(label5.Text);
+            int IDCompra = Convert.ToInt32(label6.Text);
+
+            Compras compra = new Compras(IDCompra, Total, Fecha);
+            ManejadorAlmacen.ActualizarCompra(compra);
+            LlenarData2(Búsqueda.Total);
+            MessageBox.Show("Compra Actualizada");
         }
     }
 }

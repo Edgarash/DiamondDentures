@@ -30,16 +30,16 @@ namespace Presentacion.Almacen_y_Proveedores
             p2.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e)
         {
-            Almacen_y_Proveedores.SolicitarMaterial p3 = new Almacen_y_Proveedores.SolicitarMaterial();
-            p3.Show();
+            RequisicionMateriales p5 = new RequisicionMateriales();
+            p5.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            Almacen_y_Proveedores.MostrarFaltantes p4 = new Almacen_y_Proveedores.MostrarFaltantes();
-            p4.Show();
+            VerProveedores p6 = new VerProveedores();
+            p6.Show();
         }
     }
 }

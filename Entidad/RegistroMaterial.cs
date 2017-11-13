@@ -14,14 +14,14 @@ namespace Entidad
         public float PrecioBase { get; set; }
         public float PrecioCompra { get; set; }
         public int TiempoBase { get; set; }
-        public int IDProveedor { get; set; }
+        public int IDProveedor { get { return Proveedor.IDProveedor; } }
+        public RegistroProveedor Proveedor { get; set; }
         public string UnidadMedida { get; set; }
         public int Cantidad { get; set; }
-        public int CantidadReal { get; set; }
         public int Faltantes { get; set; }
 
         public RegistroMaterial(int IDMaterial, string Nombre,string Descripcion, float PrecioBase, float PrecioCompra,
-            int TiempoBase, int IDProveedor, string UnidadMedida, int Cantidad, int CantidadReal)
+            int TiempoBase,RegistroProveedor Proveedor, string UnidadMedida, int Cantidad)
         {
             this.IDMaterial = IDMaterial;
             this.Nombre = Nombre;
@@ -29,16 +29,15 @@ namespace Entidad
             this.PrecioBase = PrecioBase;
             this.PrecioCompra = PrecioCompra;
             this.TiempoBase = TiempoBase;
-            this.IDProveedor = IDProveedor;
+            this.Proveedor = Proveedor;
             this.UnidadMedida = UnidadMedida;
             this.Cantidad = Cantidad;
-            this.CantidadReal = CantidadReal;
         }
 
-        public RegistroMaterial(int IDMaterial, int CantidadReal)
+        public RegistroMaterial(int IDMaterial, int Cantidad)
         {
             this.IDMaterial = IDMaterial;
-            this.CantidadReal = CantidadReal;
+            this.Cantidad = Cantidad;
         }
 
         public RegistroMaterial(int IDMaterial, string Nombre, int Faltantes)
@@ -46,20 +45,6 @@ namespace Entidad
             this.IDMaterial = IDMaterial;
             this.Nombre = Nombre;
             this.Faltantes = Faltantes;
-        }
-
-        public RegistroMaterial(int IDMaterial, string Nombre, string Descripcion, float PrecioBase, float PrecioCompra,
-            int TiempoBase, int IDProveedor, string UnidadMedida, int Cantidad)
-        {
-            this.IDMaterial = IDMaterial;
-            this.Nombre = Nombre;
-            this.Descripcion = Descripcion;
-            this.PrecioBase = PrecioBase;
-            this.PrecioCompra = PrecioCompra;
-            this.TiempoBase = TiempoBase;
-            this.IDProveedor = IDProveedor;
-            this.UnidadMedida = UnidadMedida;
-            this.Cantidad = Cantidad;
         }
     }
 }

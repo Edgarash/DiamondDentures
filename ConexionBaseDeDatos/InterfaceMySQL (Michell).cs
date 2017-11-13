@@ -97,10 +97,10 @@ namespace ConexionBaseDeDatos
             Productos = RellenarProductos();
             return OperacionRealizada2;
         }
-
+         
         private static RegistroProducto ObtenerProducto()
         {
-            RegistroProducto[] x = RellenarProductos();
+            RegistroProducto[] x =  RellenarProductos();
             RegistroProducto temp = x.Length > 0 ? x[0] : null;
             RegistrosAfectados = temp != null ? 1 : 0;
             return temp;
@@ -126,7 +126,7 @@ namespace ConexionBaseDeDatos
                     );
             }
             return Productos;
-        }
+        }             
 
         public static bool ObtenerMateriales(out RegistroMaterial[] Materiales)
         {
@@ -161,8 +161,8 @@ namespace ConexionBaseDeDatos
             for (int i = 0; i < Materiales.Length; i++)
             {
                 DataRow x = Mats.Rows[i];
-                //RegistroProveedor Proveedor;
-                //RecuperarProveedor(Convert.ToInt32(x["Proveedor"].ToString()), out Proveedor);
+                RegistroProveedor Proveedor;
+                RecuperarProveedor(Convert.ToInt32(x["Proveedor"].ToString()), out Proveedor);
                 Materiales[i] = new RegistroMaterial
                     (
                     Convert.ToInt32(x["IDMaterial"].ToString()),
@@ -171,10 +171,9 @@ namespace ConexionBaseDeDatos
                     Convert.ToSingle(x["PrecioBase"].ToString()),
                     Convert.ToSingle(x["PrecioCompra"].ToString()),
                     Convert.ToInt32(x["TiempoBase"].ToString()),
-                    Convert.ToInt32(x["Proveedor"].ToString()),
+                    Proveedor,
                     x["UnidadMedida"].ToString(),
-                    Convert.ToInt32(x["Cantidad"].ToString()),
-                    Convert.ToInt32(x["CantidadReal"].ToString())
+                    Convert.ToInt32(x["Cantidad"].ToString())
                     );
             }
             return Materiales;

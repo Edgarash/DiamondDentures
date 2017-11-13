@@ -8,6 +8,7 @@
         public string Correo { get; set; }
         public string Direccion { get; set; }
         public string Descripcion { get; set; }
+        public int Estado { get; set; }
 
         public RegistroProveedor(int IDProveedor, string Nombre, string Telefono, string Correo,
             string Direccion, string Descripcion)
@@ -18,6 +19,11 @@
             this.Correo = Correo;
             this.Direccion = Direccion;
             this.Descripcion = Descripcion;
+        }
+
+        public RegistroProveedor(int IDProveedor)
+        {
+            this.IDProveedor = IDProveedor;
         }
     }
 }

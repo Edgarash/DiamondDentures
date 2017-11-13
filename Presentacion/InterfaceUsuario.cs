@@ -98,6 +98,91 @@ namespace Presentacion
             return (Manejador as ManejadorRegistroMaterial).ObtenerMateriales();
         }
 
+        internal RegistroMaterial[] ObtenerMateriales3()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).ObtenerMateriales3();
+        }
+
+        internal RegistroMaterial[] ObtenerUnMaterial(string Nombre)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).ObtenerUnMaterial(Nombre);
+        }
+
+        internal RegistroMaterial[] ObtenerUnMaterial2(String Nombre)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).ObtenerUnMaterial2(Nombre);
+        }
+
+        internal RegistroMaterial[] ObtenerMateriales2()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).ObtenerMateriales2();
+        }
+
+
+        internal HistorialMod[] SeleccHistorial()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).SeleccHistorial();
+        }
+
+        internal RegistroProveedor[] MostrarProveedores()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).MostrarProveedores();
+        }
+
+        internal FolioProveedor[] SeleccFolios()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).SeleccFolios();
+        }
+
+        internal FolioProveedor[] SeleccUnFolio(int IDFolio)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).SeleccUnFolio(IDFolio);
+        }
+
+        internal RegistroProveedor[] MostrarUnProveedor(string Nombre)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).MostrarUnProveedor(Nombre);
+        }
+
+        internal Compras[] RecuperarCompras()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).RecuperarCompras();
+        }
+
+        internal CompraMaterial[] DetallesMaterial(int IDCompra)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).DetallesMaterial(IDCompra);
+        }
+
+        internal CompraMaterial[] DetallesProveedorMaterial(int IDProveedor)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).DetallesProveedorMaterial(IDProveedor);
+        }
+
+        internal CompraMaterial[] MostrarUnaCompra(CompraMaterial cm)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).MostrarUnaCompra(cm);
+        }
+
+        internal Compras ObtenerID()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).ObtenerID();
+        }
+
         internal RegistroMaterial[] MostrarFaltantes()
         {
             Manejador = new ManejadorRegistroMaterial();
