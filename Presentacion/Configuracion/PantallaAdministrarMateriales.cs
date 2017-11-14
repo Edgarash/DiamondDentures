@@ -151,5 +151,10 @@ namespace Presentacion.Configuracion
         {
             Validar.ValidarPrecio(sender as TextBox, e);
         }
+
+        private void PantallaAdministrarMateriales_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

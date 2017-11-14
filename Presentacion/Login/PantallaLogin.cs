@@ -26,6 +26,7 @@ namespace Presentacion.Login
         private InterfaceUsuario Interface;
         private ErrorProvider[] Error = new ErrorProvider[2];
         static int IntentosFallidos;
+        private Button button1;
         bool RegistrarNombre = false;
         public static RegistroUsuario Sesión { get; set; }
 
@@ -50,6 +51,7 @@ namespace Presentacion.Login
             this.Mensaje = new System.Windows.Forms.ToolTip(this.components);
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDiente)).BeginInit();
             this.SuspendLayout();
@@ -202,11 +204,22 @@ namespace Presentacion.Login
             this.btnSalir.MouseEnter += new System.EventHandler(this.btnMouseOver);
             this.btnSalir.MouseLeave += new System.EventHandler(this.btnMouseLeft);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(383, 290);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // PantallaLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(481, 454);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.btnEntrar);
@@ -226,6 +239,7 @@ namespace Presentacion.Login
             this.Controls.SetChildIndex(this.btnEntrar, 0);
             this.Controls.SetChildIndex(this.btnRegistrar, 0);
             this.Controls.SetChildIndex(this.btnSalir, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDiente)).EndInit();
@@ -330,6 +344,11 @@ namespace Presentacion.Login
         {
             Interface = new InterfaceUsuario(this);
             Interface.DesplegarPantallaRecuperarContraseña();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

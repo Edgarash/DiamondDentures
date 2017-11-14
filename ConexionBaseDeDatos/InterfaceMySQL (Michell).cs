@@ -98,10 +98,10 @@ namespace ConexionBaseDeDatos
             Productos = RellenarProductos();
             return OperacionRealizada2;
         }
-
+         
         private static RegistroProducto ObtenerProducto()
         {
-            RegistroProducto[] x = RellenarProductos();
+            RegistroProducto[] x =  RellenarProductos();
             RegistroProducto temp = x.Length > 0 ? x[0] : null;
             RegistrosAfectados = temp != null ? 1 : 0;
             return temp;
@@ -127,7 +127,7 @@ namespace ConexionBaseDeDatos
                     );
             }
             return Productos;
-        }
+        }             
 
         public static bool ObtenerMateriales(out RegistroMaterial[] Materiales)
         {
