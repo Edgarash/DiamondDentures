@@ -32,25 +32,51 @@ CREATE
   CONCAT(`Usuario`.`Nombre`, ' ', `Usuario`.`Apellidos`) AS 'RegistraVenta',
   `Ventas`.`Importe`,
   `Ventas`.`PersonaPaga` AS 'Referencia',
-  `Ventas`.`FormaPago`
+  `Ventas`.`FormaPago`,
+  `Ventas`.`Login`,
+  `Ventas`.`Recibido`
 FROM
   `Ventas`,
   `Usuario`
 WHERE
   `Ventas`.`Login` = `Usuario`.`Login`);
 
+
+DROP PROCEDURE IF EXISTS `AgregarCorteCaja`;
+CREATE DEFINER=`root`@`%` PROCEDURE `AgregarCorteCaja`(
+  Emp char(30),
+  Sup char(30),
+  Fechita datetime,
+  Fondo decimal(10,2),
+  Efec decimal(10,2),
+  Cheq decimal(10,2),
+  Tar decimal(10,2),
+  Ven int(11),
+  Din decimal(10,2),
+  Com char(100)
+)
+BEGIN
+  INSERT IGNORE
+    INTO `CorteCaja`
+    (`Fecha`, `Empleado`, `Supervisor`, `FondoCaja`, `EntradaEfectivo`, `EntradaCheque`, `EntradaTarjeta`, `NumVentas`, `DineroCaja`, `Comentario`)
+  VALUES
+    (Fechita, Emp, Sup, Fondo, Efec, Cheq, Tar, Ven, Din, Com);
+END;
+
   
-DROP PROCEDURE IF EXISTS `BuscarPedidosNoPagados`;
-CREATE DEFINER=`root`@`%` PROCEDURE `BuscarPedidosNoPagados`(
+DROP PROCEDURE IF EXISTS `BuscarPedidosParametros`;
+CREATE DEFINER=`root`@`%` PROCEDURE `BuscarPedidosParametros`(
   IDPedid char(10),
   Empleado char(100),
   Dentista char(100),
   FechaMin datetime,
   FechaMax datetime,
   Urgente bool,
-  NoPagado bool
+  NoPagado bool,
+  Entregado int(11)
 )
 BEGIN
+  SET Entregado = IFNULL(Entregado, 2);
   SELECT
     *
   FROM
@@ -66,9 +92,11 @@ BEGIN
       AND `Pedido`.`FechaIngreso` >= IFNULL(FechaMin, `Pedido`.`FechaIngreso`)
       AND `Pedido`.`FechaIngreso` <= IFNULL(FechaMax, `Pedido`.`FechaIngreso`)
       AND `Pedido`.`Urgencia` = IF(Urgente = 1, '1', `Pedido`.`Urgencia`)
-      AND `Pedido`.`Pagado` = IF(NoPagado = 1, 'NO', `Pedido`.`Pagado`);
+      AND `Pedido`.`Pagado` = IF(NoPagado = 1, 'NO', `Pedido`.`Pagado`)
+      AND `Pedido`.`Entregado` = IF(Entregado = 2, `Pedido`.`Entregado`, IF(Entregado = 1, '1', IF(Entregado = 0, '0', 'N')));
 END;
-  
+
+
   
 DROP PROCEDURE IF EXISTS `DevolucionPago`;
 CREATE DEFINER=`root`@`%` PROCEDURE `DevolucionPago`(IDVent int)
@@ -212,8 +240,8 @@ END;
 DROP PROCEDURE IF EXISTS `VerVentas`;
 CREATE DEFINER=`root`@`%` PROCEDURE `VerVentas`(
   IDVent int,
-  FechaPagoMin date,
-  FechaPagoMax date,
+  FechaPagoMin datetime,
+  FechaPagoMax datetime,
   IDPedid char(10),
   Nombre char(100),
   Referenci char(10),
@@ -228,8 +256,7 @@ BEGIN
     `Detalleventas`
   WHERE
     `IDVenta` = IF(IDVent != 0, IDVent, `IDVenta`)
-      AND `FECHAPAGO` >= IFNULL(FECHAPAGOMIN, `FECHAPAGO`)
-      AND `FECHAPAGO` <= IFNULL(FECHAPAGOMAX, `FECHAPAGO`)
+      AND (`FECHAPAGO` >= IFNULL(FECHAPAGOMIN, `FECHAPAGO`) AND `FECHAPAGO` <= IFNULL(FECHAPAGOMAX, `FECHAPAGO`))
       AND `IDPEDIDO` = IFNULL(IDPEDID, `IDPEDIDO`)
       AND `REGISTRAVENTA` LIKE IFNULL(CONCAT(NOMBRE, '%'), `REGISTRAVENTA`)
       AND `REFERENCIA` LIKE IFNULL(CONCAT(REFERENCI, '%'), `REFERENCIA`)

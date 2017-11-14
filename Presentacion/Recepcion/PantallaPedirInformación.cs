@@ -1,5 +1,9 @@
-﻿using Entidad;
+﻿using Control;
+using ControlesM;
+using Entidad;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Presentacion.Ventas;
+using Presentacion.Ventas.Entregas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +15,7 @@ using Validaciones;
 
 namespace Presentacion.Recepcion
 {
+    public enum BotonOpcional { NoPagados, NoEntregados }
     public partial class PantallaPedirInformación : Control.Pantalla
     {
         Validar Validacion;
@@ -64,10 +69,10 @@ namespace Presentacion.Recepcion
             return x.PedirPedido(out Cancelado);
         }
 
-        public static RegistroPedido PedirUnPedidoNoPagado(out bool Cancelado)
+        public static RegistroPedido PedirUnPedidoBotonVerPedidos(out bool Cancelado, BotonOpcional Tipo)
         {
             PantallaPedirInformación x = new PantallaPedirInformación();
-            x.kuroButton1.Visible = true;
+            x.AgregarBoton(Tipo);
             return x.PedirPedido(out Cancelado);
         }
 
@@ -104,7 +109,7 @@ namespace Presentacion.Recepcion
             };
             ShowDialog();
             Cancelado = Cerrado;
-            RegistroMaterial [] temp = null;
+            RegistroMaterial[] temp = null;
             //if (!Cerrado)
             //    temp = Interface.BuscarUnMaterial(new RegistroMaterial(Convert.ToInt32(tbNumEmpleado.Text == "" ? "-2" : tbNumEmpleado.Text), "", -1, -1));
             return temp?[0] ?? null;
@@ -174,11 +179,34 @@ namespace Presentacion.Recepcion
             return temp;
         }
 
-        private void kuroButton1_Click(object sender, EventArgs e)
+        private void AgregarBoton(BotonOpcional Tipo)
         {
-            Ventas.PantallaPedidosNoPagados temp = new Ventas.PantallaPedidosNoPagados();
+            KuroButton temp = new KuroButton();
+            temp.Text = "Ver Pedidos";
+            switch (Tipo)
+            {
+                case BotonOpcional.NoPagados:
+                    temp.Click += delegate (object sender, EventArgs e)
+                     {
+                         MostrarPantalla(new PantallaPedidosNoPagados());
+                     };
+                    break;
+                case BotonOpcional.NoEntregados:
+                    temp.Click += delegate (object sender, EventArgs e)
+                      {
+                          MostrarPantalla(new PantallaPedidosNoEntregados());
+                      };
+                    break;
+            }
+            Encabezado.Controls.Add(temp);
+            temp.Size = new Size(120, 50);
+            temp.Location = new Point(371, 23);
+        }
+
+        private void MostrarPantalla(Form Pantalla)
+        {
             Hide();
-            temp.ShowDialog(this);
+            Pantalla.ShowDialog();
             Close();
         }
     }

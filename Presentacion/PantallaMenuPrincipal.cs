@@ -174,7 +174,9 @@ namespace Presentacion
 
         private void kuroButton1_Click(object sender, EventArgs e)
         {
+            Hide();
             new PantallaVentas().ShowDialog(this);
+            Show();
         }
     }
 }

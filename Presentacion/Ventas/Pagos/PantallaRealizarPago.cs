@@ -26,8 +26,8 @@ namespace Presentacion.Ventas
             InitializeComponent();
             tbRecibe.KeyPress += Escape;
             tbAbono.KeyPress += Escape;
-            tbRecibe.KeyPress += Validar.TextBox_KeyPress_ValidarSoloReales;
-            tbAbono.KeyPress += Validar.TextBox_KeyPress_ValidarSoloReales;
+            tbRecibe.KeyPress += Validar.TextBox_KeyPress_ValidarSoloReales2Decimales;
+            tbAbono.KeyPress += Validar.TextBox_KeyPress_ValidarSoloReales2Decimales;
             tbRecibe.KeyPress += Validar.NoApostrofes;
             lblPedido.Text = Pedido.IDPedido;
             lblRestante.Text = Pedido.RestanteAPagar.ToString("C2");

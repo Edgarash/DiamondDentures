@@ -98,7 +98,7 @@ namespace Presentacion.Usuario
         {
             InitializeComponent();
             Enters();
-            tbSueldo.KeyPress += Validar.TextBox_KeyPress_ValidarSoloReales;
+            tbSueldo.KeyPress += Validar.TextBox_KeyPress_ValidarSoloReales2Decimales;
             México = Properties.Resources.Ciudades.Split('\n');
             Error = new ErrorProvider(this);
             ErrorText = new ErrorProvider[8];

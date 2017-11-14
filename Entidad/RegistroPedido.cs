@@ -17,6 +17,7 @@ namespace Entidad
         public DateTime FechaIngreso { get; set; }
         public DateTime FechaCalculada { get; set; }
         public DateTime FechaEntrega { get; set; }
+        public string Entregado { get; set; }
         public string Urgencia { get; set; }
         public float CostoTotal { get; set; }
         public string Laboratorista { get { return RealizaPedido.Login; } }
@@ -28,8 +29,8 @@ namespace Entidad
 
         public RegistroPedido(string IDPedido, RegistroUsuario RegistraPedido, RegistroDentista Dentista,
             int EstadoPedido, DateTime FechaIngreso, DateTime FechaCalculada, DateTime FechaEntrega,
-            string Urgencia, float CostoTotal, RegistroUsuario Laboratorista, string Pagado, float RestanteAPagar,
-            RegistroTrabajo[] Productos)
+            string Entregado, string Urgencia, float CostoTotal, RegistroUsuario Laboratorista, string Pagado,
+            float RestanteAPagar, RegistroTrabajo[] Productos)
         {
             this.IDPedido = IDPedido;
             this.RegistraPedido = RegistraPedido;
@@ -38,6 +39,7 @@ namespace Entidad
             this.FechaIngreso = FechaIngreso;
             this.FechaCalculada = FechaCalculada;
             this.FechaEntrega = FechaEntrega;
+            this.Entregado = Entregado;
             this.Urgencia = Urgencia;
             this.CostoTotal = CostoTotal;
             RealizaPedido = Laboratorista;

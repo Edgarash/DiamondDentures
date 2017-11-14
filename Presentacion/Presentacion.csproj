@@ -329,22 +329,34 @@
     <Compile Include="Recepcion\PantallaPedirInformación.Designer.cs">
       <DependentUpon>PantallaPedirInformación.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventas\CorteCaja\PantallaContarCorte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\CorteCaja\PantallaContarCorte.Designer.cs">
+      <DependentUpon>PantallaContarCorte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Entregas\PantallaPedidosNoEntregados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Entregas\PantallaPedidosNoEntregados.Designer.cs">
+      <DependentUpon>PantallaPedidosNoEntregados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventas\PantallaInformacionGeneral.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ventas\PantallaInformacionGeneral.designer.cs">
       <DependentUpon>PantallaInformacionGeneral.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventas\PantallaPedidosNoPagados.cs">
+    <Compile Include="Ventas\Pagos\PantallaPedidosNoPagados.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventas\PantallaPedidosNoPagados.Designer.cs">
+    <Compile Include="Ventas\Pagos\PantallaPedidosNoPagados.Designer.cs">
       <DependentUpon>PantallaPedidosNoPagados.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventas\PantallaRealizarPago.cs">
+    <Compile Include="Ventas\Pagos\PantallaRealizarPago.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventas\PantallaRealizarPago.Designer.cs">
+    <Compile Include="Ventas\Pagos\PantallaRealizarPago.Designer.cs">
       <DependentUpon>PantallaRealizarPago.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventas\PantallaVentas.cs">
@@ -359,10 +371,10 @@
     <Compile Include="Ventas\PantallaVerVentas.Designer.cs">
       <DependentUpon>PantallaVerVentas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventas\RealizarCorte.cs">
+    <Compile Include="Ventas\CorteCaja\RealizarCorte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventas\RealizarCorte.Designer.cs">
+    <Compile Include="Ventas\CorteCaja\RealizarCorte.Designer.cs">
       <DependentUpon>RealizarCorte.cs</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -519,13 +531,19 @@
     <EmbeddedResource Include="Recepcion\PantallaPedirInformación.resx">
       <DependentUpon>PantallaPedirInformación.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\CorteCaja\PantallaContarCorte.resx">
+      <DependentUpon>PantallaContarCorte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Entregas\PantallaPedidosNoEntregados.resx">
+      <DependentUpon>PantallaPedidosNoEntregados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventas\PantallaInformacionGeneral.resx">
       <DependentUpon>PantallaInformacionGeneral.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventas\PantallaPedidosNoPagados.resx">
+    <EmbeddedResource Include="Ventas\Pagos\PantallaPedidosNoPagados.resx">
       <DependentUpon>PantallaPedidosNoPagados.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventas\PantallaRealizarPago.resx">
+    <EmbeddedResource Include="Ventas\Pagos\PantallaRealizarPago.resx">
       <DependentUpon>PantallaRealizarPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas\PantallaVentas.resx">
@@ -534,7 +552,7 @@
     <EmbeddedResource Include="Ventas\PantallaVerVentas.resx">
       <DependentUpon>PantallaVerVentas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventas\RealizarCorte.resx">
+    <EmbeddedResource Include="Ventas\CorteCaja\RealizarCorte.resx">
       <DependentUpon>RealizarCorte.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -630,6 +648,7 @@
     <None Include="Resources\IconoAdministrarUsuarios.jpeg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Ventas\Moneda Mexicana\BilleteMiguelito.jpg" />
     <None Include="Resources\Logo.png" />
     <None Include="Resources\Multimedia_communication_flat_mobile_Technology-08-38-512.png" />
     <None Include="Resources\invoice_account_bank_check_bill_finance_paper_financial_item_flat_icon_symbol-512.png" />
@@ -708,7 +727,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

@@ -11,12 +11,12 @@ namespace Presentacion.Ventas
             this.Pedido = Pedido;
             InitializeComponent();
             lblUsuario.Text = Pedido.RegistraPedido.Nombre + " " + Pedido.RegistraPedido.Apellidos;
-            lblFechaEntrega.Text = Pedido.FechaCalculada.ToShortDateString();
-            lblFechaRegistrado.Text = Pedido.FechaIngreso.ToShortDateString();
+            lblFechaEntrega.Text = Pedido.FechaCalculada.ToLongDateString();
+            lblFechaRegistrado.Text = Pedido.FechaIngreso.ToLongDateString();
             lblPedido.Text = Pedido.IDPedido;
             lblDentista.Text = Pedido.Dentista.Nombre + " " + Pedido.Dentista.Apellidos;
             lblRestanteAPagar.Text = Pedido.RestanteAPagar.ToString("C2");
-            kuroButton1.Visible = Pedido.RestanteAPagar > 0;
+            btnAbonar.Visible = Pedido.RestanteAPagar > 0;
             kuroDGV1.RowCount = Pedido.Productos.Length;
             for (int i = 0; i < Pedido.Productos.Length; i++)
             {
@@ -32,7 +32,7 @@ namespace Presentacion.Ventas
             bool Cancelado = false;
             PantallaRealizarPago.RecibirPago(Pedido, out Cancelado);
             lblRestanteAPagar.Text = Pedido.RestanteAPagar.ToString("C2");
-            kuroButton1.Visible = Pedido.RestanteAPagar > 0;
+            btnAbonar.Visible = Pedido.RestanteAPagar > 0;
         }
     }
 }

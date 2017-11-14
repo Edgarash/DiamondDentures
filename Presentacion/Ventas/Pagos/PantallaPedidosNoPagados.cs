@@ -38,7 +38,7 @@ namespace Presentacion.Ventas
                 Min = dtpMin.Checked ? new DateTime(dtpMin.Value.Year, dtpMin.Value.Month, dtpMin.Value.Day) : DateTime.MinValue,
                 Max = dtpMax.Checked ? new DateTime(dtpMax.Value.Year, dtpMax.Value.Month, dtpMax.Value.Day, 23, 59, 59, 999) : DateTime.MaxValue;
             RegistroPedido [] Pedidos;
-            ManejadorVentas.BuscarPedidosNoPagados(IDPedido, Min, Max, Nombre, Dentista, cbUrgente.Checked, cbPagado.Checked, out Pedidos);
+            ManejadorVentas.BuscarPedidosNoPagados(IDPedido, Min, Max, Nombre, Dentista, cbUrgente.Checked, cbPagado.Checked, out Pedidos, 2);
             this.Pedidos = Pedidos;
             kuroDGV1.RowCount = Pedidos.Length;
             for (int i = 0; i < Pedidos.Length; i++)

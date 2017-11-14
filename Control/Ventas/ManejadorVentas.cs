@@ -25,10 +25,10 @@ namespace Control.Ventas
         }
 
         public static bool BuscarPedidosNoPagados(string IDPedido, DateTime FechaMin, DateTime FechaMax,
-            string Empleado, string Dentista, bool Urgente, bool NoPagado, out RegistroPedido[] Pedidos)
+            string Empleado, string Dentista, bool Urgente, bool NoPagado, out RegistroPedido[] Pedidos, int Entregado)
         {
             return InterfaceMySQL.BuscarPedidosNoPagados(IDPedido, FechaMin, FechaMax, Empleado, Dentista,
-                Urgente, NoPagado, out Pedidos);
+                Urgente, NoPagado, out Pedidos, Entregado);
         }
 
         public static bool RealizarDevolucionTicket(int IDVenta)
@@ -36,9 +36,24 @@ namespace Control.Ventas
             return InterfaceMySQL.RealizarDevolucionTicket(IDVenta);
         }
 
-        public static DataTable UltimoCorteCaja()
+        public static DataTable UltimoCorteCaja(string Usuario)
         {
-            return InterfaceMySQL.UltimoCorteCaja();
+            return InterfaceMySQL.UltimoCorteCaja(Usuario);
+        }
+
+        public static bool RegistrarCorteCaja(RegistroCorteCaja Corte)
+        {
+            return InterfaceMySQL.RegistrarCorteCaja(Corte);
+        }
+
+        public static RegistroUsuario VerificoSupervisor(string Contraseña)
+        {
+            return InterfaceMySQL.VerificoSupervisor(Contraseña);
+        }
+
+        public static bool EntregarPedido(string iDPedido, DateTime now)
+        {
+            return InterfaceMySQL.EntregarPedido(iDPedido, now);
         }
     }
 }

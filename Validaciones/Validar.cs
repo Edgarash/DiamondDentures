@@ -28,49 +28,6 @@ namespace Validaciones
             Pantalla = Contenedor;
         }
 
-        private void InicializarControles(Pantalla Pantalla)
-        {
-            for (int i = 0; i < Pantalla.Controls.Count; i++)
-            {
-                System.Windows.Forms.Control x = Pantalla.Controls[i];
-                if (x != null)
-                {
-                    if (x.GetType() == new TextBox().GetType())
-                    {
-                        Text.Add((TextBox)x);
-                    }
-                    else
-                    {
-                        if (x.GetType() == new MaskedTextBox().GetType())
-                        {
-                            Masked.Add((MaskedTextBox)x);
-                        }
-                        else
-                        {
-                            if (x.GetType() == new ComboBox().GetType())
-                            {
-                                Combo.Add((ComboBox)x);
-                            }
-                            else
-                            {
-                                if (x.GetType() == new Password().GetType())
-                                {
-                                    Pass.Add((Password)x);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        public bool ValidarCampos(bool ChecarContraseñaVacía)
-        {
-            bool temp = ValidarCampos();
-            temp = ValidarPassword(ChecarContraseñaVacía) || temp;
-            return temp;
-        }
-
         public bool ValidarCampos()
         {
             bool temp = ValidarTextBox();
@@ -417,7 +374,7 @@ namespace Validaciones
 
         public static void ValidarSoloNumeros(TextBox sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar!= '\b' && !char.IsDigit(e.KeyChar) && e.KeyChar != 13)
+            if (e.KeyChar != '\b' && !char.IsDigit(e.KeyChar) && e.KeyChar != 13)
                 e.Handled = true;
         }
 
@@ -494,6 +451,7 @@ namespace Validaciones
                 }
             }
         }
+
         public void ValidaCampoTxb(bool tipo, KeyPressEventArgs e)
         {
             if (tipo)
@@ -562,7 +520,7 @@ namespace Validaciones
             }
         }
 
-        public static void TextBox_KeyPress_ValidarSoloReales(object sender, KeyPressEventArgs e)
+        public static void TextBox_KeyPress_ValidarSoloReales2Decimales(object sender, KeyPressEventArgs e)
         {
             TextBox t = sender as TextBox;
             string temp = t.Text;
@@ -584,7 +542,18 @@ namespace Validaciones
             {
                 if (e.KeyChar != '\b' && !char.IsDigit(e.KeyChar))
                     e.Handled = true;
+                else
+                    if (char.IsDigit(e.KeyChar))
+                    if (temp.Contains("."))
+                        if (temp.Substring(temp.IndexOf('.')).Length > 2)
+                            e.Handled = true;
             }
+        }
+
+        public static void TextBox_KeyPress_ValidarSoloEnteros(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && !char.IsDigit(e.KeyChar))
+                e.Handled = true;
         }
 
         public static void NoApostrofes(object sender, KeyPressEventArgs e)
@@ -596,6 +565,11 @@ namespace Validaciones
         public static DialogResult MensajeInfo(string Mensaje)
         {
             return MessageBox.Show(Mensaje, "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public static int Valor(System.Windows.Forms.Control temp)
+        {
+            return string.IsNullOrEmpty(temp.Text) ? 0 : Convert.ToInt32(temp.Text);
         }
     }
 }

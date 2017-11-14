@@ -1,6 +1,8 @@
 ﻿using ControlesM;
 using Entidad;
 using Presentacion.Recepcion;
+using Presentacion.Ventas.CorteCaja;
+using Presentacion.Ventas.Entregas;
 using System;
 using System.Windows.Forms;
 
@@ -16,20 +18,24 @@ namespace Presentacion.Ventas
         private void RealizarPago_Click(object sender, EventArgs e)
         {
             bool Cancelado;
-            RegistroPedido Producto = PantallaPedirInformación.PedirUnPedidoNoPagado(out Cancelado);
+            RegistroPedido Producto = PantallaPedirInformación.PedirUnPedidoBotonVerPedidos(out Cancelado, BotonOpcional.NoPagados);
             if (!Cancelado)
             {
                 if (Producto != null)
                 {
+                    Hide();
                     PantallaInformacionGeneral temp = new PantallaInformacionGeneral(Producto);
                     temp.ShowDialog();
+                    Show();
                 }
                 else
                 {
                     if (DialogResult.Yes == MessageBox.Show("No se encontró el pedido, desea ver una lista de pedidos pendientes de pago?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1))
                     {
+                        Hide();
                         PantallaPedidosNoPagados temp = new PantallaPedidosNoPagados();
                         temp.ShowDialog(this);
+                        Show();
                     }
                 }
             }
@@ -37,21 +43,47 @@ namespace Presentacion.Ventas
 
         private void VerVentas_Click(object sender, EventArgs e)
         {
-                PantallaVerVentas temp = new PantallaVerVentas();
-                temp.ShowDialog();
-        }
-
-        private void MostrarPantallaCorteCaja()
-        {
-            RealizarCorte temp = new RealizarCorte();
+            Hide();
+            PantallaVerVentas temp = new PantallaVerVentas();
             temp.ShowDialog();
+            Show();
         }
 
         private void PantallaVentas_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+        }
+
+        private void HacerCorteCaja_Click(object sender, EventArgs e)
+        {
+            Hide();
+            RealizarCorte temp = new RealizarCorte();
+            temp.ShowDialog();
+            Show();
+        }
+
+        private void btnEntregar_Click(object sender, EventArgs e)
+        {
+            bool Cancelado;
+            RegistroPedido Producto = PantallaPedirInformación.PedirUnPedidoBotonVerPedidos(out Cancelado, BotonOpcional.NoEntregados);
+            if (!Cancelado)
             {
-                MostrarPantallaCorteCaja();
+                if (Producto != null)
+                {
+                    Hide();
+                    PantallaInformacionGeneral temp = new PantallaInformacionGeneral(Producto);
+                    temp.ShowDialog();
+                    Show();
+                }
+                else
+                {
+                    if (DialogResult.Yes == MessageBox.Show("No se encontró el pedido, desea ver una lista de pedidos pendientes de entrega?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1))
+                    {
+                        Hide();
+                        PantallaPedidosNoEntregados temp = new PantallaPedidosNoEntregados();
+                        temp.ShowDialog(this);
+                        Show();
+                    }
+                }
             }
         }
     }

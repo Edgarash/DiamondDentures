@@ -69,6 +69,7 @@ namespace ConexionBaseDeDatos
                     FI,
                     FC,
                     FE,
+                    x["Entregado"].ToString(),
                     x["Urgencia"].ToString(),
                     Convert.ToSingle(x["CostoTotal"].ToString()),
                     Laboratorista,
@@ -321,8 +322,8 @@ namespace ConexionBaseDeDatos
         {
             EjecutarProcedimientoAlmacenado("VerVentas", TipoConsulta.DevuelveReader,
                 Parametro("IDVent", IDVenta),
-                Parametro("FechaPagoMin", ObtenerFecha(FechaMin)),
-                Parametro("FechaPagoMax", ObtenerFecha(FechaMax)),
+                Parametro("FechaPagoMin", ObtenerFechaHora(FechaMin)),
+                Parametro("FechaPagoMax", ObtenerFechaHora(FechaMax)),
                 Parametro("IDPedid", IDPedido),
                 Parametro("Nombre", Nombre),
                 Parametro("Referenci", Referencia),
@@ -330,21 +331,23 @@ namespace ConexionBaseDeDatos
                 Parametro("Tarjeta", Tarjeta),
                 Parametro("Cheque", Cheque));
             Datos = TablaDeResultados;
+            bool x = OperacionRealizada2;
             Ventas = RellenarVentas();
-            return OperacionRealizada2;
+            return x;
         }
 
         public static bool BuscarPedidosNoPagados(string IDPedido, DateTime FechaMin, DateTime FechaMax,
-            string Empleado, string Dentista, bool Urgente, bool NoPagado, out RegistroPedido[] Pedidos)
+            string Empleado, string Dentista, bool Urgente, bool NoPagado, out RegistroPedido[] Pedidos, int Entregado)
         {
-            EjecutarProcedimientoAlmacenado("BuscarPedidosNoPagados", TipoConsulta.DevuelveReader,
+            EjecutarProcedimientoAlmacenado("BuscarPedidosParametros", TipoConsulta.DevuelveReader,
                 Parametro("IDPedid", IDPedido),
                 Parametro("Empleado", Empleado),
                 Parametro("Dentista", Dentista),
                 Parametro("FechaMin", ObtenerFechaHora(FechaMin)),
                 Parametro("FechaMax", ObtenerFechaHora(FechaMax)),
                 Parametro("Urgente", Urgente),
-                Parametro("NoPagado", NoPagado));
+                Parametro("NoPagado", NoPagado),
+                Parametro("Entregado", Entregado));
             Pedidos = RellenarPedidos();
             return OperacionRealizada2;
         }
@@ -363,7 +366,7 @@ namespace ConexionBaseDeDatos
             return OperacionRealizada2;
         }
 
-        public static DataTable UltimoCorteCaja()
+        public static DataTable UltimoCorteCaja(string Usuario)
         {
             EjecutarProcedimientoAlmacenado("UltimoCorteCaja", TipoConsulta.DevuelveReader);
             return TablaDeResultados;
@@ -392,6 +395,38 @@ namespace ConexionBaseDeDatos
             return Ventitas;
         }
 
+        public static bool RegistrarCorteCaja(RegistroCorteCaja Corte)
+        {
+            EjecutarProcedimientoAlmacenado("AgregarCorteCaja", TipoConsulta.DevuelveInt,
+                Parametro("Fechita", ObtenerFechaHora(Corte.Fecha)),
+                Parametro("Emp", Corte.Registra.Login),
+                Parametro("Sup", Corte.Autoriza.Login),
+                Parametro("Fondo", Corte.FondoCaja),
+                Parametro("Efec", Corte.EntradaEfectivo),
+                Parametro("Cheq", Corte.EntradaCheque),
+                Parametro("Tar", Corte.EntradaTarjeta),
+                Parametro("Ven", Corte.NumVentas),
+                Parametro("Din", Corte.DineroCaja),
+                Parametro("Com", Corte.Comentario));
+            return OperacionRealizada;
+        }
+
+        public static RegistroUsuario VerificoSupervisor(string Contraseña)
+        {
+            EjecutarProcedimientoAlmacenado("VerificoSupervisor", TipoConsulta.DevuelveReader,
+                Parametro("Contra", Contraseña));
+            RegistroUsuario temp = ObtenerUsuario();
+            return temp;
+        }
+
+        public static bool EntregarPedido(string IDPedido, DateTime FechaEntregado)
+        {
+            EjecutarProcedimientoAlmacenado("EntregarPedido", TipoConsulta.DevuelveInt,
+                Parametro("Fecha", FechaEntregado),
+                Parametro("IDPedid", IDPedido));
+            return OperacionRealizada;
+        }
+
         #endregion
 
         #region Auxiliares
@@ -404,6 +439,16 @@ namespace ConexionBaseDeDatos
                 FechaAgRegresar = Convert.ToDateTime(Fecha);
             }
             return FechaAgRegresar;
+        }
+
+        private static DateTime ObtenerFechaHora(string Fecha)
+        {
+            DateTime FechaARegresar = new DateTime();
+            if (!string.IsNullOrWhiteSpace(Fecha))
+            {
+                FechaARegresar = Convert.ToDateTime(Fecha);
+            }
+            return FechaARegresar;
         }
 
         private static string ObtenerFecha(DateTime Fecha)

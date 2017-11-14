@@ -4,6 +4,7 @@ using Presentacion.Recepcion;
 using System;
 using System.Windows.Forms;
 using Presentacion.Reportes;
+using Presentacion.Ventas.CorteCaja;
 
 namespace Presentacion
 {

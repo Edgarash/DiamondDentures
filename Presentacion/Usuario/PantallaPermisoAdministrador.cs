@@ -2,6 +2,8 @@
 using ControlesPersonalizados;
 using System;
 using System.Windows.Forms;
+using Entidad;
+using Control.Ventas;
 
 namespace Presentacion.Usuario
 {
@@ -96,6 +98,29 @@ namespace Presentacion.Usuario
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        public static RegistroUsuario Supervisor(out bool cancelado)
+        {
+            PantallaPermisoAdministrador temp = new PantallaPermisoAdministrador();
+            RegistroUsuario Autorizo = null;
+            bool Obtenido = false;
+            temp.ShowDialog();
+            temp.Manejador = new ManejadorPermisoAdministrador();
+            if (temp.Mensaje)
+            {
+                Autorizo = ManejadorVentas.VerificoSupervisor(temp.tbPassword.Text);
+                if (Autorizo != null)
+                {
+                    Obtenido = true;
+                }
+                else
+                {
+                    MessageBox.Show("Contraseña Incorrecta", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
+            }
+            cancelado = temp.Cancelado;
+            return Autorizo;
         }
 
         public bool PermisoAdmin(out bool Cancelado)
