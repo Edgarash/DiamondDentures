@@ -140,6 +140,12 @@
       <DependentUpon>CAN5_EmpLab.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CAN5_EmpLabPer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAN5_EmpLabPer.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CAN7_Balance.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -385,6 +391,10 @@
     <EmbeddedResource Include="CAN5_EmpLab.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CAN5_EmpLab.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAN5_EmpLabPer.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CAN5_EmpLabPer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CAN7_Balance.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

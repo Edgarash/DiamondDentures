@@ -76,7 +76,7 @@ namespace Presentacion.Reportes
             System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Laboratoristas Ocupados");
             System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Laboratoristas Desocupados");
             System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Sueldos Promedio");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Productos mayo valor");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Productos de mayor valor");
             System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Productos en laboratorio");
             System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Clientes mas valiosos");
             System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Producto más elaborado");
@@ -172,7 +172,7 @@ namespace Presentacion.Reportes
             treeNode31.Name = "can13";
             treeNode31.Text = "Sueldos Promedio";
             treeNode32.Name = "can14";
-            treeNode32.Text = "Productos mayo valor";
+            treeNode32.Text = "Productos de mayor valor";
             treeNode33.Name = "can15";
             treeNode33.Text = "Productos en laboratorio";
             treeNode34.Name = "can16";
@@ -459,13 +459,28 @@ namespace Presentacion.Reportes
                         {"Num. Ventas", new ParametroReporte("", "Num. Ventas", "cortecaja.NumVentas")}
                     };
                     sql = "FROM cortecaja;";
-                    MostrarPantalla(new PantallaVPListadoPer<ReporteMateriales>(tipo.Text, _estadoColumnas, sql, 8));
+                    MostrarPantalla(new PantallaVPListadoPer<CAN3_CorteCaja>(tipo.Text, _estadoColumnas, sql, 8));
                     break;
                 case "can4":
                     MostrarPantalla(new PantallaVPListadoGen<CAN4_NotPed>(tipo.Text));
                     break;
                 case "can5":
-                    MostrarPantalla(new PantallaVPListadoGen<CAN5_EmpLab>(tipo.Text));
+                    _estadoColumnas = new Dictionary<string, ParametroReporte>
+                    {
+                        {"Login", new ParametroReporte("", "Login", "v_can5_emplab.Login")},
+                        {"Nombre", new ParametroReporte("", "Nombre", "v_can5_emplab.Nombre")},
+                        {"Apellidos", new ParametroReporte("", "Apellidos", "v_can5_emplab.Apellidos")},
+                        {"Edad", new ParametroReporte("", "Edad", "v_can5_emplab.Edad")},
+                        {"Antiguedad", new ParametroReporte("", "Antiguedad", "v_can5_emplab.`Antigüedad`")},
+                        {"Ped. Ultimo Mes", new ParametroReporte("", "Ped. Ultimo Mes", "v_can5_emplab.`Ped. Último Mes`")},
+                        {"Pedidos Asignados", new ParametroReporte("", "Pedidos Asignados", "v_can5_emplab.`Pedidos Asignados`")},
+                        {"Costo Pedidos", new ParametroReporte("", "Costo Pedidos", "v_can5_emplab.`Costo Pedidos`")},
+                        {"Salario Diario", new ParametroReporte("", "Salario Diario", "v_can5_emplab.`Salario Diario`")},
+                        {"Salario Mensual", new ParametroReporte("", "Salario Mensual", "v_can5_emplab.`Salario Mensual`")}
+                    };
+                    sql = "FROM v_can5_emplab";
+                    // MostrarPantalla(new PantallaVPListadoGen<CAN5_EmpLab>(tipo.Text));
+                    MostrarPantalla(new PantallaVPListadoPer<CAN5_EmpLabPer>(tipo.Text,_estadoColumnas,sql,10));
                     break;
                 case "can6":
                     MostrarPantalla(new PantallaVPListadoGen<CAN6_Metrica>(tipo.Text));
@@ -536,67 +551,119 @@ namespace Presentacion.Reportes
             }
         }
 
-        private void SeleccionarTexto(string nodo)
+        private void SeleccionarTexto(TreeNode nodo)
         {
-            switch (nodo)
+            lblTitulo.Text = nodo.Text;
+            rtbDescripcion.Text = string.Empty;
+            switch (nodo.Name)
             {
                 case "rcomnom":
-                    lblTitulo.Text = "Comprobante de Nomina";
                     rtbDescripcion.Text = "Se muestrar el comprobante de nomina del trabajador correspondiente";
                     break;
                 case "rnomina":
-                    lblTitulo.Text = "Nomina";
                     rtbDescripcion.Text = "Se muestrar la nomina general donde se detallan informacion con respecto al pago de los trabajadores";
                     break;
                 case "rincomp":
-                    lblTitulo.Text = "Insumos comprados";
                     rtbDescripcion.Text = "Se muestra una lista de los insumos comprados";
                     break;
                 case "rmatcomp":
-                    lblTitulo.Text = "Nomina";
                     rtbDescripcion.Text = "Se muestra una lista de los materiales comprados";
                     break;
                 case "rprov":
-                    lblTitulo.Text = "Proveedores";
                     rtbDescripcion.Text = "Se muestrar la lista de proveedores a los cuales se les ha comprado material";
                     break;
                 case "rgastos":
-                    lblTitulo.Text = "Gastos";
                     rtbDescripcion.Text = "Se muestra la lista de gastos realizados por la emprese";
                     break;
                 case "rmateriales":
-                    lblTitulo.Text = "Materiales";
                     rtbDescripcion.Text = "Se muestra la lista de materiales manejados por la empresa";
                     break;
                 case "rprodmat":
-                    lblTitulo.Text = "Se muestra la relacion entre materiales y productos";
+                    rtbDescripcion.Text = "Se muestra la relacion entre materiales y productos";
                     break;
                 case "rventas":
-                    lblTitulo.Text = "Ventas Detalladas";
                     rtbDescripcion.Text =
                         "Se muestran las ventas que se realizaron en el periodo detallado anteriormente. Las ventas que se muestran estan divida por su id de venta, donde en cada una de estas, se muestra un encabzado con los detalles propios de la venta y en la parte inferior se detallan la informacion de los productos vendidos en dicha venta. Informacion del producto tal como su id, su nombre, su precio base, los materialies utilizados en su fabricación y el precio de cada uno de estos.";
                     break;
                 case "rgastiesp":
-                    lblTitulo.Text = "Gastos Insumos (Especifico)";
                     rtbDescripcion.Text = "Se muestra la lista de gastos con respecto a un insumos comprado en particular";
                     break;
                 case "rgastmesp":
-                    lblTitulo.Text = "Gastos materiales (Especifico)";
                     rtbDescripcion.Text = "Se muestra la lista de gastos con respecto a un material comprado en particular";
                     break;
                 case "rventasgen":
-                    lblTitulo.Text = "Ventas";
                     rtbDescripcion.Text =
                         "Se muestran las ventas que se realizaron en el periodo detallado anteriormente. Para mayor claridad las ventas estan divida por categorias por tipo de producto vendido, donde en cada una de estas se detallan el precio base, los materialies utilizados en la fabricación y el precion de cada uno de estos. En la ultima columna se detallan los importes totales obtenidos por tipo de prodcuto y en general dentro del periodo solicitado";
                     break;
                 case "rreqmat":
-                    lblTitulo.Text = "Requisicion de Materiales";
                     rtbDescripcion.Text =
                         "Se muestra un comprobante para el ingreso de materiales al almacen donde se detalla que materiales y sus cantidades fueron recibidas.";
                     break;
                 case "rtrabajadores":
-                    lblTitulo.Text = "Trabajadores";
                     rtbDescripcion.Text = "Se muestra una lista con los trabajadores registrados en el sistema.";
+                    break;
+                case "rinventarios":
+                    rtbDescripcion.Text = "Se muestra una lista con los materiales registrados en el sistema.";
+                    break;
+                case "can1":
+                    rtbDescripcion.Text = "Se muestra una lista con la informacion de los trabajadores";
+                    break;
+                case "can2_1":
+                    rtbDescripcion.Text = "Se muestran las combinaciones con las que se puede fabricar un producto.";
+                    break;
+                case "can2_2":
+                    rtbDescripcion.Text = "Se muestran las combinaciones con las que se puede fabricar un producto actualmente.";
+                    break;
+                case "can3":
+                    rtbDescripcion.Text = "Se muestran todos los cortes de caja realizados";
+                    break;
+                case "can4":
+                    rtbDescripcion.Text = "Se muestran todos los detalles del ultimo pedido.";
+                    break;
+                case "can5":
+                    rtbDescripcion.Text = "Se muestra informacion relacionada con el rendimiiento de los trabajadores.";
+                    break;
+                case "can6":
+                    rtbDescripcion.Text = "Se muestra informacion acerca del tiempo que transcurre entre cada fase";
+                    break;
+                case "can7":
+                    rtbDescripcion.Text = "Se muestra el balance";
+                    break;
+                case "can8" :
+                    rtbDescripcion.Text = "Se muestra el invetario materiales de pedidos no terminados";
+                    break;
+                case "can9":
+                    rtbDescripcion.Text = "Se muestra el invetario materiales de pedidos no terminados sin mostrar stock en 0";
+                    break;
+                case "can10":
+                    rtbDescripcion.Text = "Se muestra informacion acerca del tiempo que transcurre entre cada fase e informacion del ultimo pedido.";
+                    break;
+                case "can11":
+                    rtbDescripcion.Text = "Se muestra la lista de empleados de laboratorio con pedidos pendientes.";
+                    break;
+                case "can12":
+                    rtbDescripcion.Text = "Se muestra la lista de empleados de laboratorio sin pedidos pendientes.";
+                    break;
+                case "can13":
+                    rtbDescripcion.Text = "Se muestra la lista del salario promedio de cada departamento.";
+                    break;
+                case "can14":
+                    rtbDescripcion.Text = "Se muestra la lista de los productos mas caros y quien los compro.";
+                    break;
+                case "can15":
+                    rtbDescripcion.Text = "Se muestra la lista de productos que estan siendo elaborados por laboratorio.";
+                    break;
+                case "can16":
+                    rtbDescripcion.Text = "Se muestra la lista de dentistas que más han gastado en productos.";
+                    break;
+                case "can17":
+                    rtbDescripcion.Text = "Se muestra la lista de productos más elaborados por laboratorio.";
+                    break;
+                case "can18":
+                    rtbDescripcion.Text = "Se muestra la lista de productos menos elaborados por laboratorio.";
+                    break;
+                case "can19":
+                    rtbDescripcion.Text = "Se muestra la lista de dentistas que mas productos han comprado.";
                     break;
             }
         }
@@ -616,7 +683,7 @@ namespace Presentacion.Reportes
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            SeleccionarTexto(e.Node.Name);
+            SeleccionarTexto(e.Node);
         }
     }
 }

@@ -24,14 +24,22 @@ namespace Presentacion.Reportes
         private SaveFileDialog sfdExportar;
         private Button btnGenerar;
         private Label label6;
+        private Label label3;
+        private Label label2;
+        private DateTimePicker dtpFechaInicial;
+        private DateTimePicker dtpFechaFinal;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvVisor;
 
         private void InitializeComponent()
         {
             this.crvVisor = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnGenerar = new System.Windows.Forms.Button();
+            this.dtpFechaInicial = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
+            this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExportar = new System.Windows.Forms.Button();
@@ -50,7 +58,6 @@ namespace Presentacion.Reportes
             this.crvVisor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvVisor.Cursor = System.Windows.Forms.Cursors.Default;
             this.crvVisor.DisplayStatusBar = false;
-            this.crvVisor.DisplayToolbar = false;
             this.crvVisor.Location = new System.Drawing.Point(295, 96);
             this.crvVisor.Name = "crvVisor";
             this.crvVisor.Size = new System.Drawing.Size(915, 501);
@@ -59,8 +66,12 @@ namespace Presentacion.Reportes
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.btnGenerar);
+            this.groupBox2.Controls.Add(this.dtpFechaInicial);
             this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.dtpFechaFinal);
             this.groupBox2.Controls.Add(this.btnRegresar);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.btnExportar);
@@ -72,6 +83,24 @@ namespace Presentacion.Reportes
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parametros del reporte";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(27, 40);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 16);
+            this.label3.TabIndex = 41;
+            this.label3.Text = "Rango de fechas:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(114, 63);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(12, 16);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "-";
             // 
             // btnGenerar
             // 
@@ -87,6 +116,14 @@ namespace Presentacion.Reportes
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
+            // dtpFechaInicial
+            // 
+            this.dtpFechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaInicial.Location = new System.Drawing.Point(30, 59);
+            this.dtpFechaInicial.Name = "dtpFechaInicial";
+            this.dtpFechaInicial.Size = new System.Drawing.Size(78, 21);
+            this.dtpFechaInicial.TabIndex = 38;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -98,6 +135,14 @@ namespace Presentacion.Reportes
             this.label6.Size = new System.Drawing.Size(71, 20);
             this.label6.TabIndex = 23;
             this.label6.Text = "Generar";
+            // 
+            // dtpFechaFinal
+            // 
+            this.dtpFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFinal.Location = new System.Drawing.Point(132, 59);
+            this.dtpFechaFinal.Name = "dtpFechaFinal";
+            this.dtpFechaFinal.Size = new System.Drawing.Size(78, 21);
+            this.dtpFechaFinal.TabIndex = 39;
             // 
             // btnRegresar
             // 
@@ -162,7 +207,8 @@ namespace Presentacion.Reportes
             this.ClientSize = new System.Drawing.Size(1210, 599);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.crvVisor);
-            this.Name = "PantallaVPMateriales";
+            this.Name = "PantallaVPGastos";
+            this.Text = "Gastos";
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.crvVisor, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
@@ -191,8 +237,19 @@ namespace Presentacion.Reportes
 
         private void CargarReporte()
         {
+            DateTime fchI = dtpFechaInicial.Value.Date;
+            DateTime fchF = dtpFechaFinal.Value.Date;
 
-            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteGastos());
+            if (fchF < fchI)
+            {
+                MessageBox.Show("La fecha inicial es mayor a la fecha final");
+                return;
+            }
+
+            ParametroReporte FchI = new ParametroReporte("fchi", fchI);
+            ParametroReporte FchF = new ParametroReporte("fchf", fchF);
+
+            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteGastos(),FchI,FchF);
         }
 
         private void btnRegresar_Click(object sender, EventArgs e) => Close();
