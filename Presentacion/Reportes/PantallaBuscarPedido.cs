@@ -477,12 +477,23 @@ namespace Presentacion.Reportes
 
             int opc = 0;
 
+            DateTime fechaA = DateTime.MinValue;
+            DateTime fechaB = DateTime.MaxValue;
+
+            parametros.Add("opc", opc);
+            parametros.Add("idven", -1);
+            parametros.Add("nmoc", string.Empty);
+            parametros.Add("fchi", fechaA);
+            parametros.Add("fchf", fechaB);
+
+
+
             int numeroVenta = default(int);
             if (!string.IsNullOrWhiteSpace(txtNumeroPedido.Text))
             {
                 numeroVenta = int.Parse(txtNumeroPedido.Text);
                 opc = 1;
-                parametros.Add("idven",numeroVenta);
+                parametros["idven"] = numeroVenta;
             }
 
             string nombreCliente = string.Empty;
@@ -490,11 +501,8 @@ namespace Presentacion.Reportes
             {
                 nombreCliente = txtNombreCliente.Text;
                 opc = opc == 1 ? 5 : 2;
-                parametros.Add("nombre",nombreCliente);
+                parametros["nmoc"] = nombreCliente;
             }
-
-            DateTime fechaA = DateTime.MinValue;
-            DateTime fechaB = DateTime.MaxValue;
 
             if (chkActivar.Checked)
             {
@@ -514,9 +522,11 @@ namespace Presentacion.Reportes
                         break;
                 }
 
-                parametros.Add("fchi",fechaA);
-                parametros.Add("fchf",fechaB);
+                parametros["fchi"] = fechaA;
+                parametros["fchf"] = fechaB;
             }
+
+            parametros["opc"] = opc;
 
             DataTable datos = ManejadorReportes.CargarDatos(parametros);
 
@@ -524,30 +534,26 @@ namespace Presentacion.Reportes
             foreach (DataRow dato in datos.Select())
             {
                 dgvTabla.RowCount++;
-                                dgvTabla["cid", dgvTabla.RowCount - 1].Value = pedido.Clave;
-                                dgvTabla["cnombrecliente", dgvTabla.RowCount - 1].Value = pedido.NombrDen;
-                                dgvTabla["ccedula", dgvTabla.RowCount - 1].Value = pedido.Cedula;
-                                dgvTabla["cfecha", dgvTabla.RowCount - 1].Value = pedido.Fecha;
+                dgvTabla["cid", dgvTabla.RowCount - 1].Value = dato["IDVenta"];
+                dgvTabla["cnombrecliente", dgvTabla.RowCount - 1].Value = dato["Nombre"];
+                dgvTabla["ccedula", dgvTabla.RowCount - 1].Value = dato["Cedula"];
+                dgvTabla["cfecha", dgvTabla.RowCount - 1].Value = dato["FechaPago"];
             }
 
-            datos.Columns[]
+            if (dgvTabla.RowCount <= 0)
+            {
+                return;
+            }
 
-
-                              if (dgvTabla.RowCount <= 0)
-                                  return;
-                  
-                              dgvTabla.Rows[0].Selected = true;
-                              dgvTabla.Refresh();
-
-
-          
+            dgvTabla.Rows[0].Selected = true;
+            dgvTabla.Refresh();
         }
 
         private void SeleccionarPedido(string facturaId)
         {
             Factura = ConsultarFactura(facturaId);
         }
-        
+
         #region Eventos
 
         private void txtNumeroPedido_KeyPress(object sender, KeyPressEventArgs e)

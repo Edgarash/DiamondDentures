@@ -43,6 +43,6 @@ namespace Control
 
         public static void GuardarFactura(Dictionary<string, object> informacion) => InterfaceMySQL.rGuardarDatos("R_GuardarFactura", informacion);
 
-        public static DataTable CargarDatos(Dictionary<string, object> parametros) => InterfaceMySQL.rRecuperarDatos("R_RecuperarVentas", parametros);
+        public static DataTable CargarDatos(Dictionary<string, object> parametros) => InterfaceMySQL.rRecuperarDatos("R_RecuperarVenta", parametros);
     }
 }

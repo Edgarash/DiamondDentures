@@ -29,10 +29,31 @@ namespace ConexionBaseDeDatos
             return dataSet;
         }
 
+        static void EjecutarProcedimientoAlmacenadoReportes
+            (string NombreProcedimiento, TipoConsulta Tipo, MySqlParameter[] Datos)
+        {
+            Comando = new MySqlCommand(NombreProcedimiento, Conexion);
+            foreach (MySqlParameter dato in Datos)
+            {
+                Comando.Parameters.Add(dato);
+            }
+            Comando.CommandType = CommandType.StoredProcedure;
+            AbrirConexion();
+            if (Tipo == TipoConsulta.DevuelveInt)
+                RegistrosAfectados = Comando.ExecuteNonQuery();
+            else
+            {
+                Lector = Comando.ExecuteReader();
+                TablaDeResultados = new DataTable();
+                TablaDeResultados.Load(Lector);
+            }
+            CerrarConexion();
+        }
+
         public static DataTable rRecuperarDatos(string nombreProcedimiento, Dictionary<string, object> parametros)
         {
-            var listaParametros = parametros.Select(a => Parametro(a.Key, a.Value)).ToArray();
-            EjecutarProcedimientoAlmacenado(nombreProcedimiento, TipoConsulta.DevuelveReader, listaParametros);
+            MySqlParameter[] listaParametros = parametros.Select(a => Parametro(a.Key, a.Value)).ToArray();
+            EjecutarProcedimientoAlmacenadoReportes(nombreProcedimiento, TipoConsulta.DevuelveReader, listaParametros);
             return TablaDeResultados;
         }
 
