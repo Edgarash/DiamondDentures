@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tbApellido = new System.Windows.Forms.TextBox();
-            this.tbBanco = new System.Windows.Forms.ComboBox();
-            this.tbNombre = new System.Windows.Forms.TextBox();
+            this.txNumCuenta = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,55 +38,25 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.txDatos = new System.Windows.Forms.RichTextBox();
+            this.txBanco = new System.Windows.Forms.TextBox();
+            this.txBeneficiario = new System.Windows.Forms.TextBox();
             this.Encabezado.SuspendLayout();
             this.SuspendLayout();
             // 
             // Encabezado
             // 
-            this.Encabezado.Controls.Add(this.button2);
             this.Encabezado.Controls.Add(this.label3);
             this.Encabezado.Size = new System.Drawing.Size(306, 93);
             // 
-            // tbApellido
+            // txNumCuenta
             // 
-            this.tbApellido.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbApellido.Location = new System.Drawing.Point(14, 247);
-            this.tbApellido.MaxLength = 50;
-            this.tbApellido.Name = "tbApellido";
-            this.tbApellido.ShortcutsEnabled = false;
-            this.tbApellido.Size = new System.Drawing.Size(152, 21);
-            this.tbApellido.TabIndex = 10;
-            // 
-            // tbBanco
-            // 
-            this.tbBanco.FormattingEnabled = true;
-            this.tbBanco.Items.AddRange(new object[] {
-            "BBVA Bancomer",
-            "Santander",
-            "Banamex",
-            "Banorte",
-            "HSBC",
-            "Scotiabank",
-            "Inbursa",
-            "Interacciones",
-            "Banco del Bajío",
-            "Afirme",
-            "Americán Express"});
-            this.tbBanco.Location = new System.Drawing.Point(14, 189);
-            this.tbBanco.MaxLength = 50;
-            this.tbBanco.Name = "tbBanco";
-            this.tbBanco.Size = new System.Drawing.Size(152, 24);
-            this.tbBanco.TabIndex = 11;
-            // 
-            // tbNombre
-            // 
-            this.tbNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbNombre.Location = new System.Drawing.Point(12, 134);
-            this.tbNombre.MaxLength = 50;
-            this.tbNombre.Name = "tbNombre";
-            this.tbNombre.ShortcutsEnabled = false;
-            this.tbNombre.Size = new System.Drawing.Size(285, 21);
-            this.tbNombre.TabIndex = 9;
+            this.txNumCuenta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txNumCuenta.Location = new System.Drawing.Point(14, 247);
+            this.txNumCuenta.MaxLength = 50;
+            this.txNumCuenta.Name = "txNumCuenta";
+            this.txNumCuenta.ShortcutsEnabled = false;
+            this.txNumCuenta.Size = new System.Drawing.Size(152, 21);
+            this.txNumCuenta.TabIndex = 10;
             // 
             // label5
             // 
@@ -166,7 +134,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(209, 72);
+            this.button2.Location = new System.Drawing.Point(209, 114);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(88, 21);
@@ -183,11 +151,31 @@
             this.txDatos.TabIndex = 87;
             this.txDatos.Text = "";
             // 
+            // txBanco
+            // 
+            this.txBanco.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txBanco.Location = new System.Drawing.Point(12, 192);
+            this.txBanco.MaxLength = 50;
+            this.txBanco.Name = "txBanco";
+            this.txBanco.ShortcutsEnabled = false;
+            this.txBanco.Size = new System.Drawing.Size(152, 21);
+            this.txBanco.TabIndex = 89;
+            // 
+            // txBeneficiario
+            // 
+            this.txBeneficiario.Location = new System.Drawing.Point(11, 134);
+            this.txBeneficiario.Name = "txBeneficiario";
+            this.txBeneficiario.Size = new System.Drawing.Size(153, 21);
+            this.txBeneficiario.TabIndex = 90;
+            // 
             // FinanzasRealizarPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(306, 285);
+            this.Controls.Add(this.txBeneficiario);
+            this.Controls.Add(this.txBanco);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.txDatos);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnGenRep);
@@ -195,15 +183,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbApellido);
-            this.Controls.Add(this.tbBanco);
-            this.Controls.Add(this.tbNombre);
+            this.Controls.Add(this.txNumCuenta);
             this.Name = "FinanzasRealizarPago";
             this.Text = "FinanzasRealizarPago";
+            this.Load += new System.EventHandler(this.FinanzasRealizarPago_Load);
             this.Controls.SetChildIndex(this.Encabezado, 0);
-            this.Controls.SetChildIndex(this.tbNombre, 0);
-            this.Controls.SetChildIndex(this.tbBanco, 0);
-            this.Controls.SetChildIndex(this.tbApellido, 0);
+            this.Controls.SetChildIndex(this.txNumCuenta, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.label2, 0);
@@ -211,6 +196,9 @@
             this.Controls.SetChildIndex(this.btnGenRep, 0);
             this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.txDatos, 0);
+            this.Controls.SetChildIndex(this.button2, 0);
+            this.Controls.SetChildIndex(this.txBanco, 0);
+            this.Controls.SetChildIndex(this.txBeneficiario, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
             this.ResumeLayout(false);
@@ -220,9 +208,7 @@
 
         #endregion
 
-        protected System.Windows.Forms.TextBox tbApellido;
-        protected System.Windows.Forms.ComboBox tbBanco;
-        protected System.Windows.Forms.TextBox tbNombre;
+        protected System.Windows.Forms.TextBox txNumCuenta;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -232,5 +218,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RichTextBox txDatos;
+        protected System.Windows.Forms.TextBox txBanco;
+        private System.Windows.Forms.TextBox txBeneficiario;
     }
 }

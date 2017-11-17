@@ -151,10 +151,14 @@ namespace Control
         {
             InterfaceMySQL.FinanzasVerGastosGenerados(temp, f);
         }
-        public void DatosDRegistroPagos(DataGridView temp, string nom, string des, string punit, string cant, string subt,
-            string tot, string est, string reg, string fec)
+        public void DatosDAutualizarRegistroGastos(string id)
         {
-            InterfaceMySQL.FinanzasRegistrarPago(temp, nom, des, punit, cant, subt, tot, est, reg,fec);
+            InterfaceMySQL.FinanzasActualizarRegistroGastos(id);
+        }
+        public void DatosDRegistroPagos(DataGridView temp, string nom, string des, string punit, string cant, string subt,
+            string tot, string est, string reg, string id)
+        {
+            InterfaceMySQL.FinanzasRegistrarPago(temp, nom, des, punit, cant, subt, tot, est, reg, id);
         }
         public void DatosDTotalGastos(TextBox temp)
         {
@@ -171,6 +175,42 @@ namespace Control
         public void DatosComboUsuarios(ComboBox temp)
         {
             InterfaceMySQL.FinanzasObtenerUsuario(temp);
+        }
+        public void DatosComboIDUsuarios(ComboBox temp)
+        {
+            InterfaceMySQL.FinanzasObtenerIDUsuarios(temp);
+        }
+        public void DatosComboNombProveedor(TextBox temp, string id)
+        {
+            InterfaceMySQL.FinanzasObtenerProveedor(temp, id);
+        }
+        public void DatosNombreUsuarios(TextBox emp, string temp)
+        {
+            InterfaceMySQL.FinanzasObtenerDatosNombreUsuarios(emp,temp);
+        }
+        public void DatosComboObtenerIDProveedores(TextBox emp, string temp)
+        {
+            InterfaceMySQL.FinanzasObtenerIDProveedores(emp,temp);
+        }
+        public void DatosComboObtenerBanco(TextBox emp, string temp)
+        {
+            InterfaceMySQL.FinanzasObtenerBanco(emp, temp);
+        }
+        public void DatosDVerRequisicion(DataGridView emp, string temp)
+        {
+            InterfaceMySQL.FinanzasVerRequisicionInsumos(emp,temp);
+        }
+        public void DatosComboObtenerNumeroCuenta(TextBox emp, string temp)
+        {
+            InterfaceMySQL.FinanzasObtenerNumeroCuenta(emp,temp);
+        }
+        public void DatosDVerProductosDeProveedor(DataGridView emp, string temp)
+        {
+            InterfaceMySQL.FinanzasVerProductosDeProveedor(emp,temp);
+        }
+        public void DatosAgregarAsistencia(DataGridView temp, string id, string emp, string fec, string hEnt, string hSal)
+        {
+            InterfaceMySQL.RHumanosRegistrarAsistencia(temp, id, emp, fec, hEnt, hSal);
         }
         public void DatosDInsumos(DataGridView temp)
         {
@@ -196,13 +236,17 @@ namespace Control
         {
             InterfaceMySQL.FinanzasComprarIsumos(txID, txNomb, txDesc, txCant, txPrUni, p);
         }
-        public void AgregarCompra(TextBox txID)
+        public void AgregarCompra(string nom, string tot)
         {
-            InterfaceMySQL.FinanzasAgregarCompra(txID);
+            InterfaceMySQL.FinanzasAgregarCompra(nom, tot);
         }
         public void DatosDEmpleados(DataGridView temp)
         {
             InterfaceMySQL.RHumanosEmpleados(temp);
+        }
+        public void DatosDUltipoIDCompra(DataGridView temp)
+        {
+            InterfaceMySQL.FinanzasObtenerUltimoIDCompras(temp);
         }
         public void DatosDAsistencia(DataGridView temp)
         {
@@ -215,6 +259,10 @@ namespace Control
         public void DatosDTotalNomina(TextBox temp)
         {
             InterfaceMySQL.RHumanosTotalNomina(temp);
+        }
+        public void DatosComboListaNombProveedor(ComboBox temp)
+        {
+            InterfaceMySQL.FinanzasListaProveedor(temp);
         }
         public void DatosDAgregarNomina(DataGridView temp, string nemp, string fec, string nomb, string ape, string rfc,
             string mail, string dep, string pues, string dlab, string suel, string isr, string descisr, string sfinal, string pag)

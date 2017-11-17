@@ -65,7 +65,7 @@ namespace Presentacion.Finanzas
             }
             else
             {
-                FinanzasRealizarPago frp = new FinanzasRealizarPago(infoPagos2(dtPagos, r));
+                FinanzasRealizarPago frp = new FinanzasRealizarPago(infoPagos2(dtPagos, r), dtPagos[9, r].Value.ToString());
                 frp.Show();
             }
         }
@@ -97,6 +97,12 @@ namespace Presentacion.Finanzas
         {
 
             ActualizarData7();
+        }
+
+        private void dtPagos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            FinanzasVerRequisicion fvr = new FinanzasVerRequisicion(dtPagos[9, r].Value.ToString());
+            fvr.Show();
         }
     }
 }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.btnNomina = new System.Windows.Forms.Button();
-            this.btnPagoEmpleados = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.btnAsistencia = new System.Windows.Forms.Button();
             this.Encabezado.SuspendLayout();
@@ -50,16 +49,6 @@
             this.btnNomina.UseVisualStyleBackColor = true;
             this.btnNomina.Click += new System.EventHandler(this.btnNomina_Click);
             // 
-            // btnPagoEmpleados
-            // 
-            this.btnPagoEmpleados.Location = new System.Drawing.Point(42, 110);
-            this.btnPagoEmpleados.Name = "btnPagoEmpleados";
-            this.btnPagoEmpleados.Size = new System.Drawing.Size(92, 62);
-            this.btnPagoEmpleados.TabIndex = 58;
-            this.btnPagoEmpleados.Text = "Pago Empleados";
-            this.btnPagoEmpleados.UseVisualStyleBackColor = true;
-            this.btnPagoEmpleados.Click += new System.EventHandler(this.btnPagoEmpleados_Click);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -74,7 +63,7 @@
             // 
             // btnAsistencia
             // 
-            this.btnAsistencia.Location = new System.Drawing.Point(42, 178);
+            this.btnAsistencia.Location = new System.Drawing.Point(41, 110);
             this.btnAsistencia.Name = "btnAsistencia";
             this.btnAsistencia.Size = new System.Drawing.Size(92, 62);
             this.btnAsistencia.TabIndex = 60;
@@ -86,13 +75,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(280, 255);
+            this.ClientSize = new System.Drawing.Size(280, 187);
             this.Controls.Add(this.btnAsistencia);
             this.Controls.Add(this.btnNomina);
-            this.Controls.Add(this.btnPagoEmpleados);
             this.Name = "RHumanosMenu";
             this.Text = "RHumanosMenu";
-            this.Controls.SetChildIndex(this.btnPagoEmpleados, 0);
             this.Controls.SetChildIndex(this.btnNomina, 0);
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.btnAsistencia, 0);
@@ -106,7 +93,6 @@
 
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnNomina;
-        private System.Windows.Forms.Button btnPagoEmpleados;
         private System.Windows.Forms.Button btnAsistencia;
     }
 }

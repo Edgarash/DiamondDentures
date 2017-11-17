@@ -46,13 +46,7 @@ namespace Presentacion.Finanzas
             FinanzasAdministracionPagos fap = new FinanzasAdministracionPagos();
             fap.Show();
         }       
-
-        private void btnRealizaPago_Click(object sender, EventArgs e)
-        {
-            FinanzasRealizarPago frp = new FinanzasRealizarPago("");
-            frp.Show();
-        }
-
+        
         private void btnBalance_Click(object sender, EventArgs e)
         {
             FinanzasBalanceCuentas fbc = new FinanzasBalanceCuentas();

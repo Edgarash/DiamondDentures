@@ -45,15 +45,15 @@
             this.dtEmpleados = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbBuscar = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.cbMes = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbAño = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbDia = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tbBuscar = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtNomina)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -203,6 +203,7 @@
             this.btnActualizar.TabIndex = 2;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // label4
             // 
@@ -277,6 +278,42 @@
             this.groupBox1.Size = new System.Drawing.Size(362, 60);
             this.groupBox1.TabIndex = 56;
             this.groupBox1.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(6, 21);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 16);
+            this.label9.TabIndex = 51;
+            this.label9.Text = "Buscar: ";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // tbBuscar
+            // 
+            this.tbBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbBuscar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbBuscar.Location = new System.Drawing.Point(65, 18);
+            this.tbBuscar.MaxLength = 20;
+            this.tbBuscar.Multiline = true;
+            this.tbBuscar.Name = "tbBuscar";
+            this.tbBuscar.Size = new System.Drawing.Size(245, 24);
+            this.tbBuscar.TabIndex = 49;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackgroundImage = global::Presentacion.Properties.Resources.IconoBuscar;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Location = new System.Drawing.Point(316, 10);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(41, 41);
+            this.btnBuscar.TabIndex = 50;
+            this.btnBuscar.UseVisualStyleBackColor = true;
             // 
             // cbMes
             // 
@@ -359,42 +396,6 @@
             this.label8.TabIndex = 65;
             this.label8.Text = "Día: ";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(6, 21);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 16);
-            this.label9.TabIndex = 51;
-            this.label9.Text = "Buscar: ";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // tbBuscar
-            // 
-            this.tbBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbBuscar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBuscar.Location = new System.Drawing.Point(65, 18);
-            this.tbBuscar.MaxLength = 20;
-            this.tbBuscar.Multiline = true;
-            this.tbBuscar.Name = "tbBuscar";
-            this.tbBuscar.Size = new System.Drawing.Size(245, 24);
-            this.tbBuscar.TabIndex = 49;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackgroundImage = global::Presentacion.Properties.Resources.IconoBuscar;
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(316, 10);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(41, 41);
-            this.btnBuscar.TabIndex = 50;
-            this.btnBuscar.UseVisualStyleBackColor = true;
             // 
             // RHumanosNominas
             // 

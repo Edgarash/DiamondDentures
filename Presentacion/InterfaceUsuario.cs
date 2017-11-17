@@ -686,11 +686,16 @@ namespace Presentacion
             Manejador = new ManejadorPrincipal();
             ((ManejadorPrincipal)Manejador).DatosDGastos(temp, f);
         }
-        public void DatosDRegistroPagos(DataGridView temp, string nom, string des, string punit, string cant, string subt,
-            string tot, string est, string reg, string fec)
+        public void DatosDAutualizarRegistroGastos(string id)
         {
             Manejador = new ManejadorPrincipal();
-            ((ManejadorPrincipal)Manejador).DatosDRegistroPagos(temp, nom, des, punit, cant, subt, tot, est, reg,fec);
+            ((ManejadorPrincipal)Manejador).DatosDAutualizarRegistroGastos(id);
+        }
+        public void DatosDRegistroPagos(DataGridView temp, string nom, string des, string punit, string cant, string subt,
+            string tot, string est, string reg,string id)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDRegistroPagos(temp, nom, des, punit, cant, subt, tot, est, reg,id);
         }
         public void DatosDTotalGastos(TextBox temp)
         {
@@ -713,7 +718,51 @@ namespace Presentacion
             Manejador = new ManejadorPrincipal();
             ((ManejadorPrincipal)Manejador).DatosComboUsuarios(temp);
         }
-
+        public void DatosComboIDUsuarios(ComboBox temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosComboIDUsuarios(temp);
+        }
+        public void DatosComboNombProveedor(TextBox temp,string id)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosComboNombProveedor(temp, id);
+        }
+        public void DatosNombreUsuarios(TextBox emp, string temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosNombreUsuarios(emp,temp);
+        }
+        public void DatosComboObtenerIDProveedores(TextBox emp, string temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosComboObtenerIDProveedores(emp,temp);
+        }
+        public void DatosComboObtenerBanco(TextBox emp, string temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosComboObtenerBanco(emp,temp);
+        }
+        public void DatosDVerRequisicion(DataGridView emp, string temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDVerRequisicion(emp,temp);
+        }
+        public void DatosComboObtenerNumeroCuenta(TextBox emp, string temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosComboObtenerNumeroCuenta(emp,temp);
+        }
+        public void DatosDVerProductosDeProveedor(DataGridView emp, string temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDVerProductosDeProveedor(emp,temp);
+        }
+        public void DatosAgregarAsistencia(DataGridView temp, string id, string emp, string fec, string hEnt, string hSal)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosAgregarAsistencia(temp, id, emp, fec, hEnt, hSal);
+        }
         public void DatosDInsumos(DataGridView temp)
         {
             Manejador = new ManejadorPrincipal();
@@ -724,6 +773,7 @@ namespace Presentacion
             Manejador = new ManejadorPrincipal();
             ((ManejadorPrincipal)Manejador).DatosDTotalInsumos(temp);
         }
+        
         public void DatosDPagos(DataGridView temp)
         {
             Manejador = new ManejadorPrincipal();
@@ -744,15 +794,20 @@ namespace Presentacion
             Manejador = new ManejadorPrincipal();
             ((ManejadorPrincipal)Manejador).ComprarInsumos(txID, txNomb, txDesc, txCant, txPrUni,p);
         }
-        public void AgregarCompra(TextBox txID)
+        public void AgregarCompra(string nom, string tot)
         {
             Manejador = new ManejadorPrincipal();
-            ((ManejadorPrincipal)Manejador).AgregarCompra(txID);
+            ((ManejadorPrincipal)Manejador).AgregarCompra(nom, tot);
         }
         public void DatosDEmpleados(DataGridView temp)
         {
             Manejador = new ManejadorPrincipal();
             ((ManejadorPrincipal)Manejador).DatosDEmpleados(temp);
+        }
+        public void DatosDUltipoIDCompra(DataGridView temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDUltipoIDCompra(temp);
         }
         public void DatosDAsistencia(DataGridView temp)
         {
@@ -768,6 +823,11 @@ namespace Presentacion
         {
             Manejador = new ManejadorPrincipal();
             ((ManejadorPrincipal)Manejador).DatosDTotalNomina(temp);
+        }
+        public void DatosComboListaNombProveedor(ComboBox temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosComboListaNombProveedor(temp);
         }
         public void DatosDAgregarNomina(DataGridView temp, string nemp, string fec, string nomb, string ape, string rfc, 
             string mail, string dep, string pues, string dlab, string suel, string isr, string descisr, string sfinal, string pag)

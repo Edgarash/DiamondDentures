@@ -49,10 +49,32 @@ namespace ConexionBaseDeDatos
                 Parametro("", null));
             temp.DataSource = TablaDeResultados;
             return OperacionRealizada2;
+        }
+        public static bool FinanzasObtenerUltimoIDCompras(DataGridView temp)
+        {
+            EjecutarProcedimientoAlmacenado("FinanzasObtenerUltimoIDCompras", TipoConsulta.DevuelveReader,
+                Parametro("", null));
+            temp.DataSource = TablaDeResultados;
+            return OperacionRealizada2;
         }       
         public static void FinanzasObtenerUsuario(ComboBox combobx)
         {
             EjecutarProcedimientoAlmacenado2(combobx, "FinanzasObtenerUsuarios", TipoConsulta.DevuelveReader,
+                Parametro("", null));
+        }
+        public static void FinanzasObtenerIDUsuarios(ComboBox combobx)
+        {
+            EjecutarProcedimientoAlmacenado2(combobx, "FinanzasObtenerIDUsuarios", TipoConsulta.DevuelveReader,
+                Parametro("", null));
+        }
+        public static void FinanzasObtenerProveedor(TextBox combobx, string id)
+        {
+            EjecutarProcedimientoAlmacenado5(combobx, "FinanzasObtenerProveedor", TipoConsulta.DevuelveReader,
+                Parametro("id", id));
+        }
+        public static void FinanzasListaProveedor(ComboBox combobx)
+        {
+            EjecutarProcedimientoAlmacenado2(combobx, "FinanzasListaProveedor", TipoConsulta.DevuelveReader,
                 Parametro("", null));
         }
         public static bool FinanzasVerIsumos(DataGridView temp)
@@ -83,6 +105,20 @@ namespace ConexionBaseDeDatos
             temp.DataSource = TablaDeResultados;
             return OperacionRealizada2;
         }
+        public static bool FinanzasVerProductosDeProveedor(DataGridView temp, string id)
+        {
+            EjecutarProcedimientoAlmacenado("FinanzasVerProductosDeProveedor", TipoConsulta.DevuelveReader,
+                Parametro("id", id));
+            temp.DataSource = TablaDeResultados;
+            return OperacionRealizada2;
+        }
+        public static bool FinanzasVerRequisicionInsumos(DataGridView temp, string id)
+        {
+            EjecutarProcedimientoAlmacenado("FinanzasVerRequisicionInsumos", TipoConsulta.DevuelveReader,
+                Parametro("id", id));
+            temp.DataSource = TablaDeResultados;
+            return OperacionRealizada2;
+        }
         public static bool FinanzasComprarIsumos(TextBox txID, 
             TextBox txNomb, TextBox txDesc, TextBox txCant, TextBox txPrUni, string p)
         {
@@ -96,16 +132,41 @@ namespace ConexionBaseDeDatos
             return OperacionRealizada;
         }
 
-        public static bool FinanzasAgregarCompra(TextBox txID)
+        public static bool FinanzasAgregarCompra(string nom, string tot)
         {
             EjecutarProcedimientoAlmacenado("FinanzasAgregarCompra", TipoConsulta.DevuelveInt,
-                Parametro("idcompra", txID.Text.ToString()));
+                Parametro("Nomb", nom),
+                Parametro("tot", tot));
             return OperacionRealizada;
         }
         public static bool FinanzasTotalVentas(TextBox temp)
         {
             EjecutarProcedimientoAlmacenado3(temp,"FinanzasTotalVentas", TipoConsulta.DevuelveReader,
                 Parametro("", null));
+            return OperacionRealizada2;
+        }
+        public static bool FinanzasObtenerDatosNombreUsuarios(TextBox temp, string id)
+        {
+            EjecutarProcedimientoAlmacenado5(temp, "FinanzasObtenerDatosNombreUsuarios", TipoConsulta.DevuelveReader,
+                Parametro("id", id));
+            return OperacionRealizada2;
+        }
+        public static bool FinanzasObtenerIDProveedores(TextBox temp, string nomb)
+        {
+            EjecutarProcedimientoAlmacenado5(temp, "FinanzasObtenerIDProveedores", TipoConsulta.DevuelveReader,
+                Parametro("nomb", nomb));
+            return OperacionRealizada2;
+        }
+        public static bool FinanzasObtenerBanco(TextBox temp, string nomb)
+        {
+            EjecutarProcedimientoAlmacenado5(temp, "FinanzasObtenerBanco", TipoConsulta.DevuelveReader,
+                Parametro("nomb", nomb));
+            return OperacionRealizada2;
+        }
+        public static bool FinanzasObtenerNumeroCuenta(TextBox temp, string nomb)
+        {
+            EjecutarProcedimientoAlmacenado5(temp, "FinanzasObtenerNumeroCuenta", TipoConsulta.DevuelveReader,
+                Parametro("nomb", nomb));
             return OperacionRealizada2;
         }
         public static bool FinanzasTotalGastos(TextBox temp)
@@ -133,7 +194,7 @@ namespace ConexionBaseDeDatos
             return OperacionRealizada2;
         }
         public static bool FinanzasRegistrarPago(DataGridView temp, string nom, string des, string punit, string cant, string subt,
-            string tot, string est, string reg, string fec)
+            string tot, string est, string reg, string id)
         {
             EjecutarProcedimientoAlmacenado("FinanzasRegistrarPago", TipoConsulta.DevuelveInt,
                 Parametro("nom", nom),
@@ -144,7 +205,7 @@ namespace ConexionBaseDeDatos
                 Parametro("tot", tot + "0.00"),
                 Parametro("est", est),
                 Parametro("reg", reg),
-                Parametro("fec", fec));
+                Parametro("id", id));
             temp.DataSource = TablaDeResultados;
             return OperacionRealizada;
         }
@@ -155,6 +216,17 @@ namespace ConexionBaseDeDatos
                 Parametro("des", descripcion),
                 Parametro("val", val + "0.00"),
                 Parametro("fec", "%"+fec+"%"));
+            temp.DataSource = TablaDeResultados;
+            return OperacionRealizada;
+        }
+        public static bool RHumanosRegistrarAsistencia(DataGridView temp, string id, string emp, string fec,string hEnt, string hSal)
+        {
+            EjecutarProcedimientoAlmacenado("RHumanosRegistrarAsistencia", TipoConsulta.DevuelveInt,
+                Parametro("id", id),
+                Parametro("emp", emp),
+                Parametro("fec", fec),
+                Parametro("hEnt", hEnt),
+                Parametro("hSal", hSal));
             temp.DataSource = TablaDeResultados;
             return OperacionRealizada;
         }
@@ -174,7 +246,12 @@ namespace ConexionBaseDeDatos
                 Parametro("id", id));
             return OperacionRealizada;
         }
-
+        public static bool FinanzasActualizarRegistroGastos(string id)
+        {
+            EjecutarProcedimientoAlmacenado("FinanzasActualizarRegistroGastos", TipoConsulta.DevuelveInt,
+                Parametro("id", id));
+            return OperacionRealizada;
+        }
         public static bool RHumanosEmpleados(DataGridView temp)
         {
             EjecutarProcedimientoAlmacenado("RHumanosEmpleados", TipoConsulta.DevuelveReader,
@@ -297,6 +374,29 @@ namespace ConexionBaseDeDatos
                     while (Lector.Read())
                     {
                         txBox.Text = "FONDO = $ " + Lector[0].ToString();
+                    }
+                }
+            }
+            CerrarConexion();
+        }
+        static void EjecutarProcedimientoAlmacenado5
+            (TextBox txBox, string NombreProcedimiento, TipoConsulta Tipo, params MySqlParameter[] Datos)
+        {
+            Comando = new MySqlCommand(NombreProcedimiento, Conexion);
+            for (int i = 0; i < Datos.Length; i++)
+                Comando.Parameters.Add(Datos[i]);
+            Comando.CommandType = CommandType.StoredProcedure;
+            AbrirConexion();
+            if (Tipo == TipoConsulta.DevuelveInt)
+                RegistrosAfectados = Comando.ExecuteNonQuery();
+            else
+            {
+                Lector = Comando.ExecuteReader();
+                if (Lector.HasRows)
+                {
+                    while (Lector.Read())
+                    {
+                        txBox.Text = Lector[0].ToString();
                     }
                 }
             }

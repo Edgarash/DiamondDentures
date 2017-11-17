@@ -14,9 +14,11 @@ namespace Presentacion.Finanzas
     {
         InterfaceUsuario Interface;
         string dts { get; set; }
-        public FinanzasRealizarPago(string datos)
+        string idcom { get; set; }
+        public FinanzasRealizarPago(string datos, string IDCompra)
         {
-            string dts = datos;
+            dts = datos;
+            idcom = IDCompra;
             InitializeComponent();
             txDatos.Text = dts;
         }
@@ -84,6 +86,29 @@ namespace Presentacion.Finanzas
 
             }
             return salida;
+        }
+        private void ActualizarData2()
+        {
+            Interface = new InterfaceUsuario(this);
+            Interface.DatosComboNombProveedor(txBeneficiario, idcom);
+        }
+
+        private void ActualizarData3()
+        {
+            Interface = new InterfaceUsuario(this);
+            Interface.DatosComboObtenerBanco(txBanco, txBeneficiario.Text);
+            Interface.DatosComboObtenerNumeroCuenta(txNumCuenta, txBeneficiario.Text);
+        }
+
+        private void FinanzasRealizarPago_Load(object sender, EventArgs e)
+        {
+            ActualizarData2();
+            ActualizarData3();
+        }
+
+        private void txBeneficiario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActualizarData3();
         }
     }
 }

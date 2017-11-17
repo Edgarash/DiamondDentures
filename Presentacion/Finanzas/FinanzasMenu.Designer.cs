@@ -34,7 +34,6 @@
             this.btnComIns = new System.Windows.Forms.Button();
             this.btnVerInsumos = new System.Windows.Forms.Button();
             this.btnAdmPag = new System.Windows.Forms.Button();
-            this.btnRealizaPago = new System.Windows.Forms.Button();
             this.btnBalance = new System.Windows.Forms.Button();
             this.Encabezado.SuspendLayout();
             this.SuspendLayout();
@@ -42,7 +41,7 @@
             // Encabezado
             // 
             this.Encabezado.Controls.Add(this.label9);
-            this.Encabezado.Size = new System.Drawing.Size(281, 93);
+            this.Encabezado.Size = new System.Drawing.Size(284, 93);
             // 
             // btnFinanzasVentas
             // 
@@ -50,7 +49,7 @@
             this.btnFinanzasVentas.Name = "btnFinanzasVentas";
             this.btnFinanzasVentas.Size = new System.Drawing.Size(92, 62);
             this.btnFinanzasVentas.TabIndex = 9;
-            this.btnFinanzasVentas.Text = "Ventas";
+            this.btnFinanzasVentas.Text = "Consulta Ventas";
             this.btnFinanzasVentas.UseVisualStyleBackColor = true;
             this.btnFinanzasVentas.Click += new System.EventHandler(this.btnFinanzasVentas_Click);
             // 
@@ -60,7 +59,7 @@
             this.btnFinanzasGastos.Name = "btnFinanzasGastos";
             this.btnFinanzasGastos.Size = new System.Drawing.Size(92, 62);
             this.btnFinanzasGastos.TabIndex = 10;
-            this.btnFinanzasGastos.Text = "Compras";
+            this.btnFinanzasGastos.Text = "Consulta Compras";
             this.btnFinanzasGastos.UseVisualStyleBackColor = true;
             this.btnFinanzasGastos.Click += new System.EventHandler(this.btnFinanzasGastos_Click);
             // 
@@ -91,7 +90,7 @@
             this.btnVerInsumos.Name = "btnVerInsumos";
             this.btnVerInsumos.Size = new System.Drawing.Size(92, 62);
             this.btnVerInsumos.TabIndex = 13;
-            this.btnVerInsumos.Text = "Ver Insumos\r\ncomprados";
+            this.btnVerInsumos.Text = "Colsulta Ver Insumos";
             this.btnVerInsumos.UseVisualStyleBackColor = true;
             this.btnVerInsumos.Click += new System.EventHandler(this.btnVerInsumos_Click);
             // 
@@ -105,19 +104,9 @@
             this.btnAdmPag.UseVisualStyleBackColor = true;
             this.btnAdmPag.Click += new System.EventHandler(this.btnAdmPag_Click);
             // 
-            // btnRealizaPago
-            // 
-            this.btnRealizaPago.Location = new System.Drawing.Point(31, 248);
-            this.btnRealizaPago.Name = "btnRealizaPago";
-            this.btnRealizaPago.Size = new System.Drawing.Size(92, 62);
-            this.btnRealizaPago.TabIndex = 15;
-            this.btnRealizaPago.Text = "Realizar Pagos";
-            this.btnRealizaPago.UseVisualStyleBackColor = true;
-            this.btnRealizaPago.Click += new System.EventHandler(this.btnRealizaPago_Click);
-            // 
             // btnBalance
             // 
-            this.btnBalance.Location = new System.Drawing.Point(31, 316);
+            this.btnBalance.Location = new System.Drawing.Point(31, 248);
             this.btnBalance.Name = "btnBalance";
             this.btnBalance.Size = new System.Drawing.Size(92, 62);
             this.btnBalance.TabIndex = 16;
@@ -129,9 +118,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 394);
+            this.ClientSize = new System.Drawing.Size(284, 322);
             this.Controls.Add(this.btnBalance);
-            this.Controls.Add(this.btnRealizaPago);
             this.Controls.Add(this.btnAdmPag);
             this.Controls.Add(this.btnVerInsumos);
             this.Controls.Add(this.btnComIns);
@@ -145,7 +133,6 @@
             this.Controls.SetChildIndex(this.btnComIns, 0);
             this.Controls.SetChildIndex(this.btnVerInsumos, 0);
             this.Controls.SetChildIndex(this.btnAdmPag, 0);
-            this.Controls.SetChildIndex(this.btnRealizaPago, 0);
             this.Controls.SetChildIndex(this.btnBalance, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
@@ -161,7 +148,6 @@
         private System.Windows.Forms.Button btnComIns;
         private System.Windows.Forms.Button btnVerInsumos;
         private System.Windows.Forms.Button btnAdmPag;
-        private System.Windows.Forms.Button btnRealizaPago;
         private System.Windows.Forms.Button btnBalance;
     }
 }

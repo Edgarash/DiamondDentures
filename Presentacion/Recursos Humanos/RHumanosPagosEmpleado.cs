@@ -34,7 +34,7 @@ namespace Presentacion.Recursos_Humanos
             txSubTot.Text = subtotl;
             txTot.Text = totl;
             Interface = new InterfaceUsuario(this);
-            Interface.DatosDRegistroPagos(dtPagoEmp, txNombr.Text, txDes.Text, txPrecUn.Text, txCant.Text, txSubTot.Text, txTot.Text, "1", "1",fec);
+            Interface.DatosDRegistroPagos(dtPagoEmp, txNombr.Text, txDes.Text, txPrecUn.Text, txCant.Text, txSubTot.Text, txTot.Text, "1", "1","");
             datos = "NOMBRE: " + txNombr.Text + "\nDESCRIPCIÓN: " + txDes.Text + "\nPRECIO UNITARIO: " + txPrecUn.Text + "\nCANTIDAD: " + txCant.Text +
                 "\nSUBTOTAL: " + txSubTot.Text + "\nTOTAL: " + txTot.Text + "\nESTADO: EN PROCESO" + "\nREGISTRADO: SÍ";
         }
@@ -58,7 +58,7 @@ namespace Presentacion.Recursos_Humanos
             {
                 case DialogResult.Yes:
                     this.WindowState = FormWindowState.Minimized;
-                    FinanzasRealizarPago frp = new FinanzasRealizarPago(datos);
+                    FinanzasRealizarPago frp = new FinanzasRealizarPago(datos,"");
                     frp.Show();
                     break;
                 case DialogResult.No:

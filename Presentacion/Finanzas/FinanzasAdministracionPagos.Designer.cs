@@ -85,6 +85,7 @@
             this.dtPagos.Size = new System.Drawing.Size(695, 231);
             this.dtPagos.TabIndex = 28;
             this.dtPagos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtPagos_CellClick);
+            this.dtPagos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtPagos_CellDoubleClick);
             // 
             // btnActualizar
             // 

@@ -26,6 +26,19 @@ CREATE TABLE IF NOT EXISTS `BalanceCuentasEgresos` (
   `Valor` decimal(10,2)
 );
 
+CREATE TABLE IF NOT EXISTS `insumos` (
+  `IDInsumos` int(11) NOT NULL AUTO_INCREMENT,
+  `IDProveedor` int(11) DEFAULT NULL,
+  `Nombre` char(30) DEFAULT NULL,
+  `Descripcion` char(50) DEFAULT NULL,
+  `PrecioBase` decimal(10,2) DEFAULT NULL,
+  `PrecioCompra` decimal(10,2) DEFAULT NULL,
+  `UnidadMedida` char(50) DEFAULT NULL,
+  `CantidadDisponible` int(11) DEFAULT NULL,
+  `CantidadSolicitada` int(11) DEFAULT NULL,
+  PRIMARY KEY (`IDInsumos`)
+);
+
 DROP PROCEDURE IF EXISTS `FinanzasVentasGeneradas`;
 CREATE PROCEDURE `FinanzasVentasGeneradas`(fec char(10))
 BEGIN
@@ -80,28 +93,27 @@ BEGIN
 END;
 
 DROP PROCEDURE IF EXISTS `FinanzasAgregarCompra`;
-CREATE PROCEDURE `FinanzasAgregarCompra`(idcompra int(11))
+CREATE PROCEDURE `FinanzasAgregarCompra`(Nomb char(50), tot numeric(10,2))
 BEGIN
   INSERT IGNORE
     INTO `Compras`
-    (`IDCompra`, `Empleado`, `Total`, `Fecha`, `Tipo`, `FechaSurtido`, `Estado`)
+    (`Empleado`, `Total`, `Fecha`, `Tipo`, `FechaSurtido`, `Estado`, `Registro`)
   VALUES
-    (`idcompra`, 'YAZAH', 100 , CURDATE(), 'INSUMOS', '2017/10/31', 'PENDIENTE');
+    ('YAZAH', `tot`, CURDATE(), 'INSUMOS', CURDATE(), 'PENDIENTE', 1);
 END;
 
 DROP PROCEDURE IF EXISTS `FinanzasGastosGenerados`;
 CREATE PROCEDURE `FinanzasGastosGenerados`(fec char(10))
 BEGIN
   SELECT
-    `IDCompra`,
-    `Empleado`,
-    `Total`,
-    `Fecha`,
-    `Tipo`,
-    `FechaSurtido`,
-    `estado`
-  FROM
-    `compras`
+  `IDCompra`,
+  `Empleado`,
+  `Total`,
+  `Fecha`,
+  `Tipo`,
+  `estado`
+FROM
+  `compras`
   WHERE
     `Fecha` LIKE `fec`
   ORDER BY `Fecha` DESC;
@@ -128,6 +140,84 @@ BEGIN
   SELECT DISTINCT `Login` FROM `usuario`;
 END;
 
+DROP PROCEDURE IF EXISTS `FinanzasObtenerProveedor`;
+CREATE PROCEDURE `FinanzasObtenerProveedor`(id char(10))
+BEGIN
+  SELECT DISTINCT
+    `proveedores`.`Nombre`
+  FROM
+    `proveedores`,
+    `detalle_compra_insumo`
+  WHERE
+    `detalle_compra_insumo`.`IDCompra` = `id` AND `detalle_compra_insumo`.`IDProveedor` = `proveedores`.`IDProveedor`;
+END;
+
+
+DROP PROCEDURE IF EXISTS `FinanzasListaProveedor`;
+CREATE PROCEDURE `FinanzasListaProveedor`()
+BEGIN
+  SELECT DISTINCT `Nombre` FROM `proveedores` ORDER BY `IDProveedor`;
+END;
+
+DROP PROCEDURE IF EXISTS `FinanzasObtenerUltimoIDCompras`;
+CREATE PROCEDURE `FinanzasObtenerUltimoIDCompras`()
+BEGIN
+  SELECT MAX(`IDCompra`) FROM `compras`;
+END;
+
+DROP PROCEDURE IF EXISTS `FinanzasObtenerDatosNombreUsuarios`;
+CREATE PROCEDURE `FinanzasObtenerDatosNombreUsuarios`(id char(10))
+BEGIN
+  SELECT DISTINCT CONCAT(`Nombre`, ' ', `Apellidos`) AS 'Empleado' FROM `usuario` WHERE `N_Empleado` = id;
+END;
+
+DROP PROCEDURE IF EXISTS `FinanzasObtenerIDProveedores`;
+CREATE PROCEDURE `FinanzasObtenerIDProveedores`(nomb char(100))
+BEGIN
+  SELECT DISTINCT `IDProveedor` FROM `proveedores` WHERE `Nombre` = nomb;
+END;
+
+DROP PROCEDURE IF EXISTS `FinanzasObtenerBanco`;
+CREATE PROCEDURE `FinanzasObtenerBanco`(nomb char(100))
+BEGIN
+  SELECT DISTINCT `Banco` FROM `proveedores` WHERE `Nombre` = nomb;
+END;
+
+DROP PROCEDURE IF EXISTS `FinanzasObtenerNumeroCuenta`;
+CREATE PROCEDURE `FinanzasObtenerNumeroCuenta`(nomb char(100))
+BEGIN
+  SELECT DISTINCT `NumeroCuenta` FROM `proveedores` WHERE `Nombre` = nomb;
+END;
+
+DROP PROCEDURE IF EXISTS `FinanzasVerProductosDeProveedor`;
+CREATE PROCEDURE `FinanzasVerProductosDeProveedor`(id char(10))
+BEGIN
+SELECT DISTINCT
+  `IDInsumos`,
+  `Nombre`,
+  `Descripcion`,
+  `PrecioCompra` AS 'Precio',
+  `UnidadMedida`,
+  `CantidadDisponible`
+FROM
+  `insumos`
+WHERE
+  `IDProveedor` = id
+ORDER BY `IDInsumos` ASC;
+END;
+
+DROP PROCEDURE IF EXISTS `FinanzasVerRequisicionInsumos`;
+CREATE PROCEDURE `FinanzasVerRequisicionInsumos`(id char(10))
+BEGIN
+  SELECT * FROM `detalle_compra_insumo` WHERE `IDCompra` = id;
+END;
+
+DROP PROCEDURE IF EXISTS `FinanzasObtenerIDUsuarios`;
+CREATE PROCEDURE `FinanzasObtenerIDUsuarios`()
+BEGIN
+ SELECT DISTINCT `N_Empleado` FROM `usuario` ORDER BY `N_Empleado` ASC;
+END;
+
 DROP PROCEDURE IF EXISTS `FinanzasComprarInsumos`;
 CREATE PROCEDURE `FinanzasComprarInsumos`(
   id int(11),
@@ -149,8 +239,9 @@ CREATE PROCEDURE `FinanzasVerComprarInsumos`()
 BEGIN
   SELECT
   `compras`.`IDCompra`,
-  `Empleado`,
+  `proveedores`.`IDProveedor`,
   `proveedores`.`nombre` AS 'Proveedores',
+  `Empleado`,  
   `Tipo`,
   `detalle_compra_insumo`.`Nombre` AS 'Nombre Insumo',
   `detalle_compra_insumo`.`Descripcion`,
@@ -165,7 +256,7 @@ FROM
   `detalle_compra_insumo`,
   `proveedores`
 WHERE
-  `compras`.`Tipo` = 'INSUMOS' AND `compras`.`IDCompra` = `detalle_compra_insumo`.`IDCompra` AND `detalle_compra_insumo`.`IDProveedor` = `Proveedores`.`IDProveedor`
+  `compras`.`Tipo` = 'INSUMOS' AND `compras`.`IDCompra` = `detalle_compra_insumo`.`IDCompra` AND `detalle_compra_insumo`.`IDProveedor` = `Proveedores`.`IDProveedor` 
 ORDER BY `IDCompra`;
 END;
 
@@ -178,7 +269,7 @@ END;
 DROP PROCEDURE IF EXISTS `FinanzasTotalGastos`;
 CREATE PROCEDURE `FinanzasTotalGastos`()
 BEGIN
-  SELECT SUM(`Total`) FROM `compras`;
+  SELECT SUM(`Total`) FROM `compras` WHERE `Estado` = 'PENDIENTE';
 END;
 
 DROP PROCEDURE IF EXISTS `FinanzasTotalInsumos`;
@@ -205,7 +296,8 @@ BEGIN
     `Subtotal`,
     `Total`,
     CASE `Estado` WHEN 1 THEN 'PENDIENTE' WHEN 2 THEN 'EN PROCESO' WHEN 3 THEN 'PAGADO' END AS 'Estado',
-    IF(`Registro` = 0, 'NO', 'SÍ') AS 'Registrado'
+    IF(`Registro` = 0, 'NO', 'SÍ') AS 'Registrado',
+	IDCompra
   FROM
     `pagos`;
 END;
@@ -277,15 +369,33 @@ CREATE PROCEDURE `FinanzasRegistrarPago`(
   Preuni numeric(10,2),
   Cant int(11),
   Est int(1),
-  Reg int(1)
+  Reg int(1),
+  id int(11)
 )
 BEGIN
   INSERT IGNORE
   INTO `pagos`
-  (`Nombre`, `Descripcion`, `PrecioUnitario`, `Cantidad`, `Subtotal`, `Total`, `Estado`, `Registro`)
+  (`Nombre`, `Descripcion`, `PrecioUnitario`, `Cantidad`, `Subtotal`, `Total`, `Estado`, `Registro`, `Fecha`,IDCompra)
 VALUES
-  (`Nom`, `Des`, `Preuni`, `Cant`, `Cant` * `Preuni`, `Subtotal` + (`Subtotal` * 0.16), `Est`, `Reg`);
+  (`Nom`, `Des`, `Preuni`, `Cant`, `Cant` * `Preuni`, `Subtotal` + (`Subtotal` * 0.16), `Est`, `Reg`, CURDATE(),id);
 END;
+
+DROP PROCEDURE IF EXISTS `RHumanosRegistrarAsistencia`;
+CREATE PROCEDURE `RHumanosRegistrarAsistencia`(
+  id int(11),
+  emp char(200),
+  fec char(12),
+  hEnt varchar(5),
+  hSal varchar(5)
+)
+BEGIN
+  INSERT IGNORE
+    INTO `asistencia`
+    (`IDEmpleado`, `Empleado`, `Fecha`, `HoraEntrada`, `HoraSalida`)
+  VALUES
+    (`id`, `emp`, `fec`, `hEnt`, `hSal`);
+END;
+
 
 DROP PROCEDURE IF EXISTS `FinanzasObtenerProveedores`;
 CREATE PROCEDURE `FinanzasObtenerProveedores`()
@@ -311,9 +421,9 @@ BEGIN
     `balancecuentasingresos`.`Fecha` LIKE `fec`
   UNION
   SELECT DISTINCT
-    `Fecha`, 'Corte de caja', `ganancia`
-  FROM
-    `cortecaja`
+  `Fecha`, CONCAT('Corte de caja de ', `Empleado`) AS 'Descripción', `ganancia`
+FROM
+  `cortecaja`
   WHERE
     `cortecaja`.`fecha` LIKE `fec`
   UNION
@@ -373,6 +483,19 @@ BEGIN
     `Estado` = 3
   WHERE
     `IDPago` = id;
+END;
+
+DROP PROCEDURE IF EXISTS `FinanzasActualizarRegistroGastos`;
+CREATE PROCEDURE `FinanzasActualizarRegistroGastos`(
+    `id` int(11)
+)
+BEGIN
+  UPDATE
+    `compras`
+  SET
+    `registro` = 1
+  WHERE
+    `IDCompra` = id;
 END;
 
 DROP PROCEDURE IF EXISTS `RHumanosEmpleados`;

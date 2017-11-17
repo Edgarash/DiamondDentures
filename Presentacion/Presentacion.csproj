@@ -204,6 +204,12 @@
     <Compile Include="Finanzas\FinanzasMenu.Designer.cs">
       <DependentUpon>FinanzasMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Finanzas\FinanzasVerRequisicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasVerRequisicion.Designer.cs">
+      <DependentUpon>FinanzasVerRequisicion.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuModulosYazah.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -465,6 +471,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Finanzas\FinanzasMenu.resx">
       <DependentUpon>FinanzasMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finanzas\FinanzasVerRequisicion.resx">
+      <DependentUpon>FinanzasVerRequisicion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuModulosYazah.resx">
       <DependentUpon>MenuModulosYazah.cs</DependentUpon>

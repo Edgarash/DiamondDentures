@@ -10,32 +10,25 @@ using System.Windows.Forms;
 
 namespace Presentacion.Finanzas
 {
-    public partial class FinanzasCompras : Control.Pantalla
+    public partial class FinanzasVerRequisicion : Control.Pantalla
     {
+        string idcom { get; set; }
         InterfaceUsuario Interface;
-        string datos = "", subtotl = "", totl = "", fec = "";
-        int r = 0;
-        public FinanzasCompras()
+        public FinanzasVerRequisicion(string IDCompra)
         {
+            idcom = IDCompra;
             InitializeComponent();
         }
+
         private void ActualizarData()
         {
             Interface = new InterfaceUsuario(this);
-            fec = cbAño.Text + "-" + cbMes.Text;
-            Interface.DatosDGastos(dtGastos, fec);
-            Interface.DatosDTotalGastos(txTotal);
+            Interface.DatosDVerRequisicion(dtRequisicion, idcom);
         }
 
-        private void FinanzasGastos_Load(object sender, EventArgs e)
-        {
-            ActualizarData();
-        }
-
-        private void btnActualizar_Click_1(object sender, EventArgs e)
+        private void FinanzasVerRequisicion_Load(object sender, EventArgs e)
         {
             ActualizarData();
         }
     }
 }
-
