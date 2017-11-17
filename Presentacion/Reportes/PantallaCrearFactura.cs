@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using Control;
@@ -10,7 +11,6 @@ namespace Presentacion.Reportes
 {
     class PantallaCrearFactura : Pantalla
     {
-
         public static Factura Factura;
 
         #region UI
@@ -68,7 +68,8 @@ namespace Presentacion.Reportes
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaCrearFactura));
+            System.ComponentModel.ComponentResourceManager resources =
+                new System.ComponentModel.ComponentResourceManager(typeof (PantallaCrearFactura));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -120,13 +121,13 @@ namespace Presentacion.Reportes
             this.label1 = new System.Windows.Forms.Label();
             this.Encabezado.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dgvTabla)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // Encabezado
@@ -161,7 +162,8 @@ namespace Presentacion.Reportes
             // 
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label15.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label15.Location = new System.Drawing.Point(110, 32);
             this.label15.Name = "label15";
@@ -172,7 +174,8 @@ namespace Presentacion.Reportes
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label12.Location = new System.Drawing.Point(42, 115);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(514, 17);
@@ -182,7 +185,8 @@ namespace Presentacion.Reportes
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label13.Location = new System.Drawing.Point(695, 576);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(60, 17);
@@ -192,7 +196,8 @@ namespace Presentacion.Reportes
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label14.Location = new System.Drawing.Point(801, 576);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(68, 17);
@@ -202,7 +207,8 @@ namespace Presentacion.Reportes
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label2.Location = new System.Drawing.Point(660, 238);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 17);
@@ -212,7 +218,8 @@ namespace Presentacion.Reportes
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label3.Location = new System.Drawing.Point(770, 238);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 17);
@@ -295,7 +302,8 @@ namespace Presentacion.Reportes
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label5.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label5.Location = new System.Drawing.Point(100, 39);
             this.label5.Name = "label5";
@@ -306,7 +314,8 @@ namespace Presentacion.Reportes
             // lblFacturaId
             // 
             this.lblFacturaId.AutoSize = true;
-            this.lblFacturaId.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFacturaId.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.lblFacturaId.Location = new System.Drawing.Point(42, 168);
             this.lblFacturaId.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblFacturaId.Name = "lblFacturaId";
@@ -317,7 +326,8 @@ namespace Presentacion.Reportes
             // lblNombreCliente
             // 
             this.lblNombreCliente.AutoSize = true;
-            this.lblNombreCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblNombreCliente.Location = new System.Drawing.Point(332, 168);
             this.lblNombreCliente.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblNombreCliente.Name = "lblNombreCliente";
@@ -328,7 +338,8 @@ namespace Presentacion.Reportes
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label4.Location = new System.Drawing.Point(42, 403);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 14);
@@ -338,7 +349,8 @@ namespace Presentacion.Reportes
             // lblDireccionCliente
             // 
             this.lblDireccionCliente.AutoSize = true;
-            this.lblDireccionCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDireccionCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblDireccionCliente.Location = new System.Drawing.Point(332, 208);
             this.lblDireccionCliente.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblDireccionCliente.Name = "lblDireccionCliente";
@@ -349,7 +361,8 @@ namespace Presentacion.Reportes
             // lblCodigoPostalCliente
             // 
             this.lblCodigoPostalCliente.AutoSize = true;
-            this.lblCodigoPostalCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoPostalCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblCodigoPostalCliente.Location = new System.Drawing.Point(332, 228);
             this.lblCodigoPostalCliente.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblCodigoPostalCliente.Name = "lblCodigoPostalCliente";
@@ -360,7 +373,8 @@ namespace Presentacion.Reportes
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label9.Location = new System.Drawing.Point(332, 146);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(138, 14);
@@ -370,7 +384,8 @@ namespace Presentacion.Reportes
             // lblFechaEmision
             // 
             this.lblFechaEmision.AutoSize = true;
-            this.lblFechaEmision.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaEmision.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblFechaEmision.Location = new System.Drawing.Point(42, 188);
             this.lblFechaEmision.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblFechaEmision.Name = "lblFechaEmision";
@@ -381,7 +396,8 @@ namespace Presentacion.Reportes
             // lblRfcCliente
             // 
             this.lblRfcCliente.AutoSize = true;
-            this.lblRfcCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRfcCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblRfcCliente.Location = new System.Drawing.Point(332, 188);
             this.lblRfcCliente.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblRfcCliente.Name = "lblRfcCliente";
@@ -392,7 +408,8 @@ namespace Presentacion.Reportes
             // lblCiudadEmpresa
             // 
             this.lblCiudadEmpresa.AutoSize = true;
-            this.lblCiudadEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCiudadEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblCiudadEmpresa.Location = new System.Drawing.Point(42, 319);
             this.lblCiudadEmpresa.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblCiudadEmpresa.Name = "lblCiudadEmpresa";
@@ -407,20 +424,23 @@ namespace Presentacion.Reportes
             this.dgvTabla.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cnumero,
-            this.cdescripcion,
-            this.cpreciounitario,
-            this.cpreciomat1,
-            this.cpreciomat2,
-            this.cimporte});
+            this.dgvTabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[]
+            {
+                this.cnumero,
+                this.cdescripcion,
+                this.cpreciounitario,
+                this.cpreciomat1,
+                this.cpreciomat2,
+                this.cimporte
+            });
             this.dgvTabla.Location = new System.Drawing.Point(45, 420);
             this.dgvTabla.Name = "dgvTabla";
             this.dgvTabla.ReadOnly = true;
@@ -481,7 +501,8 @@ namespace Presentacion.Reportes
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label17.Location = new System.Drawing.Point(42, 146);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(151, 14);
@@ -509,7 +530,8 @@ namespace Presentacion.Reportes
             // lblRfcEmpresa
             // 
             this.lblRfcEmpresa.AutoSize = true;
-            this.lblRfcEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRfcEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblRfcEmpresa.Location = new System.Drawing.Point(42, 259);
             this.lblRfcEmpresa.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblRfcEmpresa.Name = "lblRfcEmpresa";
@@ -520,7 +542,8 @@ namespace Presentacion.Reportes
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label19.Location = new System.Drawing.Point(42, 217);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(162, 14);
@@ -530,7 +553,8 @@ namespace Presentacion.Reportes
             // lblNombreEmpresa
             // 
             this.lblNombreEmpresa.AutoSize = true;
-            this.lblNombreEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblNombreEmpresa.Location = new System.Drawing.Point(42, 239);
             this.lblNombreEmpresa.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblNombreEmpresa.Name = "lblNombreEmpresa";
@@ -550,7 +574,8 @@ namespace Presentacion.Reportes
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label21.Location = new System.Drawing.Point(663, 146);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(63, 14);
@@ -560,7 +585,8 @@ namespace Presentacion.Reportes
             // lblCodigoPostalEmpresa
             // 
             this.lblCodigoPostalEmpresa.AutoSize = true;
-            this.lblCodigoPostalEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoPostalEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblCodigoPostalEmpresa.Location = new System.Drawing.Point(42, 299);
             this.lblCodigoPostalEmpresa.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblCodigoPostalEmpresa.Name = "lblCodigoPostalEmpresa";
@@ -571,7 +597,8 @@ namespace Presentacion.Reportes
             // lblDireccionEmpresa
             // 
             this.lblDireccionEmpresa.AutoSize = true;
-            this.lblDireccionEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDireccionEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblDireccionEmpresa.Location = new System.Drawing.Point(42, 279);
             this.lblDireccionEmpresa.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblDireccionEmpresa.Name = "lblDireccionEmpresa";
@@ -582,7 +609,8 @@ namespace Presentacion.Reportes
             // lblEstadoEmpresa
             // 
             this.lblEstadoEmpresa.AutoSize = true;
-            this.lblEstadoEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblEstadoEmpresa.Location = new System.Drawing.Point(42, 339);
             this.lblEstadoEmpresa.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblEstadoEmpresa.Name = "lblEstadoEmpresa";
@@ -593,7 +621,8 @@ namespace Presentacion.Reportes
             // lblCiudadCliente
             // 
             this.lblCiudadCliente.AutoSize = true;
-            this.lblCiudadCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCiudadCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblCiudadCliente.Location = new System.Drawing.Point(332, 248);
             this.lblCiudadCliente.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblCiudadCliente.Name = "lblCiudadCliente";
@@ -604,7 +633,8 @@ namespace Presentacion.Reportes
             // lblEstadoCliente
             // 
             this.lblEstadoCliente.AutoSize = true;
-            this.lblEstadoCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblEstadoCliente.Location = new System.Drawing.Point(332, 268);
             this.lblEstadoCliente.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblEstadoCliente.Name = "lblEstadoCliente";
@@ -615,7 +645,8 @@ namespace Presentacion.Reportes
             // lblTelefonoEmpresa
             // 
             this.lblTelefonoEmpresa.AutoSize = true;
-            this.lblTelefonoEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefonoEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblTelefonoEmpresa.Location = new System.Drawing.Point(42, 359);
             this.lblTelefonoEmpresa.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblTelefonoEmpresa.Name = "lblTelefonoEmpresa";
@@ -626,7 +657,8 @@ namespace Presentacion.Reportes
             // lblCorreoEmpresa
             // 
             this.lblCorreoEmpresa.AutoSize = true;
-            this.lblCorreoEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCorreoEmpresa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblCorreoEmpresa.Location = new System.Drawing.Point(42, 379);
             this.lblCorreoEmpresa.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblCorreoEmpresa.Name = "lblCorreoEmpresa";
@@ -637,7 +669,8 @@ namespace Presentacion.Reportes
             // lblTelefonoCliente
             // 
             this.lblTelefonoCliente.AutoSize = true;
-            this.lblTelefonoCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefonoCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblTelefonoCliente.Location = new System.Drawing.Point(332, 288);
             this.lblTelefonoCliente.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.lblTelefonoCliente.Name = "lblTelefonoCliente";
@@ -663,7 +696,8 @@ namespace Presentacion.Reportes
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label1.Location = new System.Drawing.Point(707, 354);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 20);
@@ -715,7 +749,7 @@ namespace Presentacion.Reportes
             this.Controls.Add(this.lblFacturaId);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.panel1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "PantallaCrearFactura";
             this.Text = "Generar factura";
@@ -763,17 +797,17 @@ namespace Presentacion.Reportes
             this.Encabezado.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dgvTabla)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
         #endregion
 
         public PantallaCrearFactura()
@@ -785,7 +819,10 @@ namespace Presentacion.Reportes
         {
             InitializeComponent();
             Factura = ConsultarFactura(clave);
-            if(Factura == null) return;
+            if (Factura == null)
+            {
+                return;
+            }
             MostrarDatos();
         }
 
@@ -793,7 +830,6 @@ namespace Presentacion.Reportes
 
         void Reiniciar()
         {
-
             lblFacturaId.Text = TextosDefault.NFactura;
             lblFechaEmision.Text = TextosDefault.FechaEmision;
             lblNombreCliente.Text = TextosDefault.Nombre;
@@ -834,7 +870,7 @@ namespace Presentacion.Reportes
             lblTelefonoCliente.Text = $"{TextosDefault.Telefono} {Factura.TelefonoC}";
             lblTelefonoEmpresa.Text = $"{TextosDefault.Telefono} {Factura.TelefonoE}";
             lblCorreoEmpresa.Text = $"{TextosDefault.Correo} {Factura.CorreoE}";
-            
+
             dgvTabla.Rows.Clear();
             if (Factura.ListaProductos != null)
             {
@@ -881,8 +917,45 @@ namespace Presentacion.Reportes
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Facturar(Factura);
-            Hide();
+            //            Facturar(Factura);
+            //            Hide();
+            GuardarFactura();
+        }
+
+        private void GuardarFactura()
+        {
+            Dictionary<string, object> informacionFactura = new Dictionary<string, object>
+            {
+                {"nfac", Factura.Id},
+                {"idped", Factura.Pedidos},
+                {"femi", Factura.Fecha},
+                {"impo", Factura.Importe},
+                {"nomc", Factura.NombreC},
+                {"nome", Factura.NombreE},
+                {"corrc", Factura.CorreoC},
+                {"corre", Factura.CorreoE},
+                {"copc", Factura.CpC},
+                {"cope", Factura.CpE},
+                {"callc", Factura.CalleC},
+                {"calle", Factura.CalleE},
+                {"estc", Factura.EstadoC},
+                {"este", Factura.EstadoE},
+                {"ped", Factura.Pedidos},
+                {"rfcc", Factura.RfcC},
+                {"rfce", Factura.RfcE},
+                {"telc", Factura.TelefonoC},
+                {"tele", Factura.TelefonoE},
+                {"ciuc", Factura.CiudadC},
+                {"ciue", Factura.CiudadE},
+                {"est", Factura.Estatus},
+                {"numcc", Factura.NumCasaC},
+                {"numce", Factura.NumCasaE},
+                {"colc", Factura.ColoniaC},
+                {"cole", Factura.ColoniaE},
+                {"paic", Factura.PaisC},
+                {"paie", Factura.PaisE}
+            };
+            ManejadorReportes.GuardarFactura(informacionFactura);
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -890,8 +963,7 @@ namespace Presentacion.Reportes
             DialogoModicarFactura dmf = new DialogoModicarFactura();
             if (Factura == null)
             {
-                MessageBox.Show("No se ha seleccionado ninguna factura", "Advertencia", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
+                MessageBox.Show("No se ha seleccionado ninguna factura", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -904,19 +976,16 @@ namespace Presentacion.Reportes
             BringToFront();
         }
 
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Hide();
         }
 
         #endregion
-
     }
 
     struct TextosDefault
     {
-
         public const string NFactura = "N° Factura";
         public const string FechaEmision = "Fecha de emision";
         public const string Nombre = "Nombre:";
@@ -927,6 +996,5 @@ namespace Presentacion.Reportes
         public const string Estado = "Estado:";
         public const string Telefono = "Telefono:";
         public const string Correo = "Correo";
-
     }
 }

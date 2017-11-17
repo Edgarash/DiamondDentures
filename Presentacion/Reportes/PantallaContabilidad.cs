@@ -21,21 +21,12 @@ namespace Presentacion.Reportes
         public PantallaContabilidad()
         {
             InitializeComponent();
-            Actualizar();
-        }
-
-        public PantallaContabilidad(string clave)
-        {
-
-
+            //Actualizar();
         }
 
         #region Metodos  
 
-        public void CancelarFacturaSeleccionada(int facturaId)
-        {
-            CancelarFactura(facturaId);
-        }
+        private void CancelarFacturaSeleccionada(int facturaId) => CancelarFactura(facturaId);
 
         private void MostrarFacturas(List<Factura> facturas)
         {

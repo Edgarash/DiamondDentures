@@ -82,6 +82,9 @@ namespace Presentacion.Reportes
             System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Producto más elaborado");
             System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Producto menos elaborado");
             System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Clientes frencuentes");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Facturas");
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Temporal", new System.Windows.Forms.TreeNode[] {
+            treeNode38});
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -183,6 +186,10 @@ namespace Presentacion.Reportes
             treeNode36.Text = "Producto menos elaborado";
             treeNode37.Name = "can19";
             treeNode37.Text = "Clientes frencuentes";
+            treeNode38.Name = "rfact";
+            treeNode38.Text = "Facturas";
+            treeNode39.Name = "Node0";
+            treeNode39.Text = "Temporal";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode10,
             treeNode16,
@@ -205,7 +212,8 @@ namespace Presentacion.Reportes
             treeNode34,
             treeNode35,
             treeNode36,
-            treeNode37});
+            treeNode37,
+            treeNode39});
             this.treeView1.Size = new System.Drawing.Size(175, 344);
             this.treeView1.TabIndex = 9;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
@@ -547,6 +555,9 @@ namespace Presentacion.Reportes
                     sql =
                         "FROM ventas LEFT JOIN dentista ON dentista.Cedula=ventas.Cedula GROUP BY dentista.Nombre,dentista.Apellidos,dentista.Cedula LIMIT 20;";
                     MostrarPantalla(new PantallaVPListadoPer<CAN19_DentMasCompran>(tipo.Text, _estadoColumnas, sql, 7));
+                    break;
+                case "rfact":
+                    MostrarPantalla(new PantallaContabilidad());
                     break;
             }
         }

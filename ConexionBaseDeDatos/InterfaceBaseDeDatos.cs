@@ -1664,10 +1664,10 @@ WHERE
     internal static class CnDefault
     {
         public const uint Port = 3306;
-        public const string Server = "sql9.freesqldatabase.com";
-        public const string UserId = "sql9174827";
-        public const string Password = "tHc9X1c9xh";
-        public const string Database = "sql9174827";
+        public const string Server = "35.193.200.182";
+        public const string UserId = "root";
+        public const string Password = "diamonddentures";
+        public const string Database = "diamonddentures";
     }
 
     public class CriterioBusqueda

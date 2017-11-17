@@ -179,7 +179,7 @@ namespace ConexionBaseDeDatos
         {
             Comando = new MySqlCommand(NombreProcedimiento, Conexion);
             for (int i = 0; i < Datos.Length; i++)
-                Comando.Parameters.Add(Datos[i]);
+                Comando.Parameters.Add(i);
             Comando.CommandType = CommandType.StoredProcedure;
             AbrirConexion();
             if (Tipo == TipoConsulta.DevuelveInt)
@@ -221,7 +221,7 @@ namespace ConexionBaseDeDatos
                     AbrirConexion();
                 }
             }
-            catch (Exception ms)
+            catch (Exception)
             {
                 MessageBox.Show("No se pudo establecer la conexión, por favor revisa tu conexión a internet", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }

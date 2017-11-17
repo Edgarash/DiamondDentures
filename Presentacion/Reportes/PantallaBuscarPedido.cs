@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using ConexionBaseDeDatos;
 using Control;
@@ -12,7 +14,7 @@ namespace Presentacion.Reportes
 {
     internal class PantallaBuscarPedido : Pantalla
     {
-        public static Factura Factura;      
+        public static Factura Factura;
         public string Renglon;
 
         public PantallaBuscarPedido()
@@ -412,6 +414,7 @@ namespace Presentacion.Reportes
             this.Controls.Add(this.label9);
             this.Name = "PantallaBuscarPedido";
             this.Text = "Buscar pedido";
+            this.Load += new System.EventHandler(this.PantallaBuscarPedido_Load);
             this.Controls.SetChildIndex(this.label9, 0);
             this.Controls.SetChildIndex(this.label7, 0);
             this.Controls.SetChildIndex(this.label2, 0);
@@ -469,13 +472,26 @@ namespace Presentacion.Reportes
 
         private void BuscarPedido()
         {
-            int numeroPedido = -1;
-            if (!string.IsNullOrWhiteSpace(txtNumeroPedido.Text))
-                numeroPedido = int.Parse(txtNumeroPedido.Text);
 
-            string nombreCliente = "";
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+
+            int opc = 0;
+
+            int numeroVenta = default(int);
+            if (!string.IsNullOrWhiteSpace(txtNumeroPedido.Text))
+            {
+                numeroVenta = int.Parse(txtNumeroPedido.Text);
+                opc = 1;
+                parametros.Add("idven",numeroVenta);
+            }
+
+            string nombreCliente = string.Empty;
             if (!string.IsNullOrWhiteSpace(txtNombreCliente.Text))
+            {
                 nombreCliente = txtNombreCliente.Text;
+                opc = opc == 1 ? 5 : 2;
+                parametros.Add("nombre",nombreCliente);
+            }
 
             DateTime fechaA = DateTime.MinValue;
             DateTime fechaB = DateTime.MaxValue;
@@ -484,25 +500,47 @@ namespace Presentacion.Reportes
             {
                 fechaA = dtpFechaA.Value;
                 fechaB = dtpFechaB.Value;
+
+                switch (opc)
+                {
+                    case 5:
+                        opc = 0;
+                        break;
+                    case 2:
+                        opc = 4;
+                        break;
+                    case 0:
+                        opc = 6;
+                        break;
+                }
+
+                parametros.Add("fchi",fechaA);
+                parametros.Add("fchf",fechaB);
             }
 
-            List<Pedidos> pedidos = ConsultarPedido(new DatosBusqueda(fechaA, fechaB, numeroPedido, chkActivar.Checked, nombreCliente));
+            DataTable datos = ManejadorReportes.CargarDatos(parametros);
 
             dgvTabla.Rows.Clear();
-            foreach (Pedidos pedido in pedidos)
+            foreach (DataRow dato in datos.Select())
             {
                 dgvTabla.RowCount++;
-                dgvTabla["cid", dgvTabla.RowCount - 1].Value = pedido.Clave;
-                dgvTabla["cnombrecliente", dgvTabla.RowCount - 1].Value = pedido.NombrDen;
-                dgvTabla["ccedula", dgvTabla.RowCount - 1].Value = pedido.Cedula;
-                dgvTabla["cfecha", dgvTabla.RowCount - 1].Value = pedido.Fecha;
+                                dgvTabla["cid", dgvTabla.RowCount - 1].Value = pedido.Clave;
+                                dgvTabla["cnombrecliente", dgvTabla.RowCount - 1].Value = pedido.NombrDen;
+                                dgvTabla["ccedula", dgvTabla.RowCount - 1].Value = pedido.Cedula;
+                                dgvTabla["cfecha", dgvTabla.RowCount - 1].Value = pedido.Fecha;
             }
 
-            if (dgvTabla.RowCount <= 0)
-                return;
+            datos.Columns[]
 
-            dgvTabla.Rows[0].Selected = true;
-            dgvTabla.Refresh();
+
+                              if (dgvTabla.RowCount <= 0)
+                                  return;
+                  
+                              dgvTabla.Rows[0].Selected = true;
+                              dgvTabla.Refresh();
+
+
+          
         }
 
         private void SeleccionarPedido(string facturaId)
@@ -575,5 +613,10 @@ namespace Presentacion.Reportes
         }
 
         #endregion
+
+        private void PantallaBuscarPedido_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

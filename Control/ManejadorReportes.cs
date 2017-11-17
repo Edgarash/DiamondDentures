@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.Data;
 using Entidad;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using ConexionBaseDeDatos;
 
 namespace Control
 {
@@ -38,5 +40,9 @@ namespace Control
             }
             return reporte;
         }
+
+        public static void GuardarFactura(Dictionary<string, object> informacion) => InterfaceMySQL.rGuardarDatos("R_GuardarFactura", informacion);
+
+        public static DataTable CargarDatos(Dictionary<string, object> parametros) => InterfaceMySQL.rRecuperarDatos("R_RecuperarVentas", parametros);
     }
 }
