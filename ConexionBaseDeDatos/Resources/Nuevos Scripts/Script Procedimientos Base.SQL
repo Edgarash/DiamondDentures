@@ -1,5 +1,9 @@
-DROP PROCEDURE IF EXISTS `ActualizarTarjeta`;
-CREATE DEFINER=`root`@`%` PROCEDURE `ActualizarTarjeta`(
+#
+# Procedure "ActualizarTarjeta"
+#
+
+DROP PROCEDURE IF EXISTS ActualizarTarjeta;
+CREATE PROCEDURE ActualizarTarjeta(
   numer varchar(16),
   titula varchar(50),
   apellido varchar(50),
@@ -9,20 +13,23 @@ CREATE DEFINER=`root`@`%` PROCEDURE `ActualizarTarjeta`(
 )
 BEGIN
   UPDATE
-    `tarjetas`
+    tarjetas
   SET
-    `numero` = numer,
-    `titular` = titula,
-    `apellidos` = apellido,
-    `banco` = banc,
-    `fven` = fve
+    numero = numer,
+    titular = titula,
+    apellidos = apellido,
+    banco = banc,
+    fven = fve
   WHERE
-    `login` = logi;
+    login = logi;
 END;
 
+#
+# Procedure "ActualizarUsuario"
+#
 
-DROP PROCEDURE IF EXISTS `ActualizarUsuario`;
-CREATE DEFINER=`root`@`%` PROCEDURE `ActualizarUsuario`(
+DROP PROCEDURE IF EXISTS ActualizarUsuario;
+CREATE PROCEDURE ActualizarUsuario(
   emplead int(11),
   logi char(30),
   passwor char(30),
@@ -51,70 +58,73 @@ CREATE DEFINER=`root`@`%` PROCEDURE `ActualizarUsuario`(
 )
 BEGIN
   UPDATE
-    `usuario`
+    usuario
   SET
-    `N_Empleado` = emplead,
-    `Password` = passwor,
-    `Nombre` = nombr,
-    `Apellidos` = apellido,
-    `FechaNacimiento` = FechaNacimient,
-    `NumCasa` = NumCas,
-    `Direccion` = Direccio,
-    `Colonia` = Coloni,
-    `Ciudad` = Ciuda,
-    `Municipio` = Municipi,
-    `Estado` = Estad,
-    `Pais` = Pai,
-    `CodPos` = CodPo,
-    `TelCasa` = TelCas,
-    `TelOficina` = TelOficin,
-    `TelCel` = TelCe,
-    `Email` = Emai,
-    `Pregunta` = Pregunt,
-    `Respuesta` = Respuest,
-    `Activo` = Activ,
-    `Departamento` = Departament,
-    `FechaIngreso` = FechaIngres,
-    `Puesto` = Puest,
-    `Sueldo` = Sueld
+    N_Empleado = emplead,
+    Password = passwor,
+    Nombre = nombr,
+    Apellidos = apellido,
+    FechaNacimiento = FechaNacimient,
+    NumCasa = NumCas,
+    Direccion = Direccio,
+    Colonia = Coloni,
+    Ciudad = Ciuda,
+    Municipio = Municipi,
+    Estado = Estad,
+    Pais = Pai,
+    CodPos = CodPo,
+    TelCasa = TelCas,
+    TelOficina = TelOficin,
+    TelCel = TelCe,
+    Email = Emai,
+    Pregunta = Pregunt,
+    Respuesta = Respuest,
+    Activo = Activ,
+    Departamento = Departament,
+    FechaIngreso = FechaIngres,
+    Puesto = Puest,
+    Sueldo = Sueld
   WHERE
-    `Login` = logi;
+    Login = logi;
 END;
 
+#
+# Procedure "AdministrarUsuarios"
+#
 
-DROP PROCEDURE IF EXISTS `AdministrarUsuarios`;
-CREATE DEFINER=`root`@`%` PROCEDURE `AdministrarUsuarios`()
+DROP PROCEDURE IF EXISTS AdministrarUsuarios;
+CREATE PROCEDURE AdministrarUsuarios()
 BEGIN
   SELECT
-    `usuario`.`N_empleado`,
-    `Login`,
-    `Nombre`,
-    `Apellidos`,
-    `FechaNacimiento`,
-    `Direccion`,
-    `NumCasa` AS 'N° Casa',
-    `CodPos` AS 'Codigo Postal',
-    `Colonia`,
-    `Ciudad` 'Municipio',
-    `Estado`,
-    `Pais`,
-    `TelCasa` AS 'Tel. Casa',
-    `TelCel` AS 'Tel. Movil',
-    `TelOficina` AS 'Tel. Oficina',
-    `Email`,
-    `Activo`,
-    `Departamento`,
-    `Puesto`,
-    `FechaIngreso` AS 'Fecha de Ingreso',
-    `Sueldo`
+    usuario.N_empleado,
+    Login,
+    Nombre,
+    Apellidos,
+    FechaNacimiento,
+    Direccion,
+    NumCasa AS 'NÂ° Casa',
+    CodPos AS 'Codigo Postal',
+    Colonia,
+    Ciudad 'Municipio',
+    Estado,
+    Pais,
+    TelCasa AS 'Tel. Casa',
+    TelCel AS 'Tel. Movil',
+    TelOficina AS 'Tel. Oficina',
+    Email,
+    Activo,
+    Departamento,
+    Puesto,
+    FechaIngreso AS 'Fecha de Ingreso',
+    Sueldo
   FROM
-    `usuario`,
-    `empleados`
+    usuario,
+    empleados
   WHERE
-    `usuario`.`N_Empleado` = `empleados`.`N_Empleado`
+    usuario.N_Empleado = empleados.N_Empleado
   UNION ALL
   SELECT
-    `N_Empleado`,
+    N_Empleado,
     '',
     '',
     '',
@@ -136,63 +146,92 @@ BEGIN
     '',
     ''
   FROM
-    `empleados`
+    empleados
   WHERE
-    `N_Empleado` NOT IN (SELECT `N_Empleado` FROM `usuario`)
-  ORDER BY `N_Empleado`;
+    N_Empleado NOT IN (SELECT N_Empleado FROM usuario)
+  ORDER BY N_Empleado;
 END;
 
+#
+# Procedure "ConteoAdministradores"
+#
 
-DROP PROCEDURE IF EXISTS `ConteoAdministradores`;
-CREATE DEFINER=`root`@`%` PROCEDURE `ConteoAdministradores`()
+DROP PROCEDURE IF EXISTS ConteoAdministradores;
+CREATE PROCEDURE ConteoAdministradores()
 BEGIN
-  SELECT COUNT(`Activo`) AS 'resultado' FROM `usuario` WHERE `Departamento` = 'ADMINISTRACION' AND `Puesto` = 'ADMINISTRADOR' AND `Activo` = '1';
+  SELECT COUNT(Activo) AS 'resultado'
+  FROM usuario
+  WHERE Departamento = 'ADMINISTRACION'
+	AND Puesto = 'ADMINISTRADOR'
+	AND Activo = '1';
 END;
 
-DROP PROCEDURE IF EXISTS `EliminarTarjeta`;
-CREATE DEFINER=`root`@`%` PROCEDURE `EliminarTarjeta`(logi varchar(30))
+#
+# Procedure "EliminarTarjeta"
+#
+
+DROP PROCEDURE IF EXISTS EliminarTarjeta;
+CREATE PROCEDURE EliminarTarjeta(logi varchar(30))
 BEGIN
-  DELETE FROM `Tarjetas` WHERE `login` = logi;
+  DELETE FROM Tarjetas WHERE login = logi;
 END;
 
+#
+# Procedure "RecuperarPregunta"
+#
 
-DROP PROCEDURE IF EXISTS `RecuperarPregunta`;
-CREATE DEFINER=`root`@`%` PROCEDURE `RecuperarPregunta`(emp int)
+DROP PROCEDURE IF EXISTS RecuperarPregunta;
+CREATE PROCEDURE RecuperarPregunta(emp int)
 BEGIN
-  SELECT * FROM `usuario` WHERE `N_Empleado` = emp;
+  SELECT * FROM usuario WHERE N_Empleado = emp;
 END;
 
+#
+# Procedure "RecuperarTarjeta"
+#
 
-DROP PROCEDURE IF EXISTS `RecuperarTarjeta`;
-CREATE DEFINER=`root`@`%` PROCEDURE `RecuperarTarjeta`(log varchar(30))
+DROP PROCEDURE IF EXISTS RecuperarTarjeta;
+CREATE PROCEDURE RecuperarTarjeta(log varchar(30))
 BEGIN
-  SELECT * FROM `tarjetas` WHERE `login` = log AND `activo` = 1;
+  SELECT * FROM tarjetas WHERE login = log AND activo = 1;
 END;
 
+#
+# Procedure "RecuperarUsuario"
+#
 
-DROP PROCEDURE IF EXISTS `RecuperarUsuario`;
-CREATE DEFINER=`root`@`%` PROCEDURE `RecuperarUsuario`(log varchar(30))
+DROP PROCEDURE IF EXISTS RecuperarUsuario;
+CREATE PROCEDURE RecuperarUsuario(log varchar(30))
 BEGIN
-  SELECT * FROM `usuario` WHERE `login` = log;
+  SELECT * FROM usuario WHERE login = log;
 END;
 
+#
+# Procedure "RecuperarUsuarioN"
+#
 
-DROP PROCEDURE IF EXISTS `RecuperarUsuarioN`;
-CREATE DEFINER=`root`@`%` PROCEDURE `RecuperarUsuarioN`(N int)
+DROP PROCEDURE IF EXISTS RecuperarUsuarioN;
+CREATE PROCEDURE RecuperarUsuarioN(N int)
 BEGIN
-  SELECT * FROM `usuario` WHERE `N_Empleado` = N;
+  SELECT * FROM usuario WHERE N_Empleado = N;
 END;
 
+#
+# Procedure "RegistrarEmpleado"
+#
 
-DROP PROCEDURE IF EXISTS `RegistrarEmpleado`;
-CREATE DEFINER=`root`@`%` PROCEDURE `RegistrarEmpleado`(emp int)
+DROP PROCEDURE IF EXISTS RegistrarEmpleado;
+CREATE PROCEDURE RegistrarEmpleado(emp int)
 BEGIN
-  INSERT IGNORE INTO `empleados` VALUES (emp);
+  INSERT IGNORE INTO empleados VALUES (emp);
 END;
 
+#
+# Procedure "RegistrarTarjeta"
+#
 
-DROP PROCEDURE IF EXISTS `RegistrarTarjeta`;
-CREATE DEFINER=`root`@`%` PROCEDURE `RegistrarTarjeta`(
+DROP PROCEDURE IF EXISTS RegistrarTarjeta;
+CREATE PROCEDURE RegistrarTarjeta(
   numer varchar(16),
   titula varchar(50),
   apellido varchar(50),
@@ -202,15 +241,18 @@ CREATE DEFINER=`root`@`%` PROCEDURE `RegistrarTarjeta`(
 )
 BEGIN
   INSERT IGNORE
-    INTO `tarjetas`
-    (`numero`, `titular`, `apellidos`, `banco`, `fven`, `login`)
+    INTO tarjetas
+    (numero, titular, apellidos, banco, fven, login)
   VALUES
     (numer, titula, apellido, banc, fve, logi);
 END;
 
+#
+# Procedure "RegistrarUsuario"
+#
 
-DROP PROCEDURE IF EXISTS `RegistrarUsuario`;
-CREATE DEFINER=`root`@`%` PROCEDURE `RegistrarUsuario`(
+DROP PROCEDURE IF EXISTS RegistrarUsuario;
+CREATE PROCEDURE RegistrarUsuario(
   emplead int(11),
   logi char(30),
   passwor char(30),
@@ -239,22 +281,28 @@ CREATE DEFINER=`root`@`%` PROCEDURE `RegistrarUsuario`(
 )
 BEGIN
   INSERT IGNORE
-    INTO `usuario`
-    (`N_Empleado`, `Login`, `Password`, `Nombre`, `Apellidos`, `FechaNacimiento`, `NumCasa`, `Direccion`, `Colonia`, `Ciudad`, `Municipio`, `Estado`, `Pais`, `CodPos`, `TelCasa`, `TelOficina`, `TelCel`, `Email`, `Pregunta`, `Respuesta`, `Activo`, `Departamento`, `FechaIngreso`, `Puesto`, `Sueldo`)
+    INTO usuario
+    (N_Empleado, Login, Password, Nombre, Apellidos, FechaNacimiento, NumCasa, Direccion, Colonia, Ciudad, Municipio, Estado, Pais, CodPos, TelCasa, TelOficina, TelCel, Email, Pregunta, Respuesta, Activo, Departamento, FechaIngreso, Puesto, Sueldo)
   VALUES
     (emplead, logi, passwor, nombr, apellido, FechaNacimient, NumCas, Direccio, Coloni, Ciuda, Municipi, Estad, Pai, CodPo, TelCas, TelOficin, TelCe, Emai, Pregunt, Respuest, Activ, Departament, FechaIngres, Puest, Sueld);
 END;
 
+#
+# Procedure "ValidarEmpleado"
+#
 
-DROP PROCEDURE IF EXISTS `ValidarEmpleado`;
-CREATE DEFINER=`root`@`%` PROCEDURE `ValidarEmpleado`(emp int)
+DROP PROCEDURE IF EXISTS ValidarEmpleado;
+CREATE PROCEDURE ValidarEmpleado(emp int)
 BEGIN
-  SELECT `N_Empleado` FROM `empleados` WHERE `N_Empleado` = emp;
+  SELECT N_Empleado FROM empleados WHERE N_Empleado = emp;
 END;
 
+#
+# Procedure "ValidarEmpleadoRegistrado"
+#
 
-DROP PROCEDURE IF EXISTS `ValidarEmpleadoRegistrado`;
-CREATE DEFINER=`root`@`%` PROCEDURE `ValidarEmpleadoRegistrado`(emp int)
+DROP PROCEDURE IF EXISTS ValidarEmpleadoRegistrado;
+CREATE PROCEDURE ValidarEmpleadoRegistrado(emp int)
 BEGIN
-  SELECT `N_Empleado` AS 'result' FROM `usuario` WHERE `N_Empleado` = emp AND `Activo` = '1';
+  SELECT N_Empleado AS 'result' FROM usuario WHERE N_Empleado = emp AND Activo = '1';
 END;
