@@ -27,7 +27,7 @@ namespace Presentacion.Control_Pedidos
             InitializeComponent();
             this.Usuario = User;
             Interface = new InterfaceUsuario(this);
-            tipoUsuario = Interface.ObtenerTipoUser(Usuario);
+            //tipoUsuario = Interface.ObtenerTipoUser(Usuario);
         }
 
         private void button1_Click(object sender, EventArgs e)

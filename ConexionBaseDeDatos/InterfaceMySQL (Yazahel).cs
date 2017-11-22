@@ -13,6 +13,13 @@ namespace ConexionBaseDeDatos
     public static partial class InterfaceMySQL
     {
         //En esta clase sólo Yazahel deberá meter sólo los métodos y atributos que ocupe
+        public static bool ControlPedidosObtenerPedidos(DataGridView temp)
+        {
+            EjecutarProcedimientoAlmacenado("ControlPedidosObtenerPedidos", TipoConsulta.DevuelveReader,
+                Parametro("", null));
+            temp.DataSource = TablaDeResultados;
+            return OperacionRealizada2;
+        }
         public static bool FinanzasVerVentasGeneradas(DataGridView temp, string fech)
         {
             EjecutarProcedimientoAlmacenado("FinanzasVentasGeneradas", TipoConsulta.DevuelveReader,

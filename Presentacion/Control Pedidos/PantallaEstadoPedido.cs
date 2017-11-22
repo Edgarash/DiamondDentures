@@ -26,7 +26,7 @@ namespace Presentacion.Control_Pedidos
             ActualizarData();
             Usuario = User;
             Interface = new InterfaceUsuario(this);
-            tipoUsuario = Interface.ObtenerTipoUser(Usuario);
+            //tipoUsuario = Interface.ObtenerTipoUser(Usuario);
         }
         protected override void btnMouseLeft(object sender, EventArgs e)
         {
@@ -281,23 +281,23 @@ namespace Presentacion.Control_Pedidos
             cbLabora.DropDownStyle = ComboBoxStyle.DropDownList;
             lblTrabaja.Visible = true;
             cbLabora.Visible = true;
-            Interface = new InterfaceUsuario(this);
-            Interface.ObtenerUsuariosActivos(cbLabora);
-            dtvDatos.RowCount = 1;
+            //Interface = new InterfaceUsuario(this);
+            //Interface.ObtenerUsuariosActivos(cbLabora);
+            //dtvDatos.RowCount = 1;
             ActualizarData();
             lblUsuario.Text = "Usuario: " + Usuario + " (" + tipoUsuario + ")";
-            if (dtvDatos.CurrentCell != null)
-            {
-                int renglon = Convert.ToInt32(dtvDatos.CurrentCell.RowIndex.ToString());
-                if (dtvDatos[7, renglon].Value != null)
-                    cestado = dtvDatos[7, renglon].Value.ToString();
-            }
-            if (dtvDatos.CurrentCell != null)
-            {
-                int renglon = Convert.ToInt32(dtvDatos.CurrentCell.RowIndex.ToString());
-                if (dtvDatos[8, renglon].Value != null)
-                    clabora = dtvDatos[8, renglon].Value.ToString();
-            }
+            //if (dtvDatos.CurrentCell != null)
+            //{
+            //    int renglon = Convert.ToInt32(dtvDatos.CurrentCell.RowIndex.ToString());
+            //    if (dtvDatos[7, renglon].Value != null)
+            //        cestado = dtvDatos[7, renglon].Value.ToString();
+            //}
+            //if (dtvDatos.CurrentCell != null)
+            //{
+            //    int renglon = Convert.ToInt32(dtvDatos.CurrentCell.RowIndex.ToString());
+            //    if (dtvDatos[8, renglon].Value != null)
+            //        clabora = dtvDatos[8, renglon].Value.ToString();
+            //}
             if (tipoUsuario == "Empleado")
             {
                 btnLabor.Visible = false;

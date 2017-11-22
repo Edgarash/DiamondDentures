@@ -621,3 +621,34 @@ BEGIN
   VALUES
     (`des`, `val`);
 END;
+
+
+#ModuloControlPedidos
+
+DROP PROCEDURE IF EXISTS `ControlPedidosObtenerPedidos`;
+CREATE PROCEDURE `ControlPedidosObtenerPedidos`()
+BEGIN
+  SELECT DISTINCT
+    `IdPedido`,
+    `pedido`.`Cedula`,
+    CONCAT(`dentista`.`Nombre`, ' ', `dentista`.`Apellidos`) AS 'NombreDentista',
+    `FechaIngreso` AS 'Llegada',
+    `FechaCalculada` AS 'Calculada',
+    IF(`Urgencia` = 1, 'Urgente', 'Normal') AS 'Tipo de Pedido',
+    CASE `EstadoPedido`
+      WHEN '0' THEN 'Cancelado'
+      WHEN '1' THEN 'Registrado'
+      WHEN '2' THEN 'Confirmado'
+      WHEN '3' THEN 'En Proceso'
+      WHEN '4' THEN 'Terminado'
+      WHEN '5' THEN 'Facturado'
+      WHEN '6' THEN 'Pagado'
+    END AS 'Estado de Pedido',
+    IF(`Laboratorista` = '', 'No asignado', `Laboratorista`) AS 'Laboratorista'
+  FROM
+    `pedido`,
+    `dentista`
+  WHERE
+    `pedido`.`Cedula` = `dentista`.`Cedula`
+  ORDER BY `Urgencia` DESC, `FechaCalculada`, `EstadoPedido` = '0', `EstadoPedido` = '5', `EstadoPedido` = '7', `EstadoPedido` = '6', `EstadoPedido` = '1', `EstadoPedido` = '2', `EstadoPedido` = '4' DESC;
+END;

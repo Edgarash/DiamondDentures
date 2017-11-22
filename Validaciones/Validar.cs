@@ -435,60 +435,51 @@ namespace Validaciones
         {
             for (int i = 0; i < data.RowCount; i++)
             {
-                DataGridViewCell temp = data[data.Columns["Estatus"].Index, i];
-                int x = 0;
-                if (int.TryParse(temp?.Value?.ToString(), out x))
+                DataGridViewCell temp = data[data.Columns["Estado de Pedido"].Index, i];
+                string x = temp.Value.ToString();
+                if (x == "Cancelado")
                 {
-                    if (x == 0 || x < 0)
+                    temp.Style.BackColor = Color.IndianRed;
+                }
+                else
+                {
+                    if (x == "Registrado")
                     {
-                        temp.Value = "Cancelado";
-                        temp.Style.BackColor = Color.IndianRed;
+                        temp.Style.BackColor = Color.Thistle;
                     }
                     else
                     {
-                        if (x == 1)
+                        if (x == "Confirmado")
                         {
-                            temp.Value = "Registrado";
-                            temp.Style.BackColor = Color.Thistle;
+                            temp.Style.BackColor = Color.LimeGreen;
                         }
                         else
                         {
-                            if (x == 2)
+                            if (x == "En Proceso")
                             {
-                                temp.Value = "Confirmado";
-                                temp.Style.BackColor = Color.LimeGreen;
+                                temp.Style.BackColor = Color.LightGray;
                             }
                             else
                             {
-                                if (x == 4)
+                                if (x == "Terminado")
                                 {
-                                    temp.Value = "En Proceso";
-                                    temp.Style.BackColor = Color.LightGray;
+                                    temp.Style.BackColor = Color.DeepSkyBlue;
                                 }
                                 else
                                 {
-                                    if (x == 5)
+                                    if (x == "Facturado")
                                     {
-                                        temp.Value = "Terminado";
-                                        temp.Style.BackColor = Color.DeepSkyBlue;
+                                        temp.Style.BackColor = Color.Gold;
                                     }
                                     else
+                                        if (x == "Pagado")
                                     {
-                                        if (x == 6)
-                                        {
-                                            temp.Value = "Facturado";
-                                            temp.Style.BackColor = Color.Gold;
-                                        }
-                                        else
-                                            if (x == 7)
-                                        {
-                                            temp.Value = "Pagado";
-                                            temp.Style.BackColor = Color.LightSalmon;
-                                        }
+                                        temp.Style.BackColor = Color.LightSalmon;
                                     }
                                 }
                             }
                         }
+
 
                     }
                 }

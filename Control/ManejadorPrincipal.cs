@@ -22,8 +22,7 @@ namespace Control
 
         public void ObtenerProductos(DataGridView temp)
         {
-            Interface = new ConexionBaseDeDatos.InterfaceBaseDeDatos();
-            Interface.Datos2(temp);
+            InterfaceMySQL.ControlPedidosObtenerPedidos(temp);
         }
 
         public void BuscarIdPedido(DataGridView temp, string valor)
