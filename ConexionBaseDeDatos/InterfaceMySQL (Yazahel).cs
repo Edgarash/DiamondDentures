@@ -74,6 +74,11 @@ namespace ConexionBaseDeDatos
             EjecutarProcedimientoAlmacenado2(combobx, "FinanzasObtenerIDUsuarios", TipoConsulta.DevuelveReader,
                 Parametro("", null));
         }
+        public static void ControlPedidosObtenerLaboratoristas(ComboBox combobx)
+        {
+            EjecutarProcedimientoAlmacenado2(combobx, "ControlPedidosObtenerLaboratoristas", TipoConsulta.DevuelveReader,
+                Parametro("", null));
+        }
         public static void FinanzasObtenerProveedor(TextBox combobx, string id)
         {
             EjecutarProcedimientoAlmacenado5(combobx, "FinanzasObtenerProveedor", TipoConsulta.DevuelveReader,

@@ -713,10 +713,10 @@ namespace Presentacion
             ((ManejadorPrincipal)Manejador).DatosDTotalPagosTrab(temp);
         }
                 
-        public void DatosComboUsuarios(ComboBox temp)
+        public void CPObtenerLaboratoristas(ComboBox temp)
         {
             Manejador = new ManejadorPrincipal();
-            ((ManejadorPrincipal)Manejador).DatosComboUsuarios(temp);
+            ((ManejadorPrincipal)Manejador).CPObtenerLaboratoristas(temp);
         }
         public void DatosComboIDUsuarios(ComboBox temp)
         {

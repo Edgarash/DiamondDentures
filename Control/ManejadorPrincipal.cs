@@ -171,9 +171,9 @@ namespace Control
         {
             InterfaceMySQL.RHumanosTotalPagoEmp(temp);
         }
-        public void DatosComboUsuarios(ComboBox temp)
+        public void CPObtenerLaboratoristas(ComboBox temp)
         {
-            InterfaceMySQL.FinanzasObtenerUsuario(temp);
+            InterfaceMySQL.ControlPedidosObtenerLaboratoristas(temp);
         }
         public void DatosComboIDUsuarios(ComboBox temp)
         {

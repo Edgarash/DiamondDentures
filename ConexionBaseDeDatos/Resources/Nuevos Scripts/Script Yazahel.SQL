@@ -652,3 +652,9 @@ BEGIN
     `pedido`.`Cedula` = `dentista`.`Cedula`
   ORDER BY `Urgencia` DESC, `FechaCalculada`, `EstadoPedido` = '0', `EstadoPedido` = '5', `EstadoPedido` = '7', `EstadoPedido` = '6', `EstadoPedido` = '1', `EstadoPedido` = '2', `EstadoPedido` = '4' DESC;
 END;
+
+DROP PROCEDURE IF EXISTS `ControlPedidosObtenerLaboratoristas`;
+CREATE PROCEDURE `ControlPedidosObtenerLaboratoristas`()
+BEGIN
+  SELECT DISTINCT `N_EMPLEADO` FROM `usuario` WHERE `PUESTO` = 'LABORATORISTA';
+END;
