@@ -8,7 +8,7 @@ using static System.Environment;
 
 namespace Presentacion.Reportes
 {
-    class PantallaVPListadoGen<T> : Pantalla where T: ReportClass, new()
+    class PantallaVPListadoGen<T> : Pantalla where T : ReportClass, new()
     {
         public PantallaVPListadoGen(string titulo)
         {
@@ -22,8 +22,6 @@ namespace Presentacion.Reportes
             set { base.Text = value; }
         }
 
-        #region UI
-
         private GroupBox groupBox2;
         private Button btnRegresar;
         private Label label1;
@@ -31,16 +29,33 @@ namespace Presentacion.Reportes
         private Label label10;
         private SaveFileDialog sfdExportar;
         private Button btnGenerar;
-        private Label label6;
+        private Label lblGenerar;
         private Label label2;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvVisor;
+
+        public PantallaVPListadoGen(string titulo, object idValor, string idNombre)
+        {
+            InitializeComponent();
+            Text = titulo;
+            btnGenerar.Visible = false;
+            lblGenerar.Visible = false;
+            CargarReporte(idValor, idNombre);
+        }
+
+        private void CargarReporte(object id, string idNombre)
+        {
+            ParametroReporte parametro = new ParametroReporte(idNombre, id);
+            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new T(), parametro);
+        }
+
+        #region UI
 
         private void InitializeComponent()
         {
             this.crvVisor = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnGenerar = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblGenerar = new System.Windows.Forms.Label();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExportar = new System.Windows.Forms.Button();
@@ -59,9 +74,10 @@ namespace Presentacion.Reportes
             // crvVisor
             // 
             this.crvVisor.ActiveViewIndex = -1;
-            this.crvVisor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.crvVisor.Anchor =
+                ((System.Windows.Forms.AnchorStyles)
+                    ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) |
+                      System.Windows.Forms.AnchorStyles.Right)));
             this.crvVisor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvVisor.Cursor = System.Windows.Forms.Cursors.Default;
             this.crvVisor.DisplayStatusBar = false;
@@ -75,7 +91,7 @@ namespace Presentacion.Reportes
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnGenerar);
-            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.lblGenerar);
             this.groupBox2.Controls.Add(this.btnRegresar);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.btnExportar);
@@ -102,17 +118,18 @@ namespace Presentacion.Reportes
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
-            // label6
+            // lblGenerar
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(103, 295);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 20);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "Generar";
+            this.lblGenerar.AutoSize = true;
+            this.lblGenerar.BackColor = System.Drawing.Color.Transparent;
+            this.lblGenerar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.lblGenerar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblGenerar.Location = new System.Drawing.Point(103, 295);
+            this.lblGenerar.Name = "lblGenerar";
+            this.lblGenerar.Size = new System.Drawing.Size(71, 20);
+            this.lblGenerar.TabIndex = 23;
+            this.lblGenerar.Text = "Generar";
             // 
             // btnRegresar
             // 
@@ -132,7 +149,8 @@ namespace Presentacion.Reportes
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(179, 431);
             this.label1.Name = "label1";
@@ -158,7 +176,8 @@ namespace Presentacion.Reportes
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label10.Location = new System.Drawing.Point(26, 431);
             this.label10.Name = "label10";
@@ -175,7 +194,8 @@ namespace Presentacion.Reportes
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label2.Location = new System.Drawing.Point(12, 26);
             this.label2.Name = "label2";
@@ -200,7 +220,6 @@ namespace Presentacion.Reportes
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -218,11 +237,6 @@ namespace Presentacion.Reportes
         }
 
         private void btnGenerar_Click(object sender, EventArgs e) => CargarReporte();
-
-        private void CambiarEstado(string item, CheckState estadoItem)
-        {
-            bool temp = CheckState.Checked == estadoItem;
-        }
 
         private void CargarReporte() => crvVisor.ReportSource = ManejadorReportes.CargarReporte(new T());
 

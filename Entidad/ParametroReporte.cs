@@ -8,7 +8,13 @@ namespace Entidad
         public string Columna { get; set; }
         public object Valor { get; set; }
 
-        public ParametroReporte(string nombre, object valor, string columna = "")
+        public ParametroReporte(string nombre, object valor)
+        {
+            Nombre = nombre;
+            Valor = valor;
+        }
+
+        public ParametroReporte(string nombre, object valor, string columna)
         {
             Nombre = nombre;
             Valor = valor;

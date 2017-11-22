@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using Control;
 using Entidad;
+using System.Linq;
 using Entidad.Reportes;
 using static Control.ManejadorContabilidad;
 
@@ -57,9 +58,9 @@ namespace Presentacion.Reportes
         private System.Windows.Forms.Label lblTelefonoCliente;
         private Button btnModificar;
         private Label label1;
-        private DataGridViewTextBoxColumn cnumero;
+        private DataGridViewTextBoxColumn cidped;
+        private DataGridViewTextBoxColumn cidprod;
         private DataGridViewTextBoxColumn cdescripcion;
-        private DataGridViewTextBoxColumn cpreciounitario;
         private DataGridViewTextBoxColumn cpreciomat1;
         private DataGridViewTextBoxColumn cpreciomat2;
         private DataGridViewTextBoxColumn cimporte;
@@ -94,12 +95,6 @@ namespace Presentacion.Reportes
             this.lblRfcCliente = new System.Windows.Forms.Label();
             this.lblCiudadEmpresa = new System.Windows.Forms.Label();
             this.dgvTabla = new System.Windows.Forms.DataGridView();
-            this.cnumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cdescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cpreciounitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cpreciomat1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cpreciomat2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cimporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -119,6 +114,12 @@ namespace Presentacion.Reportes
             this.lblTelefonoCliente = new System.Windows.Forms.Label();
             this.btnModificar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.cidped = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cidprod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cdescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cpreciomat1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cpreciomat2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cimporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Encabezado.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox5)).BeginInit();
@@ -434,9 +435,9 @@ namespace Presentacion.Reportes
             this.dgvTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[]
             {
-                this.cnumero,
+                this.cidped,
+                this.cidprod,
                 this.cdescripcion,
-                this.cpreciounitario,
                 this.cpreciomat1,
                 this.cpreciomat2,
                 this.cimporte
@@ -447,47 +448,6 @@ namespace Presentacion.Reportes
             this.dgvTabla.RowHeadersVisible = false;
             this.dgvTabla.Size = new System.Drawing.Size(605, 260);
             this.dgvTabla.TabIndex = 10;
-            // 
-            // cnumero
-            // 
-            this.cnumero.FillWeight = 25F;
-            this.cnumero.HeaderText = "#";
-            this.cnumero.Name = "cnumero";
-            this.cnumero.ReadOnly = true;
-            // 
-            // cdescripcion
-            // 
-            this.cdescripcion.HeaderText = "Descripcion";
-            this.cdescripcion.Name = "cdescripcion";
-            this.cdescripcion.ReadOnly = true;
-            // 
-            // cpreciounitario
-            // 
-            this.cpreciounitario.FillWeight = 50F;
-            this.cpreciounitario.HeaderText = "Precio Base";
-            this.cpreciounitario.Name = "cpreciounitario";
-            this.cpreciounitario.ReadOnly = true;
-            // 
-            // cpreciomat1
-            // 
-            this.cpreciomat1.FillWeight = 50F;
-            this.cpreciomat1.HeaderText = "P. Material 1";
-            this.cpreciomat1.Name = "cpreciomat1";
-            this.cpreciomat1.ReadOnly = true;
-            // 
-            // cpreciomat2
-            // 
-            this.cpreciomat2.FillWeight = 50F;
-            this.cpreciomat2.HeaderText = "P. Material 2";
-            this.cpreciomat2.Name = "cpreciomat2";
-            this.cpreciomat2.ReadOnly = true;
-            // 
-            // cimporte
-            // 
-            this.cimporte.FillWeight = 75F;
-            this.cimporte.HeaderText = "Importe Total";
-            this.cimporte.Name = "cimporte";
-            this.cimporte.ReadOnly = true;
             // 
             // pictureBox2
             // 
@@ -704,6 +664,47 @@ namespace Presentacion.Reportes
             this.label1.TabIndex = 21;
             this.label1.Text = "Modificar datos";
             // 
+            // cidped
+            // 
+            this.cidped.FillWeight = 30F;
+            this.cidped.HeaderText = "N° Pedido";
+            this.cidped.Name = "cidped";
+            this.cidped.ReadOnly = true;
+            // 
+            // cidprod
+            // 
+            this.cidprod.FillWeight = 50F;
+            this.cidprod.HeaderText = "N° Producto";
+            this.cidprod.Name = "cidprod";
+            this.cidprod.ReadOnly = true;
+            // 
+            // cdescripcion
+            // 
+            this.cdescripcion.HeaderText = "Descripcion";
+            this.cdescripcion.Name = "cdescripcion";
+            this.cdescripcion.ReadOnly = true;
+            // 
+            // cpreciomat1
+            // 
+            this.cpreciomat1.FillWeight = 50F;
+            this.cpreciomat1.HeaderText = "P. Material 1";
+            this.cpreciomat1.Name = "cpreciomat1";
+            this.cpreciomat1.ReadOnly = true;
+            // 
+            // cpreciomat2
+            // 
+            this.cpreciomat2.FillWeight = 50F;
+            this.cpreciomat2.HeaderText = "P. Material 2";
+            this.cpreciomat2.Name = "cpreciomat2";
+            this.cpreciomat2.ReadOnly = true;
+            // 
+            // cimporte
+            // 
+            this.cimporte.FillWeight = 75F;
+            this.cimporte.HeaderText = "Importe Total";
+            this.cimporte.Name = "cimporte";
+            this.cimporte.ReadOnly = true;
+            // 
             // PantallaCrearFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -818,7 +819,7 @@ namespace Presentacion.Reportes
         public PantallaCrearFactura(string clave)
         {
             InitializeComponent();
-            Factura = ConsultarFactura(clave);
+            Factura = null;
             if (Factura == null)
             {
                 return;
@@ -853,7 +854,8 @@ namespace Presentacion.Reportes
 
         void MostrarDatos()
         {
-            lblFacturaId.Text = $"{TextosDefault.NFactura} {Factura.Id}";
+            Cursor = Cursors.WaitCursor;
+
             lblFechaEmision.Text = $"{TextosDefault.FechaEmision} {Factura.Fecha}";
             lblNombreCliente.Text = $"{TextosDefault.Nombre} {Factura.NombreC}";
             lblNombreEmpresa.Text = $"{TextosDefault.Nombre} {Factura.NombreE}";
@@ -877,15 +879,32 @@ namespace Presentacion.Reportes
                 foreach (Productos producto in Factura.ListaProductos)
                 {
                     dgvTabla.RowCount++;
-                    dgvTabla["cnumero", dgvTabla.RowCount - 1].Value = producto.Clave;
+                    dgvTabla["cidped", dgvTabla.RowCount - 1].Value = producto.Clave;
+                    dgvTabla["cidprod", dgvTabla.RowCount - 1].Value = producto.IdProducto;
                     dgvTabla["cdescripcion", dgvTabla.RowCount - 1].Value = producto.Producto;
-                    dgvTabla["cpreciounitario", dgvTabla.RowCount - 1].Value = producto.PrecioProducto;
                     dgvTabla["cpreciomat1", dgvTabla.RowCount - 1].Value = producto.PrecioMat1;
                     dgvTabla["cpreciomat2", dgvTabla.RowCount - 1].Value = producto.PrecioMat2;
-                    dgvTabla["cimporte", dgvTabla.RowCount - 1].Value = producto.PrecioProducto + producto.PrecioMat1 + producto.PrecioMat2;
+                    dgvTabla["cimporte", dgvTabla.RowCount - 1].Value = producto.Total;
                 }
             }
+
+            int[] _ids = ManejadorReportes.RecuperarIdFacturas();
+            Random random = new Random();
+            int valor;
+            do
+            {
+                valor = random.Next(0, Datos.SAFE_MYSQL_INT);
+            } while (_ids.Contains(valor));
+
+            Factura.Id = valor;
+
+            lblFacturaId.Text = $"{TextosDefault.NFactura} {Factura.Id}";
+
+            Factura.Estatus = 1;
+
             Refresh();
+
+            Cursor = Cursors.Default;
         }
 
         #endregion
@@ -895,19 +914,14 @@ namespace Presentacion.Reportes
         private void btnBuscarPedido_Click(object sender, EventArgs e)
         {
             PantallaBuscarPedido buscarPedido = new PantallaBuscarPedido();
-
             buscarPedido.ShowDialog();
-
-            if (PantallaBuscarPedido.Factura == null)
+            if (PantallaBuscarPedido.Factura != null)
             {
-                buscarPedido.Close();
-                return;
+                Factura = PantallaBuscarPedido.Factura;
+                MostrarDatos();
             }
-
-            Factura = PantallaBuscarPedido.Factura;
-            MostrarDatos();
-
             buscarPedido.Close();
+            BringToFront();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -917,9 +931,10 @@ namespace Presentacion.Reportes
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            //            Facturar(Factura);
-            //            Hide();
+            Cursor = Cursors.WaitCursor;
             GuardarFactura();
+            Hide();
+            Cursor = Cursors.Default;
         }
 
         private void GuardarFactura()
@@ -927,7 +942,7 @@ namespace Presentacion.Reportes
             Dictionary<string, object> informacionFactura = new Dictionary<string, object>
             {
                 {"nfac", Factura.Id},
-                {"idped", Factura.Pedidos},
+                {"idped", Factura.IdPedido},
                 {"femi", Factura.Fecha},
                 {"impo", Factura.Importe},
                 {"nomc", Factura.NombreC},
@@ -948,14 +963,14 @@ namespace Presentacion.Reportes
                 {"ciuc", Factura.CiudadC},
                 {"ciue", Factura.CiudadE},
                 {"est", Factura.Estatus},
-                {"numcc", Factura.NumCasaC},
+                {"numcc", string.Empty},
                 {"numce", Factura.NumCasaE},
                 {"colc", Factura.ColoniaC},
                 {"cole", Factura.ColoniaE},
                 {"paic", Factura.PaisC},
                 {"paie", Factura.PaisE}
             };
-            ManejadorReportes.GuardarFactura(informacionFactura);
+            ManejadorReportes.GuardarDatos("R_GuardarFactura", informacionFactura);
         }
 
         private void btnModificar_Click(object sender, EventArgs e)

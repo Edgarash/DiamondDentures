@@ -275,7 +275,7 @@ namespace Presentacion.Reportes
         {
             string temp = string.Empty;
             int aux = 1;
-            foreach (var columna in columnas)
+            foreach (string columna in columnas)
             {
                 if (columnas.Last() != columna)
                 {
@@ -326,7 +326,7 @@ namespace Presentacion.Reportes
                 paramFields.Add(paramField);
             }
 
-            reporte.SetDataSource(InterfaceMySQL.ConsultaSelect(GenerarSelect(ConcatenarSelect(columnas))));
+            reporte.SetDataSource(InterfaceMySQL.rConsultaSelect(GenerarSelect(ConcatenarSelect(columnas))));
 
             crvVisor.ParameterFieldInfo = paramFields;
             crvVisor.ReportSource = ManejadorReportes.CargarReporte(reporte);

@@ -181,6 +181,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatosPer.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FacturaReporte.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FacturaReporte.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormaPedido.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -280,12 +286,6 @@
     </Compile>
     <Compile Include="Resultados.cs" />
     <Compile Include="Factura.cs" />
-    <Compile Include="FacturaReporte.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FacturaReporte.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Fecha.cs" />
     <Compile Include="Historial.cs" />
     <Compile Include="InformacionEmpresarial.cs" />

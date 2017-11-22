@@ -466,7 +466,7 @@ namespace Presentacion.Control_Pedidos
                 return;
             }
 
-            var clave = dtvDatos.CurrentRow?.Cells["Clave"].Value.ToString();
+            string clave = dtvDatos.CurrentRow?.Cells["Clave"].Value.ToString();
             PantallaCrearFactura pcf = new PantallaCrearFactura(clave);
             Hide();
             pcf.ShowDialog();
@@ -478,7 +478,7 @@ namespace Presentacion.Control_Pedidos
             if (dtvDatos.CurrentRow?.Cells["Estatus"].Value.ToString() == "Cancelado")
                 return;
 
-            var clave = dtvDatos.CurrentRow?.Cells["Clave"].Value.ToString();
+            string clave = dtvDatos.CurrentRow?.Cells["Clave"].Value.ToString();
             PantallaOficioConfirmacion poc = new PantallaOficioConfirmacion(clave);
             Hide();
             poc.ShowDialog();
@@ -490,7 +490,7 @@ namespace Presentacion.Control_Pedidos
             if (dtvDatos.CurrentRow?.Cells["Estatus"].Value.ToString() == "Cancelado")
                 return;
 
-            var clave = dtvDatos.CurrentRow?.Cells["Clave"].Value.ToString();
+            string clave = dtvDatos.CurrentRow?.Cells["Clave"].Value.ToString();
             PantallaNotaTerminacion pnt = new PantallaNotaTerminacion(clave);
             Hide();
             pnt.ShowDialog();

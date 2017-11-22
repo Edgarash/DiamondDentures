@@ -238,8 +238,8 @@ namespace Presentacion.Reportes
 
         private void CargarReporte()
         {
-            var fchIni = dtpFechaInicial.Value.Date;
-            var fchFin = dtpFechaFinal.Value.Date;
+            DateTime fchIni = dtpFechaInicial.Value.Date;
+            DateTime fchFin = dtpFechaFinal.Value.Date;
 
             if (fchFin < fchIni)
             {

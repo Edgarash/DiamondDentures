@@ -280,7 +280,7 @@ namespace Presentacion.Reportes
 
         private void CargarReporte()
         {
-            var id_str = txtIDText.Text;
+            string id_str = txtIDText.Text;
             int id;
 
             int.TryParse(id_str, out id);
@@ -290,21 +290,21 @@ namespace Presentacion.Reportes
                 return;
             }
 
-            var emisor = txtEmisor.Text;
+            string emisor = txtEmisor.Text;
             if (string.IsNullOrWhiteSpace(emisor))
             {
                 MessageBox.Show("El emisor no es valido");
                 return;
             }
 
-            var receptor = txtReceptor.Text;
+            string receptor = txtReceptor.Text;
             if (string.IsNullOrWhiteSpace(receptor))
             {
                 MessageBox.Show("El receptor no es valido");
                 return;
             }
 
-            var str_idprov = txtIDProv.Text;
+            string str_idprov = txtIDProv.Text;
             int idprov;
 
             int.TryParse(str_idprov, out idprov);

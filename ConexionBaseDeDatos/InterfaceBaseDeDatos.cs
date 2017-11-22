@@ -72,14 +72,14 @@ namespace ConexionBaseDeDatos
         /// <returns>Confirmación del borrado lógico de la tarjeta en la base de datos con éxito</returns>
         public bool BorrarTarjeta(string Usuario)
         {
-            var command = new MySqlCommand("EliminarTarjeta", conexion);
+            MySqlCommand command = new MySqlCommand("EliminarTarjeta", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@logi", Usuario);
 
             Open();
 
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
@@ -91,22 +91,22 @@ namespace ConexionBaseDeDatos
         /// <returns>Confirmación del borrado lógico del usuario en la base de datos con éxito</returns>
         public bool BorrarUsuario(string Usuario)
         {
-            var command = new MySqlCommand("BorrarUsuario", conexion);
+            MySqlCommand command = new MySqlCommand("BorrarUsuario", conexion);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@logi", Usuario);
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
 
         public bool ActivarUsuario(string Usuario)
         {
-            var command = new MySqlCommand("ActivarUsuario", conexion);
+            MySqlCommand command = new MySqlCommand("ActivarUsuario", conexion);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@logi", Usuario);
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
@@ -118,7 +118,7 @@ namespace ConexionBaseDeDatos
         /// <returns>Confirmación de la contraseña como de un usuario de administrador</returns>
         public bool ObtenerPermiso(string Pass)
         {
-            var command = new MySqlCommand("ObtenerPermiso", conexion);
+            MySqlCommand command = new MySqlCommand("ObtenerPermiso", conexion);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@pass", Pass);
             Open();
@@ -142,7 +142,7 @@ namespace ConexionBaseDeDatos
 
         public bool RegistrarProducto(RegistroProducto Registro)
         {
-            var command = new MySqlCommand("RegistrarProducto", conexion);
+            MySqlCommand command = new MySqlCommand("RegistrarProducto", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", Registro.Clave);
@@ -150,28 +150,28 @@ namespace ConexionBaseDeDatos
             command.Parameters.AddWithValue("@days", Registro.Dias);
             command.Parameters.AddWithValue("@price", Registro.Precio);
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
 
         public bool RegistrarMaterial(RegistroMaterial Material)
         {
-            var command = new MySqlCommand("RegistrarMaterial", conexion);
+            MySqlCommand command = new MySqlCommand("RegistrarMaterial", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", Material.Clave);
             command.Parameters.AddWithValue("@nmb", Material.Nombre);
             command.Parameters.AddWithValue("@price", Material.Precio);
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
 
         public bool RegistrarPedido(RegistroPedido Pedido)
         {
-            var command = new MySqlCommand("RegistrarPedido", conexion);
+            MySqlCommand command = new MySqlCommand("RegistrarPedido", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", Pedido.Clave);
@@ -196,7 +196,7 @@ namespace ConexionBaseDeDatos
             command.Parameters.AddWithValue("@asig", Pedido.Asignado);
             command.Parameters.AddWithValue("@urg", Pedido.Urgente);
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             if (EnviarConfirmacion(nc))
             {
                 for (int i = 0; i < Pedido.Trabajos.Length; i++)
@@ -208,7 +208,7 @@ namespace ConexionBaseDeDatos
 
         public bool RegistrarDentista(RegistroDentista Dentista)
         {
-            var command = new MySqlCommand("RegistrarDentista", conexion);
+            MySqlCommand command = new MySqlCommand("RegistrarDentista", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@ced", Dentista.Cedula);
@@ -226,14 +226,14 @@ namespace ConexionBaseDeDatos
             command.Parameters.AddWithValue("@ema", Dentista.Email);
 
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
 
         public bool ActualizarDentista(RegistroDentista Dentista)
         {
-            var command = new MySqlCommand("ActualizarDentista", conexion);
+            MySqlCommand command = new MySqlCommand("ActualizarDentista", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@ced", Dentista.Cedula);
@@ -251,14 +251,14 @@ namespace ConexionBaseDeDatos
             command.Parameters.AddWithValue("@ema", Dentista.Email);
 
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
 
         public bool ActualizarPedido(RegistroPedido Pedido)
         {
-            var command = new MySqlCommand("ActualizarPedido", conexion);
+            MySqlCommand command = new MySqlCommand("ActualizarPedido", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", Pedido.Clave);
@@ -283,7 +283,7 @@ namespace ConexionBaseDeDatos
             command.Parameters.AddWithValue("@asig", Pedido.Asignado);
             command.Parameters.AddWithValue("@urg", Pedido.Urgente);
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             if (EnviarConfirmacion(nc))
             {
                 for (int i = 0; i < Pedido.Trabajos.Length; i++)
@@ -295,7 +295,7 @@ namespace ConexionBaseDeDatos
 
         public bool RegistrarTrabajos(string Clave, RegistroTrabajo Trabajo)
         {
-            var command = new MySqlCommand("RegistrarTrabajo", conexion);
+            MySqlCommand command = new MySqlCommand("RegistrarTrabajo", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", Clave);
@@ -307,14 +307,14 @@ namespace ConexionBaseDeDatos
             command.Parameters.AddWithValue("@pre2", Trabajo.PrecioMaterial2);
             command.Parameters.AddWithValue("@fec", Convert.ToDateTime(Trabajo.Fecha));
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
 
         public bool ActualizarProMat(RegistroProMat Registro)
         {
-            var command = new MySqlCommand("ActualizarProMat", conexion);
+            MySqlCommand command = new MySqlCommand("ActualizarProMat", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clvpro", Registro.ClavePro);
@@ -322,38 +322,38 @@ namespace ConexionBaseDeDatos
             command.Parameters.AddWithValue("@price", Registro.Precio);
             command.Parameters.AddWithValue("@act", Registro.Activo);
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
 
         public bool ActivarProducto(int Clave)
         {
-            var command = new MySqlCommand("ActivarProducto", conexion);
+            MySqlCommand command = new MySqlCommand("ActivarProducto", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", Clave);
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
 
         public bool ActivarMaterial(int Clave)
         {
-            var command = new MySqlCommand("ActivarMaterial", conexion);
+            MySqlCommand command = new MySqlCommand("ActivarMaterial", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", Clave);
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
 
         public bool ActualizarProducto(RegistroProducto producto)
         {
-            var command = new MySqlCommand("ActualizarProducto", conexion);
+            MySqlCommand command = new MySqlCommand("ActualizarProducto", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", producto.Clave);
@@ -362,14 +362,14 @@ namespace ConexionBaseDeDatos
             command.Parameters.AddWithValue("@price", producto.Precio);
 
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
 
         public bool ActualizarMaterial(RegistroMaterial material)
         {
-            var command = new MySqlCommand("ActualizarMaterial", conexion);
+            MySqlCommand command = new MySqlCommand("ActualizarMaterial", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", material.Clave);
@@ -377,31 +377,31 @@ namespace ConexionBaseDeDatos
             command.Parameters.AddWithValue("@price", material.Precio);
 
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
 
         public bool EliminarProducto(int Clave)
         {
-            var command = new MySqlCommand("EliminarProducto", conexion);
+            MySqlCommand command = new MySqlCommand("EliminarProducto", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", Clave);
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
 
         public bool EliminarMaterial(int clave)
         {
-            var command = new MySqlCommand("EliminarMaterial", conexion);
+            MySqlCommand command = new MySqlCommand("EliminarMaterial", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", clave);
             Open();
-            var nc = command.ExecuteNonQuery();
+            int nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
@@ -410,7 +410,7 @@ namespace ConexionBaseDeDatos
         {
             RegistroProducto[] temp = null;
 
-            var command = new MySqlCommand("ObtenerProductos", conexion);
+            MySqlCommand command = new MySqlCommand("ObtenerProductos", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             string p = string.Empty;
@@ -434,7 +434,7 @@ namespace ConexionBaseDeDatos
         {
             RegistroMaterial[] temp = null;
 
-            var command = new MySqlCommand("ObtenerMateriales", conexion);
+            MySqlCommand command = new MySqlCommand("ObtenerMateriales", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             string p = string.Empty;
@@ -458,7 +458,7 @@ namespace ConexionBaseDeDatos
         {
             RegistroProMat[] temp = null;
 
-            var command = new MySqlCommand("ObtenerProMat", conexion);
+            MySqlCommand command = new MySqlCommand("ObtenerProMat", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clvmat", mat);
@@ -485,7 +485,7 @@ namespace ConexionBaseDeDatos
         {
             RegistroProducto[] temp = null;
 
-            var command = new MySqlCommand("BuscarUnProducto", conexion);
+            MySqlCommand command = new MySqlCommand("BuscarUnProducto", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", Registro.Clave);
@@ -514,7 +514,7 @@ namespace ConexionBaseDeDatos
         {
             RegistroMaterial[] temp = null;
 
-            var command = new MySqlCommand("BuscarUnMaterial", conexion);
+            MySqlCommand command = new MySqlCommand("BuscarUnMaterial", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", Material.Clave);
@@ -540,7 +540,7 @@ namespace ConexionBaseDeDatos
 
         public RegistroPedido ObtenerUnPedido(string clavePedido)
         {
-            var command = new MySqlCommand("ObtenerUnPedido", conexion);
+            MySqlCommand command = new MySqlCommand("ObtenerUnPedido", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", clavePedido);
@@ -567,7 +567,7 @@ namespace ConexionBaseDeDatos
 
         public RegistroDentista ObtenerUnDentista(string Cedula)
         {
-            var command = new MySqlCommand("ObtenerUnDentista", conexion);
+            MySqlCommand command = new MySqlCommand("ObtenerUnDentista", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", Cedula);
@@ -592,7 +592,7 @@ namespace ConexionBaseDeDatos
 
         public RegistroTrabajo[] ObtenerTrabajos(string Clave)
         {
-            var command = new MySqlCommand("ObtenerTrabajos", conexion);
+            MySqlCommand command = new MySqlCommand("ObtenerTrabajos", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", Clave);
@@ -617,7 +617,7 @@ namespace ConexionBaseDeDatos
         {
             RegistroProducto temp = null;
 
-            var command = new MySqlCommand("ObtenerUnProducto", conexion);
+            MySqlCommand command = new MySqlCommand("ObtenerUnProducto", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@nmb", Proceso);
@@ -639,7 +639,7 @@ namespace ConexionBaseDeDatos
         {
             RegistroMaterial temp = null;
 
-            var command = new MySqlCommand("ObtenerUnMaterial", conexion);
+            MySqlCommand command = new MySqlCommand("ObtenerUnMaterial", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@clv", clave);
@@ -1177,245 +1177,6 @@ WHERE
             return pedidos;
         }
 
-        public static Factura GenerarFactura(string id)
-        {
-            MySqlCommand command = new MySqlCommand("ObtenerPedidoUnico", Conectar()) { CommandType = CommandType.StoredProcedure };
-
-            command.Parameters.AddWithValue("@np", id);
-
-            SOpen();
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            if (reader.HasRows)
-            {  reader.Read();}
-            else
-            {  return null;}
-
-            decimal importe = 0;
-
-            Factura factura = new Factura(
-                reader["Calle"].ToString(),
-                reader["Ciudad"].ToString(),
-                reader["Colonia"].ToString(),
-                reader["Email"].ToString(),
-                reader["CP"].ToString(),
-                reader["Estado"].ToString(),
-                Convert.ToInt32(reader["Estatus"].ToString()),
-                Convert.ToDateTime(reader["Fecha"]),
-                importe,
-                $"{reader["NombreDen"]} {reader["ApellidosDen"]}",
-                reader["NumFrente"].ToString(),
-                reader["Pais"].ToString(),
-                reader["Clave"].ToString(),
-                reader["Rfc"].ToString(),
-                reader["Telefono"].ToString()
-                );
-
-            reader.Close();
-            SClose();
-
-            command = new MySqlCommand("ObtenerListaPedidos", Conectar()) { CommandType = CommandType.StoredProcedure };
-            command.Parameters.AddWithValue("@clv", factura.Pedidos);
-
-            SOpen();
-
-            reader = command.ExecuteReader();
-            List<Productos> pedidos = new List<Productos>();
-            if(reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    pedidos.Add(new Productos(
-                        reader["Clave"].ToString(),
-                        reader["Producto"].ToString(),
-                        Convert.ToDecimal(reader["PrecioProducto"]),
-                        reader["Material1"].ToString(),
-                        Convert.ToDecimal(reader["PrecioMat1"]),
-                        reader["Material2"].ToString(),
-                        Convert.ToDecimal(reader["PrecioMat2"]),
-                        Convert.ToDateTime(reader["Fecha"])));
-                }
-            }
-
-            factura.ListaProductos = pedidos;
-            importe = pedidos.Sum(pedido => pedido.PrecioProducto + pedido.PrecioMat1 + pedido.PrecioMat2);
-            factura.Importe = importe;
-
-            SClose();
-            return factura;
-        }
-
-        public static List<Factura> BuscarFactura(CriterioBusqueda pedidoFormateado)
-        {
-            MySqlCommand command = new MySqlCommand("BuscarFactura", Conectar())
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-
-            command.Parameters.AddWithValue("@idf", pedidoFormateado.Id);
-            command.Parameters.AddWithValue("@nmcl", pedidoFormateado.NombreCliente);
-            command.Parameters.AddWithValue("@f1", pedidoFormateado.FechaA);
-            command.Parameters.AddWithValue("@f2", pedidoFormateado.FechaB);
-            command.Parameters.AddWithValue("@opt", pedidoFormateado.Opcion);
-
-            SOpen();
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            if (!reader.HasRows) return null;
-
-            reader.Read();
-            List<Productos> listaProductos = BuscarListaProductos(reader["pedidos"].ToString());
-
-            reader.Close();
-            SClose();
-
-            command = new MySqlCommand("BuscarFactura", Conectar())
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-
-            command.Parameters.AddWithValue("@idf", pedidoFormateado.Id);
-            command.Parameters.AddWithValue("@nmcl", pedidoFormateado.NombreCliente);
-            command.Parameters.AddWithValue("@f1", pedidoFormateado.FechaA);
-            command.Parameters.AddWithValue("@f2", pedidoFormateado.FechaB);
-            command.Parameters.AddWithValue("@opt", pedidoFormateado.Opcion);
-
-            SOpen();
-
-            reader = command.ExecuteReader();
-            List<Factura> facturas = new List<Factura>();
-
-            while (reader.HasRows && reader.Read())
-            {
-                facturas.Add(
-                    new Factura(
-                        reader["CalleC"].ToString(),
-                        reader["CalleE"].ToString(),
-                        reader["CiudadC"].ToString(),
-                        reader["CiudadE"].ToString(),
-                        reader["ColoniaC"].ToString(),
-                        reader["ColoniaE"].ToString(),
-                        reader["CorreoC"].ToString(),
-                        reader["CorreoE"].ToString(),
-                        reader["CpC"].ToString(),
-                        reader["CpE"].ToString(),
-                        reader["EstadoC"].ToString(),
-                        reader["EstadoE"].ToString(),
-                        Convert.ToInt32(reader["Estatus"]),
-                        Convert.ToInt32(reader["Id"]),
-                        Convert.ToDateTime(reader["Fecha"]),
-                        Convert.ToDecimal(reader["Importe"]),
-                        listaProductos,
-                        reader["NombreC"].ToString(),
-                        reader["NombreE"].ToString(),
-                        reader["NumCasaC"].ToString(),
-                        reader["NumCasaE"].ToString(),
-                        reader["PaisC"].ToString(),
-                        reader["PaisE"].ToString(),
-                        reader["Pedidos"].ToString(),
-                        reader["RfcC"].ToString(),
-                        reader["RfcE"].ToString(),
-                        reader["TelefonoC"].ToString(),
-                        reader["TelefonoE"].ToString()
-                        ));
-            }
-
-            reader.Close();
-            SClose();
-
-            return facturas;
-        }
-
-        public static Factura BuscarFactura(int facturaId)
-        {
-            MySqlCommand command = new MySqlCommand("BuscarFactura", Conectar())
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-
-            CriterioBusqueda criterioBusqueda = new CriterioBusqueda();
-
-            command.Parameters.AddWithValue("@idf", facturaId);
-            command.Parameters.AddWithValue("@nmcl", criterioBusqueda.NombreCliente);
-            command.Parameters.AddWithValue("@f1", criterioBusqueda.FechaA);
-            command.Parameters.AddWithValue("@f2", criterioBusqueda.FechaB);
-            command.Parameters.AddWithValue("@opt", 1);
-
-            SOpen();
-            MySqlDataReader reader = command.ExecuteReader();
-
-            if (reader.HasRows)
-                reader.Read();
-            else return null;
-
-            List<Productos> listaPedidos = BuscarListaProductos(reader["Pedidos"].ToString());
-
-            reader.Close();
-            SClose();
-
-            command = new MySqlCommand("BuscarFactura", Conectar())
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-
-            criterioBusqueda = new CriterioBusqueda();
-
-            command.Parameters.AddWithValue("@idf", facturaId);
-            command.Parameters.AddWithValue("@nmcl", criterioBusqueda.NombreCliente);
-            command.Parameters.AddWithValue("@f1", criterioBusqueda.FechaA);
-            command.Parameters.AddWithValue("@f2", criterioBusqueda.FechaB);
-            command.Parameters.AddWithValue("@opt", 1);
-
-            SOpen();
-            reader = command.ExecuteReader();
-
-            Factura factura = null;
-
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    factura = new Factura(
-                             reader["CalleC"].ToString(),
-                        reader["CalleE"].ToString(),
-                        reader["CiudadC"].ToString(),
-                        reader["CiudadE"].ToString(),
-                        reader["ColoniaC"].ToString(),
-                        reader["ColoniaE"].ToString(),
-                        reader["CorreoC"].ToString(),
-                        reader["CorreoE"].ToString(),
-                        reader["CpC"].ToString(),
-                        reader["CpE"].ToString(),
-                        reader["EstadoC"].ToString(),
-                        reader["EstadoE"].ToString(),
-                        Convert.ToInt32(reader["Estatus"]),
-                        Convert.ToInt32(reader["Id"]),
-                        Convert.ToDateTime(reader["Fecha"]),
-                        Convert.ToDecimal(reader["Importe"]),
-                        listaPedidos, 
-                        reader["NombreC"].ToString(),
-                        reader["NombreE"].ToString(),
-                        reader["NumCasaC"].ToString(),
-                        reader["NumCasaE"].ToString(),
-                        reader["PaisC"].ToString(),
-                        reader["PaisE"].ToString(),
-                        reader["Pedidos"].ToString(),
-                        reader["RfcC"].ToString(),
-                        reader["RfcE"].ToString(),
-                        reader["TelefonoC"].ToString(),
-                        reader["TelefonoE"].ToString()
-                        );
-                }
-            }
-
-            reader.Close();
-            SClose();
-
-            return factura;
-        }
-
         public static void GuardarFactura(Factura factura)
         {
             MySqlCommand command = new MySqlCommand("GuardarFactura", Conectar())
@@ -1443,7 +1204,7 @@ WHERE
             command.Parameters.AddWithValue("@tle", factura.TelefonoE);
             command.Parameters.AddWithValue("@cdc", factura.CiudadC);
             command.Parameters.AddWithValue("@cde", factura.CiudadE);
-            command.Parameters.AddWithValue("@ncc", factura.NumCasaC);
+          
             command.Parameters.AddWithValue("@nce", factura.NumCasaE);
             command.Parameters.AddWithValue("@clc", factura.ColoniaC);
             command.Parameters.AddWithValue("@cle", factura.ColoniaE);
@@ -1555,7 +1316,7 @@ WHERE
 
     public bool ValidarRespuesta(int NumeroTrabajador, string Respuesta)
         {
-            var command = new MySqlCommand("ValidarRespuesta", conexion);
+            MySqlCommand command = new MySqlCommand("ValidarRespuesta", conexion);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@num", NumeroTrabajador);
             command.Parameters.AddWithValue("@resp", Respuesta);

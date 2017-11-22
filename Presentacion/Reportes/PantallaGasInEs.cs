@@ -235,13 +235,13 @@ namespace Presentacion.Reportes
 
         private void CargarReporte()
         {
-            var nomins = txtNomIns.Text;
+            string nomins = txtNomIns.Text;
             if (string.IsNullOrWhiteSpace(nomins))
             {
                 nomins = "☺";
             }
             int idins;
-            var idins_str = txtNomIns.Text;
+            string idins_str = txtNomIns.Text;
             int.TryParse(idins_str, out idins);
             ParametroReporte NomIns = new ParametroReporte("NomIs", nomins);
             ParametroReporte IdIns = new ParametroReporte("idComp", idins);

@@ -269,7 +269,7 @@ namespace Presentacion.Reportes
                 return;
             }
 
-            var esp = !string.IsNullOrWhiteSpace(txtIDCompra.Text);
+            bool esp = !string.IsNullOrWhiteSpace(txtIDCompra.Text);
 
             ParametroReporte FchI = new ParametroReporte("fchi", fchI);
             ParametroReporte FchF = new ParametroReporte("fchf", fchF);

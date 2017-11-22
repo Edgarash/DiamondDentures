@@ -85,103 +85,13 @@ namespace Control
 
         private static Factura ConsultarFacturaUnica(int facturaId)
         {
-            return BuscarFactura(facturaId);
-        }
-
-        public static Factura ConsultarFactura(string id)
-        {
-            Factura factura = GenerarFactura(id);
-
-            if (factura != null)
-            {
-                factura.CiudadE = InformacionEmpresarial.Ciudad;
-                factura.CorreoE = InformacionEmpresarial.Correo;
-                factura.CpE = InformacionEmpresarial.CodigoPostal;
-                factura.CalleE = InformacionEmpresarial.Direccion;
-                factura.EstadoE = InformacionEmpresarial.Estado;
-                factura.TelefonoE = InformacionEmpresarial.Telefono;
-                factura.RfcE = InformacionEmpresarial.Rfc;
-                factura.NombreE = InformacionEmpresarial.Nombre;
-                factura.ColoniaE = InformacionEmpresarial.Colonia;
-                factura.PaisE = InformacionEmpresarial.Pais;
-                factura.NumCasaE = InformacionEmpresarial.NumeroCasa;
-
-                factura.Id = GenerarId();
-
-                factura.Fecha = DateTime.Today;
-
-                return factura;
-            }
             return null;
-        }
-
-        public static List<Factura> ConsultarFactura(DatosBusqueda datos)
-        {
-            CriterioBusqueda criterio = new CriterioBusqueda();
-
-            if (datos.IntervaloActivado)
-            {
-                criterio.FechaA = DarFormatoFecha(datos.FechaA);
-                criterio.FechaB = DarFormatoFecha(datos.FechaB);
-
-                if ((datos.Id != -1) || (datos.NombreCliente != string.Empty))
-                {
-                    if ((datos.Id != -1) && (datos.NombreCliente != string.Empty))
-                    {
-                        criterio.Id = datos.Id;
-                        criterio.NombreCliente = datos.NombreCliente;
-                        criterio.Opcion = 7;
-                    }
-                    else if (datos.Id != -1)
-                    {
-                        criterio.Id = datos.Id;
-                        criterio.Opcion = 5;
-                    }
-                    else if (datos.NombreCliente != string.Empty)
-                    {
-                        criterio.NombreCliente = datos.NombreCliente;
-                        criterio.Opcion = 6;
-                    }
-                }
-                else
-                {
-                    criterio.Opcion = 4;
-                }
-            }
-            else
-            {
-                if ((datos.Id != -1) || (datos.NombreCliente != string.Empty))
-                {
-                    if ((datos.Id != -1) && (datos.NombreCliente != string.Empty))
-                    {
-                        criterio.Id = datos.Id;
-                        criterio.NombreCliente = datos.NombreCliente;
-                        criterio.Opcion = 3;
-                    }
-                    else if (datos.Id != -1)
-                    {
-                        criterio.Id = datos.Id;
-                        criterio.Opcion = 1;
-                    }
-                    else if (datos.NombreCliente != string.Empty)
-                    {
-                        criterio.NombreCliente = datos.NombreCliente;
-                        criterio.Opcion = 2;
-                    }
-                }
-                else
-                {
-                    criterio.Opcion = 8;
-                }
-            }
-
-            return BuscarFactura(criterio);
         }
 
         public static List<Factura> ConsultarFactura()
         {
             CriterioBusqueda criterio = new CriterioBusqueda {Opcion = 8};
-            return BuscarFactura(criterio);
+            return null;
         }
 
         public static void Facturar(Factura factura)
@@ -329,39 +239,7 @@ namespace Control
             reporte.Export();
         }
 
-        public static void EnviarCorreo(Correo correo)
-        {
-            SmtpClient smtpServer = new SmtpClient(InformacionEmpresarial.Smtp);
-            smtpServer.Port = 587;
-            smtpServer.Credentials = new NetworkCredential(InformacionEmpresarial.Correo,
-                InformacionEmpresarial.Contraseña);
-            smtpServer.EnableSsl = InformacionEmpresarial.SSL;
-
-            MailMessage mail = new MailMessage();
-            mail.From = new MailAddress(InformacionEmpresarial.Correo);
-            mail.To.Add(correo.Destinatario);
-            mail.Subject = correo.Asunto;
-            mail.Body = correo.Mensaje;
-
-            foreach (string cc in correo.Cc)
-            {
-                mail.CC.Add(cc);
-            }
-
-            if (!string.IsNullOrWhiteSpace(correo.ArchivoAdjunto))
-            {
-                mail.Attachments.Add(new Attachment(correo.ArchivoAdjunto));
-            }
-
-            try
-            {
-                smtpServer.Send(mail);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-        }
+      
 
         public static ReportDocument GeneararNotaConfirmacion(string numeroPedido)
         {

@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Control;
-using Entidad;
 using Entidad.Reportes;
-using static Control.ManejadorContabilidad;
 
 namespace Presentacion.Reportes
 {
     internal class PantallaBuscarFactura : Pantalla
     {
-        public List<Factura> Facturas;       
         private bool Seleccionable;
+        public DataTable Facturas;
 
         public PantallaBuscarFactura(bool seleccionable)
         {
@@ -59,39 +58,72 @@ namespace Presentacion.Reportes
 
         private void BuscarFacturas()
         {
-            int numeroPedido = -1;
+            Cursor = Cursors.WaitCursor;
+
+            Dictionary<string, object> parametros = ConfigurarBusqueda();
+
+            Facturas = ManejadorReportes.RecuperarFacturas(parametros);
+
+            LlenarTabla();
+
+            Cursor = Cursors.Default;
+        }
+
+        private void LlenarTabla()
+        {
+            dgvTabla.Rows.Clear();
+            if (Facturas != null)
+            {
+                foreach (DataRow row in Facturas.Select())
+                {
+                    dgvTabla.RowCount++;
+                    dgvTabla["cid", dgvTabla.RowCount - 1].Value = row["NoFactura"];
+                    dgvTabla["ccliente", dgvTabla.RowCount - 1].Value = row["NombreC"];
+                    dgvTabla["ctelefono", dgvTabla.RowCount - 1].Value = row["TelefonoC"];
+                    dgvTabla["cfecha", dgvTabla.RowCount - 1].Value = row["FechaEmision"];
+                }
+            }
+
+            if (dgvTabla.RowCount > 0)
+            {
+                dgvTabla.Rows[0].Selected = true;
+            }
+        }
+
+        private Dictionary<string, object> ConfigurarBusqueda()
+        {
+            int opc = -1;
+            Dictionary<string, object> paramentros = new Dictionary<string, object>
+            {
+                {"opc", opc},
+                {"nomc", string.Empty},
+                {"nfac", default(int)},
+                {"fchi", DateTime.MinValue},
+                {"fchf", DateTime.MaxValue}
+            };
+
             if (!string.IsNullOrWhiteSpace(txtNumeroFactura.Text))
-                numeroPedido = int.Parse(txtNumeroFactura.Text);
+            {
+                paramentros["nfac"] = int.Parse(txtNumeroFactura.Text);
+                opc = 5;
+            }
 
-            string nombreCliente = "";
             if (!string.IsNullOrWhiteSpace(txtNombreCliente.Text))
-                nombreCliente = txtNombreCliente.Text;
-
-            DateTime fechaA = DateTime.MinValue;
-            DateTime fechaB = DateTime.MaxValue;
+            {
+                paramentros["nomc"] = txtNombreCliente.Text;
+                opc = opc == 5 ? 6 : 4;
+            }
 
             if (chkActivar.Checked)
             {
-                fechaA = dtpFechaA.Value;
-                fechaB = dtpFechaB.Value;
+                paramentros["fchi"] = dtpFechaA.Value;
+                paramentros["fchf"] = dtpFechaB.Value;
+                opc = opc == 6 ? 0 : opc == 4 ? 2 : opc == 5 ? 1 : 3;
             }
 
-           Facturas =
-                ConsultarFactura(new DatosBusqueda(fechaA, fechaB, numeroPedido, chkActivar.Checked, nombreCliente));
+            paramentros["opc"] = opc;
 
-            dgvTabla.Rows.Clear();
-            if (Facturas != null)
-                foreach (Factura resultado in Facturas)
-                {
-                    dgvTabla.RowCount++;
-                    dgvTabla["cid", dgvTabla.RowCount - 1].Value = resultado.Id;
-                    dgvTabla["ccliente", dgvTabla.RowCount - 1].Value = resultado.NombreC;
-                    dgvTabla["ctelefono", dgvTabla.RowCount - 1].Value = resultado.TelefonoC;
-                    dgvTabla["cfecha", dgvTabla.RowCount - 1].Value = resultado.Fecha.ToShortDateString();
-                }
-
-            if (dgvTabla.RowCount > 0)
-                dgvTabla.Rows[0].Selected = true;
+            return paramentros;
         }
 
         #endregion
@@ -156,8 +188,8 @@ namespace Presentacion.Reportes
             this.label9 = new System.Windows.Forms.Label();
             this.chkActivar = new System.Windows.Forms.CheckBox();
             this.Encabezado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dgvTabla)).BeginInit();
             this.SuspendLayout();
             // 
             // Encabezado
@@ -181,7 +213,8 @@ namespace Presentacion.Reportes
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label1.Location = new System.Drawing.Point(93, 37);
             this.label1.Name = "label1";
@@ -251,7 +284,8 @@ namespace Presentacion.Reportes
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label6.Location = new System.Drawing.Point(517, 243);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 20);
@@ -261,7 +295,8 @@ namespace Presentacion.Reportes
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label5.Location = new System.Drawing.Point(410, 243);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 20);
@@ -271,7 +306,8 @@ namespace Presentacion.Reportes
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label12.Location = new System.Drawing.Point(37, 110);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(534, 17);
@@ -281,7 +317,8 @@ namespace Presentacion.Reportes
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label4.Location = new System.Drawing.Point(42, 134);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 17);
@@ -291,7 +328,8 @@ namespace Presentacion.Reportes
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label2.Location = new System.Drawing.Point(41, 236);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(141, 17);
@@ -301,7 +339,8 @@ namespace Presentacion.Reportes
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label7.Location = new System.Drawing.Point(42, 183);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(136, 17);
@@ -317,21 +356,19 @@ namespace Presentacion.Reportes
             this.dgvTabla.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cid,
-            this.ccliente,
-            this.cfecha,
-            this.ctelefono});
+            this.dgvTabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {this.cid, this.ccliente, this.cfecha, this.ctelefono});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -344,7 +381,6 @@ namespace Presentacion.Reportes
             this.dgvTabla.RowHeadersVisible = false;
             this.dgvTabla.Size = new System.Drawing.Size(560, 150);
             this.dgvTabla.TabIndex = 28;
-            this.dgvTabla.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTabla_RowEnter);
             // 
             // cid
             // 
@@ -376,7 +412,8 @@ namespace Presentacion.Reportes
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label8.Location = new System.Drawing.Point(40, 296);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(186, 17);
@@ -416,7 +453,8 @@ namespace Presentacion.Reportes
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label14.Location = new System.Drawing.Point(339, 546);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(68, 17);
@@ -426,7 +464,8 @@ namespace Presentacion.Reportes
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label13.Location = new System.Drawing.Point(234, 546);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(60, 17);
@@ -447,7 +486,8 @@ namespace Presentacion.Reportes
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label9.Location = new System.Drawing.Point(147, 243);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(30, 42);
@@ -514,11 +554,10 @@ namespace Presentacion.Reportes
             this.Controls.SetChildIndex(this.chkActivar, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dgvTabla)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -534,7 +573,9 @@ namespace Presentacion.Reportes
             }
 
             if (!char.IsDigit(e.KeyChar) && (e.KeyChar != '\b'))
+            {
                 e.Handled = true;
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -562,29 +603,22 @@ namespace Presentacion.Reportes
             dtpFechaA.MaxDate = dtpFechaB.Value;
         }
 
-        private void dgvTabla_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (dgvTabla.RowCount <= 0)
+            if (dgvTabla.RowCount <= 0 || Facturas == null)
             {
-                MessageBox.Show("No se ha encontrado ningun pedido","Advertencia",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("No se ha encontrado ningun pedido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             Hide();
         }
 
-   private void btnCancelar_Click(object sender, EventArgs e)
-   {
-       Facturas = null;
-            Hide();
-   }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
         #endregion
-
-     
     }
 }

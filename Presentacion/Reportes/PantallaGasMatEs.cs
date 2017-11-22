@@ -236,7 +236,7 @@ namespace Presentacion.Reportes
 
         private void CargarReporte()
         {
-            var nommat = txtNomMat.Text;
+            string nommat = txtNomMat.Text;
             if (string.IsNullOrWhiteSpace(nommat))
             {
                 nommat = "☺";
