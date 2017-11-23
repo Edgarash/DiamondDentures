@@ -27,5 +27,15 @@ namespace Control
             Interface = new InterfaceBaseDeDatos();
             return Interface.ActualizarProducto(Producto);
         }
+
+        public static void UltimaClaveProducto(out RegistroProducto Producto)
+        {
+            InterfaceMySQL.UltimaClaveProducto(out Producto);
+        }
+
+        public static bool RegistrarProducto(RegistroProducto Producto)
+        {
+            return InterfaceMySQL.AgregarProducto(Producto);
+        }
     }
 }

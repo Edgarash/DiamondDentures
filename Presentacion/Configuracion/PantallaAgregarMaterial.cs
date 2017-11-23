@@ -43,7 +43,7 @@ namespace Presentacion.Configuracion
             tbClave.Select(tbClave.Text.Length, tbClave.Text.Length);
             for (int i = 0; i < Productos?.Length; i++)
             {
-                if (Productos[i].Activo[0] == '1')
+                if (Productos[i].Activo)
                 {
                     int j = dgvProductos.RowCount;
                     dgvProductos.RowCount += 1;

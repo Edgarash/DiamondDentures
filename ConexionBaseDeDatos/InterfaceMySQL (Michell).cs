@@ -121,7 +121,7 @@ namespace ConexionBaseDeDatos
                     Convert.ToInt32(Registro["TiempoBase"].ToString()),
                     Convert.ToSingle(Registro["PrecioBase"].ToString()),
                     Convert.ToSingle(Registro["PrecioCompra"].ToString()),
-                    Registro["Activo"].ToString(),
+                    Registro["Activo"].ToString() == "1",
                     Registro["UnidadMedida"].ToString(),
                     Convert.ToInt32(Registro["Cantidad"].ToString())
                     );
@@ -410,6 +410,27 @@ namespace ConexionBaseDeDatos
         {
             EjecutarProcedimientoAlmacenado("EliminarMaterial", TipoConsulta.DevuelveInt,
                 Parametro("Material", Clave));
+            return OperacionRealizada;
+        }
+
+        public static bool UltimaClaveProducto(out RegistroProducto Producto)
+        {
+            EjecutarProcedimientoAlmacenado("ObtenerUltimaClaveProducto", TipoConsulta.DevuelveReader, null);
+            Producto = ObtenerProducto();
+            return OperacionRealizada2;
+        }
+
+        public static bool AgregarProducto(RegistroProducto Producto)
+        {
+            EjecutarProcedimientoAlmacenado("AgregarProducto", TipoConsulta.DevuelveReader,
+                Parametro("IDProduct", Producto.IDProducto),
+                Parametro("Nombr", Producto.Nombre),
+                Parametro("Descripcio", Producto.Descripcion),
+                Parametro("TiempoBas", Producto.TiempoBase),
+                Parametro("PrecioBas", Producto.PrecioBase),
+                Parametro("Activ", Producto.Activo),
+                Parametro("UnidadMedid", Producto.UnidadMedida),
+                Parametro("Cantida", Producto.Cantidad));
             return OperacionRealizada;
         }
 

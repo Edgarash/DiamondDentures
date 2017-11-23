@@ -43,7 +43,7 @@ namespace Presentacion.Configuracion
                 bool Encontrado = false;
                 for (int j = 0; j < temp?.Length && !Encontrado; j++)
                 {
-                    if (Productos[i].IDProducto == ObtenerProMat[j].Producto.IDProducto && Productos[i].Activo == "1")
+                    if (Productos[i].IDProducto == ObtenerProMat[j].Producto.IDProducto && Productos[i].Activo)
                     {
                         dgvProductos.RowCount += 1;
                         dgvProductos["Clave", k].Value = ObtenerProMat[j].Producto.IDProducto;
@@ -55,7 +55,7 @@ namespace Presentacion.Configuracion
                         k++;
                     }
                 }
-                if (!Encontrado && Productos[i].Activo == "1")
+                if (!Encontrado && Productos[i].Activo)
                 {
                     dgvProductos.RowCount += 1;
                     dgvProductos["Clave", k].Value = Productos[i].IDProducto;

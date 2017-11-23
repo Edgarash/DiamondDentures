@@ -393,7 +393,7 @@
             // 
             this.Producto.FillWeight = 0.3636033F;
             this.Producto.HeaderText = "Producto";
-            this.Producto.MinimumWidth = 235;
+            this.Producto.MinimumWidth = 225;
             this.Producto.Name = "Producto";
             this.Producto.ReadOnly = true;
             this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -507,13 +507,13 @@
         protected System.Windows.Forms.Label lblCantidad;
         protected System.Windows.Forms.TextBox tbPrecioCompra;
         protected System.Windows.Forms.TextBox tbPrecioBase;
+        protected System.Windows.Forms.ComboBox cbProveedores;
+        protected System.Windows.Forms.NumericUpDown nudTiempo;
+        protected System.Windows.Forms.NumericUpDown nudCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Clave;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Activo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
-        protected System.Windows.Forms.ComboBox cbProveedores;
-        protected System.Windows.Forms.NumericUpDown nudTiempo;
-        protected System.Windows.Forms.NumericUpDown nudCantidad;
     }
 }

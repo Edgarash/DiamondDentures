@@ -1,4 +1,5 @@
-﻿using Entidad;
+﻿using Control;
+using Entidad;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,15 @@ namespace Presentacion.Configuracion
             InitializeComponent();
             InitializeComponent2();
             InitializeComponent3();
+            UltimaClaveProducto();
+        }
+
+        private void UltimaClaveProducto()
+        {
+            RegistroProducto temp;
+            ManejadorRegistroProducto.UltimaClaveProducto(out temp);
+            tbClave.Text = (temp.IDProducto + 1).ToString();
+            tbClave.Enabled = false;
         }
 
         protected override void InitializeComponent3()
@@ -26,18 +36,17 @@ namespace Presentacion.Configuracion
             RegistroProducto[] Productos = Interface.ObtenerProductos();
             tbClave.Enabled = true;
             tbClave.Text = Productos?.Length > 0 ? (Productos?[Productos.Length - 1]?.IDProducto + 1)?.ToString() : "0";
-            //RegistroMaterial[] Materiales = Interface.BuscarUnMaterial(new RegistroMaterial(-1, "", -1, -1));
-            //for (int i = 0; i < Materiales?.Length; i++)
-            //{
-            //    if (Materiales[i].Activo == 1)
-            //    {
-            //        int j = dgvMateriales.RowCount;
-            //        dgvMateriales.RowCount += 1;
-            //        dgvMateriales[0, j].Value = Materiales[i].IDMaterial;
-            //        dgvMateriales[2, j].Value = Materiales[i].Nombre;
-            //        dgvMateriales[3, j].Value = Materiales[i].PrecioBase;
-            //    }
-            //}
+            RegistroMaterial[] Materiales = Interface.ObtenerMateriales();
+            for (int i = 0; i < Materiales?.Length; i++)
+            {
+                int j = dgvMateriales.RowCount;
+                dgvMateriales.RowCount += 1;
+                dgvMateriales["Clave", j].Value = Materiales[i].IDMaterial;
+                dgvMateriales["Activo", j].Value = true;
+                dgvMateriales["Materiales", j].Value = Materiales[i].Nombre;
+                dgvMateriales["Precio", j].Value = Materiales[i].PrecioBase;
+                dgvMateriales["Tiempo", j].Value = Materiales[i].TiempoBase;
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -45,35 +54,16 @@ namespace Presentacion.Configuracion
             if (!ValidarCampos)
             {
                 Interface = new InterfaceUsuario(this);
-                //RegistroProducto temp = ObtenerRegistro;
-                //temp.IDProducto = Convert.ToInt32(tbClave.Text);
-                //if (Interface.RegistrarProducto(temp))
-                //{
-                //    string Mensaje = "";
-                //    if (!ActualizarProMat(out Mensaje))
-                //        MessageBox.Show("Producto registrado con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    else
-                //        Validar.MensajeErrorOK("El producto se registró sin embargo hubo un problema al asociar los materiales, favor de cambiar los parámetros modificando el producto en su opción correspondiente\n\n" + Mensaje);
-                //    Close();
-                //}
-                //else
-                //{
-                //    //RegistroProducto[] Productos = Interface.BuscarUnProducto(new RegistroProducto(ObtenerRegistro.IDProducto, "", -1, -1,-1));
-                //    //if (Productos?[0]?.IDProducto == ObtenerRegistro.IDProducto)
-                //    //    Validar.MensajeErrorOK("El número clave ya ha sido usado anteriormente y no puede repetirse");
-                //    //else
-                //    //{
-                //    //    //Productos = Interface.BuscarUnProducto(new RegistroProducto(-1, tbNombre.Text, -1, -1, -1));
-                //    //    bool Existe = false;
-                //    //    for (int i = 0; i < Productos?.Length && !Existe; i++)
-                //    //        if (Productos?[i]?.Nombre == tbNombre.Text)
-                //    //            Existe = true;
-                //    //    if (Existe)
-                //    //        Validar.MensajeErrorOK("El nombre ya ha sido usado anteriormente y no puede repetirse");
-                //    //    else
-                //    //        Validar.MensajeErrorBaseDeDatos();
-                //    //}
-                //}
+                RegistroProducto temp = ObtenerRegistro;
+                if (Interface.RegistrarProducto(temp))
+                {
+                    string Mensaje = "";
+                    if (!ActualizarProMat(out Mensaje))
+                        MessageBox.Show("Producto registrado con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        Validar.MensajeErrorOK("El producto se registró sin embargo hubo un problema al asociar los materiales, favor de cambiar los parámetros modificando el producto en su opción correspondiente\n\n" + Mensaje);
+                    Close();
+                }
             }
         }
 

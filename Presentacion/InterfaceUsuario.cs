@@ -567,8 +567,7 @@ namespace Presentacion
 
         public bool RegistrarProducto(RegistroProducto Registro)
         {
-            Manejador = new ManejadorConfiguracion();
-            return ((ManejadorConfiguracion)Manejador).RegistrarProducto(Registro);
+            return ManejadorRegistroProducto.RegistrarProducto(Registro);
         }
 
         public bool ActivarProducto(int Clave)

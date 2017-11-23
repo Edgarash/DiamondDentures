@@ -20,14 +20,14 @@ namespace Entidad
 
         public float PrecioCompra { get; set; }
 
-        public string Activo { get; set; }
+        public bool Activo { get; set; }
 
         public string UnidadMedida { get; set; }
 
         public int Cantidad { get; set; }
 
         public RegistroProducto(int IDProducto, string Nombre, string Descripcion, int TiempoBase,
-            float PrecioBase, float PrecioCompra, string Activo, string UnidadMedida, int Cantidad)
+            float PrecioBase, float PrecioCompra, bool Activo, string UnidadMedida, int Cantidad)
             :this(IDProducto)
         {
             this.Nombre = Nombre;
