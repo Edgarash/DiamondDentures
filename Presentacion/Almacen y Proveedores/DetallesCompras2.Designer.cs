@@ -45,7 +45,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnExportar = new System.Windows.Forms.Button();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -194,17 +193,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // btnExportar
-            // 
-            this.btnExportar.Location = new System.Drawing.Point(227, 45);
-            this.btnExportar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(96, 34);
-            this.btnExportar.TabIndex = 32;
-            this.btnExportar.Text = "Exportar";
-            this.btnExportar.UseVisualStyleBackColor = true;
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
-            // 
             // DetallesCompras2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -217,7 +205,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.button4);
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "DetallesCompras2";
@@ -225,7 +212,6 @@
             this.Load += new System.EventHandler(this.DetallesCompras2_Load);
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.button4, 0);
-            this.Controls.SetChildIndex(this.btnExportar, 0);
             this.Controls.SetChildIndex(this.textBox2, 0);
             this.Controls.SetChildIndex(this.dataGridView2, 0);
             this.Controls.SetChildIndex(this.label3, 0);
@@ -260,6 +246,5 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button btnExportar;
     }
 }

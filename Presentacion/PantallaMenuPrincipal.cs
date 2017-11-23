@@ -8,6 +8,7 @@ using Presentacion.Recepcion;
 using Presentacion.Ventas;
 using System;
 using System.Windows.Forms;
+using Presentacion.Reportes;
 using Validaciones;
 
 namespace Presentacion
@@ -177,6 +178,11 @@ namespace Presentacion
             Hide();
             new PantallaVentas().ShowDialog(this);
             Show();
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            ManejadorReportes.MostrarPantalla(this, new PantallaMenuReportes());
         }
     }
 }

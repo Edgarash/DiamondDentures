@@ -43,6 +43,7 @@
             this.lblLaboratorio = new System.Windows.Forms.Label();
             this.lblSemáforo = new System.Windows.Forms.Label();
             this.kuroButton1 = new ControlesM.KuroButton();
+            this.btnReportes = new ControlesM.KuroButton();
             this.Encabezado.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             // 
             this.Encabezado.Controls.Add(this.kuroButton1);
             this.Encabezado.Controls.Add(this.lblTituloMenu);
-            this.Encabezado.Size = new System.Drawing.Size(626, 93);
+            this.Encabezado.Size = new System.Drawing.Size(639, 93);
             // 
             // lblTituloMenu
             // 
@@ -263,10 +264,27 @@
             this.kuroButton1.UseVisualStyleBackColor = false;
             this.kuroButton1.Click += new System.EventHandler(this.kuroButton1_Click);
             // 
+            // btnReportes
+            // 
+            this.btnReportes.BackColor = System.Drawing.Color.White;
+            this.btnReportes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnReportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnReportes.ForeColor = System.Drawing.Color.Black;
+            this.btnReportes.Location = new System.Drawing.Point(164, 96);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(120, 50);
+            this.btnReportes.TabIndex = 1;
+            this.btnReportes.Text = "Reportes";
+            this.btnReportes.UseVisualStyleBackColor = false;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            // 
             // PantallaMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(626, 520);
+            this.ClientSize = new System.Drawing.Size(639, 520);
+            this.Controls.Add(this.btnReportes);
             this.Controls.Add(this.lblSesión);
             this.Controls.Add(this.lblSemáforo);
             this.Controls.Add(this.lblRecepcion);
@@ -297,6 +315,7 @@
             this.Controls.SetChildIndex(this.lblRecepcion, 0);
             this.Controls.SetChildIndex(this.lblSemáforo, 0);
             this.Controls.SetChildIndex(this.lblSesión, 0);
+            this.Controls.SetChildIndex(this.btnReportes, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
             this.ResumeLayout(false);
@@ -321,5 +340,6 @@
         private System.Windows.Forms.Label lblLaboratorio;
         private System.Windows.Forms.Label lblSemáforo;
         private ControlesM.KuroButton kuroButton1;
+        private ControlesM.KuroButton btnReportes;
     }
 }
