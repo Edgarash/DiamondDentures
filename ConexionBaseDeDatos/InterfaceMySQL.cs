@@ -114,11 +114,12 @@ namespace ConexionBaseDeDatos
                 InicializarConexion();
                 EjecutarConsulta(Properties.Resources.Script_Procedimientos_Base);
                 EjecutarConsulta(Properties.Resources.Script_Rolland);
-                EjecutarConsulta(Properties.Resources.Script_Olachea);
+                //EjecutarConsulta(Properties.Resources.Script_Olachea);
                 EjecutarConsulta(Properties.Resources.Script_Yazahel);
                 EjecutarConsulta(Properties.Resources.Script_Michell);
             }
             return Abierto;
+            //return true;
         }
 
         /// <summary>

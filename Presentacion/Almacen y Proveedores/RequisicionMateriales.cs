@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Control;
- 
+using Presentacion.Reportes;
+
 namespace Presentacion.Almacen_y_Proveedores
 {
     public partial class RequisicionMateriales : Control.Pantalla
@@ -202,6 +203,11 @@ namespace Presentacion.Almacen_y_Proveedores
             ManejadorAlmacen.ActualizarCompra(compra);
             LlenarData2(Búsqueda.Total);
             MessageBox.Show("Compra Actualizada");
+        }
+
+        private void btnReqM_Click(object sender, EventArgs e)
+        {
+            ManejadorReportes.MostrarPantalla(this, new PantallaVPReqMat());
         }
     }
 }

@@ -68,11 +68,11 @@
       <HintPath>.\ControlesM.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -348,6 +348,9 @@
     <Compile Include="Reportes\PantallaFormaPedido.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reportes\PantallaGasMatEs.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes\PantallaGenerarRVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,6 +361,54 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\PantallaOficioConfirmacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaGasInEs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPListadoFec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPListadoGen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPGastos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPListadoPer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPMateriales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPReqMat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPVentasGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPInsCom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPMatCom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPMatProd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPNominaEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVPNominaGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PantallaVistaPrevia.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Usuario\PantallaAdministrarUsuarios.cs">
@@ -652,6 +703,9 @@
     <EmbeddedResource Include="Reportes\PantallaFormaPedido.resx">
       <DependentUpon>PantallaFormaPedido.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaGasMatEs.resx">
+      <DependentUpon>PantallaGasMatEs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaGenerarRVentas.resx">
       <DependentUpon>PantallaGenerarRVentas.cs</DependentUpon>
     </EmbeddedResource>
@@ -663,6 +717,54 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaOficioConfirmacion.resx">
       <DependentUpon>PantallaOficioConfirmacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaGasInEs.resx">
+      <DependentUpon>PantallaGasInEs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPListadoFec.resx">
+      <DependentUpon>PantallaVPListadoFec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPListadoGen.resx">
+      <DependentUpon>PantallaVPListadoGen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPGastos.resx">
+      <DependentUpon>PantallaVPGastos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPListadoPer.resx">
+      <DependentUpon>PantallaVPListadoPer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPMateriales.resx">
+      <DependentUpon>PantallaVPMateriales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPReqMat.resx">
+      <DependentUpon>PantallaVPReqMat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPVentasGeneral.resx">
+      <DependentUpon>PantallaVPVentasGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPVentas.resx">
+      <DependentUpon>PantallaVPVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPInsCom.resx">
+      <DependentUpon>PantallaVPInsCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPMatCom.resx">
+      <DependentUpon>PantallaVPMatCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPMatProd.resx">
+      <DependentUpon>PantallaVPMatProd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPProveedores.resx">
+      <DependentUpon>PantallaVPProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPNominaEmpleado.resx">
+      <DependentUpon>PantallaVPNominaEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPNominaGeneral.resx">
+      <DependentUpon>PantallaVPNominaGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVistaPrevia.resx">
+      <DependentUpon>PantallaVistaPrevia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuario\PantallaAdministrarUsuarios.resx">
       <DependentUpon>PantallaAdministrarUsuarios.cs</DependentUpon>
@@ -846,6 +948,8 @@
     <None Include="Resources\IconoAdministrarUsuarios.jpeg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\IconoReportesDiamondBlanco.png" />
+    <None Include="Resources\IconoReportesDiamond.png" />
     <None Include="Ventas\Moneda Mexicana\BilleteMiguelito.jpg" />
     <None Include="Resources\Logo.png" />
     <None Include="Resources\Multimedia_communication_flat_mobile_Technology-08-38-512.png" />
@@ -920,6 +1024,7 @@
     <None Include="Resources\IconoPiezas.png" />
     <None Include="Resources\IconoFormaPedido.png" />
     <Content Include="La trijuerza de diamante barbuda.ico" />
+    <None Include="Resources\IconoCrearReportes.png" />
     <Content Include="Resources\IconoRecepcion.png" />
   </ItemGroup>
   <ItemGroup>

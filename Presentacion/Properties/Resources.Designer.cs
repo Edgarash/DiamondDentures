@@ -296,6 +296,16 @@ namespace Presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconoCrearReportes {
+            get {
+                object obj = ResourceManager.GetObject("IconoCrearReportes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconoDentista {
             get {
                 object obj = ResourceManager.GetObject("IconoDentista", resourceCulture);
@@ -776,6 +786,26 @@ namespace Presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconoReportesDiamond {
+            get {
+                object obj = ResourceManager.GetObject("IconoReportesDiamond", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconoReportesDiamondBlanco {
+            get {
+                object obj = ResourceManager.GetObject("IconoReportesDiamondBlanco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconoRVentas {
             get {
                 object obj = ResourceManager.GetObject("IconoRVentas", resourceCulture);
@@ -876,10 +906,9 @@ namespace Presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap invoice_account_bank_check_bill_finance_paper_financial_item_flat_icon_symbol_512 {
+        internal static System.Drawing.Bitmap invoice_account_bank_check {
             get {
-                object obj = ResourceManager.GetObject("invoice_account_bank_check_bill_finance_paper_financial_item_flat_icon_symbol-512" +
-                        "", resourceCulture);
+                object obj = ResourceManager.GetObject("invoice_account_bank_check", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -897,9 +926,9 @@ namespace Presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Multimedia_communication_flat_mobile_Technology_08_38_512 {
+        internal static System.Drawing.Bitmap Multimedia_communication_flat_mobile {
             get {
-                object obj = ResourceManager.GetObject("Multimedia_communication_flat_mobile_Technology-08-38-512", resourceCulture);
+                object obj = ResourceManager.GetObject("Multimedia_communication_flat_mobile", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

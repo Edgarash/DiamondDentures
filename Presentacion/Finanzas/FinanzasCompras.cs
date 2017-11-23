@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Control;
+using Entidad;
+using Presentacion.Reportes;
 
 namespace Presentacion.Finanzas
 {
@@ -19,6 +22,19 @@ namespace Presentacion.Finanzas
         {
             InitializeComponent();
         }
+
+        private void btnGenRep_Click(object sender, EventArgs e)
+        {
+            string fecha = $"{cbAño.SelectedItem}/01/01";
+            DateTime fchi = DateTime.Parse(fecha).AddMonths(Convert.ToInt32(cbMes.SelectedItem) - 1);
+            DateTime fchf = (fchi.AddMonths(1)).AddDays(-1);
+
+            ParametroReporte FchI = new ParametroReporte("fchi",fchi);
+            ParametroReporte FchF = new ParametroReporte("fchf",fchf);
+
+            ManejadorReportes.MostrarPantalla(this, new PantallaVPListadoFec<ReporteGastos>("Compras", FchI, FchF));
+        }
+
         private void ActualizarData()
         {
             Interface = new InterfaceUsuario(this);

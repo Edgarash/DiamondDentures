@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Control;
+using Entidad;
+using Presentacion.Reportes;
 using Validaciones;
 
 
@@ -61,6 +64,18 @@ namespace Presentacion.Finanzas
         private void tbBuscar_TextChanged(object sender, EventArgs e)
         {
             ActualizarData7();
-        }        
+        }
+
+        private void btnGenRep_Click(object sender, EventArgs e)
+        {
+            string fecha = $"{cbAño.SelectedItem}/01/01";
+            DateTime fchi = DateTime.Parse(fecha).AddMonths(Convert.ToInt32(cbMes.SelectedItem) - 1);
+            DateTime fchf = (fchi.AddMonths(1)).AddDays(-1);
+
+            ParametroReporte FchI = new ParametroReporte("FchIni", fchi);
+            ParametroReporte FchF = new ParametroReporte("FchFin", fchf);
+
+            ManejadorReportes.MostrarPantalla(this, new PantallaVPListadoFec<ReporteVentas>("Ventas", FchI, FchF));
+        }
     }
 }
