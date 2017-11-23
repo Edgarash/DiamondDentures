@@ -205,13 +205,14 @@ Direccion		char(100),
 Descripcion		char(50)
 );
 
-CREATE TABLE IF NOT EXISTS ASISTENCIA
-(
-IDAsistencia	int primary key AUTO_INCREMENT,
-Login			char(10),
-Fecha			date
+CREATE TABLE IF NOT EXISTS `ASISTENCIA` (
+  `IDAsistencia` int(11) NOT NULL AUTO_INCREMENT,
+  `Login` char(10),
+  `Fecha` date,
+  `HoraEntrada` varchar(5),
+  `HoraSalida` varchar(5),
+  PRIMARY KEY (`IDAsistencia`)
 );
-
 CREATE TABLE IF NOT EXISTS PAGOEMPLEADOS
 (
 IDPago			int primary key AUTO_INCREMENT,
@@ -285,3 +286,15 @@ CREATE TABLE IF NOT EXISTS `tarjetas` (
   KEY `FK` (`login`),
   CONSTRAINT `FK` FOREIGN KEY (`login`) REFERENCES `usuario` (`Login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `Pagos` (
+  `IDPago` int PRIMARY KEY AUTO_INCREMENT,
+  `Nombre` char(50),
+  `Descripcion` char(70),
+  `PrecioUnitario` decimal(10,2),
+  `Cantidad` int(11),
+  `Subtotal` decimal(10,2),
+  `Total` decimal(15,2),
+  `Estado` int(1),
+  `Registro` int(1)
+);

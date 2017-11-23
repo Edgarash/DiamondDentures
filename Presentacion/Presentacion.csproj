@@ -174,6 +174,84 @@
     <Compile Include="Control Pedidos\PantallaMenuControlPedidos.designer.cs">
       <DependentUpon>PantallaMenuControlPedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Finanzas\FinanzasAdministracionPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasAdministracionPagos.Designer.cs">
+      <DependentUpon>FinanzasAdministracionPagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasBalanceCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasBalanceCuentas.Designer.cs">
+      <DependentUpon>FinanzasBalanceCuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasComprarInsumos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasComprarInsumos.Designer.cs">
+      <DependentUpon>FinanzasComprarInsumos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasCompras.Designer.cs">
+      <DependentUpon>FinanzasCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasMenu.Designer.cs">
+      <DependentUpon>FinanzasMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasVerRequisicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasVerRequisicion.Designer.cs">
+      <DependentUpon>FinanzasVerRequisicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuModulosYazah.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuModulosYazah.Designer.cs">
+      <DependentUpon>MenuModulosYazah.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recursos Humanos\RHumanosAsistencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recursos Humanos\RHumanosAsistencia.Designer.cs">
+      <DependentUpon>RHumanosAsistencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recursos Humanos\RHumanosMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recursos Humanos\RHumanosMenu.Designer.cs">
+      <DependentUpon>RHumanosMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recursos Humanos\RHumanosNominas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recursos Humanos\RHumanosNominas.Designer.cs">
+      <DependentUpon>RHumanosNominas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasRealizarPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasRealizarPago.Designer.cs">
+      <DependentUpon>FinanzasRealizarPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasVentas.Designer.cs">
+      <DependentUpon>FinanzasVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasVerCompraInsumos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finanzas\FinanzasVerCompraInsumos.Designer.cs">
+      <DependentUpon>FinanzasVerCompraInsumos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Laboratorio\PantallaMenuLaboratorio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +269,12 @@
     </Compile>
     <Compile Include="Recepcion\PantallaAdministrarDentistas.Designer.cs">
       <DependentUpon>PantallaAdministrarDentistas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recursos Humanos\RHumanosPagosEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recursos Humanos\RHumanosPagosEmpleado.Designer.cs">
+      <DependentUpon>RHumanosPagosEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\DialogoModicarFactura.cs">
       <SubType>Form</SubType>
@@ -373,6 +457,45 @@
     <EmbeddedResource Include="Control Pedidos\PantallaMenuControlPedidos.resx">
       <DependentUpon>PantallaMenuControlPedidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Finanzas\FinanzasAdministracionPagos.resx">
+      <DependentUpon>FinanzasAdministracionPagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finanzas\FinanzasBalanceCuentas.resx">
+      <DependentUpon>FinanzasBalanceCuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finanzas\FinanzasComprarInsumos.resx">
+      <DependentUpon>FinanzasComprarInsumos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finanzas\FinanzasCompras.resx">
+      <DependentUpon>FinanzasCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finanzas\FinanzasMenu.resx">
+      <DependentUpon>FinanzasMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finanzas\FinanzasVerRequisicion.resx">
+      <DependentUpon>FinanzasVerRequisicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuModulosYazah.resx">
+      <DependentUpon>MenuModulosYazah.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recursos Humanos\RHumanosAsistencia.resx">
+      <DependentUpon>RHumanosAsistencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recursos Humanos\RHumanosMenu.resx">
+      <DependentUpon>RHumanosMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recursos Humanos\RHumanosNominas.resx">
+      <DependentUpon>RHumanosNominas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finanzas\FinanzasRealizarPago.resx">
+      <DependentUpon>FinanzasRealizarPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finanzas\FinanzasVentas.resx">
+      <DependentUpon>FinanzasVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finanzas\FinanzasVerCompraInsumos.resx">
+      <DependentUpon>FinanzasVerCompraInsumos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Laboratorio\PantallaMenuLaboratorio.resx">
       <DependentUpon>PantallaMenuLaboratorio.cs</DependentUpon>
     </EmbeddedResource>
@@ -381,6 +504,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Recepcion\PantallaAdministrarDentistas.resx">
       <DependentUpon>PantallaAdministrarDentistas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recursos Humanos\RHumanosPagosEmpleado.resx">
+      <DependentUpon>RHumanosPagosEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\DialogoModicarFactura.resx">
       <DependentUpon>DialogoModicarFactura.cs</DependentUpon>
@@ -651,7 +777,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

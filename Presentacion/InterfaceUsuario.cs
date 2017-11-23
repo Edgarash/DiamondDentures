@@ -665,6 +665,206 @@ namespace Presentacion
 
         #endregion
 
+        #region Modulo Finanzas
+        public void DatosDVentas(DataGridView temp, string fech)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDVentas(temp, fech);
+        }
+        public void DatosDBuscarVentas(DataGridView temp, string nomb, string idp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDBuscarVentas(temp,nomb,idp);
+        }
+        public void DatosDTotalVentas(TextBox temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDTotalVentas(temp);
+        }
+        public void DatosDGastos(DataGridView temp, string f)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDGastos(temp, f);
+        }
+        public void DatosDAutualizarRegistroGastos(string id)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDAutualizarRegistroGastos(id);
+        }
+        public void DatosDRegistroPagos(DataGridView temp, string nom, string des, string punit, string cant, string subt,
+            string tot, string est, string reg,string id)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDRegistroPagos(temp, nom, des, punit, cant, subt, tot, est, reg,id);
+        }
+        public void DatosDTotalGastos(TextBox temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDTotalGastos(temp);
+        }
+        public void DatosDPagosTrab(DataGridView temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDPagosTrab(temp);
+        }
+        public void DatosDTotalPagosTrab(TextBox temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDTotalPagosTrab(temp);
+        }
+                
+        public void CPObtenerLaboratoristas(ComboBox temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).CPObtenerLaboratoristas(temp);
+        }
+        public void DatosComboIDUsuarios(ComboBox temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosComboIDUsuarios(temp);
+        }
+        public void DatosComboNombProveedor(TextBox temp,string id)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosComboNombProveedor(temp, id);
+        }
+        public void DatosNombreUsuarios(TextBox emp, string temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosNombreUsuarios(emp,temp);
+        }
+        public void DatosComboObtenerIDProveedores(TextBox emp, string temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosComboObtenerIDProveedores(emp,temp);
+        }
+        public void DatosComboObtenerBanco(TextBox emp, string temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosComboObtenerBanco(emp,temp);
+        }
+        public void DatosDVerRequisicion(DataGridView emp, string temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDVerRequisicion(emp,temp);
+        }
+        public void DatosComboObtenerNumeroCuenta(TextBox emp, string temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosComboObtenerNumeroCuenta(emp,temp);
+        }
+        public void DatosDVerProductosDeProveedor(DataGridView emp, string temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDVerProductosDeProveedor(emp,temp);
+        }
+        public void DatosAgregarAsistencia(DataGridView temp, string id, string emp, string fec, string hEnt, string hSal)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosAgregarAsistencia(temp, id, emp, fec, hEnt, hSal);
+        }
+        public void DatosDInsumos(DataGridView temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDInsumos(temp);
+        }
+        public void DatosDTotalInsumos(TextBox temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDTotalInsumos(temp);
+        }
+        
+        public void DatosDPagos(DataGridView temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDPagos(temp);
+        }
+        public void DatosDBuscarAdminPagos(DataGridView temp, string id, string nomb)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDBuscarAdminPagos(temp,id,nomb);
+        }
+        public void DatosDTotalIngresos(TextBox temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDTotalIngresos(temp);
+        }
+        public void ComprarInsumos(TextBox txID, TextBox txNomb, TextBox txDesc, TextBox txCant, TextBox txPrUni, string p)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).ComprarInsumos(txID, txNomb, txDesc, txCant, txPrUni,p);
+        }
+        public void AgregarCompra(string nom, string tot)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).AgregarCompra(nom, tot);
+        }
+        public void DatosDEmpleados(DataGridView temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDEmpleados(temp);
+        }
+        public void DatosDUltipoIDCompra(DataGridView temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDUltipoIDCompra(temp);
+        }
+        public void DatosDAsistencia(DataGridView temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDAsistencia(temp);
+        }
+        public void DatosDNomina(DataGridView temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDNomina(temp);
+        }
+        public void DatosDTotalNomina(TextBox temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDTotalNomina(temp);
+        }
+        public void DatosComboListaNombProveedor(ComboBox temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosComboListaNombProveedor(temp);
+        }
+        public void DatosDAgregarNomina(DataGridView temp, string nemp, string fec, string nomb, string ape, string rfc, 
+            string mail, string dep, string pues, string dlab, string suel, string isr, string descisr, string sfinal, string pag)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDAgregarNomina(temp, nemp, fec, nomb, ape, rfc, mail, dep, pues, dlab, suel, isr, descisr, sfinal, pag);
+        }
+        public void DatosDBalanceCuentasIngresos(DataGridView temp, string fec)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDBalanceCuentasIngresos(temp, fec);
+        }
+        public void DatosDAgregarBalanceCuentasIngresos(DataGridView temp, string des, string val, string fec)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDAgregarBalanceCuentasIngresos(temp, des, val, fec);
+        }
+        public void DatosDAgregarBalanceCuentasEgresos(DataGridView temp, string des, string val, string fec)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDAgregarBalanceCuentasEgresos(temp, des, val, fec);
+        }
+        public void DatosDBalanceCuentasEgresos(DataGridView temp, string fec)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDBalanceCuentasEgresos(temp,fec);
+        }
+
+        public void DatosDActualizarPago(int id)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDActualizarPago(id);
+        }
+
+        #endregion
+
+
         public DialogResult DesplegarPantallaMenuPrincipal(string Login, string Password, ref int Intentos)
         {
             Manejador = new ManejadorLogin(Pantalla);

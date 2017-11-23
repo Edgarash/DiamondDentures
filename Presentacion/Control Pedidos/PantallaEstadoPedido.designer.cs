@@ -544,6 +544,14 @@
             // cbEstado
             // 
             this.cbEstado.FormattingEnabled = true;
+            this.cbEstado.Items.AddRange(new object[] {
+            "Cancelado",
+            "Registrado",
+            "Confirmado",
+            "En Proceso",
+            "Terminado",
+            "Facturado",
+            "Pagado"});
             this.cbEstado.Location = new System.Drawing.Point(828, 445);
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(121, 24);

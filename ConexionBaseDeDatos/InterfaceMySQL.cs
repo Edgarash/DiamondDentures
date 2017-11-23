@@ -423,15 +423,11 @@ namespace ConexionBaseDeDatos
             return OperacionRealizada;
         }
 
-        /// <summary>
-        /// Obtiene los datos y los llena en un DGV
-        /// </summary>
-        /// <param name="DGV">Datagrid al que se le llenarán los datos</param>
-        public static void Datos(DataGridView DGV)
+        public static void Datos(DataGridView temp)
         {
             EjecutarProcedimientoAlmacenado("AdministrarUsuarios", TipoConsulta.DevuelveReader,
                 Parametro("", null));
-            DGV.DataSource = TablaDeResultados;
+            temp.DataSource = TablaDeResultados;
         }
         #endregion
 
