@@ -5,7 +5,6 @@ using Control;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Windows.Forms;
 using static System.Environment;
-using static Control.ManejadorContabilidad;
 
 namespace Presentacion.Reportes
 {
@@ -33,22 +32,22 @@ namespace Presentacion.Reportes
             dtpFechaB.Enabled = activar;
         }
 
-        private void MostrarReporte()
-        {
-            reporteActual = DefinirIntervaloFecha(cmbPeriodo.SelectedItem.ToString(),
-                (int) cmbAño.SelectedItem, dtpFechaA.Value, dtpFechaB.Value);
+        //private void MostrarReporte()
+        //{
+        //    reporteActual = DefinirIntervaloFecha(cmbPeriodo.SelectedItem.ToString(),
+        //        (int) cmbAño.SelectedItem, dtpFechaA.Value, dtpFechaB.Value);
             
-            if (reporteActual != null)
-            {
-                crystalReportViewer1.ReportSource = reporteActual;
-                crystalReportViewer1.Refresh();
-            }
-            else
-            {
-                MessageBox.Show("No se definio ninguna opcion", "Advertencia", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
-            }
-        }
+        //    if (reporteActual != null)
+        //    {
+        //        crystalReportViewer1.ReportSource = reporteActual;
+        //        crystalReportViewer1.Refresh();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("No se definio ninguna opcion", "Advertencia", MessageBoxButtons.OK,
+        //            MessageBoxIcon.Exclamation);
+        //    }
+        //}
 
         private void Reiniciar()
         {
@@ -68,10 +67,10 @@ namespace Presentacion.Reportes
 
         #region Eventos
 
-        private void btnGenerar_Click(object sender, EventArgs e)
-        {
-            MostrarReporte();
-        }
+        //private void btnGenerar_Click(object sender, EventArgs e)
+        //{
+        //    MostrarReporte();
+        //}
 
         private void cmbAño_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -100,11 +99,11 @@ namespace Presentacion.Reportes
             sfdExportar.ShowDialog();
         }
 
-        private void svfExportar_FileOk(object sender, CancelEventArgs e)
-        {
-            string ruta = sfdExportar.FileName;
-            ExportarReporte(ruta, reporteActual);
-        }
+        //private void svfExportar_FileOk(object sender, CancelEventArgs e)
+        //{
+        //    string ruta = sfdExportar.FileName;
+        //    ExportarReporte(ruta, reporteActual);
+        //}
 
         private void dtpFechaA_ValueChanged(object sender, EventArgs e)
         {
@@ -298,7 +297,6 @@ namespace Presentacion.Reportes
             this.btnGenerar.TabIndex = 22;
             this.btnGenerar.TabStop = false;
             this.btnGenerar.UseVisualStyleBackColor = true;
-            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
             // label6
             // 
@@ -448,7 +446,6 @@ namespace Presentacion.Reportes
             this.sfdExportar.DefaultExt = "pdf";
             this.sfdExportar.Filter = "Portable Document Format (PDF)|*.pdf";
             this.sfdExportar.RestoreDirectory = true;
-            this.sfdExportar.FileOk += new System.ComponentModel.CancelEventHandler(this.svfExportar_FileOk);
             // 
             // btnRegresar
             // 

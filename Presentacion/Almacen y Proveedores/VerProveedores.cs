@@ -9,13 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Control;
+using Presentacion.Reportes;
 
 namespace Presentacion.Almacen_y_Proveedores
 {
     public partial class VerProveedores : Pantalla
     {
         InterfaceUsuario Interface;
-        enum Búsqueda { Total, Clave, Personalizada };
+
+        enum Búsqueda
+        {
+            Total,
+            Clave,
+            Personalizada
+        };
 
         public VerProveedores()
         {
@@ -31,7 +38,6 @@ namespace Presentacion.Almacen_y_Proveedores
 
         private void button1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void LlenarData(Búsqueda Tipo)
@@ -46,7 +52,9 @@ namespace Presentacion.Almacen_y_Proveedores
             dataGridView1.Rows.Clear();
             RegistroProveedor[] temp = null;
             if (Tipo == Búsqueda.Total)
+            {
                 temp = Interface.MostrarProveedores();
+            }
             dataGridView1.RowCount = temp?.Length ?? 0;
             if (temp != null)
             {
@@ -107,7 +115,9 @@ namespace Presentacion.Almacen_y_Proveedores
             dataGridView2.Rows.Clear();
             FolioProveedor[] temp = null;
             if (Tipo == Búsqueda.Total)
+            {
                 temp = Interface.SeleccFolios();
+            }
             dataGridView2.RowCount = temp?.Length ?? 0;
             if (temp != null)
             {
@@ -140,7 +150,9 @@ namespace Presentacion.Almacen_y_Proveedores
             dataGridView2.Rows.Clear();
             FolioProveedor[] temp = null;
             if (Tipo == Búsqueda.Total)
+            {
                 temp = Interface.SeleccUnFolio(Convert.ToInt32(textBox2.Text));
+            }
             dataGridView2.RowCount = temp?.Length ?? 0;
             if (temp != null)
             {
@@ -173,7 +185,9 @@ namespace Presentacion.Almacen_y_Proveedores
             dataGridView1.Rows.Clear();
             RegistroProveedor[] temp = null;
             if (Tipo == Búsqueda.Total)
+            {
                 temp = Interface.MostrarUnProveedor(textBox1.Text);
+            }
             dataGridView1.RowCount = temp?.Length ?? 0;
             if (temp != null)
             {
@@ -202,7 +216,6 @@ namespace Presentacion.Almacen_y_Proveedores
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -215,6 +228,21 @@ namespace Presentacion.Almacen_y_Proveedores
         {
             Interface = new InterfaceUsuario(this);
             LlenarData4(Búsqueda.Total);
+        }
+
+        private void btnLstProv_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, ParametroReporte> estadoColumnas = new Dictionary<string, ParametroReporte>
+            {
+                {"ID Prov.", new ParametroReporte("", "ID Prov.", "proveedores.IDProveedor")},
+                {"Nombre", new ParametroReporte("", "Nombre", "proveedores.Nombre")},
+                {"Descripcion", new ParametroReporte("", "Descripcion", "proveedores.Descripcion")},
+                {"Direcion", new ParametroReporte("", "Direcion", "proveedores.Direccion")},
+                {"Telefono", new ParametroReporte("", "Telefono", "proveedores.Telefono")},
+                {"Correo", new ParametroReporte("", "Correo", "proveedores.Correo")}
+            };
+            string sql = "FROM proveedores;";
+            ManejadorReportes.MostrarPantalla(this, new PantallaVPListadoPer<ReporteProveedores>("Proveedores", estadoColumnas, sql, 6));
         }
     }
 }

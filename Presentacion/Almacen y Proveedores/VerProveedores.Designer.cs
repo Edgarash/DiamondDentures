@@ -54,6 +54,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLstProv = new System.Windows.Forms.Button();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -192,6 +193,7 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.btnLstProv);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.textBox1);
@@ -294,6 +296,17 @@
             this.Column3.HeaderText = "Subtotal";
             this.Column3.Name = "Column3";
             // 
+            // btnLstProv
+            // 
+            this.btnLstProv.Location = new System.Drawing.Point(778, 10);
+            this.btnLstProv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLstProv.Name = "btnLstProv";
+            this.btnLstProv.Size = new System.Drawing.Size(127, 28);
+            this.btnLstProv.TabIndex = 22;
+            this.btnLstProv.Text = "Exportar lista prov.";
+            this.btnLstProv.UseVisualStyleBackColor = true;
+            this.btnLstProv.Click += new System.EventHandler(this.btnLstProv_Click);
+            // 
             // VerProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -347,5 +360,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnLstProv;
     }
 }

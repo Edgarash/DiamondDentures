@@ -54,6 +54,7 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnInv = new System.Windows.Forms.Button();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -140,7 +141,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(395, 67);
+            this.button1.Location = new System.Drawing.Point(366, 67);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
@@ -176,7 +177,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(283, 63);
+            this.button2.Location = new System.Drawing.Point(269, 67);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(91, 23);
             this.button2.TabIndex = 14;
@@ -269,6 +270,16 @@
             this.Column11.HeaderText = "Fecha";
             this.Column11.Name = "Column11";
             // 
+            // btnInv
+            // 
+            this.btnInv.Location = new System.Drawing.Point(939, 67);
+            this.btnInv.Name = "btnInv";
+            this.btnInv.Size = new System.Drawing.Size(136, 23);
+            this.btnInv.TabIndex = 9;
+            this.btnInv.Text = "Exportar Inventarios";
+            this.btnInv.UseVisualStyleBackColor = true;
+            this.btnInv.Click += new System.EventHandler(this.btnInv_Click);
+            // 
             // Inventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -278,6 +289,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnInv);
             this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "Inventario";
@@ -285,6 +297,7 @@
             this.Load += new System.EventHandler(this.Inventario_Load);
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.btnInv, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.textBox1, 0);
             this.Controls.SetChildIndex(this.button2, 0);
@@ -329,5 +342,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.Button btnInv;
     }
 }

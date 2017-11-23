@@ -124,7 +124,7 @@
   <data name="IconoExportar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoExportar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Multimedia_communication_flat_mobile_Technology-08-38-512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Multimedia_communication_flat_mobile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Multimedia_communication_flat_mobile_Technology-08-38-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconoUsuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -235,7 +235,7 @@
   <data name="IconoBuscar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoBuscar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="invoice_account_bank_check_bill_finance_paper_financial_item_flat_icon_symbol-512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="invoice_account_bank_check" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\invoice_account_bank_check_bill_finance_paper_financial_item_flat_icon_symbol-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconoEliminaTarjeta" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -357,5 +357,14 @@
   </data>
   <data name="IconoFormaPedido" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoFormaPedido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconoCrearReportes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconoCrearReportes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconoReportesDiamond" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconoReportesDiamond.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconoReportesDiamondBlanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconoReportesDiamondBlanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

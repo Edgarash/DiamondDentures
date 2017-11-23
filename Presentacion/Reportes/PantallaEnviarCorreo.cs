@@ -136,7 +136,7 @@ namespace Presentacion.Reportes
             List<string> l = listaCorreo.ToList();
             Correo correo = new Correo(destinatario, mensaje, asunto,l ,archivo);
             Cursor.Current = Cursors.WaitCursor;
-            ManejadorContabilidad.EnviarCorreo(correo);
+            ManejadorReportes.EnviarCorreo(correo);
             Cursor.Current = Cursors.Default;
         }
 
@@ -145,6 +145,9 @@ namespace Presentacion.Reportes
         private void btnEnviar_Click(object sender, EventArgs e)
         {
             CrearCorreo();
+            MessageBox.Show("El correo ha sido enviado con exito.", "Correo Enviado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            Close();
+
         }
 
         #endregion

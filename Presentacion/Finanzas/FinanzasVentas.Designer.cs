@@ -97,6 +97,7 @@
             this.btnGenRep.TabIndex = 27;
             this.btnGenRep.Text = "Generar \r\nReporte";
             this.btnGenRep.UseVisualStyleBackColor = true;
+            this.btnGenRep.Click += new System.EventHandler(this.btnGenRep_Click);
             // 
             // txTotal
             // 

@@ -90,7 +90,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_clv {
+        public CrystalDecisions.Shared.IParameterField Parameter_nped {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }

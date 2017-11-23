@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Control;
+using Presentacion.Reportes;
 
 namespace Presentacion.Almacen_y_Proveedores
 {
@@ -144,6 +145,18 @@ namespace Presentacion.Almacen_y_Proveedores
             CompraMaterial compra = new CompraMaterial(Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCell.RowIndex].Value), Convert.ToInt32(dataGridView2[1, dataGridView2.CurrentCell.RowIndex].Value), Convert.ToInt32(dataGridView2[5, dataGridView2.CurrentCell.RowIndex].Value));
             ManejadorAlmacen.ActualizarPrecio(compra);
             MessageBox.Show("Precio actualizado con exito ");
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            string fecha = $"{DateTime.Today.Year}/01/01";
+            DateTime fchi = DateTime.Parse(fecha).AddMonths(DateTime.Today.Month - 1);
+            DateTime fchf = (fchi.AddMonths(1)).AddDays(-1);
+
+            ParametroReporte FchI = new ParametroReporte("FchIni", fchi);
+            ParametroReporte FchF = new ParametroReporte("FchFin", fchf);
+
+            ManejadorReportes.MostrarPantalla(this, new PantallaVPListadoGen<ReporteMaterialesComprados>("Materiales Comprados"));
         }
     }
 }

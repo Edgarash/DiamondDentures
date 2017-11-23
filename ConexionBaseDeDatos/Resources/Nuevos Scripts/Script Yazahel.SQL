@@ -421,14 +421,14 @@ BEGIN
     `balancecuentasingresos`.`Fecha` LIKE `fec`
   UNION
   SELECT DISTINCT
-  `Fecha`, CONCAT('Corte de caja de ', `Empleado`) AS 'Descripción', `ganancia`
+  `Fecha`, CONCAT('Corte de caja de ', `Empleado`) AS 'Descripción', `EntradaEfectivo`
 FROM
   `cortecaja`
   WHERE
     `cortecaja`.`fecha` LIKE `fec`
   UNION
   SELECT DISTINCT
-    `Fecha`, 'TOTAL', (SELECT DISTINCT SUM(`ventas`.`Importe`) FROM `ventas`) + (SELECT DISTINCT SUM(`cortecaja`.`ganancia`) FROM `cortecaja`)
+    `Fecha`, 'TOTAL', (SELECT DISTINCT SUM(`ventas`.`Importe`) FROM `ventas`) + (SELECT DISTINCT SUM(`cortecaja`.`EntradaEfectivo`) FROM `cortecaja`)
   FROM
     `ventas`,
     `cortecaja`
