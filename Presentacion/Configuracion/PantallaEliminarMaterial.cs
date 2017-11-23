@@ -15,11 +15,32 @@ namespace Presentacion.Configuracion
         public PantallaEliminarMaterial(RegistroMaterial Material)
         {
             InitializeComponent();
-            tbClave.Text = Material?.IDMaterial.ToString();
-            tbNombreMaterial.Text = Material?.Nombre ?? "";
-            tbPrecioBase.Text = Material?.PrecioBase.ToString("N2");
+            tbClave.Text = Material.IDMaterial.ToString();
+            cbProveedores.Text = Material.Proveedor.Nombre;
+            tbPrecioCompra.Text = Material.PrecioCompra.ToString();
+            tbNombreMaterial.Text = Material.Nombre;
+            tbUnidadMedida.Text = Material.UnidadMedida;
+            tbDescripcion.Text = Material.Descripcion;
+            tbPrecioBase.Text = Material.PrecioBase.ToString("N2");
+            nudTiempo.Value = Material.TiempoBase;
+            nudCantidad.Value = Material.Cantidad;
             InitializeComponent3();
-            dgvProductos.Enabled = tbClave.Enabled = tbNombreMaterial.Enabled = tbPrecioBase.Enabled = false;
+            for (int i = 0; i < Controls.Count; i++)
+            {
+                Type temp = Controls[i].GetType();
+                if (temp == typeof(TextBox))
+                    Controls[i].Enabled = false;
+                else
+                {
+                    if (temp == typeof(NumericUpDown))
+                        Controls[i].Enabled = false;
+                    else
+                    {
+                        if (temp == typeof(ComboBox))
+                            Controls[i].Enabled = false;
+                    }
+                }
+            }
         }
 
         protected override void InitializeComponent3()
@@ -35,26 +56,29 @@ namespace Presentacion.Configuracion
                 bool Encontrado = false;
                 for (int j = 0; j < temp?.Length && !Encontrado; j++)
                 {
-                    //if (Productos[i].IDProducto == ObtenerProMat[j].ClavePro && Productos[i].Activo == 1)
-                    //{
-                    //    dgvProductos.RowCount += 1;
-                    //    dgvProductos[0, k].Value = ObtenerProMat[j].ClavePro;
-                    //    dgvProductos[1, k].Value = ObtenerProMat[j].Activo == 1 ? true : false;
-                    //    dgvProductos[2, k].Value = ObtenerProMat[j].Producto;
-                    //    dgvProductos[3, k].Value = ObtenerProMat[j].Precio;
-                    //    Encontrado = true;
-                    //    k++;
-                    //}
+                    if (Productos[i].IDProducto == ObtenerProMat[j].Producto.IDProducto && Productos[i].Activo)
+                    {
+                        dgvProductos.RowCount += 1;
+                        dgvProductos["Clave", k].Value = ObtenerProMat[j].Producto.IDProducto;
+                        dgvProductos["Activo", k].Value = ObtenerProMat[j].Activo;
+                        dgvProductos["Producto", k].Value = ObtenerProMat[j].Producto.Nombre;
+                        dgvProductos["Precio", k].Value = ObtenerProMat[j].PrecioFinal;
+                        dgvProductos["Tiempo", k].Value = ObtenerProMat[j].TiempoFinal;
+
+                        Encontrado = true;
+                        k++;
+                    }
                 }
-                //if (!Encontrado && Productos[i].Activo == 1)
-                //{
-                //    dgvProductos.RowCount += 1;
-                //    dgvProductos[0, k].Value = Productos[i].IDProducto;
-                //    dgvProductos[1, k].Value = false;
-                //    dgvProductos[2, k].Value = Productos[i].Nombre;
-                //    dgvProductos[3, k].Value = Productos[i].PrecioBase;
-                //    k++;
-                //}
+                if (!Encontrado && Productos[i].Activo)
+                {
+                    dgvProductos.RowCount += 1;
+                    dgvProductos["Clave", k].Value = Productos[i].IDProducto;
+                    dgvProductos["Activo", k].Value = false;
+                    dgvProductos["Producto", k].Value = Productos[i].Nombre;
+                    dgvProductos["Precio", k].Value = Productos[i].PrecioBase;
+                    dgvProductos["Tiempo", k].Value = Productos[i].TiempoBase;
+                    k++;
+                }
             }
         }
 

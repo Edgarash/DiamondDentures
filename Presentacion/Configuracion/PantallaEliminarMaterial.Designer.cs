@@ -66,8 +66,6 @@
             // 
             // PantallaEliminarMaterial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(407, 493);
             this.Name = "PantallaEliminarMaterial";
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).EndInit();
             this.Encabezado.ResumeLayout(false);

@@ -16,12 +16,25 @@ namespace Presentacion.Configuracion
         public PantallaEliminarProducto(RegistroProducto Producto)
         {
             InitializeComponent();
-            tbClave.Text = Producto?.IDProducto.ToString();
-            nudDias.Value = Producto?.TiempoBase ?? 1;
-            tbNombre.Text = Producto?.Nombre ?? "";
-            tbPrecio.Text = Producto?.PrecioBase.ToString();
+            tbClave.Text = Producto.IDProducto.ToString();
+            tbNombre.Text = Producto.Nombre;
+            tbUnidadMedida.Text = Producto.UnidadMedida;
+            tbDescripcion.Text = Producto.Descripcion;
+            nudDias.Value = Producto.TiempoBase;
+            tbPrecio.Text = Producto.PrecioBase.ToString();
+            nudCantidad.Value = Producto.Cantidad;
             InitializeComponent3();
-            dgvMateriales.Enabled = tbClave.Enabled = nudDias.Enabled = tbNombre.Enabled = tbPrecio.Enabled = false;
+            for (int i = 0; i < Controls.Count; i++)
+            {
+                Type temp = Controls[i].GetType();
+                if (temp == typeof(TextBox))
+                    Controls[i].Enabled = false;
+                else
+                {
+                    if (temp == typeof(NumericUpDown))
+                        Controls[i].Enabled = false;
+                }
+            }
         }
 
         protected override void InitializeComponent3()
