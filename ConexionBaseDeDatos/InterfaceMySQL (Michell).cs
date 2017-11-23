@@ -405,6 +405,14 @@ namespace ConexionBaseDeDatos
             }
             return ProMat;
         }
+
+        public static bool EliminarMaterial(int Clave)
+        {
+            EjecutarProcedimientoAlmacenado("EliminarMaterial", TipoConsulta.DevuelveInt,
+                Parametro("Material", Clave));
+            return OperacionRealizada;
+        }
+
         #endregion
         #endregion
 

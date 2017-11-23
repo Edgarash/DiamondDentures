@@ -14,6 +14,7 @@ namespace Presentacion.Configuracion
     {
         InterfaceUsuario Interface;
         enum Búsqueda { Total, Clave, Personalizada };
+        RegistroMaterial[] Materiales;
 
         public PantallaAdministrarMateriales()
         {
@@ -30,6 +31,7 @@ namespace Presentacion.Configuracion
 
         private void LlenarData(Búsqueda Tipo)
         {
+            RegistroMaterial[] temp = null;
             int Col = 0, Ren = 0;
             if (dgvMateriales.SelectedCells.Count > 0)
             {
@@ -38,23 +40,47 @@ namespace Presentacion.Configuracion
                 Ren = Cell.RowIndex;
             }
             dgvMateriales.Rows.Clear();
-            RegistroMaterial[] temp = null;
             if (Tipo == Búsqueda.Total)
-                temp = Interface.ObtenerMateriales();
+            {
+                Materiales = Interface.ObtenerMateriales();
+                temp = new List<RegistroMaterial>(Materiales).ToArray();
+            }
             else
             {
-                //if (Tipo == Búsqueda.Clave)
-                //    temp = Interface.BuscarUnMaterial(new RegistroMaterial(Convert.ToInt32(tbClave.Text), "", -1, -1));
-                //else
-                //    if (Tipo == Búsqueda.Personalizada)
-                //    temp = Interface.BuscarUnMaterial(new RegistroMaterial(-1, tbNombre.Text, string.IsNullOrWhiteSpace(tbPrecio.Text) ? -1 : Convert.ToInt32(tbPrecio.Text), -1));
+                if (Tipo == Búsqueda.Clave)
+                {
+                    for (int i = 0; i < Materiales.Length; i++)
+                    {
+                        if (Materiales[i].IDMaterial.ToString() == tbClave.Text)
+                        {
+                            List<RegistroMaterial> t = new List<RegistroMaterial>();
+                            t.Add(Materiales[i]);
+                            temp = t.ToArray();
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    if (Tipo == Búsqueda.Personalizada)
+                    {
+                        List<RegistroMaterial> t = new List<RegistroMaterial>();
+                        for (int i = 0; i < Materiales.Length; i++)
+                        {
+                            if (Materiales[i].Nombre.Contains(tbNombre.Text))
+                            {
+                                t.Add(Materiales[i]);
+                            }
+                        }
+                        temp = t.ToArray();
+                    }
+                }
             }
-                dgvMateriales.RowCount = temp?.Length ?? 0;
+            dgvMateriales.RowCount = temp?.Length ?? 0;
             if (temp != null)
             {
                 for (int i = 0; i < temp.Length; i++)
                 {
-                    //dgvMateriales.Rows[i].DefaultCellStyle.BackColor = temp[i].Activo == 1 ? Color.LightGreen : Color.LightSalmon;
                     dgvMateriales[0, i].Value = temp[i].IDMaterial;
                     dgvMateriales[1, i].Value = temp[i].Nombre;
                     dgvMateriales[2, i].Value = "$" + temp[i].PrecioBase.ToString("N2");
@@ -62,7 +88,7 @@ namespace Presentacion.Configuracion
             }
             if (dgvMateriales.SelectedCells.Count > 0)
             {
-                dgvMateriales.CurrentCell = dgvMateriales[Col > dgvMateriales.ColumnCount ? 0 : Col, Ren > dgvMateriales.RowCount ? 0 : Ren];
+                dgvMateriales.CurrentCell = dgvMateriales[Col >= dgvMateriales.ColumnCount ? 0 : Col, Ren >= dgvMateriales.RowCount ? 0 : Ren];
                 dgvMateriales.Focus();
             }
         }
@@ -120,7 +146,7 @@ namespace Presentacion.Configuracion
             Interface = new InterfaceUsuario(this);
             if (DialogResult.Yes == MessageBox.Show("Realmente desea eliminar el material " + dgvMateriales[1, dgvMateriales.SelectedCells[0].RowIndex].Value + "?", "AVISO", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2))
             {
-                if (Interface.EliminarMaterial(Convert.ToInt32(dgvMateriales[0, dgvMateriales.SelectedCells[0].RowIndex].Value)))
+                if (InterfaceUsuario.EliminarMaterial(Convert.ToInt32(dgvMateriales[0, dgvMateriales.SelectedCells[0].RowIndex].Value)))
                 {
                     MessageBox.Show("Material eliminado con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LlenarData(Búsqueda.Total);

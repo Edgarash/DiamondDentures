@@ -349,45 +349,6 @@ namespace ConexionBaseDeDatos
             return EnviarConfirmacion(nc);
         }
 
-        public bool EliminarMaterial(int clave)
-        {
-            var command = new MySqlCommand("EliminarMaterial", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", clave);
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public RegistroProMat[] ObtenerProMat(int mat, int pro)
-        {
-            RegistroProMat[] temp = null;
-
-            var command = new MySqlCommand("ObtenerProMat", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clvmat", mat);
-            command.Parameters.AddWithValue("@clvpro", pro);
-
-            string p = string.Empty;
-            Open();
-            var str = command.ExecuteReader();
-
-            if (str.HasRows)
-            {
-                List<RegistroProMat> Lista = new List<RegistroProMat>();
-                while (str.Read())
-                {
-                    //Lista.Add(new RegistroProMat(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetString(3), str.GetFloat(4), str.GetInt32(5)));
-                }
-                temp = Lista.ToArray();
-            }
-            Close();
-            return temp;
-        }
-
         public RegistroProducto[] BuscarProducto(RegistroProducto Registro)
         {
             RegistroProducto[] temp = null;
@@ -417,34 +378,6 @@ namespace ConexionBaseDeDatos
             return temp;
         }
 
-        public RegistroMaterial[] BuscarUnMaterial(RegistroMaterial Material)
-        {
-            RegistroMaterial[] temp = null;
-
-            var command = new MySqlCommand("BuscarUnMaterial", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", Material.IDMaterial);
-            command.Parameters.AddWithValue("@nmb", Material.Nombre);
-            command.Parameters.AddWithValue("@price", Material.PrecioBase.ToString());
-
-            string p = string.Empty;
-            Open();
-            var str = command.ExecuteReader();
-
-            if (str.HasRows)
-            {
-                List<RegistroMaterial> Lista = new List<RegistroMaterial>();
-                while (str.Read())
-                {
-                    //Lista.Add(new RegistroMaterial(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetInt32(3)));
-                }
-                temp = Lista.ToArray();
-            }
-            Close();
-            return temp;
-        }
-
         public RegistroProducto ObtenerUnProducto(string Proceso)
         {
             RegistroProducto temp = null;
@@ -462,28 +395,6 @@ namespace ConexionBaseDeDatos
             {
                 str.Read();
                 //temp = new RegistroProducto(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetFloat(3), str.GetInt32(4));
-            }
-            Close();
-            return temp;
-        }
-
-        public RegistroMaterial ObtenerUnMaterial(int clave)
-        {
-            RegistroMaterial temp = null;
-
-            var command = new MySqlCommand("ObtenerUnMaterial", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", clave);
-
-            string p = string.Empty;
-            Open();
-            var str = command.ExecuteReader();
-
-            if (str.HasRows)
-            {
-                str.Read();
-                //temp = new RegistroMaterial(str.GetInt32(0), str.GetString(1), str.GetFloat(2), str.GetInt32(3));
             }
             Close();
             return temp;
@@ -1375,25 +1286,6 @@ WHERE
     
 
     #endregion
-
-    public bool ValidarRespuesta(int NumeroTrabajador, string Respuesta)
-        {
-            var command = new MySqlCommand("ValidarRespuesta", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@num", NumeroTrabajador);
-            command.Parameters.AddWithValue("@resp", Respuesta);
-            Open();
-            var reader = command.ExecuteReader();
-            bool Validado = false;
-            if (reader.HasRows)
-            {
-                reader.Read();
-                if (reader.GetInt32(0) > 0)
-                    Validado = true;
-            }
-            Close();
-            return Validado;
-        }
 
         #endregion
 

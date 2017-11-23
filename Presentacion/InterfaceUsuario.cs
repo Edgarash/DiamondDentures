@@ -270,12 +270,6 @@ namespace Presentacion
             return (Manejador as ManejadorRegistroMaterial).ObtenerUnMaterial(Clave);
         }
 
-        public RegistroMaterial[] BuscarUnMaterial(RegistroMaterial Material)
-        {
-            Manejador = new ManejadorRegistroMaterial();
-            return (Manejador as ManejadorRegistroMaterial).BuscarUnMaterial(Material);
-        }
-
         public void DesplegarPantallaEliminarMaterial(RegistroMaterial materialAEliminar)
         {
             Manejador = new ManejadorConfiguracion();
@@ -318,10 +312,9 @@ namespace Presentacion
             return ((ManejadorUsuario)Manejador).HayAdministradores();
         }
 
-        public bool EliminarMaterial(int Clave)
+        public static bool EliminarMaterial(int Clave)
         {
-            Manejador = new ManejadorRegistroMaterial();
-            return (Manejador as ManejadorRegistroMaterial).EliminarMaterial(Clave);
+            return ManejadorRegistroMaterial.EliminarMaterial(Clave);
         }
 
         public bool ActualizarProMat(RegistroProMat Registro)
@@ -634,12 +627,6 @@ namespace Presentacion
         {
             Manejador = new ManejadorRegistroUsuario();
             return ((ManejadorRegistroUsuario)Manejador).RecuperarPregunta(NumeroEmpleado);
-        }
-
-        public bool ValidarRespuesta(int Trabajador, string Resp)
-        {
-            Manejador = new ManejadorRegistroUsuario();
-            return ((ManejadorRegistroUsuario)Manejador).ValidarRespuesta(Trabajador, Resp);
         }
 
         #endregion

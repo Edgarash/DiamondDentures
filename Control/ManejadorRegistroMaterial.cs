@@ -11,12 +11,6 @@ namespace Control
             return InterfaceMySQL.RegistrarMaterial(Material);
         }
 
-        public RegistroMaterial[] BuscarUnMaterial(RegistroMaterial Material)
-        {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.BuscarUnMaterial(Material);
-        }
-
         public RegistroMaterial[] ObtenerMateriales()
         {
             RegistroMaterial[] temp = null;
@@ -142,15 +136,14 @@ namespace Control
             return Interface.ActivarMaterial(clave);
         }
 
-        public bool EliminarMaterial(int clave)
-        {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.EliminarMaterial(clave);
-        }
-
         public static bool ActualizarMaterial(RegistroMaterial Material)
         {
             return InterfaceMySQL.ActualizarMaterial(Material);
+        }
+
+        public static bool EliminarMaterial(int Clave)
+        {
+            return InterfaceMySQL.EliminarMaterial(Clave);
         }
     }
 }

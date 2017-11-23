@@ -61,7 +61,7 @@ namespace Presentacion.Configuracion
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Interface = new InterfaceUsuario(this);
-            if (Interface.EliminarMaterial(Convert.ToInt32(tbClave.Text)))
+            if (InterfaceUsuario.EliminarMaterial(Convert.ToInt32(tbClave.Text)))
             {
                 MessageBox.Show("Material eliminado con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
