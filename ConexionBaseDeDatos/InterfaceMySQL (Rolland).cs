@@ -407,5 +407,13 @@ namespace ConexionBaseDeDatos
             return Materiales;
         }
 
+        public static bool FinanzasVerMaterialesDeProveedor(DataGridView temp, string id)
+        {
+            EjecutarProcedimientoAlmacenado("FinanzasVerMaterialesDeProveedor", TipoConsulta.DevuelveReader,
+                Parametro("id", id));
+            temp.DataSource = TablaDeResultados;
+            return OperacionRealizada2;
+        }
+
     }
 }

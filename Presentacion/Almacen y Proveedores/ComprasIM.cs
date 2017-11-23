@@ -8,27 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Presentacion.Finanzas
+namespace Presentacion.Almacen_y_Proveedores
 {
-    public partial class FinanzasComprarInsumos : Control.Pantalla
+    public partial class ComprasIM : Control.Pantalla
     {
         InterfaceUsuario Interface;
         List<string> Lista = new List<string>();
         int r = 0, u = 0, a = 0;
         string datos = "", subtotl = "", totl = "", fec = "", subtotal = "";
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        public ComprasIM()
         {
-            this.Close();
+            InitializeComponent();
         }
 
-        private void FinanzasComprarInsumos_Load(object sender, EventArgs e)
+        private void ComprasIM_Load(object sender, EventArgs e)
         {
             Lista = new List<string>();
             ActualizarData();
             ActualizarData2();
-            txID.Text = (Convert.ToInt32(dtIdCompras[0, 0].Value)+1).ToString();
+            txID.Text = (Convert.ToInt32(dtIdCompras[0, 0].Value) + 1).ToString();
         }
+
         private void ActualizarData()
         {
             Interface = new InterfaceUsuario(this);
@@ -40,6 +41,37 @@ namespace Presentacion.Finanzas
             Interface = new InterfaceUsuario(this);
             Interface.DatosComboListaNombProveedor(txProveedor);
         }
+
+        private void txProveedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //ActualizarData3();
+            ActualizarData4();
+            dtInsumos.Select();
+        }
+
+        private void dtInsumos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            r = Convert.ToInt32(dtInsumos.CurrentCell.RowIndex.ToString());
+            txIdInsumos.Text = dtInsumos[0, r].Value.ToString();
+            txNom.Text = dtInsumos[1, r].Value.ToString();
+            txPreUni.Text = dtInsumos[3, r].Value.ToString();
+            txCant.Select();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == 0)
+            {
+                Interface = new InterfaceUsuario(this);
+                Interface.DatosDVerProductosDeProveedor(dtInsumos, txIdPr.Text);
+            }
+            if (comboBox1.SelectedIndex == 1)
+            {
+                Interface = new InterfaceUsuario(this);
+                Interface.DatosDVerMaterialesDeProveedor(dtInsumos, txIdPr.Text);
+            }
+        }
+
         private void ActualizarData3()
         {
             Interface = new InterfaceUsuario(this);
@@ -49,14 +81,13 @@ namespace Presentacion.Finanzas
         {
             Interface = new InterfaceUsuario(this);
             Interface.DatosComboObtenerIDProveedores(txIdPr, txProveedor.Text);
-            Interface.DatosDVerProductosDeProveedor(dtInsumos, txIdPr.Text);
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             bool repetido = false;
             txTotal.Text = "";
-            if (dataGridView1.RowCount>0)
+            if (dataGridView1.RowCount > 0)
             {
                 for (int i = 0; i < dataGridView1.RowCount; i++)
                 {
@@ -102,37 +133,15 @@ namespace Presentacion.Finanzas
             }
         }
 
-        private void txProveedor_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnComprar_Click(object sender, EventArgs e)
         {
-            ActualizarData3();
-            ActualizarData4();
-            dtInsumos.Select();
-        }
-
-        private void dtInsumos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            r = Convert.ToInt32(dtInsumos.CurrentCell.RowIndex.ToString());
-            txIdInsumos.Text = dtInsumos[0, r].Value.ToString();
-            txNom.Text = dtInsumos[1, r].Value.ToString();
-            txPreUni.Text = dtInsumos[3, r].Value.ToString();
-            txCant.Select();
-
-        }
-
-        private void btnComprar_Click_1(object sender, EventArgs e)
-        {
+            DateTime hoy = DateTime.Today;
             totl = (Convert.ToInt32(a) + (Convert.ToInt32(a) * 0.16)).ToString();
-            MessageBox.Show("Compra de Insumos Registrada Correctamete", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DataGridView dtt = new DataGridView();
-            //Interface.DatosDRegistroPagos(dtt, "INSUMOS a de proveedor: " + txIdPr.Text, txDesc.Text, a.ToString(), "1", a.ToString(), totl, "1", "1",txID.Text);
+            //Interface.DatosDRegistroPagos(dtt, txNom.Text, "INSUMOS a de proveedor: " + txDesc.Text, txPreUni.Text, txCant.Text, a.ToString(), totl, "1", "1", hoy.ToShortDateString(), txID.Text);
+            Interface.DatosDRegistroPagos(dtt, "INSUMOS a de proveedor: " + txIdPr.Text, txDesc.Text, a.ToString(), "1", a.ToString(), totl, "1", "1", txID.Text);
             Interface.AgregarCompra("", totl);
-            //datos = "ID: " + txID.Text + "\nNOMBRE: " + txNom.Text + "\nDESCRIPCIÓN: " + txDesc.Text + "\nPRECIO UNITARIO: " + txPreUni.Text + "\nCANTIDAD: " + txCant.Text +
-            //    "\nSUBTOTAL: " + subtotl.ToString() + "\nTOTAL: " + totl.ToString() + "\nESTADO: EN PROCESO" + "\nREGISTRADO: SÍ";
-        }
-
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGridView1.Rows.RemoveAt(u);
+            MessageBox.Show("Compra Registrada Correctamete", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -140,9 +149,9 @@ namespace Presentacion.Finanzas
             u = Convert.ToInt32(dataGridView1.CurrentCell.RowIndex.ToString());
         }
 
-        public FinanzasComprarInsumos()
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            InitializeComponent();
+            dataGridView1.Rows.RemoveAt(u);
         }
     }
 }

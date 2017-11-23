@@ -58,6 +58,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="HistorialMod.cs" />
+    <Compile Include="Insumos.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

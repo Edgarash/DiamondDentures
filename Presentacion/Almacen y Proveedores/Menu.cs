@@ -41,5 +41,11 @@ namespace Presentacion.Almacen_y_Proveedores
             VerProveedores p6 = new VerProveedores();
             p6.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ComprasIM comp = new ComprasIM();
+            comp.Show();
+        }
     }
 }

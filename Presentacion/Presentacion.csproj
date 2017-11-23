@@ -99,6 +99,12 @@
     <Compile Include="Almacen y Proveedores\AgregarProveedor.Designer.cs">
       <DependentUpon>AgregarProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Almacen y Proveedores\ComprasIM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen y Proveedores\ComprasIM.Designer.cs">
+      <DependentUpon>ComprasIM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Almacen y Proveedores\DetalleCompras.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -516,6 +522,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Almacen y Proveedores\AgregarProveedor.resx">
       <DependentUpon>AgregarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen y Proveedores\ComprasIM.resx">
+      <DependentUpon>ComprasIM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Almacen y Proveedores\DetalleCompras.resx">
       <DependentUpon>DetalleCompras.cs</DependentUpon>

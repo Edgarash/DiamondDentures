@@ -178,5 +178,11 @@ namespace Presentacion
             new PantallaVentas().ShowDialog(this);
             Show();
         }
+
+        private void kuroButton2_Click(object sender, EventArgs e)
+        {
+            Almacen_y_Proveedores.Menu abrir = new Almacen_y_Proveedores.Menu();
+            abrir.Show();
+        }
     }
 }

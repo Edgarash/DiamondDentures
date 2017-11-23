@@ -783,10 +783,10 @@ namespace Presentacion
             ((ManejadorPrincipal)Manejador).DatosDAutualizarRegistroGastos(id);
         }
         public void DatosDRegistroPagos(DataGridView temp, string nom, string des, string punit, string cant, string subt,
-            string tot, string est, string reg,string id)
+            string tot, string est, string reg, string id)
         {
             Manejador = new ManejadorPrincipal();
-            ((ManejadorPrincipal)Manejador).DatosDRegistroPagos(temp, nom, des, punit, cant, subt, tot, est, reg,id);
+            ((ManejadorPrincipal)Manejador).DatosDRegistroPagos(temp, nom, des, punit, cant, subt, tot, est, reg, id);
         }
         public void DatosDTotalGastos(TextBox temp)
         {
@@ -848,6 +848,11 @@ namespace Presentacion
         {
             Manejador = new ManejadorPrincipal();
             ((ManejadorPrincipal)Manejador).DatosDVerProductosDeProveedor(emp,temp);
+        }
+        public void DatosDVerMaterialesDeProveedor(DataGridView emp, string temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDVerMaterialesDeProveedor(emp, temp);
         }
         public void DatosAgregarAsistencia(DataGridView temp, string id, string emp, string fec, string hEnt, string hSal)
         {

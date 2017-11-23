@@ -43,11 +43,13 @@
             this.lblLaboratorio = new System.Windows.Forms.Label();
             this.lblSemáforo = new System.Windows.Forms.Label();
             this.kuroButton1 = new ControlesM.KuroButton();
+            this.kuroButton2 = new ControlesM.KuroButton();
             this.Encabezado.SuspendLayout();
             this.SuspendLayout();
             // 
             // Encabezado
             // 
+            this.Encabezado.Controls.Add(this.kuroButton2);
             this.Encabezado.Controls.Add(this.kuroButton1);
             this.Encabezado.Controls.Add(this.lblTituloMenu);
             this.Encabezado.Size = new System.Drawing.Size(626, 93);
@@ -263,6 +265,22 @@
             this.kuroButton1.UseVisualStyleBackColor = false;
             this.kuroButton1.Click += new System.EventHandler(this.kuroButton1_Click);
             // 
+            // kuroButton2
+            // 
+            this.kuroButton2.BackColor = System.Drawing.Color.White;
+            this.kuroButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.kuroButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.kuroButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.kuroButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.kuroButton2.ForeColor = System.Drawing.Color.Black;
+            this.kuroButton2.Location = new System.Drawing.Point(475, 21);
+            this.kuroButton2.Name = "kuroButton2";
+            this.kuroButton2.Size = new System.Drawing.Size(120, 50);
+            this.kuroButton2.TabIndex = 2;
+            this.kuroButton2.Text = "Almacen y Proveedores";
+            this.kuroButton2.UseVisualStyleBackColor = false;
+            this.kuroButton2.Click += new System.EventHandler(this.kuroButton2_Click);
+            // 
             // PantallaMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -321,5 +339,6 @@
         private System.Windows.Forms.Label lblLaboratorio;
         private System.Windows.Forms.Label lblSemáforo;
         private ControlesM.KuroButton kuroButton1;
+        private ControlesM.KuroButton kuroButton2;
     }
 }
