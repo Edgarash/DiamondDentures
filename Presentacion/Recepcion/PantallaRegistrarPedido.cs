@@ -7,12 +7,12 @@ namespace Presentacion.Recepcion
 {
     public partial class PantallaRegistrarPedido : Presentacion.Recepcion.PantallaPedido
     {
-        public PantallaRegistrarPedido(string Usuario)
+        public PantallaRegistrarPedido()
         {
             InitializeComponent();
             InitializeComponent2();
             InitializeComponent3();
-            lblUsuario.Text = Usuario;
+            lblUsuario.Text = PantallaMenuPrincipal.Sesion.Nombre;
         }
 
         protected override void InitializeComponent3()
@@ -27,14 +27,14 @@ namespace Presentacion.Recepcion
             {
                 Interface = new InterfaceUsuario(this);
                 RegistroPedido temp = ObtenerPedido, Encontrado = Interface.ObtenerUnPedido(tbClave.Text);
-                if (Interface.RegistrarPedido(temp) && (Encontrado?.Clave ?? "") != temp.Clave)
+                if (Interface.RegistrarPedido(temp) && (Encontrado?.IDPedido ?? "") != temp.IDPedido)
                 {
                     MessageBox.Show("Pedido registrado con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
                 else
                 {
-                    if ((Encontrado?.Clave ?? "") == temp.Clave)
+                    if ((Encontrado?.IDPedido ?? "") == temp.IDPedido)
                         Validar.MensajeErrorOK("Clave de pedido registrada anteriormente favor de cambiarla");
                     else
                         Validar.MensajeErrorBaseDeDatos();

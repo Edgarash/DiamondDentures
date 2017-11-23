@@ -38,7 +38,7 @@ namespace Presentacion.Control_Pedidos
         }
         private void btnNuevoPedido_Click(object sender, EventArgs e)
         {
-            Recepcion.PantallaRegistrarPedido Prp = new Recepcion.PantallaRegistrarPedido(Usuario);
+            Recepcion.PantallaRegistrarPedido Prp = new Recepcion.PantallaRegistrarPedido();
             Prp.ShowDialog();
         }
         private void button2_Click(object sender, EventArgs e)
@@ -183,7 +183,7 @@ namespace Presentacion.Control_Pedidos
         }
         private void button10_Click(object sender, EventArgs e)
         {
-            Laboratorio.PantallaMenuLaboratorio pml = new Laboratorio.PantallaMenuLaboratorio(Usuario);
+            Laboratorio.PantallaMenuLaboratorio pml = new Laboratorio.PantallaMenuLaboratorio();
             this.Hide();
             pml.ShowDialog();
 

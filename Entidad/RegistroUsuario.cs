@@ -200,11 +200,6 @@ namespace Entidad
         {
             return Password == Contraseña;
         }
-
-        private string ObtenerFecha(DateTime Fecha)
-        {
-            return Fecha.Year + "-" + Fecha.Month + "-" + Fecha.Day;
-        }
         #endregion
     }
 }

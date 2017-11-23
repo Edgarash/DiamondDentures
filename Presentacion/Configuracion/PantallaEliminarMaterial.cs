@@ -15,9 +15,9 @@ namespace Presentacion.Configuracion
         public PantallaEliminarMaterial(RegistroMaterial Material)
         {
             InitializeComponent();
-            tbClave.Text = Material?.Clave.ToString();
+            tbClave.Text = Material?.IDMaterial.ToString();
             tbNombre.Text = Material?.Nombre ?? "";
-            tbPrecio.Text = Material?.Precio.ToString("N2");
+            tbPrecio.Text = Material?.PrecioBase.ToString("N2");
             InitializeComponent3();
             dgvProductos.Enabled = tbClave.Enabled = tbNombre.Enabled = tbPrecio.Enabled = false;
         }
@@ -35,26 +35,26 @@ namespace Presentacion.Configuracion
                 bool Encontrado = false;
                 for (int j = 0; j < temp?.Length && !Encontrado; j++)
                 {
-                    if (Productos[i].Clave == ObtenerProMat[j].ClavePro && Productos[i].Activo == 1)
-                    {
-                        dgvProductos.RowCount += 1;
-                        dgvProductos[0, k].Value = ObtenerProMat[j].ClavePro;
-                        dgvProductos[1, k].Value = ObtenerProMat[j].Activo == 1 ? true : false;
-                        dgvProductos[2, k].Value = ObtenerProMat[j].Producto;
-                        dgvProductos[3, k].Value = ObtenerProMat[j].Precio;
-                        Encontrado = true;
-                        k++;
-                    }
+                    //if (Productos[i].IDProducto == ObtenerProMat[j].ClavePro && Productos[i].Activo == 1)
+                    //{
+                    //    dgvProductos.RowCount += 1;
+                    //    dgvProductos[0, k].Value = ObtenerProMat[j].ClavePro;
+                    //    dgvProductos[1, k].Value = ObtenerProMat[j].Activo == 1 ? true : false;
+                    //    dgvProductos[2, k].Value = ObtenerProMat[j].Producto;
+                    //    dgvProductos[3, k].Value = ObtenerProMat[j].Precio;
+                    //    Encontrado = true;
+                    //    k++;
+                    //}
                 }
-                if (!Encontrado && Productos[i].Activo == 1)
-                {
-                    dgvProductos.RowCount += 1;
-                    dgvProductos[0, k].Value = Productos[i].Clave;
-                    dgvProductos[1, k].Value = false;
-                    dgvProductos[2, k].Value = Productos[i].Nombre;
-                    dgvProductos[3, k].Value = Productos[i].Precio;
-                    k++;
-                }
+                //if (!Encontrado && Productos[i].Activo == 1)
+                //{
+                //    dgvProductos.RowCount += 1;
+                //    dgvProductos[0, k].Value = Productos[i].IDProducto;
+                //    dgvProductos[1, k].Value = false;
+                //    dgvProductos[2, k].Value = Productos[i].Nombre;
+                //    dgvProductos[3, k].Value = Productos[i].PrecioBase;
+                //    k++;
+                //}
             }
         }
 

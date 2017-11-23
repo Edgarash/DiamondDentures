@@ -55,10 +55,11 @@ namespace Presentacion.Configuracion
 
         protected RegistroMaterial ObtenerRegistro
         {
-            get
-            {
-                return new RegistroMaterial(Convert.ToInt32(!string.IsNullOrWhiteSpace(tbClave.Text) ? tbClave.Text : "0"), tbNombre.Text, Convert.ToSingle(tbPrecio.Text), 1);
-            }
+            //get
+            //{
+            //    return new RegistroMaterial(Convert.ToInt32(!string.IsNullOrWhiteSpace(tbClave.Text) ? tbClave.Text : "0"), tbNombre.Text, Convert.ToSingle(tbPrecio.Text), 1);
+            //}
+            get;set;
         }
 
         private void tbClave_KeyPress(object sender, KeyPressEventArgs e)

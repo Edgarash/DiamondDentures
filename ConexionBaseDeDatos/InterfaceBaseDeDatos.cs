@@ -111,31 +111,6 @@ namespace ConexionBaseDeDatos
             return EnviarConfirmacion(nc);
         }
 
-        /// <summary>
-        /// Método encargado de solicitar a la base de datos la confirmación de la existencia de esa contraseña como contraseña de administrador
-        /// </summary>
-        /// <param name="Pass">Contrasñea a ser verificada</param>
-        /// <returns>Confirmación de la contraseña como de un usuario de administrador</returns>
-        public bool ObtenerPermiso(string Pass)
-        {
-            var command = new MySqlCommand("ObtenerPermiso", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@pass", Pass);
-            Open();
-            var reader = command.ExecuteReader();
-            bool Permiso = false;
-            if (reader.HasRows)
-            {
-                reader.Read();
-                if (Pass == (reader["result"].ToString()))
-                {
-                    Permiso = true;
-                }
-            }
-            Close();
-            return Permiso;
-        }
-
         #endregion
 
         #region Módulo Configuración
@@ -145,10 +120,10 @@ namespace ConexionBaseDeDatos
             var command = new MySqlCommand("RegistrarProducto", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@clv", Registro.Clave);
+            command.Parameters.AddWithValue("@clv", Registro.IDProducto);
             command.Parameters.AddWithValue("@nmb", Registro.Nombre);
-            command.Parameters.AddWithValue("@days", Registro.Dias);
-            command.Parameters.AddWithValue("@price", Registro.Precio);
+            command.Parameters.AddWithValue("@days", Registro.TiempoBase);
+            command.Parameters.AddWithValue("@price", Registro.PrecioBase);
             Open();
             var nc = command.ExecuteNonQuery();
             Close();
@@ -160,9 +135,9 @@ namespace ConexionBaseDeDatos
             var command = new MySqlCommand("RegistrarMaterial", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@clv", Material.Clave);
+            command.Parameters.AddWithValue("@clv", Material.IDMaterial);
             command.Parameters.AddWithValue("@nmb", Material.Nombre);
-            command.Parameters.AddWithValue("@price", Material.Precio);
+            command.Parameters.AddWithValue("@price", Material.PrecioBase);
             Open();
             var nc = command.ExecuteNonQuery();
             Close();
@@ -174,33 +149,33 @@ namespace ConexionBaseDeDatos
             var command = new MySqlCommand("RegistrarPedido", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@clv", Pedido.Clave);
-            command.Parameters.AddWithValue("@user", Pedido.Usuario);
-            command.Parameters.AddWithValue("@dat", Convert.ToDateTime(Pedido.Fecha));
+            command.Parameters.AddWithValue("@clv", Pedido.IDPedido);
+            command.Parameters.AddWithValue("@user", Pedido.IDEmpleado);
+            command.Parameters.AddWithValue("@dat", Convert.ToDateTime(Pedido.FechaIngreso));
             command.Parameters.AddWithValue("@ced", Pedido.Cedula);
-            command.Parameters.AddWithValue("@rf", Pedido.RFC);
-            command.Parameters.AddWithValue("@nmb", Pedido.NombreDentista);
-            command.Parameters.AddWithValue("@ape", Pedido.ApellidosDentista);
-            command.Parameters.AddWithValue("@tel", Pedido.Telefono);
-            command.Parameters.AddWithValue("@pa", Pedido.Pais);
-            command.Parameters.AddWithValue("@es", Pedido.Estado);
-            command.Parameters.AddWithValue("@mu", Pedido.Municipio);
-            command.Parameters.AddWithValue("@ciu", Pedido.Ciudad);
-            command.Parameters.AddWithValue("@col", Pedido.Colonia);
-            command.Parameters.AddWithValue("@cal", Pedido.Calle);
-            command.Parameters.AddWithValue("@num", Pedido.NumeroFrente);
-            command.Parameters.AddWithValue("@codp", Pedido.CP);
-            command.Parameters.AddWithValue("@ema", Pedido.Email);
-            command.Parameters.AddWithValue("@fechaent", Convert.ToDateTime(Pedido.FechaEntrega));
-            command.Parameters.AddWithValue("@esta", Pedido.Estatus);
-            command.Parameters.AddWithValue("@asig", Pedido.Asignado);
-            command.Parameters.AddWithValue("@urg", Pedido.Urgente);
+            command.Parameters.AddWithValue("@rf", Pedido.Dentista.RFC);
+            command.Parameters.AddWithValue("@nmb", Pedido.Dentista.Nombre);
+            command.Parameters.AddWithValue("@ape", Pedido.Dentista.Apellidos);
+            command.Parameters.AddWithValue("@tel", Pedido.Dentista.TelOficina);
+            command.Parameters.AddWithValue("@pa", Pedido.Dentista.Pais);
+            //command.Parameters.AddWithValue("@es", Pedido.Estado);
+            //command.Parameters.AddWithValue("@mu", Pedido.Municipio);
+            //command.Parameters.AddWithValue("@ciu", Pedido.Ciudad);
+            //command.Parameters.AddWithValue("@col", Pedido.Colonia);
+            //command.Parameters.AddWithValue("@cal", Pedido.Calle);
+            //command.Parameters.AddWithValue("@num", Pedido.NumeroFrente);
+            //command.Parameters.AddWithValue("@codp", Pedido.CP);
+            //command.Parameters.AddWithValue("@ema", Pedido.Email);
+            command.Parameters.AddWithValue("@fechaent", Convert.ToDateTime(Pedido.FechaCalculada));
+            command.Parameters.AddWithValue("@esta", Pedido.EstadoPedido);
+            command.Parameters.AddWithValue("@asig", Pedido.Laboratorista);
+            //command.Parameters.AddWithValue("@urg", Pedido.Urgente);
             Open();
             var nc = command.ExecuteNonQuery();
             if (EnviarConfirmacion(nc))
             {
-                for (int i = 0; i < Pedido.Trabajos.Length; i++)
-                    RegistrarTrabajos(Pedido.Clave, Pedido.Trabajos[i]);
+                //for (int i = 0; i < Pedido.Trabajos.Length; i++)
+                //    RegistrarTrabajos(Pedido.IDPedido, Pedido.Trabajos[i]);
             }
             Close();
             return EnviarConfirmacion(nc);
@@ -261,33 +236,32 @@ namespace ConexionBaseDeDatos
             var command = new MySqlCommand("ActualizarPedido", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@clv", Pedido.Clave);
-            command.Parameters.AddWithValue("@user", Pedido.Usuario);
-            command.Parameters.AddWithValue("@dat", Convert.ToDateTime(Pedido.Fecha));
+            command.Parameters.AddWithValue("@clv", Pedido.IDPedido);
+            command.Parameters.AddWithValue("@user", Pedido.IDEmpleado);
+            command.Parameters.AddWithValue("@dat", Convert.ToDateTime(Pedido.FechaIngreso));
             command.Parameters.AddWithValue("@ced", Pedido.Cedula);
-            command.Parameters.AddWithValue("@rf", Pedido.RFC);
-            command.Parameters.AddWithValue("@nmb", Pedido.NombreDentista);
-            command.Parameters.AddWithValue("@ape", Pedido.ApellidosDentista);
-            command.Parameters.AddWithValue("@tel", Pedido.Telefono);
-            command.Parameters.AddWithValue("@pa", Pedido.Pais);
-            command.Parameters.AddWithValue("@es", Pedido.Estado);
-            command.Parameters.AddWithValue("@mu", Pedido.Municipio);
-            command.Parameters.AddWithValue("@ciu", Pedido.Ciudad);
-            command.Parameters.AddWithValue("@col", Pedido.Colonia);
-            command.Parameters.AddWithValue("@cal", Pedido.Calle);
-            command.Parameters.AddWithValue("@num", Pedido.NumeroFrente);
-            command.Parameters.AddWithValue("@codp", Pedido.CP);
-            command.Parameters.AddWithValue("@ema", Pedido.Email);
-            command.Parameters.AddWithValue("@fechaent", Convert.ToDateTime(Pedido.FechaEntrega));
-            command.Parameters.AddWithValue("@esta", Pedido.Estatus);
-            command.Parameters.AddWithValue("@asig", Pedido.Asignado);
-            command.Parameters.AddWithValue("@urg", Pedido.Urgente);
+            command.Parameters.AddWithValue("@rf", Pedido.Dentista.RFC);
+            command.Parameters.AddWithValue("@nmb",Pedido.Dentista.Nombre);
+            command.Parameters.AddWithValue("@ape",Pedido.Dentista.Apellidos);
+            command.Parameters.AddWithValue("@tel", Pedido.Dentista.TelOficina);
+            command.Parameters.AddWithValue("@pa", Pedido.Dentista.Pais);
+            command.Parameters.AddWithValue("@es", Pedido.Dentista.Estado);
+            command.Parameters.AddWithValue("@mu", Pedido.Dentista.Municipio);
+            command.Parameters.AddWithValue("@ciu", Pedido.Dentista.Ciudad);
+            command.Parameters.AddWithValue("@col", Pedido.Dentista.Colonia);
+            command.Parameters.AddWithValue("@cal", Pedido.Dentista.Direccion);
+            command.Parameters.AddWithValue("@codp", Pedido.Dentista.CodPos);
+            command.Parameters.AddWithValue("@ema", Pedido.Dentista.Email);
+            command.Parameters.AddWithValue("@fechaent", Convert.ToDateTime(Pedido.FechaCalculada));
+            command.Parameters.AddWithValue("@esta", Pedido.EstadoPedido);
+            command.Parameters.AddWithValue("@asig", Pedido.Laboratorista);
+            command.Parameters.AddWithValue("@urg", Pedido.Urgencia);
             Open();
             var nc = command.ExecuteNonQuery();
             if (EnviarConfirmacion(nc))
             {
-                for (int i = 0; i < Pedido.Trabajos.Length; i++)
-                    RegistrarTrabajos(Pedido.Clave, Pedido.Trabajos[i]);
+                for (int i = 0; i < Pedido.Productos.Length; i++)
+                    RegistrarTrabajos(Pedido.IDPedido, Pedido.Productos[i]);
             }
             Close();
             return EnviarConfirmacion(nc);
@@ -296,17 +270,17 @@ namespace ConexionBaseDeDatos
         public bool RegistrarTrabajos(string Clave, RegistroTrabajo Trabajo)
         {
             var command = new MySqlCommand("RegistrarTrabajo", conexion);
-            command.CommandType = CommandType.StoredProcedure;
+            //command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@clv", Clave);
-            command.Parameters.AddWithValue("@pro", Trabajo.Producto);
-            command.Parameters.AddWithValue("@pre", Trabajo.PrecioProducto);
-            command.Parameters.AddWithValue("@mat1", Trabajo.Material1);
-            command.Parameters.AddWithValue("@pre1", Trabajo.PrecioMaterial1);
-            command.Parameters.AddWithValue("@mat2", Trabajo.Material2);
-            command.Parameters.AddWithValue("@pre2", Trabajo.PrecioMaterial2);
-            command.Parameters.AddWithValue("@fec", Convert.ToDateTime(Trabajo.Fecha));
-            Open();
+            //command.Parameters.AddWithValue("@clv", Clave);
+            //command.Parameters.AddWithValue("@pro", Trabajo.IDProducto);
+            //command.Parameters.AddWithValue("@pre", Trabajo.PrecioProducto);
+            //command.Parameters.AddWithValue("@mat1", Trabajo.IDMaterial1);
+            //command.Parameters.AddWithValue("@pre1", Trabajo.PrecioMaterial1);
+            //command.Parameters.AddWithValue("@mat2", Trabajo.IDMaterial2);
+            //command.Parameters.AddWithValue("@pre2", Trabajo.PrecioMaterial2);
+            //command.Parameters.AddWithValue("@fec", Convert.ToDateTime(Trabajo.Fecha));
+            //Open();
             var nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
@@ -356,10 +330,10 @@ namespace ConexionBaseDeDatos
             var command = new MySqlCommand("ActualizarProducto", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@clv", producto.Clave);
+            command.Parameters.AddWithValue("@clv", producto.IDProducto);
             command.Parameters.AddWithValue("@nmb", producto.Nombre);
-            command.Parameters.AddWithValue("@days", producto.Dias);
-            command.Parameters.AddWithValue("@price", producto.Precio);
+            command.Parameters.AddWithValue("@days", producto.TiempoBase);
+            command.Parameters.AddWithValue("@price", producto.PrecioBase);
 
             Open();
             var nc = command.ExecuteNonQuery();
@@ -372,9 +346,9 @@ namespace ConexionBaseDeDatos
             var command = new MySqlCommand("ActualizarMaterial", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@clv", material.Clave);
+            command.Parameters.AddWithValue("@clv", material.IDMaterial);
             command.Parameters.AddWithValue("@nmb", material.Nombre);
-            command.Parameters.AddWithValue("@price", material.Precio);
+            command.Parameters.AddWithValue("@price", material.PrecioBase);
 
             Open();
             var nc = command.ExecuteNonQuery();
@@ -406,30 +380,6 @@ namespace ConexionBaseDeDatos
             return EnviarConfirmacion(nc);
         }
 
-        public RegistroProducto[] ObtenerProductos()
-        {
-            RegistroProducto[] temp = null;
-
-            var command = new MySqlCommand("ObtenerProductos", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            string p = string.Empty;
-            Open();
-            var str = command.ExecuteReader();
-
-            if (str.HasRows)
-            {
-                List<RegistroProducto> Lista = new List<RegistroProducto>();
-                while (str.Read())
-                {
-                    Lista.Add(new RegistroProducto(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetFloat(3), str.GetInt32(4)));
-                }
-                temp = Lista.ToArray();
-            }
-            Close();
-            return temp;
-        }
-
         public RegistroMaterial[] ObtenerMateriales()
         {
             RegistroMaterial[] temp = null;
@@ -446,7 +396,7 @@ namespace ConexionBaseDeDatos
                 List<RegistroMaterial> Lista = new List<RegistroMaterial>();
                 while (str.Read())
                 {
-                    Lista.Add(new RegistroMaterial(str.GetInt32(0), str.GetString(1), str.GetFloat(2), str.GetInt32(3)));
+                    //Lista.Add(new RegistroMaterial(str.GetInt32(0), str.GetString(1), str.GetFloat(2), str.GetInt32(3)));
                 }
                 temp = Lista.ToArray();
             }
@@ -488,10 +438,10 @@ namespace ConexionBaseDeDatos
             var command = new MySqlCommand("BuscarUnProducto", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@clv", Registro.Clave);
+            command.Parameters.AddWithValue("@clv", Registro.IDProducto);
             command.Parameters.AddWithValue("@nmb", Registro.Nombre);
-            command.Parameters.AddWithValue("@days", Registro.Dias);
-            command.Parameters.AddWithValue("@price", Registro.Precio.ToString());
+            command.Parameters.AddWithValue("@days", Registro.TiempoBase);
+            command.Parameters.AddWithValue("@price", Registro.PrecioBase.ToString());
 
             string p = string.Empty;
             Open();
@@ -502,7 +452,7 @@ namespace ConexionBaseDeDatos
                 List<RegistroProducto> Lista = new List<RegistroProducto>();
                 while (str.Read())
                 {
-                    Lista.Add(new RegistroProducto(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetFloat(3), str.GetInt32(4)));
+                    //Lista.Add(new RegistroProducto(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetFloat(3), str.GetInt32(4)));
                 }
                 temp = Lista.ToArray();
             }
@@ -517,9 +467,9 @@ namespace ConexionBaseDeDatos
             var command = new MySqlCommand("BuscarUnMaterial", conexion);
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@clv", Material.Clave);
+            command.Parameters.AddWithValue("@clv", Material.IDMaterial);
             command.Parameters.AddWithValue("@nmb", Material.Nombre);
-            command.Parameters.AddWithValue("@price", Material.Precio.ToString());
+            command.Parameters.AddWithValue("@price", Material.PrecioBase.ToString());
 
             string p = string.Empty;
             Open();
@@ -530,61 +480,9 @@ namespace ConexionBaseDeDatos
                 List<RegistroMaterial> Lista = new List<RegistroMaterial>();
                 while (str.Read())
                 {
-                    Lista.Add(new RegistroMaterial(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetInt32(3)));
+                    //Lista.Add(new RegistroMaterial(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetInt32(3)));
                 }
                 temp = Lista.ToArray();
-            }
-            Close();
-            return temp;
-        }
-
-        public RegistroPedido ObtenerUnPedido(string clavePedido)
-        {
-            var command = new MySqlCommand("ObtenerUnPedido", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", clavePedido);
-
-            string p = string.Empty;
-            Open();
-            var str = command.ExecuteReader();
-
-            RegistroPedido temp = null;
-            if (str.HasRows)
-            {
-                while (str.Read())
-                {
-                    temp = new RegistroPedido(str.GetString(0), str.GetString(1), str.GetString(2), str.GetString(3), str.GetString(4), str.GetString(5),
-                        str.GetString(6), str.GetString(7), str.GetString(8), str.GetString(9), str.GetString(10), str.GetString(11), str.GetString(12),
-                        str.GetString(13), str.GetString(14), str.GetString(15), str.GetString(16), str.GetString(17), str.GetInt32(20), str.GetString(19));
-                    temp.Estatus = str.GetInt32(18);
-                }
-            }
-            Close();
-            temp?.setTrabajos(ObtenerTrabajos(temp.Clave));
-            return temp;
-        }
-
-        public RegistroDentista ObtenerUnDentista(string Cedula)
-        {
-            var command = new MySqlCommand("ObtenerUnDentista", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", Cedula);
-
-            string p = string.Empty;
-            Open();
-            var str = command.ExecuteReader();
-
-            RegistroDentista temp = null;
-            if (str.HasRows)
-            {
-                while (str.Read())
-                {
-                    temp = new RegistroDentista(str.GetString(0), str.GetString(1), str.GetString(2), str.GetString(3), str.GetString(4), str.GetString(5),
-                        str.GetString(6), str.GetString(7), str.GetString(8), str.GetString(9), str.GetString(10), str.GetString(11), str.GetString(12),
-                        str.GetString(13));
-                }
             }
             Close();
             return temp;
@@ -606,7 +504,7 @@ namespace ConexionBaseDeDatos
             {
                 while (str.Read())
                 {
-                    temp.Add(new RegistroTrabajo(str.GetString(1), str.GetFloat(2), str.GetString(3), str.GetFloat(4), str.GetString(5), str.GetFloat(6), Convert.ToDateTime(str.GetString(7)).ToShortDateString()));
+                    //temp.Add(new RegistroTrabajo(str.GetString(1), str.GetFloat(2), str.GetString(3), str.GetFloat(4), str.GetString(5), str.GetFloat(6), Convert.ToDateTime(str.GetString(7)).ToShortDateString()));
                 }
             }
             Close();
@@ -629,7 +527,7 @@ namespace ConexionBaseDeDatos
             if (str.HasRows)
             {
                 str.Read();
-                temp = new RegistroProducto(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetFloat(3), str.GetInt32(4));
+                //temp = new RegistroProducto(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetFloat(3), str.GetInt32(4));
             }
             Close();
             return temp;
@@ -651,7 +549,7 @@ namespace ConexionBaseDeDatos
             if (str.HasRows)
             {
                 str.Read();
-                temp = new RegistroMaterial(str.GetInt32(0), str.GetString(1), str.GetFloat(2), str.GetInt32(3));
+                //temp = new RegistroMaterial(str.GetInt32(0), str.GetString(1), str.GetFloat(2), str.GetInt32(3));
             }
             Close();
             return temp;

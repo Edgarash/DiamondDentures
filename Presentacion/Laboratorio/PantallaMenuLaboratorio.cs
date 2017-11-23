@@ -13,12 +13,10 @@ namespace Presentacion.Laboratorio
     public partial class PantallaMenuLaboratorio : Control.Pantalla
     {
         InterfaceUsuario Interface { get; set; }
-        string Usuario { get; set; }
 
-        public PantallaMenuLaboratorio(string user)
+        public PantallaMenuLaboratorio()
         {
             InitializeComponent();
-            Usuario = user;
         }
         protected override void btnMouseLeft(object sender, EventArgs e)
         {
@@ -33,14 +31,14 @@ namespace Presentacion.Laboratorio
         private void btnRegresar_Click(object sender, EventArgs e)
         {
             this.Close();
-            Control_Pedidos.PantallaMenuControlPedidos pmp = new Control_Pedidos.PantallaMenuControlPedidos(Usuario);
+            Control_Pedidos.PantallaMenuControlPedidos pmp = new Control_Pedidos.PantallaMenuControlPedidos(PantallaMenuPrincipal.Sesion.Login);
             pmp.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            PantallaPedidoFabricar ppf = new PantallaPedidoFabricar(Usuario);
+            PantallaPedidoFabricar ppf = new PantallaPedidoFabricar(PantallaMenuPrincipal.Sesion.Login);
             ppf.ShowDialog();
         }
 

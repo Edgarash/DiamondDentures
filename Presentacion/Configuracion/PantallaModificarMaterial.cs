@@ -15,9 +15,9 @@ namespace Presentacion.Configuracion
         public PantallaModificarMaterial(RegistroMaterial Material)
         {
             tbClave.Enabled = false;
-            tbClave.Text = Material?.Clave.ToString();
+            tbClave.Text = Material?.IDMaterial.ToString();
             tbNombre.Text = Material?.Nombre ?? "";
-            tbPrecio.Text = Material?.Precio.ToString();
+            tbPrecio.Text = Material?.PrecioBase.ToString();
             InitializeComponent();
             InitializeComponent2();
             InitializeComponent3();
@@ -36,26 +36,26 @@ namespace Presentacion.Configuracion
                 bool Encontrado = false;
                 for (int j = 0; j < temp?.Length && !Encontrado; j++)
                 {
-                    if (Productos[i].Clave == ObtenerProMat[j].ClavePro && Productos[i].Activo == 1)
-                    {
-                        dgvProductos.RowCount += 1;
-                        dgvProductos[0, k].Value = ObtenerProMat[j].ClavePro;
-                        dgvProductos[1, k].Value = ObtenerProMat[j].Activo == 1 ? true : false;
-                        dgvProductos[2, k].Value = ObtenerProMat[j].Producto;
-                        dgvProductos[3, k].Value = ObtenerProMat[j].Precio;
-                        Encontrado = true;
-                        k++;
-                    }
+                    //if (Productos[i].IDProducto == ObtenerProMat[j].ClavePro && Productos[i].Activo == 1)
+                    //{
+                    //    dgvProductos.RowCount += 1;
+                    //    dgvProductos[0, k].Value = ObtenerProMat[j].ClavePro;
+                    //    dgvProductos[1, k].Value = ObtenerProMat[j].Activo == 1 ? true : false;
+                    //    dgvProductos[2, k].Value = ObtenerProMat[j].Producto;
+                    //    dgvProductos[3, k].Value = ObtenerProMat[j].Precio;
+                    //    Encontrado = true;
+                    //    k++;
+                    //}
                 }
-                if (!Encontrado && Productos[i].Activo == 1)
-                {
-                    dgvProductos.RowCount += 1;
-                    dgvProductos[0, k].Value = Productos[i].Clave;
-                    dgvProductos[1, k].Value = false;
-                    dgvProductos[2, k].Value = Productos[i].Nombre;
-                    dgvProductos[3, k].Value = Productos[i].Precio;
-                    k++;
-                }
+                //if (!Encontrado && Productos[i].Activo == 1)
+                //{
+                //    dgvProductos.RowCount += 1;
+                //    dgvProductos[0, k].Value = Productos[i].IDProducto;
+                //    dgvProductos[1, k].Value = false;
+                //    dgvProductos[2, k].Value = Productos[i].Nombre;
+                //    dgvProductos[3, k].Value = Productos[i].PrecioBase;
+                //    k++;
+                //}
             }
         }
 
@@ -65,28 +65,28 @@ namespace Presentacion.Configuracion
             {
                 Interface = new InterfaceUsuario(this);
                 RegistroMaterial Modificar = ObtenerRegistro;
-                Modificar.Clave = Convert.ToInt32(tbClave.Text);
+                Modificar.IDMaterial = Convert.ToInt32(tbClave.Text);
                 if (Interface.ActualizarMaterial(Modificar))
                 {
-                    RegistroMaterial[] temp = Interface.BuscarUnMaterial(new RegistroMaterial(-1, tbNombre.Text, -1, -1));
-                    bool Repetido = false;
-                    for (int i = 0; i < temp.Length && !Repetido; i++)
-                        if (temp[i].Clave != Modificar.Clave && tbNombre.Text.ToUpper() == temp[i].Nombre.ToUpper())
-                            Repetido = true;
-                    if (!Repetido)
-                    {
-                        string Mensaje = "";
-                        if (!ActualizarProMat(out Mensaje))
-                            MessageBox.Show("Material actualizado con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        else
-                            Validar.MensajeErrorBaseDeDatos();
-                        LlamarEventoCerrar();
-                        Close();
-                    }
-                    else
-                    {
-                        Validar.MensajeErrorOK("El nombre de " + tbNombre.Text + " ya se encuentra registrado en la base de datos como otro material");
-                    }
+                    //RegistroMaterial[] temp = Interface.BuscarUnMaterial(new RegistroMaterial(-1, tbNombre.Text, -1, -1));
+                    //bool Repetido = false;
+                    //for (int i = 0; i < temp.Length && !Repetido; i++)
+                    //    if (temp[i].IDMaterial != Modificar.IDMaterial && tbNombre.Text.ToUpper() == temp[i].Nombre.ToUpper())
+                    //        Repetido = true;
+                    //if (!Repetido)
+                    //{
+                    //    string Mensaje = "";
+                    //    if (!ActualizarProMat(out Mensaje))
+                    //        MessageBox.Show("Material actualizado con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //    else
+                    //        Validar.MensajeErrorBaseDeDatos();
+                    //    LlamarEventoCerrar();
+                    //    Close();
+                    //}
+                    //else
+                    //{
+                    //    Validar.MensajeErrorOK("El nombre de " + tbNombre.Text + " ya se encuentra registrado en la base de datos como otro material");
+                    //}
                 }
             }
         }

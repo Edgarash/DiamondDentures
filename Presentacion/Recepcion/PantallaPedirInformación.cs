@@ -1,5 +1,9 @@
-﻿using Entidad;
+﻿using Control;
+using ControlesM;
+using Entidad;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Presentacion.Ventas;
+using Presentacion.Ventas.Entregas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +15,7 @@ using Validaciones;
 
 namespace Presentacion.Recepcion
 {
+    public enum BotonOpcional { NoPagados, NoEntregados }
     public partial class PantallaPedirInformación : Control.Pantalla
     {
         Validar Validacion;
@@ -53,9 +58,22 @@ namespace Presentacion.Recepcion
             ShowDialog();
             Cancelado = Cerrado;
             RegistroProducto[] temp = null;
-            if (!Cerrado)
-                temp = Interface.BuscarUnProducto(new RegistroProducto(Convert.ToInt32(tbNumEmpleado.Text== "" ? "-2" : tbNumEmpleado.Text), "", -1, -1, 1));
+            //if (!Cerrado)
+            //    temp = Interface.BuscarUnProducto(new RegistroProducto(Convert.ToInt32(tbNumEmpleado.Text== "" ? "-2" : tbNumEmpleado.Text), "", -1, -1, 1));
             return temp?[0] ?? null;
+        }
+
+        public static RegistroPedido PedirUnPedido(out bool Cancelado)
+        {
+            PantallaPedirInformación x = new PantallaPedirInformación();
+            return x.PedirPedido(out Cancelado);
+        }
+
+        public static RegistroPedido PedirUnPedidoBotonVerPedidos(out bool Cancelado, BotonOpcional Tipo)
+        {
+            PantallaPedirInformación x = new PantallaPedirInformación();
+            x.AgregarBoton(Tipo);
+            return x.PedirPedido(out Cancelado);
         }
 
         public RegistroMaterial PedirMaterial(out bool Cancelado)
@@ -91,9 +109,9 @@ namespace Presentacion.Recepcion
             };
             ShowDialog();
             Cancelado = Cerrado;
-            RegistroMaterial [] temp = null;
-            if (!Cerrado)
-                temp = Interface.BuscarUnMaterial(new RegistroMaterial(Convert.ToInt32(tbNumEmpleado.Text == "" ? "-2" : tbNumEmpleado.Text), "", -1, -1));
+            RegistroMaterial[] temp = null;
+            //if (!Cerrado)
+            //    temp = Interface.BuscarUnMaterial(new RegistroMaterial(Convert.ToInt32(tbNumEmpleado.Text == "" ? "-2" : tbNumEmpleado.Text), "", -1, -1));
             return temp?[0] ?? null;
         }
 
@@ -159,6 +177,37 @@ namespace Presentacion.Recepcion
             if (!Cerrado)
                 temp = Interface.ObtenerUnDentista(tbNumEmpleado.Text);
             return temp;
+        }
+
+        private void AgregarBoton(BotonOpcional Tipo)
+        {
+            KuroButton temp = new KuroButton();
+            temp.Text = "Ver Pedidos";
+            switch (Tipo)
+            {
+                case BotonOpcional.NoPagados:
+                    temp.Click += delegate (object sender, EventArgs e)
+                     {
+                         MostrarPantalla(new PantallaPedidosNoPagados());
+                     };
+                    break;
+                case BotonOpcional.NoEntregados:
+                    temp.Click += delegate (object sender, EventArgs e)
+                      {
+                          MostrarPantalla(new PantallaPedidosNoEntregados());
+                      };
+                    break;
+            }
+            Encabezado.Controls.Add(temp);
+            temp.Size = new Size(120, 50);
+            temp.Location = new Point(371, 23);
+        }
+
+        private void MostrarPantalla(Form Pantalla)
+        {
+            Hide();
+            Pantalla.ShowDialog();
+            Close();
         }
     }
 }

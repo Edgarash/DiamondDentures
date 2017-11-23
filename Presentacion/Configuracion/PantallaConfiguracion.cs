@@ -8,14 +8,12 @@ namespace Presentacion.Configuracion
 {
     public partial class PantallaConfiguracion : Control.Pantalla
     {
-        string Usuario;
         InterfaceUsuario Interface;
 
-        public PantallaConfiguracion(string User)
+        public PantallaConfiguracion()
         {
             InitializeComponent();
             InitializeComponent2();
-            Usuario = User;
         }
 
         private void btnAgregarProducto_Click(object sender, EventArgs e)

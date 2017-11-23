@@ -1,6 +1,9 @@
 ﻿using Control;
 using ControlesPersonalizados;
+using System;
 using System.Windows.Forms;
+using Entidad;
+using Control.Ventas;
 
 namespace Presentacion.Usuario
 {
@@ -8,6 +11,7 @@ namespace Presentacion.Usuario
     {
         private Label lblInfo;
         private Label lblPermiso;
+        bool Cancelado { get; set; }
         protected Password tbPassword;
         Manejador Manejador;
         bool Mensaje = false;
@@ -15,6 +19,7 @@ namespace Presentacion.Usuario
         {
             InitializeComponent();
             tbPassword.Enfocar += new Password.InFocus(EnterContraseña);
+            Cancelado = false;
         }
 
         private void EnterContraseña(object sender, KeyPressEventArgs e)
@@ -23,6 +28,14 @@ namespace Presentacion.Usuario
             {
                 this.Close();
                 Mensaje = true;
+            }
+            else
+            {
+                if (e.KeyChar == Convert.ToChar(Keys.Escape))
+                {
+                    Close();
+                    Cancelado = true;
+                }
             }
         }
 
@@ -87,7 +100,30 @@ namespace Presentacion.Usuario
 
         }
 
-        public bool PermisoAdmin()
+        public static RegistroUsuario Supervisor(out bool cancelado)
+        {
+            PantallaPermisoAdministrador temp = new PantallaPermisoAdministrador();
+            RegistroUsuario Autorizo = null;
+            bool Obtenido = false;
+            temp.ShowDialog();
+            temp.Manejador = new ManejadorPermisoAdministrador();
+            if (temp.Mensaje)
+            {
+                Autorizo = ManejadorVentas.VerificoSupervisor(temp.tbPassword.Text);
+                if (Autorizo != null)
+                {
+                    Obtenido = true;
+                }
+                else
+                {
+                    MessageBox.Show("Contraseña Incorrecta", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
+            }
+            cancelado = temp.Cancelado;
+            return Autorizo;
+        }
+
+        public bool PermisoAdmin(out bool Cancelado)
         {
             bool Obtenido = false;
             ShowDialog();
@@ -103,9 +139,14 @@ namespace Presentacion.Usuario
                     MessageBox.Show("No tiene los suficientes permisos", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
             }
+            Cancelado = this.Cancelado;
             return Obtenido;
         }
 
-
+        public static bool PedirPermisoAdministrador(out bool Cancelado)
+        {
+            PantallaPermisoAdministrador x = new PantallaPermisoAdministrador();
+            return x.PermisoAdmin(out Cancelado);
+        }
     }
 }

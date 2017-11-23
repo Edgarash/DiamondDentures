@@ -40,7 +40,8 @@ namespace Presentacion.Configuracion
 
         protected RegistroProducto ObtenerRegistro
         {
-            get { return new RegistroProducto(0, tbNombre.Text, (int)nudDias.Value, Convert.ToSingle(tbPrecio.Text), 1); }
+            //get { return new RegistroProducto(0, tbNombre.Text, (int)nudDias.Value, Convert.ToSingle(tbPrecio.Text), 1); }
+            get;set;
         }
 
         private void tbPrecio_KeyPress(object sender, KeyPressEventArgs e)

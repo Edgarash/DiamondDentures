@@ -4,6 +4,7 @@ using Presentacion.Recepcion;
 using System;
 using System.Windows.Forms;
 using Presentacion.Reportes;
+using Presentacion.Ventas.CorteCaja;
 
 namespace Presentacion
 {
@@ -15,11 +16,13 @@ namespace Presentacion
         [STAThread]
         static void Main(string[] Args)
         {
-            ConexionBaseDeDatos.InterfaceMySQL.ActualizarBaseDeDatos();
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new PantallaMenuPrincipal(Admin, new PantallaLogin()));
-            Application.Run(new PantallaLogin());
+            ConexionBaseDeDatos.InterfaceMySQL.Nube = false;
+            if (ConexionBaseDeDatos.InterfaceMySQL.ActualizarBaseDeDatos())
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new PantallaLogin());
+            }
         }
     }
 }

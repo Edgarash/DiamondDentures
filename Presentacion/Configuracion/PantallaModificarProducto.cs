@@ -15,10 +15,10 @@ namespace Presentacion.Configuracion
         public PantallaModificarProducto(RegistroProducto Registro)
         {
             InitializeComponent();
-            tbClave.Text = Registro?.Clave.ToString() ?? "";
-            tbPrecio.Text = Registro?.Precio.ToString() ?? "";
+            tbClave.Text = Registro?.IDProducto.ToString() ?? "";
+            tbPrecio.Text = Registro?.PrecioBase.ToString() ?? "";
             tbNombre.Text = Registro?.Nombre ?? "";
-            nudDias.Value = Registro?.Dias ?? 1;
+            nudDias.Value = Registro?.TiempoBase ?? 1;
             InitializeComponent2();
             InitializeComponent3();
         }
@@ -36,26 +36,26 @@ namespace Presentacion.Configuracion
                 bool Encontrado = false;
                 for (int j = 0; j < temp?.Length && !Encontrado; j++)
                 {
-                    if (Materiales[i].Clave == ObtenerProMat[j].ClaveMat && Materiales[i].Activo == 1)
-                    {
-                        dgvMateriales.RowCount += 1;
-                        dgvMateriales[0, k].Value = ObtenerProMat[j].ClaveMat;
-                        dgvMateriales[1, k].Value = ObtenerProMat[j].Activo == 1 ? true : false;
-                        dgvMateriales[2, k].Value = ObtenerProMat[j].Material;
-                        dgvMateriales[3, k].Value = ObtenerProMat[j].Precio;
-                        Encontrado = true;
-                        k++;
-                    }
+                    //if (Materiales[i].IDMaterial == ObtenerProMat[j].ClaveMat && Materiales[i].Activo == 1)
+                    //{
+                    //    dgvMateriales.RowCount += 1;
+                    //    dgvMateriales[0, k].Value = ObtenerProMat[j].ClaveMat;
+                    //    dgvMateriales[1, k].Value = ObtenerProMat[j].Activo == 1 ? true : false;
+                    //    dgvMateriales[2, k].Value = ObtenerProMat[j].Material;
+                    //    dgvMateriales[3, k].Value = ObtenerProMat[j].Precio;
+                    //    Encontrado = true;
+                    //    k++;
+                    //}
                 }
-                if (!Encontrado && Materiales[i].Activo == 1)
-                {
-                    dgvMateriales.RowCount += 1;
-                    dgvMateriales[0, k].Value = Materiales[i].Clave;
-                    dgvMateriales[1, k].Value = false;
-                    dgvMateriales[2, k].Value = Materiales[i].Nombre;
-                    dgvMateriales[3, k].Value = Materiales[i].Precio;
-                    k++;
-                }
+                //if (!Encontrado && Materiales[i].Activo == 1)
+                //{
+                //    dgvMateriales.RowCount += 1;
+                //    dgvMateriales[0, k].Value = Materiales[i].IDMaterial;
+                //    dgvMateriales[1, k].Value = false;
+                //    dgvMateriales[2, k].Value = Materiales[i].Nombre;
+                //    dgvMateriales[3, k].Value = Materiales[i].PrecioBase;
+                //    k++;
+                //}
             }
         }
 
@@ -65,10 +65,10 @@ namespace Presentacion.Configuracion
             {
                 Interface = new InterfaceUsuario(this);
                 RegistroProducto Modificar = ObtenerRegistro;
-                Modificar.Clave = Convert.ToInt32(tbClave.Text);
+                Modificar.IDProducto = Convert.ToInt32(tbClave.Text);
                 if (Interface.ActualizarProducto(Modificar))
                 {
-                    if (Interface.ObtenerUnProducto(Modificar.Nombre).Clave == Modificar.Clave)
+                    if (Interface.ObtenerUnProducto(Modificar.Nombre).IDProducto == Modificar.IDProducto)
                     {
                         string msg = "";
                         if (!ActualizarProMat(out msg))

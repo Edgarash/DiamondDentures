@@ -44,9 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompraMaterial.cs" />
+    <Compile Include="Compras.cs" />
     <Compile Include="Correo.cs" />
     <Compile Include="Datos.cs" />
     <Compile Include="DatosBusqueda.cs" />
+    <Compile Include="FolioProveedor.cs" />
     <Compile Include="FormaPedido.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -54,12 +57,16 @@
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="HistorialMod.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RegistroCorteCaja.cs" />
+    <Compile Include="RegistroProveedor.cs" />
+    <Compile Include="RegistroVenta.cs" />
     <Compile Include="Resultados.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="FacturaReporte.cs">

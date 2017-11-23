@@ -24,10 +24,10 @@ namespace Presentacion
 
         #region Módulo Usuario
 
-        public void DesplegarPantallaMenuUsuario(string Login)
+        public void DesplegarPantallaMenuUsuario()
         {
             Manejador = new ManejadorLogin(Pantalla);
-            PantallaMenuUsuario Nueva = new PantallaMenuUsuario(Login);
+            PantallaMenuUsuario Nueva = new PantallaMenuUsuario();
             Nueva.Cerrar += delegate { Nueva.Close(); };
             Nueva.Show();
         }
@@ -44,10 +44,10 @@ namespace Presentacion
             return (Manejador as ManejadorRegistroDentista).RegistrarDentista(Dentista);
         }
 
-        public void DesplegarPantallaRegistrarPedido(string usuario)
+        public void DesplegarPantallaRegistrarPedido()
         {
             Manejador = new ManejadorRecepcion();
-            Manejador.DesplegarPantalla(new PantallaRegistrarPedido(usuario));
+            Manejador.DesplegarPantalla(new PantallaRegistrarPedido());
         }
 
         public RegistroPedido ObtenerUnPedido(string ClavePedido)
@@ -71,7 +71,7 @@ namespace Presentacion
         public void DesplegarPantallaLaboratorio(string Usuario)
         {
             Manejador = new ManejadorPrincipal();
-            Manejador.DesplegarPantalla(new PantallaMenuLaboratorio(Usuario));
+            Manejador.DesplegarPantalla(new PantallaMenuLaboratorio());
         }
 
         public void DesplegarPantallaModificarPedido(RegistroPedido Pedido)
@@ -96,6 +96,97 @@ namespace Presentacion
         {
             Manejador = new ManejadorRegistroMaterial();
             return (Manejador as ManejadorRegistroMaterial).ObtenerMateriales();
+        }
+
+        internal RegistroMaterial[] ObtenerMateriales3()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).ObtenerMateriales3();
+        }
+
+        internal RegistroMaterial[] ObtenerUnMaterial(string Nombre)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).ObtenerUnMaterial(Nombre);
+        }
+
+        internal RegistroMaterial[] ObtenerUnMaterial2(String Nombre)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).ObtenerUnMaterial2(Nombre);
+        }
+
+        internal RegistroMaterial[] ObtenerMateriales2()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).ObtenerMateriales2();
+        }
+
+
+        internal HistorialMod[] SeleccHistorial()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).SeleccHistorial();
+        }
+
+        internal RegistroProveedor[] MostrarProveedores()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).MostrarProveedores();
+        }
+
+        internal FolioProveedor[] SeleccFolios()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).SeleccFolios();
+        }
+
+        internal FolioProveedor[] SeleccUnFolio(int IDFolio)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).SeleccUnFolio(IDFolio);
+        }
+
+        internal RegistroProveedor[] MostrarUnProveedor(string Nombre)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).MostrarUnProveedor(Nombre);
+        }
+
+        internal Compras[] RecuperarCompras()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).RecuperarCompras();
+        }
+
+        internal CompraMaterial[] DetallesMaterial(int IDCompra)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).DetallesMaterial(IDCompra);
+        }
+
+        internal CompraMaterial[] DetallesProveedorMaterial(int IDProveedor)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).DetallesProveedorMaterial(IDProveedor);
+        }
+
+        internal CompraMaterial[] MostrarUnaCompra(CompraMaterial cm)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).MostrarUnaCompra(cm);
+        }
+
+        internal Compras ObtenerID()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).ObtenerID();
+        }
+
+        internal RegistroMaterial[] MostrarFaltantes()
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).MostrarFaltantes();
         }
 
         public void DesplegarPantallaRegistrarUsuario(string User, int NumeroEmpleado)
@@ -218,8 +309,8 @@ namespace Presentacion
 
         public bool PermisoDeAdministrador()
         {
-            PantallaPermisoAdministrador Permiso = new PantallaPermisoAdministrador();
-            return Permiso.PermisoAdmin();
+            bool Cancelado;
+            return PantallaPermisoAdministrador.PedirPermisoAdministrador(out Cancelado);
         }
 
         public bool HayAdministradores()
@@ -423,10 +514,10 @@ namespace Presentacion
 
         #region Módulo Recepcion
 
-        public void DesplegarPantallaRecepcion(string Usuario)
+        public void DesplegarPantallaRecepcion()
         {
             Manejador = new ManejadorPrincipal();
-            ((ManejadorPrincipal)Manejador).DesplegarPantalla(new PantallaRecepcion(Usuario));
+            ((ManejadorPrincipal)Manejador).DesplegarPantalla(new PantallaRecepcion());
         }
 
 
@@ -435,10 +526,10 @@ namespace Presentacion
 
         #region Módulo Configuración
 
-        public void DesplegarPantallaConfiguracion(string Usuario)
+        public void DesplegarPantallaConfiguracion()
         {
             Manejador = new ManejadorPrincipal();
-            Manejador.DesplegarPantalla(new PantallaConfiguracion(Usuario));
+            Manejador.DesplegarPantalla(new PantallaConfiguracion());
         }
 
         public void DesplegarPantallaAgregarProducto(Regresar Accion)

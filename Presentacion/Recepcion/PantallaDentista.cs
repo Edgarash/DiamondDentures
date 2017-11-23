@@ -56,9 +56,10 @@ namespace Presentacion.Recepcion
         {
             get
             {
-                return new RegistroDentista(tbCedula.Text, tbRFC.Text, tbNombreDentista.Text, tbApellidos.Text, ObtenerTelefono, cbPais.Text,
-                    cbEstado.Text, cbMunicipio.Text, cbCiudad.Text, tbColonia.Text, tbCalle.Text, tbNumFrente.Text, tbCP.Text,
-                    tbEmail.Text + "@" + cbEmail.Text);
+                return null;
+                //new RegistroDentista(tbCedula.Text, tbRFC.Text, tbNombreDentista.Text, tbApellidos.Text, ObtenerTelefono, cbPais.Text,
+                //    cbEstado.Text, cbMunicipio.Text, cbCiudad.Text, tbColonia.Text, tbCalle.Text, tbNumFrente.Text, tbCP.Text,
+                //    tbEmail.Text + "@" + cbEmail.Text);
             }
         }
 

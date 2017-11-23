@@ -43,21 +43,21 @@ namespace Presentacion.Configuracion
                 temp = Interface.ObtenerMateriales();
             else
             {
-                if (Tipo == Búsqueda.Clave)
-                    temp = Interface.BuscarUnMaterial(new RegistroMaterial(Convert.ToInt32(tbClave.Text), "", -1, -1));
-                else
-                    if (Tipo == Búsqueda.Personalizada)
-                    temp = Interface.BuscarUnMaterial(new RegistroMaterial(-1, tbNombre.Text, string.IsNullOrWhiteSpace(tbPrecio.Text) ? -1 : Convert.ToInt32(tbPrecio.Text), -1));
+                //if (Tipo == Búsqueda.Clave)
+                //    temp = Interface.BuscarUnMaterial(new RegistroMaterial(Convert.ToInt32(tbClave.Text), "", -1, -1));
+                //else
+                //    if (Tipo == Búsqueda.Personalizada)
+                //    temp = Interface.BuscarUnMaterial(new RegistroMaterial(-1, tbNombre.Text, string.IsNullOrWhiteSpace(tbPrecio.Text) ? -1 : Convert.ToInt32(tbPrecio.Text), -1));
             }
                 dgvMateriales.RowCount = temp?.Length ?? 0;
             if (temp != null)
             {
                 for (int i = 0; i < temp.Length; i++)
                 {
-                    dgvMateriales.Rows[i].DefaultCellStyle.BackColor = temp[i].Activo == 1 ? Color.LightGreen : Color.LightSalmon;
-                    dgvMateriales[0, i].Value = temp[i].Clave;
+                    //dgvMateriales.Rows[i].DefaultCellStyle.BackColor = temp[i].Activo == 1 ? Color.LightGreen : Color.LightSalmon;
+                    dgvMateriales[0, i].Value = temp[i].IDMaterial;
                     dgvMateriales[1, i].Value = temp[i].Nombre;
-                    dgvMateriales[2, i].Value = "$" + temp[i].Precio.ToString("N2");
+                    dgvMateriales[2, i].Value = "$" + temp[i].PrecioBase.ToString("N2");
                 }
             }
             if (dgvMateriales.SelectedCells.Count > 0)
@@ -150,6 +150,11 @@ namespace Presentacion.Configuracion
         private void tbPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validar.ValidarPrecio(sender as TextBox, e);
+        }
+
+        private void PantallaAdministrarMateriales_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
