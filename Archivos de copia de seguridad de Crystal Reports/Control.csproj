@@ -44,16 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManejadorAlmacen.cs" />
     <Compile Include="Manejador.cs" />
     <Compile Include="ManejadorBorrarFactura.cs" />
     <Compile Include="ManejadorConfiguracion.cs" />
-    <Compile Include="ManejadorContabilidad.cs" />
     <Compile Include="ManejadorLogin.cs" />
     <Compile Include="ManejadorPedido.cs" />
     <Compile Include="ManejadorPermisoAdministrador.cs" />
     <Compile Include="ManejadorPrincipal.cs" />
     <Compile Include="ManejadorRegistroDentista.cs" />
     <Compile Include="ManejadorRegistroMaterial.cs" />
+    <Compile Include="ManejadorReportes.cs" />
     <Compile Include="ManejadorUsuario.cs" />
     <Compile Include="ManejadorRecepcion.cs" />
     <Compile Include="ManejadorRegistroTarjeta.cs" />
@@ -71,6 +72,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ManejadorRegistroProducto.cs" />
+    <Compile Include="Ventas\ManejadorVentas.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pantalla.resx">
@@ -99,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Encabezado2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

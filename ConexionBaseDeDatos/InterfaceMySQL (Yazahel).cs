@@ -246,7 +246,7 @@ namespace ConexionBaseDeDatos
             EjecutarProcedimientoAlmacenado("FinanzasRegistrarPago", TipoConsulta.DevuelveInt,
                 Parametro("nom", nom),
                 Parametro("des", des),
-                Parametro("punit", punit+"0.00"),
+                Parametro("punit", punit + "0.00"),
                 Parametro("cant", cant),
                 Parametro("subt", subt + "0.00"),
                 Parametro("tot", tot + "0.00"),
