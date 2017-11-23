@@ -144,6 +144,41 @@ namespace ConexionBaseDeDatos
             return OperacionRealizada;
         }
 
+        public static bool ObtenerInsumos3(out Insumos[] Insumos)
+        {
+            EjecutarProcedimientoAlmacenado("ObtenerMateriales3", TipoConsulta.DevuelveReader,
+                Parametro("", null));
+            bool Exito = OperacionRealizada2;
+            Insumos = RellenarInsumos3();
+            return Exito;
+        }
+
+        private static RegistroMaterial[] RellenarInsumos3()
+        {
+            RegistroMaterial[] Insumos = new RegistroMaterial[TablaDeResultados.Rows.Count];
+            DataTable Insu = TablaDeResultados;
+            for (int i = 0; i < Insumos.Length; i++)
+            {
+                DataRow x = Insu.Rows[i];
+                RegistroProveedor Proveedor;
+                RecuperarProveedor(Convert.ToInt32(x["Proveedor"].ToString()), out Proveedor);
+                Insumos[i] = new RegistroMaterial
+                    (
+                    Convert.ToInt32(x["IDInsumos"].ToString()),
+                    x["Nombre"].ToString(),
+                    x["Descripcion"].ToString(),
+                    Convert.ToSingle(x["PrecioBase"].ToString()),
+                    Convert.ToSingle(x["PrecioCompra"].ToString()),
+                    Convert.ToInt32(x["TiempoBase"].ToString()),
+                    Proveedor,
+                    x["UnidadMedida"].ToString(),
+                    Convert.ToInt32(x["Cantidad"].ToString())
+                    );
+            }
+            return Insumos;
+        }
+
+
         public static bool FinanzasAgregarCompra(string nom, string tot)
         {
             EjecutarProcedimientoAlmacenado("FinanzasAgregarCompra", TipoConsulta.DevuelveInt,
