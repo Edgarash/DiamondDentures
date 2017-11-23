@@ -28,8 +28,8 @@ namespace Entidad
 
         public RegistroProducto(int IDProducto, string Nombre, string Descripcion, int TiempoBase,
             float PrecioBase, float PrecioCompra, string Activo, string UnidadMedida, int Cantidad)
+            :this(IDProducto)
         {
-            this.IDProducto = IDProducto;
             this.Nombre = Nombre;
             this.Descripcion = Descripcion;
             this.TiempoBase = TiempoBase;
@@ -38,6 +38,11 @@ namespace Entidad
             this.Activo = Activo;
             this.UnidadMedida = UnidadMedida;
             this.Cantidad = Cantidad;
+        }
+
+        public RegistroProducto(int IDProducto)
+        {
+            this.IDProducto = IDProducto;
         }
     }
 }

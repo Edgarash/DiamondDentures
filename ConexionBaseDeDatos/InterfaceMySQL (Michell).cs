@@ -209,7 +209,9 @@ namespace ConexionBaseDeDatos
                     x["Telefono"].ToString(),
                     x["Correo"].ToString(),
                     x["Direccion"].ToString(),
-                    x["Descripcion"].ToString()
+                    x["Descripcion"].ToString(),
+                    x["Banco"].ToString(),
+                    x["NumeroCuenta"].ToString()
                     );
             }
             return Proveedores;
@@ -299,6 +301,95 @@ namespace ConexionBaseDeDatos
             return Trabajos;
         }
 
+        #endregion
+
+        #region Configuración
+        #region Materiales
+
+        public static bool ObtenerUltimaClaveMaterial(out RegistroMaterial Material)
+        {
+            EjecutarProcedimientoAlmacenado("ObtenerUltimaClaveMaterial", TipoConsulta.DevuelveReader,
+                null);
+            bool Ejecutado = OperacionRealizada2;
+            Material = ObtenerMaterial();
+            return Ejecutado;
+        }
+
+        public static bool ObtenerProveedores(out RegistroProveedor[] Proveedores)
+        {
+            EjecutarProcedimientoAlmacenado("ObtenerProveedores", TipoConsulta.DevuelveReader,
+                null);
+            bool Ejecutado = OperacionRealizada2;
+            Proveedores = RellenarProveedores();
+            return Ejecutado;
+
+        }
+
+        public static bool RegistrarMaterial(RegistroMaterial Material)
+        {
+            EjecutarProcedimientoAlmacenado("RegistrarMaterial", TipoConsulta.DevuelveInt,
+                Parametro("IDMateria", Material.IDMaterial),
+                Parametro("Nombr", Material.Nombre),
+                Parametro("Descripcio", Material.Descripcion),
+                Parametro("PrecioBas", Material.PrecioBase),
+                Parametro("PrecioCompr", Material.PrecioCompra),
+                Parametro("TiempoBas", Material.TiempoBase),
+                Parametro("Proveedo", Material.Proveedor.IDProveedor),
+                Parametro("UnidadMedid", Material.UnidadMedida),
+                Parametro("Cantida", Material.Cantidad)
+                );
+            return OperacionRealizada;
+        }
+
+        public static bool ObtenerProductosMateriales(int Producto, int Material,
+            out RegistroProMat[] Registros)
+        {
+            string
+                Prod = Producto < 0 ? null : Producto.ToString(),
+                Mat = Material < 0 ? null : Material.ToString();
+            EjecutarProcedimientoAlmacenado("ObtenerProMat", TipoConsulta.DevuelveReader,
+                Parametro("Producto", Prod),
+                Parametro("Material", Mat)
+                );
+            bool Ejecutado = OperacionRealizada;
+            Registros = RellenarProMat();
+            return Ejecutado;
+        }
+
+        public static bool ActualizarProMat(RegistroProMat Registro)
+        {
+            EjecutarProcedimientoAlmacenado("ActualizarProMat", TipoConsulta.DevuelveInt,
+                Parametro("Producto", Registro.Producto.IDProducto),
+                Parametro("Material", Registro.Material.IDMaterial),
+                Parametro("Precio", Registro.PrecioFinal),
+                Parametro("Tiempo", Registro.TiempoFinal),
+                Parametro("Activ", Registro.Activo)
+                );
+            return OperacionRealizada;
+        }
+
+        public static RegistroProMat[] RellenarProMat()
+        {
+            RegistroProMat[] ProMat = new RegistroProMat[TablaDeResultados.Rows.Count];
+            for (int i = 0; i < ProMat.Length; i++)
+            {
+                DataRow x = TablaDeResultados.Rows[i];
+                RegistroProducto Producto;
+                RegistroMaterial Material;
+                RecuperarMaterial(Convert.ToInt32(x["IDMaterial"]), out Material);
+                RecuperarProducto(Convert.ToInt32(x["IDProducto"]), out Producto);
+                ProMat[i] = new RegistroProMat
+                    (
+                    Producto,
+                    Material,
+                    Convert.ToSingle(x["PrecioFinal"]),
+                    Convert.ToInt32(x["TiempoFinal"]),
+                    Convert.ToChar(x["Activo"]) == '1'
+                    );
+            }
+            return ProMat;
+        }
+        #endregion
         #endregion
 
         #region Ventas

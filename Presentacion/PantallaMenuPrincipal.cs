@@ -5,6 +5,7 @@ using Presentacion.Control_Pedidos;
 using Presentacion.Laboratorio;
 using Presentacion.Login;
 using Presentacion.Recepcion;
+using Presentacion.Usuario;
 using Presentacion.Ventas;
 using System;
 using System.Windows.Forms;
@@ -115,7 +116,7 @@ namespace Presentacion
 
         private void btnRecepcion_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaRecepcion().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaRecepcion)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaRecepcion();
@@ -124,7 +125,7 @@ namespace Presentacion
 
         private void btnUsuario_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new Presentacion.Usuario.PantallaMenuUsuario().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaMenuUsuario)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaMenuUsuario();
@@ -138,7 +139,7 @@ namespace Presentacion
 
         private void btnConfiguracion_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaConfiguracion().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaConfiguracion)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaConfiguracion();
@@ -147,7 +148,7 @@ namespace Presentacion
 
         private void btnLaboratorio_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaMenuLaboratorio().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaMenuLaboratorio)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaLaboratorio(PantallaMenuPrincipal.Sesion.Login);
@@ -156,7 +157,7 @@ namespace Presentacion
 
         private void btnControlPedidos_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaMenuControlPedidos(null).GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaMenuControlPedidos)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaControlPedidos(PantallaMenuPrincipal.Sesion.Login);
@@ -165,7 +166,7 @@ namespace Presentacion
 
         private void btnSemáforo_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaEstadoPedido(PantallaMenuPrincipal.Sesion.Login).GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaEstadoPedido)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaEstadoPedido(PantallaMenuPrincipal.Sesion.Login);

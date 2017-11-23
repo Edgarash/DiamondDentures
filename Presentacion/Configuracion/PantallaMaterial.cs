@@ -1,4 +1,5 @@
-﻿using Entidad;
+﻿using Control;
+using Entidad;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Validaciones;
+using static Validaciones.Validar;
 
 namespace Presentacion.Configuracion
 {
@@ -14,6 +16,7 @@ namespace Presentacion.Configuracion
     {
         protected InterfaceUsuario Interface;
         protected Validar Validacion;
+        RegistroProveedor[] Proveedores;
 
         public PantallaMaterial()
         {
@@ -21,50 +24,80 @@ namespace Presentacion.Configuracion
             InitializeComponent2();
         }
 
+        protected void LlenarComboBoxProveedores()
+        {
+            ManejadorConfiguracion.ObtenerProveedores(out Proveedores);
+            if (Proveedores != null)
+                foreach (RegistroProveedor x in Proveedores)
+                    cbProveedores.Items.Add(x.Nombre);
+            else
+            {
+                MensajeErrorOK("No tiene proveedores registrados\n\nFavor de registrar proveedor antes");
+                Close();
+            }
+            cbProveedores.Sorted = true;
+        }
+
         protected virtual void InitializeComponent3()
         {
+            for (int i = 0; i < Controls.Count; i++)
+                if (Controls[i].GetType() == typeof(TextBox))
+                    Controls[i].KeyPress += Mayusculas;
+            cbProveedores.KeyPress += Mayusculas;
             dgvProductos.ClearSelection();
             dgvProductos.DefaultCellStyle.SelectionBackColor = Color.LightGray;
             dgvProductos.DefaultCellStyle.SelectionForeColor = dgvProductos.DefaultCellStyle.ForeColor;
+            tbPrecioBase.KeyPress += TextBox_KeyPress_ValidarSoloReales2Decimales;
+            tbPrecioCompra.KeyPress += TextBox_KeyPress_ValidarSoloReales2Decimales;
             Validacion = new Validar(this);
-        }
-
-        private void tbPrecio_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Validar.ValidarPrecio(sender as TextBox, e);
         }
 
         private void dgvProductos_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (dgvProductos.CurrentCell.ColumnIndex == 2)
-                (e.Control as TextBox).KeyPress += ValidandoPrecios;
-        }
-
-        private void ValidandoPrecios(object sender, KeyPressEventArgs e)
-        {
-            Validar.ValidarPrecio(sender as TextBox, e);
+            int Index = dgvProductos.CurrentCell.ColumnIndex;
+            if (Index == dgvProductos.Columns["Precio"].Index)
+                (e.Control as TextBox).KeyPress += TextBox_KeyPress_ValidarSoloReales2Decimales;
+            if (Index == dgvProductos.Columns["Tiempo"].Index)
+                (e.Control as TextBox).KeyPress += TextBox_KeyPress_ValidarSoloEnteros;
         }
 
         protected virtual bool CamposFaltantes
         {
             get
             {
-                return Validacion.ValidarTextBox(tbClave, tbPrecio, tbNombre);
+                bool temp = Validacion.ValidarComboBox(cbProveedores);
+                return Validacion.ValidarTextBox(tbClave, tbPrecioBase, tbPrecioCompra, tbNombreMaterial, tbDescripcion, tbUnidadMedida) || temp;
             }
         }
 
-        protected RegistroMaterial ObtenerRegistro
+        protected virtual RegistroMaterial ObtenerRegistro
         {
-            //get
-            //{
-            //    return new RegistroMaterial(Convert.ToInt32(!string.IsNullOrWhiteSpace(tbClave.Text) ? tbClave.Text : "0"), tbNombre.Text, Convert.ToSingle(tbPrecio.Text), 1);
-            //}
-            get;set;
+            get
+            {
+                return new RegistroMaterial(
+              Convert.ToInt32(tbClave.Text),
+              tbNombreMaterial.Text,
+              tbDescripcion.Text,
+              Convert.ToSingle(tbPrecioBase.Text),
+              Convert.ToSingle(tbPrecioCompra.Text),
+              (int)nudTiempo.Value,
+              ObtenerProveedor,
+              tbUnidadMedida.Text,
+              (int)nudCantidad.Value
+              );
+            }
         }
 
-        private void tbClave_KeyPress(object sender, KeyPressEventArgs e)
+        protected virtual RegistroProveedor ObtenerProveedor
         {
-            Validar.ValidarSoloNumeros(sender as TextBox, e);
+            get
+            {
+                if (Proveedores != null)
+                    for (int i = 0; i < Proveedores.Length; i++)
+                        if (cbProveedores.Text == Proveedores[i].Nombre)
+                            return Proveedores[i];
+                return null;
+            }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -81,7 +114,7 @@ namespace Presentacion.Configuracion
             for (int i = 0; i < dgvProductos.RowCount && !Error; i++)
             {
                 int ClavePro = 0;
-                if (!int.TryParse(dgvProductos[0, i].Value.ToString(), out ClavePro))
+                if (!int.TryParse(dgvProductos["Clave", i].Value.ToString(), out ClavePro))
                 {
                     Error = true;
                     Mensaje = "hubo un error en la clave de " + dgvProductos[2, i].Value.ToString();
@@ -93,14 +126,20 @@ namespace Presentacion.Configuracion
                     Mensaje = "Clave de material no válida";
                 }
                 float Precio = 0;
-                if (!Error && !float.TryParse(dgvProductos[3, i].Value.ToString(), out Precio))
+                if (!Error && !float.TryParse(dgvProductos["Precio", i].Value.ToString(), out Precio))
                 {
                     Error = true;
-                    Mensaje = "El precio establecido en " + dgvProductos[2, i].Value.ToString() + " no es válido";
+                    Mensaje = "El precio establecido en " + dgvProductos["Producto", i].Value.ToString() + " no es válido";
+                }
+                int Tiempo = 0;
+                if (!Error && !int.TryParse(dgvProductos["Tiempo", i].Value.ToString(), out Tiempo))
+                {
+                    Error = true;
+                    Mensaje = "El tiempo establecido en " + dgvProductos["Producto", i].Value.ToString() + " no es válido";
                 }
                 if (!Error)
                 {
-                    Registro = new RegistroProMat(ClavePro, ClaveMat, Precio, Convert.ToBoolean(dgvProductos[1, i].Value) ? 1 : 0);
+                    Registro = new RegistroProMat(ClavePro, ClaveMat, Precio, Tiempo, Convert.ToBoolean(dgvProductos["Activo", i].Value));
                     if (!Interface.ActualizarProMat(Registro))
                     {
                         Error = true;
@@ -115,8 +154,9 @@ namespace Presentacion.Configuracion
         {
             get
             {
-                Interface = new InterfaceUsuario(this);
-                return Interface.ObtenerProMat(Convert.ToInt32(string.IsNullOrWhiteSpace(tbClave.Text) ? "-1" : tbClave.Text), -1);
+                RegistroProMat[] temp;
+                InterfaceUsuario.ObtenerProMat(-1, Convert.ToInt32(tbClave.Text), out temp);
+                return temp;
             }
         }
     }

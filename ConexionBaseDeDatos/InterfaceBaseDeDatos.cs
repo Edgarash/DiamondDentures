@@ -66,25 +66,6 @@ namespace ConexionBaseDeDatos
         #region Módulo Usuario
 
         /// <summary>
-        /// Método encargado de solicitar a la base de datos un borrado lógico de una tarjeta
-        /// </summary>
-        /// <param name="Usuario">Cadena que contiene el usuario al cual pertenece la tarjeta</param>
-        /// <returns>Confirmación del borrado lógico de la tarjeta en la base de datos con éxito</returns>
-        public bool BorrarTarjeta(string Usuario)
-        {
-            var command = new MySqlCommand("EliminarTarjeta", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@logi", Usuario);
-
-            Open();
-
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        /// <summary>
         /// Método encargado de solicitar a la base de datos un borrado lógico de un usuario
         /// </summary>
         /// <param name="Usuario">Cadena que contiene el usuario al cuál se le hará el borrado lógico</param>
@@ -289,15 +270,15 @@ namespace ConexionBaseDeDatos
         public bool ActualizarProMat(RegistroProMat Registro)
         {
             var command = new MySqlCommand("ActualizarProMat", conexion);
-            command.CommandType = CommandType.StoredProcedure;
+            //command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@clvpro", Registro.ClavePro);
-            command.Parameters.AddWithValue("@clvmat", Registro.ClaveMat);
-            command.Parameters.AddWithValue("@price", Registro.Precio);
-            command.Parameters.AddWithValue("@act", Registro.Activo);
-            Open();
+            //command.Parameters.AddWithValue("@clvpro", Registro.ClavePro);
+            //command.Parameters.AddWithValue("@clvmat", Registro.ClaveMat);
+            //command.Parameters.AddWithValue("@price", Registro.PrecioFinal);
+            //command.Parameters.AddWithValue("@act", Registro.Activo);
+            //Open();
             var nc = command.ExecuteNonQuery();
-            Close();
+            //Close();
             return EnviarConfirmacion(nc);
         }
 
@@ -380,30 +361,6 @@ namespace ConexionBaseDeDatos
             return EnviarConfirmacion(nc);
         }
 
-        public RegistroMaterial[] ObtenerMateriales()
-        {
-            RegistroMaterial[] temp = null;
-
-            var command = new MySqlCommand("ObtenerMateriales", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            string p = string.Empty;
-            Open();
-            var str = command.ExecuteReader();
-
-            if (str.HasRows)
-            {
-                List<RegistroMaterial> Lista = new List<RegistroMaterial>();
-                while (str.Read())
-                {
-                    //Lista.Add(new RegistroMaterial(str.GetInt32(0), str.GetString(1), str.GetFloat(2), str.GetInt32(3)));
-                }
-                temp = Lista.ToArray();
-            }
-            Close();
-            return temp;
-        }
-
         public RegistroProMat[] ObtenerProMat(int mat, int pro)
         {
             RegistroProMat[] temp = null;
@@ -423,7 +380,7 @@ namespace ConexionBaseDeDatos
                 List<RegistroProMat> Lista = new List<RegistroProMat>();
                 while (str.Read())
                 {
-                    Lista.Add(new RegistroProMat(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetString(3), str.GetFloat(4), str.GetInt32(5)));
+                    //Lista.Add(new RegistroProMat(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetString(3), str.GetFloat(4), str.GetInt32(5)));
                 }
                 temp = Lista.ToArray();
             }
@@ -486,29 +443,6 @@ namespace ConexionBaseDeDatos
             }
             Close();
             return temp;
-        }
-
-        public RegistroTrabajo[] ObtenerTrabajos(string Clave)
-        {
-            var command = new MySqlCommand("ObtenerTrabajos", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", Clave);
-
-            string p = string.Empty;
-            Open();
-            var str = command.ExecuteReader();
-
-            List<RegistroTrabajo> temp = new List<RegistroTrabajo>();
-            if (str.HasRows)
-            {
-                while (str.Read())
-                {
-                    //temp.Add(new RegistroTrabajo(str.GetString(1), str.GetFloat(2), str.GetString(3), str.GetFloat(4), str.GetString(5), str.GetFloat(6), Convert.ToDateTime(str.GetString(7)).ToShortDateString()));
-                }
-            }
-            Close();
-            return temp.ToArray();
         }
 
         public RegistroProducto ObtenerUnProducto(string Proceso)
@@ -574,16 +508,7 @@ namespace ConexionBaseDeDatos
                 }
             }
         }
-        public void Datos2(DataGridView temp2)
-        {
-            MySqlDataAdapter p = new MySqlDataAdapter(new MySqlCommand(@"call ObtenerPedidos"));
-            DataTable y = new DataTable();
-            p.SelectCommand.Connection = conexion;
-            p.SelectCommand.Connection.Open();
-            p.Fill(y);
-            setData(temp2, y);
-            p.SelectCommand.Connection.Close();
-        }
+
         public void DatosPedidos(DataGridView temp)
         {
             MySqlDataAdapter p = new MySqlDataAdapter(new MySqlCommand(@"SELECT

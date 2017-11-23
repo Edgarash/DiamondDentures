@@ -114,7 +114,7 @@ namespace Presentacion.Configuracion
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
             Interface = new InterfaceUsuario(this);
-            if (!Validar.ValidarUnaPantalla(new PantallaAgregarProducto().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaAgregarProducto)))
                 Interface.DesplegarPantallaAgregarProducto(LlenarData);
         }
 
@@ -163,7 +163,7 @@ namespace Presentacion.Configuracion
 
         private void btnModificarProducto_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaModificarProducto(null).GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaModificarProducto)))
             {
                 Interface = new InterfaceUsuario(this);
                 RegistroProducto Producto = Interface.ObtenerUnProducto(dgvProductos[1, dgvProductos.SelectedCells[0].RowIndex].Value.ToString());

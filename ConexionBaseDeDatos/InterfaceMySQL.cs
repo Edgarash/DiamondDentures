@@ -194,7 +194,8 @@ namespace ConexionBaseDeDatos
             (string NombreProcedimiento, TipoConsulta Tipo, params MySqlParameter[] Datos)
         {
             Comando = new MySqlCommand(NombreProcedimiento, Conexion);
-            Comando.Parameters.AddRange(Datos);
+            if (Datos!= null)
+                Comando.Parameters.AddRange(Datos);
             Comando.CommandType = CommandType.StoredProcedure;
             bool Abierto = AbrirConexion();
             if (Abierto)

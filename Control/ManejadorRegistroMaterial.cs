@@ -6,10 +6,9 @@ namespace Control
 {
     public class ManejadorRegistroMaterial : Manejador
     {
-        public bool RegistrarMaterial(RegistroMaterial Material)
+        public static bool RegistrarMaterial(RegistroMaterial Material)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.RegistrarMaterial(Material);
+            return InterfaceMySQL.RegistrarMaterial(Material);
         }
 
         public RegistroMaterial[] BuscarUnMaterial(RegistroMaterial Material)

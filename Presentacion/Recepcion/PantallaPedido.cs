@@ -140,27 +140,27 @@ namespace Presentacion.Recepcion
         private void LlenarMateriales(DataGridViewComboBoxCell Celda, RegistroMaterial Material1)
         {
             Interface = new InterfaceUsuario(this);
-            if (Celda.ColumnIndex == dgvProductos.Columns["Material1"].Index || Celda.ColumnIndex == dgvProductos.Columns["Material2"].Index)
-            {
-                Celda.Items.Clear();
-                Celda.Value = null;
-                (dgvProductos[dgvProductos.Columns["Material2"].Index, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Clear();
-                (dgvProductos[dgvProductos.Columns["Material2"].Index, Celda.RowIndex] as DataGridViewComboBoxCell).Value = null;
-                dgvProductos[4, Celda.RowIndex].Value = null;
-            }
-            RegistroProMat[] temp = Interface.ObtenerProMat(-1, ObtenerProducto(Celda.RowIndex)?.IDProducto ?? -1 );
-            for (int i = 0; i < temp?.Length; i++)
-                if (temp[i]?.Activo == 1)
-                    for (int k = 0; k < Materiales?.Length; k++)
-                        //if (temp[i]?.ClaveMat != Material1?.IDMaterial && Materiales[k].Activo == 1 && Materiales[k].Nombre == temp[i].Material)
-                        {
-                            //(dgvProductos?[Celda.ColumnIndex, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Add(temp[i].Material + " $" + temp[i].Precio);
-                            //k = Materiales.Length;
-                        }
-            if (Celda.Items.Count == 0)
-                Celda.Items.Add("");
-            if ((dgvProductos[dgvProductos.Columns["Material2"].Index, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Count == 0)
-                (dgvProductos[dgvProductos.Columns["Material2"].Index, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Add("");
+            //if (Celda.ColumnIndex == dgvProductos.Columns["Material1"].Index || Celda.ColumnIndex == dgvProductos.Columns["Material2"].Index)
+            //{
+            //    Celda.Items.Clear();
+            //    Celda.Value = null;
+            //    (dgvProductos[dgvProductos.Columns["Material2"].Index, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Clear();
+            //    (dgvProductos[dgvProductos.Columns["Material2"].Index, Celda.RowIndex] as DataGridViewComboBoxCell).Value = null;
+            //    dgvProductos[4, Celda.RowIndex].Value = null;
+            //}
+            //RegistroProMat[] temp = Interface.ObtenerProMat(-1, ObtenerProducto(Celda.RowIndex)?.IDProducto ?? -1 );
+            //for (int i = 0; i < temp?.Length; i++)
+            //    if (temp[i]?.Activo == 1)
+            //        for (int k = 0; k < Materiales?.Length; k++)
+            //            //if (temp[i]?.ClaveMat != Material1?.IDMaterial && Materiales[k].Activo == 1 && Materiales[k].Nombre == temp[i].Material)
+            //            {
+            //                //(dgvProductos?[Celda.ColumnIndex, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Add(temp[i].Material + " $" + temp[i].Precio);
+            //                //k = Materiales.Length;
+            //            }
+            //if (Celda.Items.Count == 0)
+            //    Celda.Items.Add("");
+            //if ((dgvProductos[dgvProductos.Columns["Material2"].Index, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Count == 0)
+            //    (dgvProductos[dgvProductos.Columns["Material2"].Index, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Add("");
         }
 
         protected override void InitializeComponent2()
@@ -276,8 +276,8 @@ namespace Presentacion.Recepcion
         protected virtual RegistroProMat ObtenerProMat(RegistroProducto Producto, RegistroMaterial Material)
         {
             RegistroProMat temp = null;
-            RegistroProMat[] x = Interface.ObtenerProMat((Material?.IDMaterial ?? -1), (Producto?.IDProducto ?? -1));
-            temp = x.Length > 0 ? x[0] : null;
+            //RegistroProMat[] x = Interface.ObtenerProMat((Material?.IDMaterial ?? -1), (Producto?.IDProducto ?? -1));
+            //temp = x.Length > 0 ? x[0] : null;
             return temp;
         }
 
@@ -357,42 +357,42 @@ namespace Presentacion.Recepcion
         private float CalcularPrecio(int Row)
         {
             float Precio = 0;
-            if ((ObtenerProducto(Row)?.Nombre ?? "") != "")
-            {
-                int ClvProducto = -1;
-                float PrecioProducto = 0;
-                for (int i = 0; i < Productos.Length; i++)
-                {
-                    RegistroProducto Producto = ObtenerProducto(Row);
-                        Precio += Producto.PrecioBase;
-                        PrecioProducto = Producto.PrecioBase;
-                        ClvProducto = Producto.IDProducto;
-                        i = Productos.Length;
-                }
-                RegistroProMat[] ProMat = Interface.ObtenerProMat(-1, ClvProducto);
-                if ((ObtenerMaterial(1, Row)?.Nombre?? "") != "" || (ObtenerMaterial(2, Row)?.Nombre??"") != "")
-                {
-                    bool Primero = false, Segundo = false;
-                    for (int i = 0; i < Materiales.Length; i++)
-                    {
-                        RegistroMaterial Mat1 = ObtenerMaterial(1, Row), Mat2 = ObtenerMaterial(2, Row);
-                        if (Materiales[i].Nombre == (Mat1?.Nombre ?? "") || Materiales[i].Nombre == (Mat2?.Nombre ?? ""))
-                            for (int j = 0; j < ProMat.Length && !Segundo; j++)
-                                if (ClvProducto == ProMat[j].ClavePro && Materiales[i].IDMaterial == ProMat[j].ClaveMat)
-                                {
-                                    if (!Segundo && Primero)
-                                        Segundo = true;
-                                    Precio += ProMat[j].Precio;
-                                    if (!Primero)
-                                    {
-                                        Primero = true;
-                                        if (string.IsNullOrWhiteSpace(dgvProductos[dgvProductos.Columns["Material2"].Index, Row]?.FormattedValue?.ToString() ?? ""))
-                                            Segundo = true;
-                                    }
-                                }
-                    }
-                }
-            }
+            //if ((ObtenerProducto(Row)?.Nombre ?? "") != "")
+            //{
+            //    int ClvProducto = -1;
+            //    float PrecioProducto = 0;
+            //    for (int i = 0; i < Productos.Length; i++)
+            //    {
+            //        RegistroProducto Producto = ObtenerProducto(Row);
+            //            Precio += Producto.PrecioBase;
+            //            PrecioProducto = Producto.PrecioBase;
+            //            ClvProducto = Producto.IDProducto;
+            //            i = Productos.Length;
+            //    }
+            //    RegistroProMat[] ProMat = Interface.ObtenerProMat(-1, ClvProducto);
+            //    if ((ObtenerMaterial(1, Row)?.Nombre?? "") != "" || (ObtenerMaterial(2, Row)?.Nombre??"") != "")
+            //    {
+            //        bool Primero = false, Segundo = false;
+            //        for (int i = 0; i < Materiales.Length; i++)
+            //        {
+            //            RegistroMaterial Mat1 = ObtenerMaterial(1, Row), Mat2 = ObtenerMaterial(2, Row);
+            //            if (Materiales[i].Nombre == (Mat1?.Nombre ?? "") || Materiales[i].Nombre == (Mat2?.Nombre ?? ""))
+            //                for (int j = 0; j < ProMat.Length && !Segundo; j++)
+            //                    if (ClvProducto == ProMat[j].ClavePro && Materiales[i].IDMaterial == ProMat[j].ClaveMat)
+            //                    {
+            //                        if (!Segundo && Primero)
+            //                            Segundo = true;
+            //                        Precio += ProMat[j].PrecioFinal;
+            //                        if (!Primero)
+            //                        {
+            //                            Primero = true;
+            //                            if (string.IsNullOrWhiteSpace(dgvProductos[dgvProductos.Columns["Material2"].Index, Row]?.FormattedValue?.ToString() ?? ""))
+            //                                Segundo = true;
+            //                        }
+            //                    }
+            //        }
+            //    }
+            //}
             return Precio;
         }
 

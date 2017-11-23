@@ -32,7 +32,7 @@ namespace Presentacion.Control_Pedidos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaRegistrarPedido().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaRegistrarPedido)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaRegistrarPedido();
@@ -64,7 +64,7 @@ namespace Presentacion.Control_Pedidos
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaModificarPedido(null).GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaModificarPedido)))
             {
 
             }

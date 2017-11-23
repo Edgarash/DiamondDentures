@@ -327,8 +327,7 @@ namespace Presentacion
 
         public bool ActualizarProMat(RegistroProMat Registro)
         {
-            Manejador = new ManejadorConfiguracion();
-            return (Manejador as ManejadorConfiguracion).ActualizarProMat(Registro);
+            return ManejadorConfiguracion.ActualizarProMat(Registro);
         }
 
         public bool EliminarTarjeta(string Usuario)
@@ -337,10 +336,9 @@ namespace Presentacion
             return ((ManejadorUsuario)Manejador).EliminarTarjeta(Usuario);
         }
 
-        internal RegistroProMat[] ObtenerProMat(int Mat, int Pro)
+        public static bool ObtenerProMat(int Producto, int Material, out RegistroProMat[] ProMat)
         {
-            Manejador = new ManejadorConfiguracion();
-            return (Manejador as ManejadorConfiguracion).ObtenerProMat(Mat, Pro);
+            return ManejadorConfiguracion.ObtenerProMat(Producto, Material, out ProMat);
         }
 
         public bool BorrarUsuario(string Usuario)
@@ -619,8 +617,7 @@ namespace Presentacion
 
         public bool RegistrarMaterial(RegistroMaterial Material)
         {
-            Manejador = new ManejadorRegistroMaterial();
-            return (Manejador as ManejadorRegistroMaterial).RegistrarMaterial(Material);
+            return ManejadorRegistroMaterial.RegistrarMaterial(Material);
         }
 
         #endregion

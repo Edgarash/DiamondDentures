@@ -95,12 +95,12 @@ namespace Presentacion.Configuracion
                 }
                 if (!Error)
                 {
-                    Registro = new RegistroProMat(ClavePro, ClaveMat, Precio, Convert.ToBoolean(dgvMateriales[1, i].Value) ? 1 : 0);
-                    if (!Interface.ActualizarProMat(Registro))
-                    {
-                        Error = true;
-                        Mensaje = "";
-                    }
+                    //Registro = new RegistroProMat(ClavePro, ClaveMat, Precio, Convert.ToBoolean(dgvMateriales[1, i].Value) ? 1 : 0);
+                    //if (!Interface.ActualizarProMat(Registro))
+                    //{
+                    //    Error = true;
+                    //    Mensaje = "";
+                    //}
                 }
             }
             return Error;
@@ -110,8 +110,9 @@ namespace Presentacion.Configuracion
         {
             get
             {
-                Interface = new InterfaceUsuario(this);
-                return Interface.ObtenerProMat(-1, Convert.ToInt32(string.IsNullOrWhiteSpace(tbClave.Text) ? "-1" : tbClave.Text));
+                RegistroProMat[] temp;
+                InterfaceUsuario.ObtenerProMat(Convert.ToInt32(tbClave.Text), -1, out temp);
+                return temp;
             }
         }
     }

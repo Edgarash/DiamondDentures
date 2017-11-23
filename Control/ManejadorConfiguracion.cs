@@ -35,16 +35,24 @@ namespace Control
             return Interface.BuscarProducto(Producto);
         }
 
-        public bool ActualizarProMat(RegistroProMat Registro)
+        public static bool ActualizarProMat(RegistroProMat Registro)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ActualizarProMat(Registro);
+            return InterfaceMySQL.ActualizarProMat(Registro);
         }
 
-        public RegistroProMat[] ObtenerProMat(int mat, int pro)
+        public static bool ObtenerProMat(int Producto, int Material, out RegistroProMat[] ProMat)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ObtenerProMat(mat, pro);
+            return InterfaceMySQL.ObtenerProductosMateriales(Producto, Material, out ProMat);
+        }
+
+        public static bool ObtenerUltimaClaveMaterial(out RegistroMaterial Material)
+        {
+            return InterfaceMySQL.ObtenerUltimaClaveMaterial(out Material);
+        }
+
+        public static bool ObtenerProveedores(out RegistroProveedor[] Proveedores)
+        {
+            return InterfaceMySQL.ObtenerProveedores(out Proveedores);
         }
     }
 }

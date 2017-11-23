@@ -84,7 +84,7 @@ namespace Presentacion.Configuracion
 
         private void btnAgregarMaterial_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaAgregarMaterial().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaAgregarMaterial)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaAgregarMaterial(LlenarData);
@@ -93,7 +93,7 @@ namespace Presentacion.Configuracion
 
         private void btnModificarMaterial_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaModificarMaterial(null).GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaModificarMaterial)))
             {
                 Interface = new InterfaceUsuario(this);
                 RegistroMaterial Producto = Interface.ObtenerUnMaterial(Convert.ToInt32(dgvMateriales[0, dgvMateriales.CurrentRow.Index].Value));

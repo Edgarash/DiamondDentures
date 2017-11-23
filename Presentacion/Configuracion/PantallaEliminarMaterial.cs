@@ -16,10 +16,10 @@ namespace Presentacion.Configuracion
         {
             InitializeComponent();
             tbClave.Text = Material?.IDMaterial.ToString();
-            tbNombre.Text = Material?.Nombre ?? "";
-            tbPrecio.Text = Material?.PrecioBase.ToString("N2");
+            tbNombreMaterial.Text = Material?.Nombre ?? "";
+            tbPrecioBase.Text = Material?.PrecioBase.ToString("N2");
             InitializeComponent3();
-            dgvProductos.Enabled = tbClave.Enabled = tbNombre.Enabled = tbPrecio.Enabled = false;
+            dgvProductos.Enabled = tbClave.Enabled = tbNombreMaterial.Enabled = tbPrecioBase.Enabled = false;
         }
 
         protected override void InitializeComponent3()

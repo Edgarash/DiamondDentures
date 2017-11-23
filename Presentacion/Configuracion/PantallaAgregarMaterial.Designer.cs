@@ -54,10 +54,12 @@
             this.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // Encabezado
+            // 
+            this.Encabezado.Size = new System.Drawing.Size(0, 93);
+            // 
             // PantallaAgregarMaterial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(409, 489);
             this.Name = "PantallaAgregarMaterial";
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).EndInit();
             this.Encabezado.ResumeLayout(false);

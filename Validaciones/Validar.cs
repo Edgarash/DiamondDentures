@@ -553,6 +553,13 @@ namespace Validaciones
                 e.Handled = true;
         }
 
+        public static void Mayusculas(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = char.ToUpper(e.KeyChar);
+            if (e.KeyChar == '\'')
+                e.Handled = true;
+        }
+
         public static DialogResult MensajeInfo(string Mensaje)
         {
             return MessageBox.Show(Mensaje, "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);

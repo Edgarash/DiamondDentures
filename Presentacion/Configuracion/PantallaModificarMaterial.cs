@@ -16,8 +16,8 @@ namespace Presentacion.Configuracion
         {
             tbClave.Enabled = false;
             tbClave.Text = Material?.IDMaterial.ToString();
-            tbNombre.Text = Material?.Nombre ?? "";
-            tbPrecio.Text = Material?.PrecioBase.ToString();
+            tbNombreMaterial.Text = Material?.Nombre ?? "";
+            tbPrecioBase.Text = Material?.PrecioBase.ToString();
             InitializeComponent();
             InitializeComponent2();
             InitializeComponent3();
