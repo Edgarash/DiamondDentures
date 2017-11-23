@@ -131,8 +131,9 @@ namespace Control
 
         public RegistroMaterial ObtenerUnMaterial(int clave)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ObtenerUnMaterial(clave);
+            RegistroMaterial temp;
+            InterfaceMySQL.RecuperarMaterial(clave, out temp);
+            return temp;
         }
 
         public bool ActivarMaterial(int clave)
@@ -147,10 +148,9 @@ namespace Control
             return Interface.EliminarMaterial(clave);
         }
 
-        public bool ActualizarMaterial(RegistroMaterial material)
+        public static bool ActualizarMaterial(RegistroMaterial Material)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ActualizarMaterial(material);
+            return InterfaceMySQL.ActualizarMaterial(Material);
         }
     }
 }

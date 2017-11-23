@@ -368,12 +368,28 @@ namespace ConexionBaseDeDatos
             return OperacionRealizada;
         }
 
+        public static bool ActualizarMaterial(RegistroMaterial Material)
+        {
+            EjecutarProcedimientoAlmacenado("ActualizarMaterial", TipoConsulta.DevuelveInt,
+                Parametro("Clv", Material.IDMaterial),
+                Parametro("Nom", Material.Nombre),
+                Parametro("Des", Material.Descripcion),
+                Parametro("PreB", Material.PrecioBase),
+                Parametro("PreC", Material.PrecioCompra),
+                Parametro("Tie", Material.TiempoBase),
+                Parametro("Prov", Material.IDProveedor),
+                Parametro("UM", Material.UnidadMedida),
+                Parametro("Can", Material.Cantidad));
+            return OperacionRealizada;
+        }
+
         public static RegistroProMat[] RellenarProMat()
         {
             RegistroProMat[] ProMat = new RegistroProMat[TablaDeResultados.Rows.Count];
+            DataTable Pros = TablaDeResultados;
             for (int i = 0; i < ProMat.Length; i++)
             {
-                DataRow x = TablaDeResultados.Rows[i];
+                DataRow x = Pros.Rows[i];
                 RegistroProducto Producto;
                 RegistroMaterial Material;
                 RecuperarMaterial(Convert.ToInt32(x["IDMaterial"]), out Material);

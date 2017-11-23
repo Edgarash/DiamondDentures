@@ -245,10 +245,9 @@ namespace Presentacion
             return (Manejador as ManejadorPedido).ActualizarPedido(Pedido);
         }
 
-        public bool ActualizarMaterial(RegistroMaterial Material)
+        public static bool ActualizarMaterial(RegistroMaterial Material)
         {
-            Manejador = new ManejadorRegistroMaterial();
-            return (Manejador as ManejadorRegistroMaterial).ActualizarMaterial(Material);
+            return ManejadorRegistroMaterial.ActualizarMaterial(Material);
         }
 
         public bool ActivarMaterial(int Clave)

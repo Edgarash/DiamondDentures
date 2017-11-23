@@ -325,7 +325,7 @@
             // 
             this.tbUnidadMedida.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.tbUnidadMedida.Location = new System.Drawing.Point(412, 171);
-            this.tbUnidadMedida.MaxLength = 8;
+            this.tbUnidadMedida.MaxLength = 10;
             this.tbUnidadMedida.Name = "tbUnidadMedida";
             this.tbUnidadMedida.ShortcutsEnabled = false;
             this.tbUnidadMedida.Size = new System.Drawing.Size(139, 23);
@@ -500,14 +500,11 @@
         protected System.Windows.Forms.Label lblPrecioCompra;
         protected System.Windows.Forms.Label lblDescripcion;
         protected System.Windows.Forms.TextBox tbDescripcion;
-        private System.Windows.Forms.NumericUpDown nudTiempo;
         protected System.Windows.Forms.Label lblTiempo;
-        private System.Windows.Forms.ComboBox cbProveedores;
         protected System.Windows.Forms.Label lblProveedor;
         protected System.Windows.Forms.Label llbUnidadMedida;
         protected System.Windows.Forms.TextBox tbUnidadMedida;
         protected System.Windows.Forms.Label lblCantidad;
-        private System.Windows.Forms.NumericUpDown nudCantidad;
         protected System.Windows.Forms.TextBox tbPrecioCompra;
         protected System.Windows.Forms.TextBox tbPrecioBase;
         private System.Windows.Forms.DataGridViewTextBoxColumn Clave;
@@ -515,5 +512,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
+        protected System.Windows.Forms.ComboBox cbProveedores;
+        protected System.Windows.Forms.NumericUpDown nudTiempo;
+        protected System.Windows.Forms.NumericUpDown nudCantidad;
     }
 }
