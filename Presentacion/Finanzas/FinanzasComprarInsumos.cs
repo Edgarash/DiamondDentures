@@ -14,7 +14,7 @@ namespace Presentacion.Finanzas
     {
         InterfaceUsuario Interface;
         List<string> Lista = new List<string>();
-        int r = 0, u = 0, a = 0;
+        int r = 0, u = 0, PreciUni = 0;
         string datos = "", subtotl = "", totl = "", fec = "", subtotal = "";
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -92,9 +92,9 @@ namespace Presentacion.Finanzas
                 dataGridView1.Rows.Add(txIdInsumos.Text, txIdPr.Text, txNom.Text, prec, txCant.Text, subtotal.ToString());
                 for (int i = 0; i < Lista.Count; i++)
                 {
-                    a += Convert.ToInt32(Lista[i]);
+                    PreciUni += Convert.ToInt32(Lista[i]);
                 }
-                txTotal.Text = "TOTAL= " + a.ToString() + ".00";
+                txTotal.Text = "TOTAL= " + PreciUni.ToString() + ".00";
             }
             else
             {
@@ -121,10 +121,10 @@ namespace Presentacion.Finanzas
 
         private void btnComprar_Click_1(object sender, EventArgs e)
         {
-            totl = (Convert.ToInt32(a) + (Convert.ToInt32(a) * 0.16)).ToString();
+            totl = (Convert.ToInt32(PreciUni) + (Convert.ToInt32(PreciUni) * 0.16)).ToString();
             MessageBox.Show("Compra de Insumos Registrada Correctamete", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DataGridView dtt = new DataGridView();
-            Interface.DatosDRegistroPagos(dtt, "INSUMOS a de proveedor: " + txIdPr.Text, txDesc.Text, a.ToString(), "1", a.ToString(), totl, "1", "1",txID.Text);
+            Interface.FinanzasRegistrarPagoInsumos2(dtt, txNom.Text, txDesc.Text, txCant.Text, txPreUni.Text, txIdPr.Text,txIdInsumos.Text);
             Interface.AgregarCompra("", totl);
             //datos = "ID: " + txID.Text + "\nNOMBRE: " + txNom.Text + "\nDESCRIPCIÓN: " + txDesc.Text + "\nPRECIO UNITARIO: " + txPreUni.Text + "\nCANTIDAD: " + txCant.Text +
             //    "\nSUBTOTAL: " + subtotl.ToString() + "\nTOTAL: " + totl.ToString() + "\nESTADO: EN PROCESO" + "\nREGISTRADO: SÍ";

@@ -691,11 +691,11 @@ namespace Presentacion
             Manejador = new ManejadorPrincipal();
             ((ManejadorPrincipal)Manejador).DatosDAutualizarRegistroGastos(id);
         }
-        public void DatosDRegistroPagos(DataGridView temp, string nom, string des, string punit, string cant, string subt,
-            string tot, string est, string reg,string id)
+        public void DatosDRegistroPagos(DataGridView temp, string Nom, string Des, string Preuni, string Cant,
+            string Est, string Reg, string id)
         {
             Manejador = new ManejadorPrincipal();
-            ((ManejadorPrincipal)Manejador).DatosDRegistroPagos(temp, nom, des, punit, cant, subt, tot, est, reg,id);
+            ((ManejadorPrincipal)Manejador).DatosDRegistroPagos(temp, Nom, Des, Preuni, Cant, Est, Reg, id);
         }
         public void DatosDTotalGastos(TextBox temp)
         {
@@ -789,10 +789,10 @@ namespace Presentacion
             Manejador = new ManejadorPrincipal();
             ((ManejadorPrincipal)Manejador).DatosDTotalIngresos(temp);
         }
-        public void ComprarInsumos(TextBox txID, TextBox txNomb, TextBox txDesc, TextBox txCant, TextBox txPrUni, string p)
+        public void FinanzasRegistrarPagoInsumos2(DataGridView dt, string txID, string txNomb, string txDesc, string txCant, string txPrUni, string p)
         {
             Manejador = new ManejadorPrincipal();
-            ((ManejadorPrincipal)Manejador).ComprarInsumos(txID, txNomb, txDesc, txCant, txPrUni,p);
+            ((ManejadorPrincipal)Manejador).FinanzasRegistrarPagoInsumos2(dt, txID, txNomb, txDesc, txCant, txPrUni,p);
         }
         public void AgregarCompra(string nom, string tot)
         {

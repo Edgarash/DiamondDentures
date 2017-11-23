@@ -31,7 +31,6 @@
             this.btnFinanzasVentas = new System.Windows.Forms.Button();
             this.btnFinanzasGastos = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.btnComIns = new System.Windows.Forms.Button();
             this.btnVerInsumos = new System.Windows.Forms.Button();
             this.btnAdmPag = new System.Windows.Forms.Button();
             this.btnBalance = new System.Windows.Forms.Button();
@@ -74,19 +73,9 @@
             this.label9.TabIndex = 57;
             this.label9.Text = "Menú de Finanzas";
             // 
-            // btnComIns
-            // 
-            this.btnComIns.Location = new System.Drawing.Point(162, 112);
-            this.btnComIns.Name = "btnComIns";
-            this.btnComIns.Size = new System.Drawing.Size(92, 62);
-            this.btnComIns.TabIndex = 12;
-            this.btnComIns.Text = "Comprar Insumos";
-            this.btnComIns.UseVisualStyleBackColor = true;
-            this.btnComIns.Click += new System.EventHandler(this.btnComIns_Click);
-            // 
             // btnVerInsumos
             // 
-            this.btnVerInsumos.Location = new System.Drawing.Point(162, 180);
+            this.btnVerInsumos.Location = new System.Drawing.Point(162, 123);
             this.btnVerInsumos.Name = "btnVerInsumos";
             this.btnVerInsumos.Size = new System.Drawing.Size(92, 62);
             this.btnVerInsumos.TabIndex = 13;
@@ -96,7 +85,7 @@
             // 
             // btnAdmPag
             // 
-            this.btnAdmPag.Location = new System.Drawing.Point(162, 248);
+            this.btnAdmPag.Location = new System.Drawing.Point(162, 225);
             this.btnAdmPag.Name = "btnAdmPag";
             this.btnAdmPag.Size = new System.Drawing.Size(92, 62);
             this.btnAdmPag.TabIndex = 14;
@@ -122,7 +111,6 @@
             this.Controls.Add(this.btnBalance);
             this.Controls.Add(this.btnAdmPag);
             this.Controls.Add(this.btnVerInsumos);
-            this.Controls.Add(this.btnComIns);
             this.Controls.Add(this.btnFinanzasGastos);
             this.Controls.Add(this.btnFinanzasVentas);
             this.Name = "FinanzasMenu";
@@ -130,7 +118,6 @@
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.btnFinanzasVentas, 0);
             this.Controls.SetChildIndex(this.btnFinanzasGastos, 0);
-            this.Controls.SetChildIndex(this.btnComIns, 0);
             this.Controls.SetChildIndex(this.btnVerInsumos, 0);
             this.Controls.SetChildIndex(this.btnAdmPag, 0);
             this.Controls.SetChildIndex(this.btnBalance, 0);
@@ -145,7 +132,6 @@
         private System.Windows.Forms.Button btnFinanzasVentas;
         private System.Windows.Forms.Button btnFinanzasGastos;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnComIns;
         private System.Windows.Forms.Button btnVerInsumos;
         private System.Windows.Forms.Button btnAdmPag;
         private System.Windows.Forms.Button btnBalance;

@@ -34,7 +34,7 @@ namespace Presentacion.Recursos_Humanos
             txSubTot.Text = subtotl;
             txTot.Text = totl;
             Interface = new InterfaceUsuario(this);
-            Interface.DatosDRegistroPagos(dtPagoEmp, txNombr.Text, txDes.Text, txPrecUn.Text, txCant.Text, txSubTot.Text, txTot.Text, "1", "1","");
+            //Interface.DatosDRegistroPagos(dtPagoEmp, txNombr.Text, txDes.Text, txPrecUn.Text, txCant.Text, txSubTot.Text, "1", "1");
             datos = "NOMBRE: " + txNombr.Text + "\nDESCRIPCIÓN: " + txDes.Text + "\nPRECIO UNITARIO: " + txPrecUn.Text + "\nCANTIDAD: " + txCant.Text +
                 "\nSUBTOTAL: " + txSubTot.Text + "\nTOTAL: " + txTot.Text + "\nESTADO: EN PROCESO" + "\nREGISTRADO: SÍ";
         }

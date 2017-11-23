@@ -143,6 +143,18 @@ namespace ConexionBaseDeDatos
                 Parametro("IDProveedor", p));
             return OperacionRealizada;
         }
+        public static bool FinanzasRegistrarPagoInsumos2(DataGridView dt, string Nom, 
+            string Des, string Cant, string Preuni, string IDPro, string IDIns)
+        {
+            EjecutarProcedimientoAlmacenado("FinanzasRegistrarPagoInsumos2", TipoConsulta.DevuelveInt,
+                Parametro("Nom", Nom),
+                Parametro("Des", Des),
+                Parametro("Cant", Cant),
+                Parametro("Preuni", Preuni),
+                Parametro("IDPro", IDPro),
+                Parametro("IDIns", IDIns));
+            return OperacionRealizada;
+        }
 
         public static bool FinanzasAgregarCompra(string nom, string tot)
         {
@@ -205,18 +217,16 @@ namespace ConexionBaseDeDatos
                 Parametro("", null));
             return OperacionRealizada2;
         }
-        public static bool FinanzasRegistrarPago(DataGridView temp, string nom, string des, string punit, string cant, string subt,
-            string tot, string est, string reg, string id)
+        public static bool FinanzasRegistrarPago(DataGridView temp, string Nom, string Des, string Preuni, string Cant,
+            string Est, string Reg, string id)
         {
             EjecutarProcedimientoAlmacenado("FinanzasRegistrarPago", TipoConsulta.DevuelveInt,
-                Parametro("nom", nom),
-                Parametro("des", des),
-                Parametro("punit", punit+"0.00"),
-                Parametro("cant", cant),
-                Parametro("subt", subt + "0.00"),
-                Parametro("tot", tot + "0.00"),
-                Parametro("est", est),
-                Parametro("reg", reg),
+                Parametro("Nom", Nom),
+                Parametro("Des", Des),
+                Parametro("Preuni", Preuni+".00"),
+                Parametro("Cant", Cant),
+                Parametro("Est", Est),
+                Parametro("Reg", Reg),
                 Parametro("id", id));
             temp.DataSource = TablaDeResultados;
             return OperacionRealizada;

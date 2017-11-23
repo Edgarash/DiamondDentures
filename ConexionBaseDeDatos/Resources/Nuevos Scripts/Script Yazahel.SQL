@@ -374,10 +374,10 @@ CREATE PROCEDURE `FinanzasRegistrarPago`(
 )
 BEGIN
   INSERT IGNORE
-  INTO `pagos`
-  (`Nombre`, `Descripcion`, `PrecioUnitario`, `Cantidad`, `Subtotal`, `Total`, `Estado`, `Registro`, `Fecha`,IDCompra)
-VALUES
-  (`Nom`, `Des`, `Preuni`, `Cant`, `Cant` * `Preuni`, `Subtotal` + (`Subtotal` * 0.16), `Est`, `Reg`, CURDATE(),id);
+    INTO `pagos`
+    (`Nombre`, `Descripcion`, `PrecioUnitario`, `Cantidad`, `Subtotal`, `Total`, `Estado`, `Registro`, `Fecha`, `IDCompra`)
+  VALUES
+    (`Nom`, `Des`, `Preuni`, `Cant`, `Cant` * `Preuni`, `Subtotal` + (`Subtotal` * 0.16), `Est`, `Reg`, CURDATE(), `id`);
 END;
 
 DROP PROCEDURE IF EXISTS `RHumanosRegistrarAsistencia`;
@@ -421,14 +421,14 @@ BEGIN
     `balancecuentasingresos`.`Fecha` LIKE `fec`
   UNION
   SELECT DISTINCT
-  `Fecha`, CONCAT('Corte de caja de ', `Empleado`) AS 'Descripción', `ganancia`
+  `Fecha`, CONCAT('Corte de caja de ', `Empleado`) AS 'Descripción', `EntradaEfectivo`
 FROM
   `cortecaja`
   WHERE
     `cortecaja`.`fecha` LIKE `fec`
   UNION
   SELECT DISTINCT
-    `Fecha`, 'TOTAL', (SELECT DISTINCT SUM(`ventas`.`Importe`) FROM `ventas`) + (SELECT DISTINCT SUM(`cortecaja`.`ganancia`) FROM `cortecaja`)
+    `Fecha`, 'TOTAL', (SELECT DISTINCT SUM(`ventas`.`Importe`) FROM `ventas`) + (SELECT DISTINCT SUM(`cortecaja`.`EntradaEfectivo`) FROM `cortecaja`)
   FROM
     `ventas`,
     `cortecaja`
@@ -465,7 +465,7 @@ DROP PROCEDURE IF EXISTS `FinanzasTotalIngresos`;
 CREATE PROCEDURE `FinanzasTotalIngresos`()
 BEGIN
   SELECT DISTINCT
-  (SELECT SUM(`ventas`.`Importe`) FROM `ventas`) + (SELECT SUM(`cortecaja`.`ganancia`) FROM `cortecaja`) - (SELECT SUM(`pagos`.`Total`) FROM `pagos` WHERE `pagos`.`Estado` = 3) AS 'TOTAL'
+  (SELECT SUM(`ventas`.`Importe`) FROM `ventas`) + (SELECT SUM(`cortecaja`.`EntradaEfectivo`) FROM `cortecaja`) - (SELECT SUM(`pagos`.`Total`) FROM `pagos` WHERE `pagos`.`Estado` = 3) AS 'TOTAL'
 FROM
   `ventas`,
   `cortecaja`,
@@ -574,27 +574,6 @@ BEGIN
     (`fec`, `nemp`, `nomb`, `ape`, `rfc`, `mail`, `dep`, `pues`, `dlab`, `suel`, `isr`, `descisr`, `sfinal`, `pag`);
 END;
 
-DROP PROCEDURE IF EXISTS `FinanzasRegistrarPago`;
-CREATE PROCEDURE `FinanzasRegistrarPago`(
-  nom char(50),
-  des char(70),
-  punit decimal(10,2),
-  cant int(11),
-  subt decimal(10,2),
-  tot decimal(15,2),
-  est int(1),
-  reg int(1),
-  fec date
-)
-BEGIN
-  INSERT IGNORE
-    INTO `pagos`
-    (`Nombre`, `Descripcion`, `PrecioUnitario`, `Cantidad`, `Subtotal`, `Total`, `Estado`, `Registro`, `Fecha`)
-  VALUES
-    (`nom`, `des`, `punit`, `cant`, `subt`, `tot`, `est`, `reg`,`fec`);
-END;
-
-
 DROP PROCEDURE IF EXISTS `FinanzasAgregaBalanceIngresos`;
 CREATE PROCEDURE `FinanzasAgregaBalanceIngresos`(
   `des` varchar(100),
@@ -621,6 +600,27 @@ BEGIN
   VALUES
     (`des`, `val`);
 END;
+
+
+DROP PROCEDURE IF EXISTS `FinanzasRegistrarPagoInsumos2`;
+CREATE PROCEDURE `FinanzasRegistrarPagoInsumos2`(
+  Nom char(50),
+  Des char(70),
+  Cant int(11),
+  Preuni numeric(10,2),  
+  IDPro int(11),
+  IDIns int(11)
+)
+BEGIN
+  INSERT IGNORE
+    INTO `detalle_compra_insumo`
+    (`Nombre`, `Descripcion`, `Cantidad`, `PrecioUnitario`, `Subtotal`, `IDProveedor`, `IDInsumo`)
+  VALUES
+    (`Nom`, `Des`, `Cant`, `Preuni`, `Cant` * `Preuni`, `IDPro`, `IDIns`);
+END;
+
+
+
 
 
 #ModuloControlPedidos

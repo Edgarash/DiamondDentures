@@ -18,8 +18,8 @@ namespace Presentacion
             ConexionBaseDeDatos.InterfaceMySQL.ActualizarBaseDeDatos();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Presentacion.Control_Pedidos.PantallaMenuControlPedidos(""));
-            //Application.Run(new PantallaLogin());
+            //Application.Run(new Presentacion.Control_Pedidos.PantallaMenuControlPedidos(""));
+            Application.Run(new Presentacion.MenuModulosYazah());
         }
     }
 }
