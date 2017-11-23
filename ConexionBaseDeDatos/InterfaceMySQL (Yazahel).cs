@@ -315,11 +315,6 @@ namespace ConexionBaseDeDatos
 
 
         #region Metodos Auxiliares
-        private static string ObtenerFecha(DateTime Fecha)
-        {
-            return "'" + Fecha.Year + "-" + Fecha.Month + "-" + Fecha.Day + "'";
-        }
-
         static void EjecutarProcedimientoAlmacenado2
             (ComboBox cbox, string NombreProcedimiento, TipoConsulta Tipo, params MySqlParameter[] Datos)
         {

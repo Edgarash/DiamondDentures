@@ -56,6 +56,7 @@ FROM
 # View "DetalleVentas"
 #
 
+DROP VIEW IF EXISTS DetalleVentas;
 CREATE
   ALGORITHM = UNDEFINED
   VIEW DetalleVentas

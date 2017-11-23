@@ -7,13 +7,12 @@ USE DiamondDentures;
 
 CREATE TABLE IF NOT EXISTS Asistencia
 (
-IDAsistencia	int(11) NOT NULL AUTO_INCREMENT,
+IDAsistencia	int(11) PRIMARY KEY AUTO_INCREMENT,
 IDEmpleado		int(11),
 Empleado		char(200),
 Fecha			varchar(12),
 HoraEntrada		varchar(5),
 HoraSalida		varchar(5)
-PRIMARY KEY (IDAsistencia)
 );
 
 #

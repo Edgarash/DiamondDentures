@@ -16,7 +16,6 @@ namespace Presentacion
         [STAThread]
         static void Main(string[] Args)
         {
-            ConexionBaseDeDatos.InterfaceMySQL.Nube = false;
             if (ConexionBaseDeDatos.InterfaceMySQL.ActualizarBaseDeDatos())
             {
                 Application.EnableVisualStyles();

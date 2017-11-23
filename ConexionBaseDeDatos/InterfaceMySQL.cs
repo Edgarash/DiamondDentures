@@ -147,7 +147,7 @@ namespace ConexionBaseDeDatos
             Local.Database = BD;
             Local.Server = "localhost";
             Local.Password = "PASSROOT";
-            Conexion = new MySqlConnection(Nube ? Cadena.ConnectionString : Local.ConnectionString);
+            Conexion = new MySqlConnection(Cadena.ConnectionString);
         }
 
         /// <summary>
@@ -194,8 +194,7 @@ namespace ConexionBaseDeDatos
             (string NombreProcedimiento, TipoConsulta Tipo, params MySqlParameter[] Datos)
         {
             Comando = new MySqlCommand(NombreProcedimiento, Conexion);
-            for (int i = 0; i < Datos.Length; i++)
-                Comando.Parameters.Add(Datos[i]);
+            Comando.Parameters.AddRange(Datos);
             Comando.CommandType = CommandType.StoredProcedure;
             bool Abierto = AbrirConexion();
             if (Abierto)
