@@ -180,6 +180,12 @@ namespace Presentacion
             Show();
         }
 
+        private void kuroButton2_Click(object sender, EventArgs e)
+        {
+            Almacen_y_Proveedores.Menu abrir = new Almacen_y_Proveedores.Menu();
+            abrir.Show();
+        }
+
         private void btnReportes_Click(object sender, EventArgs e)
         {
             ManejadorReportes.MostrarPantalla(this, new PantallaMenuReportes());

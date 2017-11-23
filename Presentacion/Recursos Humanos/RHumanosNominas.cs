@@ -25,11 +25,11 @@ namespace Presentacion.Recursos_Humanos
         private void ActualizarData4()
         {
             Interface = new InterfaceUsuario(this);
-            Interface.DatosDRegistroPagos(dtNomina, "Empleado " + dtNomina[2,r].Value.ToString() + " " + dtNomina[3,r].Value.ToString(),
+            /*Interface.DatosDRegistroPagos(dtNomina, "Empleado " + dtNomina[2,r].Value.ToString() + " " + dtNomina[3,r].Value.ToString(),
                 "Pago de nómina", dtNomina[9,r].Value.ToString(), dtNomina[8,r].Value.ToString(), sbtotl, total, "1", "1","");
             datos = "NOMBRE: " + dtNomina[2, r].Value.ToString() + " " + dtNomina[3,r].Value.ToString()
                 + "\nDESCRIPCIÓN: " + "Nomina empleado" + "\nPRECIO UNITARIO: " + dtNomina[9, r].Value.ToString() + "\nCANTIDAD: " + dtNomina[8,r].Value.ToString() +
-                "\nSUBTOTAL: " + sbtotl + "\nTOTAL: " + total + "\nESTADO: EN PROCESO" + "\nREGISTRADO: SÍ";
+                "\nSUBTOTAL: " + sbtotl + "\nTOTAL: " + total + "\nESTADO: EN PROCESO" + "\nREGISTRADO: SÍ";*/
         }
         private void dtNomina_CellClick(object sender, DataGridViewCellEventArgs e)
         {

@@ -207,6 +207,10 @@ namespace Control
         {
             InterfaceMySQL.FinanzasVerProductosDeProveedor(emp,temp);
         }
+        public void DatosDVerMaterialesDeProveedor(DataGridView emp, string temp)
+        {
+            InterfaceMySQL.FinanzasVerMaterialesDeProveedor(emp, temp);
+        }
         public void DatosAgregarAsistencia(DataGridView temp, string id, string emp, string fec, string hEnt, string hSal)
         {
             InterfaceMySQL.RHumanosRegistrarAsistencia(temp, id, emp, fec, hEnt, hSal);

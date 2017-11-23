@@ -169,5 +169,10 @@ namespace Presentacion.Almacen_y_Proveedores
                 }
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
