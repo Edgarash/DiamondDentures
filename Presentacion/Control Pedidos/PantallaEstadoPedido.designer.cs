@@ -42,12 +42,6 @@
             this.btnFacturacion = new System.Windows.Forms.Button();
             this.lblFacturacion = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.rbTipo = new System.Windows.Forms.RadioButton();
-            this.rbPedido = new System.Windows.Forms.RadioButton();
-            this.rbDentista = new System.Windows.Forms.RadioButton();
-            this.tbBuscar = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.lblUsuario = new System.Windows.Forms.Label();
@@ -72,6 +66,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.tbBuscar = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtvDatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).BeginInit();
@@ -283,79 +280,6 @@
             this.label15.TabIndex = 270;
             this.label15.Text = "Pedidos";
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(116, 105);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 19);
-            this.label14.TabIndex = 269;
-            this.label14.Text = "Buscar";
-            // 
-            // rbTipo
-            // 
-            this.rbTipo.AutoSize = true;
-            this.rbTipo.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbTipo.Location = new System.Drawing.Point(208, 158);
-            this.rbTipo.Name = "rbTipo";
-            this.rbTipo.Size = new System.Drawing.Size(47, 19);
-            this.rbTipo.TabIndex = 7;
-            this.rbTipo.Text = "Tipo";
-            this.rbTipo.UseVisualStyleBackColor = true;
-            // 
-            // rbPedido
-            // 
-            this.rbPedido.AutoSize = true;
-            this.rbPedido.Checked = true;
-            this.rbPedido.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbPedido.Location = new System.Drawing.Point(35, 158);
-            this.rbPedido.Name = "rbPedido";
-            this.rbPedido.Size = new System.Drawing.Size(78, 19);
-            this.rbPedido.TabIndex = 3;
-            this.rbPedido.TabStop = true;
-            this.rbPedido.Text = "Id_Pedido";
-            this.rbPedido.UseVisualStyleBackColor = true;
-            // 
-            // rbDentista
-            // 
-            this.rbDentista.AutoSize = true;
-            this.rbDentista.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDentista.Location = new System.Drawing.Point(119, 158);
-            this.rbDentista.Name = "rbDentista";
-            this.rbDentista.Size = new System.Drawing.Size(64, 19);
-            this.rbDentista.TabIndex = 4;
-            this.rbDentista.Text = "Cedula";
-            this.rbDentista.UseVisualStyleBackColor = true;
-            // 
-            // tbBuscar
-            // 
-            this.tbBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbBuscar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBuscar.Location = new System.Drawing.Point(267, 161);
-            this.tbBuscar.MaxLength = 20;
-            this.tbBuscar.Name = "tbBuscar";
-            this.tbBuscar.Size = new System.Drawing.Size(95, 22);
-            this.tbBuscar.TabIndex = 1;
-            this.tbBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBuscar_KeyPress);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackgroundImage = global::Presentacion.Properties.Resources.IconoBuscar;
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(368, 153);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(41, 41);
-            this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            this.btnBuscar.MouseEnter += new System.EventHandler(this.btnMouseOver);
-            this.btnBuscar.MouseLeave += new System.EventHandler(this.btnMouseLeft);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -545,7 +469,6 @@
             // 
             this.cbEstado.FormattingEnabled = true;
             this.cbEstado.Items.AddRange(new object[] {
-            "Cancelado",
             "Registrado",
             "Confirmado",
             "En Proceso",
@@ -684,6 +607,44 @@
             this.label11.TabIndex = 297;
             this.label11.Text = "En Proceso";
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackgroundImage = global::Presentacion.Properties.Resources.IconoBuscar;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Location = new System.Drawing.Point(211, 129);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(41, 41);
+            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnBuscar.MouseEnter += new System.EventHandler(this.btnMouseOver);
+            this.btnBuscar.MouseLeave += new System.EventHandler(this.btnMouseLeft);
+            // 
+            // tbBuscar
+            // 
+            this.tbBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbBuscar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbBuscar.Location = new System.Drawing.Point(110, 137);
+            this.tbBuscar.MaxLength = 20;
+            this.tbBuscar.Name = "tbBuscar";
+            this.tbBuscar.Size = new System.Drawing.Size(95, 22);
+            this.tbBuscar.TabIndex = 1;
+            this.tbBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBuscar_KeyPress);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(31, 140);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(60, 19);
+            this.label14.TabIndex = 269;
+            this.label14.Text = "Buscar";
+            // 
             // PantallaEstadoPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -715,9 +676,6 @@
             this.Controls.Add(this.lblFacturacion);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.rbTipo);
-            this.Controls.Add(this.rbPedido);
-            this.Controls.Add(this.rbDentista);
             this.Controls.Add(this.tbBuscar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label8);
@@ -734,7 +692,6 @@
             this.Name = "PantallaEstadoPedido";
             this.Text = "Semáforo";
             this.Load += new System.EventHandler(this.PantallaEstadoPedido_Load);
-            this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.dtvDatos, 0);
             this.Controls.SetChildIndex(this.btnNuevoPedido, 0);
             this.Controls.SetChildIndex(this.lblNuevoPedido, 0);
@@ -748,9 +705,6 @@
             this.Controls.SetChildIndex(this.label8, 0);
             this.Controls.SetChildIndex(this.btnBuscar, 0);
             this.Controls.SetChildIndex(this.tbBuscar, 0);
-            this.Controls.SetChildIndex(this.rbDentista, 0);
-            this.Controls.SetChildIndex(this.rbPedido, 0);
-            this.Controls.SetChildIndex(this.rbTipo, 0);
             this.Controls.SetChildIndex(this.label14, 0);
             this.Controls.SetChildIndex(this.label15, 0);
             this.Controls.SetChildIndex(this.lblFacturacion, 0);
@@ -777,6 +731,7 @@
             this.Controls.SetChildIndex(this.label10, 0);
             this.Controls.SetChildIndex(this.label7, 0);
             this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtvDatos)).EndInit();
@@ -802,12 +757,6 @@
         private System.Windows.Forms.Button btnFacturacion;
         private System.Windows.Forms.Label lblFacturacion;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.RadioButton rbTipo;
-        private System.Windows.Forms.RadioButton rbPedido;
-        private System.Windows.Forms.RadioButton rbDentista;
-        protected System.Windows.Forms.TextBox tbBuscar;
-        protected System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label lblUsuario;
@@ -832,5 +781,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        protected System.Windows.Forms.Button btnBuscar;
+        protected System.Windows.Forms.TextBox tbBuscar;
+        private System.Windows.Forms.Label label14;
     }
 }
