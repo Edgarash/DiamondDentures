@@ -22,6 +22,10 @@ namespace Presentacion.Finanzas
             InitializeComponent();
             txDatos.Text = dts;
         }
+        public FinanzasRealizarPago()
+        {
+            InitializeComponent();
+        }
 
         private void tbBanco_SelectedIndexChanged(object sender, EventArgs e)
         {

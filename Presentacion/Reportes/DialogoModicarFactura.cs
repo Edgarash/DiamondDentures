@@ -76,7 +76,7 @@ namespace Presentacion.Reportes
             this.btnVerificarId = new System.Windows.Forms.Button();
             this.btnGenerarId = new System.Windows.Forms.Button();
             this.Encabezado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Encabezado
@@ -89,8 +89,7 @@ namespace Presentacion.Reportes
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label1.Location = new System.Drawing.Point(93, 37);
             this.label1.Name = "label1";
@@ -140,8 +139,7 @@ namespace Presentacion.Reportes
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(279, 441);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(68, 17);
@@ -151,8 +149,7 @@ namespace Presentacion.Reportes
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(173, 441);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(60, 17);
@@ -162,7 +159,7 @@ namespace Presentacion.Reportes
             // txtNombreCliente
             // 
             this.txtNombreCliente.Location = new System.Drawing.Point(21, 204);
-            this.txtNombreCliente.MaxLength = 79;
+            this.txtNombreCliente.MaxLength = 100;
             this.txtNombreCliente.Name = "txtNombreCliente";
             this.txtNombreCliente.Size = new System.Drawing.Size(214, 21);
             this.txtNombreCliente.TabIndex = 1;
@@ -178,7 +175,7 @@ namespace Presentacion.Reportes
             // txtDireccion
             // 
             this.txtDireccion.Location = new System.Drawing.Point(21, 267);
-            this.txtDireccion.MaxLength = 79;
+            this.txtDireccion.MaxLength = 80;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(270, 21);
             this.txtDireccion.TabIndex = 3;
@@ -194,7 +191,7 @@ namespace Presentacion.Reportes
             // txtCiudad
             // 
             this.txtCiudad.Location = new System.Drawing.Point(409, 267);
-            this.txtCiudad.MaxLength = 29;
+            this.txtCiudad.MaxLength = 30;
             this.txtCiudad.Name = "txtCiudad";
             this.txtCiudad.Size = new System.Drawing.Size(109, 21);
             this.txtCiudad.TabIndex = 5;
@@ -202,8 +199,7 @@ namespace Presentacion.Reportes
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(21, 184);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(136, 17);
@@ -213,8 +209,7 @@ namespace Presentacion.Reportes
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(247, 184);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 17);
@@ -224,8 +219,7 @@ namespace Presentacion.Reportes
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(297, 247);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 17);
@@ -235,8 +229,7 @@ namespace Presentacion.Reportes
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(21, 247);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 17);
@@ -246,8 +239,7 @@ namespace Presentacion.Reportes
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(406, 247);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 17);
@@ -257,8 +249,7 @@ namespace Presentacion.Reportes
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(21, 310);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 17);
@@ -268,8 +259,7 @@ namespace Presentacion.Reportes
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(247, 313);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(62, 17);
@@ -288,41 +278,39 @@ namespace Presentacion.Reportes
             // 
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Items.AddRange(new object[]
-            {
-                "Aguascalientes",
-                "Baja California",
-                "Baja California Sur",
-                "Campeche",
-                "Chiapas",
-                "Chihuahua",
-                "Ciudad de México",
-                "Coahuila",
-                "Colima",
-                "Durango",
-                "Estado de México",
-                "Guanajuato",
-                "Guerrero",
-                "Hidalgo",
-                "Jalisco",
-                "Michoacán",
-                "Morelos",
-                "Nayarit",
-                "Nuevo León",
-                "Oaxaca",
-                "Puebla",
-                "Querétaro",
-                "Quintana Roo",
-                "San Luis Potosí",
-                "Sinaloa",
-                "Sonora",
-                "Tabasco",
-                "Tamaulipas",
-                "Tlaxcala",
-                "Veracruz",
-                "Yucatán",
-                "Zacatecas"
-            });
+            this.cmbEstado.Items.AddRange(new object[] {
+            "Aguascalientes",
+            "Baja California",
+            "Baja California Sur",
+            "Campeche",
+            "Chiapas",
+            "Chihuahua",
+            "Ciudad de México",
+            "Coahuila",
+            "Colima",
+            "Durango",
+            "Estado de México",
+            "Guanajuato",
+            "Guerrero",
+            "Hidalgo",
+            "Jalisco",
+            "Michoacán",
+            "Morelos",
+            "Nayarit",
+            "Nuevo León",
+            "Oaxaca",
+            "Puebla",
+            "Querétaro",
+            "Quintana Roo",
+            "San Luis Potosí",
+            "Sinaloa",
+            "Sonora",
+            "Tabasco",
+            "Tamaulipas",
+            "Tlaxcala",
+            "Veracruz",
+            "Yucatán",
+            "Zacatecas"});
             this.cmbEstado.Location = new System.Drawing.Point(21, 330);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(214, 24);
@@ -331,8 +319,7 @@ namespace Presentacion.Reportes
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(21, 123);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(75, 17);
@@ -342,7 +329,7 @@ namespace Presentacion.Reportes
             // txtIIdFactura
             // 
             this.txtIIdFactura.Location = new System.Drawing.Point(21, 143);
-            this.txtIIdFactura.MaxLength = 79;
+            this.txtIIdFactura.MaxLength = 11;
             this.txtIIdFactura.Name = "txtIIdFactura";
             this.txtIIdFactura.Size = new System.Drawing.Size(214, 21);
             this.txtIIdFactura.TabIndex = 39;
@@ -351,8 +338,7 @@ namespace Presentacion.Reportes
             // btnVerificarId
             // 
             this.btnVerificarId.BackColor = System.Drawing.SystemColors.Window;
-            this.btnVerificarId.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.btnVerificarId.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerificarId.Location = new System.Drawing.Point(322, 142);
             this.btnVerificarId.Name = "btnVerificarId";
             this.btnVerificarId.Size = new System.Drawing.Size(75, 23);
@@ -364,8 +350,7 @@ namespace Presentacion.Reportes
             // btnGenerarId
             // 
             this.btnGenerarId.BackColor = System.Drawing.SystemColors.Window;
-            this.btnGenerarId.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.btnGenerarId.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerarId.Location = new System.Drawing.Point(241, 142);
             this.btnGenerarId.Name = "btnGenerarId";
             this.btnGenerarId.Size = new System.Drawing.Size(75, 23);
@@ -428,9 +413,10 @@ namespace Presentacion.Reportes
             this.Controls.SetChildIndex(this.btnGenerarId, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -525,7 +511,7 @@ namespace Presentacion.Reportes
                 MessageBox.Show("No se ha ingresado un telefono");
                 return;
             }
-            int valor;
+            int valor = 0;
             if (int.TryParse(txtIIdFactura.Text, out valor))
             {
                 Factura.Id = valor;

@@ -136,6 +136,7 @@ namespace Presentacion.Reportes
             // txtEmisor
             // 
             this.txtEmisor.Location = new System.Drawing.Point(9, 168);
+            this.txtEmisor.MaxLength = 100;
             this.txtEmisor.Name = "txtEmisor";
             this.txtEmisor.Size = new System.Drawing.Size(225, 21);
             this.txtEmisor.TabIndex = 30;
@@ -143,6 +144,7 @@ namespace Presentacion.Reportes
             // txtReceptor
             // 
             this.txtReceptor.Location = new System.Drawing.Point(9, 232);
+            this.txtReceptor.MaxLength = 100;
             this.txtReceptor.Name = "txtReceptor";
             this.txtReceptor.Size = new System.Drawing.Size(225, 21);
             this.txtReceptor.TabIndex = 29;
@@ -160,6 +162,7 @@ namespace Presentacion.Reportes
             // txtIDText
             // 
             this.txtIDText.Location = new System.Drawing.Point(9, 51);
+            this.txtIDText.MaxLength = 11;
             this.txtIDText.Name = "txtIDText";
             this.txtIDText.Size = new System.Drawing.Size(225, 21);
             this.txtIDText.TabIndex = 27;

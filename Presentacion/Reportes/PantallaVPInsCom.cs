@@ -36,6 +36,8 @@ namespace Presentacion.Reportes
         {
             this.crvVisor = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtIDCompra = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnGenerar = new System.Windows.Forms.Button();
@@ -47,8 +49,6 @@ namespace Presentacion.Reportes
             this.btnExportar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.sfdExportar = new System.Windows.Forms.SaveFileDialog();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtIDCompra = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,6 +90,23 @@ namespace Presentacion.Reportes
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parametros del reporte";
+            // 
+            // txtIDCompra
+            // 
+            this.txtIDCompra.Location = new System.Drawing.Point(20, 106);
+            this.txtIDCompra.MaxLength = 11;
+            this.txtIDCompra.Name = "txtIDCompra";
+            this.txtIDCompra.Size = new System.Drawing.Size(180, 21);
+            this.txtIDCompra.TabIndex = 39;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 87);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(86, 16);
+            this.label4.TabIndex = 38;
+            this.label4.Text = "Id de compra:";
             // 
             // label3
             // 
@@ -208,22 +225,6 @@ namespace Presentacion.Reportes
             this.sfdExportar.Filter = "Adobe PDF|*.pdf";
             this.sfdExportar.FileOk += new System.ComponentModel.CancelEventHandler(this.sfdExportar_FileOk);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 87);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 16);
-            this.label4.TabIndex = 38;
-            this.label4.Text = "Id de compra:";
-            // 
-            // txtIDCompra
-            // 
-            this.txtIDCompra.Location = new System.Drawing.Point(20, 106);
-            this.txtIDCompra.Name = "txtIDCompra";
-            this.txtIDCompra.Size = new System.Drawing.Size(180, 21);
-            this.txtIDCompra.TabIndex = 39;
-            // 
             // PantallaVPInsCom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -271,10 +272,18 @@ namespace Presentacion.Reportes
 
             bool esp = !string.IsNullOrWhiteSpace(txtIDCompra.Text);
 
+            int idco = 0;
+            if (!int.TryParse(txtIDCompra.Text, out idco))
+            {
+                MessageBox.Show("El id de compra no es valido");
+                return;
+            }
+
+
             ParametroReporte FchI = new ParametroReporte("fchi", fchI);
             ParametroReporte FchF = new ParametroReporte("fchf", fchF);
             ParametroReporte Esp = new ParametroReporte("esp", esp);
-            ParametroReporte IdCo = esp ? new ParametroReporte("idco", txtIDCompra.Text) : new ParametroReporte("idco", "0");
+            ParametroReporte IdCo = esp ? new ParametroReporte("idco", ) : new ParametroReporte("idco", "0");
 
             crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteInsumosComprados(), FchI, FchF,Esp, IdCo);
         }
