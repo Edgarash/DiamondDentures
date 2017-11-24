@@ -42,18 +42,18 @@
             this.lblControlPedidos = new System.Windows.Forms.Label();
             this.lblLaboratorio = new System.Windows.Forms.Label();
             this.lblSemáforo = new System.Windows.Forms.Label();
-            this.kuroButton1 = new ControlesM.KuroButton();
-            this.kuroButton2 = new ControlesM.KuroButton();
-            this.kuroButton3 = new ControlesM.KuroButton();
-            this.kuroButton4 = new ControlesM.KuroButton();
+            this.btnVentas = new ControlesM.KuroButton();
+            this.btnAlmacen = new ControlesM.KuroButton();
+            this.btnFinanzas = new ControlesM.KuroButton();
+            this.btnRecursos = new ControlesM.KuroButton();
             this.btnReportes = new ControlesM.KuroButton();
             this.Encabezado.SuspendLayout();
             this.SuspendLayout();
             // 
             // Encabezado
             // 
-            this.Encabezado.Controls.Add(this.kuroButton2);
-            this.Encabezado.Controls.Add(this.kuroButton1);
+            this.Encabezado.Controls.Add(this.btnAlmacen);
+            this.Encabezado.Controls.Add(this.btnVentas);
             this.Encabezado.Controls.Add(this.lblTituloMenu);
             this.Encabezado.Size = new System.Drawing.Size(639, 93);
             // 
@@ -252,69 +252,69 @@
             this.lblSemáforo.Text = "Semáforo";
             this.lblSemáforo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // kuroButton1
+            // btnVentas
             // 
-            this.kuroButton1.BackColor = System.Drawing.Color.White;
-            this.kuroButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.kuroButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.kuroButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.kuroButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.kuroButton1.ForeColor = System.Drawing.Color.Black;
-            this.kuroButton1.Location = new System.Drawing.Point(15, 21);
-            this.kuroButton1.Name = "kuroButton1";
-            this.kuroButton1.Size = new System.Drawing.Size(120, 50);
-            this.kuroButton1.TabIndex = 1;
-            this.kuroButton1.Text = "Ventas";
-            this.kuroButton1.UseVisualStyleBackColor = false;
-            this.kuroButton1.Click += new System.EventHandler(this.kuroButton1_Click);
+            this.btnVentas.BackColor = System.Drawing.Color.White;
+            this.btnVentas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnVentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnVentas.ForeColor = System.Drawing.Color.Black;
+            this.btnVentas.Location = new System.Drawing.Point(15, 21);
+            this.btnVentas.Name = "btnVentas";
+            this.btnVentas.Size = new System.Drawing.Size(120, 50);
+            this.btnVentas.TabIndex = 1;
+            this.btnVentas.Text = "Ventas";
+            this.btnVentas.UseVisualStyleBackColor = false;
+            this.btnVentas.Click += new System.EventHandler(this.kuroButton1_Click);
             // 
-            // kuroButton2
+            // btnAlmacen
             // 
-            this.kuroButton2.BackColor = System.Drawing.Color.White;
-            this.kuroButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.kuroButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.kuroButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.kuroButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.kuroButton2.ForeColor = System.Drawing.Color.Black;
-            this.kuroButton2.Location = new System.Drawing.Point(475, 21);
-            this.kuroButton2.Name = "kuroButton2";
-            this.kuroButton2.Size = new System.Drawing.Size(120, 50);
-            this.kuroButton2.TabIndex = 2;
-            this.kuroButton2.Text = "Almacen y Proveedores";
-            this.kuroButton2.UseVisualStyleBackColor = false;
-            this.kuroButton2.Click += new System.EventHandler(this.kuroButton2_Click);
+            this.btnAlmacen.BackColor = System.Drawing.Color.White;
+            this.btnAlmacen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnAlmacen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnAlmacen.ForeColor = System.Drawing.Color.Black;
+            this.btnAlmacen.Location = new System.Drawing.Point(507, 21);
+            this.btnAlmacen.Name = "btnAlmacen";
+            this.btnAlmacen.Size = new System.Drawing.Size(120, 50);
+            this.btnAlmacen.TabIndex = 2;
+            this.btnAlmacen.Text = "Almacen y Proveedores";
+            this.btnAlmacen.UseVisualStyleBackColor = false;
+            this.btnAlmacen.Click += new System.EventHandler(this.kuroButton2_Click);
             // 
-            // kuroButton3
+            // btnFinanzas
             // 
-            this.kuroButton3.BackColor = System.Drawing.Color.White;
-            this.kuroButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.kuroButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.kuroButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.kuroButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.kuroButton3.ForeColor = System.Drawing.Color.Black;
-            this.kuroButton3.Location = new System.Drawing.Point(506, 464);
-            this.kuroButton3.Name = "kuroButton3";
-            this.kuroButton3.Size = new System.Drawing.Size(120, 50);
-            this.kuroButton3.TabIndex = 57;
-            this.kuroButton3.Text = "Finanzas";
-            this.kuroButton3.UseVisualStyleBackColor = false;
-            this.kuroButton3.Click += new System.EventHandler(this.kuroButton3_Click);
+            this.btnFinanzas.BackColor = System.Drawing.Color.White;
+            this.btnFinanzas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnFinanzas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnFinanzas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinanzas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnFinanzas.ForeColor = System.Drawing.Color.Black;
+            this.btnFinanzas.Location = new System.Drawing.Point(507, 86);
+            this.btnFinanzas.Name = "btnFinanzas";
+            this.btnFinanzas.Size = new System.Drawing.Size(120, 50);
+            this.btnFinanzas.TabIndex = 57;
+            this.btnFinanzas.Text = "Finanzas";
+            this.btnFinanzas.UseVisualStyleBackColor = false;
+            this.btnFinanzas.Click += new System.EventHandler(this.kuroButton3_Click);
             // 
-            // kuroButton4
+            // btnRecursos
             // 
-            this.kuroButton4.BackColor = System.Drawing.Color.White;
-            this.kuroButton4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.kuroButton4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.kuroButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.kuroButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.kuroButton4.ForeColor = System.Drawing.Color.Black;
-            this.kuroButton4.Location = new System.Drawing.Point(363, 464);
-            this.kuroButton4.Name = "kuroButton4";
-            this.kuroButton4.Size = new System.Drawing.Size(120, 50);
-            this.kuroButton4.TabIndex = 58;
-            this.kuroButton4.Text = "Recursos Humanos";
-            this.kuroButton4.UseVisualStyleBackColor = false;
-            this.kuroButton4.Click += new System.EventHandler(this.kuroButton4_Click);
+            this.btnRecursos.BackColor = System.Drawing.Color.White;
+            this.btnRecursos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnRecursos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnRecursos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRecursos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnRecursos.ForeColor = System.Drawing.Color.Black;
+            this.btnRecursos.Location = new System.Drawing.Point(253, 86);
+            this.btnRecursos.Name = "btnRecursos";
+            this.btnRecursos.Size = new System.Drawing.Size(120, 50);
+            this.btnRecursos.TabIndex = 58;
+            this.btnRecursos.Text = "Recursos Humanos";
+            this.btnRecursos.UseVisualStyleBackColor = false;
+            this.btnRecursos.Click += new System.EventHandler(this.kuroButton4_Click);
             // 
             // btnReportes
             // 
@@ -324,7 +324,7 @@
             this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnReportes.ForeColor = System.Drawing.Color.Black;
-            this.btnReportes.Location = new System.Drawing.Point(164, 96);
+            this.btnReportes.Location = new System.Drawing.Point(12, 86);
             this.btnReportes.Name = "btnReportes";
             this.btnReportes.Size = new System.Drawing.Size(120, 50);
             this.btnReportes.TabIndex = 1;
@@ -335,10 +335,9 @@
             // PantallaMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(626, 520);
-            this.Controls.Add(this.kuroButton4);
-            this.Controls.Add(this.kuroButton3);
             this.ClientSize = new System.Drawing.Size(639, 520);
+            this.Controls.Add(this.btnRecursos);
+            this.Controls.Add(this.btnFinanzas);
             this.Controls.Add(this.btnReportes);
             this.Controls.Add(this.lblSesión);
             this.Controls.Add(this.lblSemáforo);
@@ -371,8 +370,8 @@
             this.Controls.SetChildIndex(this.lblSemáforo, 0);
             this.Controls.SetChildIndex(this.lblSesión, 0);
             this.Controls.SetChildIndex(this.btnReportes, 0);
-            this.Controls.SetChildIndex(this.kuroButton3, 0);
-            this.Controls.SetChildIndex(this.kuroButton4, 0);
+            this.Controls.SetChildIndex(this.btnFinanzas, 0);
+            this.Controls.SetChildIndex(this.btnRecursos, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
             this.ResumeLayout(false);
@@ -396,10 +395,10 @@
         private System.Windows.Forms.Label lblControlPedidos;
         private System.Windows.Forms.Label lblLaboratorio;
         private System.Windows.Forms.Label lblSemáforo;
-        private ControlesM.KuroButton kuroButton1;
-        private ControlesM.KuroButton kuroButton2;
+        private ControlesM.KuroButton btnVentas;
+        private ControlesM.KuroButton btnAlmacen;
         private ControlesM.KuroButton btnReportes;
-        private ControlesM.KuroButton kuroButton3;
-        private ControlesM.KuroButton kuroButton4;
+        private ControlesM.KuroButton btnFinanzas;
+        private ControlesM.KuroButton btnRecursos;
     }
 }

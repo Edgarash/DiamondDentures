@@ -50,6 +50,10 @@ namespace Presentacion
             switch (PantallaLogin.Sesión?.Departamento)
             {
                 case "RECEPCION":
+                    btnReportes.Visible = false;
+                    btnAlmacen.Visible = false;
+                    btnFinanzas.Visible = false;
+                    btnRecursos.Visible = false;
                     btnControlPedidos.Location = new System.Drawing.Point(253, 142);
                     lblConfiguración.Visible = btnConfiguracion.Visible = false;
                     lblControlPedidos.Location = new System.Drawing.Point(269, 276);
@@ -64,19 +68,26 @@ namespace Presentacion
                     btnSemáforo.Location = new System.Drawing.Point(253, 142);
                     lblSemáforo.Location = new System.Drawing.Point((btnSemáforo.Location.X + btnSemáforo.Width / 2) - lblSemáforo.Width / 2, 276);
                     btnConfiguracion.Visible = lblConfiguración.Visible = false;
+                    if (PantallaLogin.Sesión?.Puesto == "JEFE")
+                    {
+
+                        btnLaboratorio.Location = new System.Drawing.Point(62, 142);
+                        lblLaboratorio.Location = new System.Drawing.Point((btnLaboratorio.Location.X + btnLaboratorio.Width / 2) - lblLaboratorio.Width / 2, 276);
+                        btnRecepcion.Visible = lblRecepcion.Visible = false;
+                        btnSemáforo.Location = new System.Drawing.Point(253, 142);
+                        lblSemáforo.Location = new System.Drawing.Point((btnSemáforo.Location.X + btnSemáforo.Width / 2) - lblSemáforo.Width / 2, 276);
+                        btnControlPedidos.Location = new System.Drawing.Point(btnControlPedidos.Location.X + 110, btnControlPedidos.Location.Y);
+                        lblControlPedidos.Location = new System.Drawing.Point((btnControlPedidos.Location.X + btnControlPedidos.Width / 2) - lblControlPedidos.Width / 2, 444);
+                        btnConfiguracion.Location = new System.Drawing.Point(btnConfiguracion.Location.X - 110, 310);
+                        lblConfiguración.Location = new System.Drawing.Point((btnConfiguracion.Location.X + btnConfiguracion.Width / 2) - lblConfiguración.Width / 2, 444);
+                    }
                     break;
                 case "Jefe Laboratorio":
-                    btnLaboratorio.Location = new System.Drawing.Point(62, 142);
-                    lblLaboratorio.Location = new System.Drawing.Point((btnLaboratorio.Location.X + btnLaboratorio.Width / 2) - lblLaboratorio.Width / 2, 276);
-                    btnRecepcion.Visible = lblRecepcion.Visible = false;
-                    btnSemáforo.Location = new System.Drawing.Point(253, 142);
-                    lblSemáforo.Location = new System.Drawing.Point((btnSemáforo.Location.X + btnSemáforo.Width / 2) - lblSemáforo.Width / 2, 276);
-                    btnControlPedidos.Location = new System.Drawing.Point(btnControlPedidos.Location.X+110, btnControlPedidos.Location.Y);
-                    lblControlPedidos.Location = new System.Drawing.Point((btnControlPedidos.Location.X + btnControlPedidos.Width / 2) - lblControlPedidos.Width / 2, 444);
-                    btnConfiguracion.Location = new System.Drawing.Point(btnConfiguracion.Location.X - 110, 310);
-                    lblConfiguración.Location = new System.Drawing.Point((btnConfiguracion.Location.X + btnConfiguracion.Width / 2) - lblConfiguración.Width / 2, 444);
                     break;
                 case "FINANZAS":
+                    btnAlmacen.Visible = false;
+                    btnReportes.Visible = false;
+                    btnVentas.Visible = false;
                     btnConfiguracion.Visible = lblConfiguración.Visible = false;
                     btnLaboratorio.Visible = lblLaboratorio.Visible = false;
                     btnRecepcion.Visible = lblRecepcion.Visible = false;
