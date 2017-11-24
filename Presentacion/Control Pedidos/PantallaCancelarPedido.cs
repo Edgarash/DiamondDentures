@@ -85,84 +85,9 @@ namespace Presentacion.Control_Pedidos
                 stop = true; }
             return stop;
         }
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            string valor = tbBuscar.Text;
-            if (tbBuscar.Text == "")
-            {
-                ActualizarData();
-            }
-            else
-            {
-                if (rbPedido.Checked)
-                {
-                    Interface = new InterfaceUsuario(this);
-                    Interface.BuscarIdPedido(dtvDatos2, valor);
-                    valida = new Validar(this);
-                    valida.validarData(dtvDatos2);
-                }
-                if (rbDentista.Checked)
-                {
-                    Interface = new InterfaceUsuario(this);
-                    Interface.BuscarIdDentista(dtvDatos2, valor);
-                    valida = new Validar(this);
-                    valida.validarData(dtvDatos2);
-                }
-                if (rbTipo.Checked)
-                {
-                    bool a = true;
-                    Interface = new InterfaceUsuario(this);
-                    if (tbBuscar.Text == "URGENTE")
-                    {
-                        Interface.BuscarTipo(dtvDatos2, "1");
-                        a = false;
-                    }
-                    if (tbBuscar.Text == "NORMAL")
-                    {
-                        Interface.BuscarTipo(dtvDatos2, "0");
-                        a = false;
-                    }
-                    if (a)
-                    {
-                        ActualizarData();
-                    }
-                }
-            }
-        }
-        
-
-        private void btnRegresar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            PantallaMenuControlPedidos pep = new PantallaMenuControlPedidos(Usuario);
-            pep.Show();
-        }
-
-        private void PantallaCancelarPedido_Load(object sender, EventArgs e)
-        {
-            valida = new Validar(this);
-            dtvDatos2.RowCount = 1;
-            valida.validarData(dtvDatos2);
-            ActualizarData();
-        }
-
         private void tbBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            valida = new Validar(this);
-            if (rbPedido.Checked)
-            {
-                tbBuscar.MaxLength = 10;
-            }
-            if (rbDentista.Checked)
-            {
-                valida.ValidaCampoTxb(true, e);
-                tbBuscar.MaxLength = 10;
-            }
-            if (rbTipo.Checked)
-            {
-                valida.ValidaCampoTxb(false, e);
-                tbBuscar.MaxLength = 10;
-            }
+           
         }
     }
 }
