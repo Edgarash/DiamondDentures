@@ -61,8 +61,8 @@ namespace Presentacion.Control_Pedidos
                         }
                     }
                 }
+                else { MessageBox.Show("Pedido invalido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
-            else { MessageBox.Show("Pedido invalido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private bool validarCancelacion(DataGridView data, int renglon)
@@ -85,9 +85,18 @@ namespace Presentacion.Control_Pedidos
                 stop = true; }
             return stop;
         }
+
+        private void PantallaCancelarPedido_Load(object sender, EventArgs e)
+        {
+            valida = new Validar(this);
+            dtvDatos2.RowCount = 1;
+            valida.validarData(dtvDatos2);
+            ActualizarData();
+        }
+
         private void tbBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+            
         }
     }
 }
