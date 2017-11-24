@@ -50,6 +50,7 @@ namespace Entidad
         {
             this.IDCompra = IDCompra;
             this.IDProveedor = IDProveedor;
+            this.IDMaterial = IDProveedor;
             this.CantidadEnviada = CantidadEnviada;
         }
     }

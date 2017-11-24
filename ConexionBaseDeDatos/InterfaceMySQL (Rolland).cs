@@ -319,7 +319,7 @@ namespace ConexionBaseDeDatos
         public static bool ActualizarPrecio(CompraMaterial cm)
         {
             EjecutarProcedimientoAlmacenado("ActualizarPrecio", TipoConsulta.DevuelveReader,
-                Parametro("id", cm.IDCompra), Parametro("idmat", cm.IDMaterial), Parametro("cant", cm.Cantidad));
+                Parametro("id", cm.IDCompra), Parametro("idmat", cm.IDMaterial), Parametro("cant", cm.CantidadEnviada));
             return OperacionRealizada;
         }
 

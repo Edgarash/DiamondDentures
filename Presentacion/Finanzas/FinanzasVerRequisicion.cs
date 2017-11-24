@@ -33,7 +33,7 @@ namespace Presentacion.Finanzas
         }
         private void LlenarData(Búsqueda Tipo)
         {
-            int IDCompra = Convert.ToInt32(paqueeraestawea);
+            int IDCompra = Convert.ToInt32(elquesea);
             int Col = 0, Ren = 0;
             if (dtRequisicion.SelectedCells.Count > 0)
             {
@@ -58,6 +58,7 @@ namespace Presentacion.Finanzas
                     dtRequisicion[5, i].Value = temp[i].Cantidad;
                     dtRequisicion[6, i].Value = temp[i].Fecha;
                     dtRequisicion[7, i].Value = temp[i].Estado;
+                    dtRequisicion[8, i].Value = temp[i].CantidadEnviada;
                 }
             }
             if (dtRequisicion.SelectedCells.Count > 0)
@@ -74,13 +75,13 @@ namespace Presentacion.Finanzas
             int contado = 0;
             for (int j = 0; j < dtRequisicion.RowCount; j++)
             {
-                if (cantidad[j] == Convert.ToInt32(dtRequisicion[5, j].Value))
+                if (Convert.ToInt32(dtRequisicion[8,j].Value) == Convert.ToInt32(dtRequisicion[5, j].Value))
                 {
 
                 }
                 else
                 {
-                    if (cantidad[j] > Convert.ToInt32(dtRequisicion[5, j].Value))
+                    if (Convert.ToInt32(dtRequisicion[8, j].Value) > Convert.ToInt32(dtRequisicion[5, j].Value))
                     {
                         supererror = true;
                         break;
@@ -90,7 +91,7 @@ namespace Presentacion.Finanzas
                         valorcito = true;
                     }
                 }
-                if (dtRequisicion[7, j].Value.ToString().ToUpper() == "AUTORIZADA")
+                if (dtRequisicion[7, j].Value.ToString().ToUpper() == "ENVIADO")
                 {
                     contado++;
                 }

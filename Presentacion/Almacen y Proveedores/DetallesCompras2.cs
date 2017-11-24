@@ -146,7 +146,7 @@ namespace Presentacion.Almacen_y_Proveedores
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CompraMaterial compra = new CompraMaterial(Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCell.RowIndex].Value), Convert.ToInt32(dataGridView2[1, dataGridView2.CurrentCell.RowIndex].Value), Convert.ToInt32(dataGridView2[5, dataGridView2.CurrentCell.RowIndex].Value));
+            CompraMaterial compra = new CompraMaterial(Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCell.RowIndex].Value), Convert.ToInt32(dataGridView2[1, dataGridView2.CurrentCell.RowIndex].Value), Convert.ToInt32(dataGridView2[8, dataGridView2.CurrentCell.RowIndex].Value));
             ManejadorAlmacen.ActualizarPrecio(compra);
             MessageBox.Show("Precio actualizado con exito ");
         }
