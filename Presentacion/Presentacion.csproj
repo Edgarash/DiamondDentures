@@ -387,6 +387,9 @@
     <Compile Include="Reportes\PantallaVPMateriales.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reportes\PantallaVPNotaProv.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes\PantallaVPReqMat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -744,6 +747,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaVPMateriales.resx">
       <DependentUpon>PantallaVPMateriales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PantallaVPNotaProv.resx">
+      <DependentUpon>PantallaVPNotaProv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaVPReqMat.resx">
       <DependentUpon>PantallaVPReqMat.cs</DependentUpon>

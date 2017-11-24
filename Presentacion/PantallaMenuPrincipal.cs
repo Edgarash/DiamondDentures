@@ -8,6 +8,7 @@ using Presentacion.Recepcion;
 using Presentacion.Ventas;
 using System;
 using System.Windows.Forms;
+using Presentacion.Reportes;
 using Validaciones;
 
 namespace Presentacion
@@ -195,6 +196,11 @@ namespace Presentacion
         {
             Recursos_Humanos.RHumanosMenu rhm = new Recursos_Humanos.RHumanosMenu();
             rhm.Show();
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            ManejadorReportes.MostrarPantalla(this, new PantallaMenuReportes());
         }
     }
 }

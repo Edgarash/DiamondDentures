@@ -198,6 +198,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="HistorialMod.cs" />
+    <Compile Include="ReporteNotaProveedor.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteNotaProveedor.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RegistroInsumos.cs" />
     <Compile Include="ParametroReporte.cs" />
     <Compile Include="Persona.cs" />
@@ -432,6 +438,10 @@
     <EmbeddedResource Include="NotaConfirmacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>NotaConfirmacion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteNotaProveedor.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteNotaProveedor.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="NotaTerminacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

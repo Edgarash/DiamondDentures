@@ -244,5 +244,10 @@ namespace Presentacion.Almacen_y_Proveedores
             string sql = "FROM proveedores;";
             ManejadorReportes.MostrarPantalla(this, new PantallaVPListadoPer<ReporteProveedores>("Proveedores", estadoColumnas, sql, 6));
         }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            ManejadorReportes.MostrarPantalla(this, new PantallaVPNotaProv());
+        }
     }
 }
