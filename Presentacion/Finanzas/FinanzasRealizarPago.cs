@@ -42,6 +42,11 @@ namespace Presentacion.Finanzas
             
         }
 
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            ManejadorReportes.MostrarPantalla(this, new Reportes.PantallaVPNotaPagos());
+        }
+
         private void btnPagar_Click(object sender, EventArgs e)
         {
             if (dataGridView2[9, r].Value.ToString()== "ENVIADO")
