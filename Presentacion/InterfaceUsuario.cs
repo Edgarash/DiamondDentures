@@ -67,8 +67,7 @@ namespace Presentacion
 
         public bool RegistrarPedido(RegistroPedido Pedido)
         {
-            Manejador = new ManejadorPedido();
-            return (Manejador as ManejadorPedido).RegistrarPedido(Pedido);
+            return ManejadorPedido.RegistrarPedido(Pedido);
         }
 
         public void DesplegarPantallaLaboratorio(string Usuario)
@@ -99,6 +98,11 @@ namespace Presentacion
         {
             Manejador = new ManejadorRegistroMaterial();
             return (Manejador as ManejadorRegistroMaterial).ObtenerMateriales();
+        }
+
+        public static bool ObtenerMateriales(out RegistroMaterial[] Materiales)
+        {
+            return ManejadorRegistroMaterial.ObtenerMateriales(out Materiales);
         }
 
         internal RegistroMaterial[] ObtenerMateriales3()
@@ -360,6 +364,13 @@ namespace Presentacion
             return ManejadorConfiguracion.ObtenerProMat(Producto, Material, out ProMat);
         }
 
+        public static RegistroProMat[] ObtenerProMat()
+        {
+            RegistroProMat[] Pro;
+            ObtenerProMat(-1, -1, out Pro);
+            return Pro;
+        }
+
         public bool BorrarUsuario(string Usuario)
         {
             Manejador = new ManejadorUsuario();
@@ -614,6 +625,13 @@ namespace Presentacion
         public static bool ObtenerProductos(out RegistroProducto[] Productos)
         {
             return ManejadorConfiguracion.ObtenerProductos(out Productos);
+        }
+
+        public static RegistroProducto[] ObtenerProductos()
+        {
+            RegistroProducto[] temp;
+            ObtenerProductos(out temp);
+            return temp;
         }
 
         public static bool ObtenerUnProducto(int IDProducto, out RegistroProducto Producto)

@@ -61,26 +61,6 @@
             this.lblAceptar.Size = new System.Drawing.Size(75, 18);
             this.lblAceptar.Text = "Guardar";
             // 
-            // cbEmail
-            // 
-            this.cbEmail.Size = new System.Drawing.Size(131, 24);
-            // 
-            // cbPaíses
-            // 
-            this.cbPaíses.Size = new System.Drawing.Size(147, 24);
-            // 
-            // cbEstado
-            // 
-            this.cbEstado.Size = new System.Drawing.Size(147, 24);
-            // 
-            // cbMunicipio
-            // 
-            this.cbMunicipio.Size = new System.Drawing.Size(160, 24);
-            // 
-            // cbCiudad
-            // 
-            this.cbCiudad.Size = new System.Drawing.Size(187, 24);
-            // 
             // btnDentista
             // 
             this.btnDentista.FlatAppearance.BorderSize = 0;

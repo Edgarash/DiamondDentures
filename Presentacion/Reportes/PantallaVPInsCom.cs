@@ -283,7 +283,7 @@ namespace Presentacion.Reportes
             ParametroReporte FchI = new ParametroReporte("fchi", fchI);
             ParametroReporte FchF = new ParametroReporte("fchf", fchF);
             ParametroReporte Esp = new ParametroReporte("esp", esp);
-            ParametroReporte IdCo = esp ? new ParametroReporte("idco", ) : new ParametroReporte("idco", "0");
+            ParametroReporte IdCo = esp ? new ParametroReporte("idco", idco) : new ParametroReporte("idco", "0");
 
             crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteInsumosComprados(), FchI, FchF,Esp, IdCo);
         }
