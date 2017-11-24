@@ -101,8 +101,7 @@
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductos.Size = new System.Drawing.Size(483, 180);
-            this.dgvProductos.TabIndex = 9;
-            this.dgvProductos.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProductos_CellMouseDown);
+            this.dgvProductos.TabIndex = 9
             // 
             // lblClave
             // 

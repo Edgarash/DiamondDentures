@@ -155,7 +155,6 @@
             this.dgvMateriales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMateriales.Size = new System.Drawing.Size(483, 160);
             this.dgvMateriales.TabIndex = 19;
-            this.dgvMateriales.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMateriales_CellMouseDown);
             // 
             // Clave
             // 
@@ -282,7 +281,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblClave);
             this.Name = "PantallaAdministrarMateriales";
-            this.Load += new System.EventHandler(this.PantallaAdministrarMateriales_Load);
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.lblClave, 0);
             this.Controls.SetChildIndex(this.label2, 0);

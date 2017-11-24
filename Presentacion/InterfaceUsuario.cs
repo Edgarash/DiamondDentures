@@ -250,12 +250,6 @@ namespace Presentacion
             return ManejadorRegistroMaterial.ActualizarMaterial(Material);
         }
 
-        public bool ActivarMaterial(int Clave)
-        {
-            Manejador = new ManejadorRegistroMaterial();
-            return (Manejador as ManejadorRegistroMaterial).ActivarMaterial(Clave);
-        }
-
         public void DesplegarPantallaModificarMaterial(RegistroMaterial Material, Regresar Acción)
         {
             Manejador = new ManejadorConfiguracion();
@@ -572,12 +566,6 @@ namespace Presentacion
             return ManejadorRegistroProducto.RegistrarProducto(Registro);
         }
 
-        public bool ActivarProducto(int Clave)
-        {
-            Manejador = new ManejadorRegistroProducto();
-            return (Manejador as ManejadorRegistroProducto).ActivarProducto(Clave);
-        }
-
         public bool ActualizarProducto(RegistroProducto Producto)
         {
             Manejador = new ManejadorRegistroProducto();
@@ -593,12 +581,6 @@ namespace Presentacion
         public static bool ObtenerProductos(out RegistroProducto[] Productos)
         {
             return ManejadorConfiguracion.ObtenerProductos(out Productos);
-        }
-
-        public RegistroProducto[] BuscarUnProducto(RegistroProducto Registro)
-        {
-            Manejador = new ManejadorConfiguracion();
-            return ((ManejadorConfiguracion)Manejador).BuscarUnProducto(Registro);
         }
 
         public static bool ObtenerUnProducto(int IDProducto, out RegistroProducto Producto)

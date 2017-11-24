@@ -95,35 +95,9 @@ namespace ConexionBaseDeDatos
         #endregion
 
         #region Módulo Configuración
+        
 
-        public bool RegistrarProducto(RegistroProducto Registro)
-        {
-            var command = new MySqlCommand("RegistrarProducto", conexion);
-            command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@clv", Registro.IDProducto);
-            command.Parameters.AddWithValue("@nmb", Registro.Nombre);
-            command.Parameters.AddWithValue("@days", Registro.TiempoBase);
-            command.Parameters.AddWithValue("@price", Registro.PrecioBase);
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public bool RegistrarMaterial(RegistroMaterial Material)
-        {
-            var command = new MySqlCommand("RegistrarMaterial", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", Material.IDMaterial);
-            command.Parameters.AddWithValue("@nmb", Material.Nombre);
-            command.Parameters.AddWithValue("@price", Material.PrecioBase);
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
 
         public bool RegistrarPedido(RegistroPedido Pedido)
         {
@@ -265,139 +239,6 @@ namespace ConexionBaseDeDatos
             var nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
-        }
-
-        public bool ActualizarProMat(RegistroProMat Registro)
-        {
-            var command = new MySqlCommand("ActualizarProMat", conexion);
-            //command.CommandType = CommandType.StoredProcedure;
-
-            //command.Parameters.AddWithValue("@clvpro", Registro.ClavePro);
-            //command.Parameters.AddWithValue("@clvmat", Registro.ClaveMat);
-            //command.Parameters.AddWithValue("@price", Registro.PrecioFinal);
-            //command.Parameters.AddWithValue("@act", Registro.Activo);
-            //Open();
-            var nc = command.ExecuteNonQuery();
-            //Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public bool ActivarProducto(int Clave)
-        {
-            var command = new MySqlCommand("ActivarProducto", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", Clave);
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public bool ActivarMaterial(int Clave)
-        {
-            var command = new MySqlCommand("ActivarMaterial", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", Clave);
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public bool ActualizarProducto(RegistroProducto producto)
-        {
-            var command = new MySqlCommand("ActualizarProducto", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", producto.IDProducto);
-            command.Parameters.AddWithValue("@nmb", producto.Nombre);
-            command.Parameters.AddWithValue("@days", producto.TiempoBase);
-            command.Parameters.AddWithValue("@price", producto.PrecioBase);
-
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public bool ActualizarMaterial(RegistroMaterial material)
-        {
-            var command = new MySqlCommand("ActualizarMaterial", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", material.IDMaterial);
-            command.Parameters.AddWithValue("@nmb", material.Nombre);
-            command.Parameters.AddWithValue("@price", material.PrecioBase);
-
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public bool EliminarProducto(int Clave)
-        {
-            var command = new MySqlCommand("EliminarProducto", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", Clave);
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public RegistroProducto[] BuscarProducto(RegistroProducto Registro)
-        {
-            RegistroProducto[] temp = null;
-
-            var command = new MySqlCommand("BuscarUnProducto", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", Registro.IDProducto);
-            command.Parameters.AddWithValue("@nmb", Registro.Nombre);
-            command.Parameters.AddWithValue("@days", Registro.TiempoBase);
-            command.Parameters.AddWithValue("@price", Registro.PrecioBase.ToString());
-
-            string p = string.Empty;
-            Open();
-            var str = command.ExecuteReader();
-
-            if (str.HasRows)
-            {
-                List<RegistroProducto> Lista = new List<RegistroProducto>();
-                while (str.Read())
-                {
-                    //Lista.Add(new RegistroProducto(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetFloat(3), str.GetInt32(4)));
-                }
-                temp = Lista.ToArray();
-            }
-            Close();
-            return temp;
-        }
-
-        public RegistroProducto ObtenerUnProducto(string Proceso)
-        {
-            RegistroProducto temp = null;
-
-            var command = new MySqlCommand("ObtenerUnProducto", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@nmb", Proceso);
-
-            string p = string.Empty;
-            Open();
-            var str = command.ExecuteReader();
-
-            if (str.HasRows)
-            {
-                str.Read();
-                //temp = new RegistroProducto(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetFloat(3), str.GetInt32(4));
-            }
-            Close();
-            return temp;
         }
 
         #endregion
@@ -876,40 +717,7 @@ WHERE
             return pedidos;
         }
 
-        private static List<Productos> BuscarListaProductos(string id)
-        {
-            MySqlCommand command = new MySqlCommand("ObtenerListaPedidos", Conectar())
-            {
-                CommandType = CommandType.StoredProcedure
-            };
 
-            command.Parameters.AddWithValue("@clv", id);
-
-            SOpen();
-
-            List<Productos> pedidos = new List<Productos>();
-            MySqlDataReader reader = command.ExecuteReader();
-
-            while (reader.HasRows && reader.Read())
-            {
-                pedidos.Add(
-                    new Productos(
-                        reader["Clave"].ToString(),
-                        reader["Producto"].ToString(),
-                        Convert.ToDecimal(reader["PrecioProducto"]),
-                        reader["Material1"].ToString(),
-                        Convert.ToDecimal(reader["PrecioMat1"]),
-                        reader["Material2"].ToString(),
-                        Convert.ToDecimal(reader["PrecioMat2"]),
-                        Convert.ToDateTime(reader["Fecha"]))
-                    );
-            }
-
-            reader.Close();
-            SClose();
-
-            return pedidos;
-        }
 
         public static Factura GenerarFactura(string id)
         {
@@ -955,25 +763,16 @@ WHERE
             SOpen();
 
             reader = command.ExecuteReader();
-            List<Productos> pedidos = new List<Productos>();
             if(reader.HasRows)
             {
                 while (reader.Read())
                 {
-                    pedidos.Add(new Productos(
-                        reader["Clave"].ToString(),
-                        reader["Producto"].ToString(),
-                        Convert.ToDecimal(reader["PrecioProducto"]),
-                        reader["Material1"].ToString(),
-                        Convert.ToDecimal(reader["PrecioMat1"]),
-                        reader["Material2"].ToString(),
-                        Convert.ToDecimal(reader["PrecioMat2"]),
-                        Convert.ToDateTime(reader["Fecha"])));
+
                 }
             }
 
-            factura.ListaProductos = pedidos;
-            importe = pedidos.Sum(pedido => pedido.PrecioProducto + pedido.PrecioMat1 + pedido.PrecioMat2);
+
+
             factura.Importe = importe;
 
             SClose();
@@ -999,8 +798,7 @@ WHERE
 
             if (!reader.HasRows) return null;
 
-            reader.Read();
-            List<Productos> listaProductos = BuscarListaProductos(reader["pedidos"].ToString());
+
 
             reader.Close();
             SClose();
@@ -1023,37 +821,9 @@ WHERE
 
             while (reader.HasRows && reader.Read())
             {
-                facturas.Add(
-                    new Factura(
-                        reader["CalleC"].ToString(),
-                        reader["CalleE"].ToString(),
-                        reader["CiudadC"].ToString(),
-                        reader["CiudadE"].ToString(),
-                        reader["ColoniaC"].ToString(),
-                        reader["ColoniaE"].ToString(),
-                        reader["CorreoC"].ToString(),
-                        reader["CorreoE"].ToString(),
-                        reader["CpC"].ToString(),
-                        reader["CpE"].ToString(),
-                        reader["EstadoC"].ToString(),
-                        reader["EstadoE"].ToString(),
-                        Convert.ToInt32(reader["Estatus"]),
-                        Convert.ToInt32(reader["Id"]),
-                        Convert.ToDateTime(reader["Fecha"]),
-                        Convert.ToDecimal(reader["Importe"]),
-                        listaProductos,
-                        reader["NombreC"].ToString(),
-                        reader["NombreE"].ToString(),
-                        reader["NumCasaC"].ToString(),
-                        reader["NumCasaE"].ToString(),
-                        reader["PaisC"].ToString(),
-                        reader["PaisE"].ToString(),
-                        reader["Pedidos"].ToString(),
-                        reader["RfcC"].ToString(),
-                        reader["RfcE"].ToString(),
-                        reader["TelefonoC"].ToString(),
-                        reader["TelefonoE"].ToString()
-                        ));
+
+                    
+
             }
 
             reader.Close();
@@ -1084,7 +854,7 @@ WHERE
                 reader.Read();
             else return null;
 
-            List<Productos> listaPedidos = BuscarListaProductos(reader["Pedidos"].ToString());
+
 
             reader.Close();
             SClose();
@@ -1111,36 +881,8 @@ WHERE
             {
                 while (reader.Read())
                 {
-                    factura = new Factura(
-                             reader["CalleC"].ToString(),
-                        reader["CalleE"].ToString(),
-                        reader["CiudadC"].ToString(),
-                        reader["CiudadE"].ToString(),
-                        reader["ColoniaC"].ToString(),
-                        reader["ColoniaE"].ToString(),
-                        reader["CorreoC"].ToString(),
-                        reader["CorreoE"].ToString(),
-                        reader["CpC"].ToString(),
-                        reader["CpE"].ToString(),
-                        reader["EstadoC"].ToString(),
-                        reader["EstadoE"].ToString(),
-                        Convert.ToInt32(reader["Estatus"]),
-                        Convert.ToInt32(reader["Id"]),
-                        Convert.ToDateTime(reader["Fecha"]),
-                        Convert.ToDecimal(reader["Importe"]),
-                        listaPedidos, 
-                        reader["NombreC"].ToString(),
-                        reader["NombreE"].ToString(),
-                        reader["NumCasaC"].ToString(),
-                        reader["NumCasaE"].ToString(),
-                        reader["PaisC"].ToString(),
-                        reader["PaisE"].ToString(),
-                        reader["Pedidos"].ToString(),
-                        reader["RfcC"].ToString(),
-                        reader["RfcE"].ToString(),
-                        reader["TelefonoC"].ToString(),
-                        reader["TelefonoE"].ToString()
-                        );
+            
+
                 }
             }
 

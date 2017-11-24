@@ -15,12 +15,6 @@ namespace Control
             return InterfaceMySQL.EliminarProducto(Clave);
         }
 
-        public bool ActivarProducto(int Clave)
-        {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ActivarProducto(Clave);
-        }
-
         public bool ActualizarProducto(RegistroProducto Producto)
         {
             return InterfaceMySQL.ActualizarProducto(Producto);
