@@ -21,9 +21,9 @@ namespace Entidad
         public int Faltantes { get; set; }
 
         public RegistroMaterial(int IDMaterial, string Nombre,string Descripcion, float PrecioBase, float PrecioCompra,
-            int TiempoBase,RegistroProveedor Proveedor, string UnidadMedida, int Cantidad)
+            int TiempoBase,RegistroProveedor Proveedor, string UnidadMedida, int Cantidad):
+            this(IDMaterial)
         {
-            this.IDMaterial = IDMaterial;
             this.Nombre = Nombre;
             this.Descripcion = Descripcion;
             this.PrecioBase = PrecioBase;
@@ -34,17 +34,27 @@ namespace Entidad
             this.Cantidad = Cantidad;
         }
 
-        public RegistroMaterial(int IDMaterial, int Cantidad)
+        public RegistroMaterial(int IDMaterial)
         {
             this.IDMaterial = IDMaterial;
+        }
+
+        public RegistroMaterial(int IDMaterial, int Cantidad):this(IDMaterial)
+        {
             this.Cantidad = Cantidad;
         }
 
         public RegistroMaterial(int IDMaterial, string Nombre, int Faltantes)
+            :this(IDMaterial)
         {
-            this.IDMaterial = IDMaterial;
             this.Nombre = Nombre;
             this.Faltantes = Faltantes;
         }
+
+        public RegistroMaterial(int IDMaterial, string Nombre) : this(IDMaterial)
+        {
+            this.Nombre = Nombre;
+        }
+
     }
 }

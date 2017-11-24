@@ -21,8 +21,8 @@ namespace Presentacion.Configuracion
         {
             InitializeComponent();
             InitializeComponent2();
+            InterfaceUsuario.ObtenerProductos(out Productos);
             LlenarData(Búsqueda.Total);
-            Productos = Interface.ObtenerProductos();
         }
 
         private void LlenarData(Búsqueda Tipo)
@@ -38,38 +38,36 @@ namespace Presentacion.Configuracion
             Interface = new InterfaceUsuario(this);
             RegistroProducto[] temp = null;
             if (Tipo == Búsqueda.Total)
-                temp = Productos;
+            {
+                InterfaceUsuario.ObtenerProductos(out temp);
+            }
             else
             {
                 if (Tipo == Búsqueda.Clave)
                 {
                     List<RegistroProducto> x = new List<RegistroProducto>();
-                    for (int i = 0; i < temp.Length; i++)
+                    for (int i = 0; i < Productos.Length; i++)
                     {
-                        bool Agregar = true;
-                        string Clave = temp[i].IDProducto.ToString();
-                        for (int j = 0; j < Clave.Length && Agregar; j++)
-                            if (tbClave.Text[j] != Clave[j])
-                                Agregar = false;
-                        if (Agregar)
-                            x.Add(temp[i]);
+                        if (Productos[i].IDProducto.ToString() == tbClave.Text)
+                        {
+                            x.Add(Productos[i]);
+                        }
                     }
+                    temp = x.ToArray();
                 }
                 else
                 {
                     if (Tipo == Búsqueda.Personalizada)
                     {
                         List<RegistroProducto> x = new List<RegistroProducto>();
-                        for (int i = 0; i < temp.Length; i++)
+                        for (int i = 0; i < Productos.Length; i++)
                         {
-                            bool Agregar = true;
-                            string Nombre = temp[i].Nombre.ToString();
-                            for (int j = 0; j < Nombre.Length && Agregar; j++)
-                                if (tbNombre.Text[j] != Nombre[j])
-                                    Agregar = false;
-                            if (Agregar)
-                                x.Add(temp[i]);
+                            if (Productos[i].Nombre.Contains(tbNombre.Text))
+                            {
+                                x.Add(Productos[i]);
+                            }
                         }
+                        temp = x.ToArray();
                     }
                 }
             }
@@ -87,7 +85,7 @@ namespace Presentacion.Configuracion
             }
             if (dgvProductos.SelectedCells.Count > 0)
             {
-                dgvProductos.CurrentCell = dgvProductos[Col, Ren];
+                dgvProductos.CurrentCell = dgvProductos[Col >= dgvProductos.ColumnCount ? 0 : Col, Ren >= dgvProductos.RowCount ? 0 : Ren];
                 dgvProductos.Focus();
             }
         }
@@ -107,14 +105,17 @@ namespace Presentacion.Configuracion
             }
             else
             {
-                LlenarData(Búsqueda.Personalizada);
+                if (tbNombre.Text != "")
+                    LlenarData(Búsqueda.Personalizada);
+                else
+                    LlenarData(Búsqueda.Total);
             }
         }
 
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
             Interface = new InterfaceUsuario(this);
-            if (!Validar.ValidarUnaPantalla(new PantallaAgregarProducto().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaAgregarProducto)))
                 Interface.DesplegarPantallaAgregarProducto(LlenarData);
         }
 
@@ -163,11 +164,15 @@ namespace Presentacion.Configuracion
 
         private void btnModificarProducto_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaModificarProducto(null).GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaModificarProducto)))
             {
                 Interface = new InterfaceUsuario(this);
-                RegistroProducto Producto = Interface.ObtenerUnProducto(dgvProductos[1, dgvProductos.SelectedCells[0].RowIndex].Value.ToString());
-                Interface.DesplegarPantallaModificarProducto(Producto, LlenarData);
+                RegistroProducto Producto;
+                if (dgvProductos.SelectedRows.Count > 0)
+                {
+                    InterfaceUsuario.ObtenerUnProducto(Convert.ToInt32(dgvProductos["Clave", dgvProductos.CurrentRow.Index].Value), out Producto);
+                    Interface.DesplegarPantallaModificarProducto(Producto, LlenarData);
+                }
             }
         }
     }

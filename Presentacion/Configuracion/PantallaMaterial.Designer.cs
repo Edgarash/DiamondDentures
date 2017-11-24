@@ -30,32 +30,47 @@
         {
             this.lblPantallaUsuario = new System.Windows.Forms.Label();
             this.pbIcono = new System.Windows.Forms.PictureBox();
-            this.tbPrecio = new System.Windows.Forms.TextBox();
-            this.lblNumeroCasa = new System.Windows.Forms.Label();
+            this.lblPrecioBase = new System.Windows.Forms.Label();
             this.lblCancelar = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblAceptar = new System.Windows.Forms.Label();
-            this.tbNombre = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
+            this.tbNombreMaterial = new System.Windows.Forms.TextBox();
+            this.lblMaterial = new System.Windows.Forms.Label();
             this.tbClave = new System.Windows.Forms.TextBox();
             this.lblClave = new System.Windows.Forms.Label();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.Clave = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valido = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblProductos = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.lblPrecioCompra = new System.Windows.Forms.Label();
+            this.lblDescripcion = new System.Windows.Forms.Label();
+            this.tbDescripcion = new System.Windows.Forms.TextBox();
+            this.nudTiempo = new System.Windows.Forms.NumericUpDown();
+            this.lblTiempo = new System.Windows.Forms.Label();
+            this.cbProveedores = new System.Windows.Forms.ComboBox();
+            this.lblProveedor = new System.Windows.Forms.Label();
+            this.llbUnidadMedida = new System.Windows.Forms.Label();
+            this.tbUnidadMedida = new System.Windows.Forms.TextBox();
+            this.lblCantidad = new System.Windows.Forms.Label();
+            this.nudCantidad = new System.Windows.Forms.NumericUpDown();
+            this.tbPrecioCompra = new System.Windows.Forms.TextBox();
+            this.tbPrecioBase = new System.Windows.Forms.TextBox();
+            this.Clave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Activo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTiempo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.SuspendLayout();
             // 
             // Encabezado
             // 
             this.Encabezado.Controls.Add(this.lblPantallaUsuario);
             this.Encabezado.Controls.Add(this.pbIcono);
-            this.Encabezado.Size = new System.Drawing.Size(409, 93);
+            this.Encabezado.Size = new System.Drawing.Size(576, 93);
             // 
             // lblPantallaUsuario
             // 
@@ -81,32 +96,21 @@
             this.pbIcono.TabIndex = 14;
             this.pbIcono.TabStop = false;
             // 
-            // tbPrecio
+            // lblPrecioBase
             // 
-            this.tbPrecio.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.tbPrecio.Location = new System.Drawing.Point(243, 173);
-            this.tbPrecio.MaxLength = 8;
-            this.tbPrecio.Name = "tbPrecio";
-            this.tbPrecio.ShortcutsEnabled = false;
-            this.tbPrecio.Size = new System.Drawing.Size(144, 23);
-            this.tbPrecio.TabIndex = 3;
-            this.tbPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPrecio_KeyPress);
-            // 
-            // lblNumeroCasa
-            // 
-            this.lblNumeroCasa.AutoSize = true;
-            this.lblNumeroCasa.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumeroCasa.Location = new System.Drawing.Point(243, 152);
-            this.lblNumeroCasa.Name = "lblNumeroCasa";
-            this.lblNumeroCasa.Size = new System.Drawing.Size(62, 17);
-            this.lblNumeroCasa.TabIndex = 174;
-            this.lblNumeroCasa.Text = "* Precio:";
+            this.lblPrecioBase.AutoSize = true;
+            this.lblPrecioBase.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioBase.Location = new System.Drawing.Point(15, 281);
+            this.lblPrecioBase.Name = "lblPrecioBase";
+            this.lblPrecioBase.Size = new System.Drawing.Size(95, 17);
+            this.lblPrecioBase.TabIndex = 174;
+            this.lblPrecioBase.Text = "* Precio Base:";
             // 
             // lblCancelar
             // 
             this.lblCancelar.AutoSize = true;
             this.lblCancelar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCancelar.Location = new System.Drawing.Point(316, 462);
+            this.lblCancelar.Location = new System.Drawing.Point(469, 639);
             this.lblCancelar.Name = "lblCancelar";
             this.lblCancelar.Size = new System.Drawing.Size(81, 18);
             this.lblCancelar.TabIndex = 172;
@@ -120,10 +124,10 @@
             this.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Location = new System.Drawing.Point(325, 398);
+            this.btnCerrar.Location = new System.Drawing.Point(478, 575);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(62, 58);
-            this.btnCerrar.TabIndex = 5;
+            this.btnCerrar.TabIndex = 31;
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
@@ -131,55 +135,54 @@
             // 
             this.lblAceptar.AutoSize = true;
             this.lblAceptar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAceptar.Location = new System.Drawing.Point(222, 462);
+            this.lblAceptar.Location = new System.Drawing.Point(375, 639);
             this.lblAceptar.Name = "lblAceptar";
             this.lblAceptar.Size = new System.Drawing.Size(73, 18);
             this.lblAceptar.TabIndex = 170;
             this.lblAceptar.Text = "Aceptar";
             // 
-            // tbNombre
+            // tbNombreMaterial
             // 
-            this.tbNombre.BackColor = System.Drawing.SystemColors.Window;
-            this.tbNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbNombre.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.tbNombre.Location = new System.Drawing.Point(15, 172);
-            this.tbNombre.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.tbNombre.MaxLength = 30;
-            this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(211, 23);
-            this.tbNombre.TabIndex = 2;
+            this.tbNombreMaterial.BackColor = System.Drawing.SystemColors.Window;
+            this.tbNombreMaterial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbNombreMaterial.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.tbNombreMaterial.Location = new System.Drawing.Point(18, 171);
+            this.tbNombreMaterial.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.tbNombreMaterial.MaxLength = 30;
+            this.tbNombreMaterial.Name = "tbNombreMaterial";
+            this.tbNombreMaterial.Size = new System.Drawing.Size(370, 23);
+            this.tbNombreMaterial.TabIndex = 3;
             // 
-            // lblEmail
+            // lblMaterial
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(12, 152);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(131, 17);
-            this.lblEmail.TabIndex = 168;
-            this.lblEmail.Text = "* Nombre Material:";
+            this.lblMaterial.AutoSize = true;
+            this.lblMaterial.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaterial.Location = new System.Drawing.Point(15, 151);
+            this.lblMaterial.Name = "lblMaterial";
+            this.lblMaterial.Size = new System.Drawing.Size(131, 17);
+            this.lblMaterial.TabIndex = 168;
+            this.lblMaterial.Text = "* Nombre Material:";
             // 
             // tbClave
             // 
             this.tbClave.Enabled = false;
             this.tbClave.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.tbClave.Location = new System.Drawing.Point(16, 122);
+            this.tbClave.Location = new System.Drawing.Point(18, 121);
             this.tbClave.MaxLength = 8;
             this.tbClave.Name = "tbClave";
             this.tbClave.ShortcutsEnabled = false;
             this.tbClave.Size = new System.Drawing.Size(72, 23);
-            this.tbClave.TabIndex = 1;
-            this.tbClave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbClave_KeyPress);
+            this.tbClave.TabIndex = 0;
             // 
             // lblClave
             // 
             this.lblClave.AutoSize = true;
             this.lblClave.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClave.Location = new System.Drawing.Point(16, 101);
+            this.lblClave.Location = new System.Drawing.Point(15, 101);
             this.lblClave.Name = "lblClave";
-            this.lblClave.Size = new System.Drawing.Size(51, 17);
+            this.lblClave.Size = new System.Drawing.Size(117, 17);
             this.lblClave.TabIndex = 176;
-            this.lblClave.Text = "Clave:";
+            this.lblClave.Text = "* Clave Material:";
             // 
             // dgvProductos
             // 
@@ -192,54 +195,24 @@
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Clave,
-            this.Valido,
+            this.Activo,
             this.Producto,
-            this.Precio});
+            this.Precio,
+            this.Tiempo});
             this.dgvProductos.GridColor = System.Drawing.Color.Black;
-            this.dgvProductos.Location = new System.Drawing.Point(15, 228);
+            this.dgvProductos.Location = new System.Drawing.Point(18, 347);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersVisible = false;
-            this.dgvProductos.Size = new System.Drawing.Size(372, 147);
-            this.dgvProductos.TabIndex = 177;
+            this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProductos.Size = new System.Drawing.Size(536, 193);
+            this.dgvProductos.TabIndex = 9;
             this.dgvProductos.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvProductos_EditingControlShowing);
-            // 
-            // Clave
-            // 
-            this.Clave.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Clave.Frozen = true;
-            this.Clave.HeaderText = "Clave";
-            this.Clave.Name = "Clave";
-            this.Clave.ReadOnly = true;
-            this.Clave.Width = 40;
-            // 
-            // Valido
-            // 
-            this.Valido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Valido.Frozen = true;
-            this.Valido.HeaderText = "Disponible";
-            this.Valido.Name = "Valido";
-            this.Valido.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Producto
-            // 
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            this.Valido.Frozen = true;
-            this.Producto.ReadOnly = true;
-            this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Producto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Valido.Frozen = true;
             // 
             // lblProductos
             // 
             this.lblProductos.AutoSize = true;
             this.lblProductos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductos.Location = new System.Drawing.Point(15, 208);
+            this.lblProductos.Location = new System.Drawing.Point(15, 327);
             this.lblProductos.Name = "lblProductos";
             this.lblProductos.Size = new System.Drawing.Size(73, 17);
             this.lblProductos.TabIndex = 174;
@@ -249,52 +222,261 @@
             // 
             this.btnAceptar.BackgroundImage = global::Presentacion.Properties.Resources.IconoAceptar;
             this.btnAceptar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAceptar.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptar.Location = new System.Drawing.Point(227, 398);
+            this.btnAceptar.Location = new System.Drawing.Point(380, 575);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(62, 58);
-            this.btnAceptar.TabIndex = 178;
+            this.btnAceptar.TabIndex = 30;
             this.btnAceptar.UseVisualStyleBackColor = true;
+            // 
+            // lblPrecioCompra
+            // 
+            this.lblPrecioCompra.AutoSize = true;
+            this.lblPrecioCompra.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioCompra.Location = new System.Drawing.Point(409, 101);
+            this.lblPrecioCompra.Name = "lblPrecioCompra";
+            this.lblPrecioCompra.Size = new System.Drawing.Size(121, 17);
+            this.lblPrecioCompra.TabIndex = 174;
+            this.lblPrecioCompra.Text = "* Precio Compra:";
+            // 
+            // lblDescripcion
+            // 
+            this.lblDescripcion.AutoSize = true;
+            this.lblDescripcion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescripcion.Location = new System.Drawing.Point(15, 197);
+            this.lblDescripcion.Name = "lblDescripcion";
+            this.lblDescripcion.Size = new System.Drawing.Size(97, 17);
+            this.lblDescripcion.TabIndex = 168;
+            this.lblDescripcion.Text = "* Descripción:";
+            // 
+            // tbDescripcion
+            // 
+            this.tbDescripcion.BackColor = System.Drawing.SystemColors.Window;
+            this.tbDescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbDescripcion.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.tbDescripcion.Location = new System.Drawing.Point(18, 217);
+            this.tbDescripcion.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.tbDescripcion.MaxLength = 50;
+            this.tbDescripcion.Multiline = true;
+            this.tbDescripcion.Name = "tbDescripcion";
+            this.tbDescripcion.Size = new System.Drawing.Size(536, 61);
+            this.tbDescripcion.TabIndex = 5;
+            // 
+            // nudTiempo
+            // 
+            this.nudTiempo.Location = new System.Drawing.Point(136, 303);
+            this.nudTiempo.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudTiempo.Name = "nudTiempo";
+            this.nudTiempo.Size = new System.Drawing.Size(95, 21);
+            this.nudTiempo.TabIndex = 7;
+            this.nudTiempo.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // lblTiempo
+            // 
+            this.lblTiempo.AutoSize = true;
+            this.lblTiempo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTiempo.Location = new System.Drawing.Point(133, 281);
+            this.lblTiempo.Name = "lblTiempo";
+            this.lblTiempo.Size = new System.Drawing.Size(102, 17);
+            this.lblTiempo.TabIndex = 174;
+            this.lblTiempo.Text = "* Tiempo Base:";
+            // 
+            // cbProveedores
+            // 
+            this.cbProveedores.FormattingEnabled = true;
+            this.cbProveedores.Location = new System.Drawing.Point(149, 122);
+            this.cbProveedores.Name = "cbProveedores";
+            this.cbProveedores.Size = new System.Drawing.Size(239, 24);
+            this.cbProveedores.TabIndex = 1;
+            // 
+            // lblProveedor
+            // 
+            this.lblProveedor.AutoSize = true;
+            this.lblProveedor.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProveedor.Location = new System.Drawing.Point(146, 101);
+            this.lblProveedor.Name = "lblProveedor";
+            this.lblProveedor.Size = new System.Drawing.Size(89, 17);
+            this.lblProveedor.TabIndex = 176;
+            this.lblProveedor.Text = "* Proveedor:";
+            // 
+            // llbUnidadMedida
+            // 
+            this.llbUnidadMedida.AutoSize = true;
+            this.llbUnidadMedida.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llbUnidadMedida.Location = new System.Drawing.Point(409, 151);
+            this.llbUnidadMedida.Name = "llbUnidadMedida";
+            this.llbUnidadMedida.Size = new System.Drawing.Size(142, 17);
+            this.llbUnidadMedida.TabIndex = 176;
+            this.llbUnidadMedida.Text = "* Unidad de Medida:";
+            // 
+            // tbUnidadMedida
+            // 
+            this.tbUnidadMedida.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.tbUnidadMedida.Location = new System.Drawing.Point(412, 171);
+            this.tbUnidadMedida.MaxLength = 10;
+            this.tbUnidadMedida.Name = "tbUnidadMedida";
+            this.tbUnidadMedida.ShortcutsEnabled = false;
+            this.tbUnidadMedida.Size = new System.Drawing.Size(139, 23);
+            this.tbUnidadMedida.TabIndex = 4;
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(256, 281);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(167, 17);
+            this.lblCantidad.TabIndex = 174;
+            this.lblCantidad.Text = "* Cantidad en Almacén:";
+            // 
+            // nudCantidad
+            // 
+            this.nudCantidad.Location = new System.Drawing.Point(259, 301);
+            this.nudCantidad.Name = "nudCantidad";
+            this.nudCantidad.Size = new System.Drawing.Size(95, 21);
+            this.nudCantidad.TabIndex = 8;
+            // 
+            // tbPrecioCompra
+            // 
+            this.tbPrecioCompra.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.tbPrecioCompra.Location = new System.Drawing.Point(412, 121);
+            this.tbPrecioCompra.MaxLength = 8;
+            this.tbPrecioCompra.Name = "tbPrecioCompra";
+            this.tbPrecioCompra.ShortcutsEnabled = false;
+            this.tbPrecioCompra.Size = new System.Drawing.Size(95, 23);
+            this.tbPrecioCompra.TabIndex = 2;
+            // 
+            // tbPrecioBase
+            // 
+            this.tbPrecioBase.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.tbPrecioBase.Location = new System.Drawing.Point(18, 301);
+            this.tbPrecioBase.MaxLength = 8;
+            this.tbPrecioBase.Name = "tbPrecioBase";
+            this.tbPrecioBase.ShortcutsEnabled = false;
+            this.tbPrecioBase.Size = new System.Drawing.Size(95, 23);
+            this.tbPrecioBase.TabIndex = 6;
+            // 
+            // Clave
+            // 
+            this.Clave.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Clave.Frozen = true;
+            this.Clave.HeaderText = "Clave";
+            this.Clave.MinimumWidth = 55;
+            this.Clave.Name = "Clave";
+            this.Clave.ReadOnly = true;
+            this.Clave.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Clave.Width = 55;
+            // 
+            // Activo
+            // 
+            this.Activo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Activo.Frozen = true;
+            this.Activo.HeaderText = "Disponible";
+            this.Activo.MinimumWidth = 70;
+            this.Activo.Name = "Activo";
+            this.Activo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Activo.Width = 70;
+            // 
+            // Producto
+            // 
+            this.Producto.FillWeight = 0.3636033F;
+            this.Producto.HeaderText = "Producto";
+            this.Producto.MinimumWidth = 225;
+            this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Producto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Precio
+            // 
+            this.Precio.FillWeight = 16.25805F;
+            this.Precio.HeaderText = "Precio Venta";
+            this.Precio.MinimumWidth = 90;
+            this.Precio.Name = "Precio";
+            this.Precio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Tiempo
+            // 
+            this.Tiempo.FillWeight = 103.0543F;
+            this.Tiempo.HeaderText = "Tiempo Final";
+            this.Tiempo.MinimumWidth = 90;
+            this.Tiempo.Name = "Tiempo";
+            this.Tiempo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // PantallaMaterial
             // 
             this.AcceptButton = this.btnAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(409, 489);
+            this.ClientSize = new System.Drawing.Size(576, 669);
+            this.Controls.Add(this.cbProveedores);
+            this.Controls.Add(this.nudCantidad);
+            this.Controls.Add(this.nudTiempo);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.dgvProductos);
+            this.Controls.Add(this.tbUnidadMedida);
             this.Controls.Add(this.tbClave);
+            this.Controls.Add(this.llbUnidadMedida);
+            this.Controls.Add(this.lblProveedor);
             this.Controls.Add(this.lblClave);
-            this.Controls.Add(this.tbPrecio);
+            this.Controls.Add(this.tbPrecioCompra);
+            this.Controls.Add(this.lblCantidad);
+            this.Controls.Add(this.tbPrecioBase);
+            this.Controls.Add(this.lblTiempo);
+            this.Controls.Add(this.lblPrecioCompra);
             this.Controls.Add(this.lblProductos);
-            this.Controls.Add(this.lblNumeroCasa);
+            this.Controls.Add(this.lblPrecioBase);
             this.Controls.Add(this.lblCancelar);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblAceptar);
-            this.Controls.Add(this.tbNombre);
-            this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.tbDescripcion);
+            this.Controls.Add(this.lblDescripcion);
+            this.Controls.Add(this.tbNombreMaterial);
+            this.Controls.Add(this.lblMaterial);
             this.Name = "PantallaMaterial";
             this.Text = "Pantalla Material";
-            this.Controls.SetChildIndex(this.lblEmail, 0);
-            this.Controls.SetChildIndex(this.tbNombre, 0);
+            this.Controls.SetChildIndex(this.lblMaterial, 0);
+            this.Controls.SetChildIndex(this.tbNombreMaterial, 0);
+            this.Controls.SetChildIndex(this.lblDescripcion, 0);
+            this.Controls.SetChildIndex(this.tbDescripcion, 0);
             this.Controls.SetChildIndex(this.lblAceptar, 0);
             this.Controls.SetChildIndex(this.btnCerrar, 0);
             this.Controls.SetChildIndex(this.lblCancelar, 0);
-            this.Controls.SetChildIndex(this.lblNumeroCasa, 0);
+            this.Controls.SetChildIndex(this.lblPrecioBase, 0);
             this.Controls.SetChildIndex(this.lblProductos, 0);
-            this.Controls.SetChildIndex(this.tbPrecio, 0);
+            this.Controls.SetChildIndex(this.lblPrecioCompra, 0);
+            this.Controls.SetChildIndex(this.lblTiempo, 0);
+            this.Controls.SetChildIndex(this.tbPrecioBase, 0);
+            this.Controls.SetChildIndex(this.lblCantidad, 0);
+            this.Controls.SetChildIndex(this.tbPrecioCompra, 0);
             this.Controls.SetChildIndex(this.lblClave, 0);
+            this.Controls.SetChildIndex(this.lblProveedor, 0);
+            this.Controls.SetChildIndex(this.llbUnidadMedida, 0);
             this.Controls.SetChildIndex(this.tbClave, 0);
+            this.Controls.SetChildIndex(this.tbUnidadMedida, 0);
             this.Controls.SetChildIndex(this.dgvProductos, 0);
             this.Controls.SetChildIndex(this.btnAceptar, 0);
+            this.Controls.SetChildIndex(this.nudTiempo, 0);
+            this.Controls.SetChildIndex(this.nudCantidad, 0);
+            this.Controls.SetChildIndex(this.cbProveedores, 0);
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTiempo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,21 +486,34 @@
 
         protected System.Windows.Forms.Label lblPantallaUsuario;
         protected System.Windows.Forms.PictureBox pbIcono;
-        protected System.Windows.Forms.TextBox tbPrecio;
-        protected System.Windows.Forms.Label lblNumeroCasa;
+        protected System.Windows.Forms.Label lblPrecioBase;
         protected System.Windows.Forms.Label lblCancelar;
         protected System.Windows.Forms.Button btnCerrar;
         protected System.Windows.Forms.Label lblAceptar;
-        protected System.Windows.Forms.Label lblEmail;
+        protected System.Windows.Forms.Label lblMaterial;
         protected System.Windows.Forms.TextBox tbClave;
         protected System.Windows.Forms.Label lblClave;
         protected System.Windows.Forms.Label lblProductos;
         protected System.Windows.Forms.Button btnAceptar;
-        protected System.Windows.Forms.TextBox tbNombre;
-        protected System.Windows.Forms.DataGridViewTextBoxColumn Clave;
-        protected System.Windows.Forms.DataGridViewCheckBoxColumn Valido;
-        protected System.Windows.Forms.DataGridViewTextBoxColumn Producto;
-        protected System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        protected System.Windows.Forms.TextBox tbNombreMaterial;
         public System.Windows.Forms.DataGridView dgvProductos;
+        protected System.Windows.Forms.Label lblPrecioCompra;
+        protected System.Windows.Forms.Label lblDescripcion;
+        protected System.Windows.Forms.TextBox tbDescripcion;
+        protected System.Windows.Forms.Label lblTiempo;
+        protected System.Windows.Forms.Label lblProveedor;
+        protected System.Windows.Forms.Label llbUnidadMedida;
+        protected System.Windows.Forms.TextBox tbUnidadMedida;
+        protected System.Windows.Forms.Label lblCantidad;
+        protected System.Windows.Forms.TextBox tbPrecioCompra;
+        protected System.Windows.Forms.TextBox tbPrecioBase;
+        protected System.Windows.Forms.ComboBox cbProveedores;
+        protected System.Windows.Forms.NumericUpDown nudTiempo;
+        protected System.Windows.Forms.NumericUpDown nudCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Clave;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Activo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
     }
 }

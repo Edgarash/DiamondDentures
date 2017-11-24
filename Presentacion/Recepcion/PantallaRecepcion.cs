@@ -19,7 +19,7 @@ namespace Presentacion.Recepcion
 
         private void btnAgregarPedido_Click(object sender, System.EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaRegistrarPedido().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaRegistrarPedido)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaRegistrarPedido();
@@ -28,7 +28,7 @@ namespace Presentacion.Recepcion
 
         private void btnModificarPedido_Click(object sender, System.EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaModificarPedido(null).GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaModificarPedido)))
             {
                 Interface = new InterfaceUsuario(this);
                 PantallaPedirInformación temp = new PantallaPedirInformación();
@@ -42,7 +42,7 @@ namespace Presentacion.Recepcion
                     {
                         if (DialogResult.Yes == MessageBox.Show("El número de pedido ingresado no existe\n\n¿Desea ver una lista de pedidos existentes?", "AVISO", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1))
                         {
-                            if (!Validar.ValidarUnaPantalla(new PantallaMenuControlPedidos(PantallaMenuPrincipal.Sesion.Login).GetType()))
+                            if (!Validar.ValidarUnaPantalla(typeof(PantallaMenuControlPedidos)))
                             {
                                 Interface.DesplegarPantallaControlPedidos(PantallaMenuPrincipal.Sesion.Login);
                             }
@@ -60,7 +60,7 @@ namespace Presentacion.Recepcion
 
         private void btnAgregarDentista_Click(object sender, System.EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaAgregarDentista().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaAgregarDentista)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaAgregarDentista();
@@ -69,7 +69,7 @@ namespace Presentacion.Recepcion
 
         private void btnModificarDentista_Click(object sender, System.EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaModificarDentista(null).GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaModificarDentista)))
             {
                 Interface = new InterfaceUsuario(this);
                 PantallaPedirInformación temp = new PantallaPedirInformación();

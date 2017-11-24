@@ -263,7 +263,8 @@ CREATE TABLE IF NOT EXISTS Materiales_Producto (
   PrecioFinal decimal(10,2) DEFAULT NULL,
   TiempoFinal char(3) DEFAULT NULL,
   Descripcion char(50) DEFAULT NULL,
-  Medidas char(50) DEFAULT NULL
+  Medidas char(50) DEFAULT NULL,
+  UNIQUE KEY IDProducto (IDProducto,IDMaterial)
 );
 
 #

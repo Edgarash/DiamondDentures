@@ -21,13 +21,11 @@ namespace Presentacion.Almacen_y_Proveedores
         {
             InitializeComponent();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             Interface = new InterfaceUsuario(this);
             LlenarData3(Búsqueda.Total);
         }
-
         private void LlenarData(Búsqueda Tipo)
         {
             int Col = 0, Ren = 0;
@@ -129,10 +127,7 @@ namespace Presentacion.Almacen_y_Proveedores
                 dataGridView1.Focus();
             }
         }
-
-
-
-
+        
         private void LlenarData11(Búsqueda Tipo)
         {
             int Col = 0, Ren = 0;
@@ -200,19 +195,7 @@ namespace Presentacion.Almacen_y_Proveedores
                 dataGridView2.Focus();
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
         private void RequisicionMateriales_Load(object sender, EventArgs e)
         {
             Interface = new InterfaceUsuario(this);

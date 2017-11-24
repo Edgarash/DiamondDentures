@@ -66,8 +66,6 @@
             // 
             // PantallaAgregarProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(398, 543);
             this.Name = "PantallaAgregarProducto";
             this.Text = "Pantalla Producto";
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).EndInit();

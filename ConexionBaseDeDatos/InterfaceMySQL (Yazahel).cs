@@ -43,6 +43,28 @@ namespace ConexionBaseDeDatos
             temp.DataSource = TablaDeResultados;
             return OperacionRealizada2;
         }
+        public static bool CambiarEstado(DataGridView temp, string nuevo, string id)
+        {
+            EjecutarProcedimientoAlmacenado("CambiarEstado", TipoConsulta.DevuelveReader,
+                Parametro("nuevo", nuevo),
+                Parametro("id", id));
+            temp.DataSource = TablaDeResultados;
+            return OperacionRealizada2;
+        }
+        public static bool CancelarPedido(DataGridView temp, string id)
+        {
+            EjecutarProcedimientoAlmacenado("CancelarPedido", TipoConsulta.DevuelveReader,
+                Parametro("id", id));
+            temp.DataSource = TablaDeResultados;
+            return OperacionRealizada2;
+        }
+        public static bool BuscarIDPedidosCP(DataGridView temp, string id)
+        {
+            EjecutarProcedimientoAlmacenado("BuscarIDPedidosCP", TipoConsulta.DevuelveReader,
+                Parametro("id", id));
+            temp.DataSource = TablaDeResultados;
+            return OperacionRealizada2;
+        }
         public static bool FinanzasBuscarAdminPagos(DataGridView temp, string idp, string nomb)
         {
             EjecutarProcedimientoAlmacenado("FinanzasBuscarAdminPagos", TipoConsulta.DevuelveReader,

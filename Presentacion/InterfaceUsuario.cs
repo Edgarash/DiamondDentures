@@ -32,10 +32,9 @@ namespace Presentacion
             Nueva.Show();
         }
 
-        public RegistroDentista ObtenerUnDentista(string Cedula)
+        public bool ObtenerUnDentista(string Cedula, out RegistroDentista Dentista)
         {
-            Manejador = new ManejadorRegistroDentista();
-            return (Manejador as ManejadorRegistroDentista).ObtenerUnDentista(Cedula);
+            return ManejadorRegistroDentista.ObtenerUnDentista(Cedula, out Dentista);
         }
 
         public bool RegistrarDentista(RegistroDentista Dentista)
@@ -257,10 +256,9 @@ namespace Presentacion
             return (Manejador as ManejadorPedido).ActualizarPedido(Pedido);
         }
 
-        public bool ActualizarMaterial(RegistroMaterial Material)
+        public static bool ActualizarMaterial(RegistroMaterial Material)
         {
-            Manejador = new ManejadorRegistroMaterial();
-            return (Manejador as ManejadorRegistroMaterial).ActualizarMaterial(Material);
+            return ManejadorRegistroMaterial.ActualizarMaterial(Material);
         }
 
         public bool ActivarMaterial(int Clave)
@@ -281,12 +279,6 @@ namespace Presentacion
         {
             Manejador = new ManejadorRegistroMaterial();
             return (Manejador as ManejadorRegistroMaterial).ObtenerUnMaterial(Clave);
-        }
-
-        public RegistroMaterial[] BuscarUnMaterial(RegistroMaterial Material)
-        {
-            Manejador = new ManejadorRegistroMaterial();
-            return (Manejador as ManejadorRegistroMaterial).BuscarUnMaterial(Material);
         }
 
         public void DesplegarPantallaEliminarMaterial(RegistroMaterial materialAEliminar)
@@ -331,16 +323,14 @@ namespace Presentacion
             return ((ManejadorUsuario)Manejador).HayAdministradores();
         }
 
-        public bool EliminarMaterial(int Clave)
+        public static bool EliminarMaterial(int Clave)
         {
-            Manejador = new ManejadorRegistroMaterial();
-            return (Manejador as ManejadorRegistroMaterial).EliminarMaterial(Clave);
+            return ManejadorRegistroMaterial.EliminarMaterial(Clave);
         }
 
         public bool ActualizarProMat(RegistroProMat Registro)
         {
-            Manejador = new ManejadorConfiguracion();
-            return (Manejador as ManejadorConfiguracion).ActualizarProMat(Registro);
+            return ManejadorConfiguracion.ActualizarProMat(Registro);
         }
 
         public bool EliminarTarjeta(string Usuario)
@@ -349,10 +339,9 @@ namespace Presentacion
             return ((ManejadorUsuario)Manejador).EliminarTarjeta(Usuario);
         }
 
-        internal RegistroProMat[] ObtenerProMat(int Mat, int Pro)
+        public static bool ObtenerProMat(int Producto, int Material, out RegistroProMat[] ProMat)
         {
-            Manejador = new ManejadorConfiguracion();
-            return (Manejador as ManejadorConfiguracion).ObtenerProMat(Mat, Pro);
+            return ManejadorConfiguracion.ObtenerProMat(Producto, Material, out ProMat);
         }
 
         public bool BorrarUsuario(string Usuario)
@@ -584,13 +573,14 @@ namespace Presentacion
         public void DesplegarPantallaAgregarMaterial(Regresar Actualizar)
         {
             Manejador = new ManejadorConfiguracion();
-            Manejador.DesplegarPantalla(new PantallaAgregarMaterial());
+            PantallaAgregarMaterial temp = new PantallaAgregarMaterial();
+            temp.Cerrar += Actualizar;
+            Manejador.DesplegarPantalla(temp);
         }
 
         public bool RegistrarProducto(RegistroProducto Registro)
         {
-            Manejador = new ManejadorConfiguracion();
-            return ((ManejadorConfiguracion)Manejador).RegistrarProducto(Registro);
+            return ManejadorRegistroProducto.RegistrarProducto(Registro);
         }
 
         public bool ActivarProducto(int Clave)
@@ -611,10 +601,9 @@ namespace Presentacion
             return ((ManejadorRegistroProducto)Manejador).EliminarProducto(Clave);
         }
 
-        public RegistroProducto[] ObtenerProductos()
+        public static bool ObtenerProductos(out RegistroProducto[] Productos)
         {
-            Manejador = new ManejadorConfiguracion();
-            return ((ManejadorConfiguracion)Manejador).ObtenerProductos();
+            return ManejadorConfiguracion.ObtenerProductos(out Productos);
         }
 
         public RegistroProducto[] BuscarUnProducto(RegistroProducto Registro)
@@ -623,16 +612,14 @@ namespace Presentacion
             return ((ManejadorConfiguracion)Manejador).BuscarUnProducto(Registro);
         }
 
-        public RegistroProducto ObtenerUnProducto(string Proceso)
+        public static bool ObtenerUnProducto(int IDProducto, out RegistroProducto Producto)
         {
-            Manejador = new ManejadorConfiguracion();
-            return ((ManejadorConfiguracion)Manejador).ObtenerUnProducto(Proceso);
+            return ManejadorConfiguracion.ObtenerUnProducto(IDProducto, out Producto);
         }
 
         public bool RegistrarMaterial(RegistroMaterial Material)
         {
-            Manejador = new ManejadorRegistroMaterial();
-            return (Manejador as ManejadorRegistroMaterial).RegistrarMaterial(Material);
+            return ManejadorRegistroMaterial.RegistrarMaterial(Material);
         }
 
         #endregion
@@ -650,12 +637,6 @@ namespace Presentacion
         {
             Manejador = new ManejadorRegistroUsuario();
             return ((ManejadorRegistroUsuario)Manejador).RecuperarPregunta(NumeroEmpleado);
-        }
-
-        public bool ValidarRespuesta(int Trabajador, string Resp)
-        {
-            Manejador = new ManejadorRegistroUsuario();
-            return ((ManejadorRegistroUsuario)Manejador).ValidarRespuesta(Trabajador, Resp);
         }
 
         #endregion
@@ -699,10 +680,15 @@ namespace Presentacion
             Manejador = new ManejadorPrincipal();
             ((ManejadorPrincipal)Manejador).CambiarLaboratorista(temp, nuevo, id);
         }
-        public void CambiarEstado(DataGridView temp, string valor, string a, string id)
+        public void CambiarEstado(DataGridView temp, string nuevo, string id)
         {
             Manejador = new ManejadorPrincipal();
-            ((ManejadorPrincipal)Manejador).CambiarEstado(temp, valor, a, id);
+            ((ManejadorPrincipal)Manejador).CambiarEstado(temp, nuevo, id);
+        }
+        public void BuscarIDPedidosCP(DataGridView temp, string id)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).BuscarIDPedidosCP(temp, id);
         }
 
         #endregion

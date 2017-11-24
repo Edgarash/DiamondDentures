@@ -6,16 +6,9 @@ namespace Control
 {
     public class ManejadorRegistroMaterial : Manejador
     {
-        public bool RegistrarMaterial(RegistroMaterial Material)
+        public static bool RegistrarMaterial(RegistroMaterial Material)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.RegistrarMaterial(Material);
-        }
-
-        public RegistroMaterial[] BuscarUnMaterial(RegistroMaterial Material)
-        {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.BuscarUnMaterial(Material);
+            return InterfaceMySQL.RegistrarMaterial(Material);
         }
 
         public RegistroMaterial[] ObtenerMateriales()
@@ -132,8 +125,9 @@ namespace Control
 
         public RegistroMaterial ObtenerUnMaterial(int clave)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ObtenerUnMaterial(clave);
+            RegistroMaterial temp;
+            InterfaceMySQL.RecuperarMaterial(clave, out temp);
+            return temp;
         }
 
         public bool ActivarMaterial(int clave)
@@ -142,16 +136,14 @@ namespace Control
             return Interface.ActivarMaterial(clave);
         }
 
-        public bool EliminarMaterial(int clave)
+        public static bool ActualizarMaterial(RegistroMaterial Material)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.EliminarMaterial(clave);
+            return InterfaceMySQL.ActualizarMaterial(Material);
         }
 
-        public bool ActualizarMaterial(RegistroMaterial material)
+        public static bool EliminarMaterial(int Clave)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ActualizarMaterial(material);
+            return InterfaceMySQL.EliminarMaterial(Clave);
         }
     }
 }

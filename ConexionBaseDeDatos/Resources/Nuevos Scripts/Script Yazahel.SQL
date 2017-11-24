@@ -630,7 +630,7 @@ BEGIN
     `dentista`
   WHERE
     `pedido`.`Cedula` = `dentista`.`Cedula`
-  ORDER BY `Urgencia` DESC, `FechaCalculada`, `EstadoPedido` = '0', `EstadoPedido` = '5', `EstadoPedido` = '7', `EstadoPedido` = '6', `EstadoPedido` = '1', `EstadoPedido` = '2', `EstadoPedido` = '4' DESC;
+  ORDER BY `Urgencia` ASC, `FechaCalculada`, `EstadoPedido` = '0', `EstadoPedido` = '5', `EstadoPedido` = '7', `EstadoPedido` = '6', `EstadoPedido` = '1', `EstadoPedido` = '2', `EstadoPedido` = '4' ASC;
 END;
 
 DROP PROCEDURE IF EXISTS `ControlPedidosObtenerLaboratoristas`;
@@ -696,4 +696,47 @@ DROP PROCEDURE IF EXISTS `CambiarLaboratorista`;
 CREATE PROCEDURE `CambiarLaboratorista`(nuevo char(20), id int(11))
 BEGIN
   UPDATE `pedido` SET `Laboratorista` = `nuevo` WHERE `IDPedido` = `id`;
+END;
+
+DROP PROCEDURE IF EXISTS `CambiarEstado`;
+CREATE PROCEDURE `CambiarEstado`(nuevo char(20), id int(11))
+BEGIN
+  UPDATE `pedido` SET `EstadoPedido` = `nuevo` WHERE `IDPedido` = `id`;
+END;
+
+
+DROP PROCEDURE IF EXISTS `CancelarPedido`;
+CREATE PROCEDURE `CancelarPedido`(id int(11))
+BEGIN
+  UPDATE `pedido` SET `EstadoPedido` = '0' WHERE `IDPedido` = `id`;
+END;
+
+
+
+DROP PROCEDURE IF EXISTS `BuscarIDPedidosCP`;
+CREATE PROCEDURE `BuscarIDPedidosCP`(id char(10))
+BEGIN
+  SELECT DISTINCT
+    `IdPedido`,
+    `pedido`.`Cedula`,
+    CONCAT(`dentista`.`Nombre`, ' ', `dentista`.`Apellidos`) AS 'NombreDentista',
+    `FechaIngreso` AS 'Llegada',
+    `FechaCalculada` AS 'Calculada',
+    IF(`Urgencia` = 1, 'Urgente', 'Normal') AS 'Tipo de Pedido',
+    CASE `EstadoPedido`
+      WHEN '0' THEN 'Cancelado'
+      WHEN '1' THEN 'Registrado'
+      WHEN '2' THEN 'Confirmado'
+      WHEN '3' THEN 'En Proceso'
+      WHEN '4' THEN 'Terminado'
+      WHEN '5' THEN 'Facturado'
+      WHEN '6' THEN 'Pagado'
+    END AS 'Estado de Pedido',
+    IF(`Laboratorista` = '', 'No asignado', `Laboratorista`) AS 'Laboratorista'
+  FROM
+    `pedido`,
+    `dentista`
+  WHERE
+    `pedido`.`Cedula` = `dentista`.`Cedula` AND `IdPedido` = `id`
+  ORDER BY `Urgencia` ASC, `FechaCalculada`, `EstadoPedido` = '0', `EstadoPedido` = '5', `EstadoPedido` = '7', `EstadoPedido` = '6', `EstadoPedido` = '1', `EstadoPedido` = '2', `EstadoPedido` = '4' ASC;
 END;

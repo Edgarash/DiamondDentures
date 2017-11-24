@@ -31,25 +31,21 @@
             this.lblPantallaUsuario = new System.Windows.Forms.Label();
             this.pbIcono = new System.Windows.Forms.PictureBox();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.Clave = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dias = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblClave = new System.Windows.Forms.Label();
             this.tbClave = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tbNombre = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbPrecio = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tbDias = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnEliminarProducto = new System.Windows.Forms.Button();
             this.btnAgregarProducto = new System.Windows.Forms.Button();
             this.btnModificarProducto = new System.Windows.Forms.Button();
+            this.Clave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dias = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
@@ -108,30 +104,6 @@
             this.dgvProductos.TabIndex = 9;
             this.dgvProductos.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProductos_CellMouseDown);
             // 
-            // Clave
-            // 
-            this.Clave.HeaderText = "Clave";
-            this.Clave.Name = "Clave";
-            this.Clave.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre Producto";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Dias
-            // 
-            this.Dias.HeaderText = "Dias de Producción";
-            this.Dias.Name = "Dias";
-            this.Dias.ReadOnly = true;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            // 
             // lblClave
             // 
             this.lblClave.AutoSize = true;
@@ -184,50 +156,8 @@
             this.tbNombre.Location = new System.Drawing.Point(86, 149);
             this.tbNombre.Margin = new System.Windows.Forms.Padding(2);
             this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(108, 23);
+            this.tbNombre.Size = new System.Drawing.Size(417, 23);
             this.tbNombre.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.label3.Location = new System.Drawing.Point(342, 152);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 17);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Precio:";
-            // 
-            // tbPrecio
-            // 
-            this.tbPrecio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbPrecio.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.tbPrecio.Location = new System.Drawing.Point(398, 149);
-            this.tbPrecio.Margin = new System.Windows.Forms.Padding(2);
-            this.tbPrecio.Name = "tbPrecio";
-            this.tbPrecio.Size = new System.Drawing.Size(105, 23);
-            this.tbPrecio.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.label4.Location = new System.Drawing.Point(198, 152);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 17);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Días:";
-            // 
-            // tbDias
-            // 
-            this.tbDias.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbDias.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.tbDias.Location = new System.Drawing.Point(241, 149);
-            this.tbDias.Margin = new System.Windows.Forms.Padding(2);
-            this.tbDias.Name = "tbDias";
-            this.tbDias.Size = new System.Drawing.Size(97, 23);
-            this.tbDias.TabIndex = 3;
             // 
             // label6
             // 
@@ -316,6 +246,36 @@
             this.btnModificarProducto.UseVisualStyleBackColor = true;
             this.btnModificarProducto.Click += new System.EventHandler(this.btnModificarProducto_Click);
             // 
+            // Clave
+            // 
+            this.Clave.HeaderText = "Clave";
+            this.Clave.MinimumWidth = 55;
+            this.Clave.Name = "Clave";
+            this.Clave.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre Producto";
+            this.Nombre.MinimumWidth = 200;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Dias
+            // 
+            this.Dias.HeaderText = "Dias de Producción";
+            this.Dias.MaxInputLength = 5;
+            this.Dias.MinimumWidth = 140;
+            this.Dias.Name = "Dias";
+            this.Dias.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.MaxInputLength = 5;
+            this.Precio.MinimumWidth = 70;
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            // 
             // PantallaAdministrarProducto
             // 
             this.AcceptButton = this.btnBuscar;
@@ -328,12 +288,8 @@
             this.Controls.Add(this.btnAgregarProducto);
             this.Controls.Add(this.btnModificarProducto);
             this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.tbDias);
-            this.Controls.Add(this.tbPrecio);
             this.Controls.Add(this.tbNombre);
             this.Controls.Add(this.tbClave);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblClave);
             this.Controls.Add(this.dgvProductos);
@@ -343,12 +299,8 @@
             this.Controls.SetChildIndex(this.dgvProductos, 0);
             this.Controls.SetChildIndex(this.lblClave, 0);
             this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.tbClave, 0);
             this.Controls.SetChildIndex(this.tbNombre, 0);
-            this.Controls.SetChildIndex(this.tbPrecio, 0);
-            this.Controls.SetChildIndex(this.tbDias, 0);
             this.Controls.SetChildIndex(this.btnBuscar, 0);
             this.Controls.SetChildIndex(this.btnModificarProducto, 0);
             this.Controls.SetChildIndex(this.btnAgregarProducto, 0);
@@ -372,22 +324,18 @@
         private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.Label lblClave;
         private System.Windows.Forms.TextBox tbClave;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Clave;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dias;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbNombre;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbPrecio;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox tbDias;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEliminarProducto;
         private System.Windows.Forms.Button btnAgregarProducto;
         private System.Windows.Forms.Button btnModificarProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Clave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
     }
 }

@@ -57,10 +57,10 @@ namespace Presentacion.Recepcion
             };
             ShowDialog();
             Cancelado = Cerrado;
-            RegistroProducto[] temp = null;
-            //if (!Cerrado)
-            //    temp = Interface.BuscarUnProducto(new RegistroProducto(Convert.ToInt32(tbNumEmpleado.Text== "" ? "-2" : tbNumEmpleado.Text), "", -1, -1, 1));
-            return temp?[0] ?? null;
+            RegistroProducto temp = null;
+            if (!Cerrado)
+                InterfaceUsuario.ObtenerUnProducto(Convert.ToInt32(tbNumEmpleado.Text), out temp);
+            return temp;
         }
 
         public static RegistroPedido PedirUnPedido(out bool Cancelado)
@@ -109,10 +109,10 @@ namespace Presentacion.Recepcion
             };
             ShowDialog();
             Cancelado = Cerrado;
-            RegistroMaterial[] temp = null;
-            //if (!Cerrado)
-            //    temp = Interface.BuscarUnMaterial(new RegistroMaterial(Convert.ToInt32(tbNumEmpleado.Text == "" ? "-2" : tbNumEmpleado.Text), "", -1, -1));
-            return temp?[0] ?? null;
+            RegistroMaterial temp = null;
+            if (!Cerrado)
+                temp = new ManejadorRegistroMaterial().ObtenerUnMaterial(Convert.ToInt32(tbNumEmpleado.Text));
+            return temp;
         }
 
         public RegistroPedido PedirPedido(out bool Cancelado)
@@ -175,7 +175,7 @@ namespace Presentacion.Recepcion
             Cancelado = Cerrado;
             RegistroDentista temp = null;
             if (!Cerrado)
-                temp = Interface.ObtenerUnDentista(tbNumEmpleado.Text);
+                Interface.ObtenerUnDentista(tbNumEmpleado.Text, out temp);
             return temp;
         }
 

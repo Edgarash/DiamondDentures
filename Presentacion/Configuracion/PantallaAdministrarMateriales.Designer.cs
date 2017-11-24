@@ -30,10 +30,8 @@
         {
             this.lblPantallaUsuario = new System.Windows.Forms.Label();
             this.pbIcono = new System.Windows.Forms.PictureBox();
-            this.tbPrecio = new System.Windows.Forms.TextBox();
             this.tbNombre = new System.Windows.Forms.TextBox();
             this.tbClave = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblClave = new System.Windows.Forms.Label();
             this.btnBuscarClave = new System.Windows.Forms.Button();
@@ -82,16 +80,6 @@
             this.pbIcono.TabIndex = 16;
             this.pbIcono.TabStop = false;
             // 
-            // tbPrecio
-            // 
-            this.tbPrecio.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.tbPrecio.Location = new System.Drawing.Point(262, 146);
-            this.tbPrecio.Margin = new System.Windows.Forms.Padding(2);
-            this.tbPrecio.Name = "tbPrecio";
-            this.tbPrecio.Size = new System.Drawing.Size(91, 23);
-            this.tbPrecio.TabIndex = 15;
-            this.tbPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPrecio_KeyPress);
-            // 
             // tbNombre
             // 
             this.tbNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -99,7 +87,7 @@
             this.tbNombre.Location = new System.Drawing.Point(97, 146);
             this.tbNombre.Margin = new System.Windows.Forms.Padding(2);
             this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(91, 23);
+            this.tbNombre.Size = new System.Drawing.Size(398, 23);
             this.tbNombre.TabIndex = 16;
             // 
             // tbClave
@@ -111,17 +99,6 @@
             this.tbClave.Size = new System.Drawing.Size(91, 23);
             this.tbClave.TabIndex = 17;
             this.tbClave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbClave_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.label3.Location = new System.Drawing.Point(192, 149);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 17);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Precio:";
             // 
             // label2
             // 
@@ -300,10 +277,8 @@
             this.Controls.Add(this.btnModificarMaterial);
             this.Controls.Add(this.dgvMateriales);
             this.Controls.Add(this.btnBuscarClave);
-            this.Controls.Add(this.tbPrecio);
             this.Controls.Add(this.tbNombre);
             this.Controls.Add(this.tbClave);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblClave);
             this.Name = "PantallaAdministrarMateriales";
@@ -311,10 +286,8 @@
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.lblClave, 0);
             this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.tbClave, 0);
             this.Controls.SetChildIndex(this.tbNombre, 0);
-            this.Controls.SetChildIndex(this.tbPrecio, 0);
             this.Controls.SetChildIndex(this.btnBuscarClave, 0);
             this.Controls.SetChildIndex(this.dgvMateriales, 0);
             this.Controls.SetChildIndex(this.btnModificarMaterial, 0);
@@ -336,10 +309,8 @@
 
         protected System.Windows.Forms.Label lblPantallaUsuario;
         protected System.Windows.Forms.PictureBox pbIcono;
-        private System.Windows.Forms.TextBox tbPrecio;
         private System.Windows.Forms.TextBox tbNombre;
         private System.Windows.Forms.TextBox tbClave;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblClave;
         private System.Windows.Forms.Button btnBuscarClave;

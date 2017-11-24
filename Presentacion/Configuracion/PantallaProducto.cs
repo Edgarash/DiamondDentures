@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Validaciones;
+using static Validaciones.Validar;
 using Control;
 
 namespace Presentacion.Configuracion
@@ -26,22 +27,28 @@ namespace Presentacion.Configuracion
         {
             Validacion = new Validar(this);
             Interface = new InterfaceUsuario(this);
+            for (int i = 0; i < Controls.Count; i++)
+            {
+                if (Controls[i].GetType() == typeof(TextBox))
+                    Controls[i].KeyPress += Mayusculas;
+            }
         }
 
         protected bool ValidarCampos
         {
             get
             {
-                bool Vacio = false;
-                Vacio = Validacion.ValidarTextBox(tbPrecio, tbClave, tbNombre) || Vacio;
+                bool Vacio = Validacion.ValidarTextBox(tbClave, tbNombre, tbUnidadMedida, tbDescripcion, tbPrecio);
                 return Vacio;
             }
         }
 
         protected RegistroProducto ObtenerRegistro
         {
-            //get { return new RegistroProducto(0, tbNombre.Text, (int)nudDias.Value, Convert.ToSingle(tbPrecio.Text), 1); }
-            get;set;
+            get {
+                return new RegistroProducto(Convert.ToInt32(tbClave.Text), tbNombre.Text,
+              tbDescripcion.Text, (int)nudDias.Value, Convert.ToSingle(tbPrecio.Text),
+              0, true, tbUnidadMedida.Text, (int)nudCantidad.Value); }
         }
 
         private void tbPrecio_KeyPress(object sender, KeyPressEventArgs e)
@@ -79,23 +86,29 @@ namespace Presentacion.Configuracion
                 if (!int.TryParse(tbClave.Text, out ClavePro))
                 {
                     Error = true;
-                    Mensaje = "hubo un error en la clave de " + dgvMateriales[2, i].Value.ToString();
+                    Mensaje = "hubo un error en la clave de " + dgvMateriales["Materiales", i].Value.ToString();
                 }
                 int ClaveMat = 0;
-                if (!Error && !int.TryParse(dgvMateriales[0, i].Value.ToString(), out ClaveMat))
+                if (!Error && !int.TryParse(dgvMateriales["Clave", i].Value.ToString(), out ClaveMat))
                 {
                     Error = true;
                     Mensaje = "Clave de producto no válida";
                 }
                 float Precio = 0;
-                if (!Error && !float.TryParse(dgvMateriales[3, i].Value.ToString(), out Precio))
+                if (!Error && !float.TryParse(dgvMateriales["Precio", i].Value.ToString(), out Precio))
                 {
                     Error = true;
-                    Mensaje = "El precio establecido en " + dgvMateriales[2, i].Value.ToString() + " no es válido";
+                    Mensaje = "El precio establecido en " + dgvMateriales["Materiales", i].Value.ToString() + " no es válido";
+                }
+                int Tiempo = 0;
+                if (!Error && !int.TryParse(dgvMateriales["Tiempo", i].Value.ToString(), out Tiempo))
+                {
+                    Error = true;
+                    Mensaje = "El tiempo establecido en " + dgvMateriales["Materiales", i].Value.ToString() + " no es válido";
                 }
                 if (!Error)
                 {
-                    Registro = new RegistroProMat(ClavePro, ClaveMat, Precio, Convert.ToBoolean(dgvMateriales[1, i].Value) ? 1 : 0);
+                    Registro = new RegistroProMat(ClavePro, ClaveMat, Precio, Tiempo, Convert.ToBoolean(dgvMateriales["Activo", i].Value));
                     if (!Interface.ActualizarProMat(Registro))
                     {
                         Error = true;
@@ -106,13 +119,11 @@ namespace Presentacion.Configuracion
             return Error;
         }
 
-        protected virtual RegistroProMat[] ObtenerProMat
+        protected virtual RegistroProMat[] ObtenerProMat()
         {
-            get
-            {
-                Interface = new InterfaceUsuario(this);
-                return Interface.ObtenerProMat(-1, Convert.ToInt32(string.IsNullOrWhiteSpace(tbClave.Text) ? "-1" : tbClave.Text));
-            }
+            RegistroProMat[] temp;
+            InterfaceUsuario.ObtenerProMat(Convert.ToInt32(tbClave.Text), -1, out temp);
+            return temp;
         }
     }
 }

@@ -11,7 +11,6 @@ namespace Control
         public Pantalla()
         {
             InitializeComponent();
-            InitializeComponent2();
         }
         protected virtual void btnMouseOver(object sender, EventArgs e)
         {
