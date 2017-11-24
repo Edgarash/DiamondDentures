@@ -58,6 +58,7 @@ namespace Presentacion.Reportes
             this.crvVisor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvVisor.Cursor = System.Windows.Forms.Cursors.Default;
             this.crvVisor.DisplayStatusBar = false;
+            this.crvVisor.DisplayToolbar = false;
             this.crvVisor.Location = new System.Drawing.Point(295, 96);
             this.crvVisor.Name = "crvVisor";
             this.crvVisor.Size = new System.Drawing.Size(915, 501);

@@ -34,6 +34,8 @@ namespace Presentacion.Reportes
         {
             this.crvVisor = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtReceptor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIDText = new System.Windows.Forms.TextBox();
             this.btnGenerar = new System.Windows.Forms.Button();
@@ -43,8 +45,6 @@ namespace Presentacion.Reportes
             this.btnExportar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.sfdExportar = new System.Windows.Forms.SaveFileDialog();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtReceptor = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Encabezado.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -88,6 +88,23 @@ namespace Presentacion.Reportes
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parametros del reporte";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 101);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(123, 16);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Nombre del receptor:";
+            // 
+            // txtReceptor
+            // 
+            this.txtReceptor.Location = new System.Drawing.Point(9, 120);
+            this.txtReceptor.MaxLength = 100;
+            this.txtReceptor.Name = "txtReceptor";
+            this.txtReceptor.Size = new System.Drawing.Size(225, 21);
+            this.txtReceptor.TabIndex = 29;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -101,6 +118,7 @@ namespace Presentacion.Reportes
             // txtIDText
             // 
             this.txtIDText.Location = new System.Drawing.Point(9, 51);
+            this.txtIDText.MaxLength = 11;
             this.txtIDText.Name = "txtIDText";
             this.txtIDText.Size = new System.Drawing.Size(225, 21);
             this.txtIDText.TabIndex = 27;
@@ -187,22 +205,6 @@ namespace Presentacion.Reportes
             // 
             this.sfdExportar.Filter = "Adobe PDF|*.pdf";
             this.sfdExportar.FileOk += new System.ComponentModel.CancelEventHandler(this.sfdExportar_FileOk);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 16);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "Nombre del receptor:";
-            // 
-            // txtReceptor
-            // 
-            this.txtReceptor.Location = new System.Drawing.Point(9, 120);
-            this.txtReceptor.Name = "txtReceptor";
-            this.txtReceptor.Size = new System.Drawing.Size(225, 21);
-            this.txtReceptor.TabIndex = 29;
             // 
             // label5
             // 
