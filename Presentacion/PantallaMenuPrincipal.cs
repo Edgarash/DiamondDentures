@@ -9,6 +9,7 @@ using Presentacion.Usuario;
 using Presentacion.Ventas;
 using System;
 using System.Windows.Forms;
+using Presentacion.Reportes;
 using Validaciones;
 
 namespace Presentacion
@@ -178,6 +179,29 @@ namespace Presentacion
             Hide();
             new PantallaVentas().ShowDialog(this);
             Show();
+        }
+
+        private void kuroButton2_Click(object sender, EventArgs e)
+        {
+            Almacen_y_Proveedores.Menu abrir = new Almacen_y_Proveedores.Menu();
+            abrir.Show();
+        }
+
+        private void kuroButton3_Click(object sender, EventArgs e)
+        {
+            Finanzas.FinanzasMenu fm = new Finanzas.FinanzasMenu();
+            fm.Show();
+        }
+
+        private void kuroButton4_Click(object sender, EventArgs e)
+        {
+            Recursos_Humanos.RHumanosMenu rhm = new Recursos_Humanos.RHumanosMenu();
+            rhm.Show();
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            ManejadorReportes.MostrarPantalla(this, new PantallaMenuReportes());
         }
     }
 }

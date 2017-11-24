@@ -43,6 +43,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnLstProv = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,6 +55,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -192,6 +194,7 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.btnLstProv);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.textBox1);
@@ -204,8 +207,20 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // btnLstProv
+            // 
+            this.btnLstProv.Location = new System.Drawing.Point(778, 10);
+            this.btnLstProv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLstProv.Name = "btnLstProv";
+            this.btnLstProv.Size = new System.Drawing.Size(127, 28);
+            this.btnLstProv.TabIndex = 22;
+            this.btnLstProv.Text = "Exportar lista prov.";
+            this.btnLstProv.UseVisualStyleBackColor = true;
+            this.btnLstProv.Click += new System.EventHandler(this.btnLstProv_Click);
+            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnExportar);
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.textBox2);
@@ -294,6 +309,17 @@
             this.Column3.HeaderText = "Subtotal";
             this.Column3.Name = "Column3";
             // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(601, 11);
+            this.btnExportar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(129, 28);
+            this.btnExportar.TabIndex = 25;
+            this.btnExportar.Text = "Exportar Nota P,";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
             // VerProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -347,5 +373,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnLstProv;
+        private System.Windows.Forms.Button btnExportar;
     }
 }

@@ -106,7 +106,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_f1 {
+        public CrystalDecisions.Shared.IParameterField Parameter_FchIni {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -114,7 +114,7 @@ namespace Entidad {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_f2 {
+        public CrystalDecisions.Shared.IParameterField Parameter_FchFin {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }

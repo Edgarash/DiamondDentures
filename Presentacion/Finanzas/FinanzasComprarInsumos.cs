@@ -124,7 +124,7 @@ namespace Presentacion.Finanzas
             totl = (Convert.ToInt32(a) + (Convert.ToInt32(a) * 0.16)).ToString();
             MessageBox.Show("Compra de Insumos Registrada Correctamete", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DataGridView dtt = new DataGridView();
-            Interface.DatosDRegistroPagos(dtt, "INSUMOS a de proveedor: " + txIdPr.Text, txDesc.Text, a.ToString(), "1", a.ToString(), totl, "1", "1",txID.Text);
+            //Interface.DatosDRegistroPagos(dtt, "INSUMOS a de proveedor: " + txIdPr.Text, txDesc.Text, a.ToString(), "1", a.ToString(), totl, "1", "1",txID.Text);
             Interface.AgregarCompra("", totl);
             //datos = "ID: " + txID.Text + "\nNOMBRE: " + txNom.Text + "\nDESCRIPCIÓN: " + txDesc.Text + "\nPRECIO UNITARIO: " + txPreUni.Text + "\nCANTIDAD: " + txCant.Text +
             //    "\nSUBTOTAL: " + subtotl.ToString() + "\nTOTAL: " + totl.ToString() + "\nESTADO: EN PROCESO" + "\nREGISTRADO: SÍ";

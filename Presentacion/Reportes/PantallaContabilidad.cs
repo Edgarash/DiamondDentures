@@ -1,66 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Control;
 using CrystalDecisions.CrystalReports.Engine;
 using Entidad;
 using Entidad.Reportes;
-using static Control.ManejadorContabilidad;
 using static Control.ManejadorBorrarFactura;
-
 
 namespace Presentacion.Reportes
 {
     internal class PantallaContabilidad : Pantalla
     {
-        private ReportDocument _facturaActual;   
-        private List<Factura> _facturas;
+        private DataTable _facturas;
 
         public PantallaContabilidad()
         {
             InitializeComponent();
-            Actualizar();
-        }
-
-        public PantallaContabilidad(string clave)
-        {
-
-
+            //Actualizar();
         }
 
         #region Metodos  
 
-        public void CancelarFacturaSeleccionada(int facturaId)
+        private void CancelarFacturaSeleccionada(int facturaId) => CancelarFactura(facturaId);
+
+        private void MostrarFacturas()
         {
-            CancelarFactura(facturaId);
+            _facturas = ManejadorReportes.RecuperarFacturas(new Dictionary<string, object>
+            {
+                {"opc", -1},
+                {"nomc", string.Empty},
+                {"nfac", default(int)},
+                {"fchi", DateTime.MinValue},
+                {"fchf", DateTime.MaxValue}
+            });
+
+            LlenarTabla(_facturas);
         }
 
-        private void MostrarFacturas(List<Factura> facturas)
+        private void LlenarTabla(DataTable facturas)
         {
             dgvFacturas.Rows.Clear();
-            foreach (Factura factura in facturas)
+            foreach (DataRow factura in facturas.Select())
             {
                 dgvFacturas.RowCount++;
-                dgvFacturas["cid", dgvFacturas.RowCount - 1].Value = factura.Id;
-                dgvFacturas["cnombre", dgvFacturas.RowCount - 1].Value = factura.NombreC;
-                dgvFacturas["ctelefono", dgvFacturas.RowCount - 1].Value = factura.TelefonoC;
-                dgvFacturas["cfecha", dgvFacturas.RowCount - 1].Value = factura.Fecha.ToShortDateString();
-                dgvFacturas["cemail", dgvFacturas.RowCount - 1].Value = factura.CorreoC;
-                dgvFacturas["cestado", dgvFacturas.RowCount - 1].Value = factura.Estatus == 1 ? "Vigente" : "Cancelada";
+                dgvFacturas["cid", dgvFacturas.RowCount - 1].Value = factura["NoFactura"];
+                dgvFacturas["cnombre", dgvFacturas.RowCount - 1].Value = factura["NombreC"];
+                dgvFacturas["ctelefono", dgvFacturas.RowCount - 1].Value = factura["TelefonoC"];
+                dgvFacturas["cfecha", dgvFacturas.RowCount - 1].Value = factura["FechaEmision"];
+                dgvFacturas["cemail", dgvFacturas.RowCount - 1].Value = factura["CorreoC"];
+                dgvFacturas["cestado", dgvFacturas.RowCount - 1].Value = Convert.ToInt32(factura["Estatus"]) == 1 ? "Vigente" : "Cancelada";
             }
-        }
-
-        private void Actualizar(List<Factura> facturas)
-        {
-            MostrarFacturas(facturas);
-        }
-
-        private void Actualizar()
-        {
-            List<Factura> facturas = ConsultarFactura();
-            if (facturas != null) MostrarFacturas(facturas);
         }
 
         #endregion
@@ -102,13 +94,12 @@ namespace Presentacion.Reportes
         private Button btnRegresar;
         private Label label5;
 
-      
-
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaContabilidad));
+            System.ComponentModel.ComponentResourceManager resources =
+                new System.ComponentModel.ComponentResourceManager(typeof (PantallaContabilidad));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -144,11 +135,11 @@ namespace Presentacion.Reportes
             this.label21 = new System.Windows.Forms.Label();
             this.Encabezado.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dgvFacturas)).BeginInit();
             this.cmsTabla.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // Encabezado
@@ -185,7 +176,8 @@ namespace Presentacion.Reportes
             // 
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label15.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label15.Location = new System.Drawing.Point(110, 32);
             this.label15.Name = "label15";
@@ -196,7 +188,8 @@ namespace Presentacion.Reportes
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label12.Location = new System.Drawing.Point(26, 112);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(119, 15);
@@ -206,7 +199,8 @@ namespace Presentacion.Reportes
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label13.Location = new System.Drawing.Point(944, 758);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 20);
@@ -220,20 +214,23 @@ namespace Presentacion.Reportes
             this.dgvFacturas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFacturas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cid,
-            this.cnombre,
-            this.cfecha,
-            this.ctelefono,
-            this.cemail,
-            this.cestado});
+            this.dgvFacturas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[]
+            {
+                this.cid,
+                this.cnombre,
+                this.cfecha,
+                this.ctelefono,
+                this.cemail,
+                this.cestado
+            });
             this.dgvFacturas.ContextMenuStrip = this.cmsTabla;
             this.dgvFacturas.Location = new System.Drawing.Point(29, 133);
             this.dgvFacturas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -284,8 +281,7 @@ namespace Presentacion.Reportes
             // 
             // cmsTabla
             // 
-            this.cmsTabla.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.actualizarToolStripMenuItem});
+            this.cmsTabla.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.actualizarToolStripMenuItem});
             this.cmsTabla.Name = "cmsTabla";
             this.cmsTabla.Size = new System.Drawing.Size(127, 26);
             // 
@@ -299,7 +295,8 @@ namespace Presentacion.Reportes
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label7.Location = new System.Drawing.Point(23, 318);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 18);
@@ -309,7 +306,8 @@ namespace Presentacion.Reportes
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label8.Location = new System.Drawing.Point(926, 213);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(129, 20);
@@ -318,7 +316,7 @@ namespace Presentacion.Reportes
             // 
             // btnGenerarFactura
             // 
-            this.btnGenerarFactura.BackgroundImage = global::Presentacion.Properties.Resources.invoice_account_bank_check_bill_finance_paper_financial_item_flat_icon_symbol_512;
+            this.btnGenerarFactura.BackgroundImage = global::Presentacion.Properties.Resources.invoice_account_bank_check;
             this.btnGenerarFactura.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGenerarFactura.FlatAppearance.BorderSize = 0;
             this.btnGenerarFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -349,7 +347,8 @@ namespace Presentacion.Reportes
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label11.Location = new System.Drawing.Point(871, 414);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(112, 20);
@@ -372,7 +371,8 @@ namespace Presentacion.Reportes
             // 
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label14.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label14.Location = new System.Drawing.Point(96, 31);
             this.label14.Name = "label14";
@@ -393,7 +393,8 @@ namespace Presentacion.Reportes
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label3.Location = new System.Drawing.Point(798, 213);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 20);
@@ -439,7 +440,8 @@ namespace Presentacion.Reportes
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label4.Location = new System.Drawing.Point(916, 311);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(136, 20);
@@ -464,7 +466,8 @@ namespace Presentacion.Reportes
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label10.Location = new System.Drawing.Point(820, 312);
             this.label10.Name = "label10";
@@ -476,7 +479,8 @@ namespace Presentacion.Reportes
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label5.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label5.Location = new System.Drawing.Point(875, 31);
             this.label5.Name = "label5";
@@ -543,7 +547,7 @@ namespace Presentacion.Reportes
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.panel1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "PantallaContabilidad";
             this.Text = "Contabilidiad";
@@ -571,14 +575,13 @@ namespace Presentacion.Reportes
             this.Encabezado.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dgvFacturas)).EndInit();
             this.cmsTabla.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -587,17 +590,17 @@ namespace Presentacion.Reportes
 
         private void sfdFactura_FileOk(object sender, CancelEventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            _facturaActual = ObtenerFacturaReporte((int) dgvFacturas.SelectedRows[0].Cells["cid"].Value);
-            ExportarReporte(sfdFactura.FileName, _facturaActual);
-            Cursor = Cursors.Default;
         }
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            sfdFactura.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            sfdFactura.FileName = $"Ventas-{DateTime.Now.Day}-{DateTime.Now.Month}-{DateTime.Now.Year}.pdf";
-            sfdFactura.ShowDialog();
+            Cursor = Cursors.WaitCursor;
+            object id = dgvFacturas.SelectedRows[0].Cells["cid"].Value;
+            PantallaVPListadoGen<FacturaReporte> pantalla = new PantallaVPListadoGen<FacturaReporte>("Factura", id, "nfac");
+            Cursor = Cursors.Default;
+            pantalla.ShowDialog();
+            pantalla.Close();
+        
         }
 
         private void btnGenerarFactura_Click(object sender, EventArgs e)
@@ -607,39 +610,45 @@ namespace Presentacion.Reportes
             pcf.ShowDialog();
             pcf.Close();
             Show();
-            Actualizar();
+            MostrarFacturas();
         }
 
         private void PantallaContabilidad_Load(object sender, EventArgs e)
         {
+            MostrarFacturas();
         }
 
         private void btnBuscarFacturas_Click(object sender, EventArgs e)
         {
-            PantallaBuscarFactura bf = new PantallaBuscarFactura(false);
+            PantallaBuscarFactura buscarFactura = new PantallaBuscarFactura(false);
             Hide();
-            bf.ShowDialog();
-            _facturas = bf.Facturas;
-            if (bf.Facturas != null)
+            buscarFactura.ShowDialog();
+            _facturas = buscarFactura.Facturas;
+            if (_facturas != null)
             {
-                MostrarFacturas(bf.Facturas);
+                LlenarTabla(_facturas);
             }
-            bf.Close();
+            buscarFactura.Close();
             Show();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             if (DateTime.Today != Convert.ToDateTime(dgvFacturas.SelectedRows[0].Cells["cfecha"].Value))
             {
-                MessageBox.Show("Unicamente se puede cancelar una factura el mismo dia en la que fue emitida.", "Advertencia",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Unicamente se puede cancelar una factura el mismo dia en la que fue emitida.", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
                 return;
             }
-            if (dgvFacturas.SelectedRows.Count <= 0) return;
+            if (dgvFacturas.SelectedRows.Count <= 0)
+            {
+                return;
+            }
             int idFactura = (int) dgvFacturas.SelectedRows[0].Cells["cid"].Value;
-            CancelarFacturaSeleccionada(idFactura);
+            ManejadorReportes.CancelarFactura(idFactura);
             dgvFacturas.SelectedRows[0].Cells["cestado"].Value = "Cancelada";
+            Cursor = Cursors.Default;
         }
 
         private void btnEnviarFactura_Click(object sender, EventArgs e)
@@ -658,38 +667,14 @@ namespace Presentacion.Reportes
 
         private void actualizarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Actualizar();
+            MostrarFacturas();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            DialogoModicarFactura dmf = new DialogoModicarFactura();
-            int indice = -1;
-            foreach (Factura factura in _facturas)
-            {
-                if (factura.Id == (int) dgvFacturas.SelectedRows[0].Cells["cid"].Value)
-                {
-                    indice = _facturas.IndexOf(factura);
-                }
-            }
-            if ( _facturas == null && indice <= -1)
-            {
-                MessageBox.Show("No se ha seleccionado ninguna factura", "Advertencia", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                DialogoModicarFactura.Factura = _facturas[indice];
-                dmf.ShowDialog();
-                _facturas[indice] = DialogoModicarFactura.Factura;
-
-                MostrarFacturas(_facturas);
-            }
-            dmf.Close();
-            BringToFront();
+            DialogoModicarFactura pantalla = new DialogoModicarFactura();
         }
 
         #endregion
-        
     }
 }

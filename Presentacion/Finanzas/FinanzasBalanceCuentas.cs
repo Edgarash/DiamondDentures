@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Control;
+using Entidad;
+using Presentacion.Reportes;
 
 namespace Presentacion.Finanzas
 {
@@ -32,7 +35,7 @@ namespace Presentacion.Finanzas
                     dtEgresos[1, dtEgresos.RowCount - 1].Style.BackColor = Color.IndianRed;
                     dtIngresos[2, dtIngresos.RowCount - 1].Style.BackColor = Color.LightGreen;
                     dtEgresos[2, dtEgresos.RowCount - 1].Style.BackColor = Color.IndianRed;
-                    txTotal.Text = "Fondo = $ " + (Convert.ToInt32(dtIngresos[2, dtIngresos.RowCount - 1].Value) - Convert.ToInt32(dtEgresos[2, dtEgresos.RowCount - 1].Value)).ToString();
+                    Interface.DatosDTotalIngresos(txTotal);
                 }
             }            
         }
@@ -65,6 +68,20 @@ namespace Presentacion.Finanzas
         private void btnBalanceEgresos_Click(object sender, EventArgs e)
         {
             ActualizarData3();
+        }
+
+        private void btnGenRep_Click(object sender, EventArgs e)
+        {
+            string fecha = $"{cbAño.SelectedItem}/01/01";
+            DateTime fchi = DateTime.Parse(fecha).AddMonths(Convert.ToInt32(cbMes.SelectedItem)-1);
+            DateTime fchf = (fchi.AddMonths(1)).AddDays(-1);
+
+            ParametroReporte Fchi_sv = new ParametroReporte("fchi", fchi, true, "SubVentas.rpt");
+            ParametroReporte Fchf_sv = new ParametroReporte("fchf", fchf,true, "SubVentas.rpt");
+            ParametroReporte Fchi_sg = new ParametroReporte("fchi", fchi, true, "SubGastos.rpt");
+            ParametroReporte Fchf_sg = new ParametroReporte("fchf", fchf,true, "SubGastos.rpt");
+
+            ManejadorReportes.MostrarPantalla(this, new PantallaVPListadoFec<CAN7_Balance>("Balance",fchi,fchf, Fchi_sv, Fchf_sv, Fchi_sg, Fchf_sg));
         }
     }
 }

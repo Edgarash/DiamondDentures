@@ -99,6 +99,7 @@
             this.btnGenRep.TabIndex = 27;
             this.btnGenRep.Text = "Generar \r\nReporte";
             this.btnGenRep.UseVisualStyleBackColor = true;
+            this.btnGenRep.Click += new System.EventHandler(this.btnGenRep_Click);
             // 
             // txTotal
             // 
@@ -204,7 +205,7 @@
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(47, 24);
             this.cbMes.TabIndex = 72;
-            this.cbMes.Text = "10";
+            this.cbMes.Text = "11";
             // 
             // label13
             // 

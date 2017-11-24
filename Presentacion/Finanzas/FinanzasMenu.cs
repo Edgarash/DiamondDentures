@@ -31,7 +31,7 @@ namespace Presentacion.Finanzas
 
         private void btnComIns_Click(object sender, EventArgs e)
         {
-            FinanzasComprarInsumos fci = new FinanzasComprarInsumos();
+            Presentacion.Almacen_y_Proveedores.RequisicionMateriales fci = new Presentacion.Almacen_y_Proveedores.RequisicionMateriales();
             fci.Show();
         }
 

@@ -234,30 +234,11 @@ BEGIN
   VALUES
     (`id`, `Nombre`, `Descripcion`, `Cantidad`, `PrecioUnitario`, `Cantidad` * `PrecioUnitario`, `IdProveedor`);
 END;
+
 DROP PROCEDURE IF EXISTS `FinanzasVerComprarInsumos`;
 CREATE PROCEDURE `FinanzasVerComprarInsumos`()
 BEGIN
-  SELECT
-  `compras`.`IDCompra`,
-  `proveedores`.`IDProveedor`,
-  `proveedores`.`nombre` AS 'Proveedores',
-  `Empleado`,  
-  `Tipo`,
-  `detalle_compra_insumo`.`Nombre` AS 'Nombre Insumo',
-  `detalle_compra_insumo`.`Descripcion`,
-  `Fecha`,
-  `FechaSurtido`,
-  `PrecioUnitario`,
-  `Cantidad`,
-  `Subtotal`,
-  `Total`
-FROM
-  `compras`,
-  `detalle_compra_insumo`,
-  `proveedores`
-WHERE
-  `compras`.`Tipo` = 'INSUMOS' AND `compras`.`IDCompra` = `detalle_compra_insumo`.`IDCompra` AND `detalle_compra_insumo`.`IDProveedor` = `Proveedores`.`IDProveedor` 
-ORDER BY `IDCompra`;
+  SELECT * FROM `compras` WHERE `Tipo` = 'INSUMOS' ORDER BY `IDCompra`;
 END;
 
 DROP PROCEDURE IF EXISTS `FinanzasTotalVentas`;
@@ -276,12 +257,11 @@ DROP PROCEDURE IF EXISTS `FinanzasTotalInsumos`;
 CREATE PROCEDURE `FinanzasTotalInsumos`()
 BEGIN
   SELECT
-    SUM(`Total`)
-  FROM
-    `compras`,
-    `detalle_compra_insumo`
-  WHERE
-    `compras`.`Tipo` = 'INSUMOS' AND `compras`.`IDCompra` = `detalle_compra_insumo`.`IDCompra`;
+  SUM(`Total`) AS 'TOTAL'
+FROM
+  `compras`
+WHERE
+  `compras`.`Tipo` = 'INSUMOS';
 END;
 
 DROP PROCEDURE IF EXISTS `FinanzasPagos`;
@@ -421,14 +401,14 @@ BEGIN
     `balancecuentasingresos`.`Fecha` LIKE `fec`
   UNION
   SELECT DISTINCT
-  `Fecha`, CONCAT('Corte de caja de ', `Empleado`) AS 'Descripción', `ganancia`
+  `Fecha`, CONCAT('Corte de caja de ', `Empleado`) AS 'Descripción', `EntradaEfectivo`
 FROM
   `cortecaja`
   WHERE
     `cortecaja`.`fecha` LIKE `fec`
   UNION
   SELECT DISTINCT
-    `Fecha`, 'TOTAL', (SELECT DISTINCT SUM(`ventas`.`Importe`) FROM `ventas`) + (SELECT DISTINCT SUM(`cortecaja`.`ganancia`) FROM `cortecaja`)
+    `Fecha`, 'TOTAL', (SELECT DISTINCT SUM(`ventas`.`Importe`) FROM `ventas`) + (SELECT DISTINCT SUM(`cortecaja`.`EntradaEfectivo`) FROM `cortecaja`)
   FROM
     `ventas`,
     `cortecaja`
@@ -465,7 +445,7 @@ DROP PROCEDURE IF EXISTS `FinanzasTotalIngresos`;
 CREATE PROCEDURE `FinanzasTotalIngresos`()
 BEGIN
   SELECT DISTINCT
-  (SELECT SUM(`ventas`.`Importe`) FROM `ventas`) + (SELECT SUM(`cortecaja`.`ganancia`) FROM `cortecaja`) - (SELECT SUM(`pagos`.`Total`) FROM `pagos` WHERE `pagos`.`Estado` = 3) AS 'TOTAL'
+  (SELECT IF(SUM(`ventas`.`Importe`), SUM(`ventas`.`Importe`), 0) FROM `ventas`) + (SELECT IF(SUM(`cortecaja`.`EntradaEfectivo`), SUM(`cortecaja`.`EntradaEfectivo`), 0) FROM `cortecaja`) - (SELECT IF(SUM(`pagos`.`Total`), SUM(`pagos`.`Total`), 0) FROM `pagos` WHERE `pagos`.`Estado` = 3) AS 'TOTAL'
 FROM
   `ventas`,
   `cortecaja`,
@@ -657,4 +637,63 @@ DROP PROCEDURE IF EXISTS `ControlPedidosObtenerLaboratoristas`;
 CREATE PROCEDURE `ControlPedidosObtenerLaboratoristas`()
 BEGIN
   SELECT DISTINCT `N_EMPLEADO` FROM `usuario` WHERE `PUESTO` = 'LABORATORISTA';
+END;
+
+
+#Procedimiento que detalla la compra de insumos
+DROP PROCEDURE IF EXISTS `ComprarInsumos`;
+CREATE PROCEDURE `ComprarInsumos`
+(
+  idC int(11),
+  idI int(11),
+  Cantidad int(11)
+)
+BEGIN 
+  INSERT IGNORE INTO `Detalle_Compra_Insumos`(`IDCompra`, `IDInsumos`, `Cantidad`) 
+    VALUES(idC, idI, Cantidad);
+  UPDATE `Detalle_Compra_Insumos`,`insumos` SET `Subtotal` = Cantidad * `PrecioCompra`, `Detalle_Compra_Insumos`.`IDInsumos` = idI
+    WHERE `Detalle_Compra_Insumos`.`IDInsumos` = idI AND  `Detalle_Compra_Insumos`.`IDInsumos` = `insumos`.`IDInsumos`;
+END;
+
+DROP PROCEDURE IF EXISTS `ObtenerInsumos3`;
+CREATE  PROCEDURE `ObtenerInsumos3`()
+BEGIN
+  SELECT * FROM `insumos`;
+END;
+
+
+DROP PROCEDURE IF EXISTS `AgregarCompraInsumos7`;
+CREATE PROCEDURE `AgregarCompraInsumos7`(idcompra int(11))
+BEGIN
+  INSERT IGNORE
+    INTO `Compras`
+    (`IDCompra`, `Empleado`, `Total`, `Fecha`, `Tipo`, `FechaSurtido`, `Estado`)
+  VALUES
+    (`idcompra`, 'YAZAH', 0, CURDATE(), 'INSUMOS', '2099/12/31', 'PENDIENTE');
+END;
+
+
+DROP PROCEDURE IF EXISTS `Estaweasegurovatronar2`;
+CREATE PROCEDURE `Estaweasegurovatronar2`(
+  idcompra int(11),
+  id int(11),
+  nom char(50),
+  idprov int(11),
+  cantidad int(11)
+)
+BEGIN
+  DECLARE _y numeric(10,2);
+  SET _y = (SELECT `PrecioCompra` FROM `insumos` WHERE `IDInsumos` = `id`);
+  INSERT IGNORE
+    INTO `detalle_compra_insumo`
+    (`IDCompra`, `IDInsumos`, `Nombre`, `IDProveedor`, `Cantidad`, `Fecha`, `Estado`)
+  VALUES
+    (`idcompra`, `id`, `nom`, `idprov`, `cantidad`, CURDATE(), 'PENDIENTE');
+  UPDATE `detalle_compra_insumo` SET `Subtotal` = `Cantidad` * _y WHERE `IDInsumos` = `id`;
+END;
+
+DROP PROCEDURE IF EXISTS `CambiarLaboratorista`;
+CREATE PROCEDURE `CambiarLaboratorista`(nuevo char(20), id int(11))
+BEGIN
+  UPDATE `pedido` SET `Laboratorista` = `nuevo` WHERE `IDPedido` = `id`;
 END;

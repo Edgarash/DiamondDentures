@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Control;
+using Presentacion.Reportes;
 
 namespace Presentacion.Almacen_y_Proveedores
 {
@@ -175,6 +176,11 @@ namespace Presentacion.Almacen_y_Proveedores
             Interface = new InterfaceUsuario(this);
             LlenarData3(Búsqueda.Total);
             textBox1.Focus();
+        }
+
+        private void btnInv_Click(object sender, EventArgs e)
+        {
+            ManejadorReportes.MostrarPantalla(this, new PantallaVPListadoGen<ReporteInventarios>("Inventarios"));
         }
     }
 }

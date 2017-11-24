@@ -119,6 +119,7 @@ namespace ConexionBaseDeDatos
                 //EjecutarConsulta(Properties.Resources.Script_Michell);
             }
             return Abierto;
+            //return true;
         }
 
         /// <summary>

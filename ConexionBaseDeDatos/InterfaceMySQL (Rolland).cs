@@ -189,6 +189,8 @@ namespace ConexionBaseDeDatos
             EjecutarProcedimientoAlmacenado("AgregarCompra", TipoConsulta.DevuelveInt, Parametro("idcompra", compras.IDCompra));
             return OperacionRealizada;
         }
+        
+        
 
         public static bool ObtenerID(out Compras Compra)
         {
@@ -405,6 +407,14 @@ namespace ConexionBaseDeDatos
                     );
             }
             return Materiales;
+        }
+
+        public static bool FinanzasVerMaterialesDeProveedor(DataGridView temp, string id)
+        {
+            EjecutarProcedimientoAlmacenado("FinanzasVerMaterialesDeProveedor", TipoConsulta.DevuelveReader,
+                Parametro("id", id));
+            temp.DataSource = TablaDeResultados;
+            return OperacionRealizada2;
         }
 
     }

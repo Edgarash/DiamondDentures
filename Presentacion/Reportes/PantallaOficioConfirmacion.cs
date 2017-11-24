@@ -3,14 +3,12 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using Control;
 using CrystalDecisions.CrystalReports.Engine;
-using static Control.ManejadorContabilidad;
+using Entidad;
 
 namespace Presentacion.Reportes
 {
     class PantallaOficioConfirmacion : Pantalla
     {
-
-
         #region UI
 
         private System.Windows.Forms.Label label1;
@@ -21,7 +19,7 @@ namespace Presentacion.Reportes
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnBuscarPedido;
         private System.Windows.Forms.Label label6;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crVisor;
         private System.Windows.Forms.SaveFileDialog sfdGuardar;
         private Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -37,11 +35,11 @@ namespace Presentacion.Reportes
             this.label13 = new System.Windows.Forms.Label();
             this.btnBuscarPedido = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.crVisor = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.sfdGuardar = new System.Windows.Forms.SaveFileDialog();
             this.label3 = new System.Windows.Forms.Label();
             this.Encabezado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Encabezado
@@ -65,7 +63,8 @@ namespace Presentacion.Reportes
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label1.Location = new System.Drawing.Point(93, 36);
             this.label1.Name = "label1";
@@ -116,7 +115,8 @@ namespace Presentacion.Reportes
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label14.Location = new System.Drawing.Point(1022, 491);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(68, 17);
@@ -126,7 +126,8 @@ namespace Presentacion.Reportes
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label13.Location = new System.Drawing.Point(917, 491);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(60, 17);
@@ -151,25 +152,26 @@ namespace Presentacion.Reportes
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+                ((byte) (0)));
             this.label6.Location = new System.Drawing.Point(944, 301);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(99, 17);
             this.label6.TabIndex = 18;
             this.label6.Text = "Buscar Pedido";
             // 
-            // crystalReportViewer1
+            // crVisor
             // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.DisplayStatusBar = false;
-            this.crystalReportViewer1.DisplayToolbar = false;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(12, 152);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(858, 382);
-            this.crystalReportViewer1.TabIndex = 20;
-            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crVisor.ActiveViewIndex = -1;
+            this.crVisor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crVisor.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crVisor.DisplayStatusBar = false;
+            this.crVisor.DisplayToolbar = false;
+            this.crVisor.Location = new System.Drawing.Point(12, 152);
+            this.crVisor.Name = "crVisor";
+            this.crVisor.Size = new System.Drawing.Size(858, 382);
+            this.crVisor.TabIndex = 20;
+            this.crVisor.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // sfdGuardar
             // 
@@ -180,20 +182,20 @@ namespace Presentacion.Reportes
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label3.Location = new System.Drawing.Point(13, 103);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(836, 18);
             this.label3.TabIndex = 21;
-            this.label3.Text = "Para generar un oficio de confirmación, se debe seleccionar un pedido mediante el" +
-    " botón Buscar Pedido";
+            this.label3.Text = "Para generar un oficio de confirmación, se debe seleccionar un pedido mediante el" + " botón Buscar Pedido";
             // 
             // PantallaOficioConfirmacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.ClientSize = new System.Drawing.Size(1141, 561);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.crystalReportViewer1);
+            this.Controls.Add(this.crVisor);
             this.Controls.Add(this.btnBuscarPedido);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCancelar);
@@ -211,14 +213,13 @@ namespace Presentacion.Reportes
             this.Controls.SetChildIndex(this.btnCancelar, 0);
             this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.btnBuscarPedido, 0);
-            this.Controls.SetChildIndex(this.crystalReportViewer1, 0);
+            this.Controls.SetChildIndex(this.crVisor, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -233,12 +234,14 @@ namespace Presentacion.Reportes
             InitializeComponent();
             GenerarNotaTerminacion(clave);
         }
+
         #region Metodos
 
         private void GenerarNotaTerminacion(string numeroPedido)
         {
-            crystalReportViewer1.ReportSource = GeneararNotaConfirmacion(numeroPedido);
-            crystalReportViewer1.Refresh();
+            ParametroReporte parametro = new ParametroReporte("nped", numeroPedido);
+            crVisor.ReportSource = ManejadorReportes.CargarReporte(new NotaConfirmacion(), parametro);
+            crVisor.Refresh();
         }
 
         #endregion
@@ -254,21 +257,25 @@ namespace Presentacion.Reportes
 
         private void btnBuscarPedido_Click(object sender, EventArgs e)
         {
-            PantallaBuscarPedido pbp = new PantallaBuscarPedido();
-            Hide();
-            pbp.ShowDialog();
-            string numeroPedido = pbp.Renglon;
-            GenerarNotaTerminacion(numeroPedido);
-            pbp.Close();
+            PantallaBuscarPedido pantalla = new PantallaBuscarPedido();
+            pantalla.ShowDialog();
+            if (!string.IsNullOrWhiteSpace(pantalla.Renglon))
+            {
+                Cursor = Cursors.WaitCursor;
+                GenerarNotaTerminacion(pantalla.Renglon);
+                Cursor = Cursors.Default;
+            }
+            pantalla.Close();
             Show();
         }
 
         private void sfdGuardar_FileOk(object sender, CancelEventArgs e)
         {
             Cursor = Cursors.WaitCursor;
-            if (crystalReportViewer1.ReportSource != null)
-                ExportarReporte(sfdGuardar.FileName,
-                    (ReportDocument)crystalReportViewer1.ReportSource);
+            if (crVisor.ReportSource != null)
+            {
+                ManejadorReportes.ExportarReporte(sfdGuardar.FileName, (NotaConfirmacion) crVisor.ReportSource);
+            }
             Cursor = Cursors.Default;
         }
 
@@ -278,6 +285,5 @@ namespace Presentacion.Reportes
         }
 
         #endregion
-        
     }
 }

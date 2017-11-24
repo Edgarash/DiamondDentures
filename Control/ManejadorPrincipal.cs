@@ -50,10 +50,9 @@ namespace Control
             Interface = new ConexionBaseDeDatos.InterfaceBaseDeDatos();
             Interface.BusquedaTipo(temp, valor);
         }
-        public void CambiarLaboratorista(DataGridView temp, string valor, string a, string id)
+        public void CambiarLaboratorista(DataGridView temp,string nuevo, string id)
         {
-            Interface = new ConexionBaseDeDatos.InterfaceBaseDeDatos();
-            Interface.CambiarLaboratorista(temp, valor, a, id);
+            InterfaceMySQL.CambiarLaboratorista(temp, nuevo, id);
         }
         public void CambiarEstado(DataGridView temp, string valor, string a, string id)
         {
@@ -206,6 +205,10 @@ namespace Control
         public void DatosDVerProductosDeProveedor(DataGridView emp, string temp)
         {
             InterfaceMySQL.FinanzasVerProductosDeProveedor(emp,temp);
+        }
+        public void DatosDVerMaterialesDeProveedor(DataGridView emp, string temp)
+        {
+            InterfaceMySQL.FinanzasVerMaterialesDeProveedor(emp, temp);
         }
         public void DatosAgregarAsistencia(DataGridView temp, string id, string emp, string fec, string hEnt, string hSal)
         {

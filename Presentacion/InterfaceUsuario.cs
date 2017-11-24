@@ -103,6 +103,12 @@ namespace Presentacion
             return (Manejador as ManejadorRegistroMaterial).ObtenerMateriales3();
         }
 
+        internal RegistroInsumos[] ObtenerInsumos3()
+        {
+            Manejador = new ManejadorRegistroInsumos();
+            return (Manejador as ManejadorRegistroInsumos).ObtenerInsumos3();
+        }
+
         internal RegistroMaterial[] ObtenerUnMaterial(string Nombre)
         {
             Manejador = new ManejadorRegistroMaterial();
@@ -162,6 +168,12 @@ namespace Presentacion
         {
             Manejador = new ManejadorRegistroMaterial();
             return (Manejador as ManejadorRegistroMaterial).DetallesMaterial(IDCompra);
+        }
+
+        internal CompraInsumos[] DetallesInsumos(int IDCompra)
+        {
+            Manejador = new ManejadorRegistroInsumos();
+            return (Manejador as ManejadorRegistroInsumos).DetallesInsumos(IDCompra);
         }
 
         internal CompraMaterial[] DetallesProveedorMaterial(int IDProveedor)
@@ -663,10 +675,10 @@ namespace Presentacion
             Manejador = new ManejadorPrincipal();
             ((ManejadorPrincipal)Manejador).BusquedaTipo(data, valor);
         }
-        public void CambiarLaboratorista(DataGridView temp, string valor, string a, string id)
+        public void CambiarLaboratorista(DataGridView temp, string nuevo, string id)
         {
             Manejador = new ManejadorPrincipal();
-            ((ManejadorPrincipal)Manejador).CambiarLaboratorista(temp, valor, a, id);
+            ((ManejadorPrincipal)Manejador).CambiarLaboratorista(temp, nuevo, id);
         }
         public void CambiarEstado(DataGridView temp, string valor, string a, string id)
         {
@@ -764,10 +776,10 @@ namespace Presentacion
             ((ManejadorPrincipal)Manejador).DatosDAutualizarRegistroGastos(id);
         }
         public void DatosDRegistroPagos(DataGridView temp, string nom, string des, string punit, string cant, string subt,
-            string tot, string est, string reg,string id)
+            string tot, string est, string reg, string id)
         {
             Manejador = new ManejadorPrincipal();
-            ((ManejadorPrincipal)Manejador).DatosDRegistroPagos(temp, nom, des, punit, cant, subt, tot, est, reg,id);
+            ((ManejadorPrincipal)Manejador).DatosDRegistroPagos(temp, nom, des, punit, cant, subt, tot, est, reg, id);
         }
         public void DatosDTotalGastos(TextBox temp)
         {
@@ -829,6 +841,11 @@ namespace Presentacion
         {
             Manejador = new ManejadorPrincipal();
             ((ManejadorPrincipal)Manejador).DatosDVerProductosDeProveedor(emp,temp);
+        }
+        public void DatosDVerMaterialesDeProveedor(DataGridView emp, string temp)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).DatosDVerMaterialesDeProveedor(emp, temp);
         }
         public void DatosAgregarAsistencia(DataGridView temp, string id, string emp, string fec, string hEnt, string hSal)
         {
