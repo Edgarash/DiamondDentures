@@ -23,8 +23,7 @@ namespace Presentacion
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                //Application.Run(new PantallaLogin());
-                Application.Run(new VerProveedores());
+                Application.Run(new PantallaLogin());                
             }
         }
     }
