@@ -265,6 +265,7 @@
             this.btnDevolucion.TabIndex = 10;
             this.btnDevolucion.Text = "Devolucion";
             this.btnDevolucion.UseVisualStyleBackColor = false;
+            this.btnDevolucion.Visible = false;
             this.btnDevolucion.Click += new System.EventHandler(this.btnDevolucion_Click);
             // 
             // tableLayoutPanel11

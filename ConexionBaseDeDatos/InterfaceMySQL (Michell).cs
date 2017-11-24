@@ -658,6 +658,46 @@ namespace ConexionBaseDeDatos
             return OperacionRealizada;
         }
 
+        public static bool RegistrarPedido(RegistroPedido Pedido)
+        {
+            EjecutarProcedimientoAlmacenado("RegistrarPedido", TipoConsulta.DevuelveInt,
+                Parametro("IDPedid", Pedido.IDPedido),
+                Parametro("IDEmplead", Pedido.IDEmpleado),
+                Parametro("Cedul", Pedido.Cedula),
+                Parametro("EstadoPedid", Pedido.EstadoPedido),
+                Parametro("FechaIngres", Pedido.FechaIngreso),
+                Parametro("FechaCalculad", Pedido.FechaCalculada),
+                Parametro("FechaEntreg", Pedido.FechaEntrega),
+                Parametro("Entregad", Pedido.Entregado),
+                Parametro("Urgenci", Pedido.Urgencia),
+                Parametro("CostoTota", Pedido.CostoTotal),
+                Parametro("Laboratorist", Pedido.Laboratorista),
+                Parametro("Pagad", Pedido.Pagado),
+                Parametro("RestantePaga", Pedido.RestanteAPagar)
+                );
+            bool Ejecutado = OperacionRealizada;
+            RegistrarTrabajos(Pedido.Productos);
+            return Ejecutado;
+        }
+
+        public static bool RegistrarTrabajos(RegistroTrabajo[] Trabajos)
+        {
+            for (int i = 0; i < Trabajos.Length; i++)
+            {
+                EjecutarProcedimientoAlmacenado("RegistrarTrabajos", TipoConsulta.DevuelveInt,
+                    Parametro("IDPedid", Trabajos[i].IDPedido),
+                Parametro("IDProduct", Trabajos[i].IDProducto),
+                Parametro("PrecioProduct", Trabajos[i].Producto.PrecioBase),
+                Parametro("IDMaterial11", Trabajos[i].IDMaterial1),
+                Parametro("PrecioMaterial11", Trabajos[i].Material1.PrecioBase),
+                Parametro("IDMaterial22", Trabajos[i].IDMaterial2),
+                Parametro("PrecioMaterial22", Trabajos[i].Material2.IDMaterial),
+                Parametro("Subtota", Trabajos[i].Total));
+                return OperacionRealizada;
+            }
+            return OperacionRealizada;
+        }
+
         #endregion
 
         #region Auxiliares

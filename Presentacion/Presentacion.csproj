@@ -273,6 +273,9 @@
     <Compile Include="MenuModulosYazah.Designer.cs">
       <DependentUpon>MenuModulosYazah.cs</DependentUpon>
     </Compile>
+    <Compile Include="Recepcion\Trabajo.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Recursos Humanos\RHumanosAsistencia.cs">
       <SubType>Form</SubType>
     </Compile>

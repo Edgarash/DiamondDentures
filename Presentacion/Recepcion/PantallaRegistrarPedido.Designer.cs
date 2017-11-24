@@ -61,30 +61,6 @@
             this.lblAceptar.Size = new System.Drawing.Size(83, 18);
             this.lblAceptar.Text = "Registrar";
             // 
-            // cbEmail
-            // 
-            this.cbEmail.Size = new System.Drawing.Size(131, 24);
-            // 
-            // cbPaíses
-            // 
-            this.cbPaíses.Size = new System.Drawing.Size(147, 24);
-            // 
-            // tbTelefono
-            // 
-            this.tbTelefono.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            // 
-            // cbEstado
-            // 
-            this.cbEstado.Size = new System.Drawing.Size(147, 24);
-            // 
-            // cbMunicipio
-            // 
-            this.cbMunicipio.Size = new System.Drawing.Size(160, 24);
-            // 
-            // cbCiudad
-            // 
-            this.cbCiudad.Size = new System.Drawing.Size(187, 24);
-            // 
             // btnDentista
             // 
             this.btnDentista.FlatAppearance.BorderSize = 0;

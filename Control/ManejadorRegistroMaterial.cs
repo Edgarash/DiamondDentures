@@ -130,6 +130,11 @@ namespace Control
             return temp;
         }
 
+        public static bool ObtenerMateriales(out RegistroMaterial[] Materiales)
+        {
+            return InterfaceMySQL.ObtenerMateriales(out Materiales);
+        }
+
         public RegistroMaterial ObtenerUnMaterial(int clave)
         {
             RegistroMaterial temp;

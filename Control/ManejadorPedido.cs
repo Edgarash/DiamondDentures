@@ -10,10 +10,9 @@ namespace Control
 {
     public class ManejadorPedido : Manejador
     {
-        public bool RegistrarPedido(RegistroPedido Pedido)
+        public static bool RegistrarPedido(RegistroPedido Pedido)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.RegistrarPedido(Pedido);
+            return InterfaceMySQL.RegistrarPedido(Pedido);
         }
 
         public RegistroPedido ObtenerUnPedido(string clavePedido)

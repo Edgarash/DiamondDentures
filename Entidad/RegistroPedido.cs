@@ -20,7 +20,7 @@ namespace Entidad
         public string Entregado { get; set; }
         public string Urgencia { get; set; }
         public float CostoTotal { get; set; }
-        public string Laboratorista { get { return RealizaPedido.Login; } }
+        public string Laboratorista { get { return RealizaPedido?.Login; } }
         public RegistroUsuario RealizaPedido { get; set; }
         public string Pagado { get; set; }
         public float RestanteAPagar { get; set; }

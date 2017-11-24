@@ -35,5 +35,10 @@ namespace Entidad
             this.Consultorio = Consultorio;
             this.FechaAlta = FechaAlta;
         }
+
+        public RegistroDentista(string Cedula)
+        {
+            this.Cedula = Cedula;
+        }
     }
 }

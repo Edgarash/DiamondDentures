@@ -49,7 +49,7 @@ namespace Presentacion
             InitializeComponent4();
             switch (PantallaLogin.Sesión?.Departamento)
             {
-                case "Empleado":
+                case "Recepcion":
                     btnControlPedidos.Location = new System.Drawing.Point(253, 142);
                     lblConfiguración.Visible = btnConfiguracion.Visible = false;
                     lblControlPedidos.Location = new System.Drawing.Point(269, 276);

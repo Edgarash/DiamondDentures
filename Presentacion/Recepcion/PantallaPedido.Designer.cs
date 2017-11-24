@@ -45,49 +45,24 @@
             this.btnDentista = new System.Windows.Forms.Button();
             this.lblFechaProbable = new System.Windows.Forms.Label();
             this.tbFechaEntrega = new System.Windows.Forms.MaskedTextBox();
-            this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.Producto = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Material1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Material2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTotal = new System.Windows.Forms.Label();
             this.tbUrgente = new System.Windows.Forms.CheckBox();
-            this.lblArroba = new System.Windows.Forms.Label();
-            this.cbEmail = new System.Windows.Forms.ComboBox();
-            this.cbPaíses = new System.Windows.Forms.ComboBox();
-            this.tbEmail = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblCodigoPostal = new System.Windows.Forms.Label();
-            this.tbNumFrente = new System.Windows.Forms.TextBox();
-            this.lblNumFrente = new System.Windows.Forms.Label();
-            this.tbCP = new System.Windows.Forms.MaskedTextBox();
-            this.tbTelefono = new System.Windows.Forms.MaskedTextBox();
-            this.lblTelefono = new System.Windows.Forms.Label();
-            this.tbRFC = new System.Windows.Forms.TextBox();
-            this.lblRFC = new System.Windows.Forms.Label();
             this.tbCedula = new System.Windows.Forms.TextBox();
             this.lblCedula = new System.Windows.Forms.Label();
-            this.cbEstado = new System.Windows.Forms.ComboBox();
-            this.cbMunicipio = new System.Windows.Forms.ComboBox();
-            this.lblEstado = new System.Windows.Forms.Label();
-            this.lblMunicipio = new System.Windows.Forms.Label();
-            this.lblCiudad = new System.Windows.Forms.Label();
-            this.cbCiudad = new System.Windows.Forms.ComboBox();
-            this.tbNombreDentista = new System.Windows.Forms.TextBox();
-            this.tbColonia = new System.Windows.Forms.TextBox();
-            this.tbApellidos = new System.Windows.Forms.TextBox();
-            this.lblColonia = new System.Windows.Forms.Label();
-            this.tbCalle = new System.Windows.Forms.TextBox();
-            this.lblCalle = new System.Windows.Forms.Label();
-            this.lblApellidosDentista = new System.Windows.Forms.Label();
-            this.lblNombreDentista = new System.Windows.Forms.Label();
-            this.lblPais = new System.Windows.Forms.Label();
+            this.lblDentista = new System.Windows.Forms.Label();
+            this.lblMostrarNombreDentista = new System.Windows.Forms.Label();
+            this.lblDireccion = new System.Windows.Forms.Label();
+            this.lblMostrarDireccion = new System.Windows.Forms.Label();
+            this.lblRFC = new System.Windows.Forms.Label();
+            this.lblMostrarRFC = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nudTrabajos = new System.Windows.Forms.NumericUpDown();
+            this.Panel = new System.Windows.Forms.Panel();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSeparador1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSeparador2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTrabajos)).BeginInit();
             this.SuspendLayout();
             // 
             // Encabezado
@@ -145,6 +120,7 @@
             // 
             this.btnRegistrar.BackgroundImage = global::Presentacion.Properties.Resources.IconoAceptar;
             this.btnRegistrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRegistrar.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnRegistrar.FlatAppearance.BorderSize = 0;
             this.btnRegistrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnRegistrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -247,7 +223,7 @@
             // 
             this.pbSeparador2.BackgroundImage = global::Presentacion.Properties.Resources.ImagenSeparador;
             this.pbSeparador2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbSeparador2.Location = new System.Drawing.Point(19, 367);
+            this.pbSeparador2.Location = new System.Drawing.Point(19, 299);
             this.pbSeparador2.Name = "pbSeparador2";
             this.pbSeparador2.Size = new System.Drawing.Size(771, 14);
             this.pbSeparador2.TabIndex = 144;
@@ -261,7 +237,7 @@
             this.btnDentista.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnDentista.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnDentista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDentista.Location = new System.Drawing.Point(695, 272);
+            this.btnDentista.Location = new System.Drawing.Point(690, 213);
             this.btnDentista.Name = "btnDentista";
             this.btnDentista.Size = new System.Drawing.Size(80, 80);
             this.btnDentista.TabIndex = 160;
@@ -290,56 +266,6 @@
             this.tbFechaEntrega.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbFechaEntrega.ValidatingType = typeof(System.DateTime);
             // 
-            // dgvProductos
-            // 
-            this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Producto,
-            this.Material1,
-            this.Material2,
-            this.Fecha,
-            this.Precio});
-            this.dgvProductos.Location = new System.Drawing.Point(19, 387);
-            this.dgvProductos.Name = "dgvProductos";
-            this.dgvProductos.Size = new System.Drawing.Size(771, 138);
-            this.dgvProductos.TabIndex = 18;
-            this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
-            this.dgvProductos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellEndEdit);
-            this.dgvProductos.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvProductos_CurrentCellDirtyStateChanged);
-            this.dgvProductos.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvProductos_UserDeletingRow);
-            // 
-            // Producto
-            // 
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Producto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Material1
-            // 
-            this.Material1.HeaderText = "Material 1";
-            this.Material1.Name = "Material1";
-            this.Material1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Material1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Material2
-            // 
-            this.Material2.HeaderText = "Material 2";
-            this.Material2.Name = "Material2";
-            this.Material2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Material2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha De Entrega";
-            this.Fecha.Name = "Fecha";
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio Producto";
-            this.Precio.Name = "Precio";
-            // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
@@ -364,345 +290,6 @@
             this.tbUrgente.Text = "Urgente";
             this.tbUrgente.UseVisualStyleBackColor = true;
             // 
-            // lblArroba
-            // 
-            this.lblArroba.AutoSize = true;
-            this.lblArroba.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArroba.Location = new System.Drawing.Point(191, 326);
-            this.lblArroba.Name = "lblArroba";
-            this.lblArroba.Size = new System.Drawing.Size(19, 17);
-            this.lblArroba.TabIndex = 209;
-            this.lblArroba.Text = "@";
-            // 
-            // cbEmail
-            // 
-            this.cbEmail.ContextMenu = this.cbPaíses.ContextMenu;
-            this.cbEmail.FormattingEnabled = true;
-            this.cbEmail.Items.AddRange(new object[] {
-            "gmail.com",
-            "hotmail.com",
-            "yahoo.com",
-            "outlook.com",
-            "live.com",
-            "prodigy.com"});
-            this.cbEmail.Location = new System.Drawing.Point(211, 323);
-            this.cbEmail.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.cbEmail.MaxLength = 20;
-            this.cbEmail.Name = "cbEmail";
-            this.cbEmail.Size = new System.Drawing.Size(131, 24);
-            this.cbEmail.TabIndex = 16;
-            // 
-            // cbPaíses
-            // 
-            this.cbPaíses.FormattingEnabled = true;
-            this.cbPaíses.Items.AddRange(new object[] {
-            "Afganistán",
-            "Albania",
-            "Alemania",
-            "Andorra",
-            "Angola",
-            "Antigua y Barbuda",
-            "Arabia Saudita",
-            "Argelia",
-            "Argentina",
-            "Armenia",
-            "Australia",
-            "Austria",
-            "Azerbaiyán",
-            "Bahamas",
-            "Bangladés",
-            "Barbados",
-            "Baréin",
-            "Bélgica",
-            "Belice",
-            "Benín",
-            "Bielorrusia",
-            "Birmania",
-            "Bolivia",
-            "Bosnia-Herzegovina",
-            "Botsuana",
-            "Brasil",
-            "Brunéi",
-            "Bulgaria",
-            "Burkina Faso",
-            "Burundi",
-            "Bután",
-            "Cabo Verde",
-            "Camboya",
-            "Camerún",
-            "Canadá",
-            "Catar",
-            "Chad",
-            "Chile",
-            "China",
-            "Chipre",
-            "Colombia",
-            "Comoras",
-            "Congo",
-            "Corea del Norte",
-            "Corea del Sur",
-            "Costa de Marfil",
-            "Costa Rica",
-            "Croacia",
-            "Cuba",
-            "Dinamarca",
-            "Dominica",
-            "Ecuador",
-            "Egipto",
-            "El Salvador",
-            "Emiratos Árabes Unidos",
-            "Eritrea",
-            "Eslovaquia",
-            "Eslovenia",
-            "España",
-            "Estados Unidos",
-            "Estonia",
-            "Etiopía",
-            "Filipinas",
-            "Finlandia",
-            "Fiyi",
-            "Francia",
-            "Gabón",
-            "Gambia",
-            "Georgia",
-            "Ghana",
-            "Granada",
-            "Grecia",
-            "Guatemala",
-            "Guinea",
-            "Guinea Ecuatorial",
-            "Guinea-Bisáu",
-            "Guyana",
-            "Haití",
-            "Honduras",
-            "Hungría",
-            "India",
-            "Indonesia",
-            "Irak",
-            "Irán",
-            "Irlanda",
-            "Islandia",
-            "Islas Marshall",
-            "Islas Salomón",
-            "Israel",
-            "Italia",
-            "Jamaica",
-            "Japón",
-            "Jordania",
-            "Kazajistán",
-            "Kenia",
-            "Kirguistán",
-            "Kiribati",
-            "Kosovo",
-            "Kuwait",
-            "Laos",
-            "Lesoto",
-            "Letonia",
-            "Líbano",
-            "Liberia",
-            "Libia",
-            "Liechtenstein",
-            "Lituania",
-            "Luxemburgo",
-            "Macedonia",
-            "Madagascar",
-            "Malasia",
-            "Malaui",
-            "Maldivas",
-            "Malí",
-            "Malta",
-            "Marruecos",
-            "Mauricio",
-            "Mauritania",
-            "México",
-            "Micronesia",
-            "Moldavia",
-            "Mónaco",
-            "Mongolia",
-            "Montenegro",
-            "Mozambique",
-            "Namibia",
-            "Nauru",
-            "Nepal",
-            "Nicaragua",
-            "Níger",
-            "Nigeria",
-            "Noruega",
-            "Nueva Zelanda",
-            "Omán",
-            "Países Bajos",
-            "Pakistán",
-            "Palaos",
-            "Palestina",
-            "Panamá",
-            "Papúa Nueva Guinea",
-            "Paraguay",
-            "Perú",
-            "Polonia",
-            "Portugal",
-            "Reino Unido",
-            "República Centroafricana",
-            "República Checa",
-            "República Democrática del Congo",
-            "República Dominicana",
-            "Ruanda",
-            "Rumania",
-            "Rusia",
-            "Samoa",
-            "San Cristóbal y Nieves",
-            "San Marino",
-            "San Vicente y las Granadinas",
-            "Santa Lucía",
-            "Santo Tomé y Príncipe",
-            "Senegal",
-            "Serbia",
-            "Seychelles",
-            "Sierra Leona",
-            "Singapur",
-            "Siria",
-            "Somalia",
-            "Sri Lanka",
-            "Suazilandia",
-            "Sudáfrica",
-            "Sudán",
-            "Sudán del Sur",
-            "Suecia",
-            "Suiza",
-            "Surinam",
-            "Tailandia",
-            "Taiwán",
-            "Tanzania",
-            "Tayikistán",
-            "Timor Oriental",
-            "Togo",
-            "Tonga",
-            "Trinidad y Tobago",
-            "Túnez",
-            "Turkmenistán",
-            "Turquía",
-            "Tuvalu",
-            "Ucrania",
-            "Uganda",
-            "Uruguay",
-            "Uzbekistán",
-            "Vanuatu",
-            "Vaticano",
-            "Venezuela",
-            "Vietnam",
-            "Yemen",
-            "Yibuti",
-            "Zambia",
-            "Zimbabue"});
-            this.cbPaíses.Location = new System.Drawing.Point(21, 233);
-            this.cbPaíses.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.cbPaíses.MaxLength = 30;
-            this.cbPaíses.Name = "cbPaíses";
-            this.cbPaíses.Size = new System.Drawing.Size(147, 24);
-            this.cbPaíses.TabIndex = 7;
-            // 
-            // tbEmail
-            // 
-            this.tbEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbEmail.Location = new System.Drawing.Point(21, 323);
-            this.tbEmail.Margin = new System.Windows.Forms.Padding(3, 3, 10, 6);
-            this.tbEmail.MaxLength = 49;
-            this.tbEmail.Name = "tbEmail";
-            this.tbEmail.ShortcutsEnabled = false;
-            this.tbEmail.Size = new System.Drawing.Size(147, 21);
-            this.tbEmail.TabIndex = 15;
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(18, 303);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(57, 17);
-            this.lblEmail.TabIndex = 208;
-            this.lblEmail.Text = "* Email:";
-            // 
-            // lblCodigoPostal
-            // 
-            this.lblCodigoPostal.AutoSize = true;
-            this.lblCodigoPostal.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoPostal.Location = new System.Drawing.Point(571, 258);
-            this.lblCodigoPostal.Name = "lblCodigoPostal";
-            this.lblCodigoPostal.Size = new System.Drawing.Size(53, 17);
-            this.lblCodigoPostal.TabIndex = 198;
-            this.lblCodigoPostal.Text = "* C. P.:";
-            // 
-            // tbNumFrente
-            // 
-            this.tbNumFrente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbNumFrente.Location = new System.Drawing.Point(413, 279);
-            this.tbNumFrente.MaxLength = 6;
-            this.tbNumFrente.Name = "tbNumFrente";
-            this.tbNumFrente.ShortcutsEnabled = false;
-            this.tbNumFrente.Size = new System.Drawing.Size(133, 21);
-            this.tbNumFrente.TabIndex = 13;
-            // 
-            // lblNumFrente
-            // 
-            this.lblNumFrente.AutoSize = true;
-            this.lblNumFrente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumFrente.Location = new System.Drawing.Point(413, 258);
-            this.lblNumFrente.Name = "lblNumFrente";
-            this.lblNumFrente.Size = new System.Drawing.Size(115, 17);
-            this.lblNumFrente.TabIndex = 195;
-            this.lblNumFrente.Text = "Número exterior:";
-            // 
-            // tbCP
-            // 
-            this.tbCP.Location = new System.Drawing.Point(571, 279);
-            this.tbCP.Mask = "00000";
-            this.tbCP.Name = "tbCP";
-            this.tbCP.ShortcutsEnabled = false;
-            this.tbCP.Size = new System.Drawing.Size(88, 21);
-            this.tbCP.TabIndex = 14;
-            this.tbCP.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            // 
-            // tbTelefono
-            // 
-            this.tbTelefono.Location = new System.Drawing.Point(386, 324);
-            this.tbTelefono.Mask = "(999)000-0000";
-            this.tbTelefono.Name = "tbTelefono";
-            this.tbTelefono.ResetOnSpace = false;
-            this.tbTelefono.ShortcutsEnabled = false;
-            this.tbTelefono.Size = new System.Drawing.Size(85, 21);
-            this.tbTelefono.SkipLiterals = false;
-            this.tbTelefono.TabIndex = 17;
-            this.tbTelefono.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            // 
-            // lblTelefono
-            // 
-            this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefono.Location = new System.Drawing.Point(388, 305);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(76, 17);
-            this.lblTelefono.TabIndex = 188;
-            this.lblTelefono.Text = "* Telefono:";
-            // 
-            // tbRFC
-            // 
-            this.tbRFC.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbRFC.Location = new System.Drawing.Point(179, 189);
-            this.tbRFC.MaxLength = 10;
-            this.tbRFC.Name = "tbRFC";
-            this.tbRFC.ShortcutsEnabled = false;
-            this.tbRFC.Size = new System.Drawing.Size(163, 21);
-            this.tbRFC.TabIndex = 3;
-            // 
-            // lblRFC
-            // 
-            this.lblRFC.AutoSize = true;
-            this.lblRFC.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRFC.Location = new System.Drawing.Point(179, 172);
-            this.lblRFC.Name = "lblRFC";
-            this.lblRFC.Size = new System.Drawing.Size(47, 17);
-            this.lblRFC.TabIndex = 186;
-            this.lblRFC.Text = "* RFC:";
-            // 
             // tbCedula
             // 
             this.tbCedula.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -723,198 +310,124 @@
             this.lblCedula.TabIndex = 185;
             this.lblCedula.Text = "*Número Cédula:";
             // 
-            // cbEstado
+            // lblDentista
             // 
-            this.cbEstado.ContextMenu = this.cbPaíses.ContextMenu;
-            this.cbEstado.FormattingEnabled = true;
-            this.cbEstado.Location = new System.Drawing.Point(202, 233);
-            this.cbEstado.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.cbEstado.MaxLength = 30;
-            this.cbEstado.Name = "cbEstado";
-            this.cbEstado.Size = new System.Drawing.Size(147, 24);
-            this.cbEstado.TabIndex = 8;
+            this.lblDentista.AutoSize = true;
+            this.lblDentista.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDentista.Location = new System.Drawing.Point(168, 172);
+            this.lblDentista.Name = "lblDentista";
+            this.lblDentista.Size = new System.Drawing.Size(122, 17);
+            this.lblDentista.TabIndex = 185;
+            this.lblDentista.Text = "Nombre Dentista:";
             // 
-            // cbMunicipio
+            // lblMostrarNombreDentista
             // 
-            this.cbMunicipio.ContextMenu = this.cbPaíses.ContextMenu;
-            this.cbMunicipio.FormattingEnabled = true;
-            this.cbMunicipio.Location = new System.Drawing.Point(386, 233);
-            this.cbMunicipio.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.cbMunicipio.MaxLength = 50;
-            this.cbMunicipio.Name = "cbMunicipio";
-            this.cbMunicipio.Size = new System.Drawing.Size(160, 24);
-            this.cbMunicipio.TabIndex = 9;
+            this.lblMostrarNombreDentista.AutoSize = true;
+            this.lblMostrarNombreDentista.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMostrarNombreDentista.Location = new System.Drawing.Point(168, 191);
+            this.lblMostrarNombreDentista.Name = "lblMostrarNombreDentista";
+            this.lblMostrarNombreDentista.Size = new System.Drawing.Size(88, 17);
+            this.lblMostrarNombreDentista.TabIndex = 185;
+            this.lblMostrarNombreDentista.Text = "                    ";
             // 
-            // lblEstado
+            // lblDireccion
             // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.Location = new System.Drawing.Point(199, 216);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(56, 17);
-            this.lblEstado.TabIndex = 203;
-            this.lblEstado.Text = "Estado:";
+            this.lblDireccion.AutoSize = true;
+            this.lblDireccion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDireccion.Location = new System.Drawing.Point(20, 213);
+            this.lblDireccion.Name = "lblDireccion";
+            this.lblDireccion.Size = new System.Drawing.Size(73, 17);
+            this.lblDireccion.TabIndex = 185;
+            this.lblDireccion.Text = "Direccion:";
             // 
-            // lblMunicipio
+            // lblMostrarDireccion
             // 
-            this.lblMunicipio.AutoSize = true;
-            this.lblMunicipio.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMunicipio.Location = new System.Drawing.Point(383, 216);
-            this.lblMunicipio.Name = "lblMunicipio";
-            this.lblMunicipio.Size = new System.Drawing.Size(74, 17);
-            this.lblMunicipio.TabIndex = 204;
-            this.lblMunicipio.Text = "Municipio:";
+            this.lblMostrarDireccion.AutoSize = true;
+            this.lblMostrarDireccion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMostrarDireccion.Location = new System.Drawing.Point(20, 232);
+            this.lblMostrarDireccion.Name = "lblMostrarDireccion";
+            this.lblMostrarDireccion.Size = new System.Drawing.Size(88, 17);
+            this.lblMostrarDireccion.TabIndex = 185;
+            this.lblMostrarDireccion.Text = "                    ";
             // 
-            // lblCiudad
+            // lblRFC
             // 
-            this.lblCiudad.AutoSize = true;
-            this.lblCiudad.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCiudad.Location = new System.Drawing.Point(573, 216);
-            this.lblCiudad.Name = "lblCiudad";
-            this.lblCiudad.Size = new System.Drawing.Size(61, 17);
-            this.lblCiudad.TabIndex = 205;
-            this.lblCiudad.Text = "Ciudad:";
+            this.lblRFC.AutoSize = true;
+            this.lblRFC.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRFC.Location = new System.Drawing.Point(576, 172);
+            this.lblRFC.Name = "lblRFC";
+            this.lblRFC.Size = new System.Drawing.Size(37, 17);
+            this.lblRFC.TabIndex = 185;
+            this.lblRFC.Text = "RFC:";
             // 
-            // cbCiudad
+            // lblMostrarRFC
             // 
-            this.cbCiudad.ContextMenu = this.cbPaíses.ContextMenu;
-            this.cbCiudad.FormattingEnabled = true;
-            this.cbCiudad.Location = new System.Drawing.Point(571, 233);
-            this.cbCiudad.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.cbCiudad.MaxLength = 30;
-            this.cbCiudad.Name = "cbCiudad";
-            this.cbCiudad.Size = new System.Drawing.Size(187, 24);
-            this.cbCiudad.TabIndex = 10;
+            this.lblMostrarRFC.AutoSize = true;
+            this.lblMostrarRFC.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMostrarRFC.Location = new System.Drawing.Point(576, 191);
+            this.lblMostrarRFC.Name = "lblMostrarRFC";
+            this.lblMostrarRFC.Size = new System.Drawing.Size(88, 17);
+            this.lblMostrarRFC.TabIndex = 185;
+            this.lblMostrarRFC.Text = "                    ";
             // 
-            // tbNombreDentista
+            // label1
             // 
-            this.tbNombreDentista.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbNombreDentista.Location = new System.Drawing.Point(376, 189);
-            this.tbNombreDentista.MaxLength = 50;
-            this.tbNombreDentista.Name = "tbNombreDentista";
-            this.tbNombreDentista.ShortcutsEnabled = false;
-            this.tbNombreDentista.Size = new System.Drawing.Size(152, 21);
-            this.tbNombreDentista.TabIndex = 4;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(20, 324);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 17);
+            this.label1.TabIndex = 185;
+            this.label1.Text = "# Productos:";
             // 
-            // tbColonia
+            // nudTrabajos
             // 
-            this.tbColonia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbColonia.Location = new System.Drawing.Point(20, 279);
-            this.tbColonia.MaxLength = 30;
-            this.tbColonia.Name = "tbColonia";
-            this.tbColonia.ShortcutsEnabled = false;
-            this.tbColonia.Size = new System.Drawing.Size(157, 21);
-            this.tbColonia.TabIndex = 11;
+            this.nudTrabajos.Location = new System.Drawing.Point(116, 323);
+            this.nudTrabajos.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudTrabajos.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudTrabajos.Name = "nudTrabajos";
+            this.nudTrabajos.Size = new System.Drawing.Size(110, 21);
+            this.nudTrabajos.TabIndex = 302;
+            this.nudTrabajos.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudTrabajos.ValueChanged += new System.EventHandler(this.nudTrabajos_ValueChanged);
             // 
-            // tbApellidos
+            // Panel
             // 
-            this.tbApellidos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbApellidos.Location = new System.Drawing.Point(571, 189);
-            this.tbApellidos.Margin = new System.Windows.Forms.Padding(3, 3, 10, 6);
-            this.tbApellidos.MaxLength = 50;
-            this.tbApellidos.Name = "tbApellidos";
-            this.tbApellidos.ShortcutsEnabled = false;
-            this.tbApellidos.Size = new System.Drawing.Size(204, 21);
-            this.tbApellidos.TabIndex = 5;
-            // 
-            // lblColonia
-            // 
-            this.lblColonia.AutoSize = true;
-            this.lblColonia.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColonia.Location = new System.Drawing.Point(17, 260);
-            this.lblColonia.Name = "lblColonia";
-            this.lblColonia.Size = new System.Drawing.Size(74, 17);
-            this.lblColonia.TabIndex = 197;
-            this.lblColonia.Text = "* Colonia:";
-            // 
-            // tbCalle
-            // 
-            this.tbCalle.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbCalle.Location = new System.Drawing.Point(211, 279);
-            this.tbCalle.Margin = new System.Windows.Forms.Padding(3, 3, 10, 6);
-            this.tbCalle.MaxLength = 80;
-            this.tbCalle.Name = "tbCalle";
-            this.tbCalle.ShortcutsEnabled = false;
-            this.tbCalle.Size = new System.Drawing.Size(167, 21);
-            this.tbCalle.TabIndex = 12;
-            // 
-            // lblCalle
-            // 
-            this.lblCalle.AutoSize = true;
-            this.lblCalle.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCalle.Location = new System.Drawing.Point(208, 260);
-            this.lblCalle.Name = "lblCalle";
-            this.lblCalle.Size = new System.Drawing.Size(56, 17);
-            this.lblCalle.TabIndex = 196;
-            this.lblCalle.Text = "* Calle:";
-            // 
-            // lblApellidosDentista
-            // 
-            this.lblApellidosDentista.AutoSize = true;
-            this.lblApellidosDentista.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellidosDentista.Location = new System.Drawing.Point(568, 171);
-            this.lblApellidosDentista.Name = "lblApellidosDentista";
-            this.lblApellidosDentista.Size = new System.Drawing.Size(80, 17);
-            this.lblApellidosDentista.TabIndex = 182;
-            this.lblApellidosDentista.Text = "*  Apellidos";
-            // 
-            // lblNombreDentista
-            // 
-            this.lblNombreDentista.AutoSize = true;
-            this.lblNombreDentista.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreDentista.Location = new System.Drawing.Point(376, 171);
-            this.lblNombreDentista.Name = "lblNombreDentista";
-            this.lblNombreDentista.Size = new System.Drawing.Size(132, 17);
-            this.lblNombreDentista.TabIndex = 181;
-            this.lblNombreDentista.Text = "*  Nombe Dentista:";
-            // 
-            // lblPais
-            // 
-            this.lblPais.AutoSize = true;
-            this.lblPais.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPais.Location = new System.Drawing.Point(20, 213);
-            this.lblPais.Name = "lblPais";
-            this.lblPais.Size = new System.Drawing.Size(37, 17);
-            this.lblPais.TabIndex = 210;
-            this.lblPais.Text = "País:";
+            this.Panel.AutoScroll = true;
+            this.Panel.Location = new System.Drawing.Point(23, 350);
+            this.Panel.Name = "Panel";
+            this.Panel.Size = new System.Drawing.Size(765, 182);
+            this.Panel.TabIndex = 303;
             // 
             // PantallaPedido
             // 
             this.AcceptButton = this.btnRegistrar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.ClientSize = new System.Drawing.Size(810, 693);
-            this.Controls.Add(this.lblPais);
-            this.Controls.Add(this.lblArroba);
-            this.Controls.Add(this.cbEmail);
-            this.Controls.Add(this.tbEmail);
-            this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.lblCodigoPostal);
-            this.Controls.Add(this.tbNumFrente);
-            this.Controls.Add(this.lblNumFrente);
-            this.Controls.Add(this.tbCP);
-            this.Controls.Add(this.tbTelefono);
-            this.Controls.Add(this.lblTelefono);
-            this.Controls.Add(this.tbRFC);
-            this.Controls.Add(this.lblRFC);
+            this.Controls.Add(this.Panel);
+            this.Controls.Add(this.nudTrabajos);
             this.Controls.Add(this.tbCedula);
+            this.Controls.Add(this.lblMostrarDireccion);
+            this.Controls.Add(this.lblMostrarRFC);
+            this.Controls.Add(this.lblMostrarNombreDentista);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblDireccion);
+            this.Controls.Add(this.lblRFC);
+            this.Controls.Add(this.lblDentista);
             this.Controls.Add(this.lblCedula);
-            this.Controls.Add(this.cbEstado);
-            this.Controls.Add(this.cbMunicipio);
-            this.Controls.Add(this.lblEstado);
-            this.Controls.Add(this.lblMunicipio);
-            this.Controls.Add(this.lblCiudad);
-            this.Controls.Add(this.cbPaíses);
-            this.Controls.Add(this.cbCiudad);
-            this.Controls.Add(this.tbNombreDentista);
-            this.Controls.Add(this.tbColonia);
-            this.Controls.Add(this.tbApellidos);
-            this.Controls.Add(this.lblColonia);
-            this.Controls.Add(this.tbCalle);
-            this.Controls.Add(this.lblCalle);
-            this.Controls.Add(this.lblApellidosDentista);
-            this.Controls.Add(this.lblNombreDentista);
             this.Controls.Add(this.lblTotal);
-            this.Controls.Add(this.dgvProductos);
             this.Controls.Add(this.tbFechaEntrega);
             this.Controls.Add(this.lblFechaProbable);
             this.Controls.Add(this.btnDentista);
@@ -933,7 +446,6 @@
             this.Controls.Add(this.lblClave);
             this.Name = "PantallaPedido";
             this.Text = "Pantalla Pedido";
-            this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.lblClave, 0);
             this.Controls.SetChildIndex(this.lblRegistra, 0);
             this.Controls.SetChildIndex(this.lblUsuario, 0);
@@ -950,44 +462,25 @@
             this.Controls.SetChildIndex(this.btnDentista, 0);
             this.Controls.SetChildIndex(this.lblFechaProbable, 0);
             this.Controls.SetChildIndex(this.tbFechaEntrega, 0);
-            this.Controls.SetChildIndex(this.dgvProductos, 0);
             this.Controls.SetChildIndex(this.lblTotal, 0);
-            this.Controls.SetChildIndex(this.lblNombreDentista, 0);
-            this.Controls.SetChildIndex(this.lblApellidosDentista, 0);
-            this.Controls.SetChildIndex(this.lblCalle, 0);
-            this.Controls.SetChildIndex(this.tbCalle, 0);
-            this.Controls.SetChildIndex(this.lblColonia, 0);
-            this.Controls.SetChildIndex(this.tbApellidos, 0);
-            this.Controls.SetChildIndex(this.tbColonia, 0);
-            this.Controls.SetChildIndex(this.tbNombreDentista, 0);
-            this.Controls.SetChildIndex(this.cbCiudad, 0);
-            this.Controls.SetChildIndex(this.cbPaíses, 0);
-            this.Controls.SetChildIndex(this.lblCiudad, 0);
-            this.Controls.SetChildIndex(this.lblMunicipio, 0);
-            this.Controls.SetChildIndex(this.lblEstado, 0);
-            this.Controls.SetChildIndex(this.cbMunicipio, 0);
-            this.Controls.SetChildIndex(this.cbEstado, 0);
             this.Controls.SetChildIndex(this.lblCedula, 0);
-            this.Controls.SetChildIndex(this.tbCedula, 0);
+            this.Controls.SetChildIndex(this.lblDentista, 0);
             this.Controls.SetChildIndex(this.lblRFC, 0);
-            this.Controls.SetChildIndex(this.tbRFC, 0);
-            this.Controls.SetChildIndex(this.lblTelefono, 0);
-            this.Controls.SetChildIndex(this.tbTelefono, 0);
-            this.Controls.SetChildIndex(this.tbCP, 0);
-            this.Controls.SetChildIndex(this.lblNumFrente, 0);
-            this.Controls.SetChildIndex(this.tbNumFrente, 0);
-            this.Controls.SetChildIndex(this.lblCodigoPostal, 0);
-            this.Controls.SetChildIndex(this.lblEmail, 0);
-            this.Controls.SetChildIndex(this.tbEmail, 0);
-            this.Controls.SetChildIndex(this.cbEmail, 0);
-            this.Controls.SetChildIndex(this.lblArroba, 0);
-            this.Controls.SetChildIndex(this.lblPais, 0);
+            this.Controls.SetChildIndex(this.lblDireccion, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.lblMostrarNombreDentista, 0);
+            this.Controls.SetChildIndex(this.lblMostrarRFC, 0);
+            this.Controls.SetChildIndex(this.lblMostrarDireccion, 0);
+            this.Controls.SetChildIndex(this.tbCedula, 0);
+            this.Controls.SetChildIndex(this.nudTrabajos, 0);
+            this.Controls.SetChildIndex(this.Encabezado, 0);
+            this.Controls.SetChildIndex(this.Panel, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSeparador1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSeparador2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTrabajos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1013,42 +506,17 @@
         protected System.Windows.Forms.MaskedTextBox tbFechaEntrega;
         protected System.Windows.Forms.Label lblTotal;
         protected System.Windows.Forms.CheckBox tbUrgente;
-        protected System.Windows.Forms.ComboBox cbEmail;
-        protected System.Windows.Forms.ComboBox cbPaíses;
-        protected System.Windows.Forms.TextBox tbEmail;
-        protected System.Windows.Forms.TextBox tbNumFrente;
-        protected System.Windows.Forms.MaskedTextBox tbCP;
-        protected System.Windows.Forms.MaskedTextBox tbTelefono;
-        protected System.Windows.Forms.Label lblTelefono;
-        protected System.Windows.Forms.TextBox tbRFC;
-        protected System.Windows.Forms.Label lblRFC;
         protected System.Windows.Forms.TextBox tbCedula;
         protected System.Windows.Forms.Label lblCedula;
-        protected System.Windows.Forms.ComboBox cbEstado;
-        protected System.Windows.Forms.ComboBox cbMunicipio;
-        protected System.Windows.Forms.ComboBox cbCiudad;
-        protected System.Windows.Forms.TextBox tbNombreDentista;
-        protected System.Windows.Forms.TextBox tbColonia;
-        protected System.Windows.Forms.TextBox tbApellidos;
-        protected System.Windows.Forms.TextBox tbCalle;
-        protected System.Windows.Forms.Label lblApellidosDentista;
-        protected System.Windows.Forms.Label lblNombreDentista;
         protected System.Windows.Forms.Button btnDentista;
-        protected System.Windows.Forms.DataGridView dgvProductos;
-        protected System.Windows.Forms.Label lblArroba;
-        protected System.Windows.Forms.Label lblEmail;
-        protected System.Windows.Forms.Label lblCodigoPostal;
-        protected System.Windows.Forms.Label lblNumFrente;
-        protected System.Windows.Forms.Label lblEstado;
-        protected System.Windows.Forms.Label lblMunicipio;
-        protected System.Windows.Forms.Label lblCiudad;
-        protected System.Windows.Forms.Label lblColonia;
-        protected System.Windows.Forms.Label lblCalle;
-        protected System.Windows.Forms.Label lblPais;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Producto;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Material1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Material2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        protected System.Windows.Forms.Label lblDentista;
+        protected System.Windows.Forms.Label lblMostrarNombreDentista;
+        protected System.Windows.Forms.Label lblDireccion;
+        protected System.Windows.Forms.Label lblMostrarDireccion;
+        protected System.Windows.Forms.Label lblRFC;
+        protected System.Windows.Forms.Label lblMostrarRFC;
+        protected System.Windows.Forms.Label label1;
+        protected System.Windows.Forms.NumericUpDown nudTrabajos;
+        protected System.Windows.Forms.Panel Panel;
     }
 }

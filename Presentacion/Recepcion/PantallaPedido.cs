@@ -13,73 +13,73 @@ namespace Presentacion.Recepcion
 {
     public partial class PantallaPedido : Pantalla
     {
+
         protected InterfaceUsuario Interface;
         protected bool AgregarDentista { get; set; }
         Timer Temporizador = new Timer();
         Validar Validacion;
         bool TemporizadorEjecutando = false;
 
+        protected Trabajo[] Trabajos = new Trabajo[10];
+        RegistroProducto[] Productos;
+        RegistroProMat[] ProMat;
+        protected RegistroMaterial[] Materiales { get; set; }
+        ErrorProvider[] ParaTra = new ErrorProvider[10];
         public PantallaPedido()
         {
             InitializeComponent();
             InitializeComponent2();
-            dgvProductos.RowsAdded += DgvProductos_RowsAdded;
             tbFecha.Text = DateTime.Now.ToString();
             Validacion = new Validar(this);
-            tbTelefono.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             tbCedula.LostFocus += TbCedula_LostFocus;
             AgregarDentista = true;
         }
 
-        protected virtual void InitializeComponent4(RegistroDentista Dentista)
+        private void Producto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tbCedula.Text = Dentista?.Cedula;
-            tbRFC.Text = Dentista?.RFC;
-            tbNombreDentista.Text = Dentista?.Nombre;
-            tbApellidos.Text = Dentista?.Apellidos;
-            tbTelefono.Text = Dentista?.TelOficina;
-            cbPaíses.Text = Dentista?.Pais;
-            cbEstado.Text = Dentista?.Estado;
-            cbMunicipio.Text = Dentista?.Municipio;
-            cbCiudad.Text = Dentista?.Ciudad;
-            tbColonia.Text = Dentista?.Colonia;
-            tbCalle.Text = Dentista?.Direccion;
-            tbCP.Text = Dentista?.CodPos;
-            tbEmail.Text = Dentista?.Email?.Split('@')[0];
-            cbEmail.Text = Dentista?.Email?.Split('@')[1];
+            int i = 0;
+            for (; i < Trabajos.Length; i++)
+                if (sender.Equals(Trabajos[i].Producto))
+                    break;
+            Trabajos[i].Material2.Visible = false;
+            Trabajos[i].Material1.Visible = true;
+            Trabajos[i].PrecioProducto.Visible = false;
+            Trabajos[i].FechadeEntrega.Visible = false;
+            Trabajos[i].Precio = 0;
+            Trabajos[i].Terminado = false;
+            Trabajos[i].Material1.Items.Clear();
+            for (int j = 0; j < ProMat.Length; j++)
+                if (Trabajos[i].Producto.Text == ProMat[j].Producto.Nombre)
+                    Trabajos[i].Material1.Items.Add(ProMat[j].Material.Nombre);
+            CalcularPrecio();
         }
 
         private void TbCedula_LostFocus(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(tbCedula.Text))
             {
-                RegistroDentista temp= null;// = Interface.ObtenerUnDentista(tbCedula.Text);
+                RegistroDentista temp;
+                Interface.ObtenerUnDentista(tbCedula.Text, out temp);
                 if (temp == null)
                 {
-                    if (DialogResult.Yes == MessageBox.Show("Dentista no registrado\n\n¿Desea registrarlo?", "AVISO", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1))
+                    if (DialogResult.Yes == MessageBox.Show("Dentista no registrado\n\nEs necesario para poder continuar", "AVISO", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1))
                     {
-                        PantallaAgregarDentista Pant = new PantallaAgregarDentista(ObtenerRegistroDentista);
-                        Pant.ShowDialog();
-                        if (Pant.AceptarCambios)
+                        if (Validar.ValidarUnaPantalla(typeof(PantallaAgregarDentista)))
                         {
-                            InitializeComponent4(Pant.ObtenerRegistroDentista);
-                            btnDentista.BackgroundImage = Presentacion.Properties.Resources.IconoDentistaModificar;
-                            AgregarDentista = false;
+                            PantallaAgregarDentista te = new PantallaAgregarDentista();
+                            Hide();
+                            te.ShowDialog();
+                            Show();
                         }
-                    }
-                    else
-                    {
-                        btnDentista.BackgroundImage = Presentacion.Properties.Resources.IconoDentistaAgregar;
-                        AgregarDentista = true;
                     }
                 }
                 else
                 {
-                    if (DialogResult.Yes == MessageBox.Show("Dentista registrado\n\n¿Desea rellenar campos faltantes?", "AVISO", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1))
-                    {
-                        InitializeComponent4(temp);
-                        btnDentista.BackgroundImage = Presentacion.Properties.Resources.IconoDentistaModificar;
-                    }
+                    btnDentista.BackgroundImage = Presentacion.Properties.Resources.IconoDentistaModificar;
+                    lblMostrarDireccion.Text = temp.Consultorio + " " + temp.Direccion + " " + temp.Colonia;
+                    lblMostrarNombreDentista.Text = temp.NombreCompleto;
+                    lblMostrarRFC.Text = temp.RFC;
+                    AgregarDentista = false;
                 }
             }
         }
@@ -88,29 +88,25 @@ namespace Presentacion.Recepcion
         {
             if (AgregarDentista)
             {
-                PantallaAgregarDentista Pant = new PantallaAgregarDentista(ObtenerRegistroDentista);
-                Pant.ShowDialog();
-                if (Pant.AceptarCambios)
+                if (!Validar.ValidarUnaPantalla(typeof(PantallaAgregarDentista)))
                 {
-                    InitializeComponent4(Pant.ObtenerRegistroDentista);
-                    btnDentista.BackgroundImage = Presentacion.Properties.Resources.IconoDentistaModificar;
-                    AgregarDentista = false;
+                    PantallaAgregarDentista te = new PantallaAgregarDentista();
+                    Hide();
+                    te.ShowDialog();
+                    Show();
                 }
             }
             else
             {
-                PantallaModificarDentista Pant = null;// new PantallaModificarDentista(Interface.ObtenerUnDentista(tbCedula.Text));
-                Pant.ShowDialog();
-                if (Pant.AceptarCambios)
-                {
-                    InitializeComponent4(Pant.ObtenerRegistroDentista);
-                }
+                RegistroDentista temp;
+                Interface.ObtenerUnDentista(tbCedula.Text, out temp);
+                new InterfaceUsuario(this).DesplegarPantallaModificarDentista(temp, ActualizarInfoDentista);
             }
         }
 
-        private void DgvProductos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void ActualizarInfoDentista()
         {
-            LlenarProductos(dgvProductos[0, e.RowIndex] as DataGridViewComboBoxCell);
+            TbCedula_LostFocus(tbCedula, new EventArgs());
         }
 
         protected virtual void InitializeComponent3()
@@ -118,50 +114,86 @@ namespace Presentacion.Recepcion
             Interface = new InterfaceUsuario(this);
             RegistroProducto[] t;
             InterfaceUsuario.ObtenerProductos(out t);
+            Productos = t;
             Materiales = Interface.ObtenerMateriales();
-            LlenarProductos(dgvProductos[0, 0] as DataGridViewComboBoxCell);
-            tbTelefono.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            ProMat = InterfaceUsuario.ObtenerProMat();
+            int x = 5, y = 5;
+            for (int i = 0; i < Trabajos.Length; i++)
+            {
+                ParaTra[i] = new ErrorProvider();
+                Trabajos[i] = new Trabajo();
+                Trabajos[i].Location = new Point(x, y);
+                y += 35;
+                Trabajos[i].Visible = i < (int)nudTrabajos.Value;
+                Trabajos[i].Producto.SelectedIndexChanged += Producto_SelectedIndexChanged;
+                Trabajos[i].Material1.SelectedIndexChanged += Material1_SelectedIndexChanged;
+                Trabajos[i].Material2.SelectedIndexChanged += Material2_SelectedIndexChanged;
+                for (int j = 0; j < t.Length; j++)
+                    Trabajos[i].Producto.Items.Add(t[j].Nombre);
+                Panel.Controls.Add(Trabajos[i]);
+            }
         }
 
-        private void LlenarProductos(DataGridViewComboBoxCell Celda)
+        private void Material2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Celda.Items.Clear();
-            Interface = new InterfaceUsuario(this);
-            //RegistroProMat[] ProMat = Interface.ObtenerProMat(-1, Interface.BuscarUnProducto(new RegistroProducto(-1, dgvProductos[0, (dgvProductos.CurrentCell ?? dgvProductos[0,0]).RowIndex].FormattedValue.ToString(), -1, -1, -1))?[0].IDProducto ?? -1);
-            //for (int i = 0; i < Productos?.Length; i++)
-            //    if (Productos[i].Activo == 1)
-            //        for (int j = 0; j < ProMat.Length; j++)
-            //            if (ProMat[j].Activo == 1)
-            //            {
-            //                (dgvProductos[Celda.ColumnIndex, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Add(Productos[i].Nombre + " $" + Productos[i].PrecioBase);
-            //                j = ProMat.Length;
-            //            }
+            int i = 0;
+            for (; i < Trabajos.Length; i++)
+                if (sender.Equals(Trabajos[i].Material2))
+                    break;
+            float Precio = 0;
+            int Dias = 0;
+            for (int j = 0; j < ProMat.Length; j++)
+            {
+                if (Trabajos[i].Producto.Text == ProMat[j].Producto.Nombre)
+                {
+                    if (Trabajos[i].Material1.Text == ProMat[j].Material.Nombre)
+                    {
+                        Precio += ProMat[j].PrecioFinal;
+                        Dias += ProMat[j].TiempoFinal;
+                    }
+                    if (Trabajos[i].Material2.Text == ProMat[j].Material.Nombre)
+                    {
+                        Precio += ProMat[j].PrecioFinal;
+                        Dias += ProMat[j].TiempoFinal;
+                    }
+                }
+            }
+            Trabajos[i].Precio = Precio;
+            Trabajos[i].Fecha = DateTime.Now.AddDays(Dias);
+            Trabajos[i].PrecioProducto.Text = Precio.ToString("C2");
+            Trabajos[i].FechadeEntrega.Text = Trabajos[i].Fecha.ToShortDateString();
+            CalcularPrecio();
+            FechaPedido();
         }
 
-        private void LlenarMateriales(DataGridViewComboBoxCell Celda, RegistroMaterial Material1)
+        private void Material1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Interface = new InterfaceUsuario(this);
-            //if (Celda.ColumnIndex == dgvProductos.Columns["Material1"].Index || Celda.ColumnIndex == dgvProductos.Columns["Material2"].Index)
-            //{
-            //    Celda.Items.Clear();
-            //    Celda.Value = null;
-            //    (dgvProductos[dgvProductos.Columns["Material2"].Index, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Clear();
-            //    (dgvProductos[dgvProductos.Columns["Material2"].Index, Celda.RowIndex] as DataGridViewComboBoxCell).Value = null;
-            //    dgvProductos[4, Celda.RowIndex].Value = null;
-            //}
-            //RegistroProMat[] temp = Interface.ObtenerProMat(-1, ObtenerProducto(Celda.RowIndex)?.IDProducto ?? -1 );
-            //for (int i = 0; i < temp?.Length; i++)
-            //    if (temp[i]?.Activo == 1)
-            //        for (int k = 0; k < Materiales?.Length; k++)
-            //            //if (temp[i]?.ClaveMat != Material1?.IDMaterial && Materiales[k].Activo == 1 && Materiales[k].Nombre == temp[i].Material)
-            //            {
-            //                //(dgvProductos?[Celda.ColumnIndex, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Add(temp[i].Material + " $" + temp[i].Precio);
-            //                //k = Materiales.Length;
-            //            }
-            //if (Celda.Items.Count == 0)
-            //    Celda.Items.Add("");
-            //if ((dgvProductos[dgvProductos.Columns["Material2"].Index, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Count == 0)
-            //    (dgvProductos[dgvProductos.Columns["Material2"].Index, Celda.RowIndex] as DataGridViewComboBoxCell).Items.Add("");
+            int i = 0;
+            for (; i < Trabajos.Length; i++)
+                if (sender.Equals(Trabajos[i].Material1))
+                    break;
+            Trabajos[i].Material2.Visible = true;
+            Trabajos[i].PrecioProducto.Visible = true;
+            Trabajos[i].FechadeEntrega.Visible = true;
+            Trabajos[i].Material2.Items.Clear();
+            for (int j = 0; j < ProMat.Length; j++)
+            {
+                if (Trabajos[i].Producto.Text == ProMat[j].Producto.Nombre)
+                {
+                    if (Trabajos[i].Material1.Text != ProMat[j].Material.Nombre)
+                        Trabajos[i].Material2.Items.Add(ProMat[j].Material.Nombre);
+                    else
+                    {
+                        Trabajos[i].Precio = ProMat[j].PrecioFinal;
+                        Trabajos[i].Fecha = DateTime.Now.AddDays(ProMat[j].TiempoFinal);
+                        Trabajos[i].PrecioProducto.Text = ProMat[j].PrecioFinal.ToString("C2");
+                        Trabajos[i].FechadeEntrega.Text = Trabajos[i].Fecha.ToShortDateString();
+                        Trabajos[i].Terminado = true;
+                    }
+                }
+            }
+            CalcularPrecio();
+            FechaPedido();
         }
 
         protected override void InitializeComponent2()
@@ -197,11 +229,9 @@ namespace Presentacion.Recepcion
         {
             get
             {
-                //RegistroPedido temp = new RegistroPedido(tbClave.Text, lblUsuario.Text, tbFecha.Text, tbCedula.Text, tbRFC.Text, tbNombreDentista.Text,
-                //    tbApellidos.Text, ObtenerTelefono, cbPaíses.Text, cbEstado.Text, cbMunicipio.Text, cbCiudad.Text, tbColonia.Text,
-                //    tbCalle.Text, tbNumFrente.Text, tbCP.Text, tbEmail.Text + "@" + cbEmail.Text, tbFechaEntrega.Text, tbUrgente.Checked ? 1 : 0, "");
-                //temp.setTrabajos(ObtenerTrabajo);
-                return null;
+                return new RegistroPedido(tbClave.Text, Login.PantallaLogin.Sesión,
+                    new RegistroDentista(tbCedula.Text), 1, DateTime.Now, FechaFinalEntrega,
+                    new DateTime(), null, tbUrgente.Checked ? "1" : "0", PrecioFinal, null, null, PrecioFinal, ObtenerTrabajo);
             }
         }
 
@@ -210,10 +240,21 @@ namespace Presentacion.Recepcion
             get
             {
                 bool Faltan = false;
-                Faltan = Error || Faltan;
-                Faltan = Validacion.ValidarTextBox(tbClave, tbCedula, tbRFC, tbNombreDentista, tbApellidos, tbColonia, tbCalle, tbNumFrente, tbEmail) || Faltan;
-                Faltan = Validacion.ValidarComboBox(cbPaíses, cbEstado, cbMunicipio, cbCiudad, cbEmail) || Faltan;
-                Faltan = Validacion.ValidarMaskedTextBox(tbFecha, tbFechaEntrega, tbCP, tbTelefono) || Faltan;
+                Faltan = Validacion.ValidarTextBox(tbClave, tbCedula) || Faltan;
+                for (int i = 0; i < (int)nudTrabajos.Value; i++)
+                {
+                    if (Trabajos[i].Terminado)
+                    {
+                        ParaTra[i].SetError(Trabajos[i].Producto, "");
+                        ParaTra[i].Clear();
+                    }
+                    else
+                    {
+                        ParaTra[i].SetIconAlignment(Trabajos[i].Producto, ErrorIconAlignment.MiddleRight);
+                        ParaTra[i].SetError(Trabajos[i].Producto, "No se ha terminado este campo");
+                        Faltan = true;
+                    }
+                }
                 return Faltan;
             }
         }
@@ -222,201 +263,46 @@ namespace Presentacion.Recepcion
         {
             get
             {
-                List<RegistroTrabajo> temp = new List<RegistroTrabajo>();
-
-                for (int i = 0; i < dgvProductos.RowCount; i++)
+                RegistroTrabajo[] temp = new RegistroTrabajo[(int)nudTrabajos.Value];
+                for (int i = 0; i < (int)nudTrabajos.Value; i++)
                 {
-                    if (!string.IsNullOrWhiteSpace(dgvProductos[0, i].FormattedValue?.ToString()))
-                    {
-                        RegistroProducto Producto = ObtenerProducto(i);
-                        if (!string.IsNullOrWhiteSpace(dgvProductos[1, i].FormattedValue?.ToString()))
-                        {
-                            RegistroProMat Mat1 = ObtenerProMat(Producto, ObtenerMaterial(1, i)), Mat2 = null;
-                            if (!string.IsNullOrWhiteSpace(dgvProductos[2, i].FormattedValue?.ToString()))
-                                Mat2 = ObtenerProMat(Producto, ObtenerMaterial(2, i));
-                            //temp.Add(new RegistroTrabajo(Producto?.Nombre, Producto?.PrecioBase ?? 0, Mat1?.Material, Mat1?.Precio ?? 0, Mat2?.Material?? "", Mat2?.Precio ?? 0, dgvProductos[3,i].Value.ToString()));
-                        }
-                    }
-                }
-                return temp.ToArray();
-            }
-        }
-
-        protected virtual RegistroProducto ObtenerProducto(int Row)
-        {
-            RegistroProducto temp = null;
-            bool Encontrado = false;
-            for (int i = 0; i < Productos.Length &&!Encontrado; i++)
-            {
-                dgvProductos.CommitEdit(DataGridViewDataErrorContexts.Commit);
-                DataGridViewCell Celda = dgvProductos[0, Row];
-                if (Productos[i].Nombre == (dgvProductos[0, Row].FormattedValue?.ToString().Split((new string[] { " $" }), StringSplitOptions.None)[0]))
-                {
-                    temp = Productos[i];
-                    Encontrado = true;
-                }
-            }
-            return temp;
-        }
-
-        protected virtual RegistroMaterial ObtenerMaterial(int Material, int Row)
-        {
-            RegistroMaterial temp = null;
-            bool Encontrado = false;
-            for (int i = 0; i < Materiales.Length && !Encontrado; i++)
-            {
-                if (Materiales[i].Nombre == (dgvProductos[Material, Row].FormattedValue?.ToString().Split((new string[] { " $" }), StringSplitOptions.None)[0]))
-                {
-                    temp = Materiales[i];
-                    Encontrado = true;
-                }
-            }
-            return temp;
-        }
-
-        protected virtual RegistroProMat ObtenerProMat(RegistroProducto Producto, RegistroMaterial Material)
-        {
-            RegistroProMat temp = null;
-            //RegistroProMat[] x = Interface.ObtenerProMat((Material?.IDMaterial ?? -1), (Producto?.IDProducto ?? -1));
-            //temp = x.Length > 0 ? x[0] : null;
-            return temp;
-        }
-
-        protected virtual bool Error
-        {
-            get
-            {
-                bool Error = false;
-                for (int i = 0; i < dgvProductos.RowCount && !Error; i++)
-                {
-                    if (!string.IsNullOrWhiteSpace(dgvProductos[0, i].FormattedValue?.ToString()))
-                    {
-                        if (string.IsNullOrWhiteSpace(dgvProductos[1, i].FormattedValue?.ToString()))
-                        {
-                            Error = true;
-                            Validar.MensajeErrorOK("El material 1 de la fila" + (i + 1) + " no puede quedar vacío, favor de corregir");
-                        }
-                    }
-                    else
-                    {
-                        if (i != dgvProductos.RowCount - 1)
-                        {
-                            Error = true;
-                            Validar.MensajeErrorOK("La fila " + (i + 1) + " no puede quedar vacía, favor de eliminar");
-                        }
-                    }
-                }
-                return Error;
-            }
-        }
-
-        protected RegistroMaterial[] Materiales { get; set; }
-
-        protected RegistroProducto[] Productos { get; set; }
-
-        private void dgvProductos_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvProductos.Columns["Producto"].Index)
-            {
-                LlenarMateriales(dgvProductos[dgvProductos.Columns["Material1"].Index, e.RowIndex] as DataGridViewComboBoxCell, null);
-                int j = 0;
-                RegistroProducto t = ObtenerProducto(e.RowIndex);
-                for (int i = 0; i < Productos.Length; i++)
-                {
-                    if (Productos[i].Nombre == (t?.Nombre ?? ""))
-                    {
-                        j = i;
-                        i = Productos.Length;
-                    }
-                }
-                dgvProductos[dgvProductos.Columns["Fecha"].Index, e.RowIndex].Value = !string.IsNullOrWhiteSpace(dgvProductos[e.ColumnIndex, e.RowIndex].FormattedValue?.ToString()) ? DateTime.Today.AddDays(Productos[j].TiempoBase).ToShortDateString() : "";
-                FechaPedido();
-            }
-            else
-            {
-                if (e.ColumnIndex == dgvProductos.Columns["Material1"].Index)
-                {
-                    int i;
+                    int j = 0;
+                    for (; j < Productos.Length; j++)
+                        if (Productos[j].Nombre == Trabajos[i].Producto.Text)
+                            break;
+                    int k = 0;
+                    for (; k < Materiales.Length; k++)
+                        if (Materiales[k].Nombre == Trabajos[i].Material1.Text)
+                            break;
+                    int l = 0;
                     bool Encontrado = false;
-                    for (i = 0; i < Materiales.Length && !Encontrado; i++)
-                    {
-                        if (Materiales[i].Nombre == (dgvProductos[dgvProductos.Columns["Material1"].Index, e.RowIndex]?.FormattedValue?.ToString()?.Split((new string[] { " $"}), StringSplitOptions.None)?[0] ?? ""))
-                            Encontrado = true;
-                    }
-                    (dgvProductos[dgvProductos.Columns["Material2"].Index, e.RowIndex] as DataGridViewComboBoxCell).Items.Clear();
-                    if (Encontrado)
-                    {
-
-                        LlenarMateriales(dgvProductos[dgvProductos.Columns["Material2"].Index, e.RowIndex] as DataGridViewComboBoxCell, Materiales[i - 1]);
-                    }
+                    if (Trabajos[i].Material2.SelectedIndex != -1)
+                        for (; l < Materiales.Length; l++)
+                            if (Materiales[l].Nombre == Trabajos[i].Material2.Text)
+                            {
+                                Encontrado = true;
+                                break;
+                            }
+                    temp[i] = new RegistroTrabajo(tbClave.Text, Productos[j], Materiales[k], Encontrado ? Materiales[l] : null);
                 }
-                dgvProductos[dgvProductos.Columns["Precio"].Index, e.RowIndex].Value = "$" + CalcularPrecio(e.RowIndex).ToString("N2");
-                PrecioPedido();
+                return temp;
             }
         }
 
-        private float CalcularPrecio(int Row)
+        protected float PrecioFinal { get; set; }
+
+        private void CalcularPrecio()
         {
             float Precio = 0;
-            //if ((ObtenerProducto(Row)?.Nombre ?? "") != "")
-            //{
-            //    int ClvProducto = -1;
-            //    float PrecioProducto = 0;
-            //    for (int i = 0; i < Productos.Length; i++)
-            //    {
-            //        RegistroProducto Producto = ObtenerProducto(Row);
-            //            Precio += Producto.PrecioBase;
-            //            PrecioProducto = Producto.PrecioBase;
-            //            ClvProducto = Producto.IDProducto;
-            //            i = Productos.Length;
-            //    }
-            //    RegistroProMat[] ProMat = Interface.ObtenerProMat(-1, ClvProducto);
-            //    if ((ObtenerMaterial(1, Row)?.Nombre?? "") != "" || (ObtenerMaterial(2, Row)?.Nombre??"") != "")
-            //    {
-            //        bool Primero = false, Segundo = false;
-            //        for (int i = 0; i < Materiales.Length; i++)
-            //        {
-            //            RegistroMaterial Mat1 = ObtenerMaterial(1, Row), Mat2 = ObtenerMaterial(2, Row);
-            //            if (Materiales[i].Nombre == (Mat1?.Nombre ?? "") || Materiales[i].Nombre == (Mat2?.Nombre ?? ""))
-            //                for (int j = 0; j < ProMat.Length && !Segundo; j++)
-            //                    if (ClvProducto == ProMat[j].ClavePro && Materiales[i].IDMaterial == ProMat[j].ClaveMat)
-            //                    {
-            //                        if (!Segundo && Primero)
-            //                            Segundo = true;
-            //                        Precio += ProMat[j].PrecioFinal;
-            //                        if (!Primero)
-            //                        {
-            //                            Primero = true;
-            //                            if (string.IsNullOrWhiteSpace(dgvProductos[dgvProductos.Columns["Material2"].Index, Row]?.FormattedValue?.ToString() ?? ""))
-            //                                Segundo = true;
-            //                        }
-            //                    }
-            //        }
-            //    }
-            //}
-            return Precio;
+            for (int i = 0; i < Trabajos.Length; i++)
+            {
+                Precio += Trabajos[i].Precio;
+            }
+            lblTotal.Text = Precio.ToString("C2");
+            PrecioFinal = Precio;
         }
 
         protected DateTime FechaFinalEntrega { get; set; }
-
-        private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            dgvProductos.EndEdit();
-            if (e.ColumnIndex == 0 || e.ColumnIndex ==1 || e.ColumnIndex == 2)
-            {
-                dgvProductos.CurrentCellDirtyStateChanged -= dgvProductos_CurrentCellDirtyStateChanged;
-                SendKeys.Send("{F4}");
-                dgvProductos.CurrentCellDirtyStateChanged += dgvProductos_CurrentCellDirtyStateChanged;
-            }
-            else
-                dgvProductos.BeginEdit(true);
-        }
-
-        private void dgvProductos_CurrentCellDirtyStateChanged(object sender, EventArgs e)
-        {
-            dgvProductos.CommitEdit(DataGridViewDataErrorContexts.Commit);
-            dgvProductos.EndEdit();
-        }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -430,56 +316,23 @@ namespace Presentacion.Recepcion
             for (int i = 0; i < temp.Length; i++)
                 Precio += temp[i].Total;
             lblTotal.Text = "$" + Precio.ToString("N2");
-            lblTotal.Location = new Point(dgvProductos.Width + dgvProductos.Location.X - lblTotal.Width, lblTotal.Location.Y);
         }
 
         protected void FechaPedido()
         {
-            DateTime Fecha = DateTime.MinValue;
-            for (int i = 0; i < dgvProductos.RowCount; i++)
-            {
-                string t = dgvProductos[3, i].Value?.ToString() ?? "";
-                if (!string.IsNullOrWhiteSpace(t))
-                {
-                    DateTime temp = Convert.ToDateTime(t);
-                    if (temp > Fecha)
-                        Fecha = temp;
-                }
-            }
-            tbFechaEntrega.Text = Fecha.ToShortDateString();
+            DateTime x;
+            x = Trabajos[0].Fecha;
+            for (int i = 1; i < Trabajos.Length; i++)
+                if (x < Trabajos[i].Fecha)
+                    x = Trabajos[i].Fecha;
+            lblFechaProbable.Text = x.ToShortDateString();
+            FechaFinalEntrega = x;
         }
 
-        private void dgvProductos_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        private void nudTrabajos_ValueChanged(object sender, EventArgs e)
         {
-            PrecioPedido();
-            FechaPedido();
-        }
-
-        protected string ObtenerTelefono
-        {
-            get
-            {
-                string temp = "";
-                for (int i = 0; i < tbTelefono.Text.Length; i++)
-                {
-                    if (char.IsDigit(tbTelefono.Text[i]))
-                    {
-                        temp += tbTelefono.Text[i];
-                    }
-                }
-                return temp;
-            }
-        }
-
-        protected virtual RegistroDentista ObtenerRegistroDentista
-        {
-            get
-            {
-                return null;
-                    //new RegistroDentista(tbCedula.Text, tbRFC.Text, tbNombreDentista.Text, tbApellidos.Text, ObtenerTelefono, cbPaíses.Text,
-                    //cbEstado.Text, cbMunicipio.Text, cbCiudad.Text, tbColonia.Text, tbCalle.Text, tbNumFrente.Text, tbCP.Text,
-                    //tbEmail.Text + "@" + cbEmail.Text);
-            }
+            for (int i = 0; i < Trabajos.Length; i++)
+                Trabajos[i].Visible = i < (int)nudTrabajos.Value;
         }
     }
 }
