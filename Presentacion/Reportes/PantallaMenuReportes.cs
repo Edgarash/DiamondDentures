@@ -47,7 +47,8 @@ namespace Presentacion.Reportes
             System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Materiales Faltantes (n)");
             System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Forma Pedido");
             System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Oficio Confirmacion");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Almacen", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Nota Proveedor");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Almacen", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3,
@@ -64,35 +65,35 @@ namespace Presentacion.Reportes
             treeNode14,
             treeNode15,
             treeNode16,
-            treeNode17});
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Facturas");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Nomina");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Comprobante de nomina");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Gastos");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Ventas Detalladas");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Ventas General");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Cortes de Caja");
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Sueldos Promedio");
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Finanzas", new System.Windows.Forms.TreeNode[] {
-            treeNode19,
+            treeNode17,
+            treeNode18});
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Facturas");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Nomina");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Comprobante de nomina");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Gastos");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Ventas Detalladas");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Ventas General");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Cortes de Caja");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Sueldos Promedio");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Finanzas", new System.Windows.Forms.TreeNode[] {
             treeNode20,
             treeNode21,
             treeNode22,
             treeNode23,
             treeNode24,
             treeNode25,
-            treeNode26});
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Trabajadores");
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Rendimiento de Empleado");
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Metrica del Pedido");
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Metrica del Ultimo Pedido");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Clientes mas valiosos");
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Productos de mayor valor");
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Producto más elaborado");
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Producto menos elaborado");
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Clientes frencuentes");
-            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Otros", new System.Windows.Forms.TreeNode[] {
-            treeNode28,
+            treeNode26,
+            treeNode27});
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Trabajadores");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Rendimiento de Empleado");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Metrica del Pedido");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Metrica del Ultimo Pedido");
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Clientes mas valiosos");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Productos de mayor valor");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Producto más elaborado");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Producto menos elaborado");
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Clientes frencuentes");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Otros", new System.Windows.Forms.TreeNode[] {
             treeNode29,
             treeNode30,
             treeNode31,
@@ -100,16 +101,17 @@ namespace Presentacion.Reportes
             treeNode33,
             treeNode34,
             treeNode35,
-            treeNode36});
-            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Laboratoristas Ocupados");
-            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Laboratoristas Desocupados");
-            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Productos en laboratorio");
-            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("Nota Terminacion");
-            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("Laboratorio", new System.Windows.Forms.TreeNode[] {
-            treeNode38,
+            treeNode36,
+            treeNode37});
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Laboratoristas Ocupados");
+            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Laboratoristas Desocupados");
+            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("Productos en laboratorio");
+            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("Nota Terminacion");
+            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Laboratorio", new System.Windows.Forms.TreeNode[] {
             treeNode39,
             treeNode40,
-            treeNode41});
+            treeNode41,
+            treeNode42});
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -169,63 +171,65 @@ namespace Presentacion.Reportes
             treeNode16.Text = "Forma Pedido";
             treeNode17.Name = "rofcon";
             treeNode17.Text = "Oficio Confirmacion";
-            treeNode18.Checked = true;
-            treeNode18.Name = "nalmacen";
-            treeNode18.Text = "Almacen";
-            treeNode19.Name = "rfact";
-            treeNode19.Text = "Facturas";
-            treeNode20.Name = "rnomina";
-            treeNode20.Text = "Nomina";
-            treeNode21.Name = "rcomnom";
-            treeNode21.Text = "Comprobante de nomina";
-            treeNode22.Name = "rgastos";
-            treeNode22.Text = "Gastos";
-            treeNode23.Name = "rventas";
-            treeNode23.Text = "Ventas Detalladas";
-            treeNode24.Name = "rventasgen";
-            treeNode24.Text = "Ventas General";
-            treeNode25.Name = "can3";
-            treeNode25.Text = "Cortes de Caja";
-            treeNode26.Name = "can13";
-            treeNode26.Text = "Sueldos Promedio";
-            treeNode27.Checked = true;
-            treeNode27.Name = "nfinanzas";
-            treeNode27.Text = "Finanzas";
-            treeNode28.Name = "can1";
-            treeNode28.Text = "Trabajadores";
-            treeNode29.Name = "can5";
-            treeNode29.Text = "Rendimiento de Empleado";
-            treeNode30.Name = "can6";
-            treeNode30.Text = "Metrica del Pedido";
-            treeNode31.Name = "can10";
-            treeNode31.Text = "Metrica del Ultimo Pedido";
-            treeNode32.Name = "can16";
-            treeNode32.Text = "Clientes mas valiosos";
-            treeNode33.Name = "can14";
-            treeNode33.Text = "Productos de mayor valor";
-            treeNode34.Name = "can17";
-            treeNode34.Text = "Producto más elaborado";
-            treeNode35.Name = "can18";
-            treeNode35.Text = "Producto menos elaborado";
-            treeNode36.Name = "can19";
-            treeNode36.Text = "Clientes frencuentes";
-            treeNode37.Name = "notros";
-            treeNode37.Text = "Otros";
-            treeNode38.Name = "can11";
-            treeNode38.Text = "Laboratoristas Ocupados";
-            treeNode39.Name = "can12";
-            treeNode39.Text = "Laboratoristas Desocupados";
-            treeNode40.Name = "can15";
-            treeNode40.Text = "Productos en laboratorio";
-            treeNode41.Name = "rnotter";
-            treeNode41.Text = "Nota Terminacion";
-            treeNode42.Name = "rlab";
-            treeNode42.Text = "Laboratorio";
+            treeNode18.Name = "rnotprov";
+            treeNode18.Text = "Nota Proveedor";
+            treeNode19.Checked = true;
+            treeNode19.Name = "nalmacen";
+            treeNode19.Text = "Almacen";
+            treeNode20.Name = "rfact";
+            treeNode20.Text = "Facturas";
+            treeNode21.Name = "rnomina";
+            treeNode21.Text = "Nomina";
+            treeNode22.Name = "rcomnom";
+            treeNode22.Text = "Comprobante de nomina";
+            treeNode23.Name = "rgastos";
+            treeNode23.Text = "Gastos";
+            treeNode24.Name = "rventas";
+            treeNode24.Text = "Ventas Detalladas";
+            treeNode25.Name = "rventasgen";
+            treeNode25.Text = "Ventas General";
+            treeNode26.Name = "can3";
+            treeNode26.Text = "Cortes de Caja";
+            treeNode27.Name = "can13";
+            treeNode27.Text = "Sueldos Promedio";
+            treeNode28.Checked = true;
+            treeNode28.Name = "nfinanzas";
+            treeNode28.Text = "Finanzas";
+            treeNode29.Name = "can1";
+            treeNode29.Text = "Trabajadores";
+            treeNode30.Name = "can5";
+            treeNode30.Text = "Rendimiento de Empleado";
+            treeNode31.Name = "can6";
+            treeNode31.Text = "Metrica del Pedido";
+            treeNode32.Name = "can10";
+            treeNode32.Text = "Metrica del Ultimo Pedido";
+            treeNode33.Name = "can16";
+            treeNode33.Text = "Clientes mas valiosos";
+            treeNode34.Name = "can14";
+            treeNode34.Text = "Productos de mayor valor";
+            treeNode35.Name = "can17";
+            treeNode35.Text = "Producto más elaborado";
+            treeNode36.Name = "can18";
+            treeNode36.Text = "Producto menos elaborado";
+            treeNode37.Name = "can19";
+            treeNode37.Text = "Clientes frencuentes";
+            treeNode38.Name = "notros";
+            treeNode38.Text = "Otros";
+            treeNode39.Name = "can11";
+            treeNode39.Text = "Laboratoristas Ocupados";
+            treeNode40.Name = "can12";
+            treeNode40.Text = "Laboratoristas Desocupados";
+            treeNode41.Name = "can15";
+            treeNode41.Text = "Productos en laboratorio";
+            treeNode42.Name = "rnotter";
+            treeNode42.Text = "Nota Terminacion";
+            treeNode43.Name = "rlab";
+            treeNode43.Text = "Laboratorio";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode18,
-            treeNode27,
-            treeNode37,
-            treeNode42});
+            treeNode19,
+            treeNode28,
+            treeNode38,
+            treeNode43});
             this.treeView1.Size = new System.Drawing.Size(175, 344);
             this.treeView1.TabIndex = 9;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
@@ -579,6 +583,9 @@ namespace Presentacion.Reportes
                     break;
                 case "rofcon":
                     ManejadorReportes.MostrarPantalla(new PantallaOficioConfirmacion());
+                    break;
+                case "rnotprov":
+                    ManejadorReportes.MostrarPantalla(new PantallaVPNotaProv());
                     break;
             }
             Show();

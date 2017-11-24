@@ -17,9 +17,10 @@ namespace Entidad
         public RegistroProveedor Proveedor { get; set; }
         public string UnidadMedida { get; set; }
         public int Cantidad { get; set; }
+        public int CantidadEnviada { get; set; }
 
         public RegistroInsumos(int IDMaterial, RegistroProveedor Proveedor, string Nombre, string Descripcion, float PrecioBase, float PrecioCompra,
-           string UnidadMedida, int Cantidad)
+           string UnidadMedida, int Cantidad, int CantidadEnviada)
         {
             this.IDInsumos = IDMaterial;
             this.Proveedor = Proveedor;
@@ -29,6 +30,7 @@ namespace Entidad
             this.PrecioCompra = PrecioCompra;
             this.UnidadMedida = UnidadMedida;
             this.Cantidad = Cantidad;
+            this.CantidadEnviada = CantidadEnviada;
         }
     }
 }

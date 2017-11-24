@@ -24,9 +24,7 @@ namespace Presentacion.Reportes
         private SaveFileDialog sfdExportar;
         private Button btnGenerar;
         private Label label6;
-        private TextBox txtIdIns;
         private TextBox txtNomMat;
-        private Label label3;
         private Label label2;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvVisor;
 
@@ -34,9 +32,7 @@ namespace Presentacion.Reportes
         {
             this.crvVisor = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtIdIns = new System.Windows.Forms.TextBox();
             this.txtNomMat = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -67,9 +63,7 @@ namespace Presentacion.Reportes
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtIdIns);
             this.groupBox2.Controls.Add(this.txtNomMat);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.btnGenerar);
             this.groupBox2.Controls.Add(this.label6);
@@ -85,28 +79,13 @@ namespace Presentacion.Reportes
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parametros del reporte";
             // 
-            // txtIdIns
-            // 
-            this.txtIdIns.Location = new System.Drawing.Point(12, 99);
-            this.txtIdIns.Name = "txtIdIns";
-            this.txtIdIns.Size = new System.Drawing.Size(176, 21);
-            this.txtIdIns.TabIndex = 28;
-            // 
             // txtNomMat
             // 
             this.txtNomMat.Location = new System.Drawing.Point(12, 47);
+            this.txtNomMat.MaxLength = 30;
             this.txtNomMat.Name = "txtNomMat";
             this.txtNomMat.Size = new System.Drawing.Size(176, 21);
             this.txtNomMat.TabIndex = 28;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 16);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "Id Material:";
             // 
             // label2
             // 
@@ -239,14 +218,11 @@ namespace Presentacion.Reportes
             string nommat = txtNomMat.Text;
             if (string.IsNullOrWhiteSpace(nommat))
             {
-                nommat = "☺";
+                MessageBox.Show("El nombre del material no es valido");
+                return;
             }
-            int idmat;
-            string idins_str = txtIdIns.Text;
-            int.TryParse(idins_str, out idmat);
             ParametroReporte NomMat = new ParametroReporte("NomMat", nommat);
-            ParametroReporte IdComp = new ParametroReporte("idComp", idmat);
-            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteGastoMEsp(),NomMat,IdComp);
+            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteGastoMEsp(),NomMat);
         }
 
         private void btnRegresar_Click(object sender, EventArgs e) => Close();

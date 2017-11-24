@@ -90,7 +90,7 @@ namespace Presentacion.Finanzas
             }
             else
             {
-                FinanzasRealizarPago frp = new FinanzasRealizarPago(infoPagos2(dataGridView2,r),dataGridView2[0,r].Value.ToString());
+                FinanzasRealizarPago frp = new FinanzasRealizarPago(dataGridView2[0, r].Value.ToString());
                 frp.Show();
             }
         }
@@ -130,6 +130,11 @@ namespace Presentacion.Finanzas
             MessageBox.Show("Compra Actualizada");
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
         private void tbBuscar_TextChanged(object sender, EventArgs e)
         {
 
@@ -138,7 +143,7 @@ namespace Presentacion.Finanzas
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            r = Convert.ToInt32(dataGridView2.CurrentCell.RowIndex.ToString());
+            r = Convert.ToInt32(dataGridView2.CurrentCell.RowIndex.ToString());            
             txInfo.Text = "ID: " + dataGridView2[0, r].Value + " | NOMBRE: " + dataGridView2[1, r].Value +
                 " | DESCRIPCIÓN: Compra de " + dataGridView2[4, r].Value  +" | Estado: " + dataGridView2[6, r].Value +
                 " | TOTAL: $ " + dataGridView2[2, r].Value;

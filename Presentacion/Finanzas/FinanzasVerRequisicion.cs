@@ -15,6 +15,7 @@ namespace Presentacion.Finanzas
     public partial class FinanzasVerRequisicion : Control.Pantalla
     {
         public string elquesea;
+        public static string paqueeraestawea;
         enum Búsqueda { Total, Clave, Personalizada };
         string idcom { get; set; }
         InterfaceUsuario Interface;
@@ -57,6 +58,7 @@ namespace Presentacion.Finanzas
                     dtRequisicion[5, i].Value = temp[i].Cantidad;
                     dtRequisicion[6, i].Value = temp[i].Fecha;
                     dtRequisicion[7, i].Value = temp[i].Estado;
+                    dtRequisicion[8, i].Value = temp[i].CantidadEnviada;
                 }
             }
             if (dtRequisicion.SelectedCells.Count > 0)
@@ -73,13 +75,13 @@ namespace Presentacion.Finanzas
             int contado = 0;
             for (int j = 0; j < dtRequisicion.RowCount; j++)
             {
-                if (cantidad[j] == Convert.ToInt32(dtRequisicion[5, j].Value))
+                if (Convert.ToInt32(dtRequisicion[8,j].Value) == Convert.ToInt32(dtRequisicion[5, j].Value))
                 {
 
                 }
                 else
                 {
-                    if (cantidad[j] > Convert.ToInt32(dtRequisicion[5, j].Value))
+                    if (Convert.ToInt32(dtRequisicion[8, j].Value) > Convert.ToInt32(dtRequisicion[5, j].Value))
                     {
                         supererror = true;
                         break;
@@ -89,7 +91,7 @@ namespace Presentacion.Finanzas
                         valorcito = true;
                     }
                 }
-                if (dtRequisicion[7, j].Value.ToString().ToUpper() == "AUTORIZADA")
+                if (dtRequisicion[7, j].Value.ToString().ToUpper() == "ENVIADO")
                 {
                     contado++;
                 }
@@ -153,6 +155,11 @@ namespace Presentacion.Finanzas
                     }
                 }
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

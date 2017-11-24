@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System;
 using Entidad;
+using System.Collections.Generic;
 using static System.Environment;
 
 namespace Presentacion.Reportes
@@ -9,6 +10,8 @@ namespace Presentacion.Reportes
 
     class PantallaVPReqMat : Pantalla
     {
+        bool insumos;
+
         public PantallaVPReqMat()
         {
             InitializeComponent();
@@ -289,11 +292,31 @@ namespace Presentacion.Reportes
             int id;
 
             int.TryParse(id_str, out id);
-            if(id == 0)
+            if (id == 0)
             {
                 MessageBox.Show("El id no es valido");
                 return;
             }
+
+            var ID = new Dictionary<string, object>
+            {
+                { "id", id}
+            };
+
+            var res = ManejadorReportes.CargarDatos("R_TipoCompra", ID);
+
+            if (res.Rows.Count < 1)
+            {
+                MessageBox.Show("No se encuentra la compra");
+                crvVisor.ReportSource = null;
+                return;
+            }
+
+            var tipo = res.Select()[0]["Tipo"].ToString().ToUpper();
+
+            
+
+            insumos = tipo == "INSUMOS" ? true : false;
 
             string emisor = txtEmisor.Text;
             if (string.IsNullOrWhiteSpace(emisor))
@@ -314,7 +337,7 @@ namespace Presentacion.Reportes
 
             int.TryParse(str_idprov, out idprov);
 
-            if (idprov == 0)
+            if (!insumos)
             {
                 ParametroReporte Id = new ParametroReporte("id", id);
                 ParametroReporte Receptor = new ParametroReporte("Recibe", receptor);
@@ -325,11 +348,10 @@ namespace Presentacion.Reportes
             else
             {
                 ParametroReporte Id = new ParametroReporte("id", id);
-                ParametroReporte IdProb = new ParametroReporte("idprov",idprov);
                 ParametroReporte Receptor = new ParametroReporte("Recibe", receptor);
                 ParametroReporte Emisor = new ParametroReporte("Emite", emisor);
-                
-                crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteReqMateriales(), Id, IdProb, Emisor, Receptor);
+
+                crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteReqIns(), Id, Emisor, Receptor);
             }
         }
 
@@ -337,8 +359,21 @@ namespace Presentacion.Reportes
 
         private void sfdExportar_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            string ruta = sfdExportar.FileName;
-            ManejadorReportes.ExportarReporte(ruta, (ReporteReqMateriales) crvVisor.ReportSource);
+            if (crvVisor.ReportSource == null)
+            {
+                return;
+            }
+
+            if (insumos)
+            {
+                string ruta = sfdExportar.FileName;
+                ManejadorReportes.ExportarReporte(ruta, (ReporteReqIns)crvVisor.ReportSource);
+            }
+            else
+            {
+                string ruta = sfdExportar.FileName;
+                ManejadorReportes.ExportarReporte(ruta, (ReporteReqMaterialesGen)crvVisor.ReportSource);
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)

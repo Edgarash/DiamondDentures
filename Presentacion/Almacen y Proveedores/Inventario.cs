@@ -182,5 +182,10 @@ namespace Presentacion.Almacen_y_Proveedores
         {
             ManejadorReportes.MostrarPantalla(this, new PantallaVPListadoGen<ReporteInventarios>("Inventarios"));
         }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            ManejadorReportes.MostrarPantalla(this, new PantallaVPListadoGen<CAN8_ReporteFaltantes>("Faltantes"));
+        }
     }
 }

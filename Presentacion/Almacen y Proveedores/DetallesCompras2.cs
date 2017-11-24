@@ -55,6 +55,7 @@ namespace Presentacion.Almacen_y_Proveedores
                     dataGridView2[5, i].Value = temp[i].Cantidad;
                     dataGridView2[6, i].Value = temp[i].Fecha;
                     dataGridView2[7, i].Value = temp[i].Estado;
+                    dataGridView2[8, i].Value = temp[i].CantidadEnviada;
                 }
             }
             if (dataGridView2.SelectedCells.Count > 0)
@@ -91,6 +92,7 @@ namespace Presentacion.Almacen_y_Proveedores
                     dataGridView2[5, i].Value = temp[i].Cantidad;
                     dataGridView2[6, i].Value = temp[i].Fecha;
                     dataGridView2[7, i].Value = temp[i].Estado;
+                    dataGridView2[8, i].Value = temp[i].CantidadEnviada;
                 }
             }
             if (dataGridView2.SelectedCells.Count > 0)
@@ -107,17 +109,19 @@ namespace Presentacion.Almacen_y_Proveedores
             ManejadorAlmacen.ActualizarEDO(material);
             MessageBox.Show("Registro actualizado con exito");
 
-            DetalleCompras decomp = new DetalleCompras();
+            //DetalleCompras decomp = new DetalleCompras();
             for (int i = 0; i < dataGridView2.RowCount; i++)
             {
                 if (Convert.ToInt32(dataGridView2[0, i].Value) == Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCell.RowIndex].Value)) 
                 {
-                    decomp.cantidad[valor] = Convert.ToInt32(dataGridView2[5, i].Value);
+                    //decomp.cantidad[valor] = Convert.ToInt32(dataGridView2[5, i].Value);
+                    CompraMaterial mat = new CompraMaterial(Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCell.RowIndex].Value), Convert.ToInt32(label4.Text), Convert.ToInt32(dataGridView2[8, dataGridView2.CurrentCell.RowIndex].Value));
+                    ManejadorAlmacen.AgregarCantidadEnviada(mat);
                     valor++;
                 }
             }
-            decomp.label2.Text = dataGridView2[0, dataGridView2.CurrentCell.RowIndex].Value.ToString();
-            decomp.Show();
+            //decomp.label2.Text = dataGridView2[0, dataGridView2.CurrentCell.RowIndex].Value.ToString();
+            //decomp.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -142,7 +146,7 @@ namespace Presentacion.Almacen_y_Proveedores
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CompraMaterial compra = new CompraMaterial(Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCell.RowIndex].Value), Convert.ToInt32(dataGridView2[1, dataGridView2.CurrentCell.RowIndex].Value), Convert.ToInt32(dataGridView2[5, dataGridView2.CurrentCell.RowIndex].Value));
+            CompraMaterial compra = new CompraMaterial(Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCell.RowIndex].Value), Convert.ToInt32(dataGridView2[1, dataGridView2.CurrentCell.RowIndex].Value), Convert.ToInt32(dataGridView2[8, dataGridView2.CurrentCell.RowIndex].Value));
             ManejadorAlmacen.ActualizarPrecio(compra);
             MessageBox.Show("Precio actualizado con exito ");
         }

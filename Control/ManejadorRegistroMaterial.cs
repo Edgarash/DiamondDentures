@@ -1,6 +1,7 @@
 ﻿using System;
 using Entidad;
 using ConexionBaseDeDatos;
+using System.Windows.Forms;
 
 namespace Control
 {
@@ -92,6 +93,12 @@ namespace Control
         {
             CompraMaterial[] temp = null;
             InterfaceMySQL.DetallesMaterial(IDCompra, out temp);
+            return temp;
+        }
+        public CompraMaterial[] VerDetallesPagos(DataGridView dt ,int IDCompra)
+        {
+            CompraMaterial[] temp = null;
+            InterfaceMySQL.VerDetallesPagos(dt, IDCompra);
             return temp;
         }
 

@@ -65,6 +65,19 @@ namespace ConexionBaseDeDatos
             temp.DataSource = TablaDeResultados;
             return OperacionRealizada2;
         }
+        public static bool VerDetallesPagos(DataGridView temp, int id)
+        {
+            EjecutarProcedimientoAlmacenado("VerDetallesPagos", TipoConsulta.DevuelveReader,
+                Parametro("id", id));
+            temp.DataSource = TablaDeResultados;
+            return OperacionRealizada2;
+        }
+        public static bool ActualizarEDOPagado(CompraMaterial Material)
+        {
+            EjecutarProcedimientoAlmacenado("ActualizarEstadoPagado", TipoConsulta.DevuelveInt, Parametro("idc", Material.IDCompra), Parametro("idp", Material.IDProveedor));
+            return OperacionRealizada;
+        }
+
         public static bool FinanzasBuscarAdminPagos(DataGridView temp, string idp, string nomb)
         {
             EjecutarProcedimientoAlmacenado("FinanzasBuscarAdminPagos", TipoConsulta.DevuelveReader,
@@ -201,7 +214,8 @@ namespace ConexionBaseDeDatos
                     Convert.ToSingle(x["PrecioBase"].ToString()),
                     Convert.ToSingle(x["PrecioCompra"].ToString()),                    
                     x["UnidadMedida"].ToString(),
-                    Convert.ToInt32(x["CantidadDisponible"].ToString())
+                    Convert.ToInt32(x["CantidadDisponible"].ToString()),
+                    Convert.ToInt32(x["CantidadEnviada"].ToString())
                     );
             }
             return Insumos;
@@ -245,7 +259,8 @@ namespace ConexionBaseDeDatos
                     Convert.ToSingle(x["Subtotal"].ToString()),
                     Convert.ToInt32(x["Cantidad"].ToString()),
                     Convert.ToDateTime(x["Fecha"].ToString()),
-                    x["Estado"].ToString()
+                    x["Estado"].ToString(),
+                    Convert.ToInt32(x["CantidadEnviada"].ToString())
                     );
             }
             return Insumos;

@@ -195,6 +195,11 @@ namespace Presentacion
             Manejador = new ManejadorRegistroMaterial();
             return (Manejador as ManejadorRegistroMaterial).DetallesMaterial(IDCompra);
         }
+        internal CompraMaterial[] VerDetallesPagos(DataGridView dt, int IDCompra)
+        {
+            Manejador = new ManejadorRegistroMaterial();
+            return (Manejador as ManejadorRegistroMaterial).VerDetallesPagos(dt,IDCompra);
+        }
 
         internal CompraInsumos[] DetallesInsumos(int IDCompra)
         {

@@ -51,42 +51,7 @@ namespace Presentacion.Almacen_y_Proveedores
                     dataGridView2[5, i].Value = temp[i].Cantidad;
                     dataGridView2[6, i].Value = temp[i].Fecha;
                     dataGridView2[7, i].Value = temp[i].Estado;
-                }
-            }
-            if (dataGridView2.SelectedCells.Count > 0)
-            {
-                dataGridView2.CurrentCell = dataGridView2[Col > dataGridView2.ColumnCount ? 0 : Col, Ren > dataGridView2.RowCount ? 0 : Ren];
-                dataGridView2.Focus();
-            }
-        }
-
-        private void LlenarData11(Búsqueda Tipo)
-        {
-            int IDCompra = Convert.ToInt32(label2.Text);
-            int Col = 0, Ren = 0;
-            if (dataGridView2.SelectedCells.Count > 0)
-            {
-                DataGridViewCell Cell = dataGridView2.SelectedCells[0];
-                Col = Cell.ColumnIndex;
-                Ren = Cell.RowIndex;
-            }
-            dataGridView2.Rows.Clear();
-            CompraInsumos[] temp = null;
-            if (Tipo == Búsqueda.Total) 
-                temp = Interface.DetallesInsumos(IDCompra);
-            dataGridView2.RowCount = temp?.Length ?? 0;
-            if (temp != null)
-            {
-                for (int i = 0; i < temp.Length; i++)
-                {
-                    dataGridView2[0, i].Value = temp[i].IDCompra;
-                    dataGridView2[1, i].Value = temp[i].IDInsumos;
-                    dataGridView2[2, i].Value = temp[i].Nombre;
-                    dataGridView2[3, i].Value = temp[i].IDProveedor;
-                    dataGridView2[4, i].Value = temp[i].SubTotal;
-                    dataGridView2[5, i].Value = temp[i].Cantidad;
-                    dataGridView2[6, i].Value = temp[i].Fecha;
-                    dataGridView2[7, i].Value = temp[i].Estado;
+                    dataGridView2[8, i].Value = temp[i].CantidadEnviada;
                 }
             }
             if (dataGridView2.SelectedCells.Count > 0)
@@ -125,13 +90,13 @@ namespace Presentacion.Almacen_y_Proveedores
             int contado = 0;
             for (int j = 0; j < dataGridView2.RowCount; j++)
             {
-                if (cantidad[j] == Convert.ToInt32(dataGridView2[5, j].Value))
+                if (Convert.ToInt32(dataGridView2[8, j].Value) == Convert.ToInt32(dataGridView2[5, j].Value))
                 {
 
                 }
                 else
                 {
-                    if (cantidad[j] > Convert.ToInt32(dataGridView2[5, j].Value))
+                    if (Convert.ToInt32(dataGridView2[8, j].Value) > Convert.ToInt32(dataGridView2[5, j].Value))
                     {
                         supererror = true;
                         break;
@@ -141,7 +106,7 @@ namespace Presentacion.Almacen_y_Proveedores
                         valorcito = true;
                     }
                 }
-                if (dataGridView2[7, j].Value.ToString().ToUpper() == "AUTORIZADA")
+                if (dataGridView2[7, j].Value.ToString().ToUpper() == "ENVIADO")
                 {
                     contado++;
                 }
