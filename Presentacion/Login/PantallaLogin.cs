@@ -5,6 +5,7 @@ using ControlesPersonalizados;
 using Control;
 using Validaciones;
 using Entidad;
+using Presentacion;
 
 namespace Presentacion.Login
 {
@@ -206,11 +207,11 @@ namespace Presentacion.Login
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(383, 290);
+            this.button1.Location = new System.Drawing.Point(357, 290);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(101, 23);
             this.button1.TabIndex = 12;
-            this.button1.Text = "button1";
+            this.button1.Text = "Atajo Olachea";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -348,7 +349,7 @@ namespace Presentacion.Login
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            ManejadorReportes.MostrarPantalla(new Reportes.PantallaMenuReportes());
         }
     }
 }

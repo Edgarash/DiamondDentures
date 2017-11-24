@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnGenRep = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dtPagos = new System.Windows.Forms.DataGridView();
             this.btnActualizar = new System.Windows.Forms.Button();
@@ -48,15 +47,6 @@
             // 
             this.Encabezado.Controls.Add(this.label1);
             this.Encabezado.Size = new System.Drawing.Size(724, 93);
-            // 
-            // btnGenRep
-            // 
-            this.btnGenRep.Location = new System.Drawing.Point(102, 10);
-            this.btnGenRep.Name = "btnGenRep";
-            this.btnGenRep.Size = new System.Drawing.Size(88, 42);
-            this.btnGenRep.TabIndex = 31;
-            this.btnGenRep.Text = "Generar \r\nReporte";
-            this.btnGenRep.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -124,7 +114,6 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.tbBuscar);
             this.groupBox1.Controls.Add(this.btnBuscar);
-            this.groupBox1.Controls.Add(this.btnGenRep);
             this.groupBox1.Controls.Add(this.btnActualizar);
             this.groupBox1.Location = new System.Drawing.Point(17, 96);
             this.groupBox1.Name = "groupBox1";
@@ -212,8 +201,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnGenRep;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.DataGridView dtPagos;
