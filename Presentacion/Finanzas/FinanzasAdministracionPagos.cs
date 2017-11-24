@@ -73,27 +73,26 @@ namespace Presentacion.Finanzas
             ActualizarData();
         }
 
-        //private string infoPagos2(DataGridView dt, int r)
-        //{
-        //    string datos = "";
-        //    datos = "ID_Pago: " + dt[0, r].Value + "\nNOMBRE: " + dt[1, r].Value +
-        //        "\nDESCRIPCIÓN: " + dt[2, r].Value + "\nPrecio Unitario: " + dt[3, r].Value +
-        //        "\nCANTIDAD: " + dt[4, r].Value + "\nSUBTOTAL: " + dt[5, r].Value
-        //        + "\nTOTAL: $ " + dt[6, r].Value;
-        //    return datos;
-        //}
+        private string infoPagos2(DataGridView dt, int r)
+        {
+            string datos = "";
+            datos = "ID: " + dt[0, r].Value + "\nNOMBRE: " + dt[1, r].Value +
+                "\nDESCRIPCIÓN: Compra de " + dt[4, r].Value+ " del día " + dt[3, r].Value + "\nEstado: " + dt[6, r].Value +
+                "\nTOTAL: $ " + dt[2, r].Value;
+            return datos;
+        }
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            //if (Convert.ToSingle(fondoTotal(txTotal.Text)) <= Convert.ToSingle(dtPagos[6, r].Value))
-            //{
-            //    MessageBox.Show("No hay fondos suficientes para realizar el pago", "Fondo insuficiente",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            //}
-            //else
-            //{
-            //    FinanzasRealizarPago frp = new FinanzasRealizarPago(infoPagos2(dtPagos, r), dtPagos[9, r].Value.ToString());
-            //    frp.Show();
-            //}
+            if (Convert.ToSingle(fondoTotal(txTotal.Text)) <= Convert.ToSingle(dataGridView2[2, r].Value))
+            {
+                MessageBox.Show("No hay fondos suficientes para realizar el pago", "Fondo insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                FinanzasRealizarPago frp = new FinanzasRealizarPago(infoPagos2(dataGridView2,r),dataGridView2[0,r].Value.ToString());
+                frp.Show();
+            }
         }
 
         private string fondoTotal(string fondo)
@@ -139,6 +138,11 @@ namespace Presentacion.Finanzas
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            r = Convert.ToInt32(dataGridView2.CurrentCell.RowIndex.ToString());
+            txInfo.Text = "ID: " + dataGridView2[0, r].Value + " | NOMBRE: " + dataGridView2[1, r].Value +
+                " | DESCRIPCIÓN: Compra de " + dataGridView2[4, r].Value  +" | Estado: " + dataGridView2[6, r].Value +
+                " | TOTAL: $ " + dataGridView2[2, r].Value;
+
             if (dataGridView2.CurrentCell.ColumnIndex == 7)
             {
                 FinanzasVerRequisicion p6 = new FinanzasVerRequisicion();
