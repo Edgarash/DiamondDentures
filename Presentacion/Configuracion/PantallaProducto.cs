@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Validaciones;
+using static Validaciones.Validar;
 using Control;
 
 namespace Presentacion.Configuracion
@@ -26,6 +27,11 @@ namespace Presentacion.Configuracion
         {
             Validacion = new Validar(this);
             Interface = new InterfaceUsuario(this);
+            for (int i = 0; i < Controls.Count; i++)
+            {
+                if (Controls[i].GetType() == typeof(TextBox))
+                    Controls[i].KeyPress += Mayusculas;
+            }
         }
 
         protected bool ValidarCampos
