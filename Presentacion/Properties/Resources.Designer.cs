@@ -304,7 +304,7 @@ namespace Presentacion.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap IconoDentista {
             get {
@@ -319,6 +319,16 @@ namespace Presentacion.Properties {
         internal static System.Drawing.Bitmap IconoDentistaAgregar {
             get {
                 object obj = ResourceManager.GetObject("IconoDentistaAgregar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconoDentistaEliminar {
+            get {
+                object obj = ResourceManager.GetObject("IconoDentistaEliminar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -794,7 +804,7 @@ namespace Presentacion.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap IconoReportesDiamondBlanco {
             get {
@@ -804,7 +814,7 @@ namespace Presentacion.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap IconoRVentas {
             get {

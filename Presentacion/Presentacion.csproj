@@ -321,10 +321,10 @@
     <Compile Include="Laboratorio\PantallaPedidoFabricar.designer.cs">
       <DependentUpon>PantallaPedidoFabricar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Recepcion\PantallaAdministrarDentistas.cs">
+    <Compile Include="Recepcion\Dentista\PantallaAdministrarDentistas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Recepcion\PantallaAdministrarDentistas.Designer.cs">
+    <Compile Include="Recepcion\Dentista\PantallaAdministrarDentistas.Designer.cs">
       <DependentUpon>PantallaAdministrarDentistas.cs</DependentUpon>
     </Compile>
     <Compile Include="Recursos Humanos\RHumanosPagosEmpleado.cs">
@@ -441,16 +441,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Recepcion\PantallaAgregarDentista.cs">
+    <Compile Include="Recepcion\Dentista\PantallaAgregarDentista.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Recepcion\PantallaAgregarDentista.Designer.cs">
+    <Compile Include="Recepcion\Dentista\PantallaAgregarDentista.Designer.cs">
       <DependentUpon>PantallaAgregarDentista.cs</DependentUpon>
     </Compile>
-    <Compile Include="Recepcion\PantallaDentista.cs">
+    <Compile Include="Recepcion\Dentista\PantallaDentista.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Recepcion\PantallaDentista.Designer.cs">
+    <Compile Include="Recepcion\Dentista\PantallaDentista.Designer.cs">
       <DependentUpon>PantallaDentista.cs</DependentUpon>
     </Compile>
     <Compile Include="PantallaMenuPrincipal.cs">
@@ -471,10 +471,10 @@
     <Compile Include="Usuario\PantallaMenuUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Recepcion\PantallaModificarDentista.cs">
+    <Compile Include="Recepcion\Dentista\PantallaModificarDentista.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Recepcion\PantallaModificarDentista.Designer.cs">
+    <Compile Include="Recepcion\Dentista\PantallaModificarDentista.Designer.cs">
       <DependentUpon>PantallaModificarDentista.cs</DependentUpon>
     </Compile>
     <Compile Include="Recepcion\PantallaModificarPedido.cs">
@@ -688,7 +688,7 @@
     <EmbeddedResource Include="Laboratorio\PantallaPedidoFabricar.resx">
       <DependentUpon>PantallaPedidoFabricar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Recepcion\PantallaAdministrarDentistas.resx">
+    <EmbeddedResource Include="Recepcion\Dentista\PantallaAdministrarDentistas.resx">
       <DependentUpon>PantallaAdministrarDentistas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Recursos Humanos\RHumanosPagosEmpleado.resx">
@@ -790,10 +790,10 @@
     <EmbeddedResource Include="Configuracion\PantallaEliminarMaterial.resx">
       <DependentUpon>PantallaEliminarMaterial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Recepcion\PantallaAgregarDentista.resx">
+    <EmbeddedResource Include="Recepcion\Dentista\PantallaAgregarDentista.resx">
       <DependentUpon>PantallaAgregarDentista.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Recepcion\PantallaDentista.resx">
+    <EmbeddedResource Include="Recepcion\Dentista\PantallaDentista.resx">
       <DependentUpon>PantallaDentista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PantallaMenuPrincipal.resx">
@@ -828,7 +828,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Recepcion\PantallaModificarDentista.resx">
+    <EmbeddedResource Include="Recepcion\Dentista\PantallaModificarDentista.resx">
       <DependentUpon>PantallaModificarDentista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Recepcion\PantallaModificarPedido.resx">
@@ -1040,6 +1040,7 @@
     <None Include="Resources\IconoFormaPedido.png" />
     <Content Include="La trijuerza de diamante barbuda.ico" />
     <None Include="Resources\IconoCrearReportes.png" />
+    <None Include="Resources\IconoDentistaEliminar.png" />
     <Content Include="Resources\IconoRecepcion.png" />
   </ItemGroup>
   <ItemGroup>

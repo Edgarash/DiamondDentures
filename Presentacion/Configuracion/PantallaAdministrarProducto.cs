@@ -134,34 +134,6 @@ namespace Presentacion.Configuracion
             }
         }
 
-        private void ActivarProducto()
-        {
-            Interface = new InterfaceUsuario(this);
-            if (Interface.ActivarProducto(Convert.ToInt32(dgvProductos[0, dgvProductos.SelectedCells[0].RowIndex].Value)))
-            {
-                MessageBox.Show("Producto activado con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LlenarData(Búsqueda.Total);
-            }
-            else
-            {
-                Validar.MensajeErrorBaseDeDatos();
-            }
-        }
-
-        private void dgvProductos_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                dgvProductos.CurrentCell = dgvProductos[e.ColumnIndex, e.RowIndex];
-                Point Puntero = dgvProductos.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Location;
-                Puntero.X += e.X;
-                Puntero.Y += e.Y;
-                new ContextMenu((new MenuItem[] { new MenuItem("Activar", new EventHandler(delegate(object sender2, EventArgs e2) { ActivarProducto(); })),
-                                                  new MenuItem("Modificar", btnModificarProducto_Click),
-                                                  new MenuItem("Eliminar", btnEliminarProducto_Click)})).Show(dgvProductos, Puntero);
-            }
-        }
-
         private void btnModificarProducto_Click(object sender, EventArgs e)
         {
             if (!Validar.ValidarUnaPantalla(typeof(PantallaModificarProducto)))

@@ -40,6 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnGenerarOrden = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnAdministrarDentistas = new ControlesM.KuroButton();
+            this.btnSemaforo = new ControlesM.KuroButton();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +50,7 @@
             // 
             this.Encabezado.Controls.Add(this.lblPantallaUsuario);
             this.Encabezado.Controls.Add(this.pbIcono);
-            this.Encabezado.Size = new System.Drawing.Size(360, 93);
+            this.Encabezado.Size = new System.Drawing.Size(517, 93);
             // 
             // pbIcono
             // 
@@ -198,7 +200,7 @@
             this.btnGenerarOrden.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnGenerarOrden.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnGenerarOrden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGenerarOrden.Location = new System.Drawing.Point(135, 420);
+            this.btnGenerarOrden.Location = new System.Drawing.Point(218, 430);
             this.btnGenerarOrden.Name = "btnGenerarOrden";
             this.btnGenerarOrden.Size = new System.Drawing.Size(90, 90);
             this.btnGenerarOrden.TabIndex = 41;
@@ -212,17 +214,48 @@
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label3.Location = new System.Drawing.Point(127, 515);
+            this.label3.Location = new System.Drawing.Point(210, 525);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 51);
             this.label3.TabIndex = 42;
             this.label3.Text = "Generar\r\nOrden De\r\nConfirmación";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnAdministrarDentistas
+            // 
+            this.btnAdministrarDentistas.BackColor = System.Drawing.Color.White;
+            this.btnAdministrarDentistas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnAdministrarDentistas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnAdministrarDentistas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdministrarDentistas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnAdministrarDentistas.ForeColor = System.Drawing.Color.Black;
+            this.btnAdministrarDentistas.Location = new System.Drawing.Point(366, 285);
+            this.btnAdministrarDentistas.Name = "btnAdministrarDentistas";
+            this.btnAdministrarDentistas.Size = new System.Drawing.Size(120, 50);
+            this.btnAdministrarDentistas.TabIndex = 44;
+            this.btnAdministrarDentistas.Text = "Administrar Dentistas";
+            this.btnAdministrarDentistas.UseVisualStyleBackColor = false;
+            this.btnAdministrarDentistas.Click += new System.EventHandler(this.btnAdministrarDentistas_Click);
+            // 
+            // btnSemaforo
+            // 
+            this.btnSemaforo.BackColor = System.Drawing.Color.White;
+            this.btnSemaforo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnSemaforo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnSemaforo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSemaforo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnSemaforo.ForeColor = System.Drawing.Color.Black;
+            this.btnSemaforo.Location = new System.Drawing.Point(366, 134);
+            this.btnSemaforo.Name = "btnSemaforo";
+            this.btnSemaforo.Size = new System.Drawing.Size(120, 50);
+            this.btnSemaforo.TabIndex = 44;
+            this.btnSemaforo.Text = "Semáforo";
+            this.btnSemaforo.UseVisualStyleBackColor = false;
+            // 
             // PantallaRecepcion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(360, 583);
+            this.ClientSize = new System.Drawing.Size(517, 592);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblRegistrarPedido);
@@ -233,8 +266,12 @@
             this.Controls.Add(this.btnModificarPedido);
             this.Controls.Add(this.btnGenerarOrden);
             this.Controls.Add(this.btnAgregarPedido);
+            this.Controls.Add(this.btnSemaforo);
+            this.Controls.Add(this.btnAdministrarDentistas);
             this.Name = "PantallaRecepcion";
             this.Text = "Recepcion";
+            this.Controls.SetChildIndex(this.btnAdministrarDentistas, 0);
+            this.Controls.SetChildIndex(this.btnSemaforo, 0);
             this.Controls.SetChildIndex(this.btnAgregarPedido, 0);
             this.Controls.SetChildIndex(this.btnGenerarOrden, 0);
             this.Controls.SetChildIndex(this.btnModificarPedido, 0);
@@ -268,5 +305,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnGenerarOrden;
         private System.Windows.Forms.Label label3;
+        private ControlesM.KuroButton btnAdministrarDentistas;
+        private ControlesM.KuroButton btnSemaforo;
     }
 }

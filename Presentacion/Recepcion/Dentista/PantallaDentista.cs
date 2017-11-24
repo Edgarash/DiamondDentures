@@ -200,7 +200,7 @@ namespace Presentacion.Recepcion
                                 cbCiudad.Items.Add(temp[2]);
                             }
                 }
-                cbCiudad.SelectedIndex = 0;
+                cbCiudad.SelectedIndex = -1;
             }
         }
     }

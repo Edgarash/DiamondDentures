@@ -130,12 +130,6 @@ namespace Control
             return temp;
         }
 
-        public bool ActivarMaterial(int clave)
-        {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ActivarMaterial(clave);
-        }
-
         public static bool ActualizarMaterial(RegistroMaterial Material)
         {
             return InterfaceMySQL.ActualizarMaterial(Material);

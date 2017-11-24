@@ -32,6 +32,11 @@ namespace Presentacion
             Nueva.Show();
         }
 
+        public static bool ObtenerDentistas(out RegistroDentista[] Dentistas)
+        {
+            return ManejadorRegistroDentista.ObtenerDentistas(out Dentistas);
+        }
+
         public bool ObtenerUnDentista(string Cedula, out RegistroDentista Dentista)
         {
             return ManejadorRegistroDentista.ObtenerUnDentista(Cedula, out Dentista);
@@ -57,8 +62,7 @@ namespace Presentacion
 
         public bool ActualizarDentista(RegistroDentista Dentista)
         {
-            Manejador = new ManejadorRegistroDentista();
-            return (Manejador as ManejadorRegistroDentista).ActualizarDentista(Dentista);
+            return ManejadorRegistroDentista.ActualizarDentista(Dentista);
         }
 
         public bool RegistrarPedido(RegistroPedido Pedido)
@@ -103,16 +107,30 @@ namespace Presentacion
             return (Manejador as ManejadorRegistroMaterial).ObtenerMateriales3();
         }
 
+        internal void DesplegarPantallaAgregarDentista(Regresar Accion)
+        {
+            PantallaAgregarDentista temp = new PantallaAgregarDentista();
+            temp.Cerrar += Accion;
+            new ManejadorRegistroDentista().DesplegarPantalla(temp);
+        }
+
         internal RegistroInsumos[] ObtenerInsumos3()
         {
             Manejador = new ManejadorRegistroInsumos();
             return (Manejador as ManejadorRegistroInsumos).ObtenerInsumos3();
         }
 
-        internal RegistroMaterial[] ObtenerUnMaterial(string Nombre)
+        public RegistroMaterial[] ObtenerUnMaterial(string Nombre)
         {
             Manejador = new ManejadorRegistroMaterial();
             return (Manejador as ManejadorRegistroMaterial).ObtenerUnMaterial(Nombre);
+        }
+
+        public void DesplegarPantallaModificarDentista(RegistroDentista Dentista, Regresar Accion)
+        {
+            PantallaModificarDentista temp = new PantallaModificarDentista(Dentista);
+            temp.Cerrar += Accion;
+            new ManejadorRegistroDentista().DesplegarPantalla(temp);
         }
 
         internal RegistroMaterial[] ObtenerUnMaterial2(String Nombre)
@@ -127,6 +145,10 @@ namespace Presentacion
             return (Manejador as ManejadorRegistroMaterial).ObtenerMateriales2();
         }
 
+        public static bool EliminarDentista(string Cedula)
+        {
+            return ManejadorRegistroDentista.EliminarDentista(Cedula);
+        }
 
         internal HistorialMod[] SeleccHistorial()
         {
@@ -259,12 +281,6 @@ namespace Presentacion
         public static bool ActualizarMaterial(RegistroMaterial Material)
         {
             return ManejadorRegistroMaterial.ActualizarMaterial(Material);
-        }
-
-        public bool ActivarMaterial(int Clave)
-        {
-            Manejador = new ManejadorRegistroMaterial();
-            return (Manejador as ManejadorRegistroMaterial).ActivarMaterial(Clave);
         }
 
         public void DesplegarPantallaModificarMaterial(RegistroMaterial Material, Regresar Acción)
@@ -583,12 +599,6 @@ namespace Presentacion
             return ManejadorRegistroProducto.RegistrarProducto(Registro);
         }
 
-        public bool ActivarProducto(int Clave)
-        {
-            Manejador = new ManejadorRegistroProducto();
-            return (Manejador as ManejadorRegistroProducto).ActivarProducto(Clave);
-        }
-
         public bool ActualizarProducto(RegistroProducto Producto)
         {
             Manejador = new ManejadorRegistroProducto();
@@ -604,12 +614,6 @@ namespace Presentacion
         public static bool ObtenerProductos(out RegistroProducto[] Productos)
         {
             return ManejadorConfiguracion.ObtenerProductos(out Productos);
-        }
-
-        public RegistroProducto[] BuscarUnProducto(RegistroProducto Registro)
-        {
-            Manejador = new ManejadorConfiguracion();
-            return ((ManejadorConfiguracion)Manejador).BuscarUnProducto(Registro);
         }
 
         public static bool ObtenerUnProducto(int IDProducto, out RegistroProducto Producto)
