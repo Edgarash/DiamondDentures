@@ -273,9 +273,6 @@
     <Compile Include="MenuModulosYazah.Designer.cs">
       <DependentUpon>MenuModulosYazah.cs</DependentUpon>
     </Compile>
-    <Compile Include="Recepcion\Trabajo.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Recursos Humanos\RHumanosAsistencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -388,9 +385,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\PantallaVPMateriales.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes\PantallaVPNotaPagos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\PantallaVPNotaProv.cs">
@@ -753,9 +747,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaVPMateriales.resx">
       <DependentUpon>PantallaVPMateriales.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\PantallaVPNotaPagos.resx">
-      <DependentUpon>PantallaVPNotaPagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PantallaVPNotaProv.resx">
       <DependentUpon>PantallaVPNotaProv.cs</DependentUpon>
@@ -1255,9 +1246,6 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
