@@ -100,8 +100,6 @@
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Pagar});
             this.dataGridView2.Location = new System.Drawing.Point(12, 133);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.dataGridView2.Name = "dataGridView2";

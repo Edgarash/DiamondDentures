@@ -72,6 +72,12 @@ namespace ConexionBaseDeDatos
             temp.DataSource = TablaDeResultados;
             return OperacionRealizada2;
         }
+        public static bool ActualizarEDOPagado(CompraMaterial Material)
+        {
+            EjecutarProcedimientoAlmacenado("ActualizarEstadoPagado", TipoConsulta.DevuelveInt, Parametro("idc", Material.IDCompra), Parametro("idp", Material.IDProveedor));
+            return OperacionRealizada;
+        }
+
         public static bool FinanzasBuscarAdminPagos(DataGridView temp, string idp, string nomb)
         {
             EjecutarProcedimientoAlmacenado("FinanzasBuscarAdminPagos", TipoConsulta.DevuelveReader,
