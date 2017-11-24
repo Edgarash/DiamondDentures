@@ -53,7 +53,7 @@ namespace Presentacion.Recepcion
         {
             if (!string.IsNullOrWhiteSpace(tbCedula.Text))
             {
-                RegistroDentista temp = Interface.ObtenerUnDentista(tbCedula.Text);
+                RegistroDentista temp= null;// = Interface.ObtenerUnDentista(tbCedula.Text);
                 if (temp == null)
                 {
                     if (DialogResult.Yes == MessageBox.Show("Dentista no registrado\n\n¿Desea registrarlo?", "AVISO", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1))
@@ -99,7 +99,7 @@ namespace Presentacion.Recepcion
             }
             else
             {
-                PantallaModificarDentista Pant = new PantallaModificarDentista(Interface.ObtenerUnDentista(tbCedula.Text));
+                PantallaModificarDentista Pant = null;// new PantallaModificarDentista(Interface.ObtenerUnDentista(tbCedula.Text));
                 Pant.ShowDialog();
                 if (Pant.AceptarCambios)
                 {

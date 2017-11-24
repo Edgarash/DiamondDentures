@@ -598,6 +598,29 @@ namespace ConexionBaseDeDatos
             return OperacionRealizada;
         }
 
+        public static bool RegistrarDentista(RegistroDentista Dentista)
+        {
+            EjecutarProcedimientoAlmacenado("RegistrarDentista", TipoConsulta.DevuelveInt,
+                Parametro("Cedul", Dentista.Cedula),
+                Parametro("RF", Dentista.RFC),
+                Parametro("Nombr", Dentista.Nombre),
+                Parametro("Apellido", Dentista.Apellidos),
+                Parametro("Direccio", Dentista.Direccion),
+                Parametro("Coloni", Dentista.Colonia),
+                Parametro("Ciuda", Dentista.Ciudad),
+                Parametro("Municipi", Dentista.Municipio),
+                Parametro("Estad", Dentista.Estado),
+                Parametro("Pai", Dentista.Pais),
+                Parametro("CodPo", Dentista.CodPos),
+                Parametro("TelOficin", Dentista.TelOficina),
+                Parametro("Emai", Dentista.Email),
+                Parametro("Activ", Dentista.Activo),
+                Parametro("Consultori", Dentista.Consultorio),
+                Parametro("FechaAlt", ObtenerFechaHora(Dentista.FechaAlta))
+                );
+            return OperacionRealizada;
+        }
+
         #endregion
 
         #region Auxiliares

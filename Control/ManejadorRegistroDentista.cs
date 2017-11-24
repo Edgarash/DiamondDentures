@@ -12,15 +12,12 @@ namespace Control
     {
         public bool RegistrarDentista(RegistroDentista Dentista)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.RegistrarDentista(Dentista);
+            return InterfaceMySQL.RegistrarDentista(Dentista);
         }
 
-        public RegistroDentista ObtenerUnDentista(string Cedula)
+        public static bool ObtenerUnDentista(string Cedula, out RegistroDentista Dentista)
         {
-            RegistroDentista Dentista;
-            InterfaceMySQL.RecuperarDentista(Cedula, out Dentista);
-            return Dentista;
+            return InterfaceMySQL.RecuperarDentista(Cedula, out Dentista);
         }
 
         public bool ActualizarDentista(RegistroDentista Dentista)

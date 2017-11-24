@@ -39,7 +39,7 @@
             this.lblAceptar = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.lblCodigoPostal = new System.Windows.Forms.Label();
-            this.lblNumFrente = new System.Windows.Forms.Label();
+            this.lblConsultorio = new System.Windows.Forms.Label();
             this.lblCalle = new System.Windows.Forms.Label();
             this.lblColonia = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
@@ -60,7 +60,7 @@
             this.cbCiudad = new System.Windows.Forms.ComboBox();
             this.tbColonia = new System.Windows.Forms.TextBox();
             this.tbCalle = new System.Windows.Forms.TextBox();
-            this.tbNumFrente = new System.Windows.Forms.TextBox();
+            this.tbConsultorio = new System.Windows.Forms.TextBox();
             this.tbCP = new System.Windows.Forms.MaskedTextBox();
             this.cbEmail = new System.Windows.Forms.ComboBox();
             this.tbEmail = new System.Windows.Forms.TextBox();
@@ -196,15 +196,15 @@
             this.lblCodigoPostal.TabIndex = 168;
             this.lblCodigoPostal.Text = "* C. P.:";
             // 
-            // lblNumFrente
+            // lblConsultorio
             // 
-            this.lblNumFrente.AutoSize = true;
-            this.lblNumFrente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumFrente.Location = new System.Drawing.Point(16, 300);
-            this.lblNumFrente.Name = "lblNumFrente";
-            this.lblNumFrente.Size = new System.Drawing.Size(115, 17);
-            this.lblNumFrente.TabIndex = 165;
-            this.lblNumFrente.Text = "Número exterior:";
+            this.lblConsultorio.AutoSize = true;
+            this.lblConsultorio.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConsultorio.Location = new System.Drawing.Point(16, 300);
+            this.lblConsultorio.Name = "lblConsultorio";
+            this.lblConsultorio.Size = new System.Drawing.Size(96, 17);
+            this.lblConsultorio.TabIndex = 165;
+            this.lblConsultorio.Text = "* Consultorio:";
             // 
             // lblCalle
             // 
@@ -232,9 +232,9 @@
             this.lblEstado.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstado.Location = new System.Drawing.Point(194, 202);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(56, 17);
+            this.lblEstado.Size = new System.Drawing.Size(66, 17);
             this.lblEstado.TabIndex = 174;
-            this.lblEstado.Text = "Estado:";
+            this.lblEstado.Text = "* Estado:";
             // 
             // lblMunicipio
             // 
@@ -242,9 +242,9 @@
             this.lblMunicipio.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMunicipio.Location = new System.Drawing.Point(378, 202);
             this.lblMunicipio.Name = "lblMunicipio";
-            this.lblMunicipio.Size = new System.Drawing.Size(74, 17);
+            this.lblMunicipio.Size = new System.Drawing.Size(84, 17);
             this.lblMunicipio.TabIndex = 175;
-            this.lblMunicipio.Text = "Municipio:";
+            this.lblMunicipio.Text = "* Municipio:";
             // 
             // lblCiudad
             // 
@@ -252,9 +252,9 @@
             this.lblCiudad.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCiudad.Location = new System.Drawing.Point(18, 251);
             this.lblCiudad.Name = "lblCiudad";
-            this.lblCiudad.Size = new System.Drawing.Size(61, 17);
+            this.lblCiudad.Size = new System.Drawing.Size(71, 17);
             this.lblCiudad.TabIndex = 176;
-            this.lblCiudad.Text = "Ciudad:";
+            this.lblCiudad.Text = "* Ciudad:";
             // 
             // lblPais
             // 
@@ -262,9 +262,9 @@
             this.lblPais.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPais.Location = new System.Drawing.Point(16, 202);
             this.lblPais.Name = "lblPais";
-            this.lblPais.Size = new System.Drawing.Size(37, 17);
+            this.lblPais.Size = new System.Drawing.Size(47, 17);
             this.lblPais.TabIndex = 173;
-            this.lblPais.Text = "País:";
+            this.lblPais.Text = "* País:";
             // 
             // lblArroba
             // 
@@ -364,203 +364,203 @@
             // 
             this.cbPais.FormattingEnabled = true;
             this.cbPais.Items.AddRange(new object[] {
-            "Afganistán",
-            "Albania",
-            "Alemania",
-            "Andorra",
-            "Angola",
-            "Antigua y Barbuda",
-            "Arabia Saudita",
-            "Argelia",
-            "Argentina",
-            "Armenia",
-            "Australia",
-            "Austria",
-            "Azerbaiyán",
-            "Bahamas",
-            "Bangladés",
-            "Barbados",
-            "Baréin",
-            "Bélgica",
-            "Belice",
-            "Benín",
-            "Bielorrusia",
-            "Birmania",
-            "Bolivia",
-            "Bosnia-Herzegovina",
-            "Botsuana",
-            "Brasil",
-            "Brunéi",
-            "Bulgaria",
-            "Burkina Faso",
-            "Burundi",
-            "Bután",
-            "Cabo Verde",
-            "Camboya",
-            "Camerún",
-            "Canadá",
-            "Catar",
-            "Chad",
-            "Chile",
-            "China",
-            "Chipre",
-            "Colombia",
-            "Comoras",
-            "Congo",
-            "Corea del Norte",
-            "Corea del Sur",
-            "Costa de Marfil",
-            "Costa Rica",
-            "Croacia",
-            "Cuba",
-            "Dinamarca",
-            "Dominica",
-            "Ecuador",
-            "Egipto",
-            "El Salvador",
-            "Emiratos Árabes Unidos",
-            "Eritrea",
-            "Eslovaquia",
-            "Eslovenia",
-            "España",
-            "Estados Unidos",
-            "Estonia",
-            "Etiopía",
-            "Filipinas",
-            "Finlandia",
-            "Fiyi",
-            "Francia",
-            "Gabón",
-            "Gambia",
-            "Georgia",
-            "Ghana",
-            "Granada",
-            "Grecia",
-            "Guatemala",
-            "Guinea",
-            "Guinea Ecuatorial",
-            "Guinea-Bisáu",
-            "Guyana",
-            "Haití",
-            "Honduras",
-            "Hungría",
-            "India",
-            "Indonesia",
-            "Irak",
-            "Irán",
-            "Irlanda",
-            "Islandia",
-            "Islas Marshall",
-            "Islas Salomón",
-            "Israel",
-            "Italia",
-            "Jamaica",
-            "Japón",
-            "Jordania",
-            "Kazajistán",
-            "Kenia",
-            "Kirguistán",
-            "Kiribati",
-            "Kosovo",
-            "Kuwait",
-            "Laos",
-            "Lesoto",
-            "Letonia",
-            "Líbano",
-            "Liberia",
-            "Libia",
-            "Liechtenstein",
-            "Lituania",
-            "Luxemburgo",
-            "Macedonia",
-            "Madagascar",
-            "Malasia",
-            "Malaui",
-            "Maldivas",
-            "Malí",
-            "Malta",
-            "Marruecos",
-            "Mauricio",
-            "Mauritania",
-            "México",
-            "Micronesia",
-            "Moldavia",
-            "Mónaco",
-            "Mongolia",
-            "Montenegro",
-            "Mozambique",
-            "Namibia",
-            "Nauru",
-            "Nepal",
-            "Nicaragua",
-            "Níger",
-            "Nigeria",
-            "Noruega",
-            "Nueva Zelanda",
-            "Omán",
-            "Países Bajos",
-            "Pakistán",
-            "Palaos",
-            "Palestina",
-            "Panamá",
-            "Papúa Nueva Guinea",
-            "Paraguay",
-            "Perú",
-            "Polonia",
-            "Portugal",
-            "Reino Unido",
-            "República Centroafricana",
-            "República Checa",
-            "República Democrática del Congo",
-            "República Dominicana",
-            "Ruanda",
-            "Rumania",
-            "Rusia",
-            "Samoa",
-            "San Cristóbal y Nieves",
-            "San Marino",
-            "San Vicente y las Granadinas",
-            "Santa Lucía",
-            "Santo Tomé y Príncipe",
-            "Senegal",
-            "Serbia",
-            "Seychelles",
-            "Sierra Leona",
-            "Singapur",
-            "Siria",
-            "Somalia",
-            "Sri Lanka",
-            "Suazilandia",
-            "Sudáfrica",
-            "Sudán",
-            "Sudán del Sur",
-            "Suecia",
-            "Suiza",
-            "Surinam",
-            "Tailandia",
-            "Taiwán",
-            "Tanzania",
-            "Tayikistán",
-            "Timor Oriental",
-            "Togo",
-            "Tonga",
-            "Trinidad y Tobago",
-            "Túnez",
-            "Turkmenistán",
-            "Turquía",
-            "Tuvalu",
-            "Ucrania",
-            "Uganda",
-            "Uruguay",
-            "Uzbekistán",
-            "Vanuatu",
-            "Vaticano",
-            "Venezuela",
-            "Vietnam",
-            "Yemen",
-            "Yibuti",
-            "Zambia",
-            "Zimbabue"});
+            "AFGANISTÁN",
+            "ALBANIA",
+            "ALEMANIA",
+            "ANDORRA",
+            "ANGOLA",
+            "ANTIGUA Y BARBUDA",
+            "ARABIA SAUDITA",
+            "ARGELIA",
+            "ARGENTINA",
+            "ARMENIA",
+            "AUSTRALIA",
+            "AUSTRIA",
+            "AZERBAIYÁN",
+            "BAHAMAS",
+            "BANGLADÉS",
+            "BARBADOS",
+            "BARÉIN",
+            "BÉLGICA",
+            "BELICE",
+            "BENÍN",
+            "BIELORRUSIA",
+            "BIRMANIA",
+            "BOLIVIA",
+            "BOSNIA-HERZEGOVINA",
+            "BOTSUANA",
+            "BRASIL",
+            "BRUNÉI",
+            "BULGARIA",
+            "BURKINA FASO",
+            "BURUNDI",
+            "BUTÁN",
+            "CABO VERDE",
+            "CAMBOYA",
+            "CAMERÚN",
+            "CANADÁ",
+            "CATAR",
+            "CHAD",
+            "CHILE",
+            "CHINA",
+            "CHIPRE",
+            "COLOMBIA",
+            "COMORAS",
+            "CONGO",
+            "COREA DEL NORTE",
+            "COREA DEL SUR",
+            "COSTA DE MARFIL",
+            "COSTA RICA",
+            "CROACIA",
+            "CUBA",
+            "DINAMARCA",
+            "DOMINICA",
+            "ECUADOR",
+            "EGIPTO",
+            "EL SALVADOR",
+            "EMIRATOS ÁRABES UNIDOS",
+            "ERITREA",
+            "ESLOVAQUIA",
+            "ESLOVENIA",
+            "ESPAÑA",
+            "ESTADOS UNIDOS",
+            "ESTONIA",
+            "ETIOPÍA",
+            "FILIPINAS",
+            "FINLANDIA",
+            "FIYI",
+            "FRANCIA",
+            "GABÓN",
+            "GAMBIA",
+            "GEORGIA",
+            "GHANA",
+            "GRANADA",
+            "GRECIA",
+            "GUATEMALA",
+            "GUINEA",
+            "GUINEA ECUATORIAL",
+            "GUINEA-BISÁU",
+            "GUYANA",
+            "HAITÍ",
+            "HONDURAS",
+            "HUNGRÍA",
+            "INDIA",
+            "INDONESIA",
+            "IRAK",
+            "IRÁN",
+            "IRLANDA",
+            "ISLANDIA",
+            "ISLAS MARSHALL",
+            "ISLAS SALOMÓN",
+            "ISRAEL",
+            "ITALIA",
+            "JAMAICA",
+            "JAPÓN",
+            "JORDANIA",
+            "KAZAJISTÁN",
+            "KENIA",
+            "KIRGUISTÁN",
+            "KIRIBATI",
+            "KOSOVO",
+            "KUWAIT",
+            "LAOS",
+            "LESOTO",
+            "LETONIA",
+            "LÍBANO",
+            "LIBERIA",
+            "LIBIA",
+            "LIECHTENSTEIN",
+            "LITUANIA",
+            "LUXEMBURGO",
+            "MACEDONIA",
+            "MADAGASCAR",
+            "MALASIA",
+            "MALAUI",
+            "MALDIVAS",
+            "MALÍ",
+            "MALTA",
+            "MARRUECOS",
+            "MAURICIO",
+            "MAURITANIA",
+            "MÉXICO",
+            "MICRONESIA",
+            "MOLDAVIA",
+            "MÓNACO",
+            "MONGOLIA",
+            "MONTENEGRO",
+            "MOZAMBIQUE",
+            "NAMIBIA",
+            "NAURU",
+            "NEPAL",
+            "NICARAGUA",
+            "NÍGER",
+            "NIGERIA",
+            "NORUEGA",
+            "NUEVA ZELANDA",
+            "OMÁN",
+            "PAÍSES BAJOS",
+            "PAKISTÁN",
+            "PALAOS",
+            "PALESTINA",
+            "PANAMÁ",
+            "PAPÚA NUEVA GUINEA",
+            "PARAGUAY",
+            "PERÚ",
+            "POLONIA",
+            "PORTUGAL",
+            "REINO UNIDO",
+            "REPÚBLICA CENTROAFRICANA",
+            "REPÚBLICA CHECA",
+            "REPÚBLICA DEMOCRÁTICA DEL CONGO",
+            "REPÚBLICA DOMINICANA",
+            "RUANDA",
+            "RUMANIA",
+            "RUSIA",
+            "SAMOA",
+            "SAN CRISTÓBAL Y NIEVES",
+            "SAN MARINO",
+            "SAN VICENTE Y LAS GRANADINAS",
+            "SANTA LUCÍA",
+            "SANTO TOMÉ Y PRÍNCIPE",
+            "SENEGAL",
+            "SERBIA",
+            "SEYCHELLES",
+            "SIERRA LEONA",
+            "SINGAPUR",
+            "SIRIA",
+            "SOMALIA",
+            "SRI LANKA",
+            "SUAZILANDIA",
+            "SUDÁFRICA",
+            "SUDÁN",
+            "SUDÁN DEL SUR",
+            "SUECIA",
+            "SUIZA",
+            "SURINAM",
+            "TAILANDIA",
+            "TAIWÁN",
+            "TANZANIA",
+            "TAYIKISTÁN",
+            "TIMOR ORIENTAL",
+            "TOGO",
+            "TONGA",
+            "TRINIDAD Y TOBAGO",
+            "TÚNEZ",
+            "TURKMENISTÁN",
+            "TURQUÍA",
+            "TUVALU",
+            "UCRANIA",
+            "UGANDA",
+            "URUGUAY",
+            "UZBEKISTÁN",
+            "VANUATU",
+            "VATICANO",
+            "VENEZUELA",
+            "VIETNAM",
+            "YEMEN",
+            "YIBUTI",
+            "ZAMBIA",
+            "ZIMBABUE"});
             this.cbPais.Location = new System.Drawing.Point(16, 222);
             this.cbPais.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.cbPais.MaxLength = 30;
@@ -576,7 +576,7 @@
             this.cbMunicipio.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.cbMunicipio.MaxLength = 50;
             this.cbMunicipio.Name = "cbMunicipio";
-            this.cbMunicipio.Size = new System.Drawing.Size(160, 24);
+            this.cbMunicipio.Size = new System.Drawing.Size(189, 24);
             this.cbMunicipio.TabIndex = 187;
             // 
             // cbCiudad
@@ -608,18 +608,18 @@
             this.tbCalle.MaxLength = 80;
             this.tbCalle.Name = "tbCalle";
             this.tbCalle.ShortcutsEnabled = false;
-            this.tbCalle.Size = new System.Drawing.Size(167, 21);
+            this.tbCalle.Size = new System.Drawing.Size(189, 21);
             this.tbCalle.TabIndex = 190;
             // 
-            // tbNumFrente
+            // tbConsultorio
             // 
-            this.tbNumFrente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbNumFrente.Location = new System.Drawing.Point(16, 321);
-            this.tbNumFrente.MaxLength = 6;
-            this.tbNumFrente.Name = "tbNumFrente";
-            this.tbNumFrente.ShortcutsEnabled = false;
-            this.tbNumFrente.Size = new System.Drawing.Size(133, 21);
-            this.tbNumFrente.TabIndex = 191;
+            this.tbConsultorio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbConsultorio.Location = new System.Drawing.Point(16, 321);
+            this.tbConsultorio.MaxLength = 6;
+            this.tbConsultorio.Name = "tbConsultorio";
+            this.tbConsultorio.ShortcutsEnabled = false;
+            this.tbConsultorio.Size = new System.Drawing.Size(133, 21);
+            this.tbConsultorio.TabIndex = 191;
             // 
             // tbCP
             // 
@@ -636,12 +636,12 @@
             this.cbEmail.ContextMenu = this.cbPais.ContextMenu;
             this.cbEmail.FormattingEnabled = true;
             this.cbEmail.Items.AddRange(new object[] {
-            "gmail.com",
-            "hotmail.com",
-            "yahoo.com",
-            "outlook.com",
-            "live.com",
-            "prodigy.com"});
+            "GMAIL.COM",
+            "HOTMAIL.COM",
+            "YAHOO.COM",
+            "OUTLOOK.COM",
+            "LIVE.COM",
+            "PRODIGY.COM"});
             this.cbEmail.Location = new System.Drawing.Point(206, 366);
             this.cbEmail.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.cbEmail.MaxLength = 20;
@@ -666,7 +666,7 @@
             this.ClientSize = new System.Drawing.Size(595, 465);
             this.Controls.Add(this.cbEmail);
             this.Controls.Add(this.tbEmail);
-            this.Controls.Add(this.tbNumFrente);
+            this.Controls.Add(this.tbConsultorio);
             this.Controls.Add(this.tbCP);
             this.Controls.Add(this.cbCiudad);
             this.Controls.Add(this.tbColonia);
@@ -681,7 +681,7 @@
             this.Controls.Add(this.lblArroba);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblCodigoPostal);
-            this.Controls.Add(this.lblNumFrente);
+            this.Controls.Add(this.lblConsultorio);
             this.Controls.Add(this.lblCancelar);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblAceptar);
@@ -717,7 +717,7 @@
             this.Controls.SetChildIndex(this.lblAceptar, 0);
             this.Controls.SetChildIndex(this.btnCerrar, 0);
             this.Controls.SetChildIndex(this.lblCancelar, 0);
-            this.Controls.SetChildIndex(this.lblNumFrente, 0);
+            this.Controls.SetChildIndex(this.lblConsultorio, 0);
             this.Controls.SetChildIndex(this.lblCodigoPostal, 0);
             this.Controls.SetChildIndex(this.lblEmail, 0);
             this.Controls.SetChildIndex(this.lblArroba, 0);
@@ -732,7 +732,7 @@
             this.Controls.SetChildIndex(this.tbColonia, 0);
             this.Controls.SetChildIndex(this.cbCiudad, 0);
             this.Controls.SetChildIndex(this.tbCP, 0);
-            this.Controls.SetChildIndex(this.tbNumFrente, 0);
+            this.Controls.SetChildIndex(this.tbConsultorio, 0);
             this.Controls.SetChildIndex(this.tbEmail, 0);
             this.Controls.SetChildIndex(this.cbEmail, 0);
             this.Encabezado.ResumeLayout(false);
@@ -756,7 +756,7 @@
         protected System.Windows.Forms.Label lblAceptar;
         protected System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Label lblCodigoPostal;
-        private System.Windows.Forms.Label lblNumFrente;
+        private System.Windows.Forms.Label lblConsultorio;
         private System.Windows.Forms.Label lblCalle;
         private System.Windows.Forms.Label lblColonia;
         private System.Windows.Forms.Label lblEstado;
@@ -777,7 +777,7 @@
         protected System.Windows.Forms.ComboBox cbCiudad;
         protected System.Windows.Forms.TextBox tbColonia;
         protected System.Windows.Forms.TextBox tbCalle;
-        protected System.Windows.Forms.TextBox tbNumFrente;
+        protected System.Windows.Forms.TextBox tbConsultorio;
         protected System.Windows.Forms.MaskedTextBox tbCP;
         protected System.Windows.Forms.ComboBox cbEmail;
         protected System.Windows.Forms.TextBox tbEmail;

@@ -32,23 +32,23 @@ namespace Presentacion.Recepcion
             if (!FaltanCampos)
             {
                 Interface = new InterfaceUsuario(this);
-                RegistroDentista t = ObtenerRegistroDentista, Encontrado = Interface.ObtenerUnDentista(tbCedula.Text);
-                if (Interface.RegistrarDentista(t) && Encontrado?.Cedula != tbCedula.Text)
+                RegistroDentista temp;
+                if (!Interface.ObtenerUnDentista(tbCedula.Text, out temp))
                 {
-                    MessageBox.Show("Dentista registrado correctamente", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    AceptarCambios = true;
-                    Close();
-                }
-                else
-                {
-                    if (tbCedula.Text == Encontrado?.Cedula)
+                    if (Interface.RegistrarDentista(ObtenerRegistroDentista))
                     {
-                        Validar.MensajeErrorOK("Cedula registrada anteriormente, favor de cambiarla");
+                        MessageBox.Show("Dentista registrado correctamente", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AceptarCambios = true;
+                        Close();
                     }
                     else
                     {
                         Validar.MensajeErrorBaseDeDatos();
                     }
+                }
+                else
+                {
+                    Validar.MensajeErrorOK("Cédula registrada anteriormente con el nombre\n\n" + temp.NombreCompleto);
                 }
             }
         }

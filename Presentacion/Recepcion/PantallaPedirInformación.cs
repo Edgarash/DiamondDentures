@@ -175,7 +175,7 @@ namespace Presentacion.Recepcion
             Cancelado = Cerrado;
             RegistroDentista temp = null;
             if (!Cerrado)
-                temp = Interface.ObtenerUnDentista(tbNumEmpleado.Text);
+                Interface.ObtenerUnDentista(tbNumEmpleado.Text, out temp);
             return temp;
         }
 

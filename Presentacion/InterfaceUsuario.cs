@@ -32,10 +32,9 @@ namespace Presentacion
             Nueva.Show();
         }
 
-        public RegistroDentista ObtenerUnDentista(string Cedula)
+        public bool ObtenerUnDentista(string Cedula, out RegistroDentista Dentista)
         {
-            Manejador = new ManejadorRegistroDentista();
-            return (Manejador as ManejadorRegistroDentista).ObtenerUnDentista(Cedula);
+            return ManejadorRegistroDentista.ObtenerUnDentista(Cedula, out Dentista);
         }
 
         public bool RegistrarDentista(RegistroDentista Dentista)
