@@ -98,16 +98,6 @@ namespace Presentacion.Configuracion
             LlenarData(Búsqueda.Total);
         }
 
-        private void ActivarMaterial()
-        {
-            Interface = new InterfaceUsuario(this);
-            if (Interface.ActivarMaterial(Convert.ToInt32(dgvMateriales[0, dgvMateriales.CurrentRow.Index].Value)))
-                MessageBox.Show("Material activado con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else
-                Validar.MensajeErrorBaseDeDatos();
-            LlenarData(Búsqueda.Total);
-        }
-
         private void btnAgregarMaterial_Click(object sender, EventArgs e)
         {
             if (!Validar.ValidarUnaPantalla(typeof(PantallaAgregarMaterial)))
@@ -124,20 +114,6 @@ namespace Presentacion.Configuracion
                 Interface = new InterfaceUsuario(this);
                 RegistroMaterial Producto = Interface.ObtenerUnMaterial(Convert.ToInt32(dgvMateriales[0, dgvMateriales.CurrentRow.Index].Value));
                 Interface.DesplegarPantallaModificarMaterial(Producto, LlenarData);
-            }
-        }
-
-        private void dgvMateriales_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                dgvMateriales.CurrentCell = dgvMateriales[e.ColumnIndex, e.RowIndex];
-                Point Puntero = dgvMateriales.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Location;
-                Puntero.X += e.X;
-                Puntero.Y += e.Y;
-                new ContextMenu((new MenuItem[] { new MenuItem("Activar", new EventHandler(delegate(object sender2, EventArgs e2) { ActivarMaterial(); })),
-                                                  new MenuItem("Modificar", btnModificarMaterial_Click),
-                                                  new MenuItem("Eliminar", btnEliminarMaterial_Click)})).Show(dgvMateriales, Puntero);
             }
         }
 

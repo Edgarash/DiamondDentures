@@ -81,9 +81,24 @@ namespace Presentacion.Recepcion
                         Interface.DesplegarPantallaModificarDentista(Dentista);
                     else
                     {
-                        MessageBox.Show("El número de dentista ingresado no existe", "AVISO", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        if (DialogResult.Yes == MessageBox.Show("El número de dentista ingresado no existe", "AVISO", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1))
+                        {
+                            btnAdministrarDentistas.PerformClick();
+                        }
                     }
                 }
+            }
+        }
+
+        private void btnAdministrarDentistas_Click(object sender, System.EventArgs e)
+        {
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaAdministrarDentistas)))
+            {
+                Interface = new InterfaceUsuario(this);
+                PantallaAdministrarDentistas temp = new PantallaAdministrarDentistas();
+                Hide();
+                temp.ShowDialog();
+                Show();
             }
         }
     }

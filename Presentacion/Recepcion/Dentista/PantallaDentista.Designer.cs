@@ -158,7 +158,7 @@
             this.btnCerrar.Location = new System.Drawing.Point(511, 374);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(62, 58);
-            this.btnCerrar.TabIndex = 159;
+            this.btnCerrar.TabIndex = 21;
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
@@ -183,7 +183,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(413, 374);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(62, 58);
-            this.btnAceptar.TabIndex = 157;
+            this.btnAceptar.TabIndex = 20;
             this.btnAceptar.UseVisualStyleBackColor = true;
             // 
             // lblCodigoPostal
@@ -314,7 +314,7 @@
             this.tbRFC.Name = "tbRFC";
             this.tbRFC.ShortcutsEnabled = false;
             this.tbRFC.Size = new System.Drawing.Size(321, 21);
-            this.tbRFC.TabIndex = 181;
+            this.tbRFC.TabIndex = 2;
             // 
             // tbTelefono
             // 
@@ -325,7 +325,7 @@
             this.tbTelefono.ShortcutsEnabled = false;
             this.tbTelefono.Size = new System.Drawing.Size(85, 21);
             this.tbTelefono.SkipLiterals = false;
-            this.tbTelefono.TabIndex = 184;
+            this.tbTelefono.TabIndex = 5;
             this.tbTelefono.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // tbNombreDentista
@@ -336,7 +336,7 @@
             this.tbNombreDentista.Name = "tbNombreDentista";
             this.tbNombreDentista.ShortcutsEnabled = false;
             this.tbNombreDentista.Size = new System.Drawing.Size(188, 21);
-            this.tbNombreDentista.TabIndex = 182;
+            this.tbNombreDentista.TabIndex = 3;
             // 
             // tbApellidos
             // 
@@ -347,7 +347,7 @@
             this.tbApellidos.Name = "tbApellidos";
             this.tbApellidos.ShortcutsEnabled = false;
             this.tbApellidos.Size = new System.Drawing.Size(204, 21);
-            this.tbApellidos.TabIndex = 183;
+            this.tbApellidos.TabIndex = 4;
             // 
             // cbEstado
             // 
@@ -358,7 +358,7 @@
             this.cbEstado.MaxLength = 30;
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(147, 24);
-            this.cbEstado.TabIndex = 186;
+            this.cbEstado.TabIndex = 7;
             // 
             // cbPais
             // 
@@ -566,7 +566,7 @@
             this.cbPais.MaxLength = 30;
             this.cbPais.Name = "cbPais";
             this.cbPais.Size = new System.Drawing.Size(152, 24);
-            this.cbPais.TabIndex = 185;
+            this.cbPais.TabIndex = 6;
             // 
             // cbMunicipio
             // 
@@ -577,7 +577,7 @@
             this.cbMunicipio.MaxLength = 50;
             this.cbMunicipio.Name = "cbMunicipio";
             this.cbMunicipio.Size = new System.Drawing.Size(189, 24);
-            this.cbMunicipio.TabIndex = 187;
+            this.cbMunicipio.TabIndex = 8;
             // 
             // cbCiudad
             // 
@@ -588,7 +588,7 @@
             this.cbCiudad.MaxLength = 30;
             this.cbCiudad.Name = "cbCiudad";
             this.cbCiudad.Size = new System.Drawing.Size(153, 24);
-            this.cbCiudad.TabIndex = 188;
+            this.cbCiudad.TabIndex = 9;
             // 
             // tbColonia
             // 
@@ -598,7 +598,7 @@
             this.tbColonia.Name = "tbColonia";
             this.tbColonia.ShortcutsEnabled = false;
             this.tbColonia.Size = new System.Drawing.Size(157, 21);
-            this.tbColonia.TabIndex = 189;
+            this.tbColonia.TabIndex = 10;
             // 
             // tbCalle
             // 
@@ -609,7 +609,7 @@
             this.tbCalle.Name = "tbCalle";
             this.tbCalle.ShortcutsEnabled = false;
             this.tbCalle.Size = new System.Drawing.Size(189, 21);
-            this.tbCalle.TabIndex = 190;
+            this.tbCalle.TabIndex = 11;
             // 
             // tbConsultorio
             // 
@@ -619,7 +619,7 @@
             this.tbConsultorio.Name = "tbConsultorio";
             this.tbConsultorio.ShortcutsEnabled = false;
             this.tbConsultorio.Size = new System.Drawing.Size(133, 21);
-            this.tbConsultorio.TabIndex = 191;
+            this.tbConsultorio.TabIndex = 12;
             // 
             // tbCP
             // 
@@ -628,7 +628,7 @@
             this.tbCP.Name = "tbCP";
             this.tbCP.ShortcutsEnabled = false;
             this.tbCP.Size = new System.Drawing.Size(88, 21);
-            this.tbCP.TabIndex = 192;
+            this.tbCP.TabIndex = 13;
             this.tbCP.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // cbEmail
@@ -647,7 +647,7 @@
             this.cbEmail.MaxLength = 20;
             this.cbEmail.Name = "cbEmail";
             this.cbEmail.Size = new System.Drawing.Size(131, 24);
-            this.cbEmail.TabIndex = 194;
+            this.cbEmail.TabIndex = 15;
             // 
             // tbEmail
             // 
@@ -658,7 +658,7 @@
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.ShortcutsEnabled = false;
             this.tbEmail.Size = new System.Drawing.Size(147, 21);
-            this.tbEmail.TabIndex = 193;
+            this.tbEmail.TabIndex = 14;
             // 
             // PantallaDentista
             // 

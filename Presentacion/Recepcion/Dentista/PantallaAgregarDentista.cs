@@ -39,6 +39,7 @@ namespace Presentacion.Recepcion
                     {
                         MessageBox.Show("Dentista registrado correctamente", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         AceptarCambios = true;
+                        LlamarEventoCerrar();
                         Close();
                     }
                     else

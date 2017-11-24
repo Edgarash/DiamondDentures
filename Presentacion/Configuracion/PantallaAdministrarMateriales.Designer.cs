@@ -155,7 +155,6 @@
             this.dgvMateriales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMateriales.Size = new System.Drawing.Size(483, 160);
             this.dgvMateriales.TabIndex = 19;
-            this.dgvMateriales.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMateriales_CellMouseDown);
             // 
             // Clave
             // 

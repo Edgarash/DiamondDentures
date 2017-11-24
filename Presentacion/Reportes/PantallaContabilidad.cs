@@ -24,7 +24,7 @@ namespace Presentacion.Reportes
 
         #region Metodos  
 
-        private void CancelarFacturaSeleccionada(int facturaId) => CancelarFactura(facturaId);
+        
 
         private void MostrarFacturas()
         {

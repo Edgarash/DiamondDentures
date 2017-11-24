@@ -24,9 +24,7 @@ namespace Presentacion.Reportes
         private SaveFileDialog sfdExportar;
         private Button btnGenerar;
         private Label label6;
-        private TextBox txtIdIns;
         private TextBox txtNomIns;
-        private Label label3;
         private Label label2;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvVisor;
 
@@ -34,9 +32,7 @@ namespace Presentacion.Reportes
         {
             this.crvVisor = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtIdIns = new System.Windows.Forms.TextBox();
             this.txtNomIns = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -67,9 +63,7 @@ namespace Presentacion.Reportes
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtIdIns);
             this.groupBox2.Controls.Add(this.txtNomIns);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.btnGenerar);
             this.groupBox2.Controls.Add(this.label6);
@@ -85,28 +79,13 @@ namespace Presentacion.Reportes
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parametros del reporte";
             // 
-            // txtIdIns
-            // 
-            this.txtIdIns.Location = new System.Drawing.Point(12, 99);
-            this.txtIdIns.Name = "txtIdIns";
-            this.txtIdIns.Size = new System.Drawing.Size(176, 21);
-            this.txtIdIns.TabIndex = 28;
-            // 
             // txtNomIns
             // 
             this.txtNomIns.Location = new System.Drawing.Point(12, 47);
+            this.txtNomIns.MaxLength = 50;
             this.txtNomIns.Name = "txtNomIns";
             this.txtNomIns.Size = new System.Drawing.Size(176, 21);
             this.txtNomIns.TabIndex = 28;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 16);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "Id Insumo:";
             // 
             // label2
             // 
@@ -207,6 +186,7 @@ namespace Presentacion.Reportes
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.crvVisor);
             this.Name = "PantallaGasInEs";
+            this.Text = "Gastos Insumos";
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.crvVisor, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
@@ -238,14 +218,12 @@ namespace Presentacion.Reportes
             string nomins = txtNomIns.Text;
             if (string.IsNullOrWhiteSpace(nomins))
             {
-                nomins = "☺";
+                MessageBox.Show("El nombre del insumo no es valido");
+                return;
             }
-            int idins;
-            string idins_str = txtNomIns.Text;
-            int.TryParse(idins_str, out idins);
+        
             ParametroReporte NomIns = new ParametroReporte("NomIs", nomins);
-            ParametroReporte IdIns = new ParametroReporte("idComp", idins);
-            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteGastoIEsp(),NomIns,IdIns);
+            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteGastoIEsp(),NomIns);
         }
 
         private void btnRegresar_Click(object sender, EventArgs e) => Close();

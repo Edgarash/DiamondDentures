@@ -87,6 +87,7 @@ namespace Presentacion.Reportes
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(30, 48);
+            this.textBox1.MaxLength = 11;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(123, 21);
             this.textBox1.TabIndex = 28;
@@ -234,7 +235,11 @@ namespace Presentacion.Reportes
         private void CargarReporte()
         {
             int id;
-            int.TryParse(textBox1.Text, out id);
+            if(int.TryParse(textBox1.Text, out id))
+            {
+                MessageBox.Show("El id de pago no es valido");
+                return;
+            }
             ParametroReporte Id = new ParametroReporte("idPag",id);
             crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteComprobanteNomina(), Id);
         }

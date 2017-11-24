@@ -277,6 +277,7 @@ namespace Presentacion.Reportes
             // 
             this.txtDestinatario.Location = new System.Drawing.Point(42, 175);
             this.txtDestinatario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtDestinatario.MaxLength = 200;
             this.txtDestinatario.Name = "txtDestinatario";
             this.txtDestinatario.Size = new System.Drawing.Size(444, 21);
             this.txtDestinatario.TabIndex = 1;
@@ -295,6 +296,7 @@ namespace Presentacion.Reportes
             // 
             this.txtAsunto.Location = new System.Drawing.Point(42, 230);
             this.txtAsunto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtAsunto.MaxLength = 200;
             this.txtAsunto.Name = "txtAsunto";
             this.txtAsunto.Size = new System.Drawing.Size(444, 21);
             this.txtAsunto.TabIndex = 2;
@@ -313,6 +315,7 @@ namespace Presentacion.Reportes
             // 
             this.txtCC.Location = new System.Drawing.Point(42, 283);
             this.txtCC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCC.MaxLength = 100;
             this.txtCC.Name = "txtCC";
             this.txtCC.Size = new System.Drawing.Size(444, 21);
             this.txtCC.TabIndex = 3;
