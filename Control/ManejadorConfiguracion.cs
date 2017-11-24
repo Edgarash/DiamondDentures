@@ -10,12 +10,6 @@ namespace Control
 {
     public class ManejadorConfiguracion : Manejador
     {
-        public bool RegistrarProducto(RegistroProducto Registro)
-        {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.RegistrarProducto(Registro);
-        }
-
         public static bool ObtenerProductos(out RegistroProducto[] Pedidos)
         {
             return InterfaceMySQL.ObtenerProductos(out Pedidos);
@@ -24,12 +18,6 @@ namespace Control
         public static bool ObtenerUnProducto(int IDProducto, out RegistroProducto Producto)
         {
             return InterfaceMySQL.ObtenerUnProducto(IDProducto, out Producto);
-        }
-
-        public RegistroProducto[] BuscarUnProducto(RegistroProducto Producto)
-        {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.BuscarProducto(Producto);
         }
 
         public static bool ActualizarProMat(RegistroProMat Registro)

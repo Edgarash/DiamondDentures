@@ -249,14 +249,14 @@ namespace ConexionBaseDeDatos
                     x["RFC"].ToString(),
                     x["Nombre"].ToString(),
                     x["Apellidos"].ToString(),
-                    x["Direccion"].ToString(),
-                    x["Colonia"].ToString(),
-                    x["Ciudad"].ToString(),
-                    x["Municipio"].ToString(),
-                    x["Estado"].ToString(),
-                    x["Pais"].ToString(),
-                    x["CodPos"].ToString(),
                     x["TelOficina"].ToString(),
+                    x["Pais"].ToString(),
+                    x["Estado"].ToString(),
+                    x["Municipio"].ToString(),
+                    x["Ciudad"].ToString(),
+                    x["Colonia"].ToString(),
+                    x["Direccion"].ToString(),
+                    x["CodPos"].ToString(),
                     x["Email"].ToString(),
                     x["Activo"].ToString(),
                     x["Consultorio"].ToString(),
@@ -435,6 +435,13 @@ namespace ConexionBaseDeDatos
                 Parametro("Activ", Producto.Activo),
                 Parametro("UnidadMedid", Producto.UnidadMedida),
                 Parametro("Cantida", Producto.Cantidad));
+            return OperacionRealizada;
+        }
+
+        public static bool ObtenerDentistas(out RegistroDentista[] Dentistas)
+        {
+            EjecutarProcedimientoAlmacenado("ObtenerDentistas", TipoConsulta.DevuelveReader);
+            Dentistas = RellenarDentistas();
             return OperacionRealizada;
         }
 
@@ -618,6 +625,36 @@ namespace ConexionBaseDeDatos
                 Parametro("Consultori", Dentista.Consultorio),
                 Parametro("FechaAlt", ObtenerFechaHora(Dentista.FechaAlta))
                 );
+            return OperacionRealizada;
+        }
+
+        public static bool ActualizarDentista(RegistroDentista Dentista)
+        {
+            EjecutarProcedimientoAlmacenado("ActualizarDentista", TipoConsulta.DevuelveInt,
+                Parametro("Cedul", Dentista.Cedula),
+                Parametro("RF", Dentista.RFC),
+                Parametro("Nombr", Dentista.Nombre),
+                Parametro("Apellido", Dentista.Apellidos),
+                Parametro("Direccio", Dentista.Direccion),
+                Parametro("Coloni", Dentista.Colonia),
+                Parametro("Ciuda", Dentista.Ciudad),
+                Parametro("Municipi", Dentista.Municipio),
+                Parametro("Estad", Dentista.Estado),
+                Parametro("Pai", Dentista.Pais),
+                Parametro("CodPo", Dentista.CodPos),
+                Parametro("TelOficin", Dentista.TelOficina),
+                Parametro("Emai", Dentista.Email),
+                Parametro("Activ", Dentista.Activo),
+                Parametro("Consultori", Dentista.Consultorio),
+                Parametro("FechaAlt", ObtenerFechaHora(Dentista.FechaAlta))
+                );
+            return OperacionRealizada;
+        }
+
+        public static bool EliminarDentista(string Cedula)
+        {
+            EjecutarProcedimientoAlmacenado("EliminarDentista", TipoConsulta.DevuelveInt,
+                Parametro("Cedul", Cedula));
             return OperacionRealizada;
         }
 

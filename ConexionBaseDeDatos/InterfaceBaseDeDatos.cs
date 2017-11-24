@@ -95,35 +95,6 @@ namespace ConexionBaseDeDatos
 
         #region Módulo Configuración
 
-        public bool RegistrarProducto(RegistroProducto Registro)
-        {
-            var command = new MySqlCommand("RegistrarProducto", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", Registro.IDProducto);
-            command.Parameters.AddWithValue("@nmb", Registro.Nombre);
-            command.Parameters.AddWithValue("@days", Registro.TiempoBase);
-            command.Parameters.AddWithValue("@price", Registro.PrecioBase);
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public bool RegistrarMaterial(RegistroMaterial Material)
-        {
-            var command = new MySqlCommand("RegistrarMaterial", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", Material.IDMaterial);
-            command.Parameters.AddWithValue("@nmb", Material.Nombre);
-            command.Parameters.AddWithValue("@price", Material.PrecioBase);
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
         public bool RegistrarPedido(RegistroPedido Pedido)
         {
             var command = new MySqlCommand("RegistrarPedido", conexion);
@@ -157,31 +128,6 @@ namespace ConexionBaseDeDatos
                 //for (int i = 0; i < Pedido.Trabajos.Length; i++)
                 //    RegistrarTrabajos(Pedido.IDPedido, Pedido.Trabajos[i]);
             }
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public bool RegistrarDentista(RegistroDentista Dentista)
-        {
-            var command = new MySqlCommand("RegistrarDentista", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@ced", Dentista.Cedula);
-            command.Parameters.AddWithValue("@rf", Dentista.RFC);
-            command.Parameters.AddWithValue("@nmb", Dentista.Nombre);
-            command.Parameters.AddWithValue("@ape", Dentista.Apellidos);
-            command.Parameters.AddWithValue("@tel", Dentista.TelOficina);
-            command.Parameters.AddWithValue("@pa", Dentista.Pais);
-            command.Parameters.AddWithValue("@es", Dentista.Estado);
-            command.Parameters.AddWithValue("@mu", Dentista.Municipio);
-            command.Parameters.AddWithValue("@ciu", Dentista.Ciudad);
-            command.Parameters.AddWithValue("@col", Dentista.Colonia);
-            command.Parameters.AddWithValue("@cal", Dentista.Direccion);
-            command.Parameters.AddWithValue("@codp", Dentista.CodPos);
-            command.Parameters.AddWithValue("@ema", Dentista.Email);
-
-            Open();
-            var nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
         }
@@ -264,139 +210,6 @@ namespace ConexionBaseDeDatos
             var nc = command.ExecuteNonQuery();
             Close();
             return EnviarConfirmacion(nc);
-        }
-
-        public bool ActualizarProMat(RegistroProMat Registro)
-        {
-            var command = new MySqlCommand("ActualizarProMat", conexion);
-            //command.CommandType = CommandType.StoredProcedure;
-
-            //command.Parameters.AddWithValue("@clvpro", Registro.ClavePro);
-            //command.Parameters.AddWithValue("@clvmat", Registro.ClaveMat);
-            //command.Parameters.AddWithValue("@price", Registro.PrecioFinal);
-            //command.Parameters.AddWithValue("@act", Registro.Activo);
-            //Open();
-            var nc = command.ExecuteNonQuery();
-            //Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public bool ActivarProducto(int Clave)
-        {
-            var command = new MySqlCommand("ActivarProducto", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", Clave);
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public bool ActivarMaterial(int Clave)
-        {
-            var command = new MySqlCommand("ActivarMaterial", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", Clave);
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public bool ActualizarProducto(RegistroProducto producto)
-        {
-            var command = new MySqlCommand("ActualizarProducto", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", producto.IDProducto);
-            command.Parameters.AddWithValue("@nmb", producto.Nombre);
-            command.Parameters.AddWithValue("@days", producto.TiempoBase);
-            command.Parameters.AddWithValue("@price", producto.PrecioBase);
-
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public bool ActualizarMaterial(RegistroMaterial material)
-        {
-            var command = new MySqlCommand("ActualizarMaterial", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", material.IDMaterial);
-            command.Parameters.AddWithValue("@nmb", material.Nombre);
-            command.Parameters.AddWithValue("@price", material.PrecioBase);
-
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public bool EliminarProducto(int Clave)
-        {
-            var command = new MySqlCommand("EliminarProducto", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", Clave);
-            Open();
-            var nc = command.ExecuteNonQuery();
-            Close();
-            return EnviarConfirmacion(nc);
-        }
-
-        public RegistroProducto[] BuscarProducto(RegistroProducto Registro)
-        {
-            RegistroProducto[] temp = null;
-
-            var command = new MySqlCommand("BuscarUnProducto", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@clv", Registro.IDProducto);
-            command.Parameters.AddWithValue("@nmb", Registro.Nombre);
-            command.Parameters.AddWithValue("@days", Registro.TiempoBase);
-            command.Parameters.AddWithValue("@price", Registro.PrecioBase.ToString());
-
-            string p = string.Empty;
-            Open();
-            var str = command.ExecuteReader();
-
-            if (str.HasRows)
-            {
-                List<RegistroProducto> Lista = new List<RegistroProducto>();
-                while (str.Read())
-                {
-                    //Lista.Add(new RegistroProducto(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetFloat(3), str.GetInt32(4)));
-                }
-                temp = Lista.ToArray();
-            }
-            Close();
-            return temp;
-        }
-
-        public RegistroProducto ObtenerUnProducto(string Proceso)
-        {
-            RegistroProducto temp = null;
-
-            var command = new MySqlCommand("ObtenerUnProducto", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@nmb", Proceso);
-
-            string p = string.Empty;
-            Open();
-            var str = command.ExecuteReader();
-
-            if (str.HasRows)
-            {
-                str.Read();
-                //temp = new RegistroProducto(str.GetInt32(0), str.GetString(1), str.GetInt32(2), str.GetFloat(3), str.GetInt32(4));
-            }
-            Close();
-            return temp;
         }
 
         #endregion
@@ -932,55 +745,6 @@ WHERE
             SClose();
 
             return ids;
-        }
-
-        public static void CancelarFactura(int facturaId)
-        {
-            MySqlCommand command = new MySqlCommand("CancelarFactura", Conectar())
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-
-            command.Parameters.AddWithValue("@idf", facturaId);
-
-            SOpen();
-
-            command.ExecuteNonQuery();
-
-            SClose();
-        }
-
-        public static List<Historial> BuscarHistorial(int opcion)
-        {
-            MySqlCommand command = new MySqlCommand("ObtenerHistorial", Conectar())
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-
-            command.Parameters.AddWithValue("@opt", opcion);
-
-            SOpen();
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            List<Historial> listaHistorial = new List<Historial>();
-            while (reader.HasRows && reader.Read())
-            {
-                listaHistorial.Add(new Historial(
-                    reader["id"].ToString(),
-                    reader["descripcion"].ToString(),
-                    reader["tipo"].ToString(),
-                    Convert.ToDateTime(reader["fecha"]),
-                    Convert.ToInt32(reader["pedido"])
-                    ));
-            }
-
-            reader.Close();
-            SClose();
-
-            return listaHistorial;
-
-
         }
 
         public static void SOpen()

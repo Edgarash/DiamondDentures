@@ -177,7 +177,6 @@ namespace Validaciones
                         }
                     }
                 }
-                Masked[i].TextMaskFormat = MaskFormat.IncludeLiterals;
             }
             return Error;
         }

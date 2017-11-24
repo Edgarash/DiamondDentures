@@ -20,10 +20,19 @@ namespace Control
             return InterfaceMySQL.RecuperarDentista(Cedula, out Dentista);
         }
 
-        public bool ActualizarDentista(RegistroDentista Dentista)
+        public static bool ActualizarDentista(RegistroDentista Dentista)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ActualizarDentista(Dentista);
+            return InterfaceMySQL.ActualizarDentista(Dentista);
+        }
+
+        public static bool ObtenerDentistas(out RegistroDentista[] Dentistas)
+        {
+            return InterfaceMySQL.ObtenerDentistas(out Dentistas);
+        }
+
+        public static bool EliminarDentista(string Cedula)
+        {
+            return InterfaceMySQL.EliminarDentista(Cedula);
         }
     }
 }
