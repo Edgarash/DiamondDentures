@@ -630,7 +630,7 @@ BEGIN
     `dentista`
   WHERE
     `pedido`.`Cedula` = `dentista`.`Cedula`
-  ORDER BY `Urgencia` DESC, `FechaCalculada`, `EstadoPedido` = '0', `EstadoPedido` = '5', `EstadoPedido` = '7', `EstadoPedido` = '6', `EstadoPedido` = '1', `EstadoPedido` = '2', `EstadoPedido` = '4' DESC;
+  ORDER BY `Urgencia` ASC, `FechaCalculada`, `EstadoPedido` = '0', `EstadoPedido` = '5', `EstadoPedido` = '7', `EstadoPedido` = '6', `EstadoPedido` = '1', `EstadoPedido` = '2', `EstadoPedido` = '4' ASC;
 END;
 
 DROP PROCEDURE IF EXISTS `ControlPedidosObtenerLaboratoristas`;
@@ -696,4 +696,17 @@ DROP PROCEDURE IF EXISTS `CambiarLaboratorista`;
 CREATE PROCEDURE `CambiarLaboratorista`(nuevo char(20), id int(11))
 BEGIN
   UPDATE `pedido` SET `Laboratorista` = `nuevo` WHERE `IDPedido` = `id`;
+END;
+
+DROP PROCEDURE IF EXISTS `CambiarEstado`;
+CREATE PROCEDURE `CambiarEstado`(nuevo char(20), id int(11))
+BEGIN
+  UPDATE `pedido` SET `EstadoPedido` = `nuevo` WHERE `IDPedido` = `id`;
+END;
+
+
+DROP PROCEDURE IF EXISTS `CancelarPedido`;
+CREATE PROCEDURE `CancelarPedido`(id int(11))
+BEGIN
+  UPDATE `pedido` SET `EstadoPedido` = '0' WHERE `IDPedido` = `id`;
 END;

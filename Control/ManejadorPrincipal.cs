@@ -54,10 +54,9 @@ namespace Control
         {
             InterfaceMySQL.CambiarLaboratorista(temp, nuevo, id);
         }
-        public void CambiarEstado(DataGridView temp, string valor, string a, string id)
+        public void CambiarEstado(DataGridView temp, string nuevo, string id)
         {
-            Interface = new ConexionBaseDeDatos.InterfaceBaseDeDatos();
-            Interface.CambiarEstado(temp, valor, a, id);
+            InterfaceMySQL.CambiarEstado(temp, nuevo, id);
         }
         public void EstadoProcesar(DataGridView temp, string valor, string id,string user)
         {
@@ -66,8 +65,7 @@ namespace Control
         }
         public void CancelarPedido(DataGridView temp, string id)
         {
-            Interface = new ConexionBaseDeDatos.InterfaceBaseDeDatos();
-            Interface.CancelarPedido(temp, id);
+            InterfaceMySQL.CancelarPedido(temp, id);
         }
         public void CancelarPieza(DataGridView temp, string id)
         {

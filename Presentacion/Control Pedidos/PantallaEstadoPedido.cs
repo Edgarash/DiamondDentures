@@ -142,39 +142,6 @@ namespace Presentacion.Control_Pedidos
             }
             else
             {
-                if (rbPedido.Checked)
-                {
-                    Interface = new InterfaceUsuario(this);
-                    Interface.BuscarIdPedido(dtvDatos, valor);
-                    valida = new Validar(this);
-                    valida.validarData(dtvDatos);
-                }
-                if (rbDentista.Checked)
-                {
-                    Interface = new InterfaceUsuario(this);
-                    Interface.BuscarIdDentista(dtvDatos, valor);
-                    valida = new Validar(this);
-                    valida.validarData(dtvDatos);
-                }
-                if (rbTipo.Checked)
-                {
-                    bool a = true;
-                    Interface = new InterfaceUsuario(this);
-                    if (tbBuscar.Text == "URGENTE")
-                    {
-                        Interface.BuscarTipo(dtvDatos, "1");
-                        a = false;
-                    }
-                    if (tbBuscar.Text == "NORMAL")
-                    {
-                        Interface.BuscarTipo(dtvDatos, "0");
-                        a = false;
-                    }
-                    if (a)
-                    {
-                        ActualizarData();
-                    }
-                }
             }
         }
         private void button5_Click(object sender, EventArgs e)
@@ -198,86 +165,44 @@ namespace Presentacion.Control_Pedidos
         {
             cbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
             int renglon = Convert.ToInt32(dtvDatos.CurrentCell.RowIndex.ToString());
-            string valor = "";
+            string actual = "", nuevo = "";
             string id = dtvDatos[0, renglon].Value.ToString();
-            valor = cbEstado.SelectedItem.ToString();
-            if (valor == cestado) { }
+            actual = dtvDatos[6, renglon].Value.ToString();
+            nuevo = cbEstado.SelectedItem.ToString();
+            if (actual == nuevo) { }
             else
             {
-                if (valor == "Cancelado")
-                    valor = "0";
+                if (nuevo == "Registrado")
+                    nuevo = "1";
                 else
                 {
-                    if (valor == "Registrado")
-                        valor = "1";
+                    if (nuevo == "Confirmado")
+                        nuevo = "2";
                     else
                     {
-                        if (valor == "Confirmado")
-                            valor = "2";
+                        if (nuevo == "En Proceso")
+                            nuevo = "3";
                         else
                         {
-                            if (valor == "Asignado")
-                                valor = "3";
+                            if (nuevo == "Terminado")
+                                nuevo = "4";
                             else
                             {
-                                if (valor == "En Proceso")
-                                    valor = "4";
+                                if (nuevo == "Facturado")
+                                    nuevo = "5";
                                 else
                                 {
-                                    if (valor == "Terminado")
-                                        valor = "5";
-                                    else
-                                    {
-                                        if (valor == "Facturado")
-                                            valor = "6";
-                                        else
-                                            if (valor == "Pagado")
-                                            valor = "7";
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                if (cestado == "Cancelado")
-                    cestado = "0";
-                else
-                {
-                    if (cestado == "Registrado")
-                        cestado = "1";
-                    else
-                    {
-                        if (cestado == "Confirmado")
-                            cestado = "2";
-                        else
-                        {
-                            if (cestado == "Asignado")
-                                cestado = "3";
-                            else
-                            {
-                                if (cestado == "En Proceso")
-                                    cestado = "4";
-                                else
-                                {
-                                    if (cestado == "Terminado")
-                                        cestado = "5";
-                                    else
-                                    {
-                                        if (cestado == "Facturado")
-                                            cestado = "6";
-                                        else
-                                            if (cestado == "Pagado")
-                                            cestado = "7";
-                                    }
+                                    if (nuevo == "Pagado")
+                                        nuevo = "6";
                                 }
                             }
                         }
                     }
                 }
             }
+                
             Interface = new InterfaceUsuario(this);
-            //Interface.CambiarEstado(dtvDatos, valor, cestado, id);
+            Interface.CambiarEstado(dtvDatos, nuevo, id);
             ActualizarData();
         }
         private void PantallaEstadoPedido_Load(object sender, EventArgs e)
@@ -440,21 +365,7 @@ namespace Presentacion.Control_Pedidos
         }
         private void tbBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            valida = new Validar(this);
-            if (rbPedido.Checked)
-            {
-                tbBuscar.MaxLength = 10;
-            }
-            if (rbDentista.Checked)
-            {
-                valida.ValidaCampoTxb(true, e);
-                tbBuscar.MaxLength = 10;
-            }
-            if (rbTipo.Checked)
-            {
-                valida.ValidaCampoTxb(false, e);
-                tbBuscar.MaxLength = 10;
-            }
+              
         }
         private void btnFacturacion_Click(object sender, EventArgs e)
         {
