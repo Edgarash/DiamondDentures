@@ -53,6 +53,7 @@
     <Compile Include="ManejadorPermisoAdministrador.cs" />
     <Compile Include="ManejadorPrincipal.cs" />
     <Compile Include="ManejadorRegistroDentista.cs" />
+    <Compile Include="ManejadorRegistroInsumos.cs" />
     <Compile Include="ManejadorRegistroMaterial.cs" />
     <Compile Include="ManejadorReportes.cs" />
     <Compile Include="ManejadorUsuario.cs" />
