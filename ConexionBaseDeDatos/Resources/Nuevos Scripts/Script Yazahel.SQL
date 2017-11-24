@@ -740,3 +740,49 @@ BEGIN
     `pedido`.`Cedula` = `dentista`.`Cedula` AND `IdPedido` = `id`
   ORDER BY `Urgencia` ASC, `FechaCalculada`, `EstadoPedido` = '0', `EstadoPedido` = '5', `EstadoPedido` = '7', `EstadoPedido` = '6', `EstadoPedido` = '1', `EstadoPedido` = '2', `EstadoPedido` = '4' ASC;
 END;
+
+
+DROP PROCEDURE IF EXISTS `AutorizarEstado`;
+CREATE PROCEDURE `AutorizarEstado`(idc int(11), idp int(11))
+BEGIN
+  UPDATE `Detalle_Compra_Material` SET `Estado` = 'AUTORIZADO' WHERE `IDCompra` = `idc` AND `IDProveedor` = `idp`;
+  UPDATE `Detalle_Compra_Insumo` SET `Estado` = 'AUTORIZADO' WHERE `IDCompra` = `idc` AND `IDProveedor` = `idp`;
+END;
+
+DROP PROCEDURE IF EXISTS ``;
+CREATE PROCEDURE `VerDetallesPagos`(id int(11))
+BEGIN
+  SELECT
+    IF(`detalle_compra_material`.`IDCompra`, `detalle_compra_material`.`IDCompra`, 0) AS 'IDCompra',
+    `IDMaterial`,
+    `detalle_compra_material`.`Nombre`,
+    `detalle_compra_material`.`IDProveedor`,
+    `proveedores`.`Nombre`,
+    `Banco`,
+    `NumeroCuenta`,
+    `Subtotal`,
+    `Fecha`,
+    `detalle_compra_material`.`Estado`
+  FROM
+    `detalle_compra_material`,
+    `proveedores`
+  WHERE
+    `IDCompra` = `id` AND `detalle_compra_material`.`IDProveedor` = `proveedores`.`IDProveedor`
+  UNION ALL
+  SELECT
+    IF(`detalle_compra_insumo`.`IDCompra`, `detalle_compra_insumo`.`IDCompra`, 0) AS 'IDCompra',
+    `IDInsumos` AS 'IDMaterial',
+    `detalle_compra_insumo`.`Nombre`,
+    `detalle_compra_insumo`.`IDProveedor`,
+    `proveedores`.`Nombre`,
+    `Banco`,
+    `NumeroCuenta`,
+    `Subtotal`,
+    `Fecha`,
+    `detalle_compra_insumo`.`Estado`
+  FROM
+    `detalle_compra_insumo`,
+    `proveedores`
+  WHERE
+    `detalle_compra_insumo`.`IDCompra` NOT IN (SELECT `IDCompra` FROM `detalle_compra_material`) AND `IDCompra` = `id` AND `detalle_compra_insumo`.`IDProveedor` = `proveedores`.`IDProveedor`
+  ORDER BY `IDCompra`;

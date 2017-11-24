@@ -51,6 +51,7 @@ namespace Presentacion.Almacen_y_Proveedores
                     dataGridView2[5, i].Value = temp[i].Cantidad;
                     dataGridView2[6, i].Value = temp[i].Fecha;
                     dataGridView2[7, i].Value = temp[i].Estado;
+                    dataGridView2[8, i].Value = temp[i].CantidadEnviada;
                 }
             }
             if (dataGridView2.SelectedCells.Count > 0)
@@ -87,6 +88,7 @@ namespace Presentacion.Almacen_y_Proveedores
                     dataGridView2[5, i].Value = temp[i].Cantidad;
                     dataGridView2[6, i].Value = temp[i].Fecha;
                     dataGridView2[7, i].Value = temp[i].Estado;
+                    //dataGridView2[8, i].Value = temp[i].
                 }
             }
             if (dataGridView2.SelectedCells.Count > 0)
@@ -125,13 +127,13 @@ namespace Presentacion.Almacen_y_Proveedores
             int contado = 0;
             for (int j = 0; j < dataGridView2.RowCount; j++)
             {
-                if (cantidad[j] == Convert.ToInt32(dataGridView2[5, j].Value))
+                if (Convert.ToInt32(dataGridView2[8, j].Value) == Convert.ToInt32(dataGridView2[5, j].Value))
                 {
 
                 }
                 else
                 {
-                    if (cantidad[j] > Convert.ToInt32(dataGridView2[5, j].Value))
+                    if (Convert.ToInt32(dataGridView2[8, j].Value) > Convert.ToInt32(dataGridView2[5, j].Value))
                     {
                         supererror = true;
                         break;
@@ -141,7 +143,7 @@ namespace Presentacion.Almacen_y_Proveedores
                         valorcito = true;
                     }
                 }
-                if (dataGridView2[7, j].Value.ToString().ToUpper() == "AUTORIZADA")
+                if (dataGridView2[7, j].Value.ToString().ToUpper() == "ENVIADO")
                 {
                     contado++;
                 }

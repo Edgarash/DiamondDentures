@@ -128,6 +128,12 @@ namespace ConexionBaseDeDatos
             return OperacionRealizada;
         }
 
+        public static bool AgregarCantidadEnviada(CompraMaterial Material)
+        {
+            EjecutarProcedimientoAlmacenado("AgregarCantidadEnviada", TipoConsulta.DevuelveInt, Parametro("id", Material.IDCompra), Parametro("idp", Material.IDProveedor), Parametro("cant", Material.CantidadEnviada));
+            return OperacionRealizada;
+        }
+
         public static bool MostrarProveedores(out RegistroProveedor[] Proveedor)
         {
             EjecutarProcedimientoAlmacenado("VerProveedores", TipoConsulta.DevuelveReader,
@@ -313,7 +319,7 @@ namespace ConexionBaseDeDatos
         public static bool ActualizarPrecio(CompraMaterial cm)
         {
             EjecutarProcedimientoAlmacenado("ActualizarPrecio", TipoConsulta.DevuelveReader,
-                Parametro("id", cm.IDCompra), Parametro("idmat", cm.IDMaterial), Parametro("cant", cm.Cantidad));
+                Parametro("id", cm.IDCompra), Parametro("idmat", cm.IDMaterial), Parametro("cant", cm.CantidadEnviada));
             return OperacionRealizada;
         }
 
@@ -342,7 +348,8 @@ namespace ConexionBaseDeDatos
                     Convert.ToSingle(x["Subtotal"].ToString()),
                     Convert.ToInt32(x["Cantidad"].ToString()),
                     Convert.ToDateTime(x["Fecha"].ToString()),
-                    x["Estado"].ToString()
+                    x["Estado"].ToString(),
+                    Convert.ToInt32(x["CantidadEnviada"].ToString())
                     );
             }
             return Materiales;

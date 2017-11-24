@@ -45,7 +45,7 @@
             // 
             // btnFinanzasVentas
             // 
-            this.btnFinanzasVentas.Location = new System.Drawing.Point(31, 112);
+            this.btnFinanzasVentas.Location = new System.Drawing.Point(31, 132);
             this.btnFinanzasVentas.Name = "btnFinanzasVentas";
             this.btnFinanzasVentas.Size = new System.Drawing.Size(92, 62);
             this.btnFinanzasVentas.TabIndex = 9;
@@ -55,7 +55,7 @@
             // 
             // btnFinanzasGastos
             // 
-            this.btnFinanzasGastos.Location = new System.Drawing.Point(31, 180);
+            this.btnFinanzasGastos.Location = new System.Drawing.Point(31, 228);
             this.btnFinanzasGastos.Name = "btnFinanzasGastos";
             this.btnFinanzasGastos.Size = new System.Drawing.Size(92, 62);
             this.btnFinanzasGastos.TabIndex = 10;
@@ -106,9 +106,9 @@
             // 
             // btnBalance
             // 
-            this.btnBalance.Location = new System.Drawing.Point(31, 248);
+            this.btnBalance.Location = new System.Drawing.Point(0, 309);
             this.btnBalance.Name = "btnBalance";
-            this.btnBalance.Size = new System.Drawing.Size(92, 62);
+            this.btnBalance.Size = new System.Drawing.Size(18, 12);
             this.btnBalance.TabIndex = 16;
             this.btnBalance.Text = "Balance Cuentas";
             this.btnBalance.UseVisualStyleBackColor = true;
