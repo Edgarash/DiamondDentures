@@ -50,5 +50,11 @@ namespace Entidad
             this.Nombre = Nombre;
             this.Faltantes = Faltantes;
         }
+
+        public RegistroMaterial(int IDMaterial, string Nombre) : this(IDMaterial)
+        {
+            this.Nombre = Nombre;
+        }
+
     }
 }

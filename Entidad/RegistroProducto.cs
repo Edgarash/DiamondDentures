@@ -44,5 +44,10 @@ namespace Entidad
         {
             this.IDProducto = IDProducto;
         }
+
+        public RegistroProducto(int IDProducto, string Nombre) : this(IDProducto)
+        {
+            this.Nombre = Nombre;
+        }
     }
 }

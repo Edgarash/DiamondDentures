@@ -113,14 +113,11 @@ namespace Presentacion.Configuracion
             return Error;
         }
 
-        protected virtual RegistroProMat[] ObtenerProMat
+        protected virtual RegistroProMat[] ObtenerProMat()
         {
-            get
-            {
-                RegistroProMat[] temp;
-                InterfaceUsuario.ObtenerProMat(Convert.ToInt32(tbClave.Text), -1, out temp);
-                return temp;
-            }
+            RegistroProMat[] temp;
+            InterfaceUsuario.ObtenerProMat(Convert.ToInt32(tbClave.Text), -1, out temp);
+            return temp;
         }
     }
 }

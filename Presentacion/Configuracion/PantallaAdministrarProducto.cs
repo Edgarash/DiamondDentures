@@ -21,7 +21,7 @@ namespace Presentacion.Configuracion
         {
             InitializeComponent();
             InitializeComponent2();
-            Productos = Interface.ObtenerProductos();
+            InterfaceUsuario.ObtenerProductos(out Productos);
             LlenarData(Búsqueda.Total);
         }
 
@@ -38,7 +38,9 @@ namespace Presentacion.Configuracion
             Interface = new InterfaceUsuario(this);
             RegistroProducto[] temp = null;
             if (Tipo == Búsqueda.Total)
-                temp = Productos;
+            {
+                InterfaceUsuario.ObtenerProductos(out temp);
+            }
             else
             {
                 if (Tipo == Búsqueda.Clave)
@@ -165,8 +167,12 @@ namespace Presentacion.Configuracion
             if (!Validar.ValidarUnaPantalla(typeof(PantallaModificarProducto)))
             {
                 Interface = new InterfaceUsuario(this);
-                RegistroProducto Producto = Interface.ObtenerUnProducto(dgvProductos[1, dgvProductos.SelectedCells[0].RowIndex].Value.ToString());
-                Interface.DesplegarPantallaModificarProducto(Producto, LlenarData);
+                RegistroProducto Producto;
+                if (dgvProductos.SelectedRows.Count > 0)
+                {
+                    InterfaceUsuario.ObtenerUnProducto(Convert.ToInt32(dgvProductos["Clave", dgvProductos.CurrentRow.Index].Value), out Producto);
+                    Interface.DesplegarPantallaModificarProducto(Producto, LlenarData);
+                }
             }
         }
     }

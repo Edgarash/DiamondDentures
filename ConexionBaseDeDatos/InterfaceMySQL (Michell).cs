@@ -390,10 +390,14 @@ namespace ConexionBaseDeDatos
             for (int i = 0; i < ProMat.Length; i++)
             {
                 DataRow x = Pros.Rows[i];
-                RegistroProducto Producto;
-                RegistroMaterial Material;
-                RecuperarMaterial(Convert.ToInt32(x["IDMaterial"]), out Material);
-                RecuperarProducto(Convert.ToInt32(x["IDProducto"]), out Producto);
+                RegistroProducto Producto =
+                    new RegistroProducto(
+                        Convert.ToInt32(x["IDProducto"].ToString()),
+                        x["NombreProducto"].ToString());
+                RegistroMaterial Material =
+                    new RegistroMaterial(
+                        Convert.ToInt32(x["IDMaterial"].ToString()),
+                        x["NombreMaterial"].ToString());
                 ProMat[i] = new RegistroProMat
                     (
                     Producto,
@@ -560,6 +564,37 @@ namespace ConexionBaseDeDatos
             EjecutarProcedimientoAlmacenado("EntregarPedido", TipoConsulta.DevuelveInt,
                 Parametro("Fecha", FechaEntregado),
                 Parametro("IDPedid", IDPedido));
+            return OperacionRealizada;
+        }
+
+        public static bool ObtenerUnProducto(int IDProducto, out RegistroProducto Producto)
+        {
+            EjecutarProcedimientoAlmacenado("ObtenerUnProducto", TipoConsulta.DevuelveReader,
+                Parametro("IDProduct", IDProducto));
+            Producto = ObtenerProducto();
+            return OperacionRealizada2;
+        }
+
+        public static bool ActualizarProducto(RegistroProducto Producto)
+        {
+            EjecutarProcedimientoAlmacenado("ActualizarProducto", TipoConsulta.DevuelveReader,
+                Parametro("IDProduct", Producto.IDProducto),
+                Parametro("Nombr", Producto.Nombre),
+                Parametro("Descripcio", Producto.Descripcion),
+                Parametro("Tiempo", Producto.TiempoBase),
+                Parametro("Base", Producto.PrecioBase),
+                Parametro("Compra", Producto.PrecioCompra),
+                Parametro("Acti", Producto.Activo ? '1' : '0'),
+                Parametro("UM", Producto.UnidadMedida),
+                Parametro("Canti", Producto.Cantidad)
+                );
+            return OperacionRealizada;
+        }
+
+        public static bool EliminarProducto(int Producto)
+        {
+            EjecutarProcedimientoAlmacenado("EliminarProducto", TipoConsulta.DevuelveInt,
+                Parametro("Producto", Producto));
             return OperacionRealizada;
         }
 

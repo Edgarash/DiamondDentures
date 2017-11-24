@@ -562,7 +562,9 @@ namespace Presentacion
         public void DesplegarPantallaAgregarMaterial(Regresar Actualizar)
         {
             Manejador = new ManejadorConfiguracion();
-            Manejador.DesplegarPantalla(new PantallaAgregarMaterial());
+            PantallaAgregarMaterial temp = new PantallaAgregarMaterial();
+            temp.Cerrar += Actualizar;
+            Manejador.DesplegarPantalla(temp);
         }
 
         public bool RegistrarProducto(RegistroProducto Registro)
@@ -588,10 +590,9 @@ namespace Presentacion
             return ((ManejadorRegistroProducto)Manejador).EliminarProducto(Clave);
         }
 
-        public RegistroProducto[] ObtenerProductos()
+        public static bool ObtenerProductos(out RegistroProducto[] Productos)
         {
-            Manejador = new ManejadorConfiguracion();
-            return ((ManejadorConfiguracion)Manejador).ObtenerProductos();
+            return ManejadorConfiguracion.ObtenerProductos(out Productos);
         }
 
         public RegistroProducto[] BuscarUnProducto(RegistroProducto Registro)
@@ -600,10 +601,9 @@ namespace Presentacion
             return ((ManejadorConfiguracion)Manejador).BuscarUnProducto(Registro);
         }
 
-        public RegistroProducto ObtenerUnProducto(string Proceso)
+        public static bool ObtenerUnProducto(int IDProducto, out RegistroProducto Producto)
         {
-            Manejador = new ManejadorConfiguracion();
-            return ((ManejadorConfiguracion)Manejador).ObtenerUnProducto(Proceso);
+            return ManejadorConfiguracion.ObtenerUnProducto(IDProducto, out Producto);
         }
 
         public bool RegistrarMaterial(RegistroMaterial Material)

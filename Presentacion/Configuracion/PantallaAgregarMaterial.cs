@@ -37,9 +37,8 @@ namespace Presentacion.Configuracion
             base.InitializeComponent3();
             tbClave.Enabled = true;
             Interface = new InterfaceUsuario(this);
-            RegistroProducto[] Productos = Interface.ObtenerProductos();
-            //RegistroMaterial[] Materiales = Interface.BuscarUnMaterial(new RegistroMaterial(-1, "", -1, -1));
-            //tbClave.Text = (Materiales?[Materiales.Length - 1].IDMaterial + 1).ToString();
+            RegistroProducto[] Productos;
+            InterfaceUsuario.ObtenerProductos(out Productos);
             tbClave.Select(tbClave.Text.Length, tbClave.Text.Length);
             for (int i = 0; i < Productos?.Length; i++)
             {
@@ -68,6 +67,7 @@ namespace Presentacion.Configuracion
                         MessageBox.Show("Material registrado con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                         Validar.MensajeErrorOK("El material se registró sin embargo hubo un problema al asociar los productos, favor de cambiar los parámetros modificando el material en su opción correspondiente\n\n" + Mensaje);
+                    LlamarEventoCerrar();
                     Close();
                 }
             }

@@ -57,10 +57,10 @@ namespace Presentacion.Recepcion
             };
             ShowDialog();
             Cancelado = Cerrado;
-            RegistroProducto[] temp = null;
-            //if (!Cerrado)
-            //    temp = Interface.BuscarUnProducto(new RegistroProducto(Convert.ToInt32(tbNumEmpleado.Text== "" ? "-2" : tbNumEmpleado.Text), "", -1, -1, 1));
-            return temp?[0] ?? null;
+            RegistroProducto temp = null;
+            if (!Cerrado)
+                InterfaceUsuario.ObtenerUnProducto(Convert.ToInt32(tbNumEmpleado.Text), out temp);
+            return temp;
         }
 
         public static RegistroPedido PedirUnPedido(out bool Cancelado)

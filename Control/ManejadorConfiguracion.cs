@@ -16,17 +16,14 @@ namespace Control
             return Interface.RegistrarProducto(Registro);
         }
 
-        public RegistroProducto[] ObtenerProductos()
+        public static bool ObtenerProductos(out RegistroProducto[] Pedidos)
         {
-            RegistroProducto[] temp = null;
-            InterfaceMySQL.ObtenerProductos(out temp);
-            return temp;
+            return InterfaceMySQL.ObtenerProductos(out Pedidos);
         }
 
-        public RegistroProducto ObtenerUnProducto(string Producto)
+        public static bool ObtenerUnProducto(int IDProducto, out RegistroProducto Producto)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ObtenerUnProducto(Producto);
+            return InterfaceMySQL.ObtenerUnProducto(IDProducto, out Producto);
         }
 
         public RegistroProducto[] BuscarUnProducto(RegistroProducto Producto)

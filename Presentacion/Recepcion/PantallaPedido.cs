@@ -116,7 +116,8 @@ namespace Presentacion.Recepcion
         protected virtual void InitializeComponent3()
         {
             Interface = new InterfaceUsuario(this);
-            Productos = Interface.ObtenerProductos();
+            RegistroProducto[] t;
+            InterfaceUsuario.ObtenerProductos(out t);
             Materiales = Interface.ObtenerMateriales();
             LlenarProductos(dgvProductos[0, 0] as DataGridViewComboBoxCell);
             tbTelefono.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;

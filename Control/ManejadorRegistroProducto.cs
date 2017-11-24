@@ -12,8 +12,7 @@ namespace Control
     {
         public bool EliminarProducto(int Clave)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.EliminarProducto(Clave);
+            return InterfaceMySQL.EliminarProducto(Clave);
         }
 
         public bool ActivarProducto(int Clave)
@@ -24,8 +23,7 @@ namespace Control
 
         public bool ActualizarProducto(RegistroProducto Producto)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ActualizarProducto(Producto);
+            return InterfaceMySQL.ActualizarProducto(Producto);
         }
 
         public static void UltimaClaveProducto(out RegistroProducto Producto)

@@ -48,7 +48,8 @@ namespace Presentacion.Configuracion
             base.InitializeComponent3();
             RegistroProMat[] temp = ObtenerProMat;
             Interface = new InterfaceUsuario(this);
-            RegistroProducto[] Productos = Interface.ObtenerProductos();
+            RegistroProducto[] Productos;
+            InterfaceUsuario.ObtenerProductos(out Productos);
             dgvProductos.RowCount = 0;
             int k = 0;
             for (int i = 0; i < Productos.Length; i++)
@@ -88,6 +89,7 @@ namespace Presentacion.Configuracion
             if (InterfaceUsuario.EliminarMaterial(Convert.ToInt32(tbClave.Text)))
             {
                 MessageBox.Show("Material eliminado con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LlamarEventoCerrar();
                 Close();
             }
             else

@@ -35,7 +35,8 @@ namespace Presentacion.Configuracion
             base.InitializeComponent3();
             RegistroProMat[] temp = ObtenerProMat;
             Interface = new InterfaceUsuario(this);
-            RegistroProducto[] Productos = Interface.ObtenerProductos();
+            RegistroProducto[] Productos;
+            InterfaceUsuario.ObtenerProductos(out Productos);
             dgvProductos.RowCount = 0;
             int k = 0;
             for (int i = 0; i < Productos.Length; i++)
@@ -43,14 +44,14 @@ namespace Presentacion.Configuracion
                 bool Encontrado = false;
                 for (int j = 0; j < temp?.Length && !Encontrado; j++)
                 {
-                    if (Productos[i].IDProducto == ObtenerProMat[j].Producto.IDProducto && Productos[i].Activo)
+                    if (Productos[i].IDProducto == temp[j].Producto.IDProducto && Productos[i].Activo)
                     {
                         dgvProductos.RowCount += 1;
-                        dgvProductos["Clave", k].Value = ObtenerProMat[j].Producto.IDProducto;
-                        dgvProductos["Activo", k].Value = ObtenerProMat[j].Activo ? true : false;
-                        dgvProductos["Producto", k].Value = ObtenerProMat[j].Producto.Nombre;
-                        dgvProductos["Precio", k].Value = ObtenerProMat[j].PrecioFinal;
-                        dgvProductos["Tiempo", k].Value = ObtenerProMat[j].TiempoFinal;
+                        dgvProductos["Clave", k].Value = temp[j].Producto.IDProducto;
+                        dgvProductos["Activo", k].Value = temp[j].Activo ? true : false;
+                        dgvProductos["Producto", k].Value = temp[j].Producto.Nombre;
+                        dgvProductos["Precio", k].Value = temp[j].PrecioFinal;
+                        dgvProductos["Tiempo", k].Value = temp[j].TiempoFinal;
                         Encontrado = true;
                         k++;
                     }
@@ -82,6 +83,7 @@ namespace Presentacion.Configuracion
                         MessageBox.Show("Material actualizado con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                         Validar.MensajeErrorBaseDeDatos();
+                    LlamarEventoCerrar();
                     Close();
                 }
             }
