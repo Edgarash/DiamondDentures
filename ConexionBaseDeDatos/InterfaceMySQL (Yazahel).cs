@@ -35,6 +35,14 @@ namespace ConexionBaseDeDatos
             temp.DataSource = TablaDeResultados;
             return OperacionRealizada2;
         }
+        public static bool CambiarLaboratorista(DataGridView temp, string nuevo, string id)
+        {
+            EjecutarProcedimientoAlmacenado("CambiarLaboratorista", TipoConsulta.DevuelveReader,
+                Parametro("nuevo", nuevo),
+                Parametro("id", id));
+            temp.DataSource = TablaDeResultados;
+            return OperacionRealizada2;
+        }
         public static bool FinanzasBuscarAdminPagos(DataGridView temp, string idp, string nomb)
         {
             EjecutarProcedimientoAlmacenado("FinanzasBuscarAdminPagos", TipoConsulta.DevuelveReader,

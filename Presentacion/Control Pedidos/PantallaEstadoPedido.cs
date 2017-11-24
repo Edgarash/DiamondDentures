@@ -521,29 +521,16 @@ namespace Presentacion.Control_Pedidos
             cbLabora.DropDownStyle = ComboBoxStyle.DropDownList;
             Interface = new InterfaceUsuario(this);
             int renglon = Convert.ToInt32(dtvDatos.CurrentCell.RowIndex.ToString());
-            string valor = "", estado = "", user ="";
+            string labora = "", estado = "", nuevo = "";
             string id = dtvDatos[0, renglon].Value.ToString();
-            estado = dtvDatos[7, renglon].Value.ToString();
-            valor = cbLabora.SelectedItem.ToString();
-            user = cbLabora.SelectedItem.ToString();
-
-            if (clabora == user && estado == "En Proceso")
+            nuevo = cbLabora.SelectedItem.ToString();
+            estado = dtvDatos[6, renglon].Value.ToString();
+            labora = dtvDatos[7, renglon].Value.ToString();
+            if (labora != cbLabora.SelectedText.ToString())
             {
-                MessageBox.Show("No se puede asignar el pedido a "+ user +" por que el pedido ya está lo tiene asignado y está en proceso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ;
-                }
-                else
-                {
-                    if (clabora == "No asignado")
-                    {
-                        clabora = "";
-                    }
-                if (!Interface.PedidosEnProcesoPorUsuario(user, estado))
-                {
-                    Interface.CambiarLaboratorista(dtvDatos, valor, clabora, id);
-                    ActualizarData();
-                }                
-            }            
+                Interface.CambiarLaboratorista(dtvDatos, nuevo, id);
+                ActualizarData();
+            }
         }
 
         private void btnGenerarReporte_Click(object sender, EventArgs e)

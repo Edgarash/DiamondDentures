@@ -691,3 +691,9 @@ BEGIN
     (`idcompra`, `id`, `nom`, `idprov`, `cantidad`, CURDATE(), 'PENDIENTE');
   UPDATE `detalle_compra_insumo` SET `Subtotal` = `Cantidad` * _y WHERE `IDInsumos` = `id`;
 END;
+
+DROP PROCEDURE IF EXISTS `CambiarLaboratorista`;
+CREATE PROCEDURE `CambiarLaboratorista`(nuevo char(20), id int(11))
+BEGIN
+  UPDATE `pedido` SET `Laboratorista` = `nuevo` WHERE `IDPedido` = `id`;
+END;

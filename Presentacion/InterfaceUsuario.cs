@@ -694,10 +694,10 @@ namespace Presentacion
             Manejador = new ManejadorPrincipal();
             ((ManejadorPrincipal)Manejador).BusquedaTipo(data, valor);
         }
-        public void CambiarLaboratorista(DataGridView temp, string valor, string a, string id)
+        public void CambiarLaboratorista(DataGridView temp, string nuevo, string id)
         {
             Manejador = new ManejadorPrincipal();
-            ((ManejadorPrincipal)Manejador).CambiarLaboratorista(temp, valor, a, id);
+            ((ManejadorPrincipal)Manejador).CambiarLaboratorista(temp, nuevo, id);
         }
         public void CambiarEstado(DataGridView temp, string valor, string a, string id)
         {
