@@ -16,8 +16,9 @@ namespace Entidad
         public int Cantidad { get; set; }
         public DateTime Fecha { get; set; }
         public string Estado { get; set; }
+        public int CantidadEnviada { get; set; }
 
-        public CompraMaterial(int IDCompra, int IDMaterial, string Nombre, int IDProveedor, float SubTotal, int Cantidad, DateTime Fecha, string Estado)
+        public CompraMaterial(int IDCompra, int IDMaterial, string Nombre, int IDProveedor, float SubTotal, int Cantidad, DateTime Fecha, string Estado, int CantidadEnviada)
         {
             this.IDCompra = IDCompra;
             this.IDMaterial = IDMaterial;
@@ -27,6 +28,7 @@ namespace Entidad
             this.Cantidad = Cantidad;
             this.Fecha = Fecha;
             this.Estado = Estado;
+            this.CantidadEnviada = CantidadEnviada;
         }
 
         public CompraMaterial(int IDCompra, int IDMaterial, string Nombre, int IDProveedor, int Cantidad)
@@ -44,11 +46,11 @@ namespace Entidad
             this.IDProveedor = IDProveedor;
         }
 
-        public CompraMaterial(int IDCompra, int IDMaterial, int Cantidad)
+        public CompraMaterial(int IDCompra, int IDProveedor, int CantidadEnviada)
         {
             this.IDCompra = IDCompra;
-            this.IDMaterial = IDMaterial;
-            this.Cantidad = Cantidad;
+            this.IDProveedor = IDProveedor;
+            this.CantidadEnviada = CantidadEnviada;
         }
     }
 }

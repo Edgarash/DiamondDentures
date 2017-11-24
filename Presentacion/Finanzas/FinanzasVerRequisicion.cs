@@ -15,6 +15,7 @@ namespace Presentacion.Finanzas
     public partial class FinanzasVerRequisicion : Control.Pantalla
     {
         public string elquesea;
+        public static string paqueeraestawea;
         enum Búsqueda { Total, Clave, Personalizada };
         string idcom { get; set; }
         InterfaceUsuario Interface;
@@ -32,7 +33,7 @@ namespace Presentacion.Finanzas
         }
         private void LlenarData(Búsqueda Tipo)
         {
-            int IDCompra = Convert.ToInt32(elquesea);
+            int IDCompra = Convert.ToInt32(paqueeraestawea);
             int Col = 0, Ren = 0;
             if (dtRequisicion.SelectedCells.Count > 0)
             {
@@ -153,6 +154,11 @@ namespace Presentacion.Finanzas
                     }
                 }
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

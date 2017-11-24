@@ -35,6 +35,11 @@ namespace Control
             return InterfaceMySQL.ActualizarEDO(Material);
         }
 
+        public static bool AgregarCantidadEnviada(CompraMaterial Material)
+        {
+            return InterfaceMySQL.AgregarCantidadEnviada(Material);
+        }
+
         public static bool AgregarFolios(FolioProveedor fp)
         {
             return InterfaceMySQL.AgregarFolios(fp);
