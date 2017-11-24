@@ -49,7 +49,7 @@ namespace Presentacion
             InitializeComponent4();
             switch (PantallaLogin.Sesión?.Departamento)
             {
-                case "Recepcion":
+                case "RECEPCION":
                     btnControlPedidos.Location = new System.Drawing.Point(253, 142);
                     lblConfiguración.Visible = btnConfiguracion.Visible = false;
                     lblControlPedidos.Location = new System.Drawing.Point(269, 276);
@@ -57,7 +57,7 @@ namespace Presentacion
                     btnSemáforo.Location = new System.Drawing.Point(253, 310);
                     lblSemáforo.Location = new System.Drawing.Point((btnSemáforo.Location.X + btnSemáforo.Width / 2) - lblSemáforo.Width / 2, 444);
                     break;
-                case "Laboratorista":
+                case "LABORATORIO":
                     btnLaboratorio.Location = new System.Drawing.Point(62, 142);
                     lblLaboratorio.Location = new System.Drawing.Point((btnLaboratorio.Location.X + btnLaboratorio.Width / 2) - lblLaboratorio.Width / 2, 276);
                     btnRecepcion.Visible = lblRecepcion.Visible = false;
@@ -76,7 +76,7 @@ namespace Presentacion
                     btnConfiguracion.Location = new System.Drawing.Point(btnConfiguracion.Location.X - 110, 310);
                     lblConfiguración.Location = new System.Drawing.Point((btnConfiguracion.Location.X + btnConfiguracion.Width / 2) - lblConfiguración.Width / 2, 444);
                     break;
-                case "Contador":
+                case "FINANZAS":
                     btnConfiguracion.Visible = lblConfiguración.Visible = false;
                     btnLaboratorio.Visible = lblLaboratorio.Visible = false;
                     btnRecepcion.Visible = lblRecepcion.Visible = false;
