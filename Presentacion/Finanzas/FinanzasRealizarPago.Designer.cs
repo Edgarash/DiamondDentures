@@ -34,8 +34,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.Pagar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -108,6 +109,11 @@
             this.dataGridView2.TabIndex = 86;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
+            // Pagar
+            // 
+            this.Pagar.HeaderText = "Pagar";
+            this.Pagar.Name = "Pagar";
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(918, 556);
@@ -118,16 +124,22 @@
             this.button1.Text = "Pagar Todo";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // Pagar
+            // btnExportar
             // 
-            this.Pagar.HeaderText = "Pagar";
-            this.Pagar.Name = "Pagar";
+            this.btnExportar.Location = new System.Drawing.Point(351, 100);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(75, 23);
+            this.btnExportar.TabIndex = 90;
+            this.btnExportar.Text = "Exportar";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // FinanzasRealizarPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1206, 610);
+            this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
@@ -144,6 +156,7 @@
             this.Controls.SetChildIndex(this.textBox2, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.btnExportar, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -161,5 +174,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Pagar;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExportar;
     }
 }

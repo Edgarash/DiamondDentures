@@ -41,6 +41,11 @@ namespace Presentacion.Finanzas
             
         }
 
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            ManejadorReportes.MostrarPantalla(this, new Reportes.PantallaVPNotaPagos());
+        }
+
         private void btnPagar_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Se ha realizado el pago, ¿desea generar un reporte?",

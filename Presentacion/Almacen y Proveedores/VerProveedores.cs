@@ -247,7 +247,7 @@ namespace Presentacion.Almacen_y_Proveedores
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            ManejadorReportes.MostrarPantalla(this, new PantallaVPNotaProv());
+            ManejadorReportes.MostrarPantalla(this, new PantallaVPNotaPagos());
         }
     }
 }
