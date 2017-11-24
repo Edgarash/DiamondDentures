@@ -294,6 +294,8 @@ namespace Presentacion.Almacen_y_Proveedores
 
         private void btnReqM_Click(object sender, EventArgs e)
         {
+
+
             ManejadorReportes.MostrarPantalla(this, new PantallaVPReqMat());
         }
 
