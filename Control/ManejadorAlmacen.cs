@@ -34,6 +34,10 @@ namespace Control
         {
             return InterfaceMySQL.ActualizarEDO(Material);
         }
+        public static bool ActualizarEDOPagado(CompraMaterial Material)
+        {
+            return InterfaceMySQL.ActualizarEDOPagado(Material);
+        }
 
         public static bool AgregarCantidadEnviada(CompraMaterial Material)
         {
