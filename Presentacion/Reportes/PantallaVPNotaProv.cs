@@ -25,6 +25,9 @@ namespace Presentacion.Reportes
         private Label label6;
         private Label label2;
         private TextBox txtIDText;
+        private Label label3;
+        private TextBox txtReceptor;
+        private Label label5;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvVisor;
 
         private void InitializeComponent()
@@ -40,11 +43,16 @@ namespace Presentacion.Reportes
             this.btnExportar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.sfdExportar = new System.Windows.Forms.SaveFileDialog();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtReceptor = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Encabezado.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // Encabezado
             // 
+            this.Encabezado.Controls.Add(this.label5);
             this.Encabezado.Size = new System.Drawing.Size(1210, 93);
             // 
             // crvVisor
@@ -62,6 +70,8 @@ namespace Presentacion.Reportes
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.txtReceptor);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtIDText);
             this.groupBox2.Controls.Add(this.btnGenerar);
@@ -113,8 +123,7 @@ namespace Presentacion.Reportes
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label6.Location = new System.Drawing.Point(102, 366);
             this.label6.Name = "label6";
@@ -140,8 +149,7 @@ namespace Presentacion.Reportes
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(179, 459);
             this.label1.Name = "label1";
@@ -167,8 +175,7 @@ namespace Presentacion.Reportes
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
-                ((byte) (0)));
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label10.Location = new System.Drawing.Point(26, 459);
             this.label10.Name = "label10";
@@ -181,6 +188,34 @@ namespace Presentacion.Reportes
             this.sfdExportar.Filter = "Adobe PDF|*.pdf";
             this.sfdExportar.FileOk += new System.ComponentModel.CancelEventHandler(this.sfdExportar_FileOk);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 101);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(123, 16);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Nombre del receptor:";
+            // 
+            // txtReceptor
+            // 
+            this.txtReceptor.Location = new System.Drawing.Point(9, 120);
+            this.txtReceptor.Name = "txtReceptor";
+            this.txtReceptor.Size = new System.Drawing.Size(225, 21);
+            this.txtReceptor.TabIndex = 29;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label5.Location = new System.Drawing.Point(12, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(231, 37);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Crear reporte";
+            // 
             // PantallaVPNotaProv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -192,9 +227,12 @@ namespace Presentacion.Reportes
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.crvVisor, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Encabezado.ResumeLayout(false);
+            this.Encabezado.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -217,13 +255,20 @@ namespace Presentacion.Reportes
         {
             string id_str = txtIDText.Text;
             int id;
-            if (int.TryParse(id_str, out id))
+            if (!int.TryParse(id_str, out id))
             {
                 MessageBox.Show("El id no es valido");
                 return;
             }
-            ParametroReporte Id = new ParametroReporte("idcompra",id);
-            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteNotaProveedor(), Id);
+            string receptor = txtReceptor.Text;
+            if (string.IsNullOrWhiteSpace(receptor))
+            {
+                MessageBox.Show("El receptor no es valido");
+                return;
+            }
+            ParametroReporte Id = new ParametroReporte("folio",id);
+            ParametroReporte Receptor = new ParametroReporte("Receptor", receptor);
+            crvVisor.ReportSource = ManejadorReportes.CargarReporte(new ReporteNotaProveedor(), Id, Receptor);
         }
 
         private void btnRegresar_Click(object sender, EventArgs e) => Close();
