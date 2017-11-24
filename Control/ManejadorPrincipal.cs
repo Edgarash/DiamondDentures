@@ -58,6 +58,10 @@ namespace Control
         {
             InterfaceMySQL.CambiarEstado(temp, nuevo, id);
         }
+        public void BuscarIDPedidosCP(DataGridView temp, string id)
+        {
+            InterfaceMySQL.BuscarIDPedidosCP(temp, id);
+        }
         public void EstadoProcesar(DataGridView temp, string valor, string id,string user)
         {
             Interface = new ConexionBaseDeDatos.InterfaceBaseDeDatos();

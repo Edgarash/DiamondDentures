@@ -66,7 +66,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.tbBuscar = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.Encabezado.SuspendLayout();
@@ -607,23 +606,6 @@
             this.label11.TabIndex = 297;
             this.label11.Text = "En Proceso";
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackgroundImage = global::Presentacion.Properties.Resources.IconoBuscar;
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(211, 129);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(41, 41);
-            this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            this.btnBuscar.MouseEnter += new System.EventHandler(this.btnMouseOver);
-            this.btnBuscar.MouseLeave += new System.EventHandler(this.btnMouseLeft);
-            // 
             // tbBuscar
             // 
             this.tbBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -631,8 +613,9 @@
             this.tbBuscar.Location = new System.Drawing.Point(110, 137);
             this.tbBuscar.MaxLength = 20;
             this.tbBuscar.Name = "tbBuscar";
-            this.tbBuscar.Size = new System.Drawing.Size(95, 22);
+            this.tbBuscar.Size = new System.Drawing.Size(166, 22);
             this.tbBuscar.TabIndex = 1;
+            this.tbBuscar.TextChanged += new System.EventHandler(this.tbBuscar_TextChanged);
             this.tbBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBuscar_KeyPress);
             // 
             // label14
@@ -677,7 +660,6 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.tbBuscar);
-            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.lblUsuario);
@@ -703,7 +685,6 @@
             this.Controls.SetChildIndex(this.lblUsuario, 0);
             this.Controls.SetChildIndex(this.button5, 0);
             this.Controls.SetChildIndex(this.label8, 0);
-            this.Controls.SetChildIndex(this.btnBuscar, 0);
             this.Controls.SetChildIndex(this.tbBuscar, 0);
             this.Controls.SetChildIndex(this.label14, 0);
             this.Controls.SetChildIndex(this.label15, 0);
@@ -781,7 +762,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        protected System.Windows.Forms.Button btnBuscar;
         protected System.Windows.Forms.TextBox tbBuscar;
         private System.Windows.Forms.Label label14;
     }

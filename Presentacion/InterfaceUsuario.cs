@@ -704,6 +704,11 @@ namespace Presentacion
             Manejador = new ManejadorPrincipal();
             ((ManejadorPrincipal)Manejador).CambiarEstado(temp, nuevo, id);
         }
+        public void BuscarIDPedidosCP(DataGridView temp, string id)
+        {
+            Manejador = new ManejadorPrincipal();
+            ((ManejadorPrincipal)Manejador).BuscarIDPedidosCP(temp, id);
+        }
 
         #endregion
 

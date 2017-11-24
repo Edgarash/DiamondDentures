@@ -135,13 +135,17 @@ namespace Presentacion.Control_Pedidos
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            int renglon = Convert.ToInt32(dtvDatos.CurrentCell.RowIndex.ToString());
+            string id = dtvDatos[0, renglon].Value.ToString();
             string valor = tbBuscar.Text;
-            if (tbBuscar.Text == "")
+            if (tbBuscar.Text != "")
             {
+                Interface.BuscarIDPedidosCP(dtvDatos, id);
                 ActualizarData();
             }
             else
             {
+                MessageBox.Show("No hay campos or buscar");
             }
         }
         private void button5_Click(object sender, EventArgs e)
@@ -425,6 +429,17 @@ namespace Presentacion.Control_Pedidos
             pfp.ShowDialog();
             pfp.Close();
             Show();
+        }
+
+        private void tbBuscar_TextChanged(object sender, EventArgs e)
+        {
+            int renglon = Convert.ToInt32(dtvDatos.CurrentCell.RowIndex.ToString());
+            string id = tbBuscar.Text;
+            Interface.BuscarIDPedidosCP(dtvDatos, id);
+            if (tbBuscar.Text=="")
+            {
+                ActualizarData();
+            }
         }
 
         private void cbTrabaja_SelectedIndexChanged(object sender, EventArgs e)
