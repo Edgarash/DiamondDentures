@@ -58,8 +58,8 @@ namespace Presentacion.Recursos_Humanos
             {
                 case DialogResult.Yes:
                     this.WindowState = FormWindowState.Minimized;
-                    FinanzasRealizarPago frp = new FinanzasRealizarPago(datos,"");
-                    frp.Show();
+                    //FinanzasRealizarPago frp = new FinanzasRealizarPago(datos,"");
+                    //frp.Show();
                     break;
                 case DialogResult.No:
                     break;

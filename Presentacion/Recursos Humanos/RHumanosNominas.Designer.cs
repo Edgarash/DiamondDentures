@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.btnPagar = new System.Windows.Forms.Button();
             this.txTotal = new System.Windows.Forms.TextBox();
             this.dtNomina = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -78,17 +77,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Nómina empleados";
             // 
-            // btnPagar
-            // 
-            this.btnPagar.Location = new System.Drawing.Point(1185, 452);
-            this.btnPagar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnPagar.Name = "btnPagar";
-            this.btnPagar.Size = new System.Drawing.Size(87, 42);
-            this.btnPagar.TabIndex = 62;
-            this.btnPagar.Text = "Registrar";
-            this.btnPagar.UseVisualStyleBackColor = true;
-            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
-            // 
             // txTotal
             // 
             this.txTotal.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -121,7 +109,6 @@
             // 
             this.groupBox2.Controls.Add(this.btnAgregar);
             this.groupBox2.Controls.Add(this.txNomb);
-            this.groupBox2.Controls.Add(this.btnGenRep);
             this.groupBox2.Controls.Add(this.nudDias);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.btnActualizar);
@@ -136,10 +123,10 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(653, 9);
+            this.btnAgregar.Location = new System.Drawing.Point(664, 9);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(66, 42);
+            this.btnAgregar.Size = new System.Drawing.Size(88, 42);
             this.btnAgregar.TabIndex = 53;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -159,9 +146,9 @@
             // 
             // btnGenRep
             // 
-            this.btnGenRep.Location = new System.Drawing.Point(725, 9);
+            this.btnGenRep.Location = new System.Drawing.Point(1184, 451);
             this.btnGenRep.Name = "btnGenRep";
-            this.btnGenRep.Size = new System.Drawing.Size(65, 42);
+            this.btnGenRep.Size = new System.Drawing.Size(88, 42);
             this.btnGenRep.TabIndex = 27;
             this.btnGenRep.Text = "Generar \r\nReporte";
             this.btnGenRep.UseVisualStyleBackColor = true;
@@ -196,10 +183,10 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(796, 9);
+            this.btnActualizar.Location = new System.Drawing.Point(762, 10);
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(73, 42);
+            this.btnActualizar.Size = new System.Drawing.Size(86, 42);
             this.btnActualizar.TabIndex = 2;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -404,11 +391,11 @@
             this.ClientSize = new System.Drawing.Size(1284, 507);
             this.Controls.Add(this.cbDia);
             this.Controls.Add(this.label8);
+            this.Controls.Add(this.btnGenRep);
             this.Controls.Add(this.cbAño);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cbMes);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnPagar);
             this.Controls.Add(this.txTotal);
             this.Controls.Add(this.dtNomina);
             this.Controls.Add(this.groupBox2);
@@ -425,11 +412,11 @@
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.dtNomina, 0);
             this.Controls.SetChildIndex(this.txTotal, 0);
-            this.Controls.SetChildIndex(this.btnPagar, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.cbMes, 0);
             this.Controls.SetChildIndex(this.label7, 0);
             this.Controls.SetChildIndex(this.cbAño, 0);
+            this.Controls.SetChildIndex(this.btnGenRep, 0);
             this.Controls.SetChildIndex(this.label8, 0);
             this.Controls.SetChildIndex(this.cbDia, 0);
             this.Encabezado.ResumeLayout(false);
@@ -449,7 +436,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnPagar;
         private System.Windows.Forms.TextBox txTotal;
         private System.Windows.Forms.DataGridView dtNomina;
         private System.Windows.Forms.GroupBox groupBox2;
