@@ -59,6 +59,10 @@ namespace Control
         {
             return InterfaceMySQL.AgregarCompra(compras);
         }
+        public static bool AgregarCompraInsumos7(Compras compras)
+        {
+            return InterfaceMySQL.AgregarCompraInsumos7(compras);
+        }
 
         public static bool ActualizarCompra(Compras compras)
         {
@@ -68,6 +72,10 @@ namespace Control
         public static bool AgregarAlaCompra(CompraMaterial CMaterial)
         {
             return InterfaceMySQL.AgregarAlaCompra(CMaterial);
+        }
+        public static bool AgregarInsumosAlaCompra(CompraMaterial CMaterial)
+        {
+            return InterfaceMySQL.AgregarInsumosAlaCompra(CMaterial);
         }
 
         public static bool AgregarHistorial(HistorialMod Historial)

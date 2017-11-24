@@ -277,7 +277,7 @@ namespace Presentacion.Control_Pedidos
                 }
             }
             Interface = new InterfaceUsuario(this);
-            Interface.CambiarEstado(dtvDatos, valor, cestado, id);
+            //Interface.CambiarEstado(dtvDatos, valor, cestado, id);
             ActualizarData();
         }
         private void PantallaEstadoPedido_Load(object sender, EventArgs e)

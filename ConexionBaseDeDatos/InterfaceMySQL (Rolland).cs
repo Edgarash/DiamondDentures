@@ -189,6 +189,8 @@ namespace ConexionBaseDeDatos
             EjecutarProcedimientoAlmacenado("AgregarCompra", TipoConsulta.DevuelveInt, Parametro("idcompra", compras.IDCompra));
             return OperacionRealizada;
         }
+        
+        
 
         public static bool ObtenerID(out Compras Compra)
         {

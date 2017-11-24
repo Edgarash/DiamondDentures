@@ -44,6 +44,8 @@
             this.lblSemáforo = new System.Windows.Forms.Label();
             this.kuroButton1 = new ControlesM.KuroButton();
             this.kuroButton2 = new ControlesM.KuroButton();
+            this.kuroButton3 = new ControlesM.KuroButton();
+            this.kuroButton4 = new ControlesM.KuroButton();
             this.Encabezado.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -281,10 +283,44 @@
             this.kuroButton2.UseVisualStyleBackColor = false;
             this.kuroButton2.Click += new System.EventHandler(this.kuroButton2_Click);
             // 
+            // kuroButton3
+            // 
+            this.kuroButton3.BackColor = System.Drawing.Color.White;
+            this.kuroButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.kuroButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.kuroButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.kuroButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.kuroButton3.ForeColor = System.Drawing.Color.Black;
+            this.kuroButton3.Location = new System.Drawing.Point(506, 464);
+            this.kuroButton3.Name = "kuroButton3";
+            this.kuroButton3.Size = new System.Drawing.Size(120, 50);
+            this.kuroButton3.TabIndex = 57;
+            this.kuroButton3.Text = "Finanzas";
+            this.kuroButton3.UseVisualStyleBackColor = false;
+            this.kuroButton3.Click += new System.EventHandler(this.kuroButton3_Click);
+            // 
+            // kuroButton4
+            // 
+            this.kuroButton4.BackColor = System.Drawing.Color.White;
+            this.kuroButton4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.kuroButton4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.kuroButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.kuroButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.kuroButton4.ForeColor = System.Drawing.Color.Black;
+            this.kuroButton4.Location = new System.Drawing.Point(363, 464);
+            this.kuroButton4.Name = "kuroButton4";
+            this.kuroButton4.Size = new System.Drawing.Size(120, 50);
+            this.kuroButton4.TabIndex = 58;
+            this.kuroButton4.Text = "Recursos Humanos";
+            this.kuroButton4.UseVisualStyleBackColor = false;
+            this.kuroButton4.Click += new System.EventHandler(this.kuroButton4_Click);
+            // 
             // PantallaMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.ClientSize = new System.Drawing.Size(626, 520);
+            this.Controls.Add(this.kuroButton4);
+            this.Controls.Add(this.kuroButton3);
             this.Controls.Add(this.lblSesión);
             this.Controls.Add(this.lblSemáforo);
             this.Controls.Add(this.lblRecepcion);
@@ -315,6 +351,8 @@
             this.Controls.SetChildIndex(this.lblRecepcion, 0);
             this.Controls.SetChildIndex(this.lblSemáforo, 0);
             this.Controls.SetChildIndex(this.lblSesión, 0);
+            this.Controls.SetChildIndex(this.kuroButton3, 0);
+            this.Controls.SetChildIndex(this.kuroButton4, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
             this.ResumeLayout(false);
@@ -340,5 +378,7 @@
         private System.Windows.Forms.Label lblSemáforo;
         private ControlesM.KuroButton kuroButton1;
         private ControlesM.KuroButton kuroButton2;
+        private ControlesM.KuroButton kuroButton3;
+        private ControlesM.KuroButton kuroButton4;
     }
 }

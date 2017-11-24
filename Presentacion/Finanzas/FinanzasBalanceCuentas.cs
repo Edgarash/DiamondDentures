@@ -35,7 +35,7 @@ namespace Presentacion.Finanzas
                     dtEgresos[1, dtEgresos.RowCount - 1].Style.BackColor = Color.IndianRed;
                     dtIngresos[2, dtIngresos.RowCount - 1].Style.BackColor = Color.LightGreen;
                     dtEgresos[2, dtEgresos.RowCount - 1].Style.BackColor = Color.IndianRed;
-                    txTotal.Text = "Fondo = $ " + (Convert.ToInt32(dtIngresos[2, dtIngresos.RowCount - 1].Value) - Convert.ToInt32(dtEgresos[2, dtEgresos.RowCount - 1].Value)).ToString();
+                    Interface.DatosDTotalIngresos(txTotal);
                 }
             }            
         }

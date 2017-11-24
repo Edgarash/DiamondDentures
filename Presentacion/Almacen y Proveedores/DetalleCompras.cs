@@ -60,6 +60,42 @@ namespace Presentacion.Almacen_y_Proveedores
             }
         }
 
+        private void LlenarData11(Búsqueda Tipo)
+        {
+            int IDCompra = Convert.ToInt32(label2.Text);
+            int Col = 0, Ren = 0;
+            if (dataGridView2.SelectedCells.Count > 0)
+            {
+                DataGridViewCell Cell = dataGridView2.SelectedCells[0];
+                Col = Cell.ColumnIndex;
+                Ren = Cell.RowIndex;
+            }
+            dataGridView2.Rows.Clear();
+            CompraInsumos[] temp = null;
+            if (Tipo == Búsqueda.Total) 
+                temp = Interface.DetallesInsumos(IDCompra);
+            dataGridView2.RowCount = temp?.Length ?? 0;
+            if (temp != null)
+            {
+                for (int i = 0; i < temp.Length; i++)
+                {
+                    dataGridView2[0, i].Value = temp[i].IDCompra;
+                    dataGridView2[1, i].Value = temp[i].IDInsumos;
+                    dataGridView2[2, i].Value = temp[i].Nombre;
+                    dataGridView2[3, i].Value = temp[i].IDProveedor;
+                    dataGridView2[4, i].Value = temp[i].SubTotal;
+                    dataGridView2[5, i].Value = temp[i].Cantidad;
+                    dataGridView2[6, i].Value = temp[i].Fecha;
+                    dataGridView2[7, i].Value = temp[i].Estado;
+                }
+            }
+            if (dataGridView2.SelectedCells.Count > 0)
+            {
+                dataGridView2.CurrentCell = dataGridView2[Col > dataGridView2.ColumnCount ? 0 : Col, Ren > dataGridView2.RowCount ? 0 : Ren];
+                dataGridView2.Focus();
+            }
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
 
@@ -68,6 +104,7 @@ namespace Presentacion.Almacen_y_Proveedores
         private void DetalleCompras_Load(object sender, EventArgs e)
         {
             Interface = new InterfaceUsuario(this);
+            //LlenarData11(Búsqueda.Total);
             LlenarData(Búsqueda.Total);
         }
 

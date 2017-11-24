@@ -205,7 +205,7 @@
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(47, 24);
             this.cbMes.TabIndex = 72;
-            this.cbMes.Text = "10";
+            this.cbMes.Text = "11";
             // 
             // label13
             // 

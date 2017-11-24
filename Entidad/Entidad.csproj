@@ -170,6 +170,7 @@
       <DependentUpon>CAN9_ReporteFaltantesDiferenteCero.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CompraInsumos.cs" />
     <Compile Include="CompraMaterial.cs" />
     <Compile Include="Compras.cs" />
     <Compile Include="Correo.cs" />
@@ -197,6 +198,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="HistorialMod.cs" />
+    <Compile Include="RegistroInsumos.cs" />
     <Compile Include="ParametroReporte.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidad
 {
-    class Insumos
+    public class RegistroInsumos : Datos
     {
         public int IDInsumos { get; set; }
         public string Nombre { get; set; }
@@ -18,10 +18,10 @@ namespace Entidad
         public string UnidadMedida { get; set; }
         public int Cantidad { get; set; }
 
-        public Insumos(int IDInsumos, RegistroProveedor Proveedor, string Nombre, string Descripcion, 
-            float PrecioBase, float PrecioCompra, string UnidadMedida, int Cantidad)
+        public RegistroInsumos(int IDMaterial, RegistroProveedor Proveedor, string Nombre, string Descripcion, float PrecioBase, float PrecioCompra,
+           string UnidadMedida, int Cantidad)
         {
-            this.IDInsumos = IDInsumos;
+            this.IDInsumos = IDMaterial;
             this.Proveedor = Proveedor;
             this.Nombre = Nombre;
             this.Descripcion = Descripcion;

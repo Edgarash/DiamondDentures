@@ -45,6 +45,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnReqM = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -61,7 +62,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnReqM = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.Encabezado.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -96,6 +98,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.comboBox1);
+            this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.label2);
@@ -170,10 +174,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(431, 7);
+            this.button1.Location = new System.Drawing.Point(634, 7);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 31);
+            this.button1.Size = new System.Drawing.Size(106, 28);
             this.button1.TabIndex = 18;
             this.button1.Text = "Agregar Compra";
             this.button1.UseVisualStyleBackColor = true;
@@ -182,7 +186,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 16);
+            this.label2.Location = new System.Drawing.Point(218, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 16);
             this.label2.TabIndex = 15;
@@ -191,7 +195,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(120, 12);
+            this.textBox1.Location = new System.Drawing.Point(323, 12);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(157, 21);
@@ -200,7 +204,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(296, 7);
+            this.button2.Location = new System.Drawing.Point(499, 7);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(106, 28);
@@ -220,11 +224,22 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(873, 396);
+            this.tabPage2.Size = new System.Drawing.Size(873, 421);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mirar Compras";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // btnReqM
+            // 
+            this.btnReqM.Location = new System.Drawing.Point(703, 11);
+            this.btnReqM.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnReqM.Name = "btnReqM";
+            this.btnReqM.Size = new System.Drawing.Size(156, 28);
+            this.btnReqM.TabIndex = 23;
+            this.btnReqM.Text = "Exportar Req. M.";
+            this.btnReqM.UseVisualStyleBackColor = true;
+            this.btnReqM.Click += new System.EventHandler(this.btnReqM_Click);
             // 
             // button3
             // 
@@ -355,16 +370,27 @@
             this.label4.TabIndex = 23;
             this.label4.Text = "label4";
             // 
-            // btnReqM
+            // comboBox1
             // 
-            this.btnReqM.Location = new System.Drawing.Point(703, 11);
-            this.btnReqM.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnReqM.Name = "btnReqM";
-            this.btnReqM.Size = new System.Drawing.Size(156, 28);
-            this.btnReqM.TabIndex = 23;
-            this.btnReqM.Text = "Exportar Req. M.";
-            this.btnReqM.UseVisualStyleBackColor = true;
-            this.btnReqM.Click += new System.EventHandler(this.btnReqM_Click);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "MATERIALES",
+            "INSUMOS"});
+            this.comboBox1.Location = new System.Drawing.Point(100, 13);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(112, 24);
+            this.comboBox1.TabIndex = 41;
+            this.comboBox1.Text = "MATERIALES";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(20, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(74, 16);
+            this.label9.TabIndex = 40;
+            this.label9.Text = "Seleccionar:";
             // 
             // RequisicionMateriales
             // 
@@ -433,5 +459,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.Button btnReqM;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label9;
     }
 }

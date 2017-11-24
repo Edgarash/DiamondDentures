@@ -104,6 +104,12 @@ namespace Presentacion
             return (Manejador as ManejadorRegistroMaterial).ObtenerMateriales3();
         }
 
+        internal RegistroInsumos[] ObtenerInsumos3()
+        {
+            Manejador = new ManejadorRegistroInsumos();
+            return (Manejador as ManejadorRegistroInsumos).ObtenerInsumos3();
+        }
+
         internal RegistroMaterial[] ObtenerUnMaterial(string Nombre)
         {
             Manejador = new ManejadorRegistroMaterial();
@@ -163,6 +169,12 @@ namespace Presentacion
         {
             Manejador = new ManejadorRegistroMaterial();
             return (Manejador as ManejadorRegistroMaterial).DetallesMaterial(IDCompra);
+        }
+
+        internal CompraInsumos[] DetallesInsumos(int IDCompra)
+        {
+            Manejador = new ManejadorRegistroInsumos();
+            return (Manejador as ManejadorRegistroInsumos).DetallesInsumos(IDCompra);
         }
 
         internal CompraMaterial[] DetallesProveedorMaterial(int IDProveedor)

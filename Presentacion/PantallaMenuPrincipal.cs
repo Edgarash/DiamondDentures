@@ -184,5 +184,17 @@ namespace Presentacion
             Almacen_y_Proveedores.Menu abrir = new Almacen_y_Proveedores.Menu();
             abrir.Show();
         }
+
+        private void kuroButton3_Click(object sender, EventArgs e)
+        {
+            Finanzas.FinanzasMenu fm = new Finanzas.FinanzasMenu();
+            fm.Show();
+        }
+
+        private void kuroButton4_Click(object sender, EventArgs e)
+        {
+            Recursos_Humanos.RHumanosMenu rhm = new Recursos_Humanos.RHumanosMenu();
+            rhm.Show();
+        }
     }
 }

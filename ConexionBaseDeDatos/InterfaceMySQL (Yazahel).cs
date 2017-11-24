@@ -144,40 +144,82 @@ namespace ConexionBaseDeDatos
             return OperacionRealizada;
         }
 
-        public static bool ObtenerInsumos3(out Insumos[] Insumos)
+        public static bool ObtenerInsumos3(out RegistroInsumos[] Insumos)
         {
-            EjecutarProcedimientoAlmacenado("ObtenerMateriales3", TipoConsulta.DevuelveReader,
+            EjecutarProcedimientoAlmacenado("ObtenerInsumos3", TipoConsulta.DevuelveReader,
                 Parametro("", null));
             bool Exito = OperacionRealizada2;
             Insumos = RellenarInsumos3();
             return Exito;
         }
 
-        private static RegistroMaterial[] RellenarInsumos3()
+        private static RegistroInsumos[] RellenarInsumos3()
         {
-            RegistroMaterial[] Insumos = new RegistroMaterial[TablaDeResultados.Rows.Count];
+            RegistroInsumos[] Insumos = new RegistroInsumos[TablaDeResultados.Rows.Count];
             DataTable Insu = TablaDeResultados;
             for (int i = 0; i < Insumos.Length; i++)
             {
                 DataRow x = Insu.Rows[i];
                 RegistroProveedor Proveedor;
-                RecuperarProveedor(Convert.ToInt32(x["Proveedor"].ToString()), out Proveedor);
-                Insumos[i] = new RegistroMaterial
+                RecuperarProveedor(Convert.ToInt32(x["IDProveedor"].ToString()), out Proveedor);
+                Insumos[i] = new RegistroInsumos
                     (
                     Convert.ToInt32(x["IDInsumos"].ToString()),
+                    Proveedor,
                     x["Nombre"].ToString(),
                     x["Descripcion"].ToString(),
                     Convert.ToSingle(x["PrecioBase"].ToString()),
-                    Convert.ToSingle(x["PrecioCompra"].ToString()),
-                    Convert.ToInt32(x["TiempoBase"].ToString()),
-                    Proveedor,
+                    Convert.ToSingle(x["PrecioCompra"].ToString()),                    
                     x["UnidadMedida"].ToString(),
-                    Convert.ToInt32(x["Cantidad"].ToString())
+                    Convert.ToInt32(x["CantidadDisponible"].ToString())
                     );
             }
             return Insumos;
         }
 
+        public static bool AgregarCompraInsumos7(Compras compras)
+        {
+            EjecutarProcedimientoAlmacenado("AgregarCompraInsumos7", TipoConsulta.DevuelveInt, Parametro("idcompra", compras.IDCompra));
+            return OperacionRealizada;
+        }
+
+        public static bool AgregarInsumosAlaCompra(CompraMaterial CMaterial)
+        {
+            EjecutarProcedimientoAlmacenado("Estaweasegurovatronar2", TipoConsulta.DevuelveInt, Parametro("idcompra", CMaterial.IDCompra), Parametro("id", CMaterial.IDMaterial),
+                Parametro("nom", CMaterial.Nombre), Parametro("idprov", CMaterial.IDProveedor), Parametro("cantidad", CMaterial.Cantidad));
+            return OperacionRealizada;
+        }
+
+        public static bool DetallesInsumos(int IDCompra, out CompraInsumos[] Insumos)
+        {
+            EjecutarProcedimientoAlmacenado("VerDetalles2", TipoConsulta.DevuelveReader,
+                Parametro("id", IDCompra));
+            bool Exito = OperacionRealizada2;
+            Insumos = RellenarDetallesInsumos();
+            return Exito;
+        }
+
+        private static CompraInsumos[] RellenarDetallesInsumos()
+        {
+            CompraInsumos[] Insumos = new CompraInsumos[TablaDeResultados.Rows.Count];
+            DataTable Mats = TablaDeResultados;
+            for (int i = 0; i < Insumos.Length; i++)
+            {
+                DataRow x = Mats.Rows[i];
+                Insumos[i] = new CompraInsumos
+                    (
+                    Convert.ToInt32(x["IDCompra"].ToString()),
+                    Convert.ToInt32(x["IDInsumos"].ToString()),
+                    x["Nombre"].ToString(),
+                    Convert.ToInt32(x["IDProveedor"].ToString()),
+                    Convert.ToSingle(x["Subtotal"].ToString()),
+                    Convert.ToInt32(x["Cantidad"].ToString()),
+                    Convert.ToDateTime(x["Fecha"].ToString()),
+                    x["Estado"].ToString()
+                    );
+            }
+            return Insumos;
+        }
 
         public static bool FinanzasAgregarCompra(string nom, string tot)
         {
