@@ -217,7 +217,7 @@ namespace Presentacion.Reportes
         {
             string id_str = txtIDText.Text;
             int id;
-            if (int.TryParse(id_str, out id))
+            if (!int.TryParse(id_str, out id))
             {
                 MessageBox.Show("El id no es valido");
                 return;
