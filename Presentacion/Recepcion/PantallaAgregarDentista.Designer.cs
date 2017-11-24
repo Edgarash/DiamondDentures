@@ -32,11 +32,6 @@
             this.Encabezado.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblPantallaUsuario
-            // 
-            this.lblPantallaUsuario.Size = new System.Drawing.Size(311, 24);
-            this.lblPantallaUsuario.Text = "Agregar Información Dentista";
-            // 
             // pbIcono
             // 
             this.pbIcono.BackgroundImage = global::Presentacion.Properties.Resources.IconoDentistaAgregar;
@@ -54,30 +49,8 @@
             this.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // cbEstado
-            // 
-            this.cbEstado.Size = new System.Drawing.Size(168, 24);
-            // 
-            // cbPais
-            // 
-            this.cbPais.Size = new System.Drawing.Size(168, 24);
-            // 
-            // cbMunicipio
-            // 
-            this.cbMunicipio.Size = new System.Drawing.Size(189, 24);
-            // 
-            // cbCiudad
-            // 
-            this.cbCiudad.Size = new System.Drawing.Size(161, 24);
-            // 
-            // cbEmail
-            // 
-            this.cbEmail.Size = new System.Drawing.Size(131, 24);
-            // 
             // PantallaAgregarDentista
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(595, 465);
             this.Name = "PantallaAgregarDentista";
             this.Text = "Agregar Información Dentista";
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).EndInit();
@@ -85,7 +58,6 @@
             this.Encabezado.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

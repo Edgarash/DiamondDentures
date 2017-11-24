@@ -62,8 +62,6 @@
             // 
             // PantallaModificarProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(398, 543);
             this.Name = "PantallaModificarProducto";
             this.Text = "Modificar Producto";
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).EndInit();

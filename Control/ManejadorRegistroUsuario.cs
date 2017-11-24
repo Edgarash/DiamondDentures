@@ -45,12 +45,6 @@ namespace Control
             return InterfaceMySQL.RecuperarPregunta(NumeroEmpleado);
         }
 
-        public bool ValidarRespuesta(int Empleado, string Resp)
-        {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ValidarRespuesta(Empleado, Resp);
-        }
-
         public bool RecuperarUsuarioN(int Empleado, out RegistroUsuario User)
         {
             return InterfaceMySQL.RecuperarUsuarioN(Empleado, out User);

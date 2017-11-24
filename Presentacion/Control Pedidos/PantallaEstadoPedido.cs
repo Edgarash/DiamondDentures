@@ -43,7 +43,7 @@ namespace Presentacion.Control_Pedidos
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaModificarPedido(null).GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaModificarPedido)))
             {
                 RegistroPedido Pedido = null;
                 Interface = new InterfaceUsuario(this);

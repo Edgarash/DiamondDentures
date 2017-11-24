@@ -45,20 +45,28 @@
             this.lblMateriales = new System.Windows.Forms.Label();
             this.dgvMateriales = new System.Windows.Forms.DataGridView();
             this.Clave = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valido = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Activo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Materiales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbDescripcion = new System.Windows.Forms.TextBox();
+            this.lblDescripcion = new System.Windows.Forms.Label();
+            this.tbUnidadMedida = new System.Windows.Forms.TextBox();
+            this.lblUnidadMedida = new System.Windows.Forms.Label();
+            this.lblCantidad = new System.Windows.Forms.Label();
+            this.nudCantidad = new System.Windows.Forms.NumericUpDown();
             this.Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMateriales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.SuspendLayout();
             // 
             // Encabezado
             // 
             this.Encabezado.Controls.Add(this.lblPantallaUsuario);
             this.Encabezado.Controls.Add(this.pbIcono);
-            this.Encabezado.Size = new System.Drawing.Size(398, 93);
+            this.Encabezado.Size = new System.Drawing.Size(565, 93);
             // 
             // lblPantallaUsuario
             // 
@@ -89,7 +97,7 @@
             this.tbNombre.BackColor = System.Drawing.SystemColors.Window;
             this.tbNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbNombre.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.tbNombre.Location = new System.Drawing.Point(15, 166);
+            this.tbNombre.Location = new System.Drawing.Point(15, 168);
             this.tbNombre.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.tbNombre.MaxLength = 30;
             this.tbNombre.Name = "tbNombre";
@@ -100,7 +108,7 @@
             // 
             this.lblNombreProducto.AutoSize = true;
             this.lblNombreProducto.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreProducto.Location = new System.Drawing.Point(12, 146);
+            this.lblNombreProducto.Location = new System.Drawing.Point(12, 148);
             this.lblNombreProducto.Name = "lblNombreProducto";
             this.lblNombreProducto.Size = new System.Drawing.Size(139, 17);
             this.lblNombreProducto.TabIndex = 147;
@@ -110,7 +118,7 @@
             // 
             this.lblCancelar.AutoSize = true;
             this.lblCancelar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCancelar.Location = new System.Drawing.Point(305, 516);
+            this.lblCancelar.Location = new System.Drawing.Point(470, 604);
             this.lblCancelar.Name = "lblCancelar";
             this.lblCancelar.Size = new System.Drawing.Size(81, 18);
             this.lblCancelar.TabIndex = 164;
@@ -124,10 +132,10 @@
             this.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Location = new System.Drawing.Point(314, 452);
+            this.btnCerrar.Location = new System.Drawing.Point(479, 540);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(62, 58);
-            this.btnCerrar.TabIndex = 6;
+            this.btnCerrar.TabIndex = 10;
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
@@ -135,7 +143,7 @@
             // 
             this.lblAceptar.AutoSize = true;
             this.lblAceptar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAceptar.Location = new System.Drawing.Point(211, 516);
+            this.lblAceptar.Location = new System.Drawing.Point(376, 604);
             this.lblAceptar.Name = "lblAceptar";
             this.lblAceptar.Size = new System.Drawing.Size(73, 18);
             this.lblAceptar.TabIndex = 162;
@@ -145,32 +153,33 @@
             // 
             this.btnAceptar.BackgroundImage = global::Presentacion.Properties.Resources.IconoAceptar;
             this.btnAceptar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAceptar.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptar.Location = new System.Drawing.Point(216, 452);
+            this.btnAceptar.Location = new System.Drawing.Point(381, 540);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(62, 58);
-            this.btnAceptar.TabIndex = 5;
+            this.btnAceptar.TabIndex = 9;
             this.btnAceptar.UseVisualStyleBackColor = true;
             // 
             // tbPrecio
             // 
             this.tbPrecio.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.tbPrecio.Location = new System.Drawing.Point(183, 216);
+            this.tbPrecio.Location = new System.Drawing.Point(167, 308);
             this.tbPrecio.MaxLength = 8;
             this.tbPrecio.Name = "tbPrecio";
             this.tbPrecio.ShortcutsEnabled = false;
             this.tbPrecio.Size = new System.Drawing.Size(125, 23);
-            this.tbPrecio.TabIndex = 4;
+            this.tbPrecio.TabIndex = 6;
             this.tbPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPrecio_KeyPress);
             // 
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
             this.lblPrecio.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecio.Location = new System.Drawing.Point(183, 195);
+            this.lblPrecio.Location = new System.Drawing.Point(167, 287);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(62, 17);
             this.lblPrecio.TabIndex = 166;
@@ -179,7 +188,7 @@
             // nudDias
             // 
             this.nudDias.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.nudDias.Location = new System.Drawing.Point(15, 215);
+            this.nudDias.Location = new System.Drawing.Point(15, 307);
             this.nudDias.Minimum = new decimal(new int[] {
             1,
             0,
@@ -187,7 +196,7 @@
             0});
             this.nudDias.Name = "nudDias";
             this.nudDias.Size = new System.Drawing.Size(84, 23);
-            this.nudDias.TabIndex = 3;
+            this.nudDias.TabIndex = 5;
             this.nudDias.Value = new decimal(new int[] {
             1,
             0,
@@ -198,7 +207,7 @@
             // 
             this.lblDias.AutoSize = true;
             this.lblDias.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDias.Location = new System.Drawing.Point(12, 195);
+            this.lblDias.Location = new System.Drawing.Point(12, 287);
             this.lblDias.Name = "lblDias";
             this.lblDias.Size = new System.Drawing.Size(149, 17);
             this.lblDias.TabIndex = 166;
@@ -208,7 +217,7 @@
             // 
             this.lblClave.AutoSize = true;
             this.lblClave.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClave.Location = new System.Drawing.Point(15, 99);
+            this.lblClave.Location = new System.Drawing.Point(12, 102);
             this.lblClave.Name = "lblClave";
             this.lblClave.Size = new System.Drawing.Size(51, 17);
             this.lblClave.TabIndex = 166;
@@ -218,7 +227,7 @@
             // 
             this.tbClave.Enabled = false;
             this.tbClave.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.tbClave.Location = new System.Drawing.Point(15, 120);
+            this.tbClave.Location = new System.Drawing.Point(15, 122);
             this.tbClave.MaxLength = 8;
             this.tbClave.Name = "tbClave";
             this.tbClave.ShortcutsEnabled = false;
@@ -229,7 +238,7 @@
             // 
             this.lblMateriales.AutoSize = true;
             this.lblMateriales.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMateriales.Location = new System.Drawing.Point(15, 260);
+            this.lblMateriales.Location = new System.Drawing.Point(12, 333);
             this.lblMateriales.Name = "lblMateriales";
             this.lblMateriales.Size = new System.Drawing.Size(77, 17);
             this.lblMateriales.TabIndex = 166;
@@ -246,15 +255,16 @@
             this.dgvMateriales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMateriales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Clave,
-            this.Valido,
+            this.Activo,
             this.Materiales,
-            this.Precio});
+            this.Precio,
+            this.Tiempo});
             this.dgvMateriales.GridColor = System.Drawing.Color.Black;
-            this.dgvMateriales.Location = new System.Drawing.Point(12, 280);
+            this.dgvMateriales.Location = new System.Drawing.Point(12, 353);
             this.dgvMateriales.Name = "dgvMateriales";
             this.dgvMateriales.RowHeadersVisible = false;
-            this.dgvMateriales.Size = new System.Drawing.Size(374, 157);
-            this.dgvMateriales.TabIndex = 178;
+            this.dgvMateriales.Size = new System.Drawing.Size(539, 157);
+            this.dgvMateriales.TabIndex = 8;
             this.dgvMateriales.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvMateriales_EditingControlShowing);
             // 
             // Clave
@@ -262,21 +272,25 @@
             this.Clave.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Clave.Frozen = true;
             this.Clave.HeaderText = "Clave";
+            this.Clave.MinimumWidth = 55;
             this.Clave.Name = "Clave";
             this.Clave.ReadOnly = true;
+            this.Clave.Width = 55;
             // 
-            // Valido
+            // Activo
             // 
-            this.Valido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Valido.Frozen = true;
-            this.Valido.HeaderText = "Disponible";
-            this.Valido.Name = "Valido";
-            this.Valido.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Valido.Width = 124;
+            this.Activo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Activo.Frozen = true;
+            this.Activo.HeaderText = "Disponible";
+            this.Activo.MinimumWidth = 70;
+            this.Activo.Name = "Activo";
+            this.Activo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Activo.Width = 70;
             // 
             // Materiales
             // 
             this.Materiales.HeaderText = "Materiales";
+            this.Materiales.MinimumWidth = 210;
             this.Materiales.Name = "Materiales";
             this.Materiales.ReadOnly = true;
             this.Materiales.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -284,17 +298,92 @@
             // 
             // Precio
             // 
-            this.Precio.HeaderText = "Precio";
+            this.Precio.HeaderText = "Precio Venta";
+            this.Precio.MinimumWidth = 90;
             this.Precio.Name = "Precio";
+            // 
+            // Tiempo
+            // 
+            this.Tiempo.HeaderText = "Tiempo Final";
+            this.Tiempo.MinimumWidth = 90;
+            this.Tiempo.Name = "Tiempo";
+            this.Tiempo.ReadOnly = true;
+            // 
+            // tbDescripcion
+            // 
+            this.tbDescripcion.BackColor = System.Drawing.SystemColors.Window;
+            this.tbDescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbDescripcion.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.tbDescripcion.Location = new System.Drawing.Point(15, 223);
+            this.tbDescripcion.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.tbDescripcion.MaxLength = 50;
+            this.tbDescripcion.Multiline = true;
+            this.tbDescripcion.Name = "tbDescripcion";
+            this.tbDescripcion.Size = new System.Drawing.Size(536, 61);
+            this.tbDescripcion.TabIndex = 4;
+            // 
+            // lblDescripcion
+            // 
+            this.lblDescripcion.AutoSize = true;
+            this.lblDescripcion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescripcion.Location = new System.Drawing.Point(12, 203);
+            this.lblDescripcion.Name = "lblDescripcion";
+            this.lblDescripcion.Size = new System.Drawing.Size(97, 17);
+            this.lblDescripcion.TabIndex = 180;
+            this.lblDescripcion.Text = "* Descripción:";
+            // 
+            // tbUnidadMedida
+            // 
+            this.tbUnidadMedida.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.tbUnidadMedida.Location = new System.Drawing.Point(321, 168);
+            this.tbUnidadMedida.MaxLength = 8;
+            this.tbUnidadMedida.Name = "tbUnidadMedida";
+            this.tbUnidadMedida.ShortcutsEnabled = false;
+            this.tbUnidadMedida.Size = new System.Drawing.Size(125, 23);
+            this.tbUnidadMedida.TabIndex = 3;
+            // 
+            // lblUnidadMedida
+            // 
+            this.lblUnidadMedida.AutoSize = true;
+            this.lblUnidadMedida.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUnidadMedida.Location = new System.Drawing.Point(321, 148);
+            this.lblUnidadMedida.Name = "lblUnidadMedida";
+            this.lblUnidadMedida.Size = new System.Drawing.Size(142, 17);
+            this.lblUnidadMedida.TabIndex = 182;
+            this.lblUnidadMedida.Text = "* Unidad de Medida:";
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(317, 289);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(167, 17);
+            this.lblCantidad.TabIndex = 166;
+            this.lblCantidad.Text = "* Cantidad en Almacén:";
+            // 
+            // nudCantidad
+            // 
+            this.nudCantidad.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.nudCantidad.Location = new System.Drawing.Point(320, 309);
+            this.nudCantidad.Name = "nudCantidad";
+            this.nudCantidad.Size = new System.Drawing.Size(84, 23);
+            this.nudCantidad.TabIndex = 7;
             // 
             // PantallaProducto
             // 
             this.AcceptButton = this.btnAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(398, 543);
+            this.ClientSize = new System.Drawing.Size(565, 634);
+            this.Controls.Add(this.tbUnidadMedida);
+            this.Controls.Add(this.lblUnidadMedida);
+            this.Controls.Add(this.tbDescripcion);
+            this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.dgvMateriales);
+            this.Controls.Add(this.nudCantidad);
             this.Controls.Add(this.nudDias);
             this.Controls.Add(this.tbClave);
+            this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.tbPrecio);
             this.Controls.Add(this.lblDias);
             this.Controls.Add(this.lblMateriales);
@@ -319,15 +408,22 @@
             this.Controls.SetChildIndex(this.lblMateriales, 0);
             this.Controls.SetChildIndex(this.lblDias, 0);
             this.Controls.SetChildIndex(this.tbPrecio, 0);
+            this.Controls.SetChildIndex(this.lblCantidad, 0);
             this.Controls.SetChildIndex(this.tbClave, 0);
             this.Controls.SetChildIndex(this.nudDias, 0);
+            this.Controls.SetChildIndex(this.nudCantidad, 0);
             this.Controls.SetChildIndex(this.Encabezado, 0);
             this.Controls.SetChildIndex(this.dgvMateriales, 0);
+            this.Controls.SetChildIndex(this.lblDescripcion, 0);
+            this.Controls.SetChildIndex(this.tbDescripcion, 0);
+            this.Controls.SetChildIndex(this.lblUnidadMedida, 0);
+            this.Controls.SetChildIndex(this.tbUnidadMedida, 0);
             this.Encabezado.ResumeLayout(false);
             this.Encabezado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMateriales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,9 +447,16 @@
         protected System.Windows.Forms.TextBox tbClave;
         protected System.Windows.Forms.Label lblMateriales;
         protected System.Windows.Forms.DataGridView dgvMateriales;
+        protected System.Windows.Forms.TextBox tbDescripcion;
+        protected System.Windows.Forms.Label lblDescripcion;
+        protected System.Windows.Forms.TextBox tbUnidadMedida;
+        protected System.Windows.Forms.Label lblUnidadMedida;
+        protected System.Windows.Forms.Label lblCantidad;
+        protected System.Windows.Forms.NumericUpDown nudCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Clave;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Valido;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Activo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Materiales;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
     }
 }

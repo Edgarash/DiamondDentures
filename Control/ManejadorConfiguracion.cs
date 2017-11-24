@@ -16,17 +16,14 @@ namespace Control
             return Interface.RegistrarProducto(Registro);
         }
 
-        public RegistroProducto[] ObtenerProductos()
+        public static bool ObtenerProductos(out RegistroProducto[] Pedidos)
         {
-            RegistroProducto[] temp = null;
-            InterfaceMySQL.ObtenerProductos(out temp);
-            return temp;
+            return InterfaceMySQL.ObtenerProductos(out Pedidos);
         }
 
-        public RegistroProducto ObtenerUnProducto(string Producto)
+        public static bool ObtenerUnProducto(int IDProducto, out RegistroProducto Producto)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ObtenerUnProducto(Producto);
+            return InterfaceMySQL.ObtenerUnProducto(IDProducto, out Producto);
         }
 
         public RegistroProducto[] BuscarUnProducto(RegistroProducto Producto)
@@ -35,16 +32,24 @@ namespace Control
             return Interface.BuscarProducto(Producto);
         }
 
-        public bool ActualizarProMat(RegistroProMat Registro)
+        public static bool ActualizarProMat(RegistroProMat Registro)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ActualizarProMat(Registro);
+            return InterfaceMySQL.ActualizarProMat(Registro);
         }
 
-        public RegistroProMat[] ObtenerProMat(int mat, int pro)
+        public static bool ObtenerProMat(int Producto, int Material, out RegistroProMat[] ProMat)
         {
-            Interface = new InterfaceBaseDeDatos();
-            return Interface.ObtenerProMat(mat, pro);
+            return InterfaceMySQL.ObtenerProductosMateriales(Producto, Material, out ProMat);
+        }
+
+        public static bool ObtenerUltimaClaveMaterial(out RegistroMaterial Material)
+        {
+            return InterfaceMySQL.ObtenerUltimaClaveMaterial(out Material);
+        }
+
+        public static bool ObtenerProveedores(out RegistroProveedor[] Proveedores)
+        {
+            return InterfaceMySQL.ObtenerProveedores(out Proveedores);
         }
     }
 }

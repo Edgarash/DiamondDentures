@@ -60,8 +60,6 @@
             // 
             // PantallaModificarMaterial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.ClientSize = new System.Drawing.Size(404, 494);
             this.Name = "PantallaModificarMaterial";
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).EndInit();
             this.Encabezado.ResumeLayout(false);

@@ -44,7 +44,7 @@ namespace Presentacion.Laboratorio
 
         private void btnMateriales_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaAdministrarMateriales().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaAdministrarMateriales)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaAdministrarMateriales();
@@ -53,7 +53,7 @@ namespace Presentacion.Laboratorio
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaAdministrarProducto().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaAdministrarProducto)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaAdministrarProductos();

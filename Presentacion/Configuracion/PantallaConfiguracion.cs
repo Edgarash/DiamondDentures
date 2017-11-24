@@ -18,7 +18,7 @@ namespace Presentacion.Configuracion
 
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaAgregarProducto().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaAgregarProducto)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaAgregarProducto(null);
@@ -27,7 +27,7 @@ namespace Presentacion.Configuracion
 
         private void btnModificarProducto_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaAdministrarProducto().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaAdministrarProducto)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaAdministrarProductos();
@@ -50,7 +50,7 @@ namespace Presentacion.Configuracion
                 }
                 else
                 {
-                    if (!Validar.ValidarUnaPantalla(new PantallaEliminarProducto(null).GetType()))
+                    if (!Validar.ValidarUnaPantalla(typeof(PantallaEliminarProducto)))
                     {
                         Interface = new InterfaceUsuario(this);
                         Interface.DesplegarPantallaEliminarProducto(ProductoAEliminar, null);
@@ -61,7 +61,8 @@ namespace Presentacion.Configuracion
 
         private void btnAgregarMaterial_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaAgregarMaterial().GetType()))
+
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaAgregarMaterial)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaAgregarMaterial(null);
@@ -70,7 +71,7 @@ namespace Presentacion.Configuracion
 
         private void btnModificarMaterial_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaAdministrarMateriales().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaAdministrarMateriales)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaAdministrarMateriales();
@@ -93,7 +94,7 @@ namespace Presentacion.Configuracion
                 }
                 else
                 {
-                    if (!Validar.ValidarUnaPantalla(new PantallaEliminarProducto(null).GetType()))
+                    if (!Validar.ValidarUnaPantalla(typeof(PantallaEliminarProducto)))
                     {
                         Interface = new InterfaceUsuario(this);
                         Interface.DesplegarPantallaEliminarMaterial(MaterialAEliminar);
@@ -104,7 +105,7 @@ namespace Presentacion.Configuracion
 
         private void btnCambiarPrecios_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaCambiarPrecios().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaCambiarPrecios)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaCambiarPrecios();
@@ -113,7 +114,7 @@ namespace Presentacion.Configuracion
 
         private void btnCambiarTiempos_Click(object sender, EventArgs e)
         {
-            if (!Validar.ValidarUnaPantalla(new PantallaCambiarTiempos().GetType()))
+            if (!Validar.ValidarUnaPantalla(typeof(PantallaCambiarTiempos)))
             {
                 Interface = new InterfaceUsuario(this);
                 Interface.DesplegarPantallaCambiarTiempos();

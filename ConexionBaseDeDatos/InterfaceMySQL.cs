@@ -112,11 +112,11 @@ namespace ConexionBaseDeDatos
             if (Abierto)
             {
                 InicializarConexion();
-                EjecutarConsulta(Properties.Resources.Script_Procedimientos_Base);
-                EjecutarConsulta(Properties.Resources.Script_Rolland);
+                //EjecutarConsulta(Properties.Resources.Script_Procedimientos_Base);
+                //EjecutarConsulta(Properties.Resources.Script_Rolland);
                 //EjecutarConsulta(Properties.Resources.Script_Olachea);
-                EjecutarConsulta(Properties.Resources.Script_Yazahel);
-                EjecutarConsulta(Properties.Resources.Script_Michell);
+                //EjecutarConsulta(Properties.Resources.Script_Yazahel);
+                //EjecutarConsulta(Properties.Resources.Script_Michell);
             }
             return Abierto;
             //return true;
@@ -195,7 +195,8 @@ namespace ConexionBaseDeDatos
             (string NombreProcedimiento, TipoConsulta Tipo, params MySqlParameter[] Datos)
         {
             Comando = new MySqlCommand(NombreProcedimiento, Conexion);
-            Comando.Parameters.AddRange(Datos);
+            if (Datos!= null)
+                Comando.Parameters.AddRange(Datos);
             Comando.CommandType = CommandType.StoredProcedure;
             bool Abierto = AbrirConexion();
             if (Abierto)

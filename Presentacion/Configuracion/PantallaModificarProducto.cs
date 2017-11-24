@@ -15,10 +15,14 @@ namespace Presentacion.Configuracion
         public PantallaModificarProducto(RegistroProducto Registro)
         {
             InitializeComponent();
-            tbClave.Text = Registro?.IDProducto.ToString() ?? "";
-            tbPrecio.Text = Registro?.PrecioBase.ToString() ?? "";
-            tbNombre.Text = Registro?.Nombre ?? "";
-            nudDias.Value = Registro?.TiempoBase ?? 1;
+            tbClave.Text = Registro.IDProducto.ToString();
+            tbClave.Enabled = false;
+            tbNombre.Text = Registro.Nombre;
+            tbUnidadMedida.Text = Registro.UnidadMedida;
+            tbDescripcion.Text = Registro.Descripcion;
+            nudDias.Value = Registro.TiempoBase;
+            tbPrecio.Text = Registro.PrecioBase.ToString();
+            nudCantidad.Value = Registro.Cantidad;
             InitializeComponent2();
             InitializeComponent3();
         }
@@ -26,7 +30,7 @@ namespace Presentacion.Configuracion
         protected override void InitializeComponent3()
         {
             base.InitializeComponent3();
-            RegistroProMat[] temp = ObtenerProMat;
+            RegistroProMat[] temp = ObtenerProMat();
             Interface = new InterfaceUsuario(this);
             RegistroMaterial[] Materiales = Interface.ObtenerMateriales();
             dgvMateriales.RowCount = 0;
@@ -36,26 +40,28 @@ namespace Presentacion.Configuracion
                 bool Encontrado = false;
                 for (int j = 0; j < temp?.Length && !Encontrado; j++)
                 {
-                    //if (Materiales[i].IDMaterial == ObtenerProMat[j].ClaveMat && Materiales[i].Activo == 1)
-                    //{
-                    //    dgvMateriales.RowCount += 1;
-                    //    dgvMateriales[0, k].Value = ObtenerProMat[j].ClaveMat;
-                    //    dgvMateriales[1, k].Value = ObtenerProMat[j].Activo == 1 ? true : false;
-                    //    dgvMateriales[2, k].Value = ObtenerProMat[j].Material;
-                    //    dgvMateriales[3, k].Value = ObtenerProMat[j].Precio;
-                    //    Encontrado = true;
-                    //    k++;
-                    //}
+                    if (Materiales[i].IDMaterial == temp[j].Material.IDMaterial)
+                    {
+                        dgvMateriales.RowCount += 1;
+                        dgvMateriales["Clave", k].Value = temp[j].Material.IDMaterial;
+                        dgvMateriales["Activo", k].Value = temp[j].Activo;
+                        dgvMateriales["Materiales", k].Value = temp[j].Material.Nombre;
+                        dgvMateriales["Precio", k].Value = temp[j].PrecioFinal;
+                        dgvMateriales["Tiempo", k].Value = temp[j].TiempoFinal;
+                        Encontrado = true;
+                        k++;
+                    }
                 }
-                //if (!Encontrado && Materiales[i].Activo == 1)
-                //{
-                //    dgvMateriales.RowCount += 1;
-                //    dgvMateriales[0, k].Value = Materiales[i].IDMaterial;
-                //    dgvMateriales[1, k].Value = false;
-                //    dgvMateriales[2, k].Value = Materiales[i].Nombre;
-                //    dgvMateriales[3, k].Value = Materiales[i].PrecioBase;
-                //    k++;
-                //}
+                if (!Encontrado)
+                {
+                    dgvMateriales.RowCount += 1;
+                    dgvMateriales["Clave", k].Value = Materiales[i].IDMaterial;
+                    dgvMateriales["Activo", k].Value = true;
+                    dgvMateriales["Materiales", k].Value = Materiales[i].Nombre;
+                    dgvMateriales["Precio", k].Value = Materiales[i].PrecioBase;
+                    dgvMateriales["Tiempo", k].Value = Materiales[i].TiempoBase;
+                    k++;
+                }
             }
         }
 
@@ -68,18 +74,13 @@ namespace Presentacion.Configuracion
                 Modificar.IDProducto = Convert.ToInt32(tbClave.Text);
                 if (Interface.ActualizarProducto(Modificar))
                 {
-                    if (Interface.ObtenerUnProducto(Modificar.Nombre).IDProducto == Modificar.IDProducto)
-                    {
-                        string msg = "";
-                        if (!ActualizarProMat(out msg))
-                            MessageBox.Show("Producto actualizado con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        else
-                            Validar.MensajeErrorBaseDeDatos();
-                        LlamarEventoCerrar();
-                        Close();
-                    }
+                    string msg = "";
+                    if (!ActualizarProMat(out msg))
+                        MessageBox.Show("Producto actualizado con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
-                        Validar.MensajeErrorOK("El nombre " + Modificar.Nombre + " ya ha sido usado y no puede repetirse");
+                        Validar.MensajeErrorBaseDeDatos();
+                    LlamarEventoCerrar();
+                    Close();
                 }
                 else
                 {
