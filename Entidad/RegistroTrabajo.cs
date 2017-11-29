@@ -13,7 +13,7 @@ namespace Entidad
         public RegistroProducto Producto { get; set; }
         public int IDMaterial1 { get { return Material1.IDMaterial; } }
         public RegistroMaterial Material1 { get; set; }
-        public int IDMaterial2 { get { return Material2.IDMaterial; } }
+        public int IDMaterial2 { get { return Material2?.IDMaterial ?? -1; } }
         public RegistroMaterial Material2 { get; set; }
         public float Total { get { return Producto.PrecioBase + Material1.PrecioBase + (Material2?.PrecioBase??0); } }
 
