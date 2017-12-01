@@ -691,7 +691,7 @@ namespace ConexionBaseDeDatos
                 Parametro("IDMaterial11", Trabajos[i].IDMaterial1),
                 Parametro("PrecioMaterial11", Trabajos[i].Material1.PrecioBase),
                 Parametro("IDMaterial22", Trabajos[i].IDMaterial2),
-                Parametro("PrecioMaterial22", Trabajos[i].Material2.IDMaterial),
+                Parametro("PrecioMaterial22", Trabajos[i].Material2?.IDMaterial),
                 Parametro("Subtota", Trabajos[i].Total));
                 return OperacionRealizada;
             }

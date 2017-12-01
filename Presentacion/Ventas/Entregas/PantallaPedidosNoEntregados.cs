@@ -40,7 +40,7 @@ namespace Presentacion.Ventas.Entregas
             ManejadorVentas.BuscarPedidosNoPagados(IDPedido, Min, Max, Nombre, Dentista, cbUrgente.Checked, cbPagado.Checked, out Pedidos, Entregado);
             List<RegistroPedido> temp = new List<RegistroPedido>();
             for (int i = 0; i < Pedidos.Length; i++)
-                if (Pedidos[i].EstadoPedido >= 5)
+                if (Pedidos[i].EstadoPedido >= 4)
                     temp.Add(Pedidos[i]);
             this.Pedidos = temp.ToArray();
             kuroDGV1.RowCount = this.Pedidos.Length;
@@ -81,8 +81,8 @@ namespace Presentacion.Ventas.Entregas
         private void kuroDGV1_CurrentCellChanged(object sender, EventArgs e)
         {
             setPedidoActual();
-            btnAbonar.Visible = PedidoActual.RestanteAPagar > 0;
-            btnEntregar.Visible = PedidoActual.Entregado == "0";
+            btnAbonar.Visible = PedidoActual?.RestanteAPagar > 0;
+            btnEntregar.Visible = PedidoActual?.Entregado == "0";
         }
 
         private void btnEntregar_Click(object sender, EventArgs e)
@@ -100,10 +100,13 @@ namespace Presentacion.Ventas.Entregas
         private void setPedidoActual()
         {
             int CurrentRow = kuroDGV1.CurrentRow?.Index ?? 0;
-            string IDPedido = kuroDGV1[0, CurrentRow].Value.ToString();
-            for (int i = 0; i < Pedidos.Length; i++)
-                if (Pedidos[i].IDPedido == IDPedido)
-                    PedidoActual = Pedidos[i];
+            if (kuroDGV1.RowCount > 0)
+            {
+                string IDPedido = kuroDGV1[0, CurrentRow].Value?.ToString();
+                for (int i = 0; i < Pedidos.Length; i++)
+                    if (Pedidos[i].IDPedido == IDPedido)
+                        PedidoActual = Pedidos[i];
+            }
         }
     }
 }
